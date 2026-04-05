@@ -22,6 +22,7 @@ using DATReader.DatWriter;
 using TrrntZipUI;
 using RomVaultCore.Utils;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace ROMVault
 {
@@ -75,6 +76,8 @@ namespace ROMVault
 
         private ToolStripMenuItem garbageCollectToolStripMenuItem;
 
+        private Dictionary<Button, string> NavButtonDetails = new Dictionary<Button, string>();
+
         #region MainUISetup
 
         public FrmMain()
@@ -87,10 +90,11 @@ namespace ROMVault
             //btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Enabled");
             //btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Enabled");
 
-            btnDefault1.BackgroundImage = rvImages.GetBitmap("default1");
-            btnDefault2.BackgroundImage = rvImages.GetBitmap("default2");
-            btnDefault3.BackgroundImage = rvImages.GetBitmap("default3");
-            btnDefault4.BackgroundImage = rvImages.GetBitmap("default4");
+            //btnDefault1.BackgroundImage = rvImages.GetBitmap("default1");
+            //btnDefault2.BackgroundImage = rvImages.GetBitmap("default2");
+            //btnDefault3.BackgroundImage = rvImages.GetBitmap("default3");
+            //btnDefault4.BackgroundImage = rvImages.GetBitmap("default4");
+            Helpers.Theming.SetFormTextSizeToDefault(this);
 
             AddGameMetaData();
             Text = $@"RomVault ({Program.strVersion}) {Application.StartupPath}";
@@ -319,7 +323,7 @@ namespace ROMVault
 
             TabArtworkInitialize();
 
-            SetButtonPosLeft();
+            //SetButtonPosLeft();
 
             tooltip.SetToolTip(btnDefault1, "Right Click: Save Tree Settings\nLeft Click: Load Tree Settings");
             tooltip.SetToolTip(btnDefault2, "Right Click: Save Tree Settings\nLeft Click: Load Tree Settings");
@@ -338,28 +342,136 @@ namespace ROMVault
 #endif
             InitGameGridMenu();
 
-            if (Settings.rvSettings.Darkness)
-            {
-                Dark.dark.SetColors(this);
-                SetTextBoxHeight(gbDatInfo);
-                SetTextBoxHeight(gbSetInfo);
-            }
+            UpdateThemeAndControls();
         }
 
-        private void SetTextBoxHeight(Control c)
+        private void UpdateControls(Control c, Color primaryUpdateColor)
         {
             foreach (Control c1 in c.Controls)
-                SetTextBoxHeight(c1);
+                UpdateControls(c1, primaryUpdateColor);
 
             switch (c)
             {
                 case TextBox tb:
-                    tb.Height = 30;
+                    //tb.Height = 40;
+                    tb.ForeColor = primaryUpdateColor;
+                    tb.BorderStyle = BorderStyle.FixedSingle;
                     break;
             }
         }
 
+        internal void UpdateThemeAndControls()
+        {
+            // UI Tweaks
+            ctrRvTree.BorderStyle = BorderStyle.None;
+            Helpers.Theming.SetControlTextSizeToDefault(ctrRvTree);
+            Helpers.Theming.SetControlTextSizeToDefault(GameGrid);
+            Helpers.Theming.SetControlTextSizeToDefault(RomGrid);
+
+            if (Settings.rvSettings.Darkness)
+            {
+                Dark.dark.SetColors(this);
+                UpdateControls(SearchTLP, Color.White);
+            }
+
+            UpdateControls(DatInfoTLP, Properties.Settings.Default.InfoTextColor);
+            UpdateControls(GameInfoTLP, Properties.Settings.Default.InfoTextColor);
+        }
+
+        internal void InitialiseStatusStrip()
+        {
+            //List<RepStatus> displayList = new List<RepStatus>
+            //{
+            //    RepStatus.Correct,
+            //    RepStatus.CorrectMIA,
+            //    RepStatus.Missing,
+            //    RepStatus.MissingMIA,
+            //    RepStatus.Unknown,
+            //    RepStatus.UnNeeded,
+            //    RepStatus.NotCollected,
+            //    RepStatus.InToSort,
+            //    RepStatus.Ignore,
+
+            //    RepStatus.CanBeFixed,
+            //    RepStatus.CanBeFixedMIA,
+            //    RepStatus.NeededForFix,
+            //    RepStatus.Rename,
+            //    RepStatus.MoveToSort,
+            //    RepStatus.Incomplete,
+            //    RepStatus.Delete,
+
+            //    RepStatus.Corrupt,
+            //    RepStatus.UnScanned,
+            //};
+
+            //for (int i = 0; i < displayList.Count; i++)
+            //{
+            //    ToolStripStatusLabel lbl = new ToolStripStatusLabel
+            //    {
+            //        Text = displayList[i].ToString(),
+            //        Image = rvImages.GetBitmap("G_" + displayList[i])
+            //    };
+            //    MainSS.Items.Add(lbl);
+            //}
+
+            int i = 0;
+            foreach (KeyValuePair<RepStatus, string> kvp in Constants.UI.RepStatusText)
+            {
+                ToolStripStatusLabel lbl = new ToolStripStatusLabel
+                {
+                    Text = kvp.Key.ToString(),
+                    Image = rvImages.GetBitmap("G_" + kvp.Key),
+                    ToolTipText = kvp.Value
+                };
+                lbl.MouseHover += Lbl_MouseHover;
+                lbl.MouseLeave += Lbl_MouseLeave;
+                MainSS.Items.Add(lbl);
+                i++;
+            }
+        }
+
+        private void Lbl_MouseLeave(object sender, EventArgs e)
+        {
+            tooltip.Hide(MainSS);
+        }
+
+        private void Lbl_MouseHover(object sender, EventArgs e)
+        {
+            if (sender is ToolStripStatusLabel statusLabel)
+            {
+                string text = statusLabel.ToolTipText;
+                if (string.IsNullOrEmpty(text)) return;
+
+                // 1. Ensure the tooltip is in standard mode
+                tooltip.IsBalloon = false;
+
+                // 2. Measure the exact height and width of the multiline text
+                Size textSize = TextRenderer.MeasureText(text, SystemFonts.MessageBoxFont);
+
+                // 3. Set the X position to the left of the label
+                int x = statusLabel.Bounds.Left;
+
+                // 4. Check for right-edge collision against the StatusStrip's width
+                // Add 10px for the tooltip's internal border padding
+                if (x + textSize.Width + 10 > MainSS.Width)
+                {
+                    x = MainSS.Width - textSize.Width - 10;
+                }
+
+                // Safety check for the left edge
+                if (x < 0) x = 5;
+
+                // 5. Calculate Y so the bottom of the tooltip rests 5px above the bar
+                // Since we are referencing 'MainSS', Y coordinates are relative to the top of the bar.
+                // A negative Y value pushes it ABOVE the bar.
+                int y = -textSize.Height - 5;
+
+                tooltip.Show(text, MainSS, x, y);
+            }
+        }
+
         // returns either white or black, depending of quick luminance of the Color " a "
+
         // called when the _displayColor is finished, in order to populate the _fontColor table.
         private static Color Contrasty(Color a)
         {
@@ -400,7 +512,7 @@ namespace ROMVault
             txtFilter.Left = chkLeft;
             btnClear.Left = chkLeft + txtFilter.Width + 2;
 
-            gbSetInfo.Width = chkLeft - gbSetInfo.Left - 10;
+            //gbSetInfo.Width = chkLeft - gbSetInfo.Left - 10;
         }
 
         protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
@@ -419,6 +531,14 @@ namespace ROMVault
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            Properties.Settings.Default.SidebarSplitterDistance = splitToolBarMain.SplitterDistance;
+            Properties.Settings.Default.DatGameSplitterDistance = splitDatInfoGameInfo.SplitterDistance;
+            Properties.Settings.Default.GameInfoSplitterDistance = splitGameInfoLists.SplitterDistance;
+            Properties.Settings.Default.WindowPosition = this.Location;
+            Properties.Settings.Default.WindowSize = this.Size;
+
+            Properties.Settings.Default.Save();
+
             if (_working)
             {
                 e.Cancel = true;
@@ -798,7 +918,7 @@ namespace ROMVault
         private void RomVaultSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_working) return;
-            using (FrmSettings fcfg = new FrmSettings())
+            using (FrmSettings fcfg = new FrmSettings(this))
             {
                 fcfg.ShowDialog(this);
             }
@@ -1176,7 +1296,16 @@ namespace ROMVault
             }
 
             UpdateDatMetaData(cf);
-            UpdateGameGrid(cf);
+            Cursor oldCursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                UpdateGameGrid(cf);
+            }
+            finally
+            {
+                Cursor.Current = oldCursor;
+            }
         }
 
         private void UpdateDatMetaData(RvFile tDir)
@@ -1306,21 +1435,21 @@ namespace ROMVault
 
         private void splitToolBarMain_Panel1_Resize(object sender, EventArgs e)
         {
-            SetButtonPosLeft();
+            //SetButtonPosLeft();
         }
 
-        private void SetButtonPosLeft()
-        {
-            int pH = splitToolBarMain.Panel1.Height;
-            if (pH < 550)
-                pH = 550;
+        //private void SetButtonPosLeft()
+        //{
+        //    int pH = splitToolBarMain.Panel1.Height;
+        //    if (pH < 550)
+        //        pH = 550;
 
-            lblTreePreSets.Top = pH - 98;
-            btnDefault1.Top = pH - 82;
-            btnDefault2.Top = pH - 82;
-            btnDefault3.Top = pH - 42;
-            btnDefault4.Top = pH - 42;
-        }
+        //    lblTreePreSets.Top = pH - 98;
+        //    btnDefault1.Top = pH - 82;
+        //    btnDefault2.Top = pH - 82;
+        //    btnDefault3.Top = pH - 42;
+        //    btnDefault4.Top = pH - 42;
+        //}
 
         private void visitHelpWikiToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1363,6 +1492,115 @@ namespace ROMVault
         private void garbageCollectToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             GC.Collect();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            NavButtonDetails = new Dictionary<Button, string>()
+            {
+                { btnUpdateDats, "Update DATs" },
+                { btnScanRoms, "Scan Roms" },
+                { btnFindFixes, "Find Fixes" },
+                { btnFixFiles, "Fix ROMs" },
+                { btnReport, "Reports" }
+            };
+        }
+
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
+            // Restore visuals
+            if (Properties.Settings.Default.WindowPosition != new Point(0, 0))
+                this.Location = Properties.Settings.Default.WindowPosition;
+
+            if (Properties.Settings.Default.WindowSize != new Size(0, 0))
+                this.Size = Properties.Settings.Default.WindowSize;
+
+            // Restore splitters
+            if (Properties.Settings.Default.SidebarSplitterDistance != 0)
+                splitToolBarMain.SplitterDistance = Properties.Settings.Default.SidebarSplitterDistance;
+
+            if (Properties.Settings.Default.DatGameSplitterDistance != 0)
+                splitDatInfoGameInfo.SplitterDistance = Properties.Settings.Default.DatGameSplitterDistance;
+
+            if (Properties.Settings.Default.GameInfoSplitterDistance != 0)
+                splitGameInfoLists.SplitterDistance = Properties.Settings.Default.GameInfoSplitterDistance;
+
+            // Set up status strip
+            InitialiseStatusStrip();
+        }
+
+        private void _textGameName_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void splitToolBarMain_SplitterMoving(object sender, SplitterCancelEventArgs e)
+        {
+        }
+
+        private void ToggleNavText(bool visible)
+        {
+            if (visible)
+            {
+                foreach (KeyValuePair<Button, string> navButton in NavButtonDetails)
+                {
+                    navButton.Key.Text = navButton.Value;
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<Button, string> navButton in NavButtonDetails)
+                {
+                    navButton.Key.Text = "";
+                }
+            }
+        }
+
+        private int navBarWidth = 156;
+
+        private void splitToolBarMain_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            splitterLb.Text = splitToolBarMain.SplitterDistance.ToString();
+            if (splitToolBarMain.Panel1.Width < navBarWidth)
+            {
+                if (!string.IsNullOrEmpty(btnUpdateDats.Text)) ToggleNavText(visible: false);
+                CollapseSidebar();
+            }
+            else if (splitToolBarMain.Panel1.Width >= navBarWidth && string.IsNullOrEmpty(btnUpdateDats.Text))
+            {
+                if (string.IsNullOrEmpty(btnUpdateDats.Text)) ToggleNavText(visible: true);
+            }
+        }
+
+        private void CollapseSidebar()
+        {
+            splitToolBarMain.Panel2.Hide();
+            splitToolBarMain.Panel2.SuspendLayout();
+
+            splitToolBarMain.SplitterDistance = 68;
+
+            splitToolBarMain.Panel2.Show();
+            splitToolBarMain.Panel2.ResumeLayout();
+        }
+
+        private void HideNavBT_Click(object sender, EventArgs e)
+        {
+            if (splitToolBarMain.Panel1.Width >= navBarWidth)
+            {
+                ToggleNavText(visible: false);
+                CollapseSidebar();
+                HideNavBT.Image = Properties.Resources.Forward;
+            }
+            else
+            {
+                ToggleNavText(visible: true);
+                splitToolBarMain.SplitterDistance = navBarWidth + 4;
+                HideNavBT.Image = Properties.Resources.Back__Custom_;
+            }
+        }
+
+        private void GameGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
     }
 }

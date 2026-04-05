@@ -13,7 +13,6 @@ using RomVaultCore.RvDB;
 
 namespace ROMVault
 {
-
     public partial class RvTree : UserControl
     {
         public bool Working;
@@ -29,12 +28,16 @@ namespace ROMVault
         }
 
         public event MouseEventHandler RvSelected;
+
         public event MouseEventHandler RvChecked;
 
         private RvFile _lTree;
 
-        private readonly Font tFont = new Font("Microsoft Sans Serif", 8);
-        private readonly Font tFont1 = new Font("Microsoft Sans Serif", 7);
+        //private readonly Font tFont = new Font("Microsoft Sans Serif", 8);
+        //private readonly Font tFont1 = new Font("Microsoft Sans Serif", 7);
+
+        private readonly Font tFont = new Font("Segoe UI", Properties.Settings.Default.MainTextSize);
+        private readonly Font tFont1 = new Font("Segoe UI", Properties.Settings.Default.MainTextSize - 1);
 
         public RvTree()
         {
@@ -57,7 +60,7 @@ namespace ROMVault
 
         private void SetupInt()
         {
-            _yPos = 0;
+            _yPos = 8;
 
             int treeCount = _lTree.ChildCount;
 
@@ -78,7 +81,7 @@ namespace ROMVault
         {
             int nodeDepth = pTreeBranches.Length - 1;
 
-            int nodeHeight = 16;
+            int nodeHeight = tFont.Height + 4;
             if (pTree.Tree.TreeExpanded && pTree.DirDatCount > 1)
             {
                 for (int i = 0; i < pTree.DirDatCount; i++)
@@ -118,9 +121,7 @@ namespace ROMVault
                 found = true;
                 if (pTree.Tree.TreeExpanded)
                     last = i;
-
             }
-
 
             if (!found && pTree.DirDatCount <= 1)
             {
@@ -210,10 +211,12 @@ namespace ROMVault
                             g.DrawLine(p, x + 9, y, x + 9, y + uTree.RTree.Height);
                             g.DrawLine(p, x + 9, y + 8, x + 27, y + 8);
                             break;
+
                         case "└":
                             g.DrawLine(p, x + 9, y, x + 9, y + 8);
                             g.DrawLine(p, x + 9, y + 8, x + 27, y + 8);
                             break;
+
                         case "┐":
                             g.DrawLine(p, x + 9, y + 8, x + 9, y + uTree.RTree.Height);
                             break;
@@ -229,7 +232,6 @@ namespace ROMVault
                 }
             }
 
-
             if (uTree.RChecked.IntersectsWith(t))
             {
                 switch (pTree.Tree.Checked)
@@ -237,9 +239,11 @@ namespace ROMVault
                     case RvTreeRow.TreeSelect.Locked:
                         g.DrawImage(rvImages.GetBitmap("TickBoxLocked", false), RSub(uTree.RChecked, _hScroll, _vScroll));
                         break;
+
                     case RvTreeRow.TreeSelect.UnSelected:
                         g.DrawImage(rvImages.GetBitmap("TickBoxUnTicked", false), RSub(uTree.RChecked, _hScroll, _vScroll));
                         break;
+
                     case RvTreeRow.TreeSelect.Selected:
                         g.DrawImage(rvImages.GetBitmap("TickBoxTicked", false), RSub(uTree.RChecked, _hScroll, _vScroll));
                         break;
@@ -265,7 +269,6 @@ namespace ROMVault
                 {
                     icon = 3;
                 }
-
 
                 Bitmap bm;
                 if (pTree.Dat == null && pTree.DirDatCount == 0) // Directory above DAT's in Tree
@@ -295,7 +298,6 @@ namespace ROMVault
                     g.DrawImage(bm, RSub(uTree.RIcon, _hScroll, _vScroll));
                 }
             }
-
 
             Rectangle recBackGround = new Rectangle(uTree.RText.X, uTree.RText.Y, Width - uTree.RText.X + _hScroll, uTree.RText.Height);
 
@@ -338,7 +340,7 @@ namespace ROMVault
                     }
                 }
 
-                // pTree.Parent.DirDatCount>1: This should probably be a test like parent contains Dat 
+                // pTree.Parent.DirDatCount>1: This should probably be a test like parent contains Dat
                 else if (pTree.Dat != null && pTree.Dat.Flag(DatFlags.AutoAddedDirectory) && pTree.Parent.DirDatCount > 1)
                 {
                     thistxt = pTree.Name + ": ";
@@ -377,8 +379,13 @@ namespace ROMVault
                 Brush textBrush;
                 if (Selected != null && pTree.TreeFullName == Selected.TreeFullName)
                 {
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(51, 153, 255)), RSub(recBackGround, _hScroll, _vScroll));
-                    textBrush = Brushes.Wheat;
+                    // g.FillRectangle(new SolidBrush(Color.FromArgb(51, 153, 255)), RSub(recBackGround, _hScroll, _vScroll));
+
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(80, 0, 0, 0)), RSub(recBackGround, _hScroll, _vScroll));
+                    if (Settings.rvSettings.Darkness)
+                        textBrush = Brushes.White;
+                    else
+                        textBrush = Brushes.Black;
                 }
                 else
                 {
@@ -411,7 +418,6 @@ namespace ROMVault
                 }
             }
         }
-
 
         private static Rectangle RSub(Rectangle r, int h, int v)
         {

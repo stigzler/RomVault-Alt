@@ -14,9 +14,15 @@ namespace ROMVault
 {
     public partial class FrmSettings : Form
     {
-        public FrmSettings()
+        private FrmMain mainForm;
+
+        public FrmSettings(FrmMain mainForm)
         {
             InitializeComponent();
+
+            //Helpers.Theming.SetFromTextSizeToDefault(this);
+
+            this.mainForm = mainForm;
 
             cboFixLevel.Items.Clear();
             cboFixLevel.Items.Add("Level 1 - Fast copy Match on CRC");
@@ -34,6 +40,9 @@ namespace ROMVault
 
             if (Settings.rvSettings.Darkness)
                 Dark.dark.SetColors(this);
+
+            MainTextSizeNUM.Value = Properties.Settings.Default.MainTextSize;
+            InfoTextColorPB.BackColor = Properties.Settings.Default.InfoTextColor;
         }
 
         private void FrmConfigLoad(object sender, EventArgs e)
@@ -59,7 +68,6 @@ namespace ROMVault
             cbo7zStruct.SelectedIndex = Settings.rvSettings.sevenZDefaultStruct;
             chkDarkMode.Checked = Settings.rvSettings.Darkness;
             chkDoNotReportFeedback.Checked = Settings.rvSettings.DoNotReportFeedback;
-
         }
 
         private void BtnCancelClick(object sender, EventArgs e)
@@ -105,6 +113,9 @@ namespace ROMVault
             Settings.rvSettings.DoNotReportFeedback = chkDoNotReportFeedback.Checked;
 
             Settings.WriteConfig(Settings.rvSettings);
+
+            Properties.Settings.Default.Save();
+
             Close();
         }
 
@@ -131,5 +142,20 @@ namespace ROMVault
             chkSendFoundMIAAnon.Enabled = chkSendFoundMIA.Checked;
         }
 
+        private void InfoTextColorPB_Click(object sender, EventArgs e)
+        {
+            var result = ColorBroswer.ShowDialog();
+            if (result != DialogResult.OK) return;
+            Properties.Settings.Default.InfoTextColor = ColorBroswer.Color;
+            InfoTextColorPB.BackColor = ColorBroswer.Color;
+            mainForm.UpdateThemeAndControls();
+        }
+
+        private void MainTextSizeNUM_ValueChanged(object sender, EventArgs e)
+        {
+            //this.Font = new System.Drawing.Font(this.Font.FontFamily, (float)MainTextSizeNUM.Value);
+            Properties.Settings.Default.MainTextSize = (int)MainTextSizeNUM.Value;
+            //mainForm.UpdateThemeAndControls();
+        }
     }
 }

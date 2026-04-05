@@ -22,75 +22,56 @@ namespace ROMVault
         //private Label _labelGameCloneOf;
         //private TextBox _textGameCloneOf;
 
-        private Label _labelGameRomOf;
-        private TextBox _textGameRomOf;
+        //private Label _labelGameRomOf;
+        //private TextBox _textGameRomOf;
 
-        private Label _labelGameYear;
-        private TextBox _textGameYear;
+        //private Label _labelGameYear;
+        //private TextBox _textGameYear;
 
-        private Label _labelGameCategory;
-        private TextBox _textGameCategory;
+        //private Label _labelGameCategory;
+        //private TextBox _textGameCategory;
 
         //Trurip Extra Data
-        private Label textBox2;
+        //private Label _textTruripPublisher;
 
-        private TextBox _textTruripPublisher;
+        //private TextBox _textTruripPublisher;
 
-        private Label _labelTruripDeveloper;
-        private TextBox _textTruripDeveloper;
+        //private Label _labelTruripDeveloper;
+        //private TextBox _textTruripDeveloper;
 
-        private Label _labelTruripTitleId;
-        private TextBox _textTruripTitleId;
+        //private Label _labelTruripTitleId;
+        //private TextBox _textTruripTitleId;
 
-        private Label _labelTruripSource;
-        private TextBox _textTruripSource;
+        //private Label _labelTruripSource;
+        //private TextBox _textTruripSource;
 
-        private Label _labelTruripCloneOf;
-        private TextBox _textTruripCloneOf;
+        //private Label _labelTruripCloneOf;
+        //private TextBox _textTruripCloneOf;
 
-        private Label _labelTruripRelatedTo;
-        private TextBox _textTruripRelatedTo;
+        //private Label _labelTruripRelatedTo;
+        //private TextBox _textTruripRelatedTo;
 
-        private Label _labelTruripYear;
-        private TextBox _textTruripYear;
+        //private Label _labelTruripYear;
+        //private TextBox _textTruripYear;
 
-        private Label _labelTruripPlayers;
-        private TextBox _textTruripPlayers;
+        //private Label _labelTruripPlayers;
+        //private TextBox _textTruripPlayers;
 
-        private Label _labelTruripGenre;
-        private TextBox _textTruripGenre;
+        //private Label _labelTruripGenre;
+        //private TextBox _textTruripGenre;
 
-        private Label _labelTruripSubGenre;
-        private TextBox _textTruripSubGenre;
+        //private Label _labelTruripSubGenre;
+        //private TextBox _textTruripSubGenre;
 
-        private Label _labelTruripRatings;
-        private TextBox _textTruripRatings;
+        //private Label _labelTruripRatings;
+        //private TextBox _textTruripRatings;
 
-        private Label _labelTruripScore;
-        private TextBox _textTruripScore;
+        //private Label _labelTruripScore;
+        //private TextBox _textTruripScore;
 
         private void AddTextBox(int line, string name, int x, int x1, out Label lBox, out TextBox tBox)
         {
             int y = 14 + line * 16;
-
-            //lBox = new Label
-            //{
-            //    Location = SPoint(x, y + 1),
-            //    Size = SSize(x1 - x - 2, 13),
-            //    Text = name + @" :",
-            //    TextAlign = ContentAlignment.TopRight,
-            //    Tag = "trans"
-            //};
-            //tBox = new TextBox
-            //{
-            //    AutoSize = false,
-            //    Location = SPoint(x1, y),
-            //    Size = SSize(20, 17),
-            //    BorderStyle = BorderStyle.FixedSingle,
-            //    ReadOnly = true,
-            //    TabStop = false,
-            //    Tag = "trans"
-            //};
 
             lBox = new Label
             {
@@ -110,8 +91,8 @@ namespace ROMVault
                 TabStop = false,
                 Tag = "trans"
             };
-            gbSetInfo.Controls.Add(lBox);
-            gbSetInfo.Controls.Add(tBox);
+            //gbSetInfo.Controls.Add(lBox);
+            //gbSetInfo.Controls.Add(tBox);
         }
 
         private Point SPoint(int x, int y)
@@ -130,32 +111,32 @@ namespace ROMVault
             //AddTextBox(1, "Description", 6, 84, out _labelGameDescription, out _textGameDescription);
             //AddTextBox(2, "Manufacturer", 6, 84, out _labelGameManufacturer, out _textGameManufacturer);
 
-            AddTextBox(3, "Clone of", 6, 84, out _labelGameCloneOf, out _textGameCloneOf);
-            AddTextBox(3, "Year", 206, 284, out _labelGameYear, out _textGameYear);
+            //AddTextBox(3, "Clone of", 6, 84, out _labelGameCloneOf, out _textGameCloneOf);
+            //AddTextBox(3, "Year", 206, 284, out _labelGameYear, out _textGameYear);
 
-            AddTextBox(4, "Rom of", 6, 84, out _labelGameRomOf, out _textGameRomOf);
-            AddTextBox(4, "Category", 206, 284, out _labelGameCategory, out _textGameCategory);
+            //AddTextBox(4, "Rom of", 6, 84, out _labelGameRomOf, out _textGameRomOf);
+            //AddTextBox(4, "Category", 206, 284, out _labelGameCategory, out _textGameCategory);
 
             //Trurip
 
-            AddTextBox(2, "Publisher", 6, 84, out _labelTruripPublisher, out _textTruripPublisher);
-            AddTextBox(2, "Title Id", 406, 484, out _labelTruripTitleId, out _textTruripTitleId);
+            //AddTextBox(2, "Publisher", 6, 84, out _labelTruripPublisher, out _textTruripPublisher);
+            //AddTextBox(2, "Title Id", 406, 484, out _labelTruripTitleId, out _textTruripTitleId);
 
-            AddTextBox(3, "Developer", 6, 84, out _labelTruripDeveloper, out _textTruripDeveloper);
-            AddTextBox(3, "Source", 406, 484, out _labelTruripSource, out _textTruripSource);
+            //AddTextBox(3, "Developer", 6, 84, out _labelTruripDeveloper, out _textTruripDeveloper);
+            //AddTextBox(3, "Source", 406, 484, out _labelTruripSource, out _textTruripSource);
 
-            AddTextBox(4, "Clone of", 6, 84, out _labelTruripCloneOf, out _textTruripCloneOf);
-            AddTextBox(5, "Related to", 6, 84, out _labelTruripRelatedTo, out _textTruripRelatedTo);
+            //AddTextBox(4, "Clone of", 6, 84, out _labelTruripCloneOf, out _textTruripCloneOf);
+            //AddTextBox(5, "Related to", 6, 84, out _labelTruripRelatedTo, out _textTruripRelatedTo);
 
-            AddTextBox(6, "Year", 6, 84, out _labelTruripYear, out _textTruripYear);
-            AddTextBox(6, "Genre", 206, 284, out _labelTruripGenre, out _textTruripGenre);
-            AddTextBox(6, "Ratings", 406, 484, out _labelTruripRatings, out _textTruripRatings);
+            //AddTextBox(6, "Year", 6, 84, out _labelTruripYear, out _textTruripYear);
+            //AddTextBox(6, "Genre", 206, 284, out _labelTruripGenre, out _textTruripGenre);
+            //AddTextBox(6, "Ratings", 406, 484, out _labelTruripRatings, out _textTruripRatings);
 
-            AddTextBox(7, "Players", 6, 84, out _labelTruripPlayers, out _textTruripPlayers);
-            AddTextBox(7, "SubGenre", 206, 284, out _labelTruripSubGenre, out _textTruripSubGenre);
-            AddTextBox(7, "Score", 406, 484, out _labelTruripScore, out _textTruripScore);
+            //AddTextBox(7, "Players", 6, 84, out _labelTruripPlayers, out _textTruripPlayers);
+            //AddTextBox(7, "SubGenre", 206, 284, out _labelTruripSubGenre, out _textTruripSubGenre);
+            //AddTextBox(7, "Score", 406, 484, out _labelTruripScore, out _textTruripScore);
 
-            gbSetInfo_Resize(null, new EventArgs());
+            //gbSetInfo_Resize(null, new EventArgs());
             UpdateGameMetaData(new RvFile(FileType.Dir));
 
             //       _textGameName.Click += _textGameName_Click;
@@ -397,7 +378,9 @@ namespace ROMVault
         private void gbSetInfo_Resize(object sender, EventArgs e)
         {
             const int leftPos = 84;
-            int rightPos = gbSetInfo.Width - 15;
+            // int rightPos = gbSetInfo.Width - 15;
+            int rightPos = 200; // dummy
+
             if (rightPos > 750)
             {
                 rightPos = 750;
