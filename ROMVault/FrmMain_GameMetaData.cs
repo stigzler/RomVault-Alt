@@ -10,17 +10,17 @@ namespace ROMVault
 {
     public partial class FrmMain
     {
-        private Label _labelGameName;
-        private TextBox _textGameName;
+        //private Label _labelGameName;
+        //private TextBox _textGameName;
 
-        private Label _labelGameDescription;
-        private TextBox _textGameDescription;
+        //private Label _labelGameDescription;
+        //private TextBox _textGameDescription;
 
-        private Label _labelGameManufacturer;
-        private TextBox _textGameManufacturer;
+        //private Label _labelGameManufacturer;
+        //private TextBox _textGameManufacturer;
 
-        private Label _labelGameCloneOf;
-        private TextBox _textGameCloneOf;
+        //private Label _labelGameCloneOf;
+        //private TextBox _textGameCloneOf;
 
         private Label _labelGameRomOf;
         private TextBox _textGameRomOf;
@@ -32,7 +32,7 @@ namespace ROMVault
         private TextBox _textGameCategory;
 
         //Trurip Extra Data
-        private Label _labelTruripPublisher;
+        private Label textBox2;
 
         private TextBox _textTruripPublisher;
 
@@ -126,9 +126,9 @@ namespace ROMVault
 
         private void AddGameMetaData()
         {
-            AddTextBox(0, "Name", 6, 84, out _labelGameName, out _textGameName);
-            AddTextBox(1, "Description", 6, 84, out _labelGameDescription, out _textGameDescription);
-            AddTextBox(2, "Manufacturer", 6, 84, out _labelGameManufacturer, out _textGameManufacturer);
+            //AddTextBox(0, "Name", 6, 84, out _labelGameName, out _textGameName);
+            //AddTextBox(1, "Description", 6, 84, out _labelGameDescription, out _textGameDescription);
+            //AddTextBox(2, "Manufacturer", 6, 84, out _labelGameManufacturer, out _textGameManufacturer);
 
             AddTextBox(3, "Clone of", 6, 84, out _labelGameCloneOf, out _textGameCloneOf);
             AddTextBox(3, "Year", 206, 284, out _labelGameYear, out _textGameYear);

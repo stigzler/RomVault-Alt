@@ -64,8 +64,6 @@ namespace Dark
                     if (tb.Tag == null || tb.Tag.ToString() != "trans")
                     {
                         tb.BackColor = bg0;
-
-                        //tb.BackColor = Color.Transparent;
                     }
                     else
                     {
