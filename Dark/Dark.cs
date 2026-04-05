@@ -19,12 +19,13 @@ namespace Dark
 
         public static bool darkEnabled;
 
-
         [DllImport("DwmApi")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
 
         private static string ToBgr(Color c) => $"{c.B:X2}{c.G:X2}{c.R:X2}";
-        const int DWWMA_CAPTION_COLOR = 35;
+
+        private const int DWWMA_CAPTION_COLOR = 35;
+
         private static void SetTitleBarColor(Color color, IntPtr handle)
         {
             if (IsUnix)
@@ -60,8 +61,18 @@ namespace Dark
             {
                 case TextBox tb:
                     tb.BorderStyle = BorderStyle.None;
-                    tb.BackColor = bg0;
+                    if (tb.Tag == null || tb.Tag.ToString() != "trans")
+                    {
+                        tb.BackColor = bg0;
+
+                        //tb.BackColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        //tb.BackColor = bg0;
+                    }
                     break;
+
                 case DataGridView dgv:
                     dgv.BackgroundColor = bg1;
                     dgv.ForeColor = fg;
@@ -91,6 +102,7 @@ namespace Dark
                 case GroupBox _:
                 case ProgressBar _:
                     break;
+
                 default:
                     Debug.WriteLine($"Control Unknown {c}");
                     break;
@@ -101,6 +113,7 @@ namespace Dark
         {
             return darkEnabled ? bg : c;
         }
+
         public static Color bgColor1(Color c)
         {
             return darkEnabled ? bg1 : c;
@@ -110,14 +123,17 @@ namespace Dark
         {
             return darkEnabled ? sb_bg : b;
         }
+
         public static Brush bgBrush1(Brush b)
         {
             return darkEnabled ? sb_bg1 : b;
         }
+
         public static Brush fgBrush(Brush b)
         {
             return darkEnabled ? sb_fg : b;
         }
+
         public static Color Down(Color c)
         {
             if (!darkEnabled)

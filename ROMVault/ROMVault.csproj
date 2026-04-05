@@ -320,10 +320,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="chip.ico" />
+    <Content Include="HelloWorld.txt" />
     <Content Include="Resources\default1.png" />
     <Content Include="Resources\default2.png" />
     <Content Include="Resources\default3.png" />
     <Content Include="Resources\default4.png" />
+    <None Include="Resources\GenerateReports %28Custom%29.png" />
+    <None Include="Resources\UpdateDats %28Custom%292.png" />
+    <None Include="Resources\Fix Roms %28Custom%29.png" />
+    <None Include="Resources\ScanRoms %28Custom%29.png" />
+    <None Include="Resources\FindFixes %28Custom%291.png" />
+    <None Include="Resources\FindFixes %28Custom%29.png" />
+    <None Include="Resources\UpdateDats %28Custom%291.png" />
+    <None Include="Resources\UpdateDats %28Custom%29.png" />
+    <None Include="Resources\UpdateDats1.png" />
+    <None Include="Resources\ScanRoms1.png" />
+    <None Include="Resources\GenerateReports1.png" />
+    <None Include="Resources\Fix Roms1.png" />
+    <None Include="Resources\FindFixes1.png" />
+    <None Include="Resources\GenerateReports.png" />
+    <None Include="Resources\Fix Roms.png" />
     <None Include="Resources\unTick.png" />
     <None Include="Resources\R_InDatMIA_MoveToSort.png" />
     <None Include="Resources\R_InDatMIA_Delete.png" />

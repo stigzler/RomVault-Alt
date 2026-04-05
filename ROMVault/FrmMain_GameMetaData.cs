@@ -33,6 +33,7 @@ namespace ROMVault
 
         //Trurip Extra Data
         private Label _labelTruripPublisher;
+
         private TextBox _textTruripPublisher;
 
         private Label _labelTruripDeveloper;
@@ -50,13 +51,11 @@ namespace ROMVault
         private Label _labelTruripRelatedTo;
         private TextBox _textTruripRelatedTo;
 
-
         private Label _labelTruripYear;
         private TextBox _textTruripYear;
 
         private Label _labelTruripPlayers;
         private TextBox _textTruripPlayers;
-
 
         private Label _labelTruripGenre;
         private TextBox _textTruripGenre;
@@ -64,25 +63,42 @@ namespace ROMVault
         private Label _labelTruripSubGenre;
         private TextBox _textTruripSubGenre;
 
-
         private Label _labelTruripRatings;
         private TextBox _textTruripRatings;
 
         private Label _labelTruripScore;
         private TextBox _textTruripScore;
 
-
-
         private void AddTextBox(int line, string name, int x, int x1, out Label lBox, out TextBox tBox)
         {
             int y = 14 + line * 16;
+
+            //lBox = new Label
+            //{
+            //    Location = SPoint(x, y + 1),
+            //    Size = SSize(x1 - x - 2, 13),
+            //    Text = name + @" :",
+            //    TextAlign = ContentAlignment.TopRight,
+            //    Tag = "trans"
+            //};
+            //tBox = new TextBox
+            //{
+            //    AutoSize = false,
+            //    Location = SPoint(x1, y),
+            //    Size = SSize(20, 17),
+            //    BorderStyle = BorderStyle.FixedSingle,
+            //    ReadOnly = true,
+            //    TabStop = false,
+            //    Tag = "trans"
+            //};
 
             lBox = new Label
             {
                 Location = SPoint(x, y + 1),
                 Size = SSize(x1 - x - 2, 13),
                 Text = name + @" :",
-                TextAlign = ContentAlignment.TopRight
+                TextAlign = ContentAlignment.TopRight,
+                Tag = "trans"
             };
             tBox = new TextBox
             {
@@ -91,12 +107,12 @@ namespace ROMVault
                 Size = SSize(20, 17),
                 BorderStyle = BorderStyle.FixedSingle,
                 ReadOnly = true,
-                TabStop = false
+                TabStop = false,
+                Tag = "trans"
             };
             gbSetInfo.Controls.Add(lBox);
             gbSetInfo.Controls.Add(tBox);
         }
-
 
         private Point SPoint(int x, int y)
         {
@@ -107,8 +123,6 @@ namespace ROMVault
         {
             return new Size((int)(x * _scaleFactorX), (int)(y * _scaleFactorY));
         }
-
-
 
         private void AddGameMetaData()
         {
@@ -141,13 +155,13 @@ namespace ROMVault
             AddTextBox(7, "SubGenre", 206, 284, out _labelTruripSubGenre, out _textTruripSubGenre);
             AddTextBox(7, "Score", 406, 484, out _labelTruripScore, out _textTruripScore);
 
-
             gbSetInfo_Resize(null, new EventArgs());
             UpdateGameMetaData(new RvFile(FileType.Dir));
 
             //       _textGameName.Click += _textGameName_Click;
             //       _textTruripTitleId.Click += _textTruripTitleId_Click;
         }
+
         /*
         private void _textGameName_Click(object sender, EventArgs e)
         {
@@ -249,7 +263,6 @@ namespace ROMVault
                 _textGameCategory.Visible = false;
             }
 
-
             if (tGame.Game != null)
             {
                 if (tGame.Game.GetData(RvGame.GameData.EmuArc) == "yes")
@@ -267,7 +280,6 @@ namespace ROMVault
                     _labelTruripDeveloper.Visible = true;
                     _textTruripDeveloper.Visible = true;
                     _textTruripDeveloper.Text = tGame.Game.GetData(RvGame.GameData.Developer);
-
 
                     _labelTruripTitleId.Visible = true;
                     _textTruripTitleId.Visible = true;
@@ -382,7 +394,6 @@ namespace ROMVault
             this.ActiveControl = GameGrid;
         }
 
-
         private void gbSetInfo_Resize(object sender, EventArgs e)
         {
             const int leftPos = 84;
@@ -393,7 +404,6 @@ namespace ROMVault
             }
 
             int width = rightPos - leftPos;
-
 
             if (_textGameName == null)
             {
@@ -421,7 +431,6 @@ namespace ROMVault
             _textGameCategory.Left = text2Left;
             _textGameCategory.Width = textWidth;
 
-
             // TruRip Meta Data
             textWidth = (int)(width * 0.20);
             text2Left = (int)(width * 0.4 + leftPos);
@@ -444,7 +453,6 @@ namespace ROMVault
             _labelTruripSubGenre.Left = label2Left;
             _textTruripSubGenre.Left = text2Left;
             _textTruripSubGenre.Width = textWidth;
-
 
             _labelTruripTitleId.Left = label3Left;
             _textTruripTitleId.Left = text3Left;

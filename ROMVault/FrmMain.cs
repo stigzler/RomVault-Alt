@@ -74,18 +74,18 @@ namespace ROMVault
         private float _scaleFactorY = 1;
 
         private ToolStripMenuItem garbageCollectToolStripMenuItem;
-        #region MainUISetup
 
+        #region MainUISetup
 
         public FrmMain()
         {
             InitializeComponent();
 
-            btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Enabled");
-            btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Enabled");
-            btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Enabled");
-            btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Enabled");
-            btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Enabled");
+            //btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Enabled");
+            //btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Enabled");
+            //btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Enabled");
+            //btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Enabled");
+            //btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Enabled");
 
             btnDefault1.BackgroundImage = rvImages.GetBitmap("default1");
             btnDefault2.BackgroundImage = rvImages.GetBitmap("default2");
@@ -102,7 +102,6 @@ namespace ROMVault
             dgvType = RomGrid.GetType();
             pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(RomGrid, true, null);
-
 
             _displayColor = new Color[(int)RepStatus.EndValue];
             _fontColor = new Color[(int)RepStatus.EndValue];
@@ -154,7 +153,6 @@ namespace ROMVault
             splitContainer3_Panel1_Resize(new object(), new EventArgs());
             splitContainer4_Panel1_Resize(new object(), new EventArgs());
 
-
             _mnuContext = new ContextMenuStrip();
 
             ToolStripMenuItem mnuScan1 = new ToolStripMenuItem
@@ -203,8 +201,6 @@ namespace ROMVault
                 Tag = null
             };
 
-
-
             _mnuContext.Items.Add(mnuScan2);
             _mnuContext.Items.Add(mnuScan1);
             _mnuContext.Items.Add(mnuScan3);
@@ -215,7 +211,6 @@ namespace ROMVault
             _mnuContext.Items.Add(mnuFixDat);
             _mnuContext.Items.Add(mnuMakeDat);
 
-          
             mnuScan1.Click += MnuScan;
             mnuScan2.Click += MnuScan;
             mnuScan3.Click += MnuScan;
@@ -242,7 +237,6 @@ namespace ROMVault
                 Text = @"Scan Full (Complete Re-Scan)",
                 Tag = EScanLevel.Level3
             };
-
 
             _mnuToSortOpen = new ToolStripMenuItem
             {
@@ -316,7 +310,7 @@ namespace ROMVault
             _mnuToSortClearFileOnly.Click += MnuToSortClearFileOnly;
             _mnuToSortUp.Click += MnuToSortUp;
             _mnuToSortDown.Click += MnuToSortDown;
-                       
+
             chkBoxShowComplete.Checked = Settings.rvSettings.chkBoxShowComplete;
             chkBoxShowPartial.Checked = Settings.rvSettings.chkBoxShowPartial;
             chkBoxShowFixes.Checked = Settings.rvSettings.chkBoxShowFixes;
@@ -352,7 +346,6 @@ namespace ROMVault
             }
         }
 
-
         private void SetTextBoxHeight(Control c)
         {
             foreach (Control c1 in c.Controls)
@@ -361,11 +354,10 @@ namespace ROMVault
             switch (c)
             {
                 case TextBox tb:
-                    tb.Height = 14;
+                    tb.Height = 30;
                     break;
             }
         }
-
 
         // returns either white or black, depending of quick luminance of the Color " a "
         // called when the _displayColor is finished, in order to populate the _fontColor table.
@@ -374,7 +366,7 @@ namespace ROMVault
             return (a.R << 1) + a.B + a.G + (a.G << 2) < 1024 ? Color.White : Color.Black;
         }
 
-        public sealed override string Text
+        public override sealed string Text
         {
             get => base.Text;
             set => base.Text = value;
@@ -383,10 +375,10 @@ namespace ROMVault
         private void splitContainer3_Panel1_Resize(object sender, EventArgs e)
         {
             // fixes a rendering issue in mono
-            if (splitDatInfoTree.Panel1.Width == 0)
-                return;
+            //if (splitDatInfoTree.Panel1.Width == 0)
+            //    return;
 
-            gbDatInfo.Width = splitDatInfoTree.Panel1.Width - gbDatInfo.Left * 2;
+            //gbDatInfo.Width = splitDatInfoTree.Panel1.Width - gbDatInfo.Left * 2;
         }
 
         private void splitContainer4_Panel1_Resize(object sender, EventArgs e)
@@ -410,6 +402,7 @@ namespace ROMVault
 
             gbSetInfo.Width = chkLeft - gbSetInfo.Left - 10;
         }
+
         protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
         {
             base.ScaleControl(factor, specified);
@@ -417,7 +410,7 @@ namespace ROMVault
             splitDatInfoGameInfo.SplitterDistance = (int)(splitDatInfoGameInfo.SplitterDistance * factor.Width);
             splitDatInfoGameInfo.Panel1MinSize = (int)(splitDatInfoGameInfo.Panel1MinSize * factor.Width);
 
-            splitDatInfoTree.SplitterDistance = (int)(splitDatInfoTree.SplitterDistance * factor.Height);
+            //splitDatInfoTree.SplitterDistance = (int)(splitDatInfoTree.SplitterDistance * factor.Height);
             splitGameInfoLists.SplitterDistance = (int)(splitGameInfoLists.SplitterDistance * factor.Height);
 
             _scaleFactorX *= factor.Width;
@@ -432,10 +425,11 @@ namespace ROMVault
                 return;
             }
         }
+
         #endregion
 
-
         #region Tree
+
         private void DirTreeRvChecked(object sender, MouseEventArgs e)
         {
             RepairStatus.ReportStatusReset(DB.DirRoot);
@@ -513,9 +507,7 @@ namespace ROMVault
             return ret;
         }
 
-
         #endregion
-
 
         #region popupMenus
 
@@ -523,6 +515,7 @@ namespace ROMVault
         {
             ScanRoms((EScanLevel)((ToolStripMenuItem)sender).Tag, _clickedTree);
         }
+
         private void MnuDirSettings(object sender, EventArgs e)
         {
             using (FrmDirectorySettings fDirSettings = new FrmDirectorySettings())
@@ -554,6 +547,7 @@ namespace ROMVault
             if (Directory.Exists(tDir))
                 try { Process.Start(tDir); } catch { }
         }
+
         private void MnuMakeFixDatClick(object sender, EventArgs e)
         {
             MakeFixDat(_clickedTree, true);
@@ -611,7 +605,6 @@ namespace ROMVault
             DatHeader dh = (new ExternalDatConverterTo()).ConvertToExternalDat(_clickedTree);
             DatXMLWriter.WriteDat(browse.FileName, dh);
         }
-
 
         private void MnuToSortOpen(object sender, EventArgs e)
         {
@@ -700,9 +693,7 @@ namespace ROMVault
 
             DB.Write();
             ctrRvTree.Refresh();
-
         }
-
 
         private void MnuToSortClearFileOnly(object sender, EventArgs e)
         {
@@ -711,13 +702,13 @@ namespace ROMVault
             DB.Write();
         }
 
-
         private void MnuToSortUp(object sender, EventArgs e)
         {
             DB.MoveToSortUp(_clickedTree);
             ctrRvTree.Setup(ref DB.DirRoot);
             DB.Write();
         }
+
         private void MnuToSortDown(object sender, EventArgs e)
         {
             DB.MoveToSortDown(_clickedTree);
@@ -727,7 +718,6 @@ namespace ROMVault
 
         #endregion
 
-
         #region TopMenu
 
         private void updateNewDATsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -735,6 +725,7 @@ namespace ROMVault
             if (_working) return;
             UpdateDats();
         }
+
         private void updateAllDATsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_working) return;
@@ -774,27 +765,23 @@ namespace ROMVault
             DB.Write();
         }
 
-
-
         private void TsmScanLevel1Click(object sender, EventArgs e)
         {
             if (_working) return;
             ScanRoms(EScanLevel.Level1);
         }
+
         private void TsmScanLevel2Click(object sender, EventArgs e)
         {
             if (_working) return;
             ScanRoms(EScanLevel.Level2);
         }
+
         private void TsmScanLevel3Click(object sender, EventArgs e)
         {
             if (_working) return;
             ScanRoms(EScanLevel.Level3);
         }
-
-
-
-
 
         private void TsmFindFixesClick(object sender, EventArgs e)
         {
@@ -808,10 +795,6 @@ namespace ROMVault
             FixFiles();
         }
 
-
-
-
-
         private void RomVaultSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_working) return;
@@ -820,6 +803,7 @@ namespace ROMVault
                 fcfg.ShowDialog(this);
             }
         }
+
         private void DirectorySettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_working) return;
@@ -865,9 +849,6 @@ namespace ROMVault
             Report.GenerateFixReport();
         }
 
-
-
-
         private void colorKeyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_fk == null || _fk.IsDisposed)
@@ -877,6 +858,7 @@ namespace ROMVault
 
             _fk.Show();
         }
+
         private void AboutRomVaultToolStripMenuItemClick(object sender, EventArgs e)
         {
             FrmHelpAbout fha = new FrmHelpAbout();
@@ -884,11 +866,10 @@ namespace ROMVault
             fha.Dispose();
         }
 
-
         #endregion
 
-
         #region sideButtons
+
         private void BtnUpdateDatsMouseUp(object sender, MouseEventArgs e)
         {
             if (Control.ModifierKeys == Keys.Shift)
@@ -900,6 +881,7 @@ namespace ROMVault
             UpdateDats();
             Finish();
         }
+
         private void BtnScanRomsClick(object sender, EventArgs e)
         {
             ScanRoms(EScanLevel.Level2);
@@ -920,12 +902,13 @@ namespace ROMVault
 
             FixFiles();
         }
+
         private void BtnReportMouseUp(object sender, MouseEventArgs e)
         {
             MakeFixDat(DB.DirRoot.Child(0), e.Button == MouseButtons.Left);
         }
-        #endregion
 
+        #endregion
 
         #region TopRight
 
@@ -948,6 +931,7 @@ namespace ROMVault
                 DatSetSelected(ctrRvTree.Selected);
             }
         }
+
         private void chkBoxShowEmptyCheckedChanged(object sender, EventArgs e)
         {
             if (Settings.rvSettings.chkBoxShowEmpty != this.chkBoxShowEmpty.Checked)
@@ -967,7 +951,6 @@ namespace ROMVault
                 DatSetSelected(ctrRvTree.Selected);
             }
         }
-
 
         private void chkBoxShowMIA_CheckedChanged(object sender, EventArgs e)
         {
@@ -989,13 +972,10 @@ namespace ROMVault
             }
         }
 
-
-
         private void BtnClear_Click(object sender, EventArgs e)
         {
             txtFilter.Text = "";
         }
-
 
         private void TxtFilter_TextChanged(object sender, EventArgs e)
         {
@@ -1003,7 +983,6 @@ namespace ROMVault
                 UpdateGameGrid(gameGridSource);
             txtFilter.Focus();
         }
-
 
         private void picPayPal_Click(object sender, EventArgs e)
         {
@@ -1016,7 +995,6 @@ namespace ROMVault
         }
 
         #endregion
-
 
         #region coreFunctions
 
@@ -1069,6 +1047,7 @@ namespace ROMVault
         }
 
         public FrmProgressWindow frmScanRoms;
+
         public void ScanRoms(EScanLevel sd, RvFile StartAt = null, FormClosedEventHandler fceh = null)
         {
             FileScanning.StartAt = StartAt;
@@ -1082,6 +1061,7 @@ namespace ROMVault
         }
 
         public FrmProgressWindow frmFindFixes;
+
         public void FindFixes(bool showLog = false, FormClosedEventHandler fceh = null)
         {
             frmFindFixes = new FrmProgressWindow(this, "Finding Fixes", RomVaultCore.FindFix.FindFixes.ScanFiles, Finish);
@@ -1091,10 +1071,10 @@ namespace ROMVault
             if (fceh != null)
                 frmFindFixes.FormClosed += fceh;
             frmFindFixes.Show();
-
         }
 
-        FrmProgressWindowFix frmFixFiles;
+        private FrmProgressWindowFix frmFixFiles;
+
         public void FixFiles(bool closeOnExit = false, FormClosedEventHandler fceh = null)
         {
             frmFixFiles = new FrmProgressWindowFix(this, closeOnExit, Finish);
@@ -1106,6 +1086,7 @@ namespace ROMVault
         }
 
         private bool _working = false;
+
         private void Start()
         {
             _working = true;
@@ -1131,12 +1112,13 @@ namespace ROMVault
             btnDefault3.Enabled = false;
             btnDefault4.Enabled = false;
 
-            btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Disabled");
-            btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Disabled");
-            btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Disabled");
-            btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Disabled");
-            btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Disabled");
+            //btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Disabled");
+            //btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Disabled");
+            //btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Disabled");
+            //btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Disabled");
+            //btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Disabled");
         }
+
         private void Finish()
         {
             _working = false;
@@ -1148,11 +1130,11 @@ namespace ROMVault
                     menuItem.Enabled = true;
             }
 
-            btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Enabled");
-            btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Enabled");
-            btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Enabled");
-            btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Enabled");
-            btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Enabled");
+            //btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Enabled");
+            //btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Enabled");
+            //btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Enabled");
+            //btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Enabled");
+            //btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Enabled");
 
             btnDefault1.Enabled = true;
             btnDefault2.Enabled = true;
@@ -1171,7 +1153,6 @@ namespace ROMVault
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
             ctrRvTree.Refresh();
             UpdateGameGrid(true);
             if (ctrRvTree.Selected != null)
@@ -1179,9 +1160,7 @@ namespace ROMVault
             GameGrid.Refresh();
         }
 
-
         #endregion
-
 
         #region DatDisplay
 
@@ -1199,10 +1178,10 @@ namespace ROMVault
             UpdateDatMetaData(cf);
             UpdateGameGrid(cf);
         }
+
         private void UpdateDatMetaData(RvFile tDir)
         {
             lblDITName.Text = tDir.Name;
-
 
             RvDat tDat = null;
             if (tDir.Dat != null)
@@ -1219,7 +1198,6 @@ namespace ROMVault
                 if (!string.IsNullOrWhiteSpace(DatId))
                     lblDITName.Text += $" (ID:{DatId})";
 
-
                 lblDITDescription.Text = tDat.GetData(RvDat.DatData.Description);
                 lblDITCategory.Text = tDat.GetData(RvDat.DatData.Category);
                 lblDITVersion.Text = tDat.GetData(RvDat.DatData.Version);
@@ -1228,7 +1206,6 @@ namespace ROMVault
                 string header = tDat.GetData(RvDat.DatData.Header);
                 if (!string.IsNullOrWhiteSpace(header))
                     lblDITName.Text += " (" + header + ")";
-
             }
             else
             {
@@ -1249,17 +1226,14 @@ namespace ROMVault
             lblDITRomsUnknown.Text = (tDir.DirStatus.CountUnknown() + tDir.DirStatus.CountInToSort()).ToString(CultureInfo.InvariantCulture);
         }
 
-
         private void gbDatInfo_Resize(object sender, EventArgs e)
         {
             const int leftPos = 89;
             int rightPos = (int)(gbDatInfo.Width / _scaleFactorX) - 15;
 
-
             int width = rightPos - leftPos;
             int widthB1 = (int)((double)width * 120 / 340);
             int leftB2 = rightPos - widthB1;
-
 
             int backD = 97;
 
@@ -1267,7 +1241,6 @@ namespace ROMVault
             widthB1 = (int)(widthB1 * _scaleFactorX);
             leftB2 = (int)(leftB2 * _scaleFactorX);
             backD = (int)(backD * _scaleFactorX);
-
 
             lblDITName.Width = width;
             lblDITDescription.Width = width;
@@ -1297,10 +1270,7 @@ namespace ROMVault
             lblDITRomsUnknown.Width = widthB1;
         }
 
-
         #endregion
-
-
 
         private void btnDefault1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1338,6 +1308,7 @@ namespace ROMVault
         {
             SetButtonPosLeft();
         }
+
         private void SetButtonPosLeft()
         {
             int pH = splitToolBarMain.Panel1.Height;
@@ -1374,6 +1345,7 @@ namespace ROMVault
         }
 
         private List<Thread> frmTrrntzips = new List<Thread>();
+
         private void torrentZipToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Thread tStart = new Thread(() =>
@@ -1392,6 +1364,5 @@ namespace ROMVault
         {
             GC.Collect();
         }
-
     }
 }
