@@ -80,14 +80,18 @@ namespace ROMVault
 
         private Dictionary<Button, string> NavButtonDetails = new Dictionary<Button, string>();
 
+        // lightweight in-form splash overlay used during initial layout/paint
+
         #region MainUISetup
 
         public FrmMain()
         {
             InitializeComponent();
 
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint
-                | ControlStyles.OptimizedDoubleBuffer, true); this.UpdateStyles();
+            this.SuspendLayout();
+
+            //this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint
+            //    | ControlStyles.OptimizedDoubleBuffer, true); this.UpdateStyles();
 
             //btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Enabled");
             //btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Enabled");
@@ -154,7 +158,6 @@ namespace ROMVault
             {
                 _fontColor[i] = Contrasty(_displayColor[i]);
             }
-
             _gameGridColumnXPositions = new int[(int)RepStatus.EndValue];
 
             ctrRvTree.Setup(ref DB.DirRoot);
@@ -388,6 +391,8 @@ namespace ROMVault
 
             UpdateControls(DatInfoTLP, Properties.Settings.Default.InfoTextColor);
             UpdateControls(GameInfoTLP, Properties.Settings.Default.InfoTextColor);
+
+            this.ResumeLayout();
         }
 
         private List<ToolStripStatusLabel> gamesStatusStripKeys = new List<ToolStripStatusLabel>();
@@ -1601,15 +1606,15 @@ namespace ROMVault
 
         private void CollapseSidebar()
         {
-            splitToolBarMain.Panel2.Hide();
-            splitToolBarMain.Panel2.SuspendLayout();
+            splitToolBarMain.Visible = false;
+            splitToolBarMain.SuspendLayout();
 
             ToggleNavText(visible: false);
             splitToolBarMain.SplitterDistance = 68;
             HideNavBT.Image = Properties.Resources.Forward;
 
-            splitToolBarMain.Panel2.Show();
-            splitToolBarMain.Panel2.ResumeLayout();
+            splitToolBarMain.ResumeLayout();
+            splitToolBarMain.Visible = true;
         }
 
         private void ExpandSidebar()
@@ -1694,16 +1699,18 @@ namespace ROMVault
 
         private void FrmMain_ResizeBegin(object sender, EventArgs e)
         {
-            DatInfoTLP.Visible = false;
-            GameInfoTLP.Visible = false;
-            ctrRvTree.Visible = false;
+            this.SuspendLayout();
+            //DatInfoTLP.Visible = false;
+            //GameInfoTLP.Visible = false;
+            //ctrRvTree.Visible = false;
         }
 
         private void FrmMain_ResizeEnd(object sender, EventArgs e)
         {
-            DatInfoTLP.Visible = true;
-            GameInfoTLP.Visible = true;
-            ctrRvTree.Visible = true;
+            //DatInfoTLP.Visible = true;
+            //GameInfoTLP.Visible = true;
+            //ctrRvTree.Visible = true;
+            this.ResumeLayout();
         }
     }
 }

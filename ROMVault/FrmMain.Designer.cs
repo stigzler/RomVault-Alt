@@ -2435,6 +2435,7 @@ namespace ROMVault
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1430, 972);
             this.Controls.Add(this.splitToolBarMain);
             this.Controls.Add(this.MainSS);
