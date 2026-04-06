@@ -13,7 +13,6 @@ using StorageList;
 
 namespace ROMVault
 {
-
     public partial class FrmMain
     {
         private enum GameGridColumns
@@ -36,18 +35,17 @@ namespace ROMVault
 
         private ContextMenuStrip _mnuGameGrid;
 
-        ToolStripMenuItem mnuGameScan1;
-        ToolStripMenuItem mnuGameScan2;
-        ToolStripMenuItem mnuGameScan3;
-        ToolStripMenuItem mnuOpenDir;
-        ToolStripMenuItem mnuOpenParentDir;
-        ToolStripMenuItem mnuLaunchEmulator;
-        ToolStripMenuItem mnuOpenPage;
+        private ToolStripMenuItem mnuGameScan1;
+        private ToolStripMenuItem mnuGameScan2;
+        private ToolStripMenuItem mnuGameScan3;
+        private ToolStripMenuItem mnuOpenDir;
+        private ToolStripMenuItem mnuOpenParentDir;
+        private ToolStripMenuItem mnuLaunchEmulator;
+        private ToolStripMenuItem mnuOpenPage;
 
         private void InitGameGridMenu()
         {
             _mnuGameGrid = new ContextMenuStrip();
-
 
             mnuGameScan1 = new ToolStripMenuItem
             {
@@ -68,7 +66,6 @@ namespace ROMVault
             mnuGameScan1.Click += MnuGameScan;
             mnuGameScan2.Click += MnuGameScan;
             mnuGameScan3.Click += MnuGameScan;
-
 
             mnuOpenDir = new ToolStripMenuItem
             {
@@ -97,13 +94,10 @@ namespace ROMVault
                 Tag = null
             };
             mnuOpenPage.Click += OpenWebPage;
-
         }
-
 
         private void ClearGameGrid()
         {
-
             if (Settings.IsMono)
             {
                 if (GameGrid.RowCount > 0)
@@ -125,7 +119,6 @@ namespace ROMVault
                 GameGrid.Columns[gameSortIndex].HeaderCell.SortGlyphDirection = SortOrder.None;
             gameSortIndex = -1;
             gameSortDir = SortOrder.None;
-
         }
 
         private void UpdateGameGrid(RvFile tDir)
@@ -135,7 +128,6 @@ namespace ROMVault
 
             ClearGameGrid();
             UpdateGameGrid();
-
         }
 
         private void UpdateGameGrid(bool onTimer = false)
@@ -145,7 +137,6 @@ namespace ROMVault
 
             try
             {
-
                 _updatingGameGrid = true;
                 showDescription = false;
 
@@ -202,7 +193,6 @@ namespace ROMVault
                         continue;
                     }
 
-
                     if (!wideTypeColumn)
                     {
                         string bitmapNameDat = null;
@@ -218,7 +208,6 @@ namespace ROMVault
                             wideTypeColumn = true;
                         }
                     }
-
 
                     gameList.Add(tChildDir);
 
@@ -272,7 +261,6 @@ namespace ROMVault
                     }
                 }
 
-
                 _updatingGameGrid = false;
 
                 GameGrid.Columns[(int)GameGridColumns.CType].Width = wideTypeColumn ? 90 : 44;
@@ -321,7 +309,6 @@ namespace ROMVault
             UpdateRomGrid(tGame, onTimer);
         }
 
-
         private static string GetBitmapFromType(FileType ft, ZipStructure zs)
         {
             switch (ft)
@@ -332,6 +319,7 @@ namespace ROMVault
                     if (zs == ZipStructure.ZipTDC) { return "ZipTDC"; }
                     if (zs == ZipStructure.ZipZSTD) { return "ZipZSTD"; }
                     return null;
+
                 case FileType.SevenZip:
                     if (zs == ZipStructure.None) { return "SevenZip"; }
                     if (zs == ZipStructure.SevenZipTrrnt) { return "SevenZipTrrnt"; }
@@ -340,6 +328,7 @@ namespace ROMVault
                     if (zs == ZipStructure.SevenZipSZSTD) { return "SevenZipSZSTD"; }
                     if (zs == ZipStructure.SevenZipNZSTD) { return "SevenZipNZSTD"; }
                     return null;
+
                 case FileType.Dir:
                     return "Dir";
             }
@@ -350,7 +339,6 @@ namespace ROMVault
         {
             try
             {
-
                 if (e.RowIndex >= gameGrid.Length)
                     return;
 
@@ -538,13 +526,12 @@ namespace ROMVault
                 }
             }
             catch { e.Value = ""; }
-
         }
+
         private void GameGridCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             try
             {
-
                 if (_updatingGameGrid)
                 {
                     return;
@@ -575,7 +562,6 @@ namespace ROMVault
 
                     e.CellStyle.BackColor = Dark.dark.Down(_displayColor[(int)t1]);
                     e.CellStyle.ForeColor = _fontColor[(int)t1];
-
 
                     if (e.ColumnIndex <= (int)GameGridColumns.CType)
                     {
@@ -639,7 +625,6 @@ namespace ROMVault
                     int retVal = 0;
                     switch (_colIndex)
                     {
-
                         case GameGridColumns.CGame:
                             retVal = string.Compare(x.Name ?? "", y.Name ?? "", StringComparison.Ordinal);
                             break;
@@ -686,14 +671,12 @@ namespace ROMVault
                 }
                 catch { return 0; }
             }
-
         }
 
         private void GameGridMouseUp(object sender, MouseEventArgs e)
         {
             try
             {
-
                 if (e.Button != MouseButtons.Right)
                     return;
 
@@ -702,7 +685,6 @@ namespace ROMVault
                 int mouseRow = hitTest.RowIndex;
                 if (mouseRow < 0)
                     return;
-
 
                 Point controLocation = ControlLoc(GameGrid);
 
@@ -734,8 +716,6 @@ namespace ROMVault
                         if (!string.IsNullOrWhiteSpace(gameId))
                             _mnuGameGrid.Items.Add(mnuOpenPage);
                     }
-
-
 
                     bool found = false;
                     if (thisGame.FileType == FileType.Dir)
@@ -814,7 +794,6 @@ namespace ROMVault
                 if (string.IsNullOrEmpty(clipText))
                     return;
 
-
                 Clipboard.Clear();
                 Clipboard.SetText(clipText);
             }
@@ -880,16 +859,13 @@ namespace ROMVault
             }
         }
 
-
-
-
-
         private void LaunchEmulator(object sender, EventArgs e)
         {
             RvFile tGame = _mnuGameGrid.Tag as RvFile;
             if (tGame != null)
                 LaunchEmulator(tGame);
         }
+
         private EmulatorInfo FindEmulatorInfo(RvFile tGame)
         {
             string path = tGame.Parent.DatTreeFullName;
@@ -915,7 +891,6 @@ namespace ROMVault
             return null;
         }
 
-
         private void OpenWebPage(object sender, EventArgs e)
         {
             RvFile thisGame = ((RvFile)_mnuGameGrid.Tag);
@@ -934,8 +909,6 @@ namespace ROMVault
                     try { Process.Start($"http://redump.org/disc/{gameId}/"); } catch { }
             }
         }
-
-
 
         private void LaunchEmulator(RvFile tGame)
         {
@@ -967,11 +940,32 @@ namespace ROMVault
             }
         }
 
+        private void GameGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Check if the side button (usually back) is clicked
+            if (e.Button == MouseButtons.XButton1)
+            {
+                RvFile tParent = gameGridSource?.Parent;
+                if (tParent == null)
+                    return;
+                UpdateGameGrid(tParent);
+                ctrRvTree.SetSelected(tParent);
+
+                UpdateDatMetaData(tParent);
+                return;
+            }
+
+            // Check if the forward button is clicked
+            //else if (e.Button == MouseButtons.XButton2)
+            //{
+            //    MessageBox.Show("Side Forward Button Pressed!");
+            //}
+        }
+
         private void GameGridMouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (_updatingGameGrid)
                 return;
-
 
             if (e.Button == MouseButtons.Right)
             {
@@ -987,7 +981,6 @@ namespace ROMVault
 
             if (e.Button != MouseButtons.Left)
                 return;
-
 
             if (GameGrid.SelectedRows.Count != 1)
                 return;
@@ -1005,6 +998,5 @@ namespace ROMVault
                 LaunchEmulator(tGame);
             }
         }
-
     }
 }

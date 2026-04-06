@@ -159,6 +159,8 @@
             // btnDeleteSelected
             // 
             this.btnDeleteSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeleteSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDeleteSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteSelected.Location = new System.Drawing.Point(12, 547);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(96, 25);
@@ -169,6 +171,8 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(625, 230);
             this.btnDelete.Name = "btnDelete";
@@ -180,6 +184,8 @@
             // 
             // btnSet
             // 
+            this.btnSet.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSet.Location = new System.Drawing.Point(625, 260);
             this.btnSet.Name = "btnSet";
@@ -225,6 +231,8 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Location = new System.Drawing.Point(586, 547);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(96, 25);
@@ -236,6 +244,8 @@
             // btnResetAll
             // 
             this.btnResetAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnResetAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnResetAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetAll.Location = new System.Drawing.Point(138, 547);
             this.btnResetAll.Name = "btnResetAll";
             this.btnResetAll.Size = new System.Drawing.Size(96, 25);
@@ -246,6 +256,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControl1.Controls.Add(this.tabDirMerge);
             this.tabControl1.Controls.Add(this.tabAdvanced);
             this.tabControl1.Controls.Add(this.tabExclude);
@@ -259,10 +270,10 @@
             // 
             this.tabDirMerge.Controls.Add(this.groupBox2);
             this.tabDirMerge.Controls.Add(this.groupBox1);
-            this.tabDirMerge.Location = new System.Drawing.Point(4, 22);
+            this.tabDirMerge.Location = new System.Drawing.Point(4, 25);
             this.tabDirMerge.Name = "tabDirMerge";
             this.tabDirMerge.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDirMerge.Size = new System.Drawing.Size(600, 210);
+            this.tabDirMerge.Size = new System.Drawing.Size(600, 207);
             this.tabDirMerge.TabIndex = 0;
             this.tabDirMerge.Text = "Directory/Merge Rules";
             this.tabDirMerge.UseVisualStyleBackColor = true;
@@ -285,6 +296,7 @@
             this.groupBox2.Controls.Add(this.cboFilterType);
             this.groupBox2.Controls.Add(this.chkSingleArchive);
             this.groupBox2.Controls.Add(this.lblROMCHDFilter);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(14, 60);
             this.groupBox2.Name = "groupBox2";
@@ -306,6 +318,7 @@
             // cboCompression
             // 
             this.cboCompression.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCompression.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboCompression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCompression.FormattingEnabled = true;
             this.cboCompression.Location = new System.Drawing.Point(105, 43);
@@ -326,6 +339,7 @@
             // cboHeaderType
             // 
             this.cboHeaderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHeaderType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboHeaderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboHeaderType.FormattingEnabled = true;
             this.cboHeaderType.Location = new System.Drawing.Point(465, 44);
@@ -356,6 +370,7 @@
             // cboFileType
             // 
             this.cboFileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFileType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboFileType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFileType.FormattingEnabled = true;
             this.cboFileType.Location = new System.Drawing.Point(105, 16);
@@ -377,6 +392,7 @@
             // cboMergeType
             // 
             this.cboMergeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMergeType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboMergeType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMergeType.FormattingEnabled = true;
             this.cboMergeType.Location = new System.Drawing.Point(105, 70);
@@ -387,6 +403,7 @@
             // cboDirType
             // 
             this.cboDirType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDirType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboDirType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDirType.FormattingEnabled = true;
             this.cboDirType.Location = new System.Drawing.Point(105, 95);
@@ -427,6 +444,7 @@
             // cboFilterType
             // 
             this.cboFilterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFilterType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboFilterType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFilterType.FormattingEnabled = true;
             this.cboFilterType.Location = new System.Drawing.Point(465, 16);
@@ -458,6 +476,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chkMultiDatDirOverride);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(14, 10);
             this.groupBox1.Name = "groupBox1";
@@ -479,10 +498,10 @@
             // tabAdvanced
             // 
             this.tabAdvanced.Controls.Add(this.groupBox3);
-            this.tabAdvanced.Location = new System.Drawing.Point(4, 22);
+            this.tabAdvanced.Location = new System.Drawing.Point(4, 25);
             this.tabAdvanced.Name = "tabAdvanced";
             this.tabAdvanced.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdvanced.Size = new System.Drawing.Size(600, 210);
+            this.tabAdvanced.Size = new System.Drawing.Size(600, 207);
             this.tabAdvanced.TabIndex = 2;
             this.tabAdvanced.Text = "Advanced Options";
             this.tabAdvanced.UseVisualStyleBackColor = true;
@@ -594,10 +613,10 @@
             this.tabExclude.Controls.Add(this.label6);
             this.tabExclude.Controls.Add(this.label5);
             this.tabExclude.Controls.Add(this.textBox1);
-            this.tabExclude.Location = new System.Drawing.Point(4, 22);
+            this.tabExclude.Location = new System.Drawing.Point(4, 25);
             this.tabExclude.Name = "tabExclude";
             this.tabExclude.Padding = new System.Windows.Forms.Padding(3);
-            this.tabExclude.Size = new System.Drawing.Size(600, 210);
+            this.tabExclude.Size = new System.Drawing.Size(600, 207);
             this.tabExclude.TabIndex = 1;
             this.tabExclude.Text = "Filename Exclude";
             this.tabExclude.UseVisualStyleBackColor = true;

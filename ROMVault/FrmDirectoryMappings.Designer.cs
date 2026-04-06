@@ -95,6 +95,8 @@
             // btnDeleteSelected
             // 
             this.btnDeleteSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeleteSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDeleteSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteSelected.Location = new System.Drawing.Point(12, 360);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(96, 25);
@@ -105,6 +107,8 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(543, 83);
             this.btnDelete.Name = "btnDelete";
@@ -116,6 +120,8 @@
             // 
             // btnSet
             // 
+            this.btnSet.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSet.Location = new System.Drawing.Point(606, 83);
             this.btnSet.Name = "btnSet";
@@ -129,6 +135,7 @@
             // 
             this.txtROMLocation.BackColor = System.Drawing.Color.White;
             this.txtROMLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtROMLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtROMLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtROMLocation.Location = new System.Drawing.Point(99, 48);
             this.txtROMLocation.Name = "txtROMLocation";
@@ -144,7 +151,7 @@
             this.lblROMLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblROMLocation.Location = new System.Drawing.Point(22, 53);
             this.lblROMLocation.Name = "lblROMLocation";
-            this.lblROMLocation.Size = new System.Drawing.Size(106, 20);
+            this.lblROMLocation.Size = new System.Drawing.Size(67, 13);
             this.lblROMLocation.TabIndex = 12;
             this.lblROMLocation.Text = "Dir Location:";
             // 
@@ -152,6 +159,7 @@
             // 
             this.txtDATLocation.BackColor = System.Drawing.Color.White;
             this.txtDATLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDATLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtDATLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDATLocation.Location = new System.Drawing.Point(99, 18);
             this.txtDATLocation.Name = "txtDATLocation";
@@ -167,7 +175,7 @@
             this.lblDATLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDATLocation.Location = new System.Drawing.Point(22, 23);
             this.lblDATLocation.Name = "lblDATLocation";
-            this.lblDATLocation.Size = new System.Drawing.Size(87, 20);
+            this.lblDATLocation.Size = new System.Drawing.Size(57, 13);
             this.lblDATLocation.TabIndex = 10;
             this.lblDATLocation.Text = "Rule Path:";
             // 
@@ -177,13 +185,15 @@
             this.lblDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelete.Location = new System.Drawing.Point(12, 114);
             this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Size = new System.Drawing.Size(152, 20);
+            this.lblDelete.Size = new System.Drawing.Size(103, 13);
             this.lblDelete.TabIndex = 15;
             this.lblDelete.Text = "Existing Mapping";
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Location = new System.Drawing.Point(586, 360);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(96, 25);
@@ -195,6 +205,8 @@
             // btnResetAll
             // 
             this.btnResetAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnResetAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnResetAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetAll.Location = new System.Drawing.Point(138, 360);
             this.btnResetAll.Name = "btnResetAll";
             this.btnResetAll.Size = new System.Drawing.Size(96, 25);
@@ -205,6 +217,8 @@
             // 
             // btnClearROMLocation
             // 
+            this.btnClearROMLocation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnClearROMLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearROMLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearROMLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnClearROMLocation.Image")));
             this.btnClearROMLocation.Location = new System.Drawing.Point(641, 44);
@@ -217,6 +231,8 @@
             // 
             // btnSetROMLocation
             // 
+            this.btnSetROMLocation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnSetROMLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetROMLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSetROMLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnSetROMLocation.Image")));
             this.btnSetROMLocation.Location = new System.Drawing.Point(606, 44);

@@ -1,0 +1,11 @@
+# Feature Additions
+
+06.04.26:
+- Overhauled UI. Improved dark mode. Contemporary layout. 
+- Accessibility: change the main font size. Change the info colors. 
+- Settings form overhauled for clarity. 
+- Clicking mouse back button now navigates back in the Game datagrid (think explorer navigation)
+- Status bar at bottom of form listing all the Rom statuses, stub descriptions with tooltip for each for more information. 
+- Toggle stub labels on above for limited width browsers.
+- Greater flexabilty and persistence of any split containers as well as form size and position. 
+

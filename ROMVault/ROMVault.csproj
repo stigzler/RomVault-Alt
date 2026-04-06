@@ -326,12 +326,14 @@
   <ItemGroup>
     <Content Include="chip.ico" />
     <Content Include="HelloWorld.txt" />
+    <None Include="Resources\information-frame.png" />
     <None Include="Resources\Favourite4 %28Custom%29.png" />
     <None Include="Resources\Favourite3 %28Custom%29.png" />
     <None Include="Resources\Favourite2 %28Custom%29.png" />
     <None Include="Resources\Favourite1 %28Custom%29.png" />
     <None Include="Resources\cross.png" />
     <None Include="Resources\Back %28Custom%29.png" />
+    <None Include="Resources\balloons-box.png" />
     <Content Include="Resources\default1.png" />
     <Content Include="Resources\default2.png" />
     <Content Include="Resources\default3.png" />

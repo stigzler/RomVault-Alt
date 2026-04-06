@@ -204,8 +204,7 @@ namespace ROMVault
             this.garbageCollectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.MainSS = new System.Windows.Forms.StatusStrip();
-            this.splitterLb = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToggleStatusTextBT = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -295,7 +294,6 @@ namespace ROMVault
             this.HideNavBT.FlatAppearance.BorderSize = 0;
             this.HideNavBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HideNavBT.Image = global::ROMVault.Properties.Resources.Back__Custom_;
-            this.HideNavBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.HideNavBT.Location = new System.Drawing.Point(4, 314);
             this.HideNavBT.Name = "HideNavBT";
             this.HideNavBT.Size = new System.Drawing.Size(136, 52);
@@ -1707,6 +1705,7 @@ namespace ROMVault
             this.GameGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GameGridColumnHeaderMouseClick);
             this.GameGrid.SelectionChanged += new System.EventHandler(this.GameGridSelectionChanged);
             this.GameGrid.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.GameGridMouseDoubleClick);
+            this.GameGrid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameGrid_MouseDown);
             this.GameGrid.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GameGridMouseUp);
             // 
             // CType
@@ -2376,27 +2375,23 @@ namespace ROMVault
             // 
             // MainSS
             // 
+            this.MainSS.AllowItemReorder = true;
             this.MainSS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.splitterLb,
-            this.toolStripStatusLabel1});
+            this.ToggleStatusTextBT});
             this.MainSS.Location = new System.Drawing.Point(0, 950);
             this.MainSS.Name = "MainSS";
             this.MainSS.Size = new System.Drawing.Size(1430, 22);
             this.MainSS.TabIndex = 7;
             this.MainSS.Text = "statusStrip1";
             // 
-            // splitterLb
+            // ToggleStatusTextBT
             // 
-            this.splitterLb.Name = "splitterLb";
-            this.splitterLb.Size = new System.Drawing.Size(118, 17);
-            this.splitterLb.Text = "toolStripStatusLabel1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Image = global::ROMVault.Properties.Resources.cross;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(55, 17);
-            this.toolStripStatusLabel1.Text = "Good!";
+            this.ToggleStatusTextBT.Image = global::ROMVault.Properties.Resources.information_frame;
+            this.ToggleStatusTextBT.Name = "ToggleStatusTextBT";
+            this.ToggleStatusTextBT.Size = new System.Drawing.Size(29, 17);
+            this.ToggleStatusTextBT.Text = " |";
+            this.ToggleStatusTextBT.ToolTipText = "Toggle Status Icon Titles";
+            this.ToggleStatusTextBT.Click += new System.EventHandler(this.ToggleStatusTextBT_Click);
             // 
             // FrmMain
             // 
@@ -2656,11 +2651,10 @@ namespace ROMVault
         private System.Windows.Forms.Panel GameInfoWrapperPanel;
         private UserControls.FlexiLabel flexiLabel1;
         private UserControls.FlexiLabel flexiLabel2;
-        private ToolStripStatusLabel splitterLb;
         private FlowLayoutPanel flowLayoutPanel1;
         private UserControls.FlexiLabel flexiLabel3;
         private Button HideNavBT;
-        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel ToggleStatusTextBT;
     }
 }
 

@@ -73,6 +73,16 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap balloons_box {
+            get {
+                object obj = ResourceManager.GetObject("balloons-box", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cross {
             get {
                 object obj = ResourceManager.GetObject("cross", resourceCulture);
@@ -156,6 +166,16 @@ namespace ROMVault.Properties {
         internal static System.Drawing.Bitmap GenerateReports__Custom_ {
             get {
                 object obj = ResourceManager.GetObject("GenerateReports (Custom)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information_frame {
+            get {
+                object obj = ResourceManager.GetObject("information-frame", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

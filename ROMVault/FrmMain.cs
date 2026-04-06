@@ -23,6 +23,7 @@ using TrrntZipUI;
 using RomVaultCore.Utils;
 using System.Threading;
 using System.Net.NetworkInformation;
+using System.Linq;
 
 namespace ROMVault
 {
@@ -378,42 +379,10 @@ namespace ROMVault
             UpdateControls(GameInfoTLP, Properties.Settings.Default.InfoTextColor);
         }
 
+        private List<ToolStripStatusLabel> statusStripKeys = new List<ToolStripStatusLabel>();
+
         internal void InitialiseStatusStrip()
         {
-            //List<RepStatus> displayList = new List<RepStatus>
-            //{
-            //    RepStatus.Correct,
-            //    RepStatus.CorrectMIA,
-            //    RepStatus.Missing,
-            //    RepStatus.MissingMIA,
-            //    RepStatus.Unknown,
-            //    RepStatus.UnNeeded,
-            //    RepStatus.NotCollected,
-            //    RepStatus.InToSort,
-            //    RepStatus.Ignore,
-
-            //    RepStatus.CanBeFixed,
-            //    RepStatus.CanBeFixedMIA,
-            //    RepStatus.NeededForFix,
-            //    RepStatus.Rename,
-            //    RepStatus.MoveToSort,
-            //    RepStatus.Incomplete,
-            //    RepStatus.Delete,
-
-            //    RepStatus.Corrupt,
-            //    RepStatus.UnScanned,
-            //};
-
-            //for (int i = 0; i < displayList.Count; i++)
-            //{
-            //    ToolStripStatusLabel lbl = new ToolStripStatusLabel
-            //    {
-            //        Text = displayList[i].ToString(),
-            //        Image = rvImages.GetBitmap("G_" + displayList[i])
-            //    };
-            //    MainSS.Items.Add(lbl);
-            //}
-
             int i = 0;
             foreach (KeyValuePair<RepStatus, string> kvp in Constants.UI.RepStatusText)
             {
@@ -426,6 +395,7 @@ namespace ROMVault
                 lbl.MouseHover += Lbl_MouseHover;
                 lbl.MouseLeave += Lbl_MouseLeave;
                 MainSS.Items.Add(lbl);
+                statusStripKeys.Add(lbl);
                 i++;
             }
         }
@@ -1560,7 +1530,6 @@ namespace ROMVault
 
         private void splitToolBarMain_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            splitterLb.Text = splitToolBarMain.SplitterDistance.ToString();
             if (splitToolBarMain.Panel1.Width < navBarWidth)
             {
                 if (!string.IsNullOrEmpty(btnUpdateDats.Text)) ToggleNavText(visible: false);
@@ -1601,6 +1570,24 @@ namespace ROMVault
 
         private void GameGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void ToggleStatusTextBT_Click(object sender, EventArgs e)
+        {
+            if (statusStripKeys.First().DisplayStyle == ToolStripItemDisplayStyle.Image)
+            {
+                foreach (ToolStripStatusLabel status in statusStripKeys)
+                {
+                    status.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                }
+            }
+            else
+            {
+                foreach (ToolStripStatusLabel status in statusStripKeys)
+                {
+                    status.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                }
+            }
         }
     }
 }
