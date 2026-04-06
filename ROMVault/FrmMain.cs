@@ -504,6 +504,7 @@ namespace ROMVault
             Properties.Settings.Default.SidebarSplitterDistance = splitToolBarMain.SplitterDistance;
             Properties.Settings.Default.DatGameSplitterDistance = splitDatInfoGameInfo.SplitterDistance;
             Properties.Settings.Default.GameInfoSplitterDistance = splitGameInfoLists.SplitterDistance;
+            Properties.Settings.Default.RomListSplitterDistance = splitGameListRomList.SplitterDistance;
             Properties.Settings.Default.WindowPosition = this.Location;
             Properties.Settings.Default.WindowSize = this.Size;
 
@@ -1476,6 +1477,11 @@ namespace ROMVault
             };
         }
 
+        /// <summary>
+        /// UpdateThemeAndControls Fires before this and also contain UI setup logic.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmMain_Shown(object sender, EventArgs e)
         {
             // Restore visuals
@@ -1494,6 +1500,12 @@ namespace ROMVault
 
             if (Properties.Settings.Default.GameInfoSplitterDistance != 0)
                 splitGameInfoLists.SplitterDistance = Properties.Settings.Default.GameInfoSplitterDistance;
+
+            if (Properties.Settings.Default.RomListSplitterDistance != 0)
+                splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
+
+            // Misc
+            txtFilter.ForeColor = Color.FromArgb(128, 128, 128, 128);
 
             // Set up status strip
             InitialiseStatusStrip();
@@ -1532,12 +1544,12 @@ namespace ROMVault
         {
             if (splitToolBarMain.Panel1.Width < navBarWidth)
             {
-                if (!string.IsNullOrEmpty(btnUpdateDats.Text)) ToggleNavText(visible: false);
                 CollapseSidebar();
             }
             else if (splitToolBarMain.Panel1.Width >= navBarWidth && string.IsNullOrEmpty(btnUpdateDats.Text))
             {
                 if (string.IsNullOrEmpty(btnUpdateDats.Text)) ToggleNavText(visible: true);
+                HideNavBT.Image = Properties.Resources.Back__Custom_;
             }
         }
 
@@ -1546,25 +1558,30 @@ namespace ROMVault
             splitToolBarMain.Panel2.Hide();
             splitToolBarMain.Panel2.SuspendLayout();
 
+            ToggleNavText(visible: false);
             splitToolBarMain.SplitterDistance = 68;
+            HideNavBT.Image = Properties.Resources.Forward;
 
             splitToolBarMain.Panel2.Show();
             splitToolBarMain.Panel2.ResumeLayout();
+        }
+
+        private void ExpandSidebar()
+        {
+            ToggleNavText(visible: true);
+            splitToolBarMain.SplitterDistance = navBarWidth + 4;
+            HideNavBT.Image = Properties.Resources.Back__Custom_;
         }
 
         private void HideNavBT_Click(object sender, EventArgs e)
         {
             if (splitToolBarMain.Panel1.Width >= navBarWidth)
             {
-                ToggleNavText(visible: false);
                 CollapseSidebar();
-                HideNavBT.Image = Properties.Resources.Forward;
             }
             else
             {
-                ToggleNavText(visible: true);
-                splitToolBarMain.SplitterDistance = navBarWidth + 4;
-                HideNavBT.Image = Properties.Resources.Back__Custom_;
+                ExpandSidebar();
             }
         }
 
@@ -1572,6 +1589,11 @@ namespace ROMVault
         {
         }
 
+        /// <summary>
+        /// This handles the collapse/expand of the Status Bar keys.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToggleStatusTextBT_Click(object sender, EventArgs e)
         {
             if (statusStripKeys.First().DisplayStyle == ToolStripItemDisplayStyle.Image)

@@ -237,6 +237,9 @@
     <Compile Include="UserControls\FlexiLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\PromptTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="FrmDirectoryMappings.resx">
       <DependentUpon>FrmDirectoryMappings.cs</DependentUpon>
       <SubType>Designer</SubType>

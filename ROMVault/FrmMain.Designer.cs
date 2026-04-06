@@ -133,7 +133,7 @@ namespace ROMVault
             this.chkBoxShowMerged = new System.Windows.Forms.CheckBox();
             this.SearchTLP = new System.Windows.Forms.TableLayoutPanel();
             this.btnClear = new System.Windows.Forms.Button();
-            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.txtFilter = new ROMVault.UserControls.PromptTextBox();
             this.splitListArt = new System.Windows.Forms.SplitContainer();
             this.splitGameListRomList = new System.Windows.Forms.SplitContainer();
             this.GameGrid = new System.Windows.Forms.DataGridView();
@@ -307,7 +307,7 @@ namespace ROMVault
             this.flexiLabel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flexiLabel3.Font = new System.Drawing.Font("Segoe UI", 11.7F, System.Drawing.FontStyle.Bold);
             this.flexiLabel3.FontStyle = System.Drawing.FontStyle.Bold;
-            this.flexiLabel3.Location = new System.Drawing.Point(4, 785);
+            this.flexiLabel3.Location = new System.Drawing.Point(4, 777);
             this.flexiLabel3.Name = "flexiLabel3";
             this.flexiLabel3.ScaleFactor = 1.2D;
             this.flexiLabel3.Size = new System.Drawing.Size(46, 21);
@@ -322,9 +322,10 @@ namespace ROMVault
             this.flowLayoutPanel1.Controls.Add(this.btnDefault3);
             this.flowLayoutPanel1.Controls.Add(this.btnDefault4);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 806);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 798);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(136, 116);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(136, 124);
             this.flowLayoutPanel1.TabIndex = 21;
             // 
             // btnDefault1
@@ -335,7 +336,7 @@ namespace ROMVault
             this.btnDefault1.Image = global::ROMVault.Properties.Resources.Favourite1__Custom_;
             this.btnDefault1.Location = new System.Drawing.Point(3, 3);
             this.btnDefault1.Name = "btnDefault1";
-            this.btnDefault1.Size = new System.Drawing.Size(52, 52);
+            this.btnDefault1.Size = new System.Drawing.Size(56, 56);
             this.btnDefault1.TabIndex = 14;
             this.btnDefault1.UseVisualStyleBackColor = true;
             this.btnDefault1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault1_MouseDown);
@@ -346,9 +347,9 @@ namespace ROMVault
             this.btnDefault2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDefault2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDefault2.Image = global::ROMVault.Properties.Resources.Favourite2__Custom_;
-            this.btnDefault2.Location = new System.Drawing.Point(61, 3);
+            this.btnDefault2.Location = new System.Drawing.Point(65, 3);
             this.btnDefault2.Name = "btnDefault2";
-            this.btnDefault2.Size = new System.Drawing.Size(52, 52);
+            this.btnDefault2.Size = new System.Drawing.Size(56, 56);
             this.btnDefault2.TabIndex = 15;
             this.btnDefault2.UseVisualStyleBackColor = true;
             this.btnDefault2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault2_MouseDown);
@@ -359,9 +360,9 @@ namespace ROMVault
             this.btnDefault3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDefault3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDefault3.Image = global::ROMVault.Properties.Resources.Favourite3__Custom_;
-            this.btnDefault3.Location = new System.Drawing.Point(3, 61);
+            this.btnDefault3.Location = new System.Drawing.Point(3, 65);
             this.btnDefault3.Name = "btnDefault3";
-            this.btnDefault3.Size = new System.Drawing.Size(52, 52);
+            this.btnDefault3.Size = new System.Drawing.Size(56, 56);
             this.btnDefault3.TabIndex = 16;
             this.btnDefault3.UseVisualStyleBackColor = true;
             this.btnDefault3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault3_MouseDown);
@@ -372,9 +373,9 @@ namespace ROMVault
             this.btnDefault4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDefault4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDefault4.Image = global::ROMVault.Properties.Resources.Favourite4__Custom_;
-            this.btnDefault4.Location = new System.Drawing.Point(61, 61);
+            this.btnDefault4.Location = new System.Drawing.Point(65, 65);
             this.btnDefault4.Name = "btnDefault4";
-            this.btnDefault4.Size = new System.Drawing.Size(52, 52);
+            this.btnDefault4.Size = new System.Drawing.Size(56, 56);
             this.btnDefault4.TabIndex = 17;
             this.btnDefault4.UseVisualStyleBackColor = true;
             this.btnDefault4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault4_MouseDown);
@@ -1627,8 +1628,12 @@ namespace ROMVault
             // 
             this.txtFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.txtFilter.Location = new System.Drawing.Point(3, 3);
             this.txtFilter.Name = "txtFilter";
+            this.txtFilter.PromptColor = System.Drawing.Color.Gray;
+            this.txtFilter.PromptItalicised = true;
+            this.txtFilter.PromptOnEmpty = "Filter ROMS...";
             this.txtFilter.Size = new System.Drawing.Size(145, 25);
             this.txtFilter.TabIndex = 17;
             this.txtFilter.TextChanged += new System.EventHandler(this.TxtFilter_TextChanged);
@@ -2555,7 +2560,7 @@ namespace ROMVault
         private System.Windows.Forms.ToolStripMenuItem addToSortToolStripMenuItem;
         private System.Windows.Forms.TextBox txtInfo;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.TextBox txtFilter;
+        private UserControls.PromptTextBox txtFilter;
         private System.Windows.Forms.ToolStripMenuItem romVaultSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem directorySettingsToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;

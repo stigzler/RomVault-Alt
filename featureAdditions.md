@@ -1,6 +1,6 @@
 # Feature Additions
 
-06.04.26:
+05.04.26:
 - Overhauled UI. Improved dark mode. Contemporary layout. 
 - Accessibility: change the main font size. Change the info colors. 
 - Settings form overhauled for clarity. 
@@ -9,3 +9,6 @@
 - Toggle stub labels on above for limited width browsers.
 - Greater flexabilty and persistence of any split containers as well as form size and position. 
 
+06.04.26:
+- Added prompt to Games/Rom filter textbox
+- 

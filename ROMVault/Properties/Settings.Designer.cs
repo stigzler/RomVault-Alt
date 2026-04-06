@@ -106,5 +106,17 @@ namespace ROMVault.Properties {
                 this["MainTextSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int RomListSplitterDistance {
+            get {
+                return ((int)(this["RomListSplitterDistance"]));
+            }
+            set {
+                this["RomListSplitterDistance"] = value;
+            }
+        }
     }
 }
