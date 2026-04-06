@@ -3,16 +3,26 @@ using System.Runtime.InteropServices;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using Dark.Renderers;
 
 namespace Dark
 {
     public static class dark
     {
-        public static Color bg0 = Color.FromArgb(37, 39, 44);
+        //public static Color bg0 = Color.FromArgb(37, 39, 44);
+        //public static Color bg = Color.FromArgb(47, 49, 54);
+        //public static Color bg1 = Color.FromArgb(54, 57, 63);
+        public static Color bg0 = Color.FromArgb(28, 28, 28);
 
-        public static Color bg = Color.FromArgb(47, 49, 54);
-        public static Color bg1 = Color.FromArgb(54, 57, 63);
+        public static Color bg1 = Color.FromArgb(35, 35, 35);
+        public static Color bg = Color.FromArgb(40, 40, 40);
+
+        public static Color bgMenuItemRollover = Color.FromArgb(255, 63, 63, 70);
+
+        public static Color midGrey = Color.FromArgb(128, 128, 128, 128);
+
         public static Color fg = Color.FromArgb(210, 210, 210);
+        public static Color fgDimmed = Color.FromArgb(192, 192, 192);
         public static Brush sb_bg = new SolidBrush(bg);
         public static Brush sb_bg1 = new SolidBrush(bg1);
         public static Brush sb_fg = new SolidBrush(fg);
@@ -61,13 +71,10 @@ namespace Dark
             {
                 case TextBox tb:
                     tb.BorderStyle = BorderStyle.None;
-                    if (tb.Tag == null || tb.Tag.ToString() != "trans")
+                    tb.BackColor = bg0;
+                    if (tb.ReadOnly)
                     {
-                        tb.BackColor = bg0;
-                    }
-                    else
-                    {
-                        //tb.BackColor = bg0;
+                        tb.BackColor = bg1;
                     }
                     break;
 
@@ -77,12 +84,27 @@ namespace Dark
 
                     dgv.DefaultCellStyle.BackColor = bg1;
                     dgv.DefaultCellStyle.ForeColor = fg;
+
                     dgv.ColumnHeadersDefaultCellStyle.BackColor = bg;
                     dgv.ColumnHeadersDefaultCellStyle.ForeColor = fg;
+
+                    //dgv.DefaultCellStyle.SelectionBackColor = bgMenuItemRollover;
+                    //dgv.DefaultCellStyle.SelectionForeColor = Color.White;
                     dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
                     dgv.GridColor = bg;
                     break;
+
+                case MenuStrip ms:
+                    ms.RenderMode = ToolStripRenderMode.Professional;
+                    ms.Renderer = new DarkMenuStripRenderer();
+                    ms.BackColor = bg0;
+                    break;
+
+                //case ContextMenuStrip cms:
+                //    cms.RenderMode = ToolStripRenderMode.System;
+                //    cms.Renderer = new DarkToolStripRenderer();
+                //    break;
 
                 case Label _:
                 case Button _:
@@ -93,7 +115,6 @@ namespace Dark
                 case Panel _:
                 case PictureBox _:
                 case RichTextBox _:
-                case MenuStrip _:
                 case HScrollBar _:
                 case VScrollBar _:
                 case TabControl _:

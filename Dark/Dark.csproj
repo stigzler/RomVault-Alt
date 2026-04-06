@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Dark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\DarkMenuStripRenderer.cs" />
+    <Compile Include="Renderers\DarkToolStripRenderer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

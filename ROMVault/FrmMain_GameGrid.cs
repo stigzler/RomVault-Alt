@@ -24,6 +24,8 @@ namespace ROMVault
             CRomStatus = 4
         }
 
+        private int _gridRowHeight = 22; // Default fallback
+
         private RvFile gameGridSource;
 
         private RvFile[] gameGrid;
@@ -250,6 +252,12 @@ namespace ROMVault
                         GameGrid.Rows[0].Selected = false;
                 }
 
+                // Measure actual row height (includes borders/grid lines) after rows are created
+                if (GameGrid.Rows.Count > 0)
+                {
+                    _gridRowHeight = GameGrid.Rows[0].Height;
+                }
+
                 GameGrid.Columns[(int)GameGridColumns.CDescription].Visible = showDescription;
 
                 if (onTimer)
@@ -356,7 +364,7 @@ namespace ROMVault
                             if (tRvDir.GotStatus != GotStatus.NotGot)
                                 bitmapName = GetBitmapFromType(tRvDir.FileType, tRvDir.ZipStruct);
 
-                            Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CType].Width, 18);
+                            Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CType].Width, _gridRowHeight);
 
                             int bm0 = -1;
                             int bm1 = -1;
@@ -396,8 +404,8 @@ namespace ROMVault
                                     Bitmap bm = rvImages.GetBitmap(bitmapNameDat, false);
                                     if (bm != null)
                                     {
-                                        float xSize = (float)bm.Width / bm.Height * 18;
-                                        g.DrawImage(bm, (bm0 - (xSize / 2)), 0, xSize, 18);
+                                        float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
+                                        g.DrawImage(bm, (bm0 - (xSize / 2)), 0, xSize, _gridRowHeight);
                                     }
                                     else
                                     {
@@ -410,8 +418,8 @@ namespace ROMVault
                                     Bitmap bm = rvImages.GetBitmap(bitmapName, false);
                                     if (bm != null)
                                     {
-                                        float xSize = (float)bm.Width / bm.Height * 18;
-                                        g.DrawImage(bm, (bm1 - (xSize / 2)), 0, xSize, 18);
+                                        float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
+                                        g.DrawImage(bm, (bm1 - (xSize / 2)), 0, xSize, _gridRowHeight);
                                     }
                                     else
                                     {
@@ -422,8 +430,8 @@ namespace ROMVault
                                 if (bm2 != -1)
                                 {
                                     Bitmap bm = rvImages.GetBitmap(tRvDir.ZipDatStructFix ? "ZipConvert" : "ZipConvert1", false);
-                                    float xSize = (float)bm.Width / bm.Height * 18;
-                                    g.DrawImage(bm, (bm2 - (xSize / 2)), 0, xSize, 18);
+                                    float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
+                                    g.DrawImage(bm, (bm2 - (xSize / 2)), 0, xSize, _gridRowHeight);
                                 }
                             }
 
@@ -461,7 +469,7 @@ namespace ROMVault
 
                     case GameGridColumns.CRomStatus:
                         {
-                            Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CRomStatus].Width, 18);
+                            Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CRomStatus].Width, _gridRowHeight);
                             using (Graphics g = Graphics.FromImage(bmp))
                             {
                                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -489,7 +497,8 @@ namespace ROMVault
                                     Bitmap bmg = rvImages.GetBitmap(@"G_" + RepairStatus.DisplayOrder[l], false);
                                     if (bmg != null)
                                     {
-                                        g.DrawImage(bmg, gOff, 0, 21, 18);
+                                        float iconWidth = 21f * _gridRowHeight / 18f;
+                                        g.DrawImage(bmg, gOff, 0, iconWidth, _gridRowHeight);
                                     }
                                     else
                                     {
@@ -539,7 +548,8 @@ namespace ROMVault
 
                 if (e.ColumnIndex == (int)GameGridColumns.CRomStatus)
                 {
-                    e.CellStyle.SelectionBackColor = Color.White;
+                    e.CellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215)       ;
+                    
                     return;
                 }
 

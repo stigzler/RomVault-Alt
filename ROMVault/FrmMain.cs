@@ -362,6 +362,9 @@ namespace ROMVault
             }
         }
 
+        /// <summary>
+        /// This happens before form is shown. If post-show teaks are needed use FrmMain_Shown
+        /// </summary>
         internal void UpdateThemeAndControls()
         {
             // UI Tweaks
@@ -1535,6 +1538,10 @@ namespace ROMVault
 
             if (Properties.Settings.Default.RomListSplitterDistance != 0)
                 splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
+
+            // Post-show UI Tweaks
+            // Note: _gridRowHeight is now set in UpdateGameGrid() after rows are created
+            // This ensures it includes borders/grid lines and adapts to font scaling
 
             // Misc
             txtFilter.ForeColor = Color.FromArgb(128, 128, 128, 128);
