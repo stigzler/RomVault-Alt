@@ -548,7 +548,7 @@ namespace ROMVault
 
                 if (e.ColumnIndex == (int)GameGridColumns.CRomStatus)
                 {
-                    e.CellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215)       ;
+                // sets e.CellStyle.BackColor; however, because the ROM Status column
                     
                     return;
                 }
