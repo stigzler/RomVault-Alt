@@ -4,27 +4,27 @@
  *     Copyright 2025                                 *
  ******************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Globalization;
-using System.Reflection;
-using System.Windows.Forms;
+using DATReader.DatStore;
+using DATReader.DatWriter;
+using ROMVault.Extensions;
 using RomVaultCore;
 using RomVaultCore.Extensions;
 using RomVaultCore.ReadDat;
 using RomVaultCore.RvDB;
 using RomVaultCore.Scanner;
-using RVIO;
-
-using DATReader.DatStore;
-using DATReader.DatWriter;
-using TrrntZipUI;
 using RomVaultCore.Utils;
-using System.Threading;
-using System.Net.NetworkInformation;
+using RVIO;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Reflection;
+using System.Threading;
+using System.Windows.Forms;
+using TrrntZipUI;
 
 namespace ROMVault
 {
@@ -159,7 +159,9 @@ namespace ROMVault
             splitContainer3_Panel1_Resize(new object(), new EventArgs());
             splitContainer4_Panel1_Resize(new object(), new EventArgs());
 
-            _mnuContext = new ContextMenuStrip();
+            _mnuContext = new ContextMenuStrip().DarkCompliant();
+            _mnuContext.ShowCheckMargin = false;
+            _mnuContext.ShowImageMargin = false;
 
             ToolStripMenuItem mnuScan1 = new ToolStripMenuItem
             {
@@ -226,7 +228,9 @@ namespace ROMVault
             mnuFixDat.Click += MnuMakeFixDatClick;
             mnuMakeDat.Click += MnuMakeDatClick;
 
-            _mnuContextToSort = new ContextMenuStrip();
+            _mnuContextToSort = new ContextMenuStrip().DarkCompliant();
+            _mnuContextToSort.ShowCheckMargin = false;
+            _mnuContextToSort.ShowImageMargin = false;
 
             ToolStripMenuItem mnuToSortScan1 = new ToolStripMenuItem
             {
@@ -423,7 +427,7 @@ namespace ROMVault
                     Text = kvp.Key.ToString(),
                     Image = rvImages.GetBitmap("G_" + kvp.Key),
                     ToolTipText = kvp.Value,
-                    Padding = new Padding(0, 0, 2, 0),
+                    Padding = new Padding(0, 0, 1, 0),
                     DisplayStyle = ToolStripItemDisplayStyle.Image
                 };
                 lbl.MouseHover += Lbl_MouseHover;
@@ -1538,10 +1542,6 @@ namespace ROMVault
 
             if (Properties.Settings.Default.RomListSplitterDistance != 0)
                 splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
-
-            // Post-show UI Tweaks
-            // Note: _gridRowHeight is now set in UpdateGameGrid() after rows are created
-            // This ensures it includes borders/grid lines and adapts to font scaling
 
             // Misc
             txtFilter.ForeColor = Color.FromArgb(128, 128, 128, 128);

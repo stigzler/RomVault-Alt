@@ -88,7 +88,7 @@ namespace Dark
                     dgv.ColumnHeadersDefaultCellStyle.BackColor = bg;
                     dgv.ColumnHeadersDefaultCellStyle.ForeColor = fg;
 
-                    //dgv.DefaultCellStyle.SelectionBackColor = bgMenuItemRollover;
+                    dgv.DefaultCellStyle.SelectionBackColor = bgMenuItemRollover;
                     //dgv.DefaultCellStyle.SelectionForeColor = Color.White;
                     dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
@@ -101,10 +101,12 @@ namespace Dark
                     ms.BackColor = bg0;
                     break;
 
-                //case ContextMenuStrip cms:
-                //    cms.RenderMode = ToolStripRenderMode.System;
-                //    cms.Renderer = new DarkToolStripRenderer();
-                //    break;
+                case ContextMenuStrip cms:
+                    cms.BackColor = bg;
+                    cms.ForeColor = fg;
+                    cms.RenderMode = ToolStripRenderMode.System;
+                    cms.Renderer = new DarkToolStripRenderer();
+                    break;
 
                 case Label _:
                 case Button _:

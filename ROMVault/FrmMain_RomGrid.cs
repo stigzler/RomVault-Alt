@@ -27,7 +27,6 @@ namespace ROMVault
         DateModFile = 12,
         ZipIndex = 13,
         DupeCount = 14
-
     }
 
     public partial class FrmMain
@@ -40,7 +39,6 @@ namespace ROMVault
         private bool showStatus;
         private bool showFileModDate;
 
-
         private void UpdateRomGrid(RvFile tGame, bool onTimer = false)
         {
             int scrollPosition = -1;
@@ -49,7 +47,6 @@ namespace ROMVault
                 scrollPosition = RomGrid.FirstDisplayedScrollingRowIndex;
             }
             catch { }
-
 
             if (Settings.IsMono && RomGrid.RowCount > 0)
             {
@@ -97,7 +94,6 @@ namespace ROMVault
 
             try
             {
-
                 for (int l = 0; l < tGame.ChildCount; l++)
                 {
                     RvFile tBase = tGame.Child(l);
@@ -132,7 +128,6 @@ namespace ROMVault
         {
             try
             {
-
                 if (tFile.DatStatus != DatStatus.InDatMerged || tFile.RepStatus != RepStatus.NotCollected ||
                 chkBoxShowMerged.Checked)
                 {
@@ -180,6 +175,7 @@ namespace ROMVault
                             }
                         }
                         break;
+
                     case eRomGrid.Rom:
                         string fname = tFile.UiDisplayName;
                         if (!string.IsNullOrEmpty(tFile.FileName))
@@ -203,36 +199,47 @@ namespace ROMVault
                         e.Value = fname;
 
                         break;
+
                     case eRomGrid.Merge:
                         e.Value = tFile.Merge;
                         break;
+
                     case eRomGrid.Size:
                         e.Value = SetCell(tFile.Size == null ? "" : ((ulong)tFile.Size).ToString("N0"), tFile, FileStatus.SizeFromDAT, FileStatus.SizeFromHeader, FileStatus.SizeVerified);
                         break;
+
                     case eRomGrid.CRC32:
                         e.Value = SetCell(tFile.CRC.ToHexString(), tFile, FileStatus.CRCFromDAT, FileStatus.CRCFromHeader, FileStatus.CRCVerified);
                         break;
+
                     case eRomGrid.SHA1:
                         e.Value = SetCell(tFile.SHA1.ToHexString(), tFile, FileStatus.SHA1FromDAT, FileStatus.SHA1FromHeader, FileStatus.SHA1Verified);
                         break;
+
                     case eRomGrid.MD5:
                         e.Value = SetCell(tFile.MD5.ToHexString(), tFile, FileStatus.MD5FromDAT, FileStatus.MD5FromHeader, FileStatus.MD5Verified);
                         break;
+
                     case eRomGrid.AltSize:
                         e.Value = SetCell(tFile.AltSize == null ? "" : ((ulong)tFile.AltSize).ToString("N0"), tFile, FileStatus.AltSizeFromDAT, FileStatus.AltSizeFromHeader, FileStatus.AltSizeVerified);
                         break;
+
                     case eRomGrid.AltCRC32:
                         e.Value = SetCell(tFile.AltCRC.ToHexString(), tFile, FileStatus.AltCRCFromDAT, FileStatus.AltCRCFromHeader, FileStatus.AltCRCVerified);
                         break;
+
                     case eRomGrid.AltSHA1:
                         e.Value = SetCell(tFile.AltSHA1.ToHexString(), tFile, FileStatus.AltSHA1FromDAT, FileStatus.AltSHA1FromHeader, FileStatus.AltSHA1Verified);
                         break;
+
                     case eRomGrid.AltMD5:
                         e.Value = SetCell(tFile.AltMD5.ToHexString(), tFile, FileStatus.AltMD5FromDAT, FileStatus.AltMD5FromHeader, FileStatus.AltMD5Verified);
                         break;
+
                     case eRomGrid.Status:
                         e.Value = tFile.Status;
                         break;
+
                     case eRomGrid.DateModFile:
                         {
                             if (tFile.FileModTimeStamp == 0 || tFile.FileModTimeStamp == long.MinValue)
@@ -250,13 +257,13 @@ namespace ROMVault
                         if (tFile.FileType == FileType.FileZip)
                             e.Value = tFile.ZipFileIndex == -1 ? "" : tFile.ZipFileIndex.ToString();
                         break;
+
                     case eRomGrid.DupeCount:
                         if (tFile.FileGroup != null)
                         {
                             e.Value = tFile.FileGroup.Files.Count.ToString();
                         }
                         break;
-
                 }
             }
             catch
@@ -301,8 +308,6 @@ namespace ROMVault
             }
             catch { }
         }
-
-
 
         private void RomGridColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -353,8 +358,6 @@ namespace ROMVault
             {
                 try
                 {
-
-
                     int retVal = 0;
                     switch ((eRomGrid)_colIndex)
                     {
@@ -367,39 +370,51 @@ namespace ROMVault
                                 break;
                             retVal = string.Compare(x.UiDisplayName ?? "", y.UiDisplayName ?? "", StringComparison.Ordinal);
                             break;
+
                         case eRomGrid.Rom:
                             retVal = string.Compare(x.UiDisplayName ?? "", y.UiDisplayName ?? "", StringComparison.Ordinal);
                             break;
+
                         case eRomGrid.Merge:
                             retVal = string.Compare(x.Merge ?? "", y.Merge ?? "", StringComparison.Ordinal);
                             break;
+
                         case eRomGrid.Size:
                             retVal = ULong.iCompareNull(x.Size, y.Size);
                             break;
+
                         case eRomGrid.CRC32:
                             retVal = ArrByte.ICompare(x.CRC, y.CRC);
                             break;
+
                         case eRomGrid.SHA1:
                             retVal = ArrByte.ICompare(x.SHA1, y.SHA1);
                             break;
+
                         case eRomGrid.MD5:
                             retVal = ArrByte.ICompare(x.MD5, y.MD5);
                             break;
+
                         case eRomGrid.AltSize:
                             retVal = ULong.iCompareNull(x.AltSize, y.AltSize);
                             break;
+
                         case eRomGrid.AltCRC32:
                             retVal = ArrByte.ICompare(x.AltCRC, y.AltCRC);
                             break;
+
                         case eRomGrid.AltSHA1:
                             retVal = ArrByte.ICompare(x.AltSHA1, y.AltSHA1);
                             break;
+
                         case eRomGrid.AltMD5:
                             retVal = ArrByte.ICompare(x.AltMD5, y.AltMD5);
                             break;
+
                         case eRomGrid.Status:
                             retVal = string.Compare(x.Status ?? "", y.Status ?? "", StringComparison.Ordinal);
                             break;
+
                         case eRomGrid.DateModFile:
                             string time1 = CompressUtils.zipDateTimeToString(x.FileModTimeStamp);
                             string time2 = CompressUtils.zipDateTimeToString(y.FileModTimeStamp);
@@ -431,8 +446,6 @@ namespace ROMVault
                     return 0;
                 }
             }
-
-
         }
 
         private void RomGridMouseUp(object sender, MouseEventArgs e)
@@ -467,7 +480,6 @@ namespace ROMVault
 
             int mouseColumn = hitTest.ColumnIndex;
 
-
             string name = (RomGrid.Rows[mouseRow].Cells[(int)eRomGrid.Rom].Value ?? "").ToString();
             string size = (RomGrid.Rows[mouseRow].Cells[(int)eRomGrid.Size].Value ?? "").ToString();
             if (size.Contains(" "))
@@ -485,11 +497,9 @@ namespace ROMVault
             if (md5.Length > 32)
                 md5 = md5.Substring(0, 32);
 
-
             string altsize = (RomGrid.Rows[mouseRow].Cells[(int)eRomGrid.AltSize].Value ?? "").ToString();
             if (altsize.Contains(" "))
                 altsize = altsize.Substring(0, altsize.IndexOf(" "));
-
 
             string altcrc = (RomGrid.Rows[mouseRow].Cells[(int)eRomGrid.AltCRC32].Value ?? "").ToString();
             if (altcrc.Length > 8)
@@ -502,7 +512,6 @@ namespace ROMVault
             string altmd5 = (RomGrid.Rows[mouseRow].Cells[(int)eRomGrid.AltMD5].Value ?? "").ToString();
             if (altmd5.Length > 32)
                 altmd5 = altmd5.Substring(0, 32);
-
 
             string clipText = null;
             switch ((eRomGrid)mouseColumn)
@@ -554,6 +563,5 @@ namespace ROMVault
             */
             RomGrid.ClearSelection();
         }
-
     }
 }

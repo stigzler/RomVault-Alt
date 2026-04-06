@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Dark.Renderers
 {
-    internal class DarkToolStripRenderer : ToolStripSystemRenderer
+    public class DarkToolStripRenderer : ToolStripSystemRenderer
     {
         protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
         {
@@ -40,16 +40,20 @@ namespace Dark.Renderers
             }
         }
 
+        // Hover color
         protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
         {
+            var rectangle = new Rectangle(0, 0, e.Item.Size.Width, e.Item.Size.Height);
+
             if (e.Item.Selected)
             {
-                var rectangle = new Rectangle(0, 0, e.Item.Size.Width, e.Item.Size.Height);
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 63, 63, 70)), rectangle);
+                // hover color (keep as-is)
+                e.Graphics.FillRectangle(new SolidBrush(dark.bgMenuItemRollover), rectangle);
             }
             else
             {
-                base.OnRenderMenuItemBackground(e);
+                // unhover (normal) background - paint dark background explicitly
+                e.Graphics.FillRectangle(new SolidBrush(dark.bg), rectangle);
             }
         }
 
@@ -126,21 +130,23 @@ namespace Dark.Renderers
                 base.OnRenderSeparator(e);
                 return;
             }
+            // Ensure the separator area uses the dark background so the line appears on the correct color
+            Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
+            using (Brush back = new SolidBrush(dark.bg))
+                e.Graphics.FillRectangle(back, bounds);
 
             if (e.Vertical)
             {
                 int verticalPadding = (int)(((double)e.Item.Height * 20) / 100);
-                Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
                 int x = Convert.ToInt32((double)bounds.Width / 2) - 1;
-                using (Pen pen = new Pen(Color.FromArgb(200, 128, 128, 128)))
+                using (Pen pen = new Pen(Color.FromArgb(180, 140, 140, 140)))
                     e.Graphics.DrawLine(pen, x, bounds.Top + verticalPadding, x, bounds.Bottom - 1 - verticalPadding);
             }
             else
             {
                 int horizontalPadding = (int)(((double)e.Item.Width * 20) / 100);
-                Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
                 int y = Convert.ToInt32((double)bounds.Height / 2) - 1;
-                using (Pen pen = new Pen(Color.FromArgb(200, 128, 128, 128)))
+                using (Pen pen = new Pen(Color.FromArgb(180, 140, 140, 140)))
                     e.Graphics.DrawLine(pen, bounds.Left + horizontalPadding, y, bounds.Right - 1 - horizontalPadding, y);
             }
         }

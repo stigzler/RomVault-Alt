@@ -134,6 +134,7 @@
   <ItemGroup>
     <Compile Include="Automate.cs" />
     <Compile Include="Constants\UI.cs" />
+    <Compile Include="Extensions\ContextMenuStrip.cs" />
     <Compile Include="FolderBrowser.cs" />
     <Compile Include="HelperSideInfo.cs" />
     <Compile Include="FolderBrowserDialogEx.cs">

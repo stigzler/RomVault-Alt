@@ -10,6 +10,7 @@ using RomVaultCore;
 using RomVaultCore.RvDB;
 using RVIO;
 using StorageList;
+using ROMVault.Extensions;
 
 namespace ROMVault
 {
@@ -24,7 +25,8 @@ namespace ROMVault
             CRomStatus = 4
         }
 
-        private int _gridRowHeight = 22; // Default fallback
+        private int _gridRowHeight = 18; // Default fallback
+        private int _gridImagePadding = 0;
 
         private RvFile gameGridSource;
 
@@ -47,7 +49,9 @@ namespace ROMVault
 
         private void InitGameGridMenu()
         {
-            _mnuGameGrid = new ContextMenuStrip();
+            _mnuGameGrid = new ContextMenuStrip().DarkCompliant();
+            _mnuGameGrid.ShowImageMargin = false;
+            _mnuGameGrid.ShowCheckMargin = false;
 
             mnuGameScan1 = new ToolStripMenuItem
             {
@@ -255,7 +259,7 @@ namespace ROMVault
                 // Measure actual row height (includes borders/grid lines) after rows are created
                 if (GameGrid.Rows.Count > 0)
                 {
-                    _gridRowHeight = GameGrid.Rows[0].Height;
+                    _gridRowHeight = (int)(GameGrid.Rows[0].Height * 80 / 100);
                 }
 
                 GameGrid.Columns[(int)GameGridColumns.CDescription].Visible = showDescription;
@@ -364,7 +368,7 @@ namespace ROMVault
                             if (tRvDir.GotStatus != GotStatus.NotGot)
                                 bitmapName = GetBitmapFromType(tRvDir.FileType, tRvDir.ZipStruct);
 
-                            Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CType].Width, _gridRowHeight);
+                            Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CType].Width, _gridRowHeight - 2);
 
                             int bm0 = -1;
                             int bm1 = -1;
@@ -405,7 +409,7 @@ namespace ROMVault
                                     if (bm != null)
                                     {
                                         float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
-                                        g.DrawImage(bm, (bm0 - (xSize / 2)), 0, xSize, _gridRowHeight);
+                                        g.DrawImage(bm, (bm0 - (xSize / 2)), 1, xSize, _gridRowHeight);
                                     }
                                     else
                                     {
@@ -419,7 +423,7 @@ namespace ROMVault
                                     if (bm != null)
                                     {
                                         float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
-                                        g.DrawImage(bm, (bm1 - (xSize / 2)), 0, xSize, _gridRowHeight);
+                                        g.DrawImage(bm, (bm1 - (xSize / 2)), 1, xSize, _gridRowHeight);
                                     }
                                     else
                                     {
@@ -431,7 +435,7 @@ namespace ROMVault
                                 {
                                     Bitmap bm = rvImages.GetBitmap(tRvDir.ZipDatStructFix ? "ZipConvert" : "ZipConvert1", false);
                                     float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
-                                    g.DrawImage(bm, (bm2 - (xSize / 2)), 0, xSize, _gridRowHeight);
+                                    g.DrawImage(bm, (bm2 - (xSize / 2)), 1, xSize, _gridRowHeight);
                                 }
                             }
 
@@ -469,16 +473,18 @@ namespace ROMVault
 
                     case GameGridColumns.CRomStatus:
                         {
-                            Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CRomStatus].Width, _gridRowHeight);
+                            // Make the bitmap a few pixels taller than the logical icon height so
+                            // drawn icons that are offset by 1px don't get clipped at the bottom.
+                            Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CRomStatus].Width, _gridRowHeight + 2);
                             using (Graphics g = Graphics.FromImage(bmp))
                             {
                                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                                 //g.Clear((e.RowIndex%2==1)?Dark.dark.bgColor1(Color.White): Dark.dark.bgColor(Color.White));
-                                g.Clear(Dark.dark.bgColor1(Color.White));
+                                // EXPERIMENT: Removed g.Clear() to let cell background color show through bitmap
+                                //g.Clear(Dark.dark.bgColor1(Color.White));
                                 g.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 
-                                Font drawFont = new Font("Arial", 9);
-
+                                Font drawFont = new Font("Verdana", Properties.Settings.Default.MainTextSize - 2, FontStyle.Bold);
                                 int gOff;
                                 int columnIndex = 0;
                                 for (int l = 0; l < RepairStatus.DisplayOrder.Length; l++)
@@ -498,7 +504,7 @@ namespace ROMVault
                                     if (bmg != null)
                                     {
                                         float iconWidth = 21f * _gridRowHeight / 18f;
-                                        g.DrawImage(bmg, gOff, 0, iconWidth, _gridRowHeight);
+                                        g.DrawImage(bmg, gOff, 1, iconWidth, _gridRowHeight);
                                     }
                                     else
                                     {
@@ -519,7 +525,9 @@ namespace ROMVault
                                     if (tRvDir.DirStatus.Get(RepairStatus.DisplayOrder[l]) > 0)
                                     {
                                         gOff = _gameGridColumnXPositions[columnIndex];
-                                        g.DrawString(tRvDir.DirStatus.Get(RepairStatus.DisplayOrder[l]).ToString(CultureInfo.InvariantCulture), drawFont, Dark.dark.fgBrush(Brushes.Black), new PointF(gOff + 20, 3));
+                                        g.DrawString(tRvDir.DirStatus.Get(RepairStatus.DisplayOrder[l]).ToString(CultureInfo.InvariantCulture),
+                                            drawFont, Dark.dark.fgBrush(Brushes.Black),
+                                            new PointF(gOff + _gridRowHeight, 3));
                                         columnIndex++;
                                     }
                                 }
@@ -548,10 +556,16 @@ namespace ROMVault
 
                 if (e.ColumnIndex == (int)GameGridColumns.CRomStatus)
                 {
-                // sets e.CellStyle.BackColor; however, because the ROM Status column
-                    
+                    e.CellStyle.SelectionBackColor = Dark.dark.bgMenuItemRollover;
                     return;
                 }
+
+                // Keep the ROM Status column's non-selected background color in sync with
+                // the rest of the row. The per-status coloring in GameGridCellFormatting
+                // sets e.CellStyle.BackColor; however, because the ROM Status column
+                // renders images into a bitmap and assigns it to e.Value, the DataGridView
+                // will use the bitmap's background unless the cell style's BackgroundColor
+                // is explicitly preserved here. Make sure we don't override the BackColor.
 
                 RvFile tRvDir = gameGrid[e.RowIndex];
                 ReportStatus tDirStat = tRvDir.DirStatus;
@@ -573,7 +587,8 @@ namespace ROMVault
                     e.CellStyle.BackColor = Dark.dark.Down(_displayColor[(int)t1]);
                     e.CellStyle.ForeColor = _fontColor[(int)t1];
 
-                    if (e.ColumnIndex <= (int)GameGridColumns.CType)
+                    // Ensure the image/status column also gets the per-status selection color
+                    if (e.ColumnIndex <= (int)GameGridColumns.CType || e.ColumnIndex == (int)GameGridColumns.CRomStatus)
                     {
                         e.CellStyle.SelectionBackColor = _displayColor[(int)t1];
                     }
