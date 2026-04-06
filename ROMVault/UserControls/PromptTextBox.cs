@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace ROMVault.UserControls
 {
+    [System.ComponentModel.DesignerCategory("Code")]
     internal class PromptTextBox : TextBox
     {
         private string _promptOnEmpty = "Enter text...";

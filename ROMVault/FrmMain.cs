@@ -86,6 +86,9 @@ namespace ROMVault
         {
             InitializeComponent();
 
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint
+                | ControlStyles.OptimizedDoubleBuffer, true); this.UpdateStyles();
+
             //btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Enabled");
             //btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Enabled");
             //btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Enabled");
@@ -1548,6 +1551,10 @@ namespace ROMVault
 
             // Set up status strip
             InitialiseStatusStrip();
+
+            DatInfoTLP.Visible = true;
+            GameInfoTLP.Visible = true;
+            ctrRvTree.Visible = true;
         }
 
         private void _textGameName_KeyDown(object sender, KeyEventArgs e)
@@ -1683,6 +1690,20 @@ namespace ROMVault
         private void ToggleDatKeyTextBT_Click(object sender, EventArgs e)
         {
             ToggleDatStatusIconText();
+        }
+
+        private void FrmMain_ResizeBegin(object sender, EventArgs e)
+        {
+            DatInfoTLP.Visible = false;
+            GameInfoTLP.Visible = false;
+            ctrRvTree.Visible = false;
+        }
+
+        private void FrmMain_ResizeEnd(object sender, EventArgs e)
+        {
+            DatInfoTLP.Visible = true;
+            GameInfoTLP.Visible = true;
+            ctrRvTree.Visible = true;
         }
     }
 }

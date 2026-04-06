@@ -13,4 +13,6 @@
 - Added prompt to Games/Rom filter textbox
 - Added status-bar key for Dat Tree icons.
 - Improved menubar, toolstrips and context menu rendering for dark mode
+- Now able to reverse RClick functionality on Games Grid (shift+r-click to copy detilas, rclick to show context menu)
+- Re-jigged Settings form to pages to allow for future-proofing of more options. Also rclick selects the data row.
 - 

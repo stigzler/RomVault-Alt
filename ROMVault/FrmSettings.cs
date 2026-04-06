@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using RomVaultCore;
 using RomVaultCore.Utils;
+using System.Drawing;
 
 namespace ROMVault
 {
@@ -19,8 +20,6 @@ namespace ROMVault
         public FrmSettings(FrmMain mainForm)
         {
             InitializeComponent();
-
-            //Helpers.Theming.SetFromTextSizeToDefault(this);
 
             this.mainForm = mainForm;
 
@@ -41,8 +40,8 @@ namespace ROMVault
             if (Settings.rvSettings.Darkness)
                 Dark.dark.SetColors(this);
 
-            MainTextSizeNUM.Value = Properties.Settings.Default.MainTextSize;
-            InfoTextColorPB.BackColor = Properties.Settings.Default.InfoTextColor;
+            MainTC.HideTabs = true;
+            TvPaddingPN.BackColor = MainTV.BackColor;
         }
 
         private void FrmConfigLoad(object sender, EventArgs e)
@@ -68,6 +67,12 @@ namespace ROMVault
             cbo7zStruct.SelectedIndex = Settings.rvSettings.sevenZDefaultStruct;
             chkDarkMode.Checked = Settings.rvSettings.Darkness;
             chkDoNotReportFeedback.Checked = Settings.rvSettings.DoNotReportFeedback;
+
+            // stigzler's settings
+            // UI and UX
+            MainTextSizeNUM.Value = Properties.Settings.Default.MainTextSize;
+            InfoTextColorPB.BackColor = Properties.Settings.Default.InfoTextColor;
+            EnableGamesGridRClickChB.Checked = Properties.Settings.Default.EnableGamesGridRClick;
         }
 
         private void BtnCancelClick(object sender, EventArgs e)
@@ -93,6 +98,14 @@ namespace ROMVault
                     i--;
                 }
             }
+
+            SaveSettings();
+
+            Close();
+        }
+
+        private void SaveSettings()
+        {
             Settings.rvSettings.SetRegExRules();
 
             Settings.rvSettings.DetailedFixReporting = chkDetailedReporting.Checked;
@@ -114,9 +127,11 @@ namespace ROMVault
 
             Settings.WriteConfig(Settings.rvSettings);
 
-            Properties.Settings.Default.Save();
+            Properties.Settings.Default.MainTextSize = (int)MainTextSizeNUM.Value;
+            Properties.Settings.Default.InfoTextColor = InfoTextColorPB.BackColor;
+            Properties.Settings.Default.EnableGamesGridRClick = EnableGamesGridRClickChB.Checked;
 
-            Close();
+            Properties.Settings.Default.Save();
         }
 
         private void BtnDatClick(object sender, EventArgs e)
@@ -156,6 +171,26 @@ namespace ROMVault
             //this.Font = new System.Drawing.Font(this.Font.FontFamily, (float)MainTextSizeNUM.Value);
             Properties.Settings.Default.MainTextSize = (int)MainTextSizeNUM.Value;
             //mainForm.UpdateThemeAndControls();
+        }
+
+        // Call this after InitializeComponent()
+        private void HideTabControlTabs(TabControl tab)
+        {
+            tab.Multiline = true;                // allow small fixed tabs
+            tab.SizeMode = TabSizeMode.Fixed;
+            tab.ItemSize = new Size(0, 1);       // very small tab header
+            tab.Padding = new Point(0, 0);
+            tab.TabStop = false;
+        }
+
+        private void FrmSettings_Shown(object sender, EventArgs e)
+        {
+            //TvPaddingPN.BackColor = MainTV.BackColor;
+        }
+
+        private void MainTV_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            MainTC.SelectedTab = MainTC.TabPages[e.Node.Name.Replace("TVI", "TP")];
         }
     }
 }

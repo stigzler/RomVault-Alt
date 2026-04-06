@@ -711,9 +711,24 @@ namespace ROMVault
                 if (mouseRow < 0)
                     return;
 
+                // Ensure the row under the mouse becomes the selected row so the
+                // context menu actions apply to the correct item.
+                if (mouseRow >= 0 && mouseRow < GameGrid.Rows.Count)
+                {
+                    try
+                    {
+                        GameGrid.ClearSelection();
+                        GameGrid.Rows[mouseRow].Selected = true;
+                        if (GameGrid.Columns.Count > 0)
+                            GameGrid.CurrentCell = GameGrid.Rows[mouseRow].Cells[0];
+                    }
+                    catch { }
+                }
+
                 Point controLocation = ControlLoc(GameGrid);
 
-                if (Control.ModifierKeys == Keys.Shift)
+                if ((!Properties.Settings.Default.EnableGamesGridRClick && Control.ModifierKeys == Keys.Shift)
+                    || (Properties.Settings.Default.EnableGamesGridRClick && Control.ModifierKeys != Keys.Shift))
                 {
                     _mnuGameGrid.Items.Clear();
 
@@ -824,6 +839,10 @@ namespace ROMVault
             }
             catch { }
             return;
+        }
+
+        private void GameDetailsToClipboard()
+        {
         }
 
         private void MnuGameScan(object sender, EventArgs e)

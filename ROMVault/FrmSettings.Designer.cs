@@ -29,94 +29,89 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("DAT Settings");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("File Operations");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("UI and UX");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblDATRoot = new System.Windows.Forms.Label();
-            this.btnDAT = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboFixLevel = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.chkDebugLogs = new System.Windows.Forms.CheckBox();
-            this.chkCacheSaveTimer = new System.Windows.Forms.CheckBox();
-            this.upTime = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.chkDoubleCheckDelete = new System.Windows.Forms.CheckBox();
-            this.chkDetailedReporting = new System.Windows.Forms.CheckBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.ColorBroswer = new System.Windows.Forms.ColorDialog();
+            this.MainSC = new System.Windows.Forms.SplitContainer();
+            this.TvPaddingPN = new System.Windows.Forms.Panel();
+            this.MainTV = new System.Windows.Forms.TreeView();
+            this.MainIL = new System.Windows.Forms.ImageList(this.components);
+            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
+            this.MainTC = new ROMVault.UserControls.TabControl();
+            this.DatSettingsTP = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkSendFoundMIA = new System.Windows.Forms.CheckBox();
             this.chkSendFoundMIAAnon = new System.Windows.Forms.CheckBox();
             this.chkDeleteOldCueFiles = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDATRoot = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnDAT = new System.Windows.Forms.Button();
+            this.cboFixLevel = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.chkDoubleCheckDelete = new System.Windows.Forms.CheckBox();
+            this.chkCacheSaveTimer = new System.Windows.Forms.CheckBox();
+            this.upTime = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
+            this.FileOperationsTP = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkDetailedReporting = new System.Windows.Forms.CheckBox();
+            this.chkDebugLogs = new System.Windows.Forms.CheckBox();
+            this.chkDoNotReportFeedback = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cbo7zStruct = new System.Windows.Forms.ComboBox();
             this.cboCores = new System.Windows.Forms.ComboBox();
-            this.chkDarkMode = new System.Windows.Forms.CheckBox();
-            this.chkDoNotReportFeedback = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.flexiLabel3 = new ROMVault.UserControls.FlexiLabel();
+            this.UiTP = new System.Windows.Forms.TabPage();
+            this.AppearanceThemesGB = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.MainTextSizeNUM = new System.Windows.Forms.NumericUpDown();
             this.InfoTextColorPB = new System.Windows.Forms.PictureBox();
-            this.ColorBroswer = new System.Windows.Forms.ColorDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.upTime)).BeginInit();
+            this.chkDarkMode = new System.Windows.Forms.CheckBox();
+            this.flexiLabel5 = new ROMVault.UserControls.FlexiLabel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.OperationalGB = new System.Windows.Forms.GroupBox();
+            this.EnableGamesGridRClickChB = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSC)).BeginInit();
+            this.MainSC.Panel1.SuspendLayout();
+            this.MainSC.Panel2.SuspendLayout();
+            this.MainSC.SuspendLayout();
+            this.TvPaddingPN.SuspendLayout();
+            this.MainTC.SuspendLayout();
+            this.DatSettingsTP.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upTime)).BeginInit();
+            this.FileOperationsTP.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.UiTP.SuspendLayout();
+            this.AppearanceThemesGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainTextSizeNUM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.OperationalGB.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DATRoot:";
-            // 
-            // lblDATRoot
-            // 
-            this.lblDATRoot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDATRoot.BackColor = System.Drawing.Color.White;
-            this.lblDATRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDATRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblDATRoot.Location = new System.Drawing.Point(85, 30);
-            this.lblDATRoot.Name = "lblDATRoot";
-            this.lblDATRoot.Size = new System.Drawing.Size(269, 22);
-            this.lblDATRoot.TabIndex = 3;
-            this.lblDATRoot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnDAT
-            // 
-            this.btnDAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDAT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnDAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDAT.Location = new System.Drawing.Point(360, 30);
-            this.btnDAT.Name = "btnDAT";
-            this.btnDAT.Size = new System.Drawing.Size(44, 24);
-            this.btnDAT.TabIndex = 6;
-            this.btnDAT.Text = "Set";
-            this.btnDAT.UseVisualStyleBackColor = true;
-            this.btnDAT.Click += new System.EventHandler(this.BtnDatClick);
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Location = new System.Drawing.Point(238, 762);
+            this.btnOK.Location = new System.Drawing.Point(472, 3);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(89, 23);
             this.btnOK.TabIndex = 9;
@@ -128,7 +123,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(333, 762);
+            this.btnCancel.Location = new System.Drawing.Point(567, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 23);
             this.btnCancel.TabIndex = 10;
@@ -136,26 +131,228 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
-            // textBox1
+            // ColorBroswer
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ColorBroswer.AnyColor = true;
+            this.ColorBroswer.FullOpen = true;
+            // 
+            // MainSC
+            // 
+            this.MainSC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainSC.Location = new System.Drawing.Point(0, 0);
+            this.MainSC.Name = "MainSC";
+            // 
+            // MainSC.Panel1
+            // 
+            this.MainSC.Panel1.Controls.Add(this.TvPaddingPN);
+            this.MainSC.Panel1.Controls.Add(this.flexiLabel1);
+            // 
+            // MainSC.Panel2
+            // 
+            this.MainSC.Panel2.Controls.Add(this.MainTC);
+            this.MainSC.Size = new System.Drawing.Size(659, 638);
+            this.MainSC.SplitterDistance = 171;
+            this.MainSC.TabIndex = 50;
+            // 
+            // TvPaddingPN
+            // 
+            this.TvPaddingPN.Controls.Add(this.MainTV);
+            this.TvPaddingPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TvPaddingPN.Location = new System.Drawing.Point(0, 39);
+            this.TvPaddingPN.Name = "TvPaddingPN";
+            this.TvPaddingPN.Padding = new System.Windows.Forms.Padding(10);
+            this.TvPaddingPN.Size = new System.Drawing.Size(171, 599);
+            this.TvPaddingPN.TabIndex = 47;
+            // 
+            // MainTV
+            // 
+            this.MainTV.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MainTV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTV.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainTV.HideSelection = false;
+            this.MainTV.ImageIndex = 0;
+            this.MainTV.ImageList = this.MainIL;
+            this.MainTV.ItemHeight = 30;
+            this.MainTV.Location = new System.Drawing.Point(10, 10);
+            this.MainTV.Name = "MainTV";
+            treeNode1.ImageKey = "database.png";
+            treeNode1.Name = "DatSettingsTVI";
+            treeNode1.SelectedImageIndex = 0;
+            treeNode1.Text = "DAT Settings";
+            treeNode2.ImageKey = "folder-smiley.png";
+            treeNode2.Name = "FileOperationsTVI";
+            treeNode2.SelectedImageIndex = 1;
+            treeNode2.Text = "File Operations";
+            treeNode3.ImageKey = "ui-combo-box-blue.png";
+            treeNode3.Name = "UiTVI";
+            treeNode3.SelectedImageIndex = 2;
+            treeNode3.Text = "UI and UX";
+            this.MainTV.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+            this.MainTV.SelectedImageIndex = 0;
+            this.MainTV.ShowPlusMinus = false;
+            this.MainTV.ShowRootLines = false;
+            this.MainTV.Size = new System.Drawing.Size(151, 579);
+            this.MainTV.TabIndex = 46;
+            this.MainTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTV_AfterSelect);
+            // 
+            // MainIL
+            // 
+            this.MainIL.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("MainIL.ImageStream")));
+            this.MainIL.TransparentColor = System.Drawing.Color.Transparent;
+            this.MainIL.Images.SetKeyName(0, "database.png");
+            this.MainIL.Images.SetKeyName(1, "folder-smiley.png");
+            this.MainIL.Images.SetKeyName(2, "ui-combo-box-blue.png");
+            // 
+            // flexiLabel1
+            // 
+            this.flexiLabel1.AutoSize = true;
+            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flexiLabel1.FontStyle = System.Drawing.FontStyle.Bold;
+            this.flexiLabel1.Location = new System.Drawing.Point(0, 0);
+            this.flexiLabel1.Name = "flexiLabel1";
+            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(10);
+            this.flexiLabel1.ScaleFactor = 1.2D;
+            this.flexiLabel1.Size = new System.Drawing.Size(95, 39);
+            this.flexiLabel1.TabIndex = 45;
+            this.flexiLabel1.Text = "Settings";
+            // 
+            // MainTC
+            // 
+            this.MainTC.Controls.Add(this.DatSettingsTP);
+            this.MainTC.Controls.Add(this.FileOperationsTP);
+            this.MainTC.Controls.Add(this.UiTP);
+            this.MainTC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.MainTC.HideBorders = true;
+            this.MainTC.HideTabs = false;
+            this.MainTC.ItemSize = new System.Drawing.Size(58, 18);
+            this.MainTC.Location = new System.Drawing.Point(0, 0);
+            this.MainTC.Name = "MainTC";
+            this.MainTC.SelectedIndex = 0;
+            this.MainTC.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(120)))), ((int)(((byte)(187)))));
+            this.MainTC.Size = new System.Drawing.Size(484, 638);
+            this.MainTC.TabIndex = 0;
+            this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.MainTC.UnselectedTabBackColor = System.Drawing.SystemColors.ControlDark;
+            // 
+            // DatSettingsTP
+            // 
+            this.DatSettingsTP.Controls.Add(this.groupBox2);
+            this.DatSettingsTP.Controls.Add(this.groupBox1);
+            this.DatSettingsTP.Controls.Add(this.flexiLabel2);
+            this.DatSettingsTP.Location = new System.Drawing.Point(0, 20);
+            this.DatSettingsTP.Name = "DatSettingsTP";
+            this.DatSettingsTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
+            this.DatSettingsTP.Size = new System.Drawing.Size(484, 618);
+            this.DatSettingsTP.TabIndex = 0;
+            this.DatSettingsTP.Text = "Dat Settings";
+            this.DatSettingsTP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chkSendFoundMIA);
+            this.groupBox2.Controls.Add(this.chkSendFoundMIAAnon);
+            this.groupBox2.Controls.Add(this.chkDeleteOldCueFiles);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox2.Location = new System.Drawing.Point(8, 383);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(468, 86);
+            this.groupBox2.TabIndex = 46;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "DAT Vault";
+            // 
+            // chkSendFoundMIA
+            // 
+            this.chkSendFoundMIA.AutoSize = true;
+            this.chkSendFoundMIA.Location = new System.Drawing.Point(14, 19);
+            this.chkSendFoundMIA.Name = "chkSendFoundMIA";
+            this.chkSendFoundMIA.Size = new System.Drawing.Size(165, 17);
+            this.chkSendFoundMIA.TabIndex = 27;
+            this.chkSendFoundMIA.Text = "Send Found MIA notifications";
+            this.chkSendFoundMIA.UseVisualStyleBackColor = true;
+            this.chkSendFoundMIA.CheckedChanged += new System.EventHandler(this.chkSendFoundMIA_CheckedChanged);
+            // 
+            // chkSendFoundMIAAnon
+            // 
+            this.chkSendFoundMIAAnon.AutoSize = true;
+            this.chkSendFoundMIAAnon.Location = new System.Drawing.Point(30, 37);
+            this.chkSendFoundMIAAnon.Name = "chkSendFoundMIAAnon";
+            this.chkSendFoundMIAAnon.Size = new System.Drawing.Size(115, 17);
+            this.chkSendFoundMIAAnon.TabIndex = 28;
+            this.chkSendFoundMIAAnon.Text = "Send anonymously";
+            this.chkSendFoundMIAAnon.UseVisualStyleBackColor = true;
+            // 
+            // chkDeleteOldCueFiles
+            // 
+            this.chkDeleteOldCueFiles.AutoSize = true;
+            this.chkDeleteOldCueFiles.Location = new System.Drawing.Point(14, 55);
+            this.chkDeleteOldCueFiles.Name = "chkDeleteOldCueFiles";
+            this.chkDeleteOldCueFiles.Size = new System.Drawing.Size(208, 17);
+            this.chkDeleteOldCueFiles.TabIndex = 30;
+            this.chkDeleteOldCueFiles.Text = "Delete previous Cue file zips in ToSort ";
+            this.chkDeleteOldCueFiles.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblDATRoot);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnDAT);
+            this.groupBox1.Controls.Add(this.cboFixLevel);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.chkDoubleCheckDelete);
+            this.groupBox1.Controls.Add(this.chkCacheSaveTimer);
+            this.groupBox1.Controls.Add(this.upTime);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Location = new System.Drawing.Point(8, 38);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(468, 345);
+            this.groupBox1.TabIndex = 44;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Core Settings";
+            // 
+            // lblDATRoot
+            // 
+            this.lblDATRoot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(9, 166);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(395, 121);
-            this.textBox1.TabIndex = 12;
+            this.lblDATRoot.BackColor = System.Drawing.Color.White;
+            this.lblDATRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDATRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDATRoot.Location = new System.Drawing.Point(85, 30);
+            this.lblDATRoot.Name = "lblDATRoot";
+            this.lblDATRoot.Size = new System.Drawing.Size(327, 22);
+            this.lblDATRoot.TabIndex = 3;
+            this.lblDATRoot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
+            // label1
             // 
-            this.label4.Location = new System.Drawing.Point(11, 96);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(348, 67);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Filenames not to remove:\r\n- One rule per line\r\n- Basic rules support * and ? wild" +
-    "cards\r\n- Regex rules must start with regex:\'\r\n- Scanning Ignore rules must start" +
-    " with \'ignore:\'";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "DATRoot:";
+            // 
+            // btnDAT
+            // 
+            this.btnDAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDAT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDAT.Location = new System.Drawing.Point(418, 30);
+            this.btnDAT.Name = "btnDAT";
+            this.btnDAT.Size = new System.Drawing.Size(44, 24);
+            this.btnDAT.TabIndex = 6;
+            this.btnDAT.Text = "Set";
+            this.btnDAT.UseVisualStyleBackColor = true;
+            this.btnDAT.Click += new System.EventHandler(this.BtnDatClick);
             // 
             // cboFixLevel
             // 
@@ -166,7 +363,7 @@
             this.cboFixLevel.FormattingEnabled = true;
             this.cboFixLevel.Location = new System.Drawing.Point(86, 58);
             this.cboFixLevel.Name = "cboFixLevel";
-            this.cboFixLevel.Size = new System.Drawing.Size(318, 21);
+            this.cboFixLevel.Size = new System.Drawing.Size(376, 21);
             this.cboFixLevel.TabIndex = 14;
             // 
             // label3
@@ -178,15 +375,36 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "Fixing Level:";
             // 
-            // chkDebugLogs
+            // label4
             // 
-            this.chkDebugLogs.AutoSize = true;
-            this.chkDebugLogs.Location = new System.Drawing.Point(14, 39);
-            this.chkDebugLogs.Name = "chkDebugLogs";
-            this.chkDebugLogs.Size = new System.Drawing.Size(131, 17);
-            this.chkDebugLogs.TabIndex = 18;
-            this.chkDebugLogs.Text = "Enable Debug logging";
-            this.chkDebugLogs.UseVisualStyleBackColor = true;
+            this.label4.Location = new System.Drawing.Point(11, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(348, 67);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Filenames not to remove:\r\n- One rule per line\r\n- Basic rules support * and ? wild" +
+    "cards\r\n- Regex rules must start with regex:\'\r\n- Scanning Ignore rules must start" +
+    " with \'ignore:\'";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(9, 166);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(453, 121);
+            this.textBox1.TabIndex = 12;
+            // 
+            // chkDoubleCheckDelete
+            // 
+            this.chkDoubleCheckDelete.AutoSize = true;
+            this.chkDoubleCheckDelete.Location = new System.Drawing.Point(14, 293);
+            this.chkDoubleCheckDelete.Name = "chkDoubleCheckDelete";
+            this.chkDoubleCheckDelete.Size = new System.Drawing.Size(262, 17);
+            this.chkDoubleCheckDelete.TabIndex = 22;
+            this.chkDoubleCheckDelete.Text = "Double check file exists elsewhere before deleting";
+            this.chkDoubleCheckDelete.UseVisualStyleBackColor = true;
             // 
             // chkCacheSaveTimer
             // 
@@ -235,15 +453,46 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Minutes";
             // 
-            // chkDoubleCheckDelete
+            // flexiLabel2
             // 
-            this.chkDoubleCheckDelete.AutoSize = true;
-            this.chkDoubleCheckDelete.Location = new System.Drawing.Point(14, 293);
-            this.chkDoubleCheckDelete.Name = "chkDoubleCheckDelete";
-            this.chkDoubleCheckDelete.Size = new System.Drawing.Size(262, 17);
-            this.chkDoubleCheckDelete.TabIndex = 22;
-            this.chkDoubleCheckDelete.Text = "Double check file exists elsewhere before deleting";
-            this.chkDoubleCheckDelete.UseVisualStyleBackColor = true;
+            this.flexiLabel2.AutoSize = true;
+            this.flexiLabel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flexiLabel2.FontStyle = System.Drawing.FontStyle.Bold;
+            this.flexiLabel2.Location = new System.Drawing.Point(8, 3);
+            this.flexiLabel2.Name = "flexiLabel2";
+            this.flexiLabel2.Padding = new System.Windows.Forms.Padding(10);
+            this.flexiLabel2.ScaleFactor = 1.2D;
+            this.flexiLabel2.Size = new System.Drawing.Size(113, 35);
+            this.flexiLabel2.TabIndex = 47;
+            this.flexiLabel2.Text = "DAT Settings";
+            // 
+            // FileOperationsTP
+            // 
+            this.FileOperationsTP.Controls.Add(this.groupBox3);
+            this.FileOperationsTP.Controls.Add(this.groupBox4);
+            this.FileOperationsTP.Controls.Add(this.flexiLabel3);
+            this.FileOperationsTP.Location = new System.Drawing.Point(0, 20);
+            this.FileOperationsTP.Name = "FileOperationsTP";
+            this.FileOperationsTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
+            this.FileOperationsTP.Size = new System.Drawing.Size(484, 618);
+            this.FileOperationsTP.TabIndex = 1;
+            this.FileOperationsTP.Text = "File Operations";
+            this.FileOperationsTP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.chkDetailedReporting);
+            this.groupBox3.Controls.Add(this.chkDebugLogs);
+            this.groupBox3.Controls.Add(this.chkDoNotReportFeedback);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox3.Location = new System.Drawing.Point(8, 128);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(468, 95);
+            this.groupBox3.TabIndex = 47;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Logging";
             // 
             // chkDetailedReporting
             // 
@@ -255,36 +504,40 @@
             this.chkDetailedReporting.Text = "Show detailed actions in Fixing Status window";
             this.chkDetailedReporting.UseVisualStyleBackColor = true;
             // 
-            // chkSendFoundMIA
+            // chkDebugLogs
             // 
-            this.chkSendFoundMIA.AutoSize = true;
-            this.chkSendFoundMIA.Location = new System.Drawing.Point(14, 19);
-            this.chkSendFoundMIA.Name = "chkSendFoundMIA";
-            this.chkSendFoundMIA.Size = new System.Drawing.Size(165, 17);
-            this.chkSendFoundMIA.TabIndex = 27;
-            this.chkSendFoundMIA.Text = "Send Found MIA notifications";
-            this.chkSendFoundMIA.UseVisualStyleBackColor = true;
-            this.chkSendFoundMIA.CheckedChanged += new System.EventHandler(this.chkSendFoundMIA_CheckedChanged);
+            this.chkDebugLogs.AutoSize = true;
+            this.chkDebugLogs.Location = new System.Drawing.Point(14, 39);
+            this.chkDebugLogs.Name = "chkDebugLogs";
+            this.chkDebugLogs.Size = new System.Drawing.Size(131, 17);
+            this.chkDebugLogs.TabIndex = 18;
+            this.chkDebugLogs.Text = "Enable Debug logging";
+            this.chkDebugLogs.UseVisualStyleBackColor = true;
             // 
-            // chkSendFoundMIAAnon
+            // chkDoNotReportFeedback
             // 
-            this.chkSendFoundMIAAnon.AutoSize = true;
-            this.chkSendFoundMIAAnon.Location = new System.Drawing.Point(30, 37);
-            this.chkSendFoundMIAAnon.Name = "chkSendFoundMIAAnon";
-            this.chkSendFoundMIAAnon.Size = new System.Drawing.Size(115, 17);
-            this.chkSendFoundMIAAnon.TabIndex = 28;
-            this.chkSendFoundMIAAnon.Text = "Send anonymously";
-            this.chkSendFoundMIAAnon.UseVisualStyleBackColor = true;
+            this.chkDoNotReportFeedback.AutoSize = true;
+            this.chkDoNotReportFeedback.Location = new System.Drawing.Point(14, 59);
+            this.chkDoNotReportFeedback.Name = "chkDoNotReportFeedback";
+            this.chkDoNotReportFeedback.Size = new System.Drawing.Size(136, 17);
+            this.chkDoNotReportFeedback.TabIndex = 43;
+            this.chkDoNotReportFeedback.Text = "Do not report feedback";
+            this.chkDoNotReportFeedback.UseVisualStyleBackColor = true;
             // 
-            // chkDeleteOldCueFiles
+            // groupBox4
             // 
-            this.chkDeleteOldCueFiles.AutoSize = true;
-            this.chkDeleteOldCueFiles.Location = new System.Drawing.Point(14, 55);
-            this.chkDeleteOldCueFiles.Name = "chkDeleteOldCueFiles";
-            this.chkDeleteOldCueFiles.Size = new System.Drawing.Size(208, 17);
-            this.chkDeleteOldCueFiles.TabIndex = 30;
-            this.chkDeleteOldCueFiles.Text = "Delete previous Cue file zips in ToSort ";
-            this.chkDeleteOldCueFiles.UseVisualStyleBackColor = true;
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.cbo7zStruct);
+            this.groupBox4.Controls.Add(this.cboCores);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox4.Location = new System.Drawing.Point(8, 38);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(468, 90);
+            this.groupBox4.TabIndex = 48;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Compression";
             // 
             // label2
             // 
@@ -324,118 +577,48 @@
             this.cboCores.Size = new System.Drawing.Size(121, 21);
             this.cboCores.TabIndex = 41;
             // 
-            // chkDarkMode
+            // flexiLabel3
             // 
-            this.chkDarkMode.AutoSize = true;
-            this.chkDarkMode.Location = new System.Drawing.Point(14, 45);
-            this.chkDarkMode.Name = "chkDarkMode";
-            this.chkDarkMode.Size = new System.Drawing.Size(161, 17);
-            this.chkDarkMode.TabIndex = 42;
-            this.chkDarkMode.Text = "Dark Mode (restart required.)";
-            this.chkDarkMode.UseVisualStyleBackColor = true;
+            this.flexiLabel3.AutoSize = true;
+            this.flexiLabel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flexiLabel3.FontStyle = System.Drawing.FontStyle.Bold;
+            this.flexiLabel3.Location = new System.Drawing.Point(8, 3);
+            this.flexiLabel3.Name = "flexiLabel3";
+            this.flexiLabel3.Padding = new System.Windows.Forms.Padding(10);
+            this.flexiLabel3.ScaleFactor = 1.2D;
+            this.flexiLabel3.Size = new System.Drawing.Size(127, 35);
+            this.flexiLabel3.TabIndex = 49;
+            this.flexiLabel3.Text = "File Operations";
             // 
-            // chkDoNotReportFeedback
+            // UiTP
             // 
-            this.chkDoNotReportFeedback.AutoSize = true;
-            this.chkDoNotReportFeedback.Location = new System.Drawing.Point(14, 59);
-            this.chkDoNotReportFeedback.Name = "chkDoNotReportFeedback";
-            this.chkDoNotReportFeedback.Size = new System.Drawing.Size(136, 17);
-            this.chkDoNotReportFeedback.TabIndex = 43;
-            this.chkDoNotReportFeedback.Text = "Do not report feedback";
-            this.chkDoNotReportFeedback.UseVisualStyleBackColor = true;
+            this.UiTP.Controls.Add(this.OperationalGB);
+            this.UiTP.Controls.Add(this.AppearanceThemesGB);
+            this.UiTP.Controls.Add(this.flexiLabel5);
+            this.UiTP.Location = new System.Drawing.Point(0, 20);
+            this.UiTP.Name = "UiTP";
+            this.UiTP.Padding = new System.Windows.Forms.Padding(3);
+            this.UiTP.Size = new System.Drawing.Size(484, 618);
+            this.UiTP.TabIndex = 3;
+            this.UiTP.Text = "Ui + UX";
+            this.UiTP.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // AppearanceThemesGB
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.lblDATRoot);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnDAT);
-            this.groupBox1.Controls.Add(this.cboFixLevel);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.chkDoubleCheckDelete);
-            this.groupBox1.Controls.Add(this.chkCacheSaveTimer);
-            this.groupBox1.Controls.Add(this.upTime);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(12, 39);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(410, 341);
-            this.groupBox1.TabIndex = 44;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Core Settings";
-            // 
-            // flexiLabel1
-            // 
-            this.flexiLabel1.AutoSize = true;
-            this.flexiLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel1.FontStyle = System.Drawing.FontStyle.Bold;
-            this.flexiLabel1.Location = new System.Drawing.Point(12, 9);
-            this.flexiLabel1.Name = "flexiLabel1";
-            this.flexiLabel1.ScaleFactor = 1.2D;
-            this.flexiLabel1.Size = new System.Drawing.Size(67, 17);
-            this.flexiLabel1.TabIndex = 45;
-            this.flexiLabel1.Text = "Settings";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.chkSendFoundMIA);
-            this.groupBox2.Controls.Add(this.chkSendFoundMIAAnon);
-            this.groupBox2.Controls.Add(this.chkDeleteOldCueFiles);
-            this.groupBox2.Location = new System.Drawing.Point(12, 386);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 81);
-            this.groupBox2.TabIndex = 46;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "DAT Vault";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.chkDetailedReporting);
-            this.groupBox3.Controls.Add(this.chkDebugLogs);
-            this.groupBox3.Controls.Add(this.chkDoNotReportFeedback);
-            this.groupBox3.Location = new System.Drawing.Point(12, 473);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(410, 84);
-            this.groupBox3.TabIndex = 47;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Logging";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.cbo7zStruct);
-            this.groupBox4.Controls.Add(this.cboCores);
-            this.groupBox4.Location = new System.Drawing.Point(12, 563);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(410, 81);
-            this.groupBox4.TabIndex = 48;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Compression";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Controls.Add(this.MainTextSizeNUM);
-            this.groupBox5.Controls.Add(this.InfoTextColorPB);
-            this.groupBox5.Controls.Add(this.chkDarkMode);
-            this.groupBox5.Location = new System.Drawing.Point(12, 650);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(410, 103);
-            this.groupBox5.TabIndex = 49;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Appearance and Theme";
+            this.AppearanceThemesGB.Controls.Add(this.label8);
+            this.AppearanceThemesGB.Controls.Add(this.label6);
+            this.AppearanceThemesGB.Controls.Add(this.MainTextSizeNUM);
+            this.AppearanceThemesGB.Controls.Add(this.InfoTextColorPB);
+            this.AppearanceThemesGB.Controls.Add(this.chkDarkMode);
+            this.AppearanceThemesGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AppearanceThemesGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AppearanceThemesGB.Location = new System.Drawing.Point(3, 38);
+            this.AppearanceThemesGB.Name = "AppearanceThemesGB";
+            this.AppearanceThemesGB.Size = new System.Drawing.Size(478, 99);
+            this.AppearanceThemesGB.TabIndex = 49;
+            this.AppearanceThemesGB.TabStop = false;
+            this.AppearanceThemesGB.Text = "Appearance and Theme";
             // 
             // label8
             // 
@@ -489,45 +672,130 @@
             this.InfoTextColorPB.TabStop = false;
             this.InfoTextColorPB.Click += new System.EventHandler(this.InfoTextColorPB_Click);
             // 
-            // ColorBroswer
+            // chkDarkMode
             // 
-            this.ColorBroswer.AnyColor = true;
-            this.ColorBroswer.FullOpen = true;
+            this.chkDarkMode.AutoSize = true;
+            this.chkDarkMode.Location = new System.Drawing.Point(14, 45);
+            this.chkDarkMode.Name = "chkDarkMode";
+            this.chkDarkMode.Size = new System.Drawing.Size(161, 17);
+            this.chkDarkMode.TabIndex = 42;
+            this.chkDarkMode.Text = "Dark Mode (restart required.)";
+            this.chkDarkMode.UseVisualStyleBackColor = true;
+            // 
+            // flexiLabel5
+            // 
+            this.flexiLabel5.AutoSize = true;
+            this.flexiLabel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flexiLabel5.FontStyle = System.Drawing.FontStyle.Bold;
+            this.flexiLabel5.Location = new System.Drawing.Point(3, 3);
+            this.flexiLabel5.Name = "flexiLabel5";
+            this.flexiLabel5.Padding = new System.Windows.Forms.Padding(10);
+            this.flexiLabel5.ScaleFactor = 1.2D;
+            this.flexiLabel5.Size = new System.Drawing.Size(91, 35);
+            this.flexiLabel5.TabIndex = 51;
+            this.flexiLabel5.Text = "UI and UX";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
+            this.flowLayoutPanel1.Controls.Add(this.btnOK);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 587);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(659, 29);
+            this.flowLayoutPanel1.TabIndex = 51;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 616);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(659, 22);
+            this.statusStrip1.TabIndex = 52;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // OperationalGB
+            // 
+            this.OperationalGB.Controls.Add(this.label9);
+            this.OperationalGB.Controls.Add(this.EnableGamesGridRClickChB);
+            this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OperationalGB.Location = new System.Drawing.Point(3, 137);
+            this.OperationalGB.Name = "OperationalGB";
+            this.OperationalGB.Size = new System.Drawing.Size(478, 143);
+            this.OperationalGB.TabIndex = 52;
+            this.OperationalGB.TabStop = false;
+            this.OperationalGB.Text = "Operational";
+            // 
+            // EnableGamesGridRClickChB
+            // 
+            this.EnableGamesGridRClickChB.AutoSize = true;
+            this.EnableGamesGridRClickChB.Location = new System.Drawing.Point(11, 19);
+            this.EnableGamesGridRClickChB.Name = "EnableGamesGridRClickChB";
+            this.EnableGamesGridRClickChB.Size = new System.Drawing.Size(228, 17);
+            this.EnableGamesGridRClickChB.TabIndex = 0;
+            this.EnableGamesGridRClickChB.Text = "Right Click for context menu in Games Grid";
+            this.EnableGamesGridRClickChB.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoEllipsis = true;
+            this.label9.Location = new System.Drawing.Point(39, 39);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(430, 48);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "By default, you have to press shift and R Click to get the context menu. R Click " +
+    "copies the rom name to your clipboard. This is reversed if this setting is enabl" +
+    "ed.";
             // 
             // FrmSettings
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(434, 794);
+            this.ClientSize = new System.Drawing.Size(659, 638);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.flexiLabel1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.MainSC);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(450, 833);
             this.Name = "FrmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RomVault Settings";
             this.Load += new System.EventHandler(this.FrmConfigLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.upTime)).EndInit();
+            this.Shown += new System.EventHandler(this.FrmSettings_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.MainSC.Panel1.ResumeLayout(false);
+            this.MainSC.Panel1.PerformLayout();
+            this.MainSC.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainSC)).EndInit();
+            this.MainSC.ResumeLayout(false);
+            this.TvPaddingPN.ResumeLayout(false);
+            this.MainTC.ResumeLayout(false);
+            this.DatSettingsTP.ResumeLayout(false);
+            this.DatSettingsTP.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upTime)).EndInit();
+            this.FileOperationsTP.ResumeLayout(false);
+            this.FileOperationsTP.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.UiTP.ResumeLayout(false);
+            this.UiTP.PerformLayout();
+            this.AppearanceThemesGB.ResumeLayout(false);
+            this.AppearanceThemesGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainTextSizeNUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.OperationalGB.ResumeLayout(false);
+            this.OperationalGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -558,18 +826,34 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbo7zStruct;
         private System.Windows.Forms.ComboBox cboCores;
-        private System.Windows.Forms.CheckBox chkDarkMode;
         private System.Windows.Forms.CheckBox chkDoNotReportFeedback;
         private System.Windows.Forms.GroupBox groupBox1;
         private UserControls.FlexiLabel flexiLabel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.NumericUpDown MainTextSizeNUM;
-        private System.Windows.Forms.PictureBox InfoTextColorPB;
+        private System.Windows.Forms.ColorDialog ColorBroswer;
+        private System.Windows.Forms.SplitContainer MainSC;
+        private UserControls.TabControl MainTC;
+        private System.Windows.Forms.TabPage DatSettingsTP;
+        private System.Windows.Forms.TabPage FileOperationsTP;
+        private System.Windows.Forms.TreeView MainTV;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ImageList MainIL;
+        private System.Windows.Forms.Panel TvPaddingPN;
+        private UserControls.FlexiLabel flexiLabel2;
+        private UserControls.FlexiLabel flexiLabel3;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.TabPage UiTP;
+        private System.Windows.Forms.GroupBox AppearanceThemesGB;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ColorDialog ColorBroswer;
+        private System.Windows.Forms.NumericUpDown MainTextSizeNUM;
+        private System.Windows.Forms.PictureBox InfoTextColorPB;
+        private System.Windows.Forms.CheckBox chkDarkMode;
+        private UserControls.FlexiLabel flexiLabel5;
+        private System.Windows.Forms.GroupBox OperationalGB;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox EnableGamesGridRClickChB;
     }
 }

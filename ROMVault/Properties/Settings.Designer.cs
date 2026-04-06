@@ -118,5 +118,17 @@ namespace ROMVault.Properties {
                 this["RomListSplitterDistance"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableGamesGridRClick {
+            get {
+                return ((bool)(this["EnableGamesGridRClick"]));
+            }
+            set {
+                this["EnableGamesGridRClick"] = value;
+            }
+        }
     }
 }
