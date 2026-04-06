@@ -51,7 +51,7 @@ namespace RomVaultCore.RvDB
         {
             for (int i = 0; i < thisDir.ChildCount; i++)
             {
-                if (thisDir.DatStatus != DatStatus.InDatCollect)
+                if (thisDir.DatStatus != global::DatStatus.InDatCollect)
                 {
                     continue;
                 }

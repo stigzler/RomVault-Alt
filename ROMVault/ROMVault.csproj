@@ -329,6 +329,9 @@
   <ItemGroup>
     <Content Include="chip.ico" />
     <Content Include="HelloWorld.txt" />
+    <None Include="Resources\ui-text-field-password.png" />
+    <None Include="Resources\disc.png" />
+    <None Include="Resources\disc-blue.png" />
     <None Include="Resources\information-frame.png" />
     <None Include="Resources\Favourite4 %28Custom%29.png" />
     <None Include="Resources\Favourite3 %28Custom%29.png" />
@@ -337,6 +340,8 @@
     <None Include="Resources\cross.png" />
     <None Include="Resources\Back %28Custom%29.png" />
     <None Include="Resources\balloons-box.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\board-game-go.png" />
     <Content Include="Resources\default1.png" />
     <Content Include="Resources\default2.png" />
     <Content Include="Resources\default3.png" />

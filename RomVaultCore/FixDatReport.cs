@@ -106,7 +106,7 @@ namespace RomVaultCore
                 }
 
                 //child.isFile
-                if ((child.DatStatus == DatStatus.InDatCollect || child.DatStatus == DatStatus.InDatMIA) &&
+                if ((child.DatStatus == global::DatStatus.InDatCollect || child.DatStatus == global::DatStatus.InDatMIA) &&
                      child.GotStatus != GotStatus.Got && (!redOnly || !(child.RepStatus == RepStatus.CanBeFixed || child.RepStatus == RepStatus.CanBeFixedMIA || child.RepStatus == RepStatus.CorruptCanBeFixed)))
                 {
                     RvFile tCopy = new RvFile(child.FileType);

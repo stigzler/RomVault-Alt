@@ -101,7 +101,7 @@ namespace RomVaultCore.RvDB
         {
             RvFile retFile = new RvFile(scannedFile);
             //need to get the DatStatus of the parent file to get this files DatStatus
-            DatStatus datStatus = DatStatus == DatStatus.InToSort ? DatStatus.InToSort : DatStatus.NotInDat;
+            global::DatStatus datStatus = DatStatus == global::DatStatus.InToSort ? global::DatStatus.InToSort : global::DatStatus.NotInDat;
             GotStatus gotStatus = scannedFile.GotStatus;
             retFile.SetDatGotStatus(datStatus, gotStatus);
 
@@ -269,7 +269,7 @@ namespace RomVaultCore.RvDB
         public void FileCheckName(ScannedFile file)
         {
             // Don't care about bad case if the file is not in a dat.
-            if (DatStatus == DatStatus.NotInDat || DatStatus == DatStatus.InToSort)
+            if (DatStatus == global::DatStatus.NotInDat || DatStatus == global::DatStatus.InToSort)
                 Name = file.Name;
 
             FileName = Name == file.Name ? null : file.Name;
@@ -278,7 +278,7 @@ namespace RomVaultCore.RvDB
         public void FileCheckName(RvFile file)
         {
             // Don't care about bad case if the file is not in a dat.
-            if (DatStatus == DatStatus.NotInDat || DatStatus == DatStatus.InToSort)
+            if (DatStatus == global::DatStatus.NotInDat || DatStatus == global::DatStatus.InToSort)
                 Name = file.Name;
 
             FileName = Name == file.Name ? null : file.Name;
@@ -374,14 +374,14 @@ namespace RomVaultCore.RvDB
             GotStatus = Parent.GotStatus == GotStatus.FileLocked ? GotStatus.FileLocked : GotStatus.NotGot;
             switch (DatStatus)
             {
-                case DatStatus.InDatCollect:
-                case DatStatus.InDatMerged:
-                case DatStatus.InDatNoDump:
-                case DatStatus.InDatMIA:
+                case global::DatStatus.InDatCollect:
+                case global::DatStatus.InDatMerged:
+                case global::DatStatus.InDatNoDump:
+                case global::DatStatus.InDatMIA:
                     return EFile.Keep;
 
-                case DatStatus.NotInDat:
-                case DatStatus.InToSort:
+                case global::DatStatus.NotInDat:
+                case global::DatStatus.InToSort:
                     return EFile.Delete; // this item should be removed from the db.
                 default:
                     ReportError.SendAndShow("Unknown Set Got Status " + DatStatus);

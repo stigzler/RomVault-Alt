@@ -261,7 +261,7 @@ namespace RomVaultCore.FixFile
             RvFile toSortGame = new RvFile(fixZip.FileType)
             {
                 Name = toSortFileName,
-                DatStatus = DatStatus.InToSort,
+                DatStatus = global::DatStatus.InToSort,
                 GotStatus = GotStatus.Got,
                 ZipStruct = fixZip.ZipStruct,
                 FileModTimeStamp = modTimeStamp

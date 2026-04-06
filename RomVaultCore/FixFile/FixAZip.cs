@@ -39,7 +39,7 @@ namespace RomVaultCore.FixFile
 
             bool needsTrrntzipped =
                             fixZip.GotStatus == GotStatus.Got &&
-                            fixZip.DatStatus == DatStatus.InDatCollect &&
+                            fixZip.DatStatus == global::DatStatus.InDatCollect &&
                             fixZip.ZipDatStructFix &&
                             fixZip.ZipStruct != fixZip.ZipDatStruct;
 
@@ -47,7 +47,7 @@ namespace RomVaultCore.FixFile
             //      if file cannot be fully fixed copy to corrupt
             //      process zipfile
 
-            if (fixZip.GotStatus == GotStatus.Corrupt && fixZip.DatStatus != DatStatus.InToSort && !fixZip.DirStatus.HasFixable())
+            if (fixZip.GotStatus == GotStatus.Corrupt && fixZip.DatStatus != global::DatStatus.InToSort && !fixZip.DirStatus.HasFixable())
             {
                 ReturnCode moveReturnCode = FixAZipFunctions.MoveZipToCorrupt(fixZip, out errorMessage);
                 if (moveReturnCode != ReturnCode.Good)
@@ -194,21 +194,21 @@ namespace RomVaultCore.FixFile
                             if (!
                                 (
                                     // got the file in the original zip but will be deleting it
-                                    fixZippedFile.DatStatus == DatStatus.NotInDat && fixZippedFile.GotStatus == GotStatus.Got ||
-                                    fixZippedFile.DatStatus == DatStatus.NotInDat && fixZippedFile.GotStatus == GotStatus.Corrupt ||
-                                    fixZippedFile.DatStatus == DatStatus.InDatMerged && fixZippedFile.GotStatus == GotStatus.Got ||
-                                    fixZippedFile.DatStatus == DatStatus.InToSort && fixZippedFile.GotStatus == GotStatus.Got ||
-                                    fixZippedFile.DatStatus == DatStatus.InToSort && fixZippedFile.GotStatus == GotStatus.Corrupt ||
+                                    fixZippedFile.DatStatus == global::DatStatus.NotInDat && fixZippedFile.GotStatus == GotStatus.Got ||
+                                    fixZippedFile.DatStatus == global::DatStatus.NotInDat && fixZippedFile.GotStatus == GotStatus.Corrupt ||
+                                    fixZippedFile.DatStatus == global::DatStatus.InDatMerged && fixZippedFile.GotStatus == GotStatus.Got ||
+                                    fixZippedFile.DatStatus == global::DatStatus.InToSort && fixZippedFile.GotStatus == GotStatus.Got ||
+                                    fixZippedFile.DatStatus == global::DatStatus.InToSort && fixZippedFile.GotStatus == GotStatus.Corrupt ||
 
                                     // do not have this file and cannot fix it here
-                                    fixZippedFile.DatStatus == DatStatus.InDatCollect && fixZippedFile.GotStatus == GotStatus.NotGot ||
-                                    fixZippedFile.DatStatus == DatStatus.InDatMIA && fixZippedFile.GotStatus == GotStatus.NotGot ||
-                                    fixZippedFile.DatStatus == DatStatus.InDatMIA && fixZippedFile.GotStatus == GotStatus.Got ||  // this can happen if an MIA is in a incomplete keep only complete zip, and you have another copy of the MIA rom else where.
-                                    fixZippedFile.DatStatus == DatStatus.InDatNoDump && fixZippedFile.GotStatus == GotStatus.NotGot ||
-                                    fixZippedFile.DatStatus == DatStatus.InDatMerged && fixZippedFile.GotStatus == GotStatus.NotGot ||
+                                    fixZippedFile.DatStatus == global::DatStatus.InDatCollect && fixZippedFile.GotStatus == GotStatus.NotGot ||
+                                    fixZippedFile.DatStatus == global::DatStatus.InDatMIA && fixZippedFile.GotStatus == GotStatus.NotGot ||
+                                    fixZippedFile.DatStatus == global::DatStatus.InDatMIA && fixZippedFile.GotStatus == GotStatus.Got ||  // this can happen if an MIA is in a incomplete keep only complete zip, and you have another copy of the MIA rom else where.
+                                    fixZippedFile.DatStatus == global::DatStatus.InDatNoDump && fixZippedFile.GotStatus == GotStatus.NotGot ||
+                                    fixZippedFile.DatStatus == global::DatStatus.InDatMerged && fixZippedFile.GotStatus == GotStatus.NotGot ||
 
                                      // this is a correct got file in an Incomplete set
-                                     fixZippedFile.DatStatus == DatStatus.InDatCollect && fixZippedFile.GotStatus == GotStatus.Got
+                                     fixZippedFile.DatStatus == global::DatStatus.InDatCollect && fixZippedFile.GotStatus == GotStatus.Got
                                 )
                             )
                             {
@@ -553,7 +553,7 @@ namespace RomVaultCore.FixFile
                     toSortZipOut.ZipFileClose();
 
                     toSortGame.FileModTimeStamp = toSortZipOut.TimeStamp;
-                    toSortGame.DatStatus = DatStatus.InToSort;
+                    toSortGame.DatStatus = global::DatStatus.InToSort;
                     toSortGame.GotStatus = GotStatus.Got;
                     toSortGame.ZipStruct = toSortZipOut.ZipStruct;
 
@@ -578,11 +578,11 @@ namespace RomVaultCore.FixFile
                     toSortCorruptOut.ZipFileClose();
 
                     toSortCorruptGame.FileModTimeStamp = toSortCorruptOut.TimeStamp;
-                    toSortCorruptGame.DatStatus = DatStatus.InToSort;
+                    toSortCorruptGame.DatStatus = global::DatStatus.InToSort;
                     toSortCorruptGame.GotStatus = GotStatus.Got;
 
                     RvFile toSort = DB.GetToSortPrimary();
-                    RvFile corruptDir = new RvFile(FileType.Dir) { Name = "Corrupt", DatStatus = DatStatus.InToSort };
+                    RvFile corruptDir = new RvFile(FileType.Dir) { Name = "Corrupt", DatStatus = global::DatStatus.InToSort };
                     int found = toSort.ChildNameSearch(corruptDir, out int indexCorrupt);
                     if (found != 0)
                     {

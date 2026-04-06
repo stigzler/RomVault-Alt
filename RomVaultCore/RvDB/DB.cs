@@ -33,14 +33,14 @@ namespace RomVaultCore.RvDB
             DirRoot = new RvFile(FileType.Dir)
             {
                 Tree = new RvTreeRow(),
-                DatStatus = DatStatus.InDatCollect
+                DatStatus = global::DatStatus.InDatCollect
             };
 
             RvFile rv = new RvFile(FileType.Dir)
             {
                 Name = "RomVault",
                 Tree = new RvTreeRow(),
-                DatStatus = DatStatus.InDatCollect
+                DatStatus = global::DatStatus.InDatCollect
             };
             DirRoot.ChildAdd(rv);
 
@@ -48,7 +48,7 @@ namespace RomVaultCore.RvDB
             {
                 Name = "ToSort",
                 Tree = new RvTreeRow(),
-                DatStatus = DatStatus.InToSort,
+                DatStatus = global::DatStatus.InToSort,
             };
             ts.ToSortStatusSet(RvFile.ToSortDirType.ToSortPrimary | RvFile.ToSortDirType.ToSortCache);
             DirRoot.ChildAdd(ts);

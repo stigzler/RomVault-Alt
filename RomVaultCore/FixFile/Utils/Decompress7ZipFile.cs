@@ -43,7 +43,7 @@ namespace RomVaultCore.FixFile.Utils
             {
                 Name = db7zFile.Name + ".cache",
                 Parent = cacheDir,
-                DatStatus = DatStatus.InToSort,
+                DatStatus = global::DatStatus.InToSort,
                 GotStatus = GotStatus.Got
             };
 
@@ -166,7 +166,7 @@ namespace RomVaultCore.FixFile.Utils
                 }
 
 
-                outFile.SetDatGotStatus(DatStatus.InToSort, GotStatus.Got);
+                outFile.SetDatGotStatus(global::DatStatus.InToSort, GotStatus.Got);
                 outFile.FileStatusSet(
                     FileStatus.HeaderFileTypeFromHeader |
                     FileStatus.SizeFromHeader | FileStatus.SizeVerified |

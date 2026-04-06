@@ -115,7 +115,7 @@ namespace RomVaultCore.ReadDat
                     Status = rvfile.Status
                 };
 
-                if (rvfile.DatStatus == DatStatus.InDatMIA)
+                if (rvfile.DatStatus == global::DatStatus.InDatMIA)
                 {
                     extFile.MIA = "yes";
                 }

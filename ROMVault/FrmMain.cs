@@ -12,6 +12,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Windows.Forms;
 using RomVaultCore;
+using RomVaultCore.Extensions;
 using RomVaultCore.ReadDat;
 using RomVaultCore.RvDB;
 using RomVaultCore.Scanner;
@@ -379,23 +380,54 @@ namespace ROMVault
             UpdateControls(GameInfoTLP, Properties.Settings.Default.InfoTextColor);
         }
 
-        private List<ToolStripStatusLabel> statusStripKeys = new List<ToolStripStatusLabel>();
+        private List<ToolStripStatusLabel> gamesStatusStripKeys = new List<ToolStripStatusLabel>();
+        private List<ToolStripStatusLabel> datStatusStripKeys = new List<ToolStripStatusLabel>();
 
         internal void InitialiseStatusStrip()
         {
-            int i = 0;
+            MainSS.Font = this.Font;
+
+            int i = 2;
+
+            // Add Game Status Icons to StatusStrip.
+            foreach (KeyValuePair<DatTreeStatus, string> kvp in Constants.UI.DatTreeStatusText)
+            {
+                DatTreeStatus datTreeStatus = kvp.Key;
+
+                ToolStripStatusLabel lbl = new ToolStripStatusLabel
+                {
+                    Text = kvp.Key.ToString(),
+                    Image = rvImages.GetBitmap(datTreeStatus.GetMetadata().ImageName),
+                    ToolTipText = kvp.Value,
+                    Padding = new Padding(0, 0, 2, 0),
+                    DisplayStyle = ToolStripItemDisplayStyle.Image
+                };
+                lbl.MouseHover += Lbl_MouseHover;
+                lbl.MouseLeave += Lbl_MouseLeave;
+                //MainSS.Items.Add(lbl);
+                MainSS.Items.Insert(i, lbl);
+                datStatusStripKeys.Add(lbl);
+                i++;
+            }
+
+            i += 2; // this essentially skips the pre existing game category icon and prefixing separator in the statusbar
+
+            // Add Game Status Icons to StatusStrip starting at position 2 (skips the i icon and the db icon at the bottom).
             foreach (KeyValuePair<RepStatus, string> kvp in Constants.UI.RepStatusText)
             {
                 ToolStripStatusLabel lbl = new ToolStripStatusLabel
                 {
                     Text = kvp.Key.ToString(),
                     Image = rvImages.GetBitmap("G_" + kvp.Key),
-                    ToolTipText = kvp.Value
+                    ToolTipText = kvp.Value,
+                    Padding = new Padding(0, 0, 2, 0),
+                    DisplayStyle = ToolStripItemDisplayStyle.Image
                 };
                 lbl.MouseHover += Lbl_MouseHover;
                 lbl.MouseLeave += Lbl_MouseLeave;
-                MainSS.Items.Add(lbl);
-                statusStripKeys.Add(lbl);
+                //MainSS.Items.Add(lbl);
+                MainSS.Items.Insert(i, lbl);
+                gamesStatusStripKeys.Add(lbl);
                 i++;
             }
         }
@@ -1596,20 +1628,54 @@ namespace ROMVault
         /// <param name="e"></param>
         private void ToggleStatusTextBT_Click(object sender, EventArgs e)
         {
-            if (statusStripKeys.First().DisplayStyle == ToolStripItemDisplayStyle.Image)
+            ToggleGameStatusIconText();
+            ToggleDatStatusIconText();
+        }
+
+        private void ToggleGameStatusIconText()
+        {
+            if (gamesStatusStripKeys.First().DisplayStyle == ToolStripItemDisplayStyle.Image)
             {
-                foreach (ToolStripStatusLabel status in statusStripKeys)
+                foreach (ToolStripStatusLabel status in gamesStatusStripKeys)
                 {
                     status.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 }
             }
             else
             {
-                foreach (ToolStripStatusLabel status in statusStripKeys)
+                foreach (ToolStripStatusLabel status in gamesStatusStripKeys)
                 {
                     status.DisplayStyle = ToolStripItemDisplayStyle.Image;
                 }
             }
+        }
+
+        private void ToggleDatStatusIconText()
+        {
+            if (datStatusStripKeys.First().DisplayStyle == ToolStripItemDisplayStyle.Image)
+            {
+                foreach (ToolStripStatusLabel status in datStatusStripKeys)
+                {
+                    status.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                }
+            }
+            else
+            {
+                foreach (ToolStripStatusLabel status in datStatusStripKeys)
+                {
+                    status.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                }
+            }
+        }
+
+        private void ToggleGamesKeyTextBT_Click(object sender, EventArgs e)
+        {
+            ToggleGameStatusIconText();
+        }
+
+        private void ToggleDatKeyTextBT_Click(object sender, EventArgs e)
+        {
+            ToggleDatStatusIconText();
         }
     }
 }

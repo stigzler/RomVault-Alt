@@ -21,7 +21,7 @@ namespace RomVaultCore.FixFile
                 return ReturnCode.RescanNeeded;
             }
 
-            ZipStructure newFileStruct = (fixZip.DatStatus == DatStatus.NotInDat || fixZip.DatStatus == DatStatus.InToSort)
+            ZipStructure newFileStruct = (fixZip.DatStatus == global::DatStatus.NotInDat || fixZip.DatStatus == global::DatStatus.InToSort)
                                           ? fixZip.ZipStruct
                                           : fixZip.ZipDatStruct;
 
@@ -121,7 +121,7 @@ namespace RomVaultCore.FixFile
             }
 
             RvFile toSort = DB.GetToSortPrimary();
-            RvFile corruptDirNew = new RvFile(FileType.Dir) { Name = "Corrupt", DatStatus = DatStatus.InToSort };
+            RvFile corruptDirNew = new RvFile(FileType.Dir) { Name = "Corrupt", DatStatus = global::DatStatus.InToSort };
             int found = toSort.ChildNameSearch(corruptDirNew, out int indexcorrupt);
             if (found != 0)
             {
@@ -154,7 +154,7 @@ namespace RomVaultCore.FixFile
             RvFile toSortCorruptGame = new RvFile(FileType.Zip)
             {
                 Name = toSortFileName,
-                DatStatus = DatStatus.InToSort,
+                DatStatus = global::DatStatus.InToSort,
                 FileModTimeStamp = toSortCorruptFile.LastWriteTime,
                 GotStatus = GotStatus.Corrupt
             };

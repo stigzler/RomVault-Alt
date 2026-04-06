@@ -30,5 +30,18 @@ namespace ROMVault.Constants
             { RepStatus.Corrupt, "Red - This file is corrupt." },
             { RepStatus.UnScanned, "Blue - The file could not be scanned.\nThe file could be locked or have\nincompatible permissions." }
         };
+
+        internal static Dictionary<RomVaultCore.DatTreeStatus, string> DatTreeStatusText = new Dictionary<RomVaultCore.DatTreeStatus, string>
+        {
+            { RomVaultCore.DatTreeStatus.DirComplete, "No ROMs are missing from any DATs\nin the branch. Also used to signify\nan empty ToSort directory." },
+            { RomVaultCore.DatTreeStatus.DirCompleteNoMia, "No ROMs are missing from any DATs\nin the branch, except for MIA ROMs." },
+            { RomVaultCore.DatTreeStatus.DirIncomplete, "Some ROMs missing from DATs in the\nbranch." },
+            { RomVaultCore.DatTreeStatus.DirNone, "All ROMs are missing from DATs in\nthe branch. Also used to signify a\nToSort directory that only contains\ncorrupt files." },
+            { RomVaultCore.DatTreeStatus.DirToSort, "ToSort directory with files present." },
+            { RomVaultCore.DatTreeStatus.DatComplete, "No ROMs are missing for this DAT\nfile." },
+            { RomVaultCore.DatTreeStatus.DatCompleteNoMia, "No ROMs are missing for this DAT\nfile, except for MIA ROMs." },
+            { RomVaultCore.DatTreeStatus.DatIncomplete, "Some ROMs are missing for this DAT\nfile." },
+            { RomVaultCore.DatTreeStatus.DatNone, "All ROMs are missing for this DAT\nfile." }
+        };
     }
 }

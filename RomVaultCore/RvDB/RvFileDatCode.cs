@@ -46,7 +46,7 @@ namespace RomVaultCore.RvDB
             {
                 Name = dirName,
                 Tree = new RvTreeRow(),
-                DatStatus = DatStatus.InDatCollect
+                DatStatus = global::DatStatus.InDatCollect
             };
             ChildAdd(tDir, index);
             return tDir;
@@ -226,7 +226,7 @@ namespace RomVaultCore.RvDB
                 Name = FileName;
                 FileName = null;
             }
-            DatStatus = DatStatus.NotInDat;
+            DatStatus = global::DatStatus.NotInDat;
 #if dt
             DatModTimeStamp = null;
 #endif

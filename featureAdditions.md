@@ -11,4 +11,5 @@
 
 06.04.26:
 - Added prompt to Games/Rom filter textbox
+- Added status-bar key for Dat Tree icons.
 - 

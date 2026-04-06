@@ -152,7 +152,7 @@ namespace RomVaultCore.FixFile
                 Size = fixFile.Size,
                 CRC = fixFile.CRC,
                 //TimeStamp = toSortFile.LastWriteTime,
-                DatStatus = DatStatus.InToSort
+                DatStatus = global::DatStatus.InToSort
             };
 
 
@@ -202,7 +202,7 @@ namespace RomVaultCore.FixFile
                 Size = fixFile.Size,
                 CRC = fixFile.CRC,
                 //TimeStamp = toSortFile.LastWriteTime,
-                DatStatus = DatStatus.InToSort
+                DatStatus = global::DatStatus.InToSort
             };
 
             string fixFileFullName = fixFile.FullNameCase;
@@ -220,7 +220,7 @@ namespace RomVaultCore.FixFile
             }
 
             RvFile toSort = DB.GetToSortPrimary();
-            RvFile rvCorruptDir = new RvFile(FileType.Dir) { Name = "Corrupt", DatStatus = DatStatus.InToSort };
+            RvFile rvCorruptDir = new RvFile(FileType.Dir) { Name = "Corrupt", DatStatus = global::DatStatus.InToSort };
             int found = toSort.ChildNameSearch(rvCorruptDir, out int indexCorrupt);
             if (found != 0)
             {
@@ -273,7 +273,7 @@ namespace RomVaultCore.FixFile
                         continue;
                     }
 
-                    if (testChild.DatStatus != DatStatus.NotInDat)
+                    if (testChild.DatStatus != global::DatStatus.NotInDat)
                     {
                         ReportError.Show("Trying to fix a file that already exists " + fileName);
                         return ReturnCode.LogicError;

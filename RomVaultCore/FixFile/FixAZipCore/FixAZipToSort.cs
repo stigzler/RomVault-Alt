@@ -41,7 +41,7 @@ namespace RomVaultCore.FixFile.FixAZipCore
                 {
                     Parent = outDir,
                     Name = toSortFileName,
-                    DatStatus = DatStatus.InToSort,
+                    DatStatus = global::DatStatus.InToSort,
                     GotStatus = GotStatus.Got,
                     ZipStruct = newFileStruct
                 };
@@ -53,7 +53,7 @@ namespace RomVaultCore.FixFile.FixAZipCore
             RvFile toSortRom = new RvFile(fixZippedFile.FileType);
             fixZippedFile.CopyTo(toSortRom);
             toSortRom.Dat = null;
-            toSortRom.SetDatGotStatus(DatStatus.InToSort, GotStatus.Got);
+            toSortRom.SetDatGotStatus(global::DatStatus.InToSort, GotStatus.Got);
 
             ReturnCode returnCode;
 

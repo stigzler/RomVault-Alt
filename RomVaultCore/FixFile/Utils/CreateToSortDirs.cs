@@ -47,7 +47,7 @@ namespace RomVaultCore.FixFile.Utils
                 RvFile tDir = new RvFile(FileType.Dir)
                 {
                     Name = thisDir.Name,
-                    DatStatus = DatStatus.InToSort
+                    DatStatus = global::DatStatus.InToSort
                 };
                 int found = baseDir.ChildNameSearch(tDir, out int index);
                 if (found == 0)
@@ -64,7 +64,7 @@ namespace RomVaultCore.FixFile.Utils
                 {
                     Directory.CreateDirectory(fullpath);
                     DirectoryInfo di = new DirectoryInfo(fullpath);
-                    tDir.SetDatGotStatus(DatStatus.InToSort, GotStatus.Got);
+                    tDir.SetDatGotStatus(global::DatStatus.InToSort, GotStatus.Got);
                     tDir.FileModTimeStamp = di.LastWriteTime;
                 }
 

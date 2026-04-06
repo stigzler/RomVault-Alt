@@ -205,6 +205,9 @@ namespace ROMVault
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.MainSS = new System.Windows.Forms.StatusStrip();
             this.ToggleStatusTextBT = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToggleDatKeyLB = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToggleGameKeyLB = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -281,7 +284,7 @@ namespace ROMVault
             // splitToolBarMain.Panel2
             // 
             this.splitToolBarMain.Panel2.Controls.Add(this.splitDatInfoGameInfo);
-            this.splitToolBarMain.Size = new System.Drawing.Size(1430, 926);
+            this.splitToolBarMain.Size = new System.Drawing.Size(1430, 918);
             this.splitToolBarMain.SplitterDistance = 144;
             this.splitToolBarMain.TabIndex = 5;
             this.splitToolBarMain.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitToolBarMain_SplitterMoving);
@@ -307,7 +310,7 @@ namespace ROMVault
             this.flexiLabel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flexiLabel3.Font = new System.Drawing.Font("Segoe UI", 11.7F, System.Drawing.FontStyle.Bold);
             this.flexiLabel3.FontStyle = System.Drawing.FontStyle.Bold;
-            this.flexiLabel3.Location = new System.Drawing.Point(4, 777);
+            this.flexiLabel3.Location = new System.Drawing.Point(4, 769);
             this.flexiLabel3.Name = "flexiLabel3";
             this.flexiLabel3.ScaleFactor = 1.2D;
             this.flexiLabel3.Size = new System.Drawing.Size(46, 21);
@@ -322,7 +325,7 @@ namespace ROMVault
             this.flowLayoutPanel1.Controls.Add(this.btnDefault3);
             this.flowLayoutPanel1.Controls.Add(this.btnDefault4);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 798);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 790);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(136, 124);
@@ -583,7 +586,7 @@ namespace ROMVault
             this.splitDatInfoGameInfo.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitDatInfoGameInfo.Panel2.Controls.Add(this.splitGameInfoLists);
             this.splitDatInfoGameInfo.Panel2.Padding = new System.Windows.Forms.Padding(4);
-            this.splitDatInfoGameInfo.Size = new System.Drawing.Size(1282, 926);
+            this.splitDatInfoGameInfo.Size = new System.Drawing.Size(1282, 918);
             this.splitDatInfoGameInfo.SplitterDistance = 478;
             this.splitDatInfoGameInfo.TabIndex = 0;
             // 
@@ -596,7 +599,7 @@ namespace ROMVault
             this.DatINfoTlpPN.Location = new System.Drawing.Point(0, 0);
             this.DatINfoTlpPN.Name = "DatINfoTlpPN";
             this.DatINfoTlpPN.Padding = new System.Windows.Forms.Padding(4);
-            this.DatINfoTlpPN.Size = new System.Drawing.Size(478, 926);
+            this.DatINfoTlpPN.Size = new System.Drawing.Size(478, 918);
             this.DatINfoTlpPN.TabIndex = 4;
             // 
             // ctrRvTree
@@ -605,7 +608,7 @@ namespace ROMVault
             this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrRvTree.Location = new System.Drawing.Point(4, 257);
             this.ctrRvTree.Name = "ctrRvTree";
-            this.ctrRvTree.Size = new System.Drawing.Size(468, 663);
+            this.ctrRvTree.Size = new System.Drawing.Size(468, 655);
             this.ctrRvTree.TabIndex = 2;
             this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
             this.ctrRvTree.RvChecked += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvChecked);
@@ -983,8 +986,8 @@ namespace ROMVault
             // splitGameInfoLists.Panel2
             // 
             this.splitGameInfoLists.Panel2.Controls.Add(this.splitListArt);
-            this.splitGameInfoLists.Size = new System.Drawing.Size(792, 918);
-            this.splitGameInfoLists.SplitterDistance = 440;
+            this.splitGameInfoLists.Size = new System.Drawing.Size(792, 910);
+            this.splitGameInfoLists.SplitterDistance = 436;
             this.splitGameInfoLists.TabIndex = 0;
             // 
             // GameInfoWrapperPanel
@@ -996,7 +999,7 @@ namespace ROMVault
             this.GameInfoWrapperPanel.Location = new System.Drawing.Point(0, 0);
             this.GameInfoWrapperPanel.Name = "GameInfoWrapperPanel";
             this.GameInfoWrapperPanel.Padding = new System.Windows.Forms.Padding(4);
-            this.GameInfoWrapperPanel.Size = new System.Drawing.Size(596, 440);
+            this.GameInfoWrapperPanel.Size = new System.Drawing.Size(596, 436);
             this.GameInfoWrapperPanel.TabIndex = 0;
             // 
             // GameInfoTLP
@@ -1509,7 +1512,7 @@ namespace ROMVault
             this.GameDetailsRhsFLP.Location = new System.Drawing.Point(596, 0);
             this.GameDetailsRhsFLP.Name = "GameDetailsRhsFLP";
             this.GameDetailsRhsFLP.Padding = new System.Windows.Forms.Padding(4);
-            this.GameDetailsRhsFLP.Size = new System.Drawing.Size(196, 440);
+            this.GameDetailsRhsFLP.Size = new System.Drawing.Size(196, 436);
             this.GameDetailsRhsFLP.TabIndex = 21;
             // 
             // chkBoxShowComplete
@@ -1651,7 +1654,7 @@ namespace ROMVault
             // splitListArt.Panel2
             // 
             this.splitListArt.Panel2.Controls.Add(this.TabEmuArc);
-            this.splitListArt.Size = new System.Drawing.Size(792, 474);
+            this.splitListArt.Size = new System.Drawing.Size(792, 470);
             this.splitListArt.SplitterDistance = 612;
             this.splitListArt.TabIndex = 1;
             // 
@@ -1669,8 +1672,8 @@ namespace ROMVault
             // splitGameListRomList.Panel2
             // 
             this.splitGameListRomList.Panel2.Controls.Add(this.RomGrid);
-            this.splitGameListRomList.Size = new System.Drawing.Size(612, 474);
-            this.splitGameListRomList.SplitterDistance = 132;
+            this.splitGameListRomList.Size = new System.Drawing.Size(612, 470);
+            this.splitGameListRomList.SplitterDistance = 130;
             this.splitGameListRomList.TabIndex = 0;
             // 
             // GameGrid
@@ -1701,7 +1704,7 @@ namespace ROMVault
             this.GameGrid.ShowCellToolTips = false;
             this.GameGrid.ShowEditingIcon = false;
             this.GameGrid.ShowRowErrors = false;
-            this.GameGrid.Size = new System.Drawing.Size(612, 132);
+            this.GameGrid.Size = new System.Drawing.Size(612, 130);
             this.GameGrid.TabIndex = 4;
             this.GameGrid.VirtualMode = true;
             this.GameGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GameGrid_CellContentClick);
@@ -1798,7 +1801,7 @@ namespace ROMVault
             this.RomGrid.ShowCellErrors = false;
             this.RomGrid.ShowEditingIcon = false;
             this.RomGrid.ShowRowErrors = false;
-            this.RomGrid.Size = new System.Drawing.Size(612, 338);
+            this.RomGrid.Size = new System.Drawing.Size(612, 336);
             this.RomGrid.TabIndex = 21;
             this.RomGrid.VirtualMode = true;
             this.RomGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.RomGridCellFormatting);
@@ -1959,7 +1962,7 @@ namespace ROMVault
             this.TabEmuArc.Location = new System.Drawing.Point(0, 0);
             this.TabEmuArc.Name = "TabEmuArc";
             this.TabEmuArc.SelectedIndex = 0;
-            this.TabEmuArc.Size = new System.Drawing.Size(176, 474);
+            this.TabEmuArc.Size = new System.Drawing.Size(176, 470);
             this.TabEmuArc.TabIndex = 0;
             // 
             // tabArtWork
@@ -1970,7 +1973,7 @@ namespace ROMVault
             this.tabArtWork.Location = new System.Drawing.Point(4, 22);
             this.tabArtWork.Name = "tabArtWork";
             this.tabArtWork.Padding = new System.Windows.Forms.Padding(3);
-            this.tabArtWork.Size = new System.Drawing.Size(168, 448);
+            this.tabArtWork.Size = new System.Drawing.Size(168, 444);
             this.tabArtWork.TabIndex = 0;
             this.tabArtWork.Text = "ArtWork";
             this.tabArtWork.Resize += new System.EventHandler(this.tabArtWork_Resize);
@@ -2005,7 +2008,7 @@ namespace ROMVault
             this.tabMedium.Location = new System.Drawing.Point(4, 22);
             this.tabMedium.Name = "tabMedium";
             this.tabMedium.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMedium.Size = new System.Drawing.Size(168, 448);
+            this.tabMedium.Size = new System.Drawing.Size(168, 444);
             this.tabMedium.TabIndex = 3;
             this.tabMedium.Text = "Medium";
             this.tabMedium.Resize += new System.EventHandler(this.tabMedium_Resize);
@@ -2040,7 +2043,7 @@ namespace ROMVault
             this.tabScreens.Location = new System.Drawing.Point(4, 22);
             this.tabScreens.Name = "tabScreens";
             this.tabScreens.Padding = new System.Windows.Forms.Padding(3);
-            this.tabScreens.Size = new System.Drawing.Size(168, 448);
+            this.tabScreens.Size = new System.Drawing.Size(168, 444);
             this.tabScreens.TabIndex = 1;
             this.tabScreens.Text = "Screens";
             this.tabScreens.Resize += new System.EventHandler(this.tabScreens_Resize);
@@ -2073,7 +2076,7 @@ namespace ROMVault
             this.tabInfo.Controls.Add(this.txtInfo);
             this.tabInfo.Location = new System.Drawing.Point(4, 22);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Size = new System.Drawing.Size(168, 448);
+            this.tabInfo.Size = new System.Drawing.Size(168, 444);
             this.tabInfo.TabIndex = 2;
             this.tabInfo.Text = "Info";
             this.tabInfo.Resize += new System.EventHandler(this.tabInfo_Resize);
@@ -2087,7 +2090,7 @@ namespace ROMVault
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
             this.txtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtInfo.Size = new System.Drawing.Size(168, 448);
+            this.txtInfo.Size = new System.Drawing.Size(168, 444);
             this.txtInfo.TabIndex = 0;
             this.txtInfo.WordWrap = false;
             // 
@@ -2097,7 +2100,7 @@ namespace ROMVault
             this.tabInfo2.Controls.Add(this.txtInfo2);
             this.tabInfo2.Location = new System.Drawing.Point(4, 22);
             this.tabInfo2.Name = "tabInfo2";
-            this.tabInfo2.Size = new System.Drawing.Size(168, 448);
+            this.tabInfo2.Size = new System.Drawing.Size(168, 444);
             this.tabInfo2.TabIndex = 4;
             this.tabInfo2.Text = "Info2";
             // 
@@ -2109,7 +2112,7 @@ namespace ROMVault
             this.txtInfo2.Multiline = true;
             this.txtInfo2.Name = "txtInfo2";
             this.txtInfo2.ReadOnly = true;
-            this.txtInfo2.Size = new System.Drawing.Size(168, 448);
+            this.txtInfo2.Size = new System.Drawing.Size(168, 444);
             this.txtInfo2.TabIndex = 2;
             this.txtInfo2.WordWrap = false;
             // 
@@ -2381,22 +2384,50 @@ namespace ROMVault
             // MainSS
             // 
             this.MainSS.AllowItemReorder = true;
+            this.MainSS.AutoSize = false;
+            this.MainSS.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainSS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToggleStatusTextBT});
-            this.MainSS.Location = new System.Drawing.Point(0, 950);
+            this.ToggleStatusTextBT,
+            this.ToggleDatKeyLB,
+            this.toolStripStatusLabel1,
+            this.ToggleGameKeyLB});
+            this.MainSS.Location = new System.Drawing.Point(0, 942);
             this.MainSS.Name = "MainSS";
-            this.MainSS.Size = new System.Drawing.Size(1430, 22);
+            this.MainSS.Size = new System.Drawing.Size(1430, 30);
             this.MainSS.TabIndex = 7;
             this.MainSS.Text = "statusStrip1";
             // 
             // ToggleStatusTextBT
             // 
-            this.ToggleStatusTextBT.Image = global::ROMVault.Properties.Resources.information_frame;
+            this.ToggleStatusTextBT.Image = global::ROMVault.Properties.Resources.ui_text_field_password;
+            this.ToggleStatusTextBT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 2);
             this.ToggleStatusTextBT.Name = "ToggleStatusTextBT";
-            this.ToggleStatusTextBT.Size = new System.Drawing.Size(29, 17);
-            this.ToggleStatusTextBT.Text = " |";
+            this.ToggleStatusTextBT.Size = new System.Drawing.Size(16, 25);
             this.ToggleStatusTextBT.ToolTipText = "Toggle Status Icon Titles";
             this.ToggleStatusTextBT.Click += new System.EventHandler(this.ToggleStatusTextBT_Click);
+            // 
+            // ToggleDatKeyLB
+            // 
+            this.ToggleDatKeyLB.Image = global::ROMVault.Properties.Resources.database;
+            this.ToggleDatKeyLB.Name = "ToggleDatKeyLB";
+            this.ToggleDatKeyLB.Size = new System.Drawing.Size(27, 25);
+            this.ToggleDatKeyLB.Text = ":";
+            this.ToggleDatKeyLB.Click += new System.EventHandler(this.ToggleDatKeyTextBT_Click);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(12, 25);
+            this.toolStripStatusLabel1.Text = " ";
+            // 
+            // ToggleGameKeyLB
+            // 
+            this.ToggleGameKeyLB.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToggleGameKeyLB.Image = global::ROMVault.Properties.Resources.board_game_go;
+            this.ToggleGameKeyLB.Name = "ToggleGameKeyLB";
+            this.ToggleGameKeyLB.Size = new System.Drawing.Size(27, 25);
+            this.ToggleGameKeyLB.Text = ":";
+            this.ToggleGameKeyLB.Click += new System.EventHandler(this.ToggleGamesKeyTextBT_Click);
             // 
             // FrmMain
             // 
@@ -2660,6 +2691,9 @@ namespace ROMVault
         private UserControls.FlexiLabel flexiLabel3;
         private Button HideNavBT;
         private ToolStripStatusLabel ToggleStatusTextBT;
+        private ToolStripStatusLabel ToggleGameKeyLB;
+        private ToolStripStatusLabel ToggleDatKeyLB;
+        private ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

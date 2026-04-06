@@ -263,7 +263,7 @@ namespace RomVaultCore.ReadDat
                 return EFile.Delete;
 
             // remove all DATStatus's here they will get set back correctly when adding dats back in below.
-            dbDir.DatStatus = DatStatus.NotInDat;
+            dbDir.DatStatus = global::DatStatus.NotInDat;
 
             for (int i = 0; i < tDir.ChildCount; i++)
             {
@@ -296,7 +296,7 @@ namespace RomVaultCore.ReadDat
             int dbDirIndex = 0;
             int datDirIndex = 0;
 
-            dbDir.DatStatus = DatStatus.InDatCollect;
+            dbDir.DatStatus = global::DatStatus.InDatCollect;
 
             // if everything else is correct, I don't think this check is needed.
             if (dbDir.Tree == null)
@@ -337,7 +337,7 @@ namespace RomVaultCore.ReadDat
                 {
                     case 0:
                         // found a matching directory in DatRoot So recurse back into it
-                        if (dbChild.DatStatus == DatStatus.InDatCollect)
+                        if (dbChild.DatStatus == global::DatStatus.InDatCollect)
                         {
                             ReportError.Show($"DAT directory conflict: An auto-created virtual directory is using the same name as a real directory. Resolve the conflict and refresh DATs:\n\n{dbChild.DatTreeFullName}");
                         }
@@ -578,7 +578,7 @@ namespace RomVaultCore.ReadDat
 
                     for (int indexdb = 0; indexdb < dbDatsCount; indexdb++)
                     {
-                        if (dbDats[indexdb].DatStatus == DatStatus.NotInDat)
+                        if (dbDats[indexdb].DatStatus == global::DatStatus.NotInDat)
                         {
                             continue;
                         }
@@ -691,7 +691,7 @@ namespace RomVaultCore.ReadDat
                 return;
             }
 
-            if (dbDir.DatStatus == DatStatus.NotInDat && dbDir.Tree != null)
+            if (dbDir.DatStatus == global::DatStatus.NotInDat && dbDir.Tree != null)
             {
                 dbDir.Tree = null;
             }

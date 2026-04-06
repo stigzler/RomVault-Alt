@@ -10,7 +10,7 @@ namespace RomVaultCore.FixFile.FixAZipCore
     {
         public static ReturnCode MoveToCorrupt(RvFile fixZip, RvFile fixZippedFile, ref RvFile toSortCorruptGame, ref ICompress toSortCorruptOut, int iRom)
         {
-            if (!((fixZippedFile.DatStatus == DatStatus.InDatCollect || fixZippedFile.DatStatus == DatStatus.NotInDat || fixZippedFile.DatStatus == DatStatus.InDatMIA) && fixZippedFile.GotStatus == GotStatus.Corrupt))
+            if (!((fixZippedFile.DatStatus == global::DatStatus.InDatCollect || fixZippedFile.DatStatus == global::DatStatus.NotInDat || fixZippedFile.DatStatus == global::DatStatus.InDatMIA) && fixZippedFile.GotStatus == GotStatus.Corrupt))
             {
                 ReportError.SendAndShow("Error in Fix Rom Status " + fixZippedFile.RepStatus + " : " + fixZippedFile.DatStatus + " : " + fixZippedFile.GotStatus);
             }
@@ -48,7 +48,7 @@ namespace RomVaultCore.FixFile.FixAZipCore
                 toSortCorruptGame = new RvFile(FileType.Zip)
                 {
                     Name = toSortFileName,
-                    DatStatus = DatStatus.InToSort,
+                    DatStatus = global::DatStatus.InToSort,
                     GotStatus = GotStatus.Got
                 };
             }
@@ -64,7 +64,7 @@ namespace RomVaultCore.FixFile.FixAZipCore
                 Size = fixZippedFile.Size,
                 CRC = fixZippedFile.CRC
             };
-            toSortCorruptRom.SetDatGotStatus(DatStatus.InToSort, GotStatus.Corrupt);
+            toSortCorruptRom.SetDatGotStatus(global::DatStatus.InToSort, GotStatus.Corrupt);
             toSortCorruptGame.ChildAdd(toSortCorruptRom);
 
             if (toSortCorruptOut == null)

@@ -46,7 +46,7 @@ namespace RomVaultCore.RvDB
         public HeaderFileType HeaderFileTypeSet { set { _headerFileType = value; } }
 
         public readonly FileType FileType;
-        private DatStatus _datStatus = DatStatus.NotInDat;
+        private global::DatStatus _datStatus = global::DatStatus.NotInDat;
         private GotStatus _gotStatus = GotStatus.NotGot;
         private RepStatus _repStatus = RepStatus.UnSet;
 
@@ -67,7 +67,7 @@ namespace RomVaultCore.RvDB
 
         public ZipStructure ZipStruct; // Structure of Zip Found as a file
 
-        public ZipStructure newZipStruct => (DatStatus == DatStatus.NotInDat || DatStatus == DatStatus.InToSort)
+        public ZipStructure newZipStruct => (DatStatus == global::DatStatus.NotInDat || DatStatus == global::DatStatus.InToSort)
                                                 ? ZipStruct : ZipDatStruct;
 
         public RvTreeRow Tree; // TreeRow for UI
@@ -267,7 +267,7 @@ namespace RomVaultCore.RvDB
             return Settings.rvSettings.DatRoot;
         }
 
-        public bool IsInToSort => DatStatus == DatStatus.InToSort;
+        public bool IsInToSort => DatStatus == global::DatStatus.InToSort;
 
         public static RvTreeRow.TreeSelect treeType(RvFile tfile)
         {
@@ -281,7 +281,7 @@ namespace RomVaultCore.RvDB
             return treeType(tfile.Parent);
         }
 
-        public DatStatus DatStatus
+        public global::DatStatus DatStatus
         {
             set
             {
@@ -297,7 +297,7 @@ namespace RomVaultCore.RvDB
             get => _gotStatus;
             set
             {
-                if (DatStatus == DatStatus.InDatMIA && value == GotStatus.Got)
+                if (DatStatus == global::DatStatus.InDatMIA && value == GotStatus.Got)
                 {
                     Debug.WriteLine("GotMIA");
                 }
@@ -507,9 +507,9 @@ namespace RomVaultCore.RvDB
             }
 
             // 2024/08/03 - any item in ToSort should have a datStatus of InToSort
-            _datStatus = (DatStatus)br.ReadByte();
-            if (parent != null && parent._datStatus == DatStatus.InToSort)
-                _datStatus = DatStatus.InToSort;
+            _datStatus = (global::DatStatus)br.ReadByte();
+            if (parent != null && parent._datStatus == global::DatStatus.InToSort)
+                _datStatus = global::DatStatus.InToSort;
 
             _gotStatus = (GotStatus)br.ReadByte();
             RepStatusReset();
@@ -518,7 +518,7 @@ namespace RomVaultCore.RvDB
             {
                 if (DBVersion.VersionNow < 3)
                 {
-                    if (DatStatus == DatStatus.InDatCollect)
+                    if (DatStatus == global::DatStatus.InDatCollect)
                     {
                         switch (FileType)
                         {
@@ -546,7 +546,7 @@ namespace RomVaultCore.RvDB
                     ZipStruct = ZipStructure.SevenZipSLZMA;
 
                 // 2023-02-06 : Added to fix unknown bug in cache format coming from old versions
-                if (FileType == FileType.SevenZip && DatStatus == DatStatus.InDatCollect && ZipDatStruct == ZipStructure.ZipTrrnt)
+                if (FileType == FileType.SevenZip && DatStatus == global::DatStatus.InDatCollect && ZipDatStruct == ZipStructure.ZipTrrnt)
                     SetZipDatStruct(ZipStructure.SevenZipSLZMA, true);
             }
 
@@ -601,13 +601,13 @@ namespace RomVaultCore.RvDB
             for (int i = 0; i < count; i++)
             {
                 if (baseDir && i > 0)
-                    _datStatus = DatStatus.InToSort;
+                    _datStatus = global::DatStatus.InToSort;
 
                 RvFile tChild = new RvFile(br, parentDirDats, this);
                 _children?.Add(tChild);
             }
             if (baseDir)
-                _datStatus = DatStatus.InDatCollect;
+                _datStatus = global::DatStatus.InDatCollect;
 
             /************* RvFile ************/
 
@@ -676,7 +676,7 @@ namespace RomVaultCore.RvDB
             c.RepStatus = RepStatus;
             c.FileGroup = FileGroup;
 
-            if (c._datStatus == DatStatus.InDatMIA && c._gotStatus == GotStatus.Got)
+            if (c._datStatus == global::DatStatus.InDatMIA && c._gotStatus == GotStatus.Got)
             {
                 Debug.WriteLine("Found MIA");
             }
@@ -693,11 +693,11 @@ namespace RomVaultCore.RvDB
             return Path.Combine(Parent.FileNameInsideGame(), Name);
         }
 
-        public void SetDatGotStatus(DatStatus dt, GotStatus flag)
+        public void SetDatGotStatus(global::DatStatus dt, GotStatus flag)
         {
             _datStatus = dt;
             _gotStatus = flag;
-            if (_datStatus == DatStatus.InDatMIA && _gotStatus == GotStatus.Got)
+            if (_datStatus == global::DatStatus.InDatMIA && _gotStatus == GotStatus.Got)
             {
             }
             RepStatusReset();
@@ -707,7 +707,7 @@ namespace RomVaultCore.RvDB
         {
             SearchFound = false;
             if (Parent != null && (RepStatus == RepStatus.UnSet || RepStatus == RepStatus.Unknown || RepStatus == RepStatus.Ignore) &&
-                FileType == FileType.File && GotStatus == GotStatus.Got && DatStatus == DatStatus.NotInDat)
+                FileType == FileType.File && GotStatus == GotStatus.Got && DatStatus == global::DatStatus.NotInDat)
             {
                 DatRule datRule = ReadDat.DatReader.FindDatRule(DatTreeFullName);
                 List<Regex> regexList = datRule != null ? datRule.IgnoreFilesRegex : Settings.rvSettings.IgnoreFilesRegex;
@@ -882,7 +882,7 @@ namespace RomVaultCore.RvDB
             fileZero.SHA1 = VarFix.CleanMD5SHA1("da39a3ee5e6b4b0d3255bfef95601890afd80709", 40);
 
             fileZero.GotStatus = GotStatus.Got;
-            fileZero.DatStatus = DatStatus.InToSort;
+            fileZero.DatStatus = global::DatStatus.InToSort;
             return fileZero;
         }
 

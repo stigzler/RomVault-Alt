@@ -27,18 +27,18 @@ namespace RomVaultCore.FixFile.FixAZipCore
             if (copyOriginal)
             {
                 if (!(
-                fixZippedFile.DatStatus == DatStatus.InDatCollect && fixZippedFile.GotStatus == GotStatus.Got ||
-                fixZippedFile.DatStatus == DatStatus.InDatMIA && fixZippedFile.GotStatus == GotStatus.Got ||
-                fixZippedFile.DatStatus == DatStatus.InDatMerged && fixZippedFile.GotStatus == GotStatus.Got ||
-                fixZippedFile.DatStatus == DatStatus.NotInDat && fixZippedFile.GotStatus == GotStatus.Got ||
-                fixZippedFile.DatStatus == DatStatus.InToSort && fixZippedFile.GotStatus == GotStatus.Got ||
-                fixZippedFile.DatStatus == DatStatus.InToSort && fixZippedFile.GotStatus == GotStatus.Corrupt))
+                fixZippedFile.DatStatus == global::DatStatus.InDatCollect && fixZippedFile.GotStatus == GotStatus.Got ||
+                fixZippedFile.DatStatus == global::DatStatus.InDatMIA && fixZippedFile.GotStatus == GotStatus.Got ||
+                fixZippedFile.DatStatus == global::DatStatus.InDatMerged && fixZippedFile.GotStatus == GotStatus.Got ||
+                fixZippedFile.DatStatus == global::DatStatus.NotInDat && fixZippedFile.GotStatus == GotStatus.Got ||
+                fixZippedFile.DatStatus == global::DatStatus.InToSort && fixZippedFile.GotStatus == GotStatus.Got ||
+                fixZippedFile.DatStatus == global::DatStatus.InToSort && fixZippedFile.GotStatus == GotStatus.Corrupt))
                 { ReportError.SendAndShow("Error in Fix Rom Status " + fixZippedFile.RepStatus + " : " + fixZippedFile.DatStatus + " : " + fixZippedFile.GotStatus); }
             }
             else
             {
                 if (!(
-                    (fixZippedFile.DatStatus == DatStatus.InDatCollect || fixZippedFile.DatStatus == DatStatus.InDatMIA) &&
+                    (fixZippedFile.DatStatus == global::DatStatus.InDatCollect || fixZippedFile.DatStatus == global::DatStatus.InDatMIA) &&
                     (fixZippedFile.GotStatus == GotStatus.NotGot || fixZippedFile.GotStatus == GotStatus.Corrupt)))
                 { ReportError.SendAndShow("Error in Fix Rom Status " + fixZippedFile.RepStatus + " : " + fixZippedFile.DatStatus + " : " + fixZippedFile.GotStatus); }
 
