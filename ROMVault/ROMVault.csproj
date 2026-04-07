@@ -328,6 +328,10 @@
   <ItemGroup>
     <Content Include="chip.ico" />
     <Content Include="HelloWorld.txt" />
+    <None Include="Resources\testFix2s.png" />
+    <None Include="Resources\testFix2.png" />
+    <None Include="Resources\testFix.png" />
+    <None Include="Resources\disc1.png" />
     <None Include="Resources\ui-text-field-password.png" />
     <None Include="Resources\disc.png" />
     <None Include="Resources\disc-blue.png" />

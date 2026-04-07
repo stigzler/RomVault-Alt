@@ -177,11 +177,17 @@ namespace ROMVault
             this.updateNewDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateAllDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanROMs = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewToSortFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmScanLevel1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanLevel2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanLevel3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmFindFixes = new System.Windows.Forms.ToolStripMenuItem();
-            this.FixROMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findFixesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findFixeswithLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.fixROMsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.scanFindAndFixROMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixDatReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -190,7 +196,6 @@ namespace ROMVault
             this.romVaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directorySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryMappingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToSortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torrentZipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitHelpWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -295,7 +300,6 @@ namespace ROMVault
             this.HideNavBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.HideNavBT.FlatAppearance.BorderSize = 0;
             this.HideNavBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HideNavBT.Image = global::ROMVault.Properties.Resources.Back__Custom_;
             this.HideNavBT.Location = new System.Drawing.Point(4, 314);
             this.HideNavBT.Name = "HideNavBT";
             this.HideNavBT.Size = new System.Drawing.Size(136, 52);
@@ -335,7 +339,6 @@ namespace ROMVault
             this.btnDefault1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDefault1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDefault1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault1.Image = global::ROMVault.Properties.Resources.Favourite1__Custom_;
             this.btnDefault1.Location = new System.Drawing.Point(3, 3);
             this.btnDefault1.Name = "btnDefault1";
             this.btnDefault1.Size = new System.Drawing.Size(56, 56);
@@ -348,7 +351,6 @@ namespace ROMVault
             this.btnDefault2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDefault2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDefault2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault2.Image = global::ROMVault.Properties.Resources.Favourite2__Custom_;
             this.btnDefault2.Location = new System.Drawing.Point(65, 3);
             this.btnDefault2.Name = "btnDefault2";
             this.btnDefault2.Size = new System.Drawing.Size(56, 56);
@@ -361,7 +363,6 @@ namespace ROMVault
             this.btnDefault3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDefault3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDefault3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault3.Image = global::ROMVault.Properties.Resources.Favourite3__Custom_;
             this.btnDefault3.Location = new System.Drawing.Point(3, 65);
             this.btnDefault3.Name = "btnDefault3";
             this.btnDefault3.Size = new System.Drawing.Size(56, 56);
@@ -374,7 +375,6 @@ namespace ROMVault
             this.btnDefault4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDefault4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDefault4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault4.Image = global::ROMVault.Properties.Resources.Favourite4__Custom_;
             this.btnDefault4.Location = new System.Drawing.Point(65, 65);
             this.btnDefault4.Name = "btnDefault4";
             this.btnDefault4.Size = new System.Drawing.Size(56, 56);
@@ -411,7 +411,6 @@ namespace ROMVault
             this.btnReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReport.Image = global::ROMVault.Properties.Resources.GenerateReports__Custom_;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReport.Location = new System.Drawing.Point(2, 2);
             this.btnReport.Name = "btnReport";
@@ -442,7 +441,6 @@ namespace ROMVault
             this.btnFixFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFixFiles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnFixFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFixFiles.Image = global::ROMVault.Properties.Resources.Fix_Roms__Custom_;
             this.btnFixFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFixFiles.Location = new System.Drawing.Point(2, 2);
             this.btnFixFiles.Name = "btnFixFiles";
@@ -483,7 +481,6 @@ namespace ROMVault
             this.btnFindFixes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFindFixes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnFindFixes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFindFixes.Image = global::ROMVault.Properties.Resources.FindFixes__Custom_;
             this.btnFindFixes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFindFixes.Location = new System.Drawing.Point(2, 2);
             this.btnFindFixes.Name = "btnFindFixes";
@@ -514,7 +511,6 @@ namespace ROMVault
             this.btnScanRoms.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnScanRoms.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnScanRoms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScanRoms.Image = global::ROMVault.Properties.Resources.ScanRoms__Custom_;
             this.btnScanRoms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnScanRoms.Location = new System.Drawing.Point(2, 2);
             this.btnScanRoms.Name = "btnScanRoms";
@@ -1618,7 +1614,6 @@ namespace ROMVault
             // 
             // btnClear
             // 
-            this.btnClear.BackgroundImage = global::ROMVault.Properties.Resources.cross;
             this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -2125,10 +2120,8 @@ namespace ROMVault
             this.tsmUpdateDATs,
             this.tsmScanROMs,
             this.tsmFindFixes,
-            this.FixROMsToolStripMenuItem,
             this.reportsToolStripMenuItem,
             this.settingsToolStripMenuItem,
-            this.addToSortToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -2164,12 +2157,26 @@ namespace ROMVault
             // tsmScanROMs
             // 
             this.tsmScanROMs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewToSortFolderToolStripMenuItem,
+            this.toolStripSeparator2,
             this.tsmScanLevel1,
             this.tsmScanLevel2,
             this.tsmScanLevel3});
             this.tsmScanROMs.Name = "tsmScanROMs";
             this.tsmScanROMs.Size = new System.Drawing.Size(51, 20);
             this.tsmScanROMs.Text = "ROMs";
+            // 
+            // addNewToSortFolderToolStripMenuItem
+            // 
+            this.addNewToSortFolderToolStripMenuItem.Name = "addNewToSortFolderToolStripMenuItem";
+            this.addNewToSortFolderToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
+            this.addNewToSortFolderToolStripMenuItem.Text = "Add New ToSort Folder";
+            this.addNewToSortFolderToolStripMenuItem.Click += new System.EventHandler(this.addNewToSortFolderToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(350, 6);
             // 
             // tsmScanLevel1
             // 
@@ -2197,19 +2204,50 @@ namespace ROMVault
             // 
             // tsmFindFixes
             // 
+            this.tsmFindFixes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.findFixesToolStripMenuItem,
+            this.findFixeswithLogToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.fixROMsToolStripMenuItem1,
+            this.scanFindAndFixROMsToolStripMenuItem});
             this.tsmFindFixes.Name = "tsmFindFixes";
             this.tsmFindFixes.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.tsmFindFixes.Size = new System.Drawing.Size(70, 20);
-            this.tsmFindFixes.Text = "Find Fixes";
-            this.tsmFindFixes.Click += new System.EventHandler(this.TsmFindFixesClick);
+            this.tsmFindFixes.Size = new System.Drawing.Size(44, 20);
+            this.tsmFindFixes.Text = "Fixes";
             // 
-            // FixROMsToolStripMenuItem
+            // findFixesToolStripMenuItem
             // 
-            this.FixROMsToolStripMenuItem.Name = "FixROMsToolStripMenuItem";
-            this.FixROMsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.FixROMsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.FixROMsToolStripMenuItem.Text = "Fix ROMs";
-            this.FixROMsToolStripMenuItem.Click += new System.EventHandler(this.FixFilesToolStripMenuItemClick);
+            this.findFixesToolStripMenuItem.Name = "findFixesToolStripMenuItem";
+            this.findFixesToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.findFixesToolStripMenuItem.Text = "Find Fixes";
+            this.findFixesToolStripMenuItem.Click += new System.EventHandler(this.findFixesToolStripMenuItem_Click);
+            // 
+            // findFixeswithLogToolStripMenuItem
+            // 
+            this.findFixeswithLogToolStripMenuItem.Name = "findFixeswithLogToolStripMenuItem";
+            this.findFixeswithLogToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.findFixeswithLogToolStripMenuItem.Text = "Find Fixes (with log)";
+            this.findFixeswithLogToolStripMenuItem.Click += new System.EventHandler(this.findFixeswithLogToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(176, 6);
+            // 
+            // fixROMsToolStripMenuItem1
+            // 
+            this.fixROMsToolStripMenuItem1.Name = "fixROMsToolStripMenuItem1";
+            this.fixROMsToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.fixROMsToolStripMenuItem1.Text = "Fix ROMs";
+            this.fixROMsToolStripMenuItem1.Click += new System.EventHandler(this.fixROMsToolStripMenuItem1_Click);
+            // 
+            // scanFindAndFixROMsToolStripMenuItem
+            // 
+            this.scanFindAndFixROMsToolStripMenuItem.Name = "scanFindAndFixROMsToolStripMenuItem";
+            this.scanFindAndFixROMsToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.scanFindAndFixROMsToolStripMenuItem.Text = "Scan and Fix ROMs";
+            this.scanFindAndFixROMsToolStripMenuItem.ToolTipText = "This combines operations: scans ROMs, finds fixes and applies them";
+            this.scanFindAndFixROMsToolStripMenuItem.Click += new System.EventHandler(this.scanFindAndFixROMsToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
@@ -2278,14 +2316,6 @@ namespace ROMVault
             this.directoryMappingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.directoryMappingsToolStripMenuItem.Text = "Directory Mappings";
             this.directoryMappingsToolStripMenuItem.Click += new System.EventHandler(this.directoryMappingsToolStripMenuItem_Click);
-            // 
-            // addToSortToolStripMenuItem
-            // 
-            this.addToSortToolStripMenuItem.Name = "addToSortToolStripMenuItem";
-            this.addToSortToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.addToSortToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.addToSortToolStripMenuItem.Text = "Add ToSort";
-            this.addToSortToolStripMenuItem.Click += new System.EventHandler(this.AddToSortToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -2401,18 +2431,16 @@ namespace ROMVault
             // 
             // ToggleStatusTextBT
             // 
-            this.ToggleStatusTextBT.Image = global::ROMVault.Properties.Resources.ui_text_field_password;
             this.ToggleStatusTextBT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 2);
             this.ToggleStatusTextBT.Name = "ToggleStatusTextBT";
-            this.ToggleStatusTextBT.Size = new System.Drawing.Size(16, 35);
+            this.ToggleStatusTextBT.Size = new System.Drawing.Size(0, 35);
             this.ToggleStatusTextBT.ToolTipText = "Toggle Status Icon Titles";
             this.ToggleStatusTextBT.Click += new System.EventHandler(this.ToggleStatusTextBT_Click);
             // 
             // ToggleDatKeyLB
             // 
-            this.ToggleDatKeyLB.Image = global::ROMVault.Properties.Resources.database;
             this.ToggleDatKeyLB.Name = "ToggleDatKeyLB";
-            this.ToggleDatKeyLB.Size = new System.Drawing.Size(27, 35);
+            this.ToggleDatKeyLB.Size = new System.Drawing.Size(11, 35);
             this.ToggleDatKeyLB.Text = ":";
             this.ToggleDatKeyLB.Click += new System.EventHandler(this.ToggleDatKeyTextBT_Click);
             // 
@@ -2425,16 +2453,14 @@ namespace ROMVault
             // ToggleGameKeyLB
             // 
             this.ToggleGameKeyLB.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ToggleGameKeyLB.Image = global::ROMVault.Properties.Resources.board_game_go;
             this.ToggleGameKeyLB.Name = "ToggleGameKeyLB";
-            this.ToggleGameKeyLB.Size = new System.Drawing.Size(27, 35);
+            this.ToggleGameKeyLB.Size = new System.Drawing.Size(11, 35);
             this.ToggleGameKeyLB.Text = ":";
             this.ToggleGameKeyLB.Click += new System.EventHandler(this.ToggleGamesKeyTextBT_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1430, 972);
             this.Controls.Add(this.splitToolBarMain);
             this.Controls.Add(this.MainSS);
@@ -2575,7 +2601,6 @@ namespace ROMVault
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutRomVaultToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem FixROMsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmScanLevel2;
         private System.Windows.Forms.TextBox lblDITRomsFixable;
         private System.Windows.Forms.Label lblDIRomsFixable;
@@ -2593,7 +2618,6 @@ namespace ROMVault
         private System.Windows.Forms.PictureBox picScreenTitle;
         private System.Windows.Forms.TabPage tabInfo;
         private System.Windows.Forms.ToolStripMenuItem colorKeyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToSortToolStripMenuItem;
         private System.Windows.Forms.TextBox txtInfo;
         private System.Windows.Forms.Button btnClear;
         private UserControls.PromptTextBox txtFilter;
@@ -2699,6 +2723,13 @@ namespace ROMVault
         private ToolStripStatusLabel ToggleGameKeyLB;
         private ToolStripStatusLabel ToggleDatKeyLB;
         private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripMenuItem findFixesToolStripMenuItem;
+        private ToolStripMenuItem findFixeswithLogToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem fixROMsToolStripMenuItem1;
+        private ToolStripMenuItem scanFindAndFixROMsToolStripMenuItem;
+        private ToolStripMenuItem addNewToSortFolderToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
     }
 }
 

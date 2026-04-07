@@ -133,6 +133,16 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap disc1 {
+            get {
+                object obj = ResourceManager.GetObject("disc1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Favourite1__Custom_ {
             get {
                 object obj = ResourceManager.GetObject("Favourite1 (Custom)", resourceCulture);
@@ -246,6 +256,36 @@ namespace ROMVault.Properties {
         internal static System.Drawing.Bitmap ScanRoms__Custom_ {
             get {
                 object obj = ResourceManager.GetObject("ScanRoms (Custom)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap testFix {
+            get {
+                object obj = ResourceManager.GetObject("testFix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap testFix2 {
+            get {
+                object obj = ResourceManager.GetObject("testFix2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap testFix2s {
+            get {
+                object obj = ResourceManager.GetObject("testFix2s", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -859,38 +859,6 @@ namespace ROMVault
             UpdateDats();
         }
 
-        private void AddToSortToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (_working) return;
-            FolderBrowser cfbd = new FolderBrowser
-            {
-                ShowNewFolderButton = true,
-                RootFolder = Environment.SpecialFolder.MyComputer,
-                Description = "Select new ToSort Folder"
-            };
-
-            DialogResult result = cfbd.ShowDialog(this);
-            if (result != DialogResult.OK) return;
-
-            string relPath = RelativePath.MakeRelative(AppDomain.CurrentDomain.BaseDirectory, cfbd.SelectedPath);
-
-            RvFile ts = new RvFile(FileType.Dir)
-            {
-                Name = relPath,
-                DatStatus = DatStatus.InToSort,
-                Tree = new RvTreeRow()
-            };
-            ts.Tree.SetChecked(RvTreeRow.TreeSelect.Locked, false);
-
-            DB.DirRoot.ChildAdd(ts, DB.DirRoot.ChildCount);
-
-            RepairStatus.ReportStatusReset(DB.DirRoot);
-            ctrRvTree.Setup(ref DB.DirRoot);
-            DatSetSelected(ts);
-
-            DB.Write();
-        }
-
         private void TsmScanLevel1Click(object sender, EventArgs e)
         {
             if (_working) return;
@@ -907,18 +875,6 @@ namespace ROMVault
         {
             if (_working) return;
             ScanRoms(EScanLevel.Level3);
-        }
-
-        private void TsmFindFixesClick(object sender, EventArgs e)
-        {
-            if (_working) return;
-            FindFixes();
-        }
-
-        private void FixFilesToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            if (_working) return;
-            FixFiles();
         }
 
         private void RomVaultSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1681,6 +1637,62 @@ namespace ROMVault
             //GameInfoTLP.Visible = true;
             //ctrRvTree.Visible = true;
             //this.ResumeLayout();
+        }
+
+        private void findFixesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_working) return;
+            FindFixes();
+        }
+
+        private void findFixeswithLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_working) return;
+            FindFixes(true);
+        }
+
+        private void fixROMsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (_working) return;
+            FixFiles();
+        }
+
+        private void scanFindAndFixROMsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_working) return;
+            Automate.AutoScanFix();
+        }
+
+        private void addNewToSortFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_working) return;
+            FolderBrowser cfbd = new FolderBrowser
+            {
+                ShowNewFolderButton = true,
+                RootFolder = Environment.SpecialFolder.MyComputer,
+                Description = "Select new ToSort Folder"
+            };
+
+            DialogResult result = cfbd.ShowDialog(this);
+            if (result != DialogResult.OK) return;
+
+            string relPath = RelativePath.MakeRelative(AppDomain.CurrentDomain.BaseDirectory, cfbd.SelectedPath);
+
+            RvFile ts = new RvFile(FileType.Dir)
+            {
+                Name = relPath,
+                DatStatus = DatStatus.InToSort,
+                Tree = new RvTreeRow()
+            };
+            ts.Tree.SetChecked(RvTreeRow.TreeSelect.Locked, false);
+
+            DB.DirRoot.ChildAdd(ts, DB.DirRoot.ChildCount);
+
+            RepairStatus.ReportStatusReset(DB.DirRoot);
+            ctrRvTree.Setup(ref DB.DirRoot);
+            DatSetSelected(ts);
+
+            DB.Write();
         }
     }
 }
