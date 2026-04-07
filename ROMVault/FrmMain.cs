@@ -80,7 +80,10 @@ namespace ROMVault
 
         private Dictionary<Button, string> NavButtonDetails = new Dictionary<Button, string>();
 
-        // lightweight in-form splash overlay used during initial layout/paint
+        // For the Status Strip Key System
+        private List<ToolStripStatusLabel> gamesStatusStripKeys = new List<ToolStripStatusLabel>();
+
+        private List<ToolStripStatusLabel> datStatusStripKeys = new List<ToolStripStatusLabel>();
 
         #region MainUISetup
 
@@ -90,19 +93,6 @@ namespace ROMVault
 
             this.SuspendLayout();
 
-            //this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint
-            //    | ControlStyles.OptimizedDoubleBuffer, true); this.UpdateStyles();
-
-            //btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Enabled");
-            //btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Enabled");
-            //btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Enabled");
-            //btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Enabled");
-            //btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Enabled");
-
-            //btnDefault1.BackgroundImage = rvImages.GetBitmap("default1");
-            //btnDefault2.BackgroundImage = rvImages.GetBitmap("default2");
-            //btnDefault3.BackgroundImage = rvImages.GetBitmap("default3");
-            //btnDefault4.BackgroundImage = rvImages.GetBitmap("default4");
             Helpers.Theming.SetFormTextSizeToDefault(this);
 
             AddGameMetaData();
@@ -357,10 +347,10 @@ namespace ROMVault
             UpdateThemeAndControls();
         }
 
-        private void UpdateControls(Control c, Color primaryUpdateColor)
+        private void UpdateTextBoxes(Control c, Color primaryUpdateColor)
         {
             foreach (Control c1 in c.Controls)
-                UpdateControls(c1, primaryUpdateColor);
+                UpdateTextBoxes(c1, primaryUpdateColor);
 
             switch (c)
             {
@@ -382,21 +372,19 @@ namespace ROMVault
             Helpers.Theming.SetControlTextSizeToDefault(ctrRvTree);
             Helpers.Theming.SetControlTextSizeToDefault(GameGrid);
             Helpers.Theming.SetControlTextSizeToDefault(RomGrid);
+            Helpers.Theming.SetControlTextSizeToDefault(menuStrip1);
 
             if (Settings.rvSettings.Darkness)
             {
                 Dark.dark.SetColors(this);
-                UpdateControls(SearchTLP, Color.White);
+                UpdateTextBoxes(SearchTLP, Color.White);
             }
 
-            UpdateControls(DatInfoTLP, Properties.Settings.Default.InfoTextColor);
-            UpdateControls(GameInfoTLP, Properties.Settings.Default.InfoTextColor);
+            UpdateTextBoxes(DatInfoTLP, Properties.Settings.Default.InfoTextColor);
+            UpdateTextBoxes(GameInfoTLP, Properties.Settings.Default.InfoTextColor);
 
             this.ResumeLayout();
         }
-
-        private List<ToolStripStatusLabel> gamesStatusStripKeys = new List<ToolStripStatusLabel>();
-        private List<ToolStripStatusLabel> datStatusStripKeys = new List<ToolStripStatusLabel>();
 
         internal void InitialiseStatusStrip()
         {
@@ -404,7 +392,7 @@ namespace ROMVault
 
             int i = 2;
 
-            // Add Game Status Icons to StatusStrip.
+            // Add Game Status Icons to StatusStrip at position 2 (skips the i icon and the db icon at the bottom).
             foreach (KeyValuePair<DatTreeStatus, string> kvp in Constants.UI.DatTreeStatusText)
             {
                 DatTreeStatus datTreeStatus = kvp.Key;
@@ -425,9 +413,9 @@ namespace ROMVault
                 i++;
             }
 
-            i += 2; // this essentially skips the pre existing game category icon and prefixing separator in the statusbar
+            i += 2; //  skips the pre existing game category icon and prefixing separator in the statusbar
 
-            // Add Game Status Icons to StatusStrip starting at position 2 (skips the i icon and the db icon at the bottom).
+            // Add Game Status Icons to StatusStrip
             foreach (KeyValuePair<RepStatus, string> kvp in Constants.UI.RepStatusText)
             {
                 ToolStripStatusLabel lbl = new ToolStripStatusLabel
@@ -1451,24 +1439,6 @@ namespace ROMVault
             ctrRvTree.Setup(ref DB.DirRoot, true);
         }
 
-        private void splitToolBarMain_Panel1_Resize(object sender, EventArgs e)
-        {
-            //SetButtonPosLeft();
-        }
-
-        //private void SetButtonPosLeft()
-        //{
-        //    int pH = splitToolBarMain.Panel1.Height;
-        //    if (pH < 550)
-        //        pH = 550;
-
-        //    lblTreePreSets.Top = pH - 98;
-        //    btnDefault1.Top = pH - 82;
-        //    btnDefault2.Top = pH - 82;
-        //    btnDefault3.Top = pH - 42;
-        //    btnDefault4.Top = pH - 42;
-        //}
-
         private void visitHelpWikiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { Process.Start("https://wiki.romvault.com/doku.php?id=help"); } catch { }
@@ -1699,7 +1669,7 @@ namespace ROMVault
 
         private void FrmMain_ResizeBegin(object sender, EventArgs e)
         {
-            this.SuspendLayout();
+            //this.SuspendLayout();
             //DatInfoTLP.Visible = false;
             //GameInfoTLP.Visible = false;
             //ctrRvTree.Visible = false;
@@ -1710,7 +1680,7 @@ namespace ROMVault
             //DatInfoTLP.Visible = true;
             //GameInfoTLP.Visible = true;
             //ctrRvTree.Visible = true;
-            this.ResumeLayout();
+            //this.ResumeLayout();
         }
     }
 }

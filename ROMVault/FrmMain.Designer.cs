@@ -279,7 +279,6 @@ namespace ROMVault
             this.splitToolBarMain.Panel1.Controls.Add(this.PaddingPN);
             this.splitToolBarMain.Panel1.Controls.Add(this.lblTreePreSets);
             this.splitToolBarMain.Panel1.Padding = new System.Windows.Forms.Padding(4);
-            this.splitToolBarMain.Panel1.Resize += new System.EventHandler(this.splitToolBarMain_Panel1_Resize);
             // 
             // splitToolBarMain.Panel2
             // 
@@ -2143,8 +2142,8 @@ namespace ROMVault
             this.updateNewDATsToolStripMenuItem,
             this.updateAllDATsToolStripMenuItem});
             this.tsmUpdateDATs.Name = "tsmUpdateDATs";
-            this.tsmUpdateDATs.Size = new System.Drawing.Size(86, 20);
-            this.tsmUpdateDATs.Text = "Update DATs";
+            this.tsmUpdateDATs.Size = new System.Drawing.Size(45, 20);
+            this.tsmUpdateDATs.Text = "DATs";
             // 
             // updateNewDATsToolStripMenuItem
             // 
@@ -2169,8 +2168,8 @@ namespace ROMVault
             this.tsmScanLevel2,
             this.tsmScanLevel3});
             this.tsmScanROMs.Name = "tsmScanROMs";
-            this.tsmScanROMs.Size = new System.Drawing.Size(79, 20);
-            this.tsmScanROMs.Text = "Scan ROMs";
+            this.tsmScanROMs.Size = new System.Drawing.Size(51, 20);
+            this.tsmScanROMs.Text = "ROMs";
             // 
             // tsmScanLevel1
             // 

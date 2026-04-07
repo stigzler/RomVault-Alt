@@ -73,6 +73,9 @@
             this.cboCores = new System.Windows.Forms.ComboBox();
             this.flexiLabel3 = new ROMVault.UserControls.FlexiLabel();
             this.UiTP = new System.Windows.Forms.TabPage();
+            this.OperationalGB = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.EnableGamesGridRClickChB = new System.Windows.Forms.CheckBox();
             this.AppearanceThemesGB = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -82,9 +85,6 @@
             this.flexiLabel5 = new ROMVault.UserControls.FlexiLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.OperationalGB = new System.Windows.Forms.GroupBox();
-            this.EnableGamesGridRClickChB = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainSC)).BeginInit();
             this.MainSC.Panel1.SuspendLayout();
@@ -100,11 +100,11 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.UiTP.SuspendLayout();
+            this.OperationalGB.SuspendLayout();
             this.AppearanceThemesGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainTextSizeNUM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            this.OperationalGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
@@ -604,6 +604,41 @@
             this.UiTP.Text = "Ui + UX";
             this.UiTP.UseVisualStyleBackColor = true;
             // 
+            // OperationalGB
+            // 
+            this.OperationalGB.Controls.Add(this.label9);
+            this.OperationalGB.Controls.Add(this.EnableGamesGridRClickChB);
+            this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OperationalGB.Location = new System.Drawing.Point(3, 137);
+            this.OperationalGB.Name = "OperationalGB";
+            this.OperationalGB.Size = new System.Drawing.Size(478, 143);
+            this.OperationalGB.TabIndex = 52;
+            this.OperationalGB.TabStop = false;
+            this.OperationalGB.Text = "Operational";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoEllipsis = true;
+            this.label9.Location = new System.Drawing.Point(39, 39);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(430, 48);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "By default, you have to press shift and R Click to get the context menu. R Click " +
+    "copies the rom name to your clipboard. This is reversed if this setting is enabl" +
+    "ed.";
+            // 
+            // EnableGamesGridRClickChB
+            // 
+            this.EnableGamesGridRClickChB.AutoSize = true;
+            this.EnableGamesGridRClickChB.Location = new System.Drawing.Point(11, 19);
+            this.EnableGamesGridRClickChB.Name = "EnableGamesGridRClickChB";
+            this.EnableGamesGridRClickChB.Size = new System.Drawing.Size(228, 17);
+            this.EnableGamesGridRClickChB.TabIndex = 0;
+            this.EnableGamesGridRClickChB.Text = "Right Click for context menu in Games Grid";
+            this.EnableGamesGridRClickChB.UseVisualStyleBackColor = true;
+            // 
             // AppearanceThemesGB
             // 
             this.AppearanceThemesGB.Controls.Add(this.label8);
@@ -716,41 +751,6 @@
             this.statusStrip1.TabIndex = 52;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // OperationalGB
-            // 
-            this.OperationalGB.Controls.Add(this.label9);
-            this.OperationalGB.Controls.Add(this.EnableGamesGridRClickChB);
-            this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OperationalGB.Location = new System.Drawing.Point(3, 137);
-            this.OperationalGB.Name = "OperationalGB";
-            this.OperationalGB.Size = new System.Drawing.Size(478, 143);
-            this.OperationalGB.TabIndex = 52;
-            this.OperationalGB.TabStop = false;
-            this.OperationalGB.Text = "Operational";
-            // 
-            // EnableGamesGridRClickChB
-            // 
-            this.EnableGamesGridRClickChB.AutoSize = true;
-            this.EnableGamesGridRClickChB.Location = new System.Drawing.Point(11, 19);
-            this.EnableGamesGridRClickChB.Name = "EnableGamesGridRClickChB";
-            this.EnableGamesGridRClickChB.Size = new System.Drawing.Size(228, 17);
-            this.EnableGamesGridRClickChB.TabIndex = 0;
-            this.EnableGamesGridRClickChB.Text = "Right Click for context menu in Games Grid";
-            this.EnableGamesGridRClickChB.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoEllipsis = true;
-            this.label9.Location = new System.Drawing.Point(39, 39);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(430, 48);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "By default, you have to press shift and R Click to get the context menu. R Click " +
-    "copies the rom name to your clipboard. This is reversed if this setting is enabl" +
-    "ed.";
-            // 
             // FrmSettings
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -789,13 +789,13 @@
             this.groupBox4.PerformLayout();
             this.UiTP.ResumeLayout(false);
             this.UiTP.PerformLayout();
+            this.OperationalGB.ResumeLayout(false);
+            this.OperationalGB.PerformLayout();
             this.AppearanceThemesGB.ResumeLayout(false);
             this.AppearanceThemesGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainTextSizeNUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.OperationalGB.ResumeLayout(false);
-            this.OperationalGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
