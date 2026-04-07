@@ -120,26 +120,6 @@
   <metadata name="tooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>219, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnUpdateDats.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA68AAAOvAGVvHJJAAAAB3RJ
-        TUUH6gQFCgMrM1Pr4wAAAq1JREFUWEfV199LU2Ecx/FvF5FGQmbSRRp6VRr0D3RRl/24TIu0uin6iZg3
-        EeFFkhIZhklXoYkZKJWapq2pZ/5MaTva1Olm29x0E0VKZGmmSz7xnNjonLk8+pwlfeEN54zteV7bOTAO
-        UfiJIaIHRGQgorZ1JhDREeWC65qoqKim0mflcHsmMTE5ta56jH1IST04T0RHleuqnT3Hjp8IWVhtnyxW
-        VNW85UIkpZ8+E7Kw2hjgjU7gQmgCCCAObAChGWCjCC6A2WKTATaC4ALYx8bR8N6wKkLtPcEFYNkcLvSK
-        AxC6TbIam9sRG7vLptxQOdyAQCN2F4wDNlkJiftcyg2VoxmApUT8cwDrT8SmAFgBxKYBWAwRDrCfiCqJ
-        qI6I9JECsJKSkkMB27Zv7c0uP4nc+jSpPF0GCtsvclfUcRVmpygHJK8CiNu7w5UvZCAStY00/IeA+4YL
-        sEz3YHRGxPB0L2qGHssW1Y8+x4v+AulY9LTA8cUcrMlayg942HEJSz8XUSHmodpciJl5bxBR3H0Di/55
-        TPlcyBcy8fTjbbweLMb3ZR8q+/NR0p2lDWDRvxA8rx0qgW3GJB2bPHp0jtXCO2fHq8FHv1Fd1+H7MSvb
-        WFNAk7VMuiQlH7LgX1mGwVEtnU/73CgQMiMD8K8sQWcrR5vzJb4tzaFCvIs+byvcs8MQvS1SXxempF9B
-        c0CB4RwERxU6x2qkb8uuM3u9zvIERZ2Xg+8rNd5BmTFXummVNx8XQMtUAWLiou33Ws+GfFiLuqz6tQFE
-        dCUxdfdyyuEEsM7npKHRVM+dTnyHz64JVQA20US0k4gOnUpLh8Pt4c457pVtvhYgMBH7O2apAXA9mv0t
-        9qwZHx8/otwwZHgeTsNld7qQfTMHRHRLud9qw/N4Hq5mIrpGRFsCm/wClfc4TDVNgDYAAAAASUVORK5C
-        YII=
-</value>
-  </data>
   <metadata name="CType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -194,6 +174,7 @@
   <metadata name="MainSS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>324, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAEBAAAAAAIABoBAAAVgAAACAgAAAAACAAqBAAAL4EAAAwMAAAAAAgAKglAABmFQAAQEAAAAAA

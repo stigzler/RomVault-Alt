@@ -58,7 +58,7 @@ namespace ROMVault
             SetupInt();
         }
 
-        private void SetupInt()
+        internal void SetupInt()
         {
             _yPos = 8;
 
@@ -539,7 +539,7 @@ namespace ROMVault
             return false;
         }
 
-        private static void SetChecked(RvFile pTree, RvTreeRow.TreeSelect nSelection, bool isWorking, bool shiftPressed)
+        internal static void SetChecked(RvFile pTree, RvTreeRow.TreeSelect nSelection, bool isWorking, bool shiftPressed)
         {
             if (!isWorking) RvTreeRow.OpenStream();
             SetCheckedRecurse(pTree, nSelection, isWorking, shiftPressed);

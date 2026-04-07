@@ -62,6 +62,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.FileOperationsTP = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.MoveFilesNotCopyChB = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chkDetailedReporting = new System.Windows.Forms.CheckBox();
             this.chkDebugLogs = new System.Windows.Forms.CheckBox();
@@ -97,6 +100,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upTime)).BeginInit();
             this.FileOperationsTP.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.UiTP.SuspendLayout();
@@ -111,7 +115,7 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Location = new System.Drawing.Point(472, 3);
+            this.btnOK.Location = new System.Drawing.Point(567, 3);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(89, 23);
             this.btnOK.TabIndex = 9;
@@ -123,7 +127,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(567, 3);
+            this.btnCancel.Location = new System.Drawing.Point(472, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 23);
             this.btnCancel.TabIndex = 10;
@@ -469,6 +473,7 @@
             // 
             // FileOperationsTP
             // 
+            this.FileOperationsTP.Controls.Add(this.groupBox5);
             this.FileOperationsTP.Controls.Add(this.groupBox3);
             this.FileOperationsTP.Controls.Add(this.groupBox4);
             this.FileOperationsTP.Controls.Add(this.flexiLabel3);
@@ -479,6 +484,41 @@
             this.FileOperationsTP.TabIndex = 1;
             this.FileOperationsTP.Text = "File Operations";
             this.FileOperationsTP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.MoveFilesNotCopyChB);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox5.Location = new System.Drawing.Point(8, 223);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(468, 108);
+            this.groupBox5.TabIndex = 50;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Rom Imports";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.Location = new System.Drawing.Point(37, 43);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(425, 51);
+            this.label10.TabIndex = 45;
+            this.label10.Text = "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
+    "is if you wish to Move them instead (you will loose the files from your original" +
+    " destination)";
+            // 
+            // MoveFilesNotCopyChB
+            // 
+            this.MoveFilesNotCopyChB.AutoSize = true;
+            this.MoveFilesNotCopyChB.Location = new System.Drawing.Point(14, 19);
+            this.MoveFilesNotCopyChB.Name = "MoveFilesNotCopyChB";
+            this.MoveFilesNotCopyChB.Size = new System.Drawing.Size(155, 17);
+            this.MoveFilesNotCopyChB.TabIndex = 44;
+            this.MoveFilesNotCopyChB.Text = "Move files rather than Copy";
+            this.MoveFilesNotCopyChB.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -598,7 +638,7 @@
             this.UiTP.Controls.Add(this.flexiLabel5);
             this.UiTP.Location = new System.Drawing.Point(0, 20);
             this.UiTP.Name = "UiTP";
-            this.UiTP.Padding = new System.Windows.Forms.Padding(3);
+            this.UiTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
             this.UiTP.Size = new System.Drawing.Size(484, 618);
             this.UiTP.TabIndex = 3;
             this.UiTP.Text = "Ui + UX";
@@ -609,21 +649,22 @@
             this.OperationalGB.Controls.Add(this.label9);
             this.OperationalGB.Controls.Add(this.EnableGamesGridRClickChB);
             this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OperationalGB.Location = new System.Drawing.Point(3, 137);
+            this.OperationalGB.Location = new System.Drawing.Point(8, 150);
             this.OperationalGB.Name = "OperationalGB";
-            this.OperationalGB.Size = new System.Drawing.Size(478, 143);
+            this.OperationalGB.Size = new System.Drawing.Size(468, 86);
             this.OperationalGB.TabIndex = 52;
             this.OperationalGB.TabStop = false;
             this.OperationalGB.Text = "Operational";
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoEllipsis = true;
             this.label9.Location = new System.Drawing.Point(39, 39);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(430, 48);
+            this.label9.Size = new System.Drawing.Size(420, 35);
             this.label9.TabIndex = 1;
             this.label9.Text = "By default, you have to press shift and R Click to get the context menu. R Click " +
     "copies the rom name to your clipboard. This is reversed if this setting is enabl" +
@@ -648,9 +689,9 @@
             this.AppearanceThemesGB.Controls.Add(this.chkDarkMode);
             this.AppearanceThemesGB.Dock = System.Windows.Forms.DockStyle.Top;
             this.AppearanceThemesGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AppearanceThemesGB.Location = new System.Drawing.Point(3, 38);
+            this.AppearanceThemesGB.Location = new System.Drawing.Point(8, 38);
             this.AppearanceThemesGB.Name = "AppearanceThemesGB";
-            this.AppearanceThemesGB.Size = new System.Drawing.Size(478, 99);
+            this.AppearanceThemesGB.Size = new System.Drawing.Size(468, 112);
             this.AppearanceThemesGB.TabIndex = 49;
             this.AppearanceThemesGB.TabStop = false;
             this.AppearanceThemesGB.Text = "Appearance and Theme";
@@ -667,7 +708,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(42, 73);
+            this.label6.Location = new System.Drawing.Point(67, 50);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 45;
@@ -700,7 +741,7 @@
             // InfoTextColorPB
             // 
             this.InfoTextColorPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoTextColorPB.Location = new System.Drawing.Point(14, 68);
+            this.InfoTextColorPB.Location = new System.Drawing.Point(14, 45);
             this.InfoTextColorPB.Name = "InfoTextColorPB";
             this.InfoTextColorPB.Size = new System.Drawing.Size(22, 22);
             this.InfoTextColorPB.TabIndex = 43;
@@ -710,7 +751,7 @@
             // chkDarkMode
             // 
             this.chkDarkMode.AutoSize = true;
-            this.chkDarkMode.Location = new System.Drawing.Point(14, 45);
+            this.chkDarkMode.Location = new System.Drawing.Point(70, 78);
             this.chkDarkMode.Name = "chkDarkMode";
             this.chkDarkMode.Size = new System.Drawing.Size(161, 17);
             this.chkDarkMode.TabIndex = 42;
@@ -723,7 +764,7 @@
             this.flexiLabel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.flexiLabel5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flexiLabel5.FontStyle = System.Drawing.FontStyle.Bold;
-            this.flexiLabel5.Location = new System.Drawing.Point(3, 3);
+            this.flexiLabel5.Location = new System.Drawing.Point(8, 3);
             this.flexiLabel5.Name = "flexiLabel5";
             this.flexiLabel5.Padding = new System.Windows.Forms.Padding(10);
             this.flexiLabel5.ScaleFactor = 1.2D;
@@ -734,8 +775,8 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Controls.Add(this.btnOK);
+            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 587);
@@ -783,6 +824,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.upTime)).EndInit();
             this.FileOperationsTP.ResumeLayout(false);
             this.FileOperationsTP.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -855,5 +898,8 @@
         private System.Windows.Forms.GroupBox OperationalGB;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox EnableGamesGridRClickChB;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox MoveFilesNotCopyChB;
     }
 }

@@ -69,6 +69,9 @@ namespace ROMVault
             chkDoNotReportFeedback.Checked = Settings.rvSettings.DoNotReportFeedback;
 
             // stigzler's settings
+            // File OPs
+            MoveFilesNotCopyChB.Checked = Properties.Settings.Default.RomImportMoveNotCopy;
+
             // UI and UX
             MainTextSizeNUM.Value = Properties.Settings.Default.MainTextSize;
             InfoTextColorPB.BackColor = Properties.Settings.Default.InfoTextColor;
@@ -127,6 +130,10 @@ namespace ROMVault
 
             Settings.WriteConfig(Settings.rvSettings);
 
+            // File Ops
+            Properties.Settings.Default.RomImportMoveNotCopy = MoveFilesNotCopyChB.Checked;
+
+            // UI and UX
             Properties.Settings.Default.MainTextSize = (int)MainTextSizeNUM.Value;
             Properties.Settings.Default.InfoTextColor = InfoTextColorPB.BackColor;
             Properties.Settings.Default.EnableGamesGridRClick = EnableGamesGridRClickChB.Checked;

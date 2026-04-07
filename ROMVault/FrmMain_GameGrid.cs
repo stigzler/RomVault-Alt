@@ -368,6 +368,8 @@ namespace ROMVault
                             if (tRvDir.GotStatus != GotStatus.NotGot)
                                 bitmapName = GetBitmapFromType(tRvDir.FileType, tRvDir.ZipStruct);
 
+                            // Make the bitmap a few pixels taller than the logical icon height so
+                            // drawn icons that are offset by 1px don't get clipped at the bottom.
                             Bitmap bmp = new Bitmap(GameGrid.Columns[(int)GameGridColumns.CType].Width, _gridRowHeight - 2);
 
                             int bm0 = -1;
@@ -408,8 +410,8 @@ namespace ROMVault
                                     Bitmap bm = rvImages.GetBitmap(bitmapNameDat, false);
                                     if (bm != null)
                                     {
-                                        float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
-                                        g.DrawImage(bm, (bm0 - (xSize / 2)), 1, xSize, _gridRowHeight);
+                                        float xSize = (float)bm.Width / bm.Height * 18;
+                                        g.DrawImage(bm, (bm0 - (xSize / 2)), 0, xSize, 18);
                                     }
                                     else
                                     {
@@ -422,8 +424,8 @@ namespace ROMVault
                                     Bitmap bm = rvImages.GetBitmap(bitmapName, false);
                                     if (bm != null)
                                     {
-                                        float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
-                                        g.DrawImage(bm, (bm1 - (xSize / 2)), 1, xSize, _gridRowHeight);
+                                        float xSize = (float)bm.Width / bm.Height * 18;
+                                        g.DrawImage(bm, (bm1 - (xSize / 2)), 0, xSize, 18);
                                     }
                                     else
                                     {
@@ -434,8 +436,8 @@ namespace ROMVault
                                 if (bm2 != -1)
                                 {
                                     Bitmap bm = rvImages.GetBitmap(tRvDir.ZipDatStructFix ? "ZipConvert" : "ZipConvert1", false);
-                                    float xSize = (float)bm.Width / bm.Height * _gridRowHeight;
-                                    g.DrawImage(bm, (bm2 - (xSize / 2)), 1, xSize, _gridRowHeight);
+                                    float xSize = (float)bm.Width / bm.Height * 18;
+                                    g.DrawImage(bm, (bm2 - (xSize / 2)), 0, xSize, 18);
                                 }
                             }
 
@@ -804,7 +806,7 @@ namespace ROMVault
                         _mnuGameGrid.Items.RemoveAt(_mnuGameGrid.Items.Count - 1);
 
                     _mnuGameGrid.Tag = thisGame;
-                    _mnuGameGrid.Show(this, new Point(controLocation.X + e.X - 32, controLocation.Y + e.Y - 10));
+                    _mnuGameGrid.Show(this, new Point(controLocation.X + e.X, controLocation.Y + e.Y));
                     return;
                 }
 

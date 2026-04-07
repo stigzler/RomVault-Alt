@@ -524,7 +524,7 @@
             // 
             // btnDown
             // 
-            this.btnDown.Image = global::ROMVault.Properties.Resources.pngDown;
+            this.btnDown.Image = global::ROMVault.Properties.Resources.arrow_270;
             this.btnDown.Location = new System.Drawing.Point(356, 94);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(32, 35);
@@ -534,7 +534,7 @@
             // 
             // btnUp
             // 
-            this.btnUp.Image = global::ROMVault.Properties.Resources.pngUp;
+            this.btnUp.Image = global::ROMVault.Properties.Resources.arrow_090;
             this.btnUp.Location = new System.Drawing.Point(356, 58);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(32, 35);

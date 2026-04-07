@@ -7,6 +7,7 @@
 using DATReader.DatStore;
 using DATReader.DatWriter;
 using ROMVault.Extensions;
+using ROMVault.UserControls;
 using RomVaultCore;
 using RomVaultCore.Extensions;
 using RomVaultCore.ReadDat;
@@ -58,14 +59,18 @@ namespace ROMVault
 
         private readonly ToolStripMenuItem _mnuOpen;
 
+        private readonly ToolStripMenuItem _mnuImportRomFiles;
+        private readonly ToolStripMenuItem _mnuImportRomFolders;
         private readonly ToolStripMenuItem _mnuToSortOpen;
         private readonly ToolStripMenuItem _mnuToSortDelete;
+        private readonly ToolStripSeparator _mnuToSortConditionalSeparator;
         private readonly ToolStripMenuItem _mnuToSortSetPrimary;
         private readonly ToolStripMenuItem _mnuToSortSetCache;
         private readonly ToolStripMenuItem _mnuToSortSetFileOnly;
         private readonly ToolStripMenuItem _mnuToSortClearFileOnly;
         private readonly ToolStripMenuItem _mnuToSortUp;
         private readonly ToolStripMenuItem _mnuToSortDown;
+        private readonly ToolStripMenuItem _mnuToSortLock;
 
         private RvFile _clickedTree;
 
@@ -156,8 +161,6 @@ namespace ROMVault
             splitContainer4_Panel1_Resize(new object(), new EventArgs());
 
             _mnuContext = new ContextMenuStrip().DarkCompliant();
-            _mnuContext.ShowCheckMargin = false;
-            _mnuContext.ShowImageMargin = false;
 
             ToolStripMenuItem mnuScan1 = new ToolStripMenuItem
             {
@@ -167,6 +170,7 @@ namespace ROMVault
             ToolStripMenuItem mnuScan2 = new ToolStripMenuItem
             {
                 Text = @"Scan",
+                Image = Properties.Resources.arrow_circle_315,
                 Tag = EScanLevel.Level2
             };
             ToolStripMenuItem mnuScan3 = new ToolStripMenuItem
@@ -178,6 +182,7 @@ namespace ROMVault
             ToolStripMenuItem mnuDirDatSettings = new ToolStripMenuItem
             {
                 Text = @"Set Dir Dat Settings",
+                Image = Properties.Resources.folder__pencil,
                 Tag = null
             };
 
@@ -187,15 +192,24 @@ namespace ROMVault
                 Tag = null
             };
 
+            ToolStripMenuItem _mnuLock = new ToolStripMenuItem
+            {
+                Text = @"Lock Item",
+                Image = Properties.Resources._lock,
+                Tag = null
+            };
+
             _mnuOpen = new ToolStripMenuItem
             {
                 Text = @"Open Directory",
+                Image = Properties.Resources.folder_open,
                 Tag = null
             };
 
             ToolStripMenuItem mnuFixDat = new ToolStripMenuItem
             {
                 Text = @"Save fix DATs",
+                Image = Properties.Resources.database_export,
                 Tag = null
             };
 
@@ -208,10 +222,12 @@ namespace ROMVault
             _mnuContext.Items.Add(mnuScan2);
             _mnuContext.Items.Add(mnuScan1);
             _mnuContext.Items.Add(mnuScan3);
+            _mnuContext.Items.Add(new ToolStripSeparator());
+            _mnuContext.Items.Add(_mnuOpen);
+            _mnuContext.Items.Add(_mnuLock);
             _mnuContext.Items.Add(mnuDirDatSettings);
             _mnuContext.Items.Add(mnuDirMappings);
             _mnuContext.Items.Add(new ToolStripSeparator());
-            _mnuContext.Items.Add(_mnuOpen);
             _mnuContext.Items.Add(mnuFixDat);
             _mnuContext.Items.Add(mnuMakeDat);
 
@@ -220,13 +236,14 @@ namespace ROMVault
             mnuScan3.Click += MnuScan;
             mnuDirDatSettings.Click += MnuDirSettings;
             mnuDirMappings.Click += MnuDirMappings;
+            _mnuLock.Click += MnuLockClick;
             _mnuOpen.Click += MnuOpenClick;
             mnuFixDat.Click += MnuMakeFixDatClick;
             mnuMakeDat.Click += MnuMakeDatClick;
 
             _mnuContextToSort = new ContextMenuStrip().DarkCompliant();
-            _mnuContextToSort.ShowCheckMargin = false;
-            _mnuContextToSort.ShowImageMargin = false;
+            //_mnuContextToSort.ShowCheckMargin = false;
+            //_mnuContextToSort.ShowImageMargin = false;
 
             ToolStripMenuItem mnuToSortScan1 = new ToolStripMenuItem
             {
@@ -236,6 +253,7 @@ namespace ROMVault
             ToolStripMenuItem mnuToSortScan2 = new ToolStripMenuItem
             {
                 Text = @"Scan",
+                Image = Properties.Resources.magnifier_zoom,
                 Tag = EScanLevel.Level2
             };
             ToolStripMenuItem mnuToSortScan3 = new ToolStripMenuItem
@@ -247,32 +265,51 @@ namespace ROMVault
             _mnuToSortOpen = new ToolStripMenuItem
             {
                 Text = @"Open ToSort Directory",
+                Image = Properties.Resources.blue_folder_open,
+                Tag = null
+            };
+
+            _mnuImportRomFiles = new ToolStripMenuItem
+            {
+                Text = @"Import Rom Files",
+                Image = Properties.Resources.disc__plus,
+                Tag = null
+            };
+
+            _mnuImportRomFolders = new ToolStripMenuItem
+            {
+                Text = @"Import Rom Folders",
                 Tag = null
             };
 
             _mnuToSortDelete = new ToolStripMenuItem
             {
                 Text = @"Remove",
+                Image = Properties.Resources.cross,
                 Tag = null
             };
 
+            _mnuToSortConditionalSeparator = new ToolStripSeparator() { Visible = false };
+
             _mnuToSortSetPrimary = new ToolStripMenuItem
             {
-                Text = @"Set To Primary ToSort",
+                Text = @"Set As Primary ToSort",
+                Image = Properties.Resources.blue_folder_stamp,
                 Tag = null
             };
 
             _mnuToSortSetCache = new ToolStripMenuItem
             {
-                Text = @"Set To Cache ToSort",
+                Text = @"Set As Cache ToSort",
                 Tag = null
             };
 
             _mnuToSortSetFileOnly = new ToolStripMenuItem
             {
-                Text = @"Set To File Only ToSort",
+                Text = @"Set As File Only ToSort",
                 Tag = null
             };
+
             _mnuToSortClearFileOnly = new ToolStripMenuItem
             {
                 Text = @"Clear File Only ToSort",
@@ -282,32 +319,48 @@ namespace ROMVault
             _mnuToSortUp = new ToolStripMenuItem
             {
                 Text = @"Move Up",
+                Image = Properties.Resources.arrow_090,
                 Tag = null
             };
 
             _mnuToSortDown = new ToolStripMenuItem
             {
                 Text = @"Move Down",
+                Image = Properties.Resources.arrow_270,
                 Tag = null
             };
 
+            _mnuToSortLock = new ToolStripMenuItem
+            {
+                Text = @"Lock ToSort",
+                Image = Properties.Resources._lock,
+                Tag = null
+            };
+
+            _mnuContextToSort.Items.Add(_mnuToSortOpen);
+            _mnuContextToSort.Items.Add(_mnuToSortLock);
+            _mnuContextToSort.Items.Add(new ToolStripSeparator());
             _mnuContextToSort.Items.Add(mnuToSortScan2);
             _mnuContextToSort.Items.Add(mnuToSortScan1);
             _mnuContextToSort.Items.Add(mnuToSortScan3);
-            _mnuContextToSort.Items.Add(_mnuToSortOpen);
             _mnuContextToSort.Items.Add(new ToolStripSeparator());
+            _mnuContextToSort.Items.Add(_mnuToSortUp);
+            _mnuContextToSort.Items.Add(_mnuToSortDown);
+            _mnuContextToSort.Items.Add(_mnuToSortDelete);
+            _mnuContextToSort.Items.Add(_mnuToSortConditionalSeparator); // visibility=all 4 items below are also visible
             _mnuContextToSort.Items.Add(_mnuToSortSetPrimary);
             _mnuContextToSort.Items.Add(_mnuToSortSetCache);
             _mnuContextToSort.Items.Add(_mnuToSortSetFileOnly);
             _mnuContextToSort.Items.Add(_mnuToSortClearFileOnly);
-            _mnuContextToSort.Items.Add(_mnuToSortDelete);
             _mnuContextToSort.Items.Add(new ToolStripSeparator());
-            _mnuContextToSort.Items.Add(_mnuToSortUp);
-            _mnuContextToSort.Items.Add(_mnuToSortDown);
+            _mnuContextToSort.Items.Add(_mnuImportRomFiles);
+            _mnuContextToSort.Items.Add(_mnuImportRomFolders);
 
             mnuToSortScan1.Click += MnuScan;
             mnuToSortScan2.Click += MnuScan;
             mnuToSortScan3.Click += MnuScan;
+            _mnuImportRomFiles.Click += MnuImportRomFiles;
+            _mnuImportRomFolders.Click += MnuImportRomFolders;
             _mnuToSortOpen.Click += MnuToSortOpen;
             _mnuToSortDelete.Click += MnuToSortDelete;
             _mnuToSortSetPrimary.Click += MnuToSortSetPrimary;
@@ -316,6 +369,7 @@ namespace ROMVault
             _mnuToSortClearFileOnly.Click += MnuToSortClearFileOnly;
             _mnuToSortUp.Click += MnuToSortUp;
             _mnuToSortDown.Click += MnuToSortDown;
+            _mnuToSortLock.Click += ToSortLock;
 
             chkBoxShowComplete.Checked = Settings.rvSettings.chkBoxShowComplete;
             chkBoxShowPartial.Checked = Settings.rvSettings.chkBoxShowPartial;
@@ -345,6 +399,66 @@ namespace ROMVault
             InitGameGridMenu();
 
             UpdateThemeAndControls();
+        }
+
+        private void MnuLockClick(object sender, EventArgs e)
+        {
+            _clickedTree.Tree.SetChecked(RvTreeRow.TreeSelect.Locked, true);
+            ctrRvTree.Refresh();
+        }
+
+        private void ToSortLock(object sender, EventArgs e)
+        {
+            // bit of guesswork here - _working in this class I'm hoping corresponds to Working in rvTree, i think.
+            // it's all a bit baffling
+            // last paramter - if set to true - it just doesn't set it to locked with nothing else.
+            // See rvTree.SetCheckedRecurse
+            _clickedTree.Tree.SetChecked(RvTreeRow.TreeSelect.Locked, true);
+            ctrRvTree.Refresh();
+        }
+
+        private void MnuImportRomFiles(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Title = "Please select ROM files to import.",
+                Multiselect = true,
+                Filter = "All Files|*.*"
+            };
+            ofd.ShowDialog(this);
+
+            string folderName = _clickedTree.FullName;
+            string tDir = Helpers.FileSystem.NormalizePath(NameFix.AddLongPathPrefix(folderName));
+            if (!Directory.Exists(tDir)) return;
+
+            if (Properties.Settings.Default.RomImportMoveNotCopy)
+                Helpers.FileSystem.MoveFiles(ofd.FileNames.ToList(), tDir, Settings.rvSettings.Darkness);
+            else
+                Helpers.FileSystem.CopyFiles(ofd.FileNames.ToList(), tDir, Settings.rvSettings.Darkness);
+
+            ScanRoms(EScanLevel.Level2);
+        }
+
+        private void MnuImportRomFolders(object sender, EventArgs e)
+        {
+            UserControls.FolderBrowserDialog fbd = new UserControls.FolderBrowserDialog()
+            {
+                Description = "Please select ROM folders to import.",
+                Multiselect = true,
+                OkButtonLabel = "Import"
+            };
+            fbd.ShowDialog(this);
+
+            string folderName = _clickedTree.FullName;
+            string tDir = Helpers.FileSystem.NormalizePath(NameFix.AddLongPathPrefix(folderName));
+            if (!Directory.Exists(tDir)) return;
+
+            if (Properties.Settings.Default.RomImportMoveNotCopy)
+                Helpers.FileSystem.MoveFiles(fbd.SelectedPaths.ToList(), tDir, Settings.rvSettings.Darkness);
+            else
+                Helpers.FileSystem.CopyFiles(fbd.SelectedPaths.ToList(), tDir, Settings.rvSettings.Darkness);
+
+            ScanRoms(EScanLevel.Level2);
         }
 
         private void UpdateTextBoxes(Control c, Color primaryUpdateColor)
@@ -382,6 +496,11 @@ namespace ROMVault
 
             UpdateTextBoxes(DatInfoTLP, Properties.Settings.Default.InfoTextColor);
             UpdateTextBoxes(GameInfoTLP, Properties.Settings.Default.InfoTextColor);
+
+            // tests
+            GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Padding = new Padding(2, 0, 0, 0);
+            if (GameGrid.Columns[(int)GameGridColumns.CType] is DataGridViewImageColumn ic) ic.ImageLayout = DataGridViewImageCellLayout.Normal;
 
             this.ResumeLayout();
         }
@@ -591,11 +710,19 @@ namespace ROMVault
             {
                 _mnuToSortOpen.Enabled = Directory.Exists(_clickedTree.FullName);
                 _mnuToSortDelete.Enabled = !(_clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortPrimary) || _clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortCache));
+
                 _mnuToSortSetCache.Visible = !(_clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortCache) || _clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortFileOnly));
                 _mnuToSortSetPrimary.Visible = !(_clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortPrimary) || _clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortFileOnly));
-
                 _mnuToSortSetFileOnly.Visible = !(_clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortFileOnly) || _clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortPrimary) || _clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortCache));
                 _mnuToSortClearFileOnly.Visible = _clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortFileOnly);
+
+                // Made not sense. These were already added at cm creation and visibility toggled above. Unneccessary.
+                //_mnuContextToSort.Items.Add(_mnuToSortSetPrimary);
+                //_mnuContextToSort.Items.Add(_mnuToSortSetCache);
+                //_mnuContextToSort.Items.Add(_mnuToSortSetFileOnly);
+                //_mnuContextToSort.Items.Add(_mnuToSortClearFileOnly);
+
+                Debug.WriteLine($"CM items count: {_mnuContextToSort.Items.Count}");
 
                 int thisToSort = 0;
                 for (int i = 0; i < DB.DirRoot.ChildCount; i++)
@@ -609,13 +736,25 @@ namespace ROMVault
                 _mnuToSortUp.Enabled = thisToSort >= 2;
                 _mnuToSortDown.Enabled = thisToSort <= DB.DirRoot.ChildCount - 2;
 
-                _mnuContextToSort.Show(this, new Point(controLocation.X + e.X - 32, controLocation.Y + e.Y - 10));
+                _mnuContextToSort.Show(this, new Point(controLocation.X + e.X, controLocation.Y + e.Y));
+
+                if (_mnuToSortSetPrimary.Visible
+                       || _mnuToSortSetCache.Visible
+                       || _mnuToSortSetFileOnly.Visible
+                       || _mnuToSortClearFileOnly.Visible)
+                {
+                    _mnuToSortConditionalSeparator.Visible = true;
+                }
+                else
+                {
+                    _mnuToSortConditionalSeparator.Visible = false;
+                }
             }
             else
             {
                 _mnuOpen.Enabled = Directory.Exists(_clickedTree.FullName);
                 //_mnuFile.Enabled = _clickedTree.Dat == null;
-                _mnuContext.Show(this, new Point(controLocation.X + e.X - 32, controLocation.Y + e.Y - 10));
+                _mnuContext.Show(this, new Point(controLocation.X + e.X, controLocation.Y + e.Y));
             }
         }
 
@@ -1258,16 +1397,17 @@ namespace ROMVault
             }
 
             UpdateDatMetaData(cf);
-            Cursor oldCursor = Cursor.Current;
-            Cursor.Current = Cursors.WaitCursor;
-            try
-            {
-                UpdateGameGrid(cf);
-            }
-            finally
-            {
-                Cursor.Current = oldCursor;
-            }
+            UpdateGameGrid(cf);
+            //Cursor oldCursor = Cursor.Current;
+            //Cursor.Current = Cursors.WaitCursor;
+            //try
+            //{
+            //    UpdateGameGrid(cf);
+            //}
+            //finally
+            //{
+            //    Cursor.Current = oldCursor;
+            //}
         }
 
         private void UpdateDatMetaData(RvFile tDir)
@@ -1526,7 +1666,6 @@ namespace ROMVault
             else if (splitToolBarMain.Panel1.Width >= navBarWidth && string.IsNullOrEmpty(btnUpdateDats.Text))
             {
                 if (string.IsNullOrEmpty(btnUpdateDats.Text)) ToggleNavText(visible: true);
-                HideNavBT.Image = Properties.Resources.Back__Custom_;
             }
         }
 
@@ -1537,17 +1676,19 @@ namespace ROMVault
 
             ToggleNavText(visible: false);
             splitToolBarMain.SplitterDistance = 68;
-            HideNavBT.Image = Properties.Resources.Forward;
 
             splitToolBarMain.ResumeLayout();
             splitToolBarMain.Visible = true;
+
+            HideNavBT.Image = Properties.Resources.MenuExpand;
         }
 
         private void ExpandSidebar()
         {
             ToggleNavText(visible: true);
             splitToolBarMain.SplitterDistance = navBarWidth + 4;
-            HideNavBT.Image = Properties.Resources.Back__Custom_;
+
+            HideNavBT.Image = Properties.Resources.MenuCollapse;
         }
 
         private void HideNavBT_Click(object sender, EventArgs e)
@@ -1693,6 +1834,17 @@ namespace ROMVault
             DatSetSelected(ts);
 
             DB.Write();
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "Zip Files|*.zip",
+                Title = "Select a Zip File",
+                Multiselect = true
+            };
+            ofd.ShowDialog();
         }
     }
 }

@@ -164,6 +164,7 @@
     <Compile Include="FrmRomInfo.Designer.cs">
       <DependentUpon>FrmRomInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FileSystem.cs" />
     <Compile Include="Helpers\Theming.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="FrmProgressWindowFix.cs">
@@ -236,6 +237,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoundPlayer.cs" />
     <Compile Include="UserControls\FlexiLabel.cs" />
+    <Compile Include="UserControls\FolderBrowserDialog.cs" />
     <Compile Include="UserControls\PromptTextBox.cs" />
     <Compile Include="UserControls\TabControl.cs" />
     <Compile Include="UserControls\TableLayoutPanel.cs" />
@@ -327,7 +329,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="chip.ico" />
-    <Content Include="HelloWorld.txt" />
+    <None Include="Resources\folder--pencil.png" />
+    <None Include="Resources\folder-horizontal-open.png" />
+    <None Include="Resources\disc3.png" />
+    <None Include="Resources\wand-magic.png" />
+    <None Include="Resources\magnifier-zoom.png" />
+    <None Include="Resources\gear.png" />
+    <None Include="Resources\ui-text-field-password1.png" />
+    <None Include="Resources\disc--arrow.png" />
+    <None Include="Resources\disc2.png" />
+    <None Include="Resources\Fave4.png" />
+    <None Include="Resources\Fave3.png" />
+    <None Include="Resources\Fave2.png" />
+    <None Include="Resources\Fave1.png" />
+    <None Include="Resources\MenuExpand.png" />
+    <None Include="Resources\MenuCollapse.png" />
+    <None Include="Resources\ReportsDownload.png" />
+    <None Include="Resources\RomsFindFixes.png" />
+    <None Include="Resources\RomsFix.png" />
+    <None Include="Resources\RomsScan.png" />
     <None Include="Resources\testFix2s.png" />
     <None Include="Resources\testFix2.png" />
     <None Include="Resources\testFix.png" />
@@ -345,6 +365,13 @@
     <None Include="Resources\balloons-box.png" />
     <None Include="Resources\database.png" />
     <None Include="Resources\board-game-go.png" />
+    <None Include="Resources\DatsUpdate.png" />
+    <None Include="Resources\cross1.png" />
+    <None Include="Resources\database1.png" />
+    <None Include="Resources\database--arrow.png" />
+    <None Include="Resources\blue-folder--plus.png" />
+    <None Include="Resources\blue-document-text.png" />
+    <None Include="Resources\arrow-circle-315.png" />
     <Content Include="Resources\default1.png" />
     <Content Include="Resources\default2.png" />
     <Content Include="Resources\default3.png" />
@@ -545,6 +572,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

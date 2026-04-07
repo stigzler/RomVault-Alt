@@ -63,9 +63,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Back__Custom_ {
+        internal static System.Drawing.Bitmap _lock {
             get {
-                object obj = ResourceManager.GetObject("Back (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("lock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap balloons_box {
+        internal static System.Drawing.Bitmap arrow_090 {
             get {
-                object obj = ResourceManager.GetObject("balloons-box", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow-090", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,69 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap board_game_go {
+        internal static System.Drawing.Bitmap arrow_270 {
             get {
-                object obj = ResourceManager.GetObject("board-game-go", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow-270", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_circle_315 {
+            get {
+                object obj = ResourceManager.GetObject("arrow-circle-315", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blue_document_text {
+            get {
+                object obj = ResourceManager.GetObject("blue-document-text", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blue_folder__arrow {
+            get {
+                object obj = ResourceManager.GetObject("blue-folder--arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blue_folder__plus {
+            get {
+                object obj = ResourceManager.GetObject("blue-folder--plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blue_folder_open {
+            get {
+                object obj = ResourceManager.GetObject("blue-folder-open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blue_folder_stamp {
+            get {
+                object obj = ResourceManager.GetObject("blue-folder-stamp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,6 +173,36 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap database__arrow {
+            get {
+                object obj = ResourceManager.GetObject("database--arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap database_export {
+            get {
+                object obj = ResourceManager.GetObject("database-export", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DatsUpdate {
+            get {
+                object obj = ResourceManager.GetObject("DatsUpdate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap disc {
             get {
                 object obj = ResourceManager.GetObject("disc", resourceCulture);
@@ -123,9 +213,19 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap disc_blue {
+        internal static System.Drawing.Bitmap disc__arrow {
             get {
-                object obj = ResourceManager.GetObject("disc-blue", resourceCulture);
+                object obj = ResourceManager.GetObject("disc--arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap disc__plus {
+            get {
+                object obj = ResourceManager.GetObject("disc--plus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +243,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Favourite1__Custom_ {
+        internal static System.Drawing.Bitmap Fave1 {
             get {
-                object obj = ResourceManager.GetObject("Favourite1 (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("Fave1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +253,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Favourite2__Custom_ {
+        internal static System.Drawing.Bitmap Fave2 {
             get {
-                object obj = ResourceManager.GetObject("Favourite2 (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("Fave2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +263,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Favourite3__Custom_ {
+        internal static System.Drawing.Bitmap Fave3 {
             get {
-                object obj = ResourceManager.GetObject("Favourite3 (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("Fave3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +273,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Favourite4__Custom_ {
+        internal static System.Drawing.Bitmap Fave4 {
             get {
-                object obj = ResourceManager.GetObject("Favourite4 (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("Fave4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +283,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FindFixes__Custom_ {
+        internal static System.Drawing.Bitmap folder__pencil {
             get {
-                object obj = ResourceManager.GetObject("FindFixes (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("folder--pencil", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +293,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Fix_Roms__Custom_ {
+        internal static System.Drawing.Bitmap folder_horizontal_open {
             get {
-                object obj = ResourceManager.GetObject("Fix Roms (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("folder-horizontal-open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +303,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Forward {
+        internal static System.Drawing.Bitmap folder_open {
             get {
-                object obj = ResourceManager.GetObject("Forward", resourceCulture);
+                object obj = ResourceManager.GetObject("folder-open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +313,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GenerateReports__Custom_ {
+        internal static System.Drawing.Bitmap gear {
             get {
-                object obj = ResourceManager.GetObject("GenerateReports (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("gear", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +323,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap information_frame {
+        internal static System.Drawing.Bitmap magnifier_zoom {
             get {
-                object obj = ResourceManager.GetObject("information-frame", resourceCulture);
+                object obj = ResourceManager.GetObject("magnifier-zoom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +333,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pngDown {
+        internal static System.Drawing.Bitmap MenuCollapse {
             get {
-                object obj = ResourceManager.GetObject("pngDown", resourceCulture);
+                object obj = ResourceManager.GetObject("MenuCollapse", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +343,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pngUp {
+        internal static System.Drawing.Bitmap MenuExpand {
             get {
-                object obj = ResourceManager.GetObject("pngUp", resourceCulture);
+                object obj = ResourceManager.GetObject("MenuExpand", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +353,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScanRoms__Custom_ {
+        internal static System.Drawing.Bitmap ReportsDownload {
             get {
-                object obj = ResourceManager.GetObject("ScanRoms (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("ReportsDownload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +363,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap testFix {
+        internal static System.Drawing.Bitmap RomsFindFixes {
             get {
-                object obj = ResourceManager.GetObject("testFix", resourceCulture);
+                object obj = ResourceManager.GetObject("RomsFindFixes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +373,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap testFix2 {
+        internal static System.Drawing.Bitmap RomsFix {
             get {
-                object obj = ResourceManager.GetObject("testFix2", resourceCulture);
+                object obj = ResourceManager.GetObject("RomsFix", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +383,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap testFix2s {
+        internal static System.Drawing.Bitmap RomsScan {
             get {
-                object obj = ResourceManager.GetObject("testFix2s", resourceCulture);
+                object obj = ResourceManager.GetObject("RomsScan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,9 +403,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UpdateDats__Custom_ {
+        internal static System.Drawing.Bitmap wand_magic {
             get {
-                object obj = ResourceManager.GetObject("UpdateDats (Custom)", resourceCulture);
+                object obj = ResourceManager.GetObject("wand-magic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

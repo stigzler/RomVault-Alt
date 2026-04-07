@@ -130,5 +130,17 @@ namespace ROMVault.Properties {
                 this["EnableGamesGridRClick"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RomImportMoveNotCopy {
+            get {
+                return ((bool)(this["RomImportMoveNotCopy"]));
+            }
+            set {
+                this["RomImportMoveNotCopy"] = value;
+            }
+        }
     }
 }

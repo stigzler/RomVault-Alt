@@ -45,12 +45,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHDSharpLib", "CHDlib\CHDSh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev", "Dev", "{D8915198-0320-461E-9857-54805C45B5F2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{35C7B264-D032-4F9C-8E3F-AEC84A6E34E6}"
-	ProjectSection(SolutionItems) = preProject
-		featureAdditions.md = featureAdditions.md
-		research.md = research.md
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -298,7 +292,6 @@ Global
 		{BEC3CB3D-0E37-4857-89D7-17C20EF440EB} = {9839A9ED-8289-45BA-BA33-8FA985645E6C}
 		{68E9ABE4-313F-4345-9A8E-6E80289651C5} = {9839A9ED-8289-45BA-BA33-8FA985645E6C}
 		{A9710C37-095A-4A12-B940-8C98C4527AC1} = {9839A9ED-8289-45BA-BA33-8FA985645E6C}
-		{35C7B264-D032-4F9C-8E3F-AEC84A6E34E6} = {D8915198-0320-461E-9857-54805C45B5F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D07A243-78E6-48BB-93AD-9540512E1CA5}
