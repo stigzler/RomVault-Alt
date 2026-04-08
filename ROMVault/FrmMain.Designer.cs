@@ -34,19 +34,32 @@ namespace ROMVault
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitToolBarMain = new System.Windows.Forms.SplitContainer();
+            this.HideNavBT = new System.Windows.Forms.Button();
             this.flexiLabel3 = new ROMVault.UserControls.FlexiLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDefault1 = new System.Windows.Forms.Button();
+            this.btnDefault2 = new System.Windows.Forms.Button();
+            this.btnDefault3 = new System.Windows.Forms.Button();
+            this.btnDefault4 = new System.Windows.Forms.Button();
             this.gbDatInfo = new System.Windows.Forms.GroupBox();
             this.Padding5PN = new System.Windows.Forms.Panel();
+            this.btnReport = new System.Windows.Forms.Button();
             this.Padding4PN = new System.Windows.Forms.Panel();
+            this.btnFixFiles = new System.Windows.Forms.Button();
             this.gbSetInfo = new System.Windows.Forms.GroupBox();
             this.Padding3PN = new System.Windows.Forms.Panel();
+            this.btnFindFixes = new System.Windows.Forms.Button();
             this.PaddingPN2 = new System.Windows.Forms.Panel();
+            this.btnScanRoms = new System.Windows.Forms.Button();
             this.PaddingPN = new System.Windows.Forms.Panel();
+            this.btnUpdateDats = new System.Windows.Forms.Button();
             this.lblTreePreSets = new System.Windows.Forms.Label();
             this.splitDatInfoGameInfo = new System.Windows.Forms.SplitContainer();
             this.DatINfoTlpPN = new System.Windows.Forms.Panel();
+            this.DatTreePN = new System.Windows.Forms.Panel();
             this.ctrRvTree = new ROMVault.RvTree();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.DatsCollapseTreeBT = new System.Windows.Forms.ToolStripButton();
             this.DatInfoTLP = new ROMVault.UserControls.TableLayoutPanel();
             this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.lblDITDate = new System.Windows.Forms.TextBox();
@@ -122,6 +135,7 @@ namespace ROMVault
             this.chkBoxShowMIA = new System.Windows.Forms.CheckBox();
             this.chkBoxShowMerged = new System.Windows.Forms.CheckBox();
             this.SearchTLP = new System.Windows.Forms.TableLayoutPanel();
+            this.btnClear = new System.Windows.Forms.Button();
             this.txtFilter = new ROMVault.UserControls.PromptTextBox();
             this.splitListArt = new System.Windows.Forms.SplitContainer();
             this.splitGameListRomList = new System.Windows.Forms.SplitContainer();
@@ -149,29 +163,43 @@ namespace ROMVault
             this.CInstanceCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabEmuArc = new System.Windows.Forms.TabControl();
             this.tabArtWork = new System.Windows.Forms.TabPage();
+            this.picLogo = new System.Windows.Forms.PictureBox();
+            this.picArtwork = new System.Windows.Forms.PictureBox();
             this.tabMedium = new System.Windows.Forms.TabPage();
+            this.picMedium2 = new System.Windows.Forms.PictureBox();
+            this.picMedium1 = new System.Windows.Forms.PictureBox();
             this.tabScreens = new System.Windows.Forms.TabPage();
+            this.picScreenShot = new System.Windows.Forms.PictureBox();
+            this.picScreenTitle = new System.Windows.Forms.PictureBox();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.tabInfo2 = new System.Windows.Forms.TabPage();
             this.txtInfo2 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmUpdateDATs = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateNewDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateAllDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanROMs = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewToSortFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmScanLevel1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanLevel2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanLevel3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmFindFixes = new System.Windows.Forms.ToolStripMenuItem();
+            this.findFixesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findFixeswithLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.fixROMsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.scanFindAndFixROMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fixDatReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.directorySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryMappingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.romVaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torrentZipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitHelpWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,25 +214,6 @@ namespace ROMVault
             this.garbageCollectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.MainSS = new System.Windows.Forms.StatusStrip();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.HideNavBT = new System.Windows.Forms.Button();
-            this.btnDefault1 = new System.Windows.Forms.Button();
-            this.btnDefault2 = new System.Windows.Forms.Button();
-            this.btnDefault3 = new System.Windows.Forms.Button();
-            this.btnDefault4 = new System.Windows.Forms.Button();
-            this.btnReport = new System.Windows.Forms.Button();
-            this.btnFixFiles = new System.Windows.Forms.Button();
-            this.btnFindFixes = new System.Windows.Forms.Button();
-            this.btnScanRoms = new System.Windows.Forms.Button();
-            this.btnUpdateDats = new System.Windows.Forms.Button();
-            this.DatsCollapseTreeBT = new System.Windows.Forms.ToolStripButton();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.picLogo = new System.Windows.Forms.PictureBox();
-            this.picArtwork = new System.Windows.Forms.PictureBox();
-            this.picMedium2 = new System.Windows.Forms.PictureBox();
-            this.picMedium1 = new System.Windows.Forms.PictureBox();
-            this.picScreenShot = new System.Windows.Forms.PictureBox();
-            this.picScreenTitle = new System.Windows.Forms.PictureBox();
             this.CollapseAllSSBT = new System.Windows.Forms.ToolStripStatusLabel();
             this.DatsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.DatsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
@@ -212,15 +221,6 @@ namespace ROMVault
             this.RomsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.RomsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
             this.RomsShortnameToggleSSBT = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateNewDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewToSortFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmScanLevel1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.findFixesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fixROMsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.fixDatReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.directorySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.romVaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DatTreePN = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -236,6 +236,8 @@ namespace ROMVault
             this.splitDatInfoGameInfo.Panel2.SuspendLayout();
             this.splitDatInfoGameInfo.SuspendLayout();
             this.DatINfoTlpPN.SuspendLayout();
+            this.DatTreePN.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.DatInfoTLP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitGameInfoLists)).BeginInit();
             this.splitGameInfoLists.Panel1.SuspendLayout();
@@ -257,20 +259,18 @@ namespace ROMVault
             ((System.ComponentModel.ISupportInitialize)(this.RomGrid)).BeginInit();
             this.TabEmuArc.SuspendLayout();
             this.tabArtWork.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picArtwork)).BeginInit();
             this.tabMedium.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMedium2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMedium1)).BeginInit();
             this.tabScreens.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenTitle)).BeginInit();
             this.tabInfo.SuspendLayout();
             this.tabInfo2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.MainSS.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picArtwork)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMedium2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMedium1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picScreenTitle)).BeginInit();
-            this.DatTreePN.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitToolBarMain
@@ -304,6 +304,20 @@ namespace ROMVault
             this.splitToolBarMain.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitToolBarMain_SplitterMoving);
             this.splitToolBarMain.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitToolBarMain_SplitterMoved);
             // 
+            // HideNavBT
+            // 
+            this.HideNavBT.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HideNavBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.HideNavBT.FlatAppearance.BorderSize = 0;
+            this.HideNavBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HideNavBT.Image = global::ROMVault.Properties.Resources.MenuCollapse;
+            this.HideNavBT.Location = new System.Drawing.Point(4, 314);
+            this.HideNavBT.Name = "HideNavBT";
+            this.HideNavBT.Size = new System.Drawing.Size(122, 52);
+            this.HideNavBT.TabIndex = 23;
+            this.HideNavBT.UseVisualStyleBackColor = true;
+            this.HideNavBT.Click += new System.EventHandler(this.HideNavBT_Click);
+            // 
             // flexiLabel3
             // 
             this.flexiLabel3.AutoSize = true;
@@ -331,6 +345,59 @@ namespace ROMVault
             this.flowLayoutPanel1.Size = new System.Drawing.Size(122, 108);
             this.flowLayoutPanel1.TabIndex = 21;
             // 
+            // btnDefault1
+            // 
+            this.btnDefault1.BackgroundImage = global::ROMVault.Properties.Resources.Fave1;
+            this.btnDefault1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDefault1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDefault1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefault1.Location = new System.Drawing.Point(3, 3);
+            this.btnDefault1.Name = "btnDefault1";
+            this.btnDefault1.Padding = new System.Windows.Forms.Padding(2);
+            this.btnDefault1.Size = new System.Drawing.Size(48, 48);
+            this.btnDefault1.TabIndex = 14;
+            this.btnDefault1.UseVisualStyleBackColor = true;
+            this.btnDefault1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault1_MouseDown);
+            // 
+            // btnDefault2
+            // 
+            this.btnDefault2.BackgroundImage = global::ROMVault.Properties.Resources.Fave2;
+            this.btnDefault2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDefault2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDefault2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefault2.Location = new System.Drawing.Point(57, 3);
+            this.btnDefault2.Name = "btnDefault2";
+            this.btnDefault2.Size = new System.Drawing.Size(48, 48);
+            this.btnDefault2.TabIndex = 15;
+            this.btnDefault2.UseVisualStyleBackColor = true;
+            this.btnDefault2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault2_MouseDown);
+            // 
+            // btnDefault3
+            // 
+            this.btnDefault3.BackgroundImage = global::ROMVault.Properties.Resources.Fave3;
+            this.btnDefault3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDefault3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDefault3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefault3.Location = new System.Drawing.Point(3, 57);
+            this.btnDefault3.Name = "btnDefault3";
+            this.btnDefault3.Size = new System.Drawing.Size(48, 48);
+            this.btnDefault3.TabIndex = 16;
+            this.btnDefault3.UseVisualStyleBackColor = true;
+            this.btnDefault3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault3_MouseDown);
+            // 
+            // btnDefault4
+            // 
+            this.btnDefault4.BackgroundImage = global::ROMVault.Properties.Resources.Fave4;
+            this.btnDefault4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDefault4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDefault4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefault4.Location = new System.Drawing.Point(57, 57);
+            this.btnDefault4.Name = "btnDefault4";
+            this.btnDefault4.Size = new System.Drawing.Size(48, 48);
+            this.btnDefault4.TabIndex = 17;
+            this.btnDefault4.UseVisualStyleBackColor = true;
+            this.btnDefault4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault4_MouseDown);
+            // 
             // gbDatInfo
             // 
             this.gbDatInfo.AutoSize = true;
@@ -353,6 +420,27 @@ namespace ROMVault
             this.Padding5PN.Size = new System.Drawing.Size(122, 62);
             this.Padding5PN.TabIndex = 20;
             // 
+            // btnReport
+            // 
+            this.btnReport.AutoSize = true;
+            this.btnReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReport.Image = global::ROMVault.Properties.Resources.ReportsDownload;
+            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReport.Location = new System.Drawing.Point(2, 2);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Padding = new System.Windows.Forms.Padding(3);
+            this.btnReport.Size = new System.Drawing.Size(118, 58);
+            this.btnReport.TabIndex = 13;
+            this.btnReport.Text = "Reports";
+            this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.tooltip.SetToolTip(this.btnReport, "Generate Reports");
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnReportMouseUp);
+            // 
             // Padding4PN
             // 
             this.Padding4PN.Controls.Add(this.btnFixFiles);
@@ -362,6 +450,27 @@ namespace ROMVault
             this.Padding4PN.Padding = new System.Windows.Forms.Padding(2);
             this.Padding4PN.Size = new System.Drawing.Size(122, 62);
             this.Padding4PN.TabIndex = 20;
+            // 
+            // btnFixFiles
+            // 
+            this.btnFixFiles.AutoSize = true;
+            this.btnFixFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnFixFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFixFiles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnFixFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFixFiles.Image = global::ROMVault.Properties.Resources.RomsFix;
+            this.btnFixFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFixFiles.Location = new System.Drawing.Point(2, 2);
+            this.btnFixFiles.Name = "btnFixFiles";
+            this.btnFixFiles.Padding = new System.Windows.Forms.Padding(3);
+            this.btnFixFiles.Size = new System.Drawing.Size(118, 58);
+            this.btnFixFiles.TabIndex = 10;
+            this.btnFixFiles.Text = "Fix Roms";
+            this.btnFixFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFixFiles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.tooltip.SetToolTip(this.btnFixFiles, "Fix ROMs");
+            this.btnFixFiles.UseVisualStyleBackColor = true;
+            this.btnFixFiles.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnFixFilesMouseUp);
             // 
             // gbSetInfo
             // 
@@ -383,6 +492,27 @@ namespace ROMVault
             this.Padding3PN.Size = new System.Drawing.Size(122, 62);
             this.Padding3PN.TabIndex = 20;
             // 
+            // btnFindFixes
+            // 
+            this.btnFindFixes.AutoSize = true;
+            this.btnFindFixes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnFindFixes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFindFixes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnFindFixes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFindFixes.Image = global::ROMVault.Properties.Resources.RomsFindFixes;
+            this.btnFindFixes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFindFixes.Location = new System.Drawing.Point(2, 2);
+            this.btnFindFixes.Name = "btnFindFixes";
+            this.btnFindFixes.Padding = new System.Windows.Forms.Padding(3);
+            this.btnFindFixes.Size = new System.Drawing.Size(118, 58);
+            this.btnFindFixes.TabIndex = 9;
+            this.btnFindFixes.Text = "Find Fixes";
+            this.btnFindFixes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFindFixes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.tooltip.SetToolTip(this.btnFindFixes, "Find Fixes");
+            this.btnFindFixes.UseVisualStyleBackColor = true;
+            this.btnFindFixes.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnFindFixes_MouseUp);
+            // 
             // PaddingPN2
             // 
             this.PaddingPN2.Controls.Add(this.btnScanRoms);
@@ -393,6 +523,27 @@ namespace ROMVault
             this.PaddingPN2.Size = new System.Drawing.Size(122, 62);
             this.PaddingPN2.TabIndex = 20;
             // 
+            // btnScanRoms
+            // 
+            this.btnScanRoms.AutoSize = true;
+            this.btnScanRoms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnScanRoms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnScanRoms.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnScanRoms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScanRoms.Image = global::ROMVault.Properties.Resources.RomsScan;
+            this.btnScanRoms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnScanRoms.Location = new System.Drawing.Point(2, 2);
+            this.btnScanRoms.Name = "btnScanRoms";
+            this.btnScanRoms.Padding = new System.Windows.Forms.Padding(3);
+            this.btnScanRoms.Size = new System.Drawing.Size(118, 58);
+            this.btnScanRoms.TabIndex = 8;
+            this.btnScanRoms.Text = "Scan Roms";
+            this.btnScanRoms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnScanRoms.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.tooltip.SetToolTip(this.btnScanRoms, "Scan ROMs");
+            this.btnScanRoms.UseVisualStyleBackColor = true;
+            this.btnScanRoms.Click += new System.EventHandler(this.BtnScanRomsClick);
+            // 
             // PaddingPN
             // 
             this.PaddingPN.Controls.Add(this.btnUpdateDats);
@@ -402,6 +553,27 @@ namespace ROMVault
             this.PaddingPN.Padding = new System.Windows.Forms.Padding(2);
             this.PaddingPN.Size = new System.Drawing.Size(122, 62);
             this.PaddingPN.TabIndex = 19;
+            // 
+            // btnUpdateDats
+            // 
+            this.btnUpdateDats.AutoSize = true;
+            this.btnUpdateDats.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnUpdateDats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdateDats.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnUpdateDats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateDats.Image = global::ROMVault.Properties.Resources.DatsUpdate;
+            this.btnUpdateDats.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateDats.Location = new System.Drawing.Point(2, 2);
+            this.btnUpdateDats.Name = "btnUpdateDats";
+            this.btnUpdateDats.Padding = new System.Windows.Forms.Padding(3);
+            this.btnUpdateDats.Size = new System.Drawing.Size(118, 58);
+            this.btnUpdateDats.TabIndex = 0;
+            this.btnUpdateDats.Text = "Update DATs";
+            this.btnUpdateDats.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateDats.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.tooltip.SetToolTip(this.btnUpdateDats, "Update DATs");
+            this.btnUpdateDats.UseVisualStyleBackColor = false;
+            this.btnUpdateDats.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnUpdateDatsMouseUp);
             // 
             // lblTreePreSets
             // 
@@ -445,6 +617,17 @@ namespace ROMVault
             this.DatINfoTlpPN.Size = new System.Drawing.Size(450, 766);
             this.DatINfoTlpPN.TabIndex = 4;
             // 
+            // DatTreePN
+            // 
+            this.DatTreePN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DatTreePN.Controls.Add(this.ctrRvTree);
+            this.DatTreePN.Controls.Add(this.toolStrip1);
+            this.DatTreePN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DatTreePN.Location = new System.Drawing.Point(4, 253);
+            this.DatTreePN.Name = "DatTreePN";
+            this.DatTreePN.Size = new System.Drawing.Size(440, 507);
+            this.DatTreePN.TabIndex = 6;
+            // 
             // ctrRvTree
             // 
             this.ctrRvTree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -456,6 +639,27 @@ namespace ROMVault
             this.ctrRvTree.Visible = false;
             this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
             this.ctrRvTree.RvChecked += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvChecked);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DatsCollapseTreeBT});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(438, 25);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // DatsCollapseTreeBT
+            // 
+            this.DatsCollapseTreeBT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DatsCollapseTreeBT.Image = global::ROMVault.Properties.Resources.folder_tree;
+            this.DatsCollapseTreeBT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DatsCollapseTreeBT.Name = "DatsCollapseTreeBT";
+            this.DatsCollapseTreeBT.Size = new System.Drawing.Size(23, 22);
+            this.DatsCollapseTreeBT.Text = "toolStripButton1";
+            this.DatsCollapseTreeBT.Click += new System.EventHandler(this.DatsCollapseTreeBT_Click);
             // 
             // DatInfoTLP
             // 
@@ -1463,6 +1667,19 @@ namespace ROMVault
             this.SearchTLP.Size = new System.Drawing.Size(182, 31);
             this.SearchTLP.TabIndex = 23;
             // 
+            // btnClear
+            // 
+            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Image = global::ROMVault.Properties.Resources.cross;
+            this.btnClear.Location = new System.Drawing.Point(154, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(25, 25);
+            this.btnClear.TabIndex = 18;
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            // 
             // txtFilter
             // 
             this.txtFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1814,6 +2031,28 @@ namespace ROMVault
             this.tabArtWork.Text = "ArtWork";
             this.tabArtWork.Resize += new System.EventHandler(this.tabArtWork_Resize);
             // 
+            // picLogo
+            // 
+            this.picLogo.BackColor = System.Drawing.Color.White;
+            this.picLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picLogo.Location = new System.Drawing.Point(14, 197);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(114, 117);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogo.TabIndex = 1;
+            this.picLogo.TabStop = false;
+            // 
+            // picArtwork
+            // 
+            this.picArtwork.BackColor = System.Drawing.Color.White;
+            this.picArtwork.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picArtwork.Location = new System.Drawing.Point(13, 60);
+            this.picArtwork.Name = "picArtwork";
+            this.picArtwork.Size = new System.Drawing.Size(116, 104);
+            this.picArtwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picArtwork.TabIndex = 0;
+            this.picArtwork.TabStop = false;
+            // 
             // tabMedium
             // 
             this.tabMedium.BackColor = System.Drawing.SystemColors.Control;
@@ -1827,6 +2066,28 @@ namespace ROMVault
             this.tabMedium.Text = "Medium";
             this.tabMedium.Resize += new System.EventHandler(this.tabMedium_Resize);
             // 
+            // picMedium2
+            // 
+            this.picMedium2.BackColor = System.Drawing.Color.White;
+            this.picMedium2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picMedium2.Location = new System.Drawing.Point(24, 283);
+            this.picMedium2.Name = "picMedium2";
+            this.picMedium2.Size = new System.Drawing.Size(114, 117);
+            this.picMedium2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMedium2.TabIndex = 3;
+            this.picMedium2.TabStop = false;
+            // 
+            // picMedium1
+            // 
+            this.picMedium1.BackColor = System.Drawing.Color.White;
+            this.picMedium1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picMedium1.Location = new System.Drawing.Point(23, 146);
+            this.picMedium1.Name = "picMedium1";
+            this.picMedium1.Size = new System.Drawing.Size(116, 104);
+            this.picMedium1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMedium1.TabIndex = 2;
+            this.picMedium1.TabStop = false;
+            // 
             // tabScreens
             // 
             this.tabScreens.BackColor = System.Drawing.SystemColors.Control;
@@ -1839,6 +2100,28 @@ namespace ROMVault
             this.tabScreens.TabIndex = 1;
             this.tabScreens.Text = "Screens";
             this.tabScreens.Resize += new System.EventHandler(this.tabScreens_Resize);
+            // 
+            // picScreenShot
+            // 
+            this.picScreenShot.BackColor = System.Drawing.Color.White;
+            this.picScreenShot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picScreenShot.Location = new System.Drawing.Point(15, 218);
+            this.picScreenShot.Name = "picScreenShot";
+            this.picScreenShot.Size = new System.Drawing.Size(104, 113);
+            this.picScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picScreenShot.TabIndex = 1;
+            this.picScreenShot.TabStop = false;
+            // 
+            // picScreenTitle
+            // 
+            this.picScreenTitle.BackColor = System.Drawing.Color.White;
+            this.picScreenTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picScreenTitle.Location = new System.Drawing.Point(15, 69);
+            this.picScreenTitle.Name = "picScreenTitle";
+            this.picScreenTitle.Size = new System.Drawing.Size(104, 117);
+            this.picScreenTitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picScreenTitle.TabIndex = 0;
+            this.picScreenTitle.TabStop = false;
             // 
             // tabInfo
             // 
@@ -1910,6 +2193,15 @@ namespace ROMVault
             this.tsmUpdateDATs.Size = new System.Drawing.Size(45, 20);
             this.tsmUpdateDATs.Text = "DATs";
             // 
+            // updateNewDATsToolStripMenuItem
+            // 
+            this.updateNewDATsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.arrow_circle_315;
+            this.updateNewDATsToolStripMenuItem.Name = "updateNewDATsToolStripMenuItem";
+            this.updateNewDATsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.updateNewDATsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.updateNewDATsToolStripMenuItem.Text = "Update New DATs";
+            this.updateNewDATsToolStripMenuItem.Click += new System.EventHandler(this.updateNewDATsToolStripMenuItem_Click);
+            // 
             // updateAllDATsToolStripMenuItem
             // 
             this.updateAllDATsToolStripMenuItem.Name = "updateAllDATsToolStripMenuItem";
@@ -1930,10 +2222,27 @@ namespace ROMVault
             this.tsmScanROMs.Size = new System.Drawing.Size(51, 20);
             this.tsmScanROMs.Text = "ROMs";
             // 
+            // addNewToSortFolderToolStripMenuItem
+            // 
+            this.addNewToSortFolderToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_folder__plus;
+            this.addNewToSortFolderToolStripMenuItem.Name = "addNewToSortFolderToolStripMenuItem";
+            this.addNewToSortFolderToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
+            this.addNewToSortFolderToolStripMenuItem.Text = "Add New ToSort Folder";
+            this.addNewToSortFolderToolStripMenuItem.Click += new System.EventHandler(this.addNewToSortFolderToolStripMenuItem_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(350, 6);
+            // 
+            // tsmScanLevel1
+            // 
+            this.tsmScanLevel1.Image = global::ROMVault.Properties.Resources.arrow_circle_315;
+            this.tsmScanLevel1.Name = "tsmScanLevel1";
+            this.tsmScanLevel1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F6)));
+            this.tsmScanLevel1.Size = new System.Drawing.Size(353, 22);
+            this.tsmScanLevel1.Text = "Scan ticked new ROMs headers only";
+            this.tsmScanLevel1.Click += new System.EventHandler(this.TsmScanLevel1Click);
             // 
             // tsmScanLevel2
             // 
@@ -1964,6 +2273,14 @@ namespace ROMVault
             this.tsmFindFixes.Size = new System.Drawing.Size(44, 20);
             this.tsmFindFixes.Text = "Fixes";
             // 
+            // findFixesToolStripMenuItem
+            // 
+            this.findFixesToolStripMenuItem.Image = global::ROMVault.Properties.Resources.magnifier_zoom;
+            this.findFixesToolStripMenuItem.Name = "findFixesToolStripMenuItem";
+            this.findFixesToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.findFixesToolStripMenuItem.Text = "Find Fixes";
+            this.findFixesToolStripMenuItem.Click += new System.EventHandler(this.findFixesToolStripMenuItem_Click);
+            // 
             // findFixeswithLogToolStripMenuItem
             // 
             this.findFixeswithLogToolStripMenuItem.Name = "findFixeswithLogToolStripMenuItem";
@@ -1975,6 +2292,14 @@ namespace ROMVault
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(176, 6);
+            // 
+            // fixROMsToolStripMenuItem1
+            // 
+            this.fixROMsToolStripMenuItem1.Image = global::ROMVault.Properties.Resources.wand_magic;
+            this.fixROMsToolStripMenuItem1.Name = "fixROMsToolStripMenuItem1";
+            this.fixROMsToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.fixROMsToolStripMenuItem1.Text = "Fix ROMs";
+            this.fixROMsToolStripMenuItem1.Click += new System.EventHandler(this.fixROMsToolStripMenuItem1_Click);
             // 
             // scanFindAndFixROMsToolStripMenuItem
             // 
@@ -1993,6 +2318,15 @@ namespace ROMVault
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "Reports";
+            // 
+            // fixDatReportToolStripMenuItem
+            // 
+            this.fixDatReportToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_document_text;
+            this.fixDatReportToolStripMenuItem.Name = "fixDatReportToolStripMenuItem";
+            this.fixDatReportToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
+            this.fixDatReportToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.fixDatReportToolStripMenuItem.Text = "Fix Dat Report";
+            this.fixDatReportToolStripMenuItem.Click += new System.EventHandler(this.fixDatReportToolStripMenuItem_Click);
             // 
             // fullReportToolStripMenuItem
             // 
@@ -2021,6 +2355,15 @@ namespace ROMVault
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
+            // directorySettingsToolStripMenuItem
+            // 
+            this.directorySettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.folder__pencil;
+            this.directorySettingsToolStripMenuItem.Name = "directorySettingsToolStripMenuItem";
+            this.directorySettingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F10)));
+            this.directorySettingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.directorySettingsToolStripMenuItem.Text = "Directory Dat Rules";
+            this.directorySettingsToolStripMenuItem.Click += new System.EventHandler(this.DirectorySettingsToolStripMenuItem_Click);
+            // 
             // directoryMappingsToolStripMenuItem
             // 
             this.directoryMappingsToolStripMenuItem.Name = "directoryMappingsToolStripMenuItem";
@@ -2033,6 +2376,15 @@ namespace ROMVault
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(228, 6);
+            // 
+            // romVaultSettingsToolStripMenuItem
+            // 
+            this.romVaultSettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.gear;
+            this.romVaultSettingsToolStripMenuItem.Name = "romVaultSettingsToolStripMenuItem";
+            this.romVaultSettingsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.romVaultSettingsToolStripMenuItem.Text = "Settings";
+            this.romVaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.RomVaultSettingsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -2153,284 +2505,12 @@ namespace ROMVault
             this.MainSS.TabIndex = 7;
             this.MainSS.Text = "statusStrip1";
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DatsCollapseTreeBT});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(438, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // HideNavBT
-            // 
-            this.HideNavBT.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HideNavBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.HideNavBT.FlatAppearance.BorderSize = 0;
-            this.HideNavBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HideNavBT.Image = global::ROMVault.Properties.Resources.MenuCollapse;
-            this.HideNavBT.Location = new System.Drawing.Point(4, 314);
-            this.HideNavBT.Name = "HideNavBT";
-            this.HideNavBT.Size = new System.Drawing.Size(122, 52);
-            this.HideNavBT.TabIndex = 23;
-            this.HideNavBT.UseVisualStyleBackColor = true;
-            this.HideNavBT.Click += new System.EventHandler(this.HideNavBT_Click);
-            // 
-            // btnDefault1
-            // 
-            this.btnDefault1.BackgroundImage = global::ROMVault.Properties.Resources.Fave1;
-            this.btnDefault1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDefault1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnDefault1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault1.Location = new System.Drawing.Point(3, 3);
-            this.btnDefault1.Name = "btnDefault1";
-            this.btnDefault1.Padding = new System.Windows.Forms.Padding(2);
-            this.btnDefault1.Size = new System.Drawing.Size(48, 48);
-            this.btnDefault1.TabIndex = 14;
-            this.btnDefault1.UseVisualStyleBackColor = true;
-            this.btnDefault1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault1_MouseDown);
-            // 
-            // btnDefault2
-            // 
-            this.btnDefault2.BackgroundImage = global::ROMVault.Properties.Resources.Fave2;
-            this.btnDefault2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDefault2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnDefault2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault2.Location = new System.Drawing.Point(57, 3);
-            this.btnDefault2.Name = "btnDefault2";
-            this.btnDefault2.Size = new System.Drawing.Size(48, 48);
-            this.btnDefault2.TabIndex = 15;
-            this.btnDefault2.UseVisualStyleBackColor = true;
-            this.btnDefault2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault2_MouseDown);
-            // 
-            // btnDefault3
-            // 
-            this.btnDefault3.BackgroundImage = global::ROMVault.Properties.Resources.Fave3;
-            this.btnDefault3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDefault3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnDefault3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault3.Location = new System.Drawing.Point(3, 57);
-            this.btnDefault3.Name = "btnDefault3";
-            this.btnDefault3.Size = new System.Drawing.Size(48, 48);
-            this.btnDefault3.TabIndex = 16;
-            this.btnDefault3.UseVisualStyleBackColor = true;
-            this.btnDefault3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault3_MouseDown);
-            // 
-            // btnDefault4
-            // 
-            this.btnDefault4.BackgroundImage = global::ROMVault.Properties.Resources.Fave4;
-            this.btnDefault4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDefault4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnDefault4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault4.Location = new System.Drawing.Point(57, 57);
-            this.btnDefault4.Name = "btnDefault4";
-            this.btnDefault4.Size = new System.Drawing.Size(48, 48);
-            this.btnDefault4.TabIndex = 17;
-            this.btnDefault4.UseVisualStyleBackColor = true;
-            this.btnDefault4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDefault4_MouseDown);
-            // 
-            // btnReport
-            // 
-            this.btnReport.AutoSize = true;
-            this.btnReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReport.Image = global::ROMVault.Properties.Resources.ReportsDownload;
-            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(2, 2);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Padding = new System.Windows.Forms.Padding(3);
-            this.btnReport.Size = new System.Drawing.Size(118, 58);
-            this.btnReport.TabIndex = 13;
-            this.btnReport.Text = "Reports";
-            this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnReport, "Generate Reports");
-            this.btnReport.UseVisualStyleBackColor = true;
-            this.btnReport.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnReportMouseUp);
-            // 
-            // btnFixFiles
-            // 
-            this.btnFixFiles.AutoSize = true;
-            this.btnFixFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFixFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnFixFiles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnFixFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFixFiles.Image = global::ROMVault.Properties.Resources.RomsFix;
-            this.btnFixFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFixFiles.Location = new System.Drawing.Point(2, 2);
-            this.btnFixFiles.Name = "btnFixFiles";
-            this.btnFixFiles.Padding = new System.Windows.Forms.Padding(3);
-            this.btnFixFiles.Size = new System.Drawing.Size(118, 58);
-            this.btnFixFiles.TabIndex = 10;
-            this.btnFixFiles.Text = "Fix Roms";
-            this.btnFixFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFixFiles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnFixFiles, "Fix ROMs");
-            this.btnFixFiles.UseVisualStyleBackColor = true;
-            this.btnFixFiles.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnFixFilesMouseUp);
-            // 
-            // btnFindFixes
-            // 
-            this.btnFindFixes.AutoSize = true;
-            this.btnFindFixes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFindFixes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnFindFixes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnFindFixes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFindFixes.Image = global::ROMVault.Properties.Resources.RomsFindFixes;
-            this.btnFindFixes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFindFixes.Location = new System.Drawing.Point(2, 2);
-            this.btnFindFixes.Name = "btnFindFixes";
-            this.btnFindFixes.Padding = new System.Windows.Forms.Padding(3);
-            this.btnFindFixes.Size = new System.Drawing.Size(118, 58);
-            this.btnFindFixes.TabIndex = 9;
-            this.btnFindFixes.Text = "Find Fixes";
-            this.btnFindFixes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFindFixes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnFindFixes, "Find Fixes");
-            this.btnFindFixes.UseVisualStyleBackColor = true;
-            this.btnFindFixes.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnFindFixes_MouseUp);
-            // 
-            // btnScanRoms
-            // 
-            this.btnScanRoms.AutoSize = true;
-            this.btnScanRoms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnScanRoms.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnScanRoms.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnScanRoms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScanRoms.Image = global::ROMVault.Properties.Resources.RomsScan;
-            this.btnScanRoms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnScanRoms.Location = new System.Drawing.Point(2, 2);
-            this.btnScanRoms.Name = "btnScanRoms";
-            this.btnScanRoms.Padding = new System.Windows.Forms.Padding(3);
-            this.btnScanRoms.Size = new System.Drawing.Size(118, 58);
-            this.btnScanRoms.TabIndex = 8;
-            this.btnScanRoms.Text = "Scan Roms";
-            this.btnScanRoms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnScanRoms.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnScanRoms, "Scan ROMs");
-            this.btnScanRoms.UseVisualStyleBackColor = true;
-            this.btnScanRoms.Click += new System.EventHandler(this.BtnScanRomsClick);
-            // 
-            // btnUpdateDats
-            // 
-            this.btnUpdateDats.AutoSize = true;
-            this.btnUpdateDats.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnUpdateDats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUpdateDats.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnUpdateDats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateDats.Image = global::ROMVault.Properties.Resources.DatsUpdate;
-            this.btnUpdateDats.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateDats.Location = new System.Drawing.Point(2, 2);
-            this.btnUpdateDats.Name = "btnUpdateDats";
-            this.btnUpdateDats.Padding = new System.Windows.Forms.Padding(3);
-            this.btnUpdateDats.Size = new System.Drawing.Size(118, 58);
-            this.btnUpdateDats.TabIndex = 0;
-            this.btnUpdateDats.Text = "Update DATs";
-            this.btnUpdateDats.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateDats.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnUpdateDats, "Update DATs");
-            this.btnUpdateDats.UseVisualStyleBackColor = false;
-            this.btnUpdateDats.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnUpdateDatsMouseUp);
-            // 
-            // DatsCollapseTreeBT
-            // 
-            this.DatsCollapseTreeBT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DatsCollapseTreeBT.Image = global::ROMVault.Properties.Resources.folder_tree;
-            this.DatsCollapseTreeBT.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DatsCollapseTreeBT.Name = "DatsCollapseTreeBT";
-            this.DatsCollapseTreeBT.Size = new System.Drawing.Size(23, 22);
-            this.DatsCollapseTreeBT.Text = "toolStripButton1";
-            this.DatsCollapseTreeBT.Click += new System.EventHandler(this.DatsCollapseTreeBT_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Image = global::ROMVault.Properties.Resources.cross;
-            this.btnClear.Location = new System.Drawing.Point(154, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(25, 25);
-            this.btnClear.TabIndex = 18;
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
-            // 
-            // picLogo
-            // 
-            this.picLogo.BackColor = System.Drawing.Color.White;
-            this.picLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picLogo.Location = new System.Drawing.Point(14, 197);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(114, 117);
-            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picLogo.TabIndex = 1;
-            this.picLogo.TabStop = false;
-            // 
-            // picArtwork
-            // 
-            this.picArtwork.BackColor = System.Drawing.Color.White;
-            this.picArtwork.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picArtwork.Location = new System.Drawing.Point(13, 60);
-            this.picArtwork.Name = "picArtwork";
-            this.picArtwork.Size = new System.Drawing.Size(116, 104);
-            this.picArtwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picArtwork.TabIndex = 0;
-            this.picArtwork.TabStop = false;
-            // 
-            // picMedium2
-            // 
-            this.picMedium2.BackColor = System.Drawing.Color.White;
-            this.picMedium2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMedium2.Location = new System.Drawing.Point(24, 283);
-            this.picMedium2.Name = "picMedium2";
-            this.picMedium2.Size = new System.Drawing.Size(114, 117);
-            this.picMedium2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMedium2.TabIndex = 3;
-            this.picMedium2.TabStop = false;
-            // 
-            // picMedium1
-            // 
-            this.picMedium1.BackColor = System.Drawing.Color.White;
-            this.picMedium1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMedium1.Location = new System.Drawing.Point(23, 146);
-            this.picMedium1.Name = "picMedium1";
-            this.picMedium1.Size = new System.Drawing.Size(116, 104);
-            this.picMedium1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMedium1.TabIndex = 2;
-            this.picMedium1.TabStop = false;
-            // 
-            // picScreenShot
-            // 
-            this.picScreenShot.BackColor = System.Drawing.Color.White;
-            this.picScreenShot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picScreenShot.Location = new System.Drawing.Point(15, 218);
-            this.picScreenShot.Name = "picScreenShot";
-            this.picScreenShot.Size = new System.Drawing.Size(104, 113);
-            this.picScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picScreenShot.TabIndex = 1;
-            this.picScreenShot.TabStop = false;
-            // 
-            // picScreenTitle
-            // 
-            this.picScreenTitle.BackColor = System.Drawing.Color.White;
-            this.picScreenTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picScreenTitle.Location = new System.Drawing.Point(15, 69);
-            this.picScreenTitle.Name = "picScreenTitle";
-            this.picScreenTitle.Size = new System.Drawing.Size(104, 117);
-            this.picScreenTitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picScreenTitle.TabIndex = 0;
-            this.picScreenTitle.TabStop = false;
-            // 
             // CollapseAllSSBT
             // 
             this.CollapseAllSSBT.Image = global::ROMVault.Properties.Resources.MenuCollapse;
             this.CollapseAllSSBT.Margin = new System.Windows.Forms.Padding(4, 3, 4, 2);
             this.CollapseAllSSBT.Name = "CollapseAllSSBT";
-            this.CollapseAllSSBT.Size = new System.Drawing.Size(24, 24);
+            this.CollapseAllSSBT.Size = new System.Drawing.Size(24, 25);
             this.CollapseAllSSBT.ToolTipText = "Collapse All\r\nR-Click on Dropdown = Show/Hide\r\nShift+R-Click on Dropdown = Toggle" +
     " Text";
             this.CollapseAllSSBT.Click += new System.EventHandler(this.ToggleStatusTextBT_Click);
@@ -2491,86 +2571,6 @@ namespace ROMVault
             this.RomsShortnameToggleSSBT.Text = "Toggle Shortname";
             this.RomsShortnameToggleSSBT.Click += new System.EventHandler(this.RomsShortnameToggleSSBT_Click);
             // 
-            // updateNewDATsToolStripMenuItem
-            // 
-            this.updateNewDATsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.arrow_circle_315;
-            this.updateNewDATsToolStripMenuItem.Name = "updateNewDATsToolStripMenuItem";
-            this.updateNewDATsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.updateNewDATsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.updateNewDATsToolStripMenuItem.Text = "Update New DATs";
-            this.updateNewDATsToolStripMenuItem.Click += new System.EventHandler(this.updateNewDATsToolStripMenuItem_Click);
-            // 
-            // addNewToSortFolderToolStripMenuItem
-            // 
-            this.addNewToSortFolderToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_folder__plus;
-            this.addNewToSortFolderToolStripMenuItem.Name = "addNewToSortFolderToolStripMenuItem";
-            this.addNewToSortFolderToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
-            this.addNewToSortFolderToolStripMenuItem.Text = "Add New ToSort Folder";
-            this.addNewToSortFolderToolStripMenuItem.Click += new System.EventHandler(this.addNewToSortFolderToolStripMenuItem_Click);
-            // 
-            // tsmScanLevel1
-            // 
-            this.tsmScanLevel1.Image = global::ROMVault.Properties.Resources.arrow_circle_315;
-            this.tsmScanLevel1.Name = "tsmScanLevel1";
-            this.tsmScanLevel1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F6)));
-            this.tsmScanLevel1.Size = new System.Drawing.Size(353, 22);
-            this.tsmScanLevel1.Text = "Scan ticked new ROMs headers only";
-            this.tsmScanLevel1.Click += new System.EventHandler(this.TsmScanLevel1Click);
-            // 
-            // findFixesToolStripMenuItem
-            // 
-            this.findFixesToolStripMenuItem.Image = global::ROMVault.Properties.Resources.magnifier_zoom;
-            this.findFixesToolStripMenuItem.Name = "findFixesToolStripMenuItem";
-            this.findFixesToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.findFixesToolStripMenuItem.Text = "Find Fixes";
-            this.findFixesToolStripMenuItem.Click += new System.EventHandler(this.findFixesToolStripMenuItem_Click);
-            // 
-            // fixROMsToolStripMenuItem1
-            // 
-            this.fixROMsToolStripMenuItem1.Image = global::ROMVault.Properties.Resources.wand_magic;
-            this.fixROMsToolStripMenuItem1.Name = "fixROMsToolStripMenuItem1";
-            this.fixROMsToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
-            this.fixROMsToolStripMenuItem1.Text = "Fix ROMs";
-            this.fixROMsToolStripMenuItem1.Click += new System.EventHandler(this.fixROMsToolStripMenuItem1_Click);
-            // 
-            // fixDatReportToolStripMenuItem
-            // 
-            this.fixDatReportToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_document_text;
-            this.fixDatReportToolStripMenuItem.Name = "fixDatReportToolStripMenuItem";
-            this.fixDatReportToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.fixDatReportToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.fixDatReportToolStripMenuItem.Text = "Fix Dat Report";
-            this.fixDatReportToolStripMenuItem.Click += new System.EventHandler(this.fixDatReportToolStripMenuItem_Click);
-            // 
-            // directorySettingsToolStripMenuItem
-            // 
-            this.directorySettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.folder__pencil;
-            this.directorySettingsToolStripMenuItem.Name = "directorySettingsToolStripMenuItem";
-            this.directorySettingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F10)));
-            this.directorySettingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.directorySettingsToolStripMenuItem.Text = "Directory Dat Rules";
-            this.directorySettingsToolStripMenuItem.Click += new System.EventHandler(this.DirectorySettingsToolStripMenuItem_Click);
-            // 
-            // romVaultSettingsToolStripMenuItem
-            // 
-            this.romVaultSettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.gear;
-            this.romVaultSettingsToolStripMenuItem.Name = "romVaultSettingsToolStripMenuItem";
-            this.romVaultSettingsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.romVaultSettingsToolStripMenuItem.Text = "Settings";
-            this.romVaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.RomVaultSettingsToolStripMenuItem_Click);
-            // 
-            // DatTreePN
-            // 
-            this.DatTreePN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DatTreePN.Controls.Add(this.ctrRvTree);
-            this.DatTreePN.Controls.Add(this.toolStrip1);
-            this.DatTreePN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DatTreePN.Location = new System.Drawing.Point(4, 253);
-            this.DatTreePN.Name = "DatTreePN";
-            this.DatTreePN.Size = new System.Drawing.Size(440, 507);
-            this.DatTreePN.TabIndex = 6;
-            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2611,6 +2611,10 @@ namespace ROMVault
             this.splitDatInfoGameInfo.ResumeLayout(false);
             this.DatINfoTlpPN.ResumeLayout(false);
             this.DatINfoTlpPN.PerformLayout();
+            this.DatTreePN.ResumeLayout(false);
+            this.DatTreePN.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.DatInfoTLP.ResumeLayout(false);
             this.DatInfoTLP.PerformLayout();
             this.splitGameInfoLists.Panel1.ResumeLayout(false);
@@ -2638,8 +2642,14 @@ namespace ROMVault
             ((System.ComponentModel.ISupportInitialize)(this.RomGrid)).EndInit();
             this.TabEmuArc.ResumeLayout(false);
             this.tabArtWork.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picArtwork)).EndInit();
             this.tabMedium.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picMedium2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMedium1)).EndInit();
             this.tabScreens.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picScreenTitle)).EndInit();
             this.tabInfo.ResumeLayout(false);
             this.tabInfo.PerformLayout();
             this.tabInfo2.ResumeLayout(false);
@@ -2648,16 +2658,6 @@ namespace ROMVault
             this.menuStrip1.PerformLayout();
             this.MainSS.ResumeLayout(false);
             this.MainSS.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picArtwork)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMedium2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMedium1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picScreenTitle)).EndInit();
-            this.DatTreePN.ResumeLayout(false);
-            this.DatTreePN.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

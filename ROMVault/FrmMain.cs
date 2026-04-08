@@ -2072,8 +2072,13 @@ namespace ROMVault
 
         private void DatsCollapseTreeBT_Click(object sender, EventArgs e)
         {
-            if (_clickedTree == null) return;
-            var rootRvFile = _clickedTree.ChildFiles[0];
+            var rootDatNode = ctrRvTree.ChildFiles[0];
+
+            ctrRvTree.SetExpanded(rootDatNode,
+               rightClick: ((Control.ModifierKeys & Keys.Shift) == Keys.Shift),
+               isWorking: _working);
+
+            ctrRvTree.SetupInt(); // refresh tree to update icons
         }
     }
 }

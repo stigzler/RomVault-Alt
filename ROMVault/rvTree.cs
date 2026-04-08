@@ -564,7 +564,7 @@ namespace ROMVault
             }
         }
 
-        private static void SetExpanded(RvFile pTree, bool rightClick, bool isWorking)
+        internal void SetExpanded(RvFile pTree, bool rightClick, bool isWorking)
         {
             if (!rightClick)
             {
