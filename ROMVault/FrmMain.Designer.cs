@@ -644,6 +644,7 @@ namespace ROMVault
             this.ctrRvTree.Visible = false;
             this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
             this.ctrRvTree.RvChecked += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvChecked);
+            this.ctrRvTree.Load += new System.EventHandler(this.ctrRvTree_Load);
             // 
             // toolStrip1
             // 

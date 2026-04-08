@@ -2080,5 +2080,9 @@ namespace ROMVault
 
             ctrRvTree.SetupInt(); // refresh tree to update icons
         }
+
+        private void ctrRvTree_Load(object sender, EventArgs e)
+        {
+        }
     }
 }
