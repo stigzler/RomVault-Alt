@@ -2080,9 +2080,5 @@ namespace ROMVault
 
             ctrRvTree.SetupInt(); // refresh tree to update icons
         }
-
-        private void GameRomsNavHomeBT_Click(object sender, EventArgs e)
-        {
-        }
     }
 }
