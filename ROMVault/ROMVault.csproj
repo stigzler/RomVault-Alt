@@ -235,7 +235,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoundPlayer.cs" />
-    <Compile Include="UserControls\AutoEllipsisTextBox.cs" />
+    <Compile Include="UserControls\AutoEllipsisTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\EllipsisPosition.cs" />
     <Compile Include="UserControls\FlexiLabel.cs" />
     <Compile Include="UserControls\FolderBrowserDialog.cs" />
     <Compile Include="UserControls\PromptTextBox.cs" />

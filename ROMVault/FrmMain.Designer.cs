@@ -187,7 +187,6 @@ namespace ROMVault
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this._textTruripScore = new System.Windows.Forms.TextBox();
             this._textGameManufacturer = new System.Windows.Forms.TextBox();
-            this._textGameName = new System.Windows.Forms.TextBox();
             this._textGameDescription = new System.Windows.Forms.TextBox();
             this._textTruripSubGenre = new System.Windows.Forms.TextBox();
             this._textTruripPlayers = new System.Windows.Forms.TextBox();
@@ -198,7 +197,6 @@ namespace ROMVault
             this._labelTruripRelatedTo = new System.Windows.Forms.Label();
             this._textTruripCloneOf = new System.Windows.Forms.TextBox();
             this._labelTruripCloneOf = new System.Windows.Forms.Label();
-            this._labelGameName = new System.Windows.Forms.Label();
             this._labelGameDescription = new System.Windows.Forms.Label();
             this._textGameRomOf = new System.Windows.Forms.TextBox();
             this._textTruripDeveloper = new System.Windows.Forms.TextBox();
@@ -224,7 +222,7 @@ namespace ROMVault
             this._labelTruripScore = new System.Windows.Forms.Label();
             this._textTruripYear = new System.Windows.Forms.TextBox();
             this.txtFilter = new ROMVault.UserControls.PromptTextBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.autoEllipsisTextBox1 = new ROMVault.UserControls.AutoEllipsisTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -277,7 +275,6 @@ namespace ROMVault
             this.MainSS.SuspendLayout();
             this.DatInfoTLP.SuspendLayout();
             this.GameInfoTLP.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitToolBarMain
@@ -289,6 +286,7 @@ namespace ROMVault
             // splitToolBarMain.Panel1
             // 
             this.splitToolBarMain.Panel1.BackColor = System.Drawing.Color.White;
+            this.splitToolBarMain.Panel1.Controls.Add(this.autoEllipsisTextBox1);
             this.splitToolBarMain.Panel1.Controls.Add(this.HideNavBT);
             this.splitToolBarMain.Panel1.Controls.Add(this.flexiLabel3);
             this.splitToolBarMain.Panel1.Controls.Add(this.flowLayoutPanel1);
@@ -826,7 +824,6 @@ namespace ROMVault
             // GameRomPN
             // 
             this.GameRomPN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.GameRomPN.Controls.Add(this.flowLayoutPanel2);
             this.GameRomPN.Controls.Add(this.splitGameListRomList);
             this.GameRomPN.Controls.Add(this.GameRomNavigateToRootBT);
             this.GameRomPN.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2203,14 +2200,6 @@ namespace ROMVault
             this._textGameManufacturer.Size = new System.Drawing.Size(399, 25);
             this._textGameManufacturer.TabIndex = 9;
             // 
-            // _textGameName
-            // 
-            this._textGameName.Location = new System.Drawing.Point(53, 3);
-            this._textGameName.Name = "_textGameName";
-            this._textGameName.ReadOnly = true;
-            this._textGameName.Size = new System.Drawing.Size(399, 25);
-            this._textGameName.TabIndex = 1;
-            // 
             // _textGameDescription
             // 
             this.GameInfoTLP.SetColumnSpan(this._textGameDescription, 5);
@@ -2312,17 +2301,6 @@ namespace ROMVault
             this._labelTruripCloneOf.TabIndex = 27;
             this._labelTruripCloneOf.Text = "Clone Of :";
             this._labelTruripCloneOf.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // _labelGameName
-            // 
-            this._labelGameName.AutoSize = true;
-            this._labelGameName.Location = new System.Drawing.Point(0, 0);
-            this._labelGameName.Margin = new System.Windows.Forms.Padding(0);
-            this._labelGameName.Name = "_labelGameName";
-            this._labelGameName.Size = new System.Drawing.Size(50, 17);
-            this._labelGameName.TabIndex = 7;
-            this._labelGameName.Text = "Name :";
-            this._labelGameName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _labelGameDescription
             // 
@@ -2607,14 +2585,17 @@ namespace ROMVault
             this.txtFilter.TabIndex = 17;
             this.txtFilter.TextChanged += new System.EventHandler(this.TxtFilter_TextChanged);
             // 
-            // flowLayoutPanel2
+            // autoEllipsisTextBox1
             // 
-            this.flowLayoutPanel2.Controls.Add(this._labelGameName);
-            this.flowLayoutPanel2.Controls.Add(this._textGameName);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(41, 39);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(466, 58);
-            this.flowLayoutPanel2.TabIndex = 1;
+            this.autoEllipsisTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.autoEllipsisTextBox1.EllipsisPlacement = ROMVault.UserControls.EllipsisPosition.Middle;
+            this.autoEllipsisTextBox1.Location = new System.Drawing.Point(13, 373);
+            this.autoEllipsisTextBox1.Name = "autoEllipsisTextBox1";
+            this.autoEllipsisTextBox1.PreserveBlocks = true;
+            this.autoEllipsisTextBox1.Size = new System.Drawing.Size(100, 25);
+            this.autoEllipsisTextBox1.TabIndex = 24;
+            this.autoEllipsisTextBox1.Text = "\"C:\\Users\\stigz\\AppData\\Roaming\\GIMP\\3.0\\tags.xml\"";
             // 
             // FrmMain
             // 
@@ -2707,8 +2688,6 @@ namespace ROMVault
             this.DatInfoTLP.PerformLayout();
             this.GameInfoTLP.ResumeLayout(false);
             this.GameInfoTLP.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2835,8 +2814,6 @@ namespace ROMVault
         private System.Windows.Forms.Panel DatINfoTlpPN;
         private UserControls.FlexiLabel RomsLB;
         private UserControls.TableLayoutPanel GameInfoTLP;
-        private System.Windows.Forms.TextBox _textGameName;
-        private System.Windows.Forms.Label _labelGameName;
         private System.Windows.Forms.TextBox _textGameDescription;
         private System.Windows.Forms.Label _labelGameDescription;
         private System.Windows.Forms.Label _labelGameManufacturer;
@@ -2909,7 +2886,7 @@ namespace ROMVault
         private Panel GameRomPN;
         private ToolStrip GameRomNavigateToRootBT;
         private ToolStripButton toolStripButton1;
-        private FlowLayoutPanel flowLayoutPanel2;
+        private UserControls.AutoEllipsisTextBox autoEllipsisTextBox1;
     }
 }
 
