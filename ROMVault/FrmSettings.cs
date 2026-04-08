@@ -72,8 +72,6 @@ namespace ROMVault
             chkDarkMode.Checked = Settings.rvSettings.Darkness;
             chkDoNotReportFeedback.Checked = Settings.rvSettings.DoNotReportFeedback;
 
-            // sorted
-
             // Supplemental Settings
             // DATs
             foreach (var format in Properties.Settings.Default.RecognisedDatFormats)

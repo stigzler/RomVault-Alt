@@ -2079,10 +2079,6 @@ namespace ROMVault
                isWorking: _working);
 
             ctrRvTree.SetupInt(); // refresh tree to update icons
-
-            Debug.WriteLine("dave woz ere");
-
-            // edit
         }
     }
 }
