@@ -13,6 +13,7 @@ using RomVaultCore.RvDB;
 
 namespace ROMVault
 {
+    [System.ComponentModel.DesignerCategory("Code")]
     public partial class RvTree : UserControl
     {
         public bool Working;
@@ -26,6 +27,8 @@ namespace ROMVault
             public Rectangle RIcon;
             public Rectangle RText;
         }
+
+        public List<RvFile> ChildFiles { get => _lTree.ChildFiles; }
 
         public event MouseEventHandler RvSelected;
 

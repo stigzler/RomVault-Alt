@@ -16,6 +16,7 @@ namespace Dark
 
         public static Color bg1 = Color.FromArgb(35, 35, 35);
         public static Color bg = Color.FromArgb(40, 40, 40);
+        public static Color bgTs = Color.FromArgb(50, 50, 50); // toolstip bg
 
         public static Color bgMenuItemRollover = Color.FromArgb(255, 63, 63, 70);
 
@@ -106,6 +107,13 @@ namespace Dark
                     cms.ForeColor = fg;
                     cms.RenderMode = ToolStripRenderMode.System;
                     cms.Renderer = new DarkToolStripRenderer();
+                    break;
+
+                case ToolStrip ts:
+                    ts.RenderMode = ToolStripRenderMode.System;
+                    ts.Renderer = new DarkToolStripRenderer();
+                    ts.BackColor = bgTs;
+                    ts.ForeColor = fg;
                     break;
 
                 case Label _:

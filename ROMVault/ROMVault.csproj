@@ -222,9 +222,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rvImages1.resx</DependentUpon>
     </Compile>
-    <Compile Include="rvTree.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="rvTree.cs" />
     <Compile Include="rvTree.Designer.cs">
       <DependentUpon>rvTree.cs</DependentUpon>
     </Compile>
@@ -330,6 +328,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="chip.ico" />
+    <None Include="Resources\folder-tree1.png" />
     <None Include="Resources\minus.png" />
     <None Include="Resources\plus.png" />
     <None Include="Resources\folder--pencil.png" />

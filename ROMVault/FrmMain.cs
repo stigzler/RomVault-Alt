@@ -2069,5 +2069,11 @@ namespace ROMVault
                     ToggleRomStatusGroup();
             }
         }
+
+        private void DatsCollapseTreeBT_Click(object sender, EventArgs e)
+        {
+            if (_clickedTree == null) return;
+            var rootRvFile = _clickedTree.ChildFiles[0];
+        }
     }
 }

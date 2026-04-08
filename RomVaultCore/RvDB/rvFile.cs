@@ -10,14 +10,13 @@ using Path = RVIO.Path;
 
 namespace RomVaultCore.RvDB
 {
-
-    /* 
+    /*
     public enum ZipStructure
     {
         None = 0,    // No structure
         ZipTrrnt = 1,
-        ZipTDC = 2, 
-        ZipEXO = 3, 
+        ZipTDC = 2,
+        ZipEXO = 3,
         SevenZipTrrnt = 4, // this is the original t7z format
         ZipZSTD = 5,
         SevenZipSLZMA = 8, // Solid-LZMA this is rv7zip today
@@ -27,8 +26,6 @@ namespace RomVaultCore.RvDB
     }
     */
 
-
-
     public partial class RvFile
     {
         public string Name; // The Name of the File or Directory
@@ -37,13 +34,17 @@ namespace RomVaultCore.RvDB
         public RvDat Dat; // the Dat that this item belongs to
         public long FileModTimeStamp = long.MinValue; // TimeStamp to match the filesystem TimeStamp, used to know if the file has been changed.
 
-
         public bool SearchFound; // ????  used in DatUpdate & FileScanning
 
         private HeaderFileType _headerFileType;
-        public HeaderFileType HeaderFileType { get { return _headerFileType & HeaderFileType.HeaderMask; } }
-        public bool HeaderFileTypeRequired { get { return (_headerFileType & HeaderFileType.Required) != 0; } }
-        public HeaderFileType HeaderFileTypeSet { set { _headerFileType = value; } }
+        public HeaderFileType HeaderFileType
+        { get { return _headerFileType & HeaderFileType.HeaderMask; } }
+        public bool HeaderFileTypeRequired
+        { get { return (_headerFileType & HeaderFileType.Required) != 0; } }
+        public HeaderFileType HeaderFileTypeSet
+        { set { _headerFileType = value; } }
+
+        public List<RvFile> ChildFiles { get => _children; }
 
         public readonly FileType FileType;
         private global::DatStatus _datStatus = global::DatStatus.NotInDat;
@@ -55,8 +56,10 @@ namespace RomVaultCore.RvDB
         public readonly ReportStatus DirStatus; // Counts the status of all children for reporting in the UI
 
         private byte _ZipDatStruct;
-        public ZipStructure ZipDatStruct { get { return (ZipStructure)(_ZipDatStruct & 0x7f); } } // Structure of Zip Found in Dat
-        public bool ZipDatStructFix { get { return (_ZipDatStruct & 0x80) == 0x80; } }
+        public ZipStructure ZipDatStruct
+        { get { return (ZipStructure)(_ZipDatStruct & 0x7f); } } // Structure of Zip Found in Dat
+        public bool ZipDatStructFix
+        { get { return (_ZipDatStruct & 0x80) == 0x80; } }
 
         public void SetZipDatStruct(ZipStructure zipStruncture, bool fix)
         {
@@ -108,9 +111,6 @@ namespace RomVaultCore.RvDB
 
         /*************************************************/
 
-
-
-
         public RvFile(FileType type)
         {
             FileType = type;
@@ -121,7 +121,6 @@ namespace RomVaultCore.RvDB
             _children = new List<RvFile>(); // children items of this dir
             DirStatus = new ReportStatus(); // Counts the status of all children for reporting in the UI
         }
-
 
         /// <summary>
         /// Returns the Full recursive Tree name of this RvFile, This should Recurse back up to
@@ -138,6 +137,7 @@ namespace RomVaultCore.RvDB
                 return Path.Combine(Parent.TreeFullName, Name);
             }
         }
+
         public string TreeBarName
         {
             get
@@ -152,6 +152,7 @@ namespace RomVaultCore.RvDB
                 return Parent.TreeBarName + "|" + Name;
             }
         }
+
         public string TreeFullNameCase
         {
             get
@@ -218,9 +219,6 @@ namespace RomVaultCore.RvDB
             return strFullPath;
         }
 
-
-
-
         /// <summary>
         /// Returns the Full recursive Tree name for the Dat at this RvFile Level, This should Recurse back up to
         /// RomVault (not ToSort as there should not be any DAT's in ToSort.)
@@ -241,7 +239,6 @@ namespace RomVaultCore.RvDB
 
             return "Error";
         }
-
 
         /// <summary>
         /// This takes the DatTreeFullname from above and replaces the base Datroot directory with the
@@ -291,7 +288,6 @@ namespace RomVaultCore.RvDB
             get => _datStatus;
         }
 
-
         public GotStatus GotStatus
         {
             get => _gotStatus;
@@ -306,7 +302,6 @@ namespace RomVaultCore.RvDB
                 RepStatusReset();
             }
         }
-
 
         public RepStatus RepStatus
         {
@@ -363,7 +358,6 @@ namespace RomVaultCore.RvDB
             //    DatCreatedTimeStamp = 1 << 23, //0x800000,
         }
 
-
         public void Write(BinaryWriter bw)
         {
             int countDirDats = _dirDats?.Count ?? 0;
@@ -399,7 +393,6 @@ namespace RomVaultCore.RvDB
             if (_toSortType != ToSortDirType.None) fFlags |= FileFlags.ToSortStatus;
 
             bw.Write((uint)fFlags);
-
 
             /************* RvFile ************/
 
@@ -466,7 +459,9 @@ namespace RomVaultCore.RvDB
             bw.Write((uint)_fileStatus);
         }
 
-        public RvFile(BinaryReader br) : this(br, null, null, true) { }
+        public RvFile(BinaryReader br) : this(br, null, null, true)
+        {
+        }
 
         private RvFile(BinaryReader br, List<RvDat> parentDirDats, RvFile parent, bool baseDir = false)
         {
@@ -525,9 +520,11 @@ namespace RomVaultCore.RvDB
                             case FileType.Zip:
                                 SetZipDatStruct(ZipStructure.ZipTrrnt, true);
                                 break;
+
                             case FileType.SevenZip:
                                 SetZipDatStruct(ZipStructure.SevenZipSLZMA, true);
                                 break;
+
                             default:
                                 SetZipDatStruct(ZipStructure.ZipTrrnt, true);
                                 break;
@@ -595,7 +592,7 @@ namespace RomVaultCore.RvDB
             _children?.Clear();
 
             // 2024/08/03 - any item in ToSort should have a datStatus of InToSort
-            // So force all root ToSort items to be InToSort, and then all there child items will now 
+            // So force all root ToSort items to be InToSort, and then all there child items will now
             // also be set to InToSort with the above code change.
 
             for (int i = 0; i < count; i++)
@@ -635,10 +632,6 @@ namespace RomVaultCore.RvDB
             if (HeaderFileType != HeaderFileType.Nothing && (AltSize != null || AltCRC != null || AltSHA1 != null || AltMD5 != null))
                 FileStatusSet(FileStatus.HeaderFileTypeFromHeader);
         }
-
-
-
-
 
         // this is only used to copy a file.
         [Obsolete("deprecated")]
@@ -681,7 +674,6 @@ namespace RomVaultCore.RvDB
                 Debug.WriteLine("Found MIA");
             }
         }
-
 
         public string FileNameInsideGame()
         {
@@ -728,13 +720,11 @@ namespace RomVaultCore.RvDB
             RepStatus = rs?[0] ?? RepStatus.Error;
         }
 
-
         /****************** RvDir ***********************/
         public bool IsDirectory => FileType == FileType.Dir || FileType == FileType.Zip || FileType == FileType.SevenZip;
 
         public int DirDatCount => _dirDats.Count;
         public int ChildCount => _children?.Count ?? 0;
-
 
         public RvFile Child(int index)
         {
@@ -776,7 +766,6 @@ namespace RomVaultCore.RvDB
             _children.RemoveAt(index);
         }
 
-
         public int ChildNameSearch(FileType type, string name, out int index)
         {
             return BinarySearch.ListSearch(_children, new RvFile(type) { Name = name }, RVSorters.CompareName, out index);
@@ -786,7 +775,6 @@ namespace RomVaultCore.RvDB
         {
             return BinarySearch.ListSearch(_children, lName, RVSorters.CompareName, out index);
         }
-
 
         public bool FindChild(RvFile lName, out int index)
         {
@@ -808,13 +796,11 @@ namespace RomVaultCore.RvDB
             return false;
         }
 
-
         private void RepStatusUpTreeUpdate(RepStatus rStatOld, RepStatus rStatNew)
         {
             DirStatus.RepStatusUpdate(rStatOld, rStatNew);
             Parent?.RepStatusUpTreeUpdate(rStatOld, rStatNew);
         }
-
 
         // this is called when adding/removing a child item to/from a directory
         private void RepStatusUpTreeAddRemove(RvFile addRemoveItem, int addRemove)
@@ -834,10 +820,12 @@ namespace RomVaultCore.RvDB
         {
             _toSortType |= flag;
         }
+
         public void ToSortStatusClear(ToSortDirType flag)
         {
             _toSortType &= ~flag;
         }
+
         public bool ToSortStatusIs(ToSortDirType flag)
         {
             RvFile TestDir = this;
@@ -859,7 +847,6 @@ namespace RomVaultCore.RvDB
         {
             _fileStatus |= flag & copyFrom._fileStatus;
         }
-
 
         public void FileStatusClear(FileStatus flag)
         {
@@ -885,7 +872,5 @@ namespace RomVaultCore.RvDB
             fileZero.DatStatus = global::DatStatus.InToSort;
             return fileZero;
         }
-
-
     }
 }
