@@ -40,5 +40,3 @@ for easy access. Other methods that are publicly available:
 // Refreshes the tree to update icons
 .SetupInt();
 ```
-
-
