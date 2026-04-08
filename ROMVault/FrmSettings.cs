@@ -84,6 +84,8 @@ namespace ROMVault
             MainTextSizeNUM.Value = Properties.Settings.Default.MainTextSize;
             InfoTextColorPB.BackColor = Properties.Settings.Default.InfoTextColor;
             EnableGamesGridRClickChB.Checked = Properties.Settings.Default.EnableGamesGridRClick;
+            StatusIconSizeNUM.Value = Properties.Settings.Default.StatusIconSize;
+            StatusIconSizeAutoChB.Checked = Properties.Settings.Default.StatusIconSizeAuto;
         }
 
         private void BtnCancelClick(object sender, EventArgs e)
@@ -153,6 +155,8 @@ namespace ROMVault
             Properties.Settings.Default.MainTextSize = (int)MainTextSizeNUM.Value;
             Properties.Settings.Default.InfoTextColor = InfoTextColorPB.BackColor;
             Properties.Settings.Default.EnableGamesGridRClick = EnableGamesGridRClickChB.Checked;
+            Properties.Settings.Default.StatusIconSize = (int)StatusIconSizeNUM.Value;
+            Properties.Settings.Default.StatusIconSizeAuto = StatusIconSizeAutoChB.Checked;
 
             Properties.Settings.Default.Save();
         }
@@ -270,6 +274,11 @@ namespace ROMVault
             }
 
             // (thanks AI - 16 hours coding and my brain hurts)
+        }
+
+        private void StatusIconSizeAutoChB_CheckedChanged(object sender, EventArgs e)
+        {
+            StatusIconSizeNUM.Enabled = !StatusIconSizeAutoChB.Checked;
         }
     }
 }

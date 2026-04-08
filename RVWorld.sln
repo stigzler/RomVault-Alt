@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortMethods", "SortMethods\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHDSharpLib", "CHDlib\CHDSharpLib.csproj", "{37FC55FA-06B2-553F-0503-E5E113870F77}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev", "Dev", "{D8915198-0320-461E-9857-54805C45B5F2}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Dev", "Dev\Dev.shproj", "{6F5A23FB-C79E-4A24-B728-3166D4AB24FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -295,5 +295,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D07A243-78E6-48BB-93AD-9540512E1CA5}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Dev\Dev.projitems*{6f5a23fb-c79e-4a24-b728-3166d4ab24fd}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

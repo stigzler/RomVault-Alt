@@ -17,3 +17,7 @@
 - Re-jigged Settings form to pages to allow for future-proofing of more options. Also rclick selects the data row.
 - Added "Import Rom Files/Folders" to ToSort folders right click menu. Also can select move or copy files in Settings.
 - Added "Lock Folder" option to Context Menus for ToSort [and DAT] tree items. 
+
+08.04.26:
+- Improved Status Bar key system (shortcut keys for hide/show groups/text). Operation as per tooltip on first icon
+- 

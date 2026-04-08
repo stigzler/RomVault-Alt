@@ -4,6 +4,7 @@
  *     Copyright 2025                                 *
  ******************************************************/
 
+using Dark.Renderers;
 using DATReader.DatStore;
 using DATReader.DatWriter;
 using ROMVault.Extensions;
@@ -91,7 +92,7 @@ namespace ROMVault
         private Dictionary<Button, string> NavButtonDetails = new Dictionary<Button, string>();
 
         // For the Status Strip Key System
-        private List<ToolStripStatusLabel> gamesStatusStripKeys = new List<ToolStripStatusLabel>();
+        private List<ToolStripStatusLabel> romStatusStripKeys = new List<ToolStripStatusLabel>();
 
         private List<ToolStripStatusLabel> datStatusStripKeys = new List<ToolStripStatusLabel>();
 
@@ -174,7 +175,7 @@ namespace ROMVault
             };
             ToolStripMenuItem mnuScan2 = new ToolStripMenuItem
             {
-                Text = @"Scan",
+                Text = @"Scan ROMs",
                 Image = Properties.Resources.arrow_circle_315,
                 Tag = EScanLevel.Level2
             };
@@ -193,7 +194,7 @@ namespace ROMVault
 
             ToolStripMenuItem mnuDirMappings = new ToolStripMenuItem
             {
-                Text = @"Set Dir Mappings",
+                Text = @"Set ROM Folder",
                 Tag = null
             };
 
@@ -226,13 +227,14 @@ namespace ROMVault
 
             ToolStripMenuItem mnuImportToThisDir = new ToolStripMenuItem
             {
-                Text = @"Import to this Directory",
+                Text = @"Import DAT/s to this Directory",
+                Image = Properties.Resources.database__plus,
                 Tag = null
             };
 
             ToolStripMenuItem mnuImportToPickedDir = new ToolStripMenuItem
             {
-                Text = @"Import to selected Directory",
+                Text = @"Import DAT/s to chosen Directory",
                 Tag = null
             };
 
@@ -247,6 +249,7 @@ namespace ROMVault
             _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(mnuFixDat);
             _mnuContext.Items.Add(mnuMakeDat);
+            _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(mnuImportToThisDir);
             _mnuContext.Items.Add(mnuImportToPickedDir);
 
@@ -273,7 +276,7 @@ namespace ROMVault
             };
             ToolStripMenuItem mnuToSortScan2 = new ToolStripMenuItem
             {
-                Text = @"Scan",
+                Text = @"Scan ROM Files",
                 Image = Properties.Resources.magnifier_zoom,
                 Tag = EScanLevel.Level2
             };
@@ -292,14 +295,14 @@ namespace ROMVault
 
             _mnuToSortImportRomFiles = new ToolStripMenuItem
             {
-                Text = @"Import Rom Files",
+                Text = @"Import Rom File/s",
                 Image = Properties.Resources.disc__plus,
                 Tag = null
             };
 
             _mnuToSortImportRomFolders = new ToolStripMenuItem
             {
-                Text = @"Import Rom Folders",
+                Text = @"Import Rom Folder/s",
                 Tag = null
             };
 
@@ -611,6 +614,14 @@ namespace ROMVault
         {
             MainSS.Font = this.Font;
 
+            if (Properties.Settings.Default.StatusIconSizeAuto)
+            {
+                int fontHeight = TextRenderer.MeasureText("Dummy", this.Font).Height;
+                MainSS.ImageScalingSize = new Size(fontHeight, fontHeight);
+            }
+            else
+                MainSS.ImageScalingSize = new Size(Properties.Settings.Default.StatusIconSize, Properties.Settings.Default.StatusIconSize);
+
             int i = 2;
 
             // Add Game Status Icons to StatusStrip at position 2 (skips the i icon and the db icon at the bottom).
@@ -634,7 +645,7 @@ namespace ROMVault
                 i++;
             }
 
-            i += 2; //  skips the pre existing game category icon and prefixing separator in the statusbar
+            i += 1; //  skips the pre existing game category icon and prefixing separator in the statusbar
 
             // Add Game Status Icons to StatusStrip
             foreach (KeyValuePair<RepStatus, string> kvp in Constants.UI.RepStatusText)
@@ -651,8 +662,26 @@ namespace ROMVault
                 lbl.MouseLeave += Lbl_MouseLeave;
                 //MainSS.Items.Add(lbl);
                 MainSS.Items.Insert(i, lbl);
-                gamesStatusStripKeys.Add(lbl);
+                romStatusStripKeys.Add(lbl);
                 i++;
+            }
+
+            // this used later in tooltip display for left icon/control
+            statusBarLeftTooltipHeight = TextRenderer.MeasureText(CollapseAllSSBT.ToolTipText, SystemFonts.StatusFont).Height;
+
+            // Dark mode on status strip. ⚠️⚠️ IMPORTANT: This must be done AFTER   InitialiseStatusStrip(); ⚠️⚠️
+            if (Settings.rvSettings.Darkness)
+            {
+                var darkRenderer = new DarkToolStripRenderer();
+                MainSS.Renderer = darkRenderer;
+                foreach (var item in MainSS.Items)
+                {
+                    if (item is ToolStripDropDownButton dropDownButton)
+                    {
+                        // Successfully identified
+                        dropDownButton.DropDown.Renderer = darkRenderer;
+                    }
+                }
             }
         }
 
@@ -1814,22 +1843,24 @@ namespace ROMVault
         /// <param name="e"></param>
         private void ToggleStatusTextBT_Click(object sender, EventArgs e)
         {
-            ToggleGameStatusIconText();
-            ToggleDatStatusIconText();
+            //ToggleRomStatusIconText();
+            //ToggleDatStatusIconText();
+            if (romStatusStripKeys.First().Visible == true) ToggleRomStatusGroup();
+            if (datStatusStripKeys.First().Visible == true) ToggleDatStatusGroup();
         }
 
-        private void ToggleGameStatusIconText()
+        private void ToggleRomStatusIconText()
         {
-            if (gamesStatusStripKeys.First().DisplayStyle == ToolStripItemDisplayStyle.Image)
+            if (romStatusStripKeys.First().DisplayStyle == ToolStripItemDisplayStyle.Image)
             {
-                foreach (ToolStripStatusLabel status in gamesStatusStripKeys)
+                foreach (ToolStripStatusLabel status in romStatusStripKeys)
                 {
                     status.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 }
             }
             else
             {
-                foreach (ToolStripStatusLabel status in gamesStatusStripKeys)
+                foreach (ToolStripStatusLabel status in romStatusStripKeys)
                 {
                     status.DisplayStyle = ToolStripItemDisplayStyle.Image;
                 }
@@ -1854,9 +1885,45 @@ namespace ROMVault
             }
         }
 
+        private void ToggleDatStatusGroup()
+        {
+            if (datStatusStripKeys.First().Visible == false)
+            {
+                foreach (ToolStripStatusLabel status in datStatusStripKeys)
+                    status.Visible = true;
+
+                DatsShortnameToggleSSBT.Enabled = true;
+            }
+            else
+            {
+                foreach (ToolStripStatusLabel status in datStatusStripKeys)
+                    status.Visible = false;
+
+                DatsShortnameToggleSSBT.Enabled = false;
+            }
+        }
+
+        private void ToggleRomStatusGroup()
+        {
+            if (romStatusStripKeys.First().Visible == false)
+            {
+                foreach (ToolStripStatusLabel status in romStatusStripKeys)
+                    status.Visible = true;
+
+                RomsShortnameToggleSSBT.Enabled = true;
+            }
+            else
+            {
+                foreach (ToolStripStatusLabel status in romStatusStripKeys)
+                    status.Visible = false;
+
+                RomsShortnameToggleSSBT.Enabled = false;
+            }
+        }
+
         private void ToggleGamesKeyTextBT_Click(object sender, EventArgs e)
         {
-            ToggleGameStatusIconText();
+            ToggleRomStatusIconText();
         }
 
         private void ToggleDatKeyTextBT_Click(object sender, EventArgs e)
@@ -1945,6 +2012,62 @@ namespace ROMVault
                 Multiselect = true
             };
             ofd.ShowDialog();
+        }
+
+        private void DatsShortnameToggleSSBT_Click(object sender, EventArgs e)
+        {
+            ToggleDatStatusIconText();
+        }
+
+        private void DatsGroupVisibilitySSBT_Click(object sender, EventArgs e)
+        {
+            ToggleDatStatusGroup();
+        }
+
+        private void RomsShortnameToggleSSBT_Click(object sender, EventArgs e)
+        {
+            ToggleRomStatusIconText();
+        }
+
+        private void RomsGroupVisibilitySSBT_Click(object sender, EventArgs e)
+        {
+            ToggleRomStatusGroup();
+        }
+
+        private void DatsControlSSBT_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift)
+                    ToggleDatStatusIconText();
+                else
+                    ToggleDatStatusGroup();
+            }
+        }
+
+        private int statusBarLeftTooltipHeight = 10;
+
+        private void CollapseAllSSBT_MouseEnter(object sender, EventArgs e)
+        {
+            tooltip.Show(CollapseAllSSBT.ToolTipText, MainSS, CollapseAllSSBT.Bounds.Left,
+                CollapseAllSSBT.Bounds.Top - statusBarLeftTooltipHeight,
+                5000);
+        }
+
+        private void CollapseAllSSBT_MouseLeave(object sender, EventArgs e)
+        {
+            tooltip.Hide(MainSS);
+        }
+
+        private void RomsControlSSBT_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift)
+                    ToggleRomStatusIconText();
+                else
+                    ToggleRomStatusGroup();
+            }
         }
     }
 }

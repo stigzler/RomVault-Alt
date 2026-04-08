@@ -169,5 +169,29 @@ namespace ROMVault.Properties {
                 this["DatImportMoveDontCopy"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("24")]
+        public int StatusIconSize {
+            get {
+                return ((int)(this["StatusIconSize"]));
+            }
+            set {
+                this["StatusIconSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool StatusIconSizeAuto {
+            get {
+                return ((bool)(this["StatusIconSizeAuto"]));
+            }
+            set {
+                this["StatusIconSizeAuto"] = value;
+            }
+        }
     }
 }

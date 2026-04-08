@@ -44,6 +44,7 @@
             this.MainTC = new ROMVault.UserControls.TabControl();
             this.DatSettingsTP = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.MoveDontCopyDatsChB = new System.Windows.Forms.CheckBox();
             this.RestoreDatFormatsBT = new System.Windows.Forms.Button();
             this.DeleteDatFormatBT = new System.Windows.Forms.Button();
             this.AddDatFormatBT = new System.Windows.Forms.Button();
@@ -94,8 +95,10 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.MoveDontCopyDatsChB = new System.Windows.Forms.CheckBox();
             this.MainTT = new System.Windows.Forms.ToolTip(this.components);
+            this.label12 = new System.Windows.Forms.Label();
+            this.StatusIconSizeNUM = new System.Windows.Forms.NumericUpDown();
+            this.StatusIconSizeAutoChB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainSC)).BeginInit();
             this.MainSC.Panel1.SuspendLayout();
             this.MainSC.Panel2.SuspendLayout();
@@ -117,6 +120,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusIconSizeNUM)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -283,6 +287,18 @@
             this.groupBox2.TabIndex = 46;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAT Vault";
+            // 
+            // MoveDontCopyDatsChB
+            // 
+            this.MoveDontCopyDatsChB.AutoSize = true;
+            this.MoveDontCopyDatsChB.Location = new System.Drawing.Point(9, 228);
+            this.MoveDontCopyDatsChB.Name = "MoveDontCopyDatsChB";
+            this.MoveDontCopyDatsChB.Size = new System.Drawing.Size(182, 17);
+            this.MoveDontCopyDatsChB.TabIndex = 36;
+            this.MoveDontCopyDatsChB.Text = "Move, don\'t copy Imported DATs";
+            this.MainTT.SetToolTip(this.MoveDontCopyDatsChB, "By default, RomVault copies any DAT fies to the Dat vault directory, preserving o" +
+        "riginal copies. Set this if you just want to move them instead.");
+            this.MoveDontCopyDatsChB.UseVisualStyleBackColor = true;
             // 
             // RestoreDatFormatsBT
             // 
@@ -741,7 +757,7 @@
             this.OperationalGB.Controls.Add(this.label9);
             this.OperationalGB.Controls.Add(this.EnableGamesGridRClickChB);
             this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OperationalGB.Location = new System.Drawing.Point(8, 150);
+            this.OperationalGB.Location = new System.Drawing.Point(8, 214);
             this.OperationalGB.Name = "OperationalGB";
             this.OperationalGB.Size = new System.Drawing.Size(464, 86);
             this.OperationalGB.TabIndex = 52;
@@ -774,6 +790,9 @@
             // 
             // AppearanceThemesGB
             // 
+            this.AppearanceThemesGB.Controls.Add(this.StatusIconSizeAutoChB);
+            this.AppearanceThemesGB.Controls.Add(this.label12);
+            this.AppearanceThemesGB.Controls.Add(this.StatusIconSizeNUM);
             this.AppearanceThemesGB.Controls.Add(this.label8);
             this.AppearanceThemesGB.Controls.Add(this.label6);
             this.AppearanceThemesGB.Controls.Add(this.MainTextSizeNUM);
@@ -783,7 +802,7 @@
             this.AppearanceThemesGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AppearanceThemesGB.Location = new System.Drawing.Point(8, 38);
             this.AppearanceThemesGB.Name = "AppearanceThemesGB";
-            this.AppearanceThemesGB.Size = new System.Drawing.Size(464, 112);
+            this.AppearanceThemesGB.Size = new System.Drawing.Size(464, 176);
             this.AppearanceThemesGB.TabIndex = 49;
             this.AppearanceThemesGB.TabStop = false;
             this.AppearanceThemesGB.Text = "Appearance and Theme";
@@ -791,25 +810,25 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(67, 23);
+            this.label8.Location = new System.Drawing.Point(14, 49);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(156, 13);
+            this.label8.Size = new System.Drawing.Size(80, 13);
             this.label8.TabIndex = 46;
-            this.label8.Text = "Main Text Size (restart required)";
+            this.label8.Text = "Main Text Size:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(67, 50);
+            this.label6.Location = new System.Drawing.Point(15, 76);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 45;
-            this.label6.Text = "Info Text Color";
+            this.label6.Text = "Info Text Color:";
             // 
             // MainTextSizeNUM
             // 
             this.MainTextSizeNUM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MainTextSizeNUM.Location = new System.Drawing.Point(14, 19);
+            this.MainTextSizeNUM.Location = new System.Drawing.Point(96, 45);
             this.MainTextSizeNUM.Maximum = new decimal(new int[] {
             40,
             0,
@@ -833,7 +852,7 @@
             // InfoTextColorPB
             // 
             this.InfoTextColorPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InfoTextColorPB.Location = new System.Drawing.Point(14, 45);
+            this.InfoTextColorPB.Location = new System.Drawing.Point(96, 71);
             this.InfoTextColorPB.Name = "InfoTextColorPB";
             this.InfoTextColorPB.Size = new System.Drawing.Size(22, 22);
             this.InfoTextColorPB.TabIndex = 43;
@@ -843,7 +862,7 @@
             // chkDarkMode
             // 
             this.chkDarkMode.AutoSize = true;
-            this.chkDarkMode.Location = new System.Drawing.Point(70, 78);
+            this.chkDarkMode.Location = new System.Drawing.Point(96, 99);
             this.chkDarkMode.Name = "chkDarkMode";
             this.chkDarkMode.Size = new System.Drawing.Size(161, 17);
             this.chkDarkMode.TabIndex = 42;
@@ -884,17 +903,48 @@
             this.statusStrip1.TabIndex = 52;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // MoveDontCopyDatsChB
+            // label12
             // 
-            this.MoveDontCopyDatsChB.AutoSize = true;
-            this.MoveDontCopyDatsChB.Location = new System.Drawing.Point(9, 228);
-            this.MoveDontCopyDatsChB.Name = "MoveDontCopyDatsChB";
-            this.MoveDontCopyDatsChB.Size = new System.Drawing.Size(182, 17);
-            this.MoveDontCopyDatsChB.TabIndex = 36;
-            this.MoveDontCopyDatsChB.Text = "Move, don\'t copy Imported DATs";
-            this.MainTT.SetToolTip(this.MoveDontCopyDatsChB, "By default, RomVault copies any DAT fies to the Dat vault directory, preserving o" +
-        "riginal copies. Set this if you just want to move them instead.");
-            this.MoveDontCopyDatsChB.UseVisualStyleBackColor = true;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(84, 13);
+            this.label12.TabIndex = 48;
+            this.label12.Text = "Staus Icon Size:";
+            // 
+            // StatusIconSizeNUM
+            // 
+            this.StatusIconSizeNUM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StatusIconSizeNUM.Location = new System.Drawing.Point(96, 19);
+            this.StatusIconSizeNUM.Maximum = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.StatusIconSizeNUM.Minimum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.StatusIconSizeNUM.Name = "StatusIconSizeNUM";
+            this.StatusIconSizeNUM.Size = new System.Drawing.Size(47, 20);
+            this.StatusIconSizeNUM.TabIndex = 47;
+            this.StatusIconSizeNUM.Value = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            // 
+            // StatusIconSizeAutoChB
+            // 
+            this.StatusIconSizeAutoChB.AutoSize = true;
+            this.StatusIconSizeAutoChB.Location = new System.Drawing.Point(149, 22);
+            this.StatusIconSizeAutoChB.Name = "StatusIconSizeAutoChB";
+            this.StatusIconSizeAutoChB.Size = new System.Drawing.Size(179, 17);
+            this.StatusIconSizeAutoChB.TabIndex = 49;
+            this.StatusIconSizeAutoChB.Text = "Auto (scales with MainTest Size)";
+            this.StatusIconSizeAutoChB.UseVisualStyleBackColor = true;
+            this.StatusIconSizeAutoChB.CheckedChanged += new System.EventHandler(this.StatusIconSizeAutoChB_CheckedChanged);
             // 
             // FrmSettings
             // 
@@ -943,6 +993,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusIconSizeNUM)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1013,5 +1064,8 @@
         private System.Windows.Forms.Button RestoreDatFormatsBT;
         private System.Windows.Forms.CheckBox MoveDontCopyDatsChB;
         private System.Windows.Forms.ToolTip MainTT;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown StatusIconSizeNUM;
+        private System.Windows.Forms.CheckBox StatusIconSizeAutoChB;
     }
 }

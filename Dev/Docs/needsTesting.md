@@ -32,3 +32,21 @@ private void ToSortLock(object sender, EventArgs e)
 ```
 
 Just not sure if this updates any necessary vars as well and not just updates the UI. 
+
+## Import DATs function
+Need to check that the "Import DAT to this Directory" puts the dats in the 'right place' - seems OK prima facie but are there any edge cases that break the system? E.g. Dir DAT settings?
+
+## Terminology Changes
+
+These make more sense to me as a new user, but again are there edge cases where the semantics would break?
+
+|UI Item|Default|CHnaged To|Rationale and Notes|
+|-|-|-|
+|DatContextMenu|Set Dir Mappings|Set ROM Folder|As a new user, just makes more sense to link the dat to the concept of a rom folder rather than a "mapping" (use concrete noun rather than abstraction/action based|
+|DatContextMenu|Scan|Scan ROMs|I Think I don't understand why this is here. I could understand "Scan for Fixes", but not he less this does call the ScanRoms function, so specifics relayed about what Scan this will do ("Scan" is vague - could be rom scna, dat scan, or fix scan). Again, verbs and nouns|
+|DatContextMenu|Open Directory|Open Roms Folder|Again, I may be missing an edge case, but verb/noun pairing better. Defulat leaves user thinking "is it opening the dat folder, the roms folder or the ToSort folder?|
+|ToSortContextMenu|Scan|Scan ROM files|Again - verb/noun clearer|
+|DATInfoBox|Path|Rom Path|Users may miss the heading. Re-iteration.|
+
+
+**Postscript:** On top of the above - changed all references from "Directory" to "Folder"
