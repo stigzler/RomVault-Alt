@@ -7,6 +7,7 @@
 using DATReader.DatStore;
 using DATReader.DatWriter;
 using ROMVault.Extensions;
+using ROMVault.Helpers;
 using ROMVault.UserControls;
 using RomVaultCore;
 using RomVaultCore.Extensions;
@@ -21,8 +22,12 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+
+using System.Linq;
+
 using System.Net.NetworkInformation;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using TrrntZipUI;
@@ -59,8 +64,8 @@ namespace ROMVault
 
         private readonly ToolStripMenuItem _mnuOpen;
 
-        private readonly ToolStripMenuItem _mnuImportRomFiles;
-        private readonly ToolStripMenuItem _mnuImportRomFolders;
+        private readonly ToolStripMenuItem _mnuToSortImportRomFiles;
+        private readonly ToolStripMenuItem _mnuToSortImportRomFolders;
         private readonly ToolStripMenuItem _mnuToSortOpen;
         private readonly ToolStripMenuItem _mnuToSortDelete;
         private readonly ToolStripSeparator _mnuToSortConditionalSeparator;
@@ -201,7 +206,7 @@ namespace ROMVault
 
             _mnuOpen = new ToolStripMenuItem
             {
-                Text = @"Open Directory",
+                Text = @"Open ROMs Folder",
                 Image = Properties.Resources.folder_open,
                 Tag = null
             };
@@ -219,6 +224,18 @@ namespace ROMVault
                 Tag = null
             };
 
+            ToolStripMenuItem mnuImportToThisDir = new ToolStripMenuItem
+            {
+                Text = @"Import to this Directory",
+                Tag = null
+            };
+
+            ToolStripMenuItem mnuImportToPickedDir = new ToolStripMenuItem
+            {
+                Text = @"Import to selected Directory",
+                Tag = null
+            };
+
             _mnuContext.Items.Add(mnuScan2);
             _mnuContext.Items.Add(mnuScan1);
             _mnuContext.Items.Add(mnuScan3);
@@ -230,6 +247,8 @@ namespace ROMVault
             _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(mnuFixDat);
             _mnuContext.Items.Add(mnuMakeDat);
+            _mnuContext.Items.Add(mnuImportToThisDir);
+            _mnuContext.Items.Add(mnuImportToPickedDir);
 
             mnuScan1.Click += MnuScan;
             mnuScan2.Click += MnuScan;
@@ -240,6 +259,8 @@ namespace ROMVault
             _mnuOpen.Click += MnuOpenClick;
             mnuFixDat.Click += MnuMakeFixDatClick;
             mnuMakeDat.Click += MnuMakeDatClick;
+            mnuImportToThisDir.Click += MnuImportToThisDir;
+            mnuImportToPickedDir.Click += MnuImportToPickedDir;
 
             _mnuContextToSort = new ContextMenuStrip().DarkCompliant();
             //_mnuContextToSort.ShowCheckMargin = false;
@@ -269,14 +290,14 @@ namespace ROMVault
                 Tag = null
             };
 
-            _mnuImportRomFiles = new ToolStripMenuItem
+            _mnuToSortImportRomFiles = new ToolStripMenuItem
             {
                 Text = @"Import Rom Files",
                 Image = Properties.Resources.disc__plus,
                 Tag = null
             };
 
-            _mnuImportRomFolders = new ToolStripMenuItem
+            _mnuToSortImportRomFolders = new ToolStripMenuItem
             {
                 Text = @"Import Rom Folders",
                 Tag = null
@@ -353,14 +374,14 @@ namespace ROMVault
             _mnuContextToSort.Items.Add(_mnuToSortSetFileOnly);
             _mnuContextToSort.Items.Add(_mnuToSortClearFileOnly);
             _mnuContextToSort.Items.Add(new ToolStripSeparator());
-            _mnuContextToSort.Items.Add(_mnuImportRomFiles);
-            _mnuContextToSort.Items.Add(_mnuImportRomFolders);
+            _mnuContextToSort.Items.Add(_mnuToSortImportRomFiles);
+            _mnuContextToSort.Items.Add(_mnuToSortImportRomFolders);
 
             mnuToSortScan1.Click += MnuScan;
             mnuToSortScan2.Click += MnuScan;
             mnuToSortScan3.Click += MnuScan;
-            _mnuImportRomFiles.Click += MnuImportRomFiles;
-            _mnuImportRomFolders.Click += MnuImportRomFolders;
+            _mnuToSortImportRomFiles.Click += MnuImportRomFiles;
+            _mnuToSortImportRomFolders.Click += MnuImportRomFolders;
             _mnuToSortOpen.Click += MnuToSortOpen;
             _mnuToSortDelete.Click += MnuToSortDelete;
             _mnuToSortSetPrimary.Click += MnuToSortSetPrimary;
@@ -401,6 +422,84 @@ namespace ROMVault
             UpdateThemeAndControls();
         }
 
+        private void MnuImportToPickedDir(object sender, EventArgs e)
+        {
+            // throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Handles User Imports of dat files to the selected DAT dir        ///
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MnuImportToThisDir(object sender, EventArgs e)
+        {
+            // These used to detemrine the correct method to select the right DAT path
+            bool datFilePresent = _clickedTree.Dat != null ? true : false;
+            string datTreeFullName = _clickedTree.DatTreeFullName;
+            string resolvedDatRoot = RvSystems.GetFullyQualifiedPath(Settings.rvSettings.DatRoot);
+
+            // Set destination path depending on datTreeFullName + datFilePresent combinations.
+            string destinationPath;
+            if (datTreeFullName == "DatRoot")
+            {
+                destinationPath = resolvedDatRoot;
+            }
+            else if (datFilePresent)
+            {
+                //destinationPath = System.IO.Directory.GetParent(
+                //    Path.Combine(resolvedDatRoot
+                //    , datTreeFullName.Replace(@"\DatRoot", "")
+                //    )).FullName;
+                destinationPath = System.IO.Directory.GetParent(
+                    RvSystems.ResolveTokenisedDatPath(datTreeFullName, resolvedDatRoot)).FullName;
+            }
+            else
+            {
+                destinationPath = RvSystems.ResolveTokenisedDatPath(datTreeFullName, resolvedDatRoot);
+            }
+
+            // now construct the filter list for the file select browser.
+            // constructed from User Settings, the defualts of which are based on the hard coded default dat types
+            // Put in User settings in case others add new dat types, or if users want to remove some of the default ones.
+            // Future devs can update the list by editing the Defualt setting of: RecognisedDatFormats
+            var formats = Properties.Settings.Default.RecognisedDatFormats?.Cast<string>().ToList();
+            if (formats == null || formats.Count == 0)
+            {
+                // urgh ugly messageBox. But, priorities my dear boy... Shouldn't happen too often.
+                MessageBox.Show("No recognised DAT formats are set. Please set these in the settings menu before importing.", "No Recognised Formats", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string combinedPattern = string.Join(";", formats.Select(f => "*." + f));
+            string combinedLabel = string.Join(", ", formats.Select(f => "." + f));
+            StringBuilder sb = new StringBuilder($"Supported DATs ({combinedLabel})|{combinedPattern}");
+
+            foreach (string format in formats)
+            {
+                sb.Append($"|{format} files (*.{format})|*.{format}");
+            }
+
+            // Now present the file browser
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Title = "Please select DAT files to import.",
+                Multiselect = true,
+                Filter = sb.ToString()
+            };
+
+            var result = ofd.ShowDialog(this);
+            if (result != DialogResult.OK) return;
+
+            // Copy the files to the destination folder using Shell
+            if (Properties.Settings.Default.DatImportMoveDontCopy)
+                Helpers.FileSystem.MoveFiles(ofd.FileNames.ToList(), destinationPath, Settings.rvSettings.Darkness);
+            else
+                Helpers.FileSystem.CopyFiles(ofd.FileNames.ToList(), destinationPath, Settings.rvSettings.Darkness);
+
+            UpdateDats();
+        }
+
         private void MnuLockClick(object sender, EventArgs e)
         {
             _clickedTree.Tree.SetChecked(RvTreeRow.TreeSelect.Locked, true);
@@ -425,7 +524,9 @@ namespace ROMVault
                 Multiselect = true,
                 Filter = "All Files|*.*"
             };
-            ofd.ShowDialog(this);
+            var result = ofd.ShowDialog(this);
+
+            if (result != DialogResult.OK) return;
 
             string folderName = _clickedTree.FullName;
             string tDir = Helpers.FileSystem.NormalizePath(NameFix.AddLongPathPrefix(folderName));
@@ -447,7 +548,8 @@ namespace ROMVault
                 Multiselect = true,
                 OkButtonLabel = "Import"
             };
-            fbd.ShowDialog(this);
+            var result = fbd.ShowDialog(this);
+            if (result != true) return;
 
             string folderName = _clickedTree.FullName;
             string tDir = Helpers.FileSystem.NormalizePath(NameFix.AddLongPathPrefix(folderName));
@@ -721,8 +823,6 @@ namespace ROMVault
                 //_mnuContextToSort.Items.Add(_mnuToSortSetCache);
                 //_mnuContextToSort.Items.Add(_mnuToSortSetFileOnly);
                 //_mnuContextToSort.Items.Add(_mnuToSortClearFileOnly);
-
-                Debug.WriteLine($"CM items count: {_mnuContextToSort.Items.Count}");
 
                 int thisToSort = 0;
                 for (int i = 0; i < DB.DirRoot.ChildCount; i++)

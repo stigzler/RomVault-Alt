@@ -35,7 +35,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ColorBroswer = new System.Windows.Forms.ColorDialog();
             this.MainSC = new System.Windows.Forms.SplitContainer();
             this.TvPaddingPN = new System.Windows.Forms.Panel();
@@ -45,6 +44,12 @@
             this.MainTC = new ROMVault.UserControls.TabControl();
             this.DatSettingsTP = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.RestoreDatFormatsBT = new System.Windows.Forms.Button();
+            this.DeleteDatFormatBT = new System.Windows.Forms.Button();
+            this.AddDatFormatBT = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.DatFormatsLV = new System.Windows.Forms.ListView();
+            this.DatFormatLvLineHeightForcer = new System.Windows.Forms.ImageList(this.components);
             this.chkSendFoundMIA = new System.Windows.Forms.CheckBox();
             this.chkSendFoundMIAAnon = new System.Windows.Forms.CheckBox();
             this.chkDeleteOldCueFiles = new System.Windows.Forms.CheckBox();
@@ -88,7 +93,9 @@
             this.flexiLabel5 = new ROMVault.UserControls.FlexiLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.MoveDontCopyDatsChB = new System.Windows.Forms.CheckBox();
+            this.MainTT = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainSC)).BeginInit();
             this.MainSC.Panel1.SuspendLayout();
             this.MainSC.Panel2.SuspendLayout();
@@ -109,13 +116,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainTextSizeNUM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Location = new System.Drawing.Point(567, 3);
+            this.btnOK.Location = new System.Drawing.Point(561, 3);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(89, 23);
             this.btnOK.TabIndex = 9;
@@ -127,7 +135,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(472, 3);
+            this.btnCancel.Location = new System.Drawing.Point(466, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 23);
             this.btnCancel.TabIndex = 10;
@@ -154,8 +162,8 @@
             // MainSC.Panel2
             // 
             this.MainSC.Panel2.Controls.Add(this.MainTC);
-            this.MainSC.Size = new System.Drawing.Size(659, 638);
-            this.MainSC.SplitterDistance = 171;
+            this.MainSC.Size = new System.Drawing.Size(653, 738);
+            this.MainSC.SplitterDistance = 169;
             this.MainSC.TabIndex = 50;
             // 
             // TvPaddingPN
@@ -165,7 +173,7 @@
             this.TvPaddingPN.Location = new System.Drawing.Point(0, 39);
             this.TvPaddingPN.Name = "TvPaddingPN";
             this.TvPaddingPN.Padding = new System.Windows.Forms.Padding(10);
-            this.TvPaddingPN.Size = new System.Drawing.Size(171, 599);
+            this.TvPaddingPN.Size = new System.Drawing.Size(169, 699);
             this.TvPaddingPN.TabIndex = 47;
             // 
             // MainTV
@@ -198,7 +206,7 @@
             this.MainTV.SelectedImageIndex = 0;
             this.MainTV.ShowPlusMinus = false;
             this.MainTV.ShowRootLines = false;
-            this.MainTV.Size = new System.Drawing.Size(151, 579);
+            this.MainTV.Size = new System.Drawing.Size(149, 679);
             this.MainTV.TabIndex = 46;
             this.MainTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTV_AfterSelect);
             // 
@@ -238,7 +246,7 @@
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
             this.MainTC.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(120)))), ((int)(((byte)(187)))));
-            this.MainTC.Size = new System.Drawing.Size(484, 638);
+            this.MainTC.Size = new System.Drawing.Size(480, 738);
             this.MainTC.TabIndex = 0;
             this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDarkDark;
             this.MainTC.UnselectedTabBackColor = System.Drawing.SystemColors.ControlDark;
@@ -251,24 +259,108 @@
             this.DatSettingsTP.Location = new System.Drawing.Point(0, 20);
             this.DatSettingsTP.Name = "DatSettingsTP";
             this.DatSettingsTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
-            this.DatSettingsTP.Size = new System.Drawing.Size(484, 618);
+            this.DatSettingsTP.Size = new System.Drawing.Size(480, 718);
             this.DatSettingsTP.TabIndex = 0;
             this.DatSettingsTP.Text = "Dat Settings";
             this.DatSettingsTP.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.MoveDontCopyDatsChB);
+            this.groupBox2.Controls.Add(this.RestoreDatFormatsBT);
+            this.groupBox2.Controls.Add(this.DeleteDatFormatBT);
+            this.groupBox2.Controls.Add(this.AddDatFormatBT);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.DatFormatsLV);
             this.groupBox2.Controls.Add(this.chkSendFoundMIA);
             this.groupBox2.Controls.Add(this.chkSendFoundMIAAnon);
             this.groupBox2.Controls.Add(this.chkDeleteOldCueFiles);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.Location = new System.Drawing.Point(8, 383);
+            this.groupBox2.Location = new System.Drawing.Point(8, 388);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(468, 86);
+            this.groupBox2.Size = new System.Drawing.Size(464, 264);
             this.groupBox2.TabIndex = 46;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAT Vault";
+            // 
+            // RestoreDatFormatsBT
+            // 
+            this.RestoreDatFormatsBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.RestoreDatFormatsBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RestoreDatFormatsBT.Image = global::ROMVault.Properties.Resources.arrow_circle_315;
+            this.RestoreDatFormatsBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RestoreDatFormatsBT.Location = new System.Drawing.Point(385, 192);
+            this.RestoreDatFormatsBT.Name = "RestoreDatFormatsBT";
+            this.RestoreDatFormatsBT.Size = new System.Drawing.Size(73, 30);
+            this.RestoreDatFormatsBT.TabIndex = 35;
+            this.RestoreDatFormatsBT.Text = "Defaults";
+            this.RestoreDatFormatsBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.RestoreDatFormatsBT.UseVisualStyleBackColor = true;
+            this.RestoreDatFormatsBT.Click += new System.EventHandler(this.RestoreDatFormatsBT_Click);
+            // 
+            // DeleteDatFormatBT
+            // 
+            this.DeleteDatFormatBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.DeleteDatFormatBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteDatFormatBT.Image = global::ROMVault.Properties.Resources.minus;
+            this.DeleteDatFormatBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteDatFormatBT.Location = new System.Drawing.Point(385, 156);
+            this.DeleteDatFormatBT.Name = "DeleteDatFormatBT";
+            this.DeleteDatFormatBT.Size = new System.Drawing.Size(73, 30);
+            this.DeleteDatFormatBT.TabIndex = 34;
+            this.DeleteDatFormatBT.Text = "Delete";
+            this.DeleteDatFormatBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DeleteDatFormatBT.UseVisualStyleBackColor = true;
+            this.DeleteDatFormatBT.Click += new System.EventHandler(this.DeleteDatFormatBT_Click);
+            // 
+            // AddDatFormatBT
+            // 
+            this.AddDatFormatBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.AddDatFormatBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddDatFormatBT.Image = global::ROMVault.Properties.Resources.plus;
+            this.AddDatFormatBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddDatFormatBT.Location = new System.Drawing.Point(385, 120);
+            this.AddDatFormatBT.Name = "AddDatFormatBT";
+            this.AddDatFormatBT.Size = new System.Drawing.Size(73, 30);
+            this.AddDatFormatBT.TabIndex = 33;
+            this.AddDatFormatBT.Text = "Add";
+            this.AddDatFormatBT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddDatFormatBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AddDatFormatBT.UseVisualStyleBackColor = true;
+            this.AddDatFormatBT.Click += new System.EventHandler(this.AddDatFormatBT_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 95);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(203, 13);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "Accepted DAT formats (click item to edit):";
+            // 
+            // DatFormatsLV
+            // 
+            this.DatFormatsLV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DatFormatsLV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DatFormatsLV.FullRowSelect = true;
+            this.DatFormatsLV.HideSelection = false;
+            this.DatFormatsLV.LabelEdit = true;
+            this.DatFormatsLV.Location = new System.Drawing.Point(9, 120);
+            this.DatFormatsLV.Name = "DatFormatsLV";
+            this.DatFormatsLV.Size = new System.Drawing.Size(365, 102);
+            this.DatFormatsLV.SmallImageList = this.DatFormatLvLineHeightForcer;
+            this.DatFormatsLV.TabIndex = 31;
+            this.DatFormatsLV.UseCompatibleStateImageBehavior = false;
+            this.DatFormatsLV.View = System.Windows.Forms.View.List;
+            this.DatFormatsLV.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.DatFormatsLV_AfterLabelEdit);
+            // 
+            // DatFormatLvLineHeightForcer
+            // 
+            this.DatFormatLvLineHeightForcer.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.DatFormatLvLineHeightForcer.ImageSize = new System.Drawing.Size(1, 20);
+            this.DatFormatLvLineHeightForcer.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // chkSendFoundMIA
             // 
@@ -284,7 +376,7 @@
             // chkSendFoundMIAAnon
             // 
             this.chkSendFoundMIAAnon.AutoSize = true;
-            this.chkSendFoundMIAAnon.Location = new System.Drawing.Point(30, 37);
+            this.chkSendFoundMIAAnon.Location = new System.Drawing.Point(37, 42);
             this.chkSendFoundMIAAnon.Name = "chkSendFoundMIAAnon";
             this.chkSendFoundMIAAnon.Size = new System.Drawing.Size(115, 17);
             this.chkSendFoundMIAAnon.TabIndex = 28;
@@ -294,7 +386,7 @@
             // chkDeleteOldCueFiles
             // 
             this.chkDeleteOldCueFiles.AutoSize = true;
-            this.chkDeleteOldCueFiles.Location = new System.Drawing.Point(14, 55);
+            this.chkDeleteOldCueFiles.Location = new System.Drawing.Point(14, 65);
             this.chkDeleteOldCueFiles.Name = "chkDeleteOldCueFiles";
             this.chkDeleteOldCueFiles.Size = new System.Drawing.Size(208, 17);
             this.chkDeleteOldCueFiles.TabIndex = 30;
@@ -318,7 +410,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(8, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(468, 345);
+            this.groupBox1.Size = new System.Drawing.Size(464, 350);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Core Settings";
@@ -332,7 +424,7 @@
             this.lblDATRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDATRoot.Location = new System.Drawing.Point(85, 30);
             this.lblDATRoot.Name = "lblDATRoot";
-            this.lblDATRoot.Size = new System.Drawing.Size(327, 22);
+            this.lblDATRoot.Size = new System.Drawing.Size(323, 22);
             this.lblDATRoot.TabIndex = 3;
             this.lblDATRoot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -350,7 +442,7 @@
             this.btnDAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDAT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDAT.Location = new System.Drawing.Point(418, 30);
+            this.btnDAT.Location = new System.Drawing.Point(414, 30);
             this.btnDAT.Name = "btnDAT";
             this.btnDAT.Size = new System.Drawing.Size(44, 24);
             this.btnDAT.TabIndex = 6;
@@ -367,7 +459,7 @@
             this.cboFixLevel.FormattingEnabled = true;
             this.cboFixLevel.Location = new System.Drawing.Point(86, 58);
             this.cboFixLevel.Name = "cboFixLevel";
-            this.cboFixLevel.Size = new System.Drawing.Size(376, 21);
+            this.cboFixLevel.Size = new System.Drawing.Size(372, 21);
             this.cboFixLevel.TabIndex = 14;
             // 
             // label3
@@ -397,7 +489,7 @@
             this.textBox1.Location = new System.Drawing.Point(9, 166);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(453, 121);
+            this.textBox1.Size = new System.Drawing.Size(449, 121);
             this.textBox1.TabIndex = 12;
             // 
             // chkDoubleCheckDelete
@@ -413,7 +505,7 @@
             // chkCacheSaveTimer
             // 
             this.chkCacheSaveTimer.AutoSize = true;
-            this.chkCacheSaveTimer.Location = new System.Drawing.Point(14, 312);
+            this.chkCacheSaveTimer.Location = new System.Drawing.Point(14, 316);
             this.chkCacheSaveTimer.Name = "chkCacheSaveTimer";
             this.chkCacheSaveTimer.Size = new System.Drawing.Size(154, 17);
             this.chkCacheSaveTimer.TabIndex = 19;
@@ -428,7 +520,7 @@
             0,
             0,
             0});
-            this.upTime.Location = new System.Drawing.Point(174, 310);
+            this.upTime.Location = new System.Drawing.Point(174, 316);
             this.upTime.Maximum = new decimal(new int[] {
             60,
             0,
@@ -451,7 +543,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(230, 315);
+            this.label5.Location = new System.Drawing.Point(227, 318);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 21;
@@ -480,7 +572,7 @@
             this.FileOperationsTP.Location = new System.Drawing.Point(0, 20);
             this.FileOperationsTP.Name = "FileOperationsTP";
             this.FileOperationsTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
-            this.FileOperationsTP.Size = new System.Drawing.Size(484, 618);
+            this.FileOperationsTP.Size = new System.Drawing.Size(480, 718);
             this.FileOperationsTP.TabIndex = 1;
             this.FileOperationsTP.Text = "File Operations";
             this.FileOperationsTP.UseVisualStyleBackColor = true;
@@ -492,7 +584,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(8, 223);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(468, 108);
+            this.groupBox5.Size = new System.Drawing.Size(464, 108);
             this.groupBox5.TabIndex = 50;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Rom Imports";
@@ -504,7 +596,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.Location = new System.Drawing.Point(37, 43);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(425, 51);
+            this.label10.Size = new System.Drawing.Size(421, 51);
             this.label10.TabIndex = 45;
             this.label10.Text = "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
     "is if you wish to Move them instead (you will loose the files from your original" +
@@ -529,7 +621,7 @@
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox3.Location = new System.Drawing.Point(8, 128);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(468, 95);
+            this.groupBox3.Size = new System.Drawing.Size(464, 95);
             this.groupBox3.TabIndex = 47;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Logging";
@@ -574,7 +666,7 @@
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox4.Location = new System.Drawing.Point(8, 38);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(468, 90);
+            this.groupBox4.Size = new System.Drawing.Size(464, 90);
             this.groupBox4.TabIndex = 48;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Compression";
@@ -639,7 +731,7 @@
             this.UiTP.Location = new System.Drawing.Point(0, 20);
             this.UiTP.Name = "UiTP";
             this.UiTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
-            this.UiTP.Size = new System.Drawing.Size(484, 618);
+            this.UiTP.Size = new System.Drawing.Size(480, 718);
             this.UiTP.TabIndex = 3;
             this.UiTP.Text = "Ui + UX";
             this.UiTP.UseVisualStyleBackColor = true;
@@ -651,7 +743,7 @@
             this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
             this.OperationalGB.Location = new System.Drawing.Point(8, 150);
             this.OperationalGB.Name = "OperationalGB";
-            this.OperationalGB.Size = new System.Drawing.Size(468, 86);
+            this.OperationalGB.Size = new System.Drawing.Size(464, 86);
             this.OperationalGB.TabIndex = 52;
             this.OperationalGB.TabStop = false;
             this.OperationalGB.Text = "Operational";
@@ -664,7 +756,7 @@
             this.label9.AutoEllipsis = true;
             this.label9.Location = new System.Drawing.Point(39, 39);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(420, 35);
+            this.label9.Size = new System.Drawing.Size(416, 35);
             this.label9.TabIndex = 1;
             this.label9.Text = "By default, you have to press shift and R Click to get the context menu. R Click " +
     "copies the rom name to your clipboard. This is reversed if this setting is enabl" +
@@ -691,7 +783,7 @@
             this.AppearanceThemesGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AppearanceThemesGB.Location = new System.Drawing.Point(8, 38);
             this.AppearanceThemesGB.Name = "AppearanceThemesGB";
-            this.AppearanceThemesGB.Size = new System.Drawing.Size(468, 112);
+            this.AppearanceThemesGB.Size = new System.Drawing.Size(464, 112);
             this.AppearanceThemesGB.TabIndex = 49;
             this.AppearanceThemesGB.TabStop = false;
             this.AppearanceThemesGB.Text = "Appearance and Theme";
@@ -779,24 +871,36 @@
             this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 587);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 687);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(659, 29);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(653, 29);
             this.flowLayoutPanel1.TabIndex = 51;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 616);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 716);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(659, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(653, 22);
             this.statusStrip1.TabIndex = 52;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // MoveDontCopyDatsChB
+            // 
+            this.MoveDontCopyDatsChB.AutoSize = true;
+            this.MoveDontCopyDatsChB.Location = new System.Drawing.Point(9, 228);
+            this.MoveDontCopyDatsChB.Name = "MoveDontCopyDatsChB";
+            this.MoveDontCopyDatsChB.Size = new System.Drawing.Size(182, 17);
+            this.MoveDontCopyDatsChB.TabIndex = 36;
+            this.MoveDontCopyDatsChB.Text = "Move, don\'t copy Imported DATs";
+            this.MainTT.SetToolTip(this.MoveDontCopyDatsChB, "By default, RomVault copies any DAT fies to the Dat vault directory, preserving o" +
+        "riginal copies. Set this if you just want to move them instead.");
+            this.MoveDontCopyDatsChB.UseVisualStyleBackColor = true;
             // 
             // FrmSettings
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(659, 638);
+            this.ClientSize = new System.Drawing.Size(653, 738);
             this.ControlBox = false;
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
@@ -807,7 +911,6 @@
             this.Text = "RomVault Settings";
             this.Load += new System.EventHandler(this.FrmConfigLoad);
             this.Shown += new System.EventHandler(this.FrmSettings_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.MainSC.Panel1.ResumeLayout(false);
             this.MainSC.Panel1.PerformLayout();
             this.MainSC.Panel2.ResumeLayout(false);
@@ -839,6 +942,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainTextSizeNUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -901,5 +1005,13 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox MoveFilesNotCopyChB;
+        private System.Windows.Forms.Button AddDatFormatBT;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ListView DatFormatsLV;
+        private System.Windows.Forms.Button DeleteDatFormatBT;
+        private System.Windows.Forms.ImageList DatFormatLvLineHeightForcer;
+        private System.Windows.Forms.Button RestoreDatFormatsBT;
+        private System.Windows.Forms.CheckBox MoveDontCopyDatsChB;
+        private System.Windows.Forms.ToolTip MainTT;
     }
 }

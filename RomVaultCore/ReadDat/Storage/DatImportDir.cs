@@ -20,7 +20,6 @@ namespace RomVaultCore.Storage.Dat
             Name = name;
         }
 
-
         private string TreeFullName
         {
             get
@@ -32,6 +31,7 @@ namespace RomVaultCore.Storage.Dat
                 return Path.Combine(Parent.TreeFullName, Name);
             }
         }
+
         private string DatTreeFullName => GetDatTreePath(TreeFullName);
 
         private static string GetDatTreePath(string rootPath)
@@ -50,12 +50,13 @@ namespace RomVaultCore.Storage.Dat
 
         #region DatImportDir
 
-
         internal int ChildDirsCount => _importChildDirs?.Count ?? 0;
+
         internal DatImportDir ChildDir(int index)
         {
             return _importChildDirs[index];
         }
+
         private int ChildDirAdd(DatImportDir child)
         {
             BinarySearch.ListSearch(_importChildDirs, child, RVSorters.CompareDirName, out int index);
@@ -72,10 +73,11 @@ namespace RomVaultCore.Storage.Dat
             }
             _importChildDirs.RemoveAt(index);
         }
+
         #endregion
 
-
         #region DatImportDat
+
         internal int DatFilesCount => _importDatFiles.Count;
 
         internal DatImportDat DirDat(int index)
@@ -88,16 +90,8 @@ namespace RomVaultCore.Storage.Dat
             BinarySearch.ListSearch(_importDatFiles, dat, RVSorters.CompareDatName, out int index);
             _importDatFiles.Insert(index, dat);
         }
+
         #endregion
-
-
-
-
-
-
-
-
-
 
         internal static bool RecursiveDatTree(out DatImportDir datRoot, out int _datCount)
         {
@@ -175,6 +169,5 @@ namespace RomVaultCore.Storage.Dat
 
             return true;
         }
-
     }
 }

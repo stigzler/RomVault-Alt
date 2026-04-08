@@ -4,12 +4,15 @@
  *     Copyright 2025                                 *
  ******************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using RomVaultCore;
 using RomVaultCore.Utils;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ROMVault
 {
@@ -69,6 +72,11 @@ namespace ROMVault
             chkDoNotReportFeedback.Checked = Settings.rvSettings.DoNotReportFeedback;
 
             // stigzler's settings
+            // DATs
+            foreach (var format in Properties.Settings.Default.RecognisedDatFormats)
+                DatFormatsLV.Items.Add(new ListViewItem() { Text = format });
+            MoveDontCopyDatsChB.Checked = Properties.Settings.Default.DatImportMoveDontCopy;
+
             // File OPs
             MoveFilesNotCopyChB.Checked = Properties.Settings.Default.RomImportMoveNotCopy;
 
@@ -129,6 +137,14 @@ namespace ROMVault
             Settings.rvSettings.DoNotReportFeedback = chkDoNotReportFeedback.Checked;
 
             Settings.WriteConfig(Settings.rvSettings);
+
+            // Dats
+            Properties.Settings.Default.RecognisedDatFormats.Clear();
+            foreach (ListViewItem formatLvi in DatFormatsLV.Items)
+            {
+                Properties.Settings.Default.RecognisedDatFormats.Add(formatLvi.Text);
+            }
+            Properties.Settings.Default.DatImportMoveDontCopy = MoveDontCopyDatsChB.Checked;
 
             // File Ops
             Properties.Settings.Default.RomImportMoveNotCopy = MoveFilesNotCopyChB.Checked;
@@ -198,6 +214,62 @@ namespace ROMVault
         private void MainTV_AfterSelect(object sender, TreeViewEventArgs e)
         {
             MainTC.SelectedTab = MainTC.TabPages[e.Node.Name.Replace("TVI", "TP")];
+        }
+
+        private void AddDatFormatBT_Click(object sender, EventArgs e)
+        {
+            DatFormatsLV.Items.Add("{click to edit}");
+        }
+
+        private void DatFormatsLV_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        {
+            // If the user cancelled or left it blank, do nothing
+            if (string.IsNullOrEmpty(e.Label)) return;
+
+            // Check if the new label contains only letters or digits
+            foreach (char c in e.Label)
+            {
+                if (!char.IsLetterOrDigit(c))
+                {
+                    //MessageBox.Show("Only letters and numbers are allowed.");
+                    e.CancelEdit = true; // Reverts the change
+                    return;
+                }
+            }
+        }
+
+        private void DeleteDatFormatBT_Click(object sender, EventArgs e)
+        {
+            if (DatFormatsLV.SelectedItems.Count == 0) return;
+            DatFormatsLV.Items.Remove(DatFormatsLV.SelectedItems[0]);
+        }
+
+        private void RestoreDatFormatsBT_Click(object sender, EventArgs e)
+        {
+            DatFormatsLV.Items.Clear();
+
+            // 1. Get the XML string from the default properties
+            string xmlDefault = (string)Properties.Settings.Default.Properties["RecognisedDatFormats"].DefaultValue;
+
+            // 2. Setup the Serializer for StringCollection
+            XmlSerializer serializer = new XmlSerializer(typeof(StringCollection));
+
+            // 3. Deserialize the string back into a collection
+            using (StringReader reader = new StringReader(xmlDefault))
+            {
+                StringCollection defaultCollection = (StringCollection)serializer.Deserialize(reader);
+
+                // 4. Use it in your ListView
+                DatFormatsLV.BeginUpdate();
+                DatFormatsLV.Items.Clear();
+                foreach (string format in defaultCollection)
+                {
+                    DatFormatsLV.Items.Add(format);
+                }
+                DatFormatsLV.EndUpdate();
+            }
+
+            // (thanks AI - 16 hours coding and my brain hurts)
         }
     }
 }
