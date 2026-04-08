@@ -2080,7 +2080,7 @@ namespace ROMVault
 
             ctrRvTree.SetupInt(); // refresh tree to update icons
 
-            Debug.WriteLine("dave woz ere");
+            Debug.WriteLine("dave woz ere again");
         }
     }
 }
