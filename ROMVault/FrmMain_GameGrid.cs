@@ -277,6 +277,8 @@ namespace ROMVault
 
                 GameGrid.Columns[(int)GameGridColumns.CType].Width = wideTypeColumn ? 90 : 44;
 
+                GameRomCountLB.Text = $"Games: {GameGrid.RowCount} Roms: {RomGrid.RowCount}";
+
                 UpdateSelectedGame(onTimer);
             }
             catch { }
