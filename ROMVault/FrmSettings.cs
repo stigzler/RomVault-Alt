@@ -9,6 +9,7 @@ using RomVaultCore.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -70,6 +71,8 @@ namespace ROMVault
             cbo7zStruct.SelectedIndex = Settings.rvSettings.sevenZDefaultStruct;
             chkDarkMode.Checked = Settings.rvSettings.Darkness;
             chkDoNotReportFeedback.Checked = Settings.rvSettings.DoNotReportFeedback;
+
+            // sorted
 
             // Supplemental Settings
             // DATs
