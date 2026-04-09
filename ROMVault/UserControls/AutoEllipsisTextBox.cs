@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace ROMVault.UserControls
 {
-    [System.ComponentModel.DesignerCategory("Code")]
+    [DesignerCategory("Code")]
     internal class AutoEllipsisTextBox : TextBox
     {
         private string _fullText = string.Empty;
@@ -17,89 +17,68 @@ namespace ROMVault.UserControls
         public EllipsisPosition EllipsisPlacement { get; set; } = EllipsisPosition.Middle;
         public bool PreserveBlocks { get; set; } = true;
 
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public override string Text
         {
-            get => Focused ? base.Text : _fullText;
+            // NEVER return different values here based on focus.
+            // base.Text must always reflect what the control actually holds.
+            get => base.Text;
             set
             {
                 _fullText = value ?? string.Empty;
                 if (!Focused) ApplyEllipsis();
-                else UpdateBaseText(_fullText);
+                else SetBaseText(_fullText);
             }
         }
+
+        // Use this to expose the actual path to your logic
+        [Browsable(false)]
+        public string FullPath => _fullText;
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (!Focused)
             {
-                // Capture the click location before the control gets focus and wipes the ellipsis
                 int clickCharIndex = GetCharIndexFromPosition(e.Location);
                 string displayedText = base.Text;
-
-                base.OnMouseDown(e); // This triggers focus and restores full text via OnEnter
-
+                base.OnMouseDown(e); // Triggers OnEnter -> SetBaseText(_fullText)
                 HandleClickPlacement(clickCharIndex, displayedText);
             }
-            else
-            {
-                base.OnMouseDown(e);
-            }
+            else base.OnMouseDown(e);
         }
 
         private void HandleClickPlacement(int clickIndex, string displayedText)
         {
             if (string.IsNullOrEmpty(displayedText) || !displayedText.Contains("...")) return;
-
             int ellipsisIndex = displayedText.IndexOf("...");
 
-            // Logic for clicking ON or NEAR the ellipsis
             if (clickIndex >= ellipsisIndex && clickIndex <= ellipsisIndex + 2)
             {
-                switch (EllipsisPlacement)
+                if (EllipsisPlacement == EllipsisPosition.Left) this.SelectionStart = 0;
+                else if (EllipsisPlacement == EllipsisPosition.Right) this.SelectionStart = _fullText.Length;
+                else
                 {
-                    case EllipsisPosition.Left:
-                        this.SelectionStart = 0;
-                        break;
-
-                    case EllipsisPosition.Right:
-                        this.SelectionStart = _fullText.Length;
-                        break;
-
-                    case EllipsisPosition.Middle:
-                        // Place at the start of the "suffix" block
-                        string suffix = displayedText.Substring(ellipsisIndex + 3);
-                        int fullSuffixStart = _fullText.LastIndexOf(suffix);
-                        this.SelectionStart = Math.Max(0, fullSuffixStart);
-                        break;
+                    string suffix = displayedText.Substring(ellipsisIndex + 3);
+                    this.SelectionStart = Math.Max(0, _fullText.LastIndexOf(suffix));
                 }
             }
             else
             {
-                // If they clicked a visible part of the path, try to map it 1:1
-                if (EllipsisPlacement == EllipsisPosition.Right || (EllipsisPlacement == EllipsisPosition.Middle && clickIndex < ellipsisIndex))
-                {
-                    this.SelectionStart = Math.Min(clickIndex, _fullText.Length);
-                }
+                if (clickIndex < ellipsisIndex) this.SelectionStart = Math.Min(clickIndex, _fullText.Length);
                 else
                 {
-                    // Clicked the suffix part after a Left or Middle ellipsis
                     string suffixClicked = displayedText.Substring(clickIndex);
                     int mapIndex = _fullText.LastIndexOf(suffixClicked);
                     if (mapIndex != -1) this.SelectionStart = mapIndex;
                 }
             }
-
             this.SelectionLength = 0;
         }
 
         protected override void OnEnter(EventArgs e)
         {
-            UpdateBaseText(_fullText);
+            SetBaseText(_fullText);
             base.OnEnter(e);
-            // Selection is now handled by OnMouseDown if via click,
-            // otherwise (Tab key) it stays default.
         }
 
         protected override void OnLeave(EventArgs e)
@@ -112,19 +91,21 @@ namespace ROMVault.UserControls
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            if (!Focused) ApplyEllipsis();
+            if (!Focused && IsHandleCreated) ApplyEllipsis();
         }
 
-        private void UpdateBaseText(string newText)
+        private void SetBaseText(string text)
         {
+            if (base.Text == text) return;
             _isInternalChange = true;
-            base.Text = newText;
+            base.Text = text;
             _isInternalChange = false;
         }
 
         private void ApplyEllipsis()
         {
-            UpdateBaseText(GetEllipsizedText(_fullText));
+            if (!IsHandleCreated) return;
+            SetBaseText(GetEllipsizedText(_fullText));
         }
 
         protected override void OnTextChanged(EventArgs e)
@@ -139,7 +120,9 @@ namespace ROMVault.UserControls
         private string GetEllipsizedText(string source)
         {
             if (string.IsNullOrEmpty(source)) return string.Empty;
-            int maxWidth = this.ClientSize.Width - 10;
+
+            // Subtract a small buffer (15px) for the TextBox internal margins
+            int maxWidth = this.ClientSize.Width - 15;
             if (TextRenderer.MeasureText(source, this.Font).Width <= maxWidth) return source;
 
             char sep = source.Contains('\\') ? '\\' : (source.Contains('/') ? '/' : ' ');
@@ -153,6 +136,9 @@ namespace ROMVault.UserControls
 
         private string BuildBlockEllipsis(string[] segments, char sep, int maxWidth)
         {
+            // Initialization: Start with the most aggressive ellipsis
+            string bestFit = segments.First() + "..." + segments.Last();
+
             switch (EllipsisPlacement)
             {
                 case EllipsisPosition.Left:
@@ -161,7 +147,7 @@ namespace ROMVault.UserControls
                         string trial = "..." + sep + string.Join(sep.ToString(), segments.Skip(i));
                         if (TextRenderer.MeasureText(trial, Font).Width <= maxWidth) return trial;
                     }
-                    return "..." + segments.Last();
+                    break;
 
                 case EllipsisPosition.Right:
                     for (int i = segments.Length - 1; i > 0; i--)
@@ -169,12 +155,11 @@ namespace ROMVault.UserControls
                         string trial = string.Join(sep.ToString(), segments.Take(i)) + sep + "...";
                         if (TextRenderer.MeasureText(trial, Font).Width <= maxWidth) return trial;
                     }
-                    return segments.First() + "...";
+                    break;
 
                 case EllipsisPosition.Middle:
                 default:
                     int leftIdx = 1, rightIdx = segments.Length - 1;
-                    string bestFit = segments.First() + "..." + segments.Last();
                     while (leftIdx < rightIdx)
                     {
                         string trial = string.Join(sep.ToString(), segments.Take(leftIdx)) + sep + "..." + sep + string.Join(sep.ToString(), segments.Skip(rightIdx));
@@ -185,22 +170,27 @@ namespace ROMVault.UserControls
                         }
                         else break;
                     }
-                    return bestFit;
+                    break;
             }
+            return bestFit;
         }
 
         private string SimpleCharEllipsis(string text, int maxWidth)
         {
-            string ellipsis = "...";
             int low = 0, high = text.Length;
-            string lastFit = ellipsis;
+            string lastFit = "...";
             while (low <= high)
             {
                 int mid = (low + high) / 2;
                 string trial = (EllipsisPlacement == EllipsisPosition.Left)
-                    ? ellipsis + text.Substring(Math.Max(0, text.Length - mid))
-                    : text.Substring(0, mid) + ellipsis;
-                if (TextRenderer.MeasureText(trial, Font).Width <= maxWidth) { lastFit = trial; low = mid + 1; }
+                    ? "..." + text.Substring(text.Length - mid)
+                    : text.Substring(0, mid) + "...";
+
+                if (TextRenderer.MeasureText(trial, Font).Width <= maxWidth)
+                {
+                    lastFit = trial;
+                    low = mid + 1;
+                }
                 else high = mid - 1;
             }
             return lastFit;

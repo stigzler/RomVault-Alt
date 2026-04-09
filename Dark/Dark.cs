@@ -33,8 +33,6 @@ namespace Dark
         [DllImport("DwmApi")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
 
-        private static string ToBgr(Color c) => $"{c.B:X2}{c.G:X2}{c.R:X2}";
-
         private const int DWWMA_CAPTION_COLOR = 35;
 
         private static void SetTitleBarColor(Color color, IntPtr handle)
@@ -43,13 +41,13 @@ namespace Dark
                 return;
 
             IntPtr hWnd = handle;
-            int[] colorstr = new int[] { int.Parse(ToBgr(color), System.Globalization.NumberStyles.HexNumber) };
+            int[] colorstr = new int[] { color.ToArgb() & 0x00FFFFFF };
             DwmSetWindowAttribute(hWnd, DWWMA_CAPTION_COLOR, colorstr, 4);
         }
 
         public static void SetColors(Form frm)
         {
-            SetTitleBarColor(Color.FromArgb(32, 34, 37), frm.Handle);
+            SetTitleBarColor(bg0, frm.Handle);
             foreach (Control c in frm.Controls)
             {
                 SetColors(c);
@@ -71,7 +69,7 @@ namespace Dark
             switch (c)
             {
                 case TextBox tb:
-                    tb.BorderStyle = BorderStyle.None;
+                    tb.BorderStyle = BorderStyle.FixedSingle;
                     tb.BackColor = bg0;
                     if (tb.ReadOnly)
                     {
