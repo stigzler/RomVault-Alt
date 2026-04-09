@@ -1762,10 +1762,6 @@ namespace ROMVault
             e.SuppressKeyPress = true;
         }
 
-        private void splitToolBarMain_SplitterMoving(object sender, SplitterCancelEventArgs e)
-        {
-        }
-
         private void ToggleNavText(bool visible)
         {
             if (visible)
