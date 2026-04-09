@@ -71,7 +71,7 @@ namespace ROMVault
             this.flowPanelResponsive1 = new ROMVault.UserControls.FlowPanelResponsive();
             this.lblDIRomPath = new System.Windows.Forms.Label();
             this.DatInfoPathLb = new ROMVault.UserControls.PathLabel();
-            this.flowPanelResponsive2 = new ROMVault.UserControls.FlowPanelResponsive();
+            this.DatNameFPR = new ROMVault.UserControls.FlowPanelResponsive();
             this.lblDIName = new System.Windows.Forms.Label();
             this.DatInfoNameLb = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -247,7 +247,7 @@ namespace ROMVault
             this.DatInfoHeaderPN.SuspendLayout();
             this.RomsStatusTagsFLP.SuspendLayout();
             this.flowPanelResponsive1.SuspendLayout();
-            this.flowPanelResponsive2.SuspendLayout();
+            this.DatNameFPR.SuspendLayout();
             this.VaultHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitGameInfoLists)).BeginInit();
@@ -640,6 +640,7 @@ namespace ROMVault
             // 
             // DatInfoPN
             // 
+            this.DatInfoPN.AutoSize = true;
             this.DatInfoPN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DatInfoPN.Controls.Add(this.DatTreePN);
             this.DatInfoPN.Controls.Add(this.DatInfoHeaderPN);
@@ -656,10 +657,9 @@ namespace ROMVault
             this.DatTreePN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DatTreePN.Controls.Add(this.ctrRvTree);
             this.DatTreePN.Controls.Add(this.toolStrip1);
-            this.DatTreePN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DatTreePN.Location = new System.Drawing.Point(4, 361);
+            this.DatTreePN.Location = new System.Drawing.Point(57, 381);
             this.DatTreePN.Name = "DatTreePN";
-            this.DatTreePN.Size = new System.Drawing.Size(432, 391);
+            this.DatTreePN.Size = new System.Drawing.Size(320, 175);
             this.DatTreePN.TabIndex = 6;
             // 
             // ctrRvTree
@@ -669,7 +669,7 @@ namespace ROMVault
             this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrRvTree.Location = new System.Drawing.Point(0, 25);
             this.ctrRvTree.Name = "ctrRvTree";
-            this.ctrRvTree.Size = new System.Drawing.Size(430, 364);
+            this.ctrRvTree.Size = new System.Drawing.Size(318, 148);
             this.ctrRvTree.TabIndex = 2;
             this.ctrRvTree.Visible = false;
             this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
@@ -683,7 +683,7 @@ namespace ROMVault
             this.DatsCollapseTreeBT});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(430, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(318, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -702,13 +702,13 @@ namespace ROMVault
             // 
             this.DatInfoHeaderPN.Controls.Add(this.RomsStatusTagsFLP);
             this.DatInfoHeaderPN.Controls.Add(this.flowPanelResponsive1);
-            this.DatInfoHeaderPN.Controls.Add(this.flowPanelResponsive2);
+            this.DatInfoHeaderPN.Controls.Add(this.DatNameFPR);
             this.DatInfoHeaderPN.Controls.Add(this.flowLayoutPanel2);
             this.DatInfoHeaderPN.Controls.Add(this.VaultHeader);
             this.DatInfoHeaderPN.Dock = System.Windows.Forms.DockStyle.Top;
             this.DatInfoHeaderPN.Location = new System.Drawing.Point(4, 4);
             this.DatInfoHeaderPN.Name = "DatInfoHeaderPN";
-            this.DatInfoHeaderPN.Size = new System.Drawing.Size(432, 357);
+            this.DatInfoHeaderPN.Size = new System.Drawing.Size(432, 260);
             this.DatInfoHeaderPN.TabIndex = 19;
             // 
             // RomsStatusTagsFLP
@@ -721,7 +721,7 @@ namespace ROMVault
             this.RomsStatusTagsFLP.Controls.Add(this.RomsGotLB);
             this.RomsStatusTagsFLP.Dock = System.Windows.Forms.DockStyle.Top;
             this.RomsStatusTagsFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.RomsStatusTagsFLP.Location = new System.Drawing.Point(0, 97);
+            this.RomsStatusTagsFLP.Location = new System.Drawing.Point(0, 96);
             this.RomsStatusTagsFLP.Name = "RomsStatusTagsFLP";
             this.RomsStatusTagsFLP.Padding = new System.Windows.Forms.Padding(2);
             this.RomsStatusTagsFLP.Size = new System.Drawing.Size(432, 33);
@@ -793,21 +793,21 @@ namespace ROMVault
             // 
             // flowPanelResponsive1
             // 
-            this.flowPanelResponsive1.AutoSize = true;
             this.flowPanelResponsive1.Controls.Add(this.lblDIRomPath);
             this.flowPanelResponsive1.Controls.Add(this.DatInfoPathLb);
             this.flowPanelResponsive1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowPanelResponsive1.Location = new System.Drawing.Point(0, 60);
             this.flowPanelResponsive1.Name = "flowPanelResponsive1";
             this.flowPanelResponsive1.Padding = new System.Windows.Forms.Padding(4);
-            this.flowPanelResponsive1.Size = new System.Drawing.Size(432, 37);
+            this.flowPanelResponsive1.Size = new System.Drawing.Size(432, 36);
             this.flowPanelResponsive1.TabIndex = 26;
             this.flowPanelResponsive1.WrapContents = false;
             // 
             // lblDIRomPath
             // 
+            this.lblDIRomPath.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDIRomPath.AutoSize = true;
-            this.lblDIRomPath.Location = new System.Drawing.Point(4, 4);
+            this.lblDIRomPath.Location = new System.Drawing.Point(4, 10);
             this.lblDIRomPath.Margin = new System.Windows.Forms.Padding(0);
             this.lblDIRomPath.Name = "lblDIRomPath";
             this.lblDIRomPath.Size = new System.Drawing.Size(76, 17);
@@ -827,23 +827,23 @@ namespace ROMVault
             this.DatInfoPathLb.Text = "label3";
             this.DatInfoPathLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // flowPanelResponsive2
+            // DatNameFPR
             // 
-            this.flowPanelResponsive2.AutoSize = true;
-            this.flowPanelResponsive2.Controls.Add(this.lblDIName);
-            this.flowPanelResponsive2.Controls.Add(this.DatInfoNameLb);
-            this.flowPanelResponsive2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowPanelResponsive2.Location = new System.Drawing.Point(0, 27);
-            this.flowPanelResponsive2.Name = "flowPanelResponsive2";
-            this.flowPanelResponsive2.Padding = new System.Windows.Forms.Padding(4);
-            this.flowPanelResponsive2.Size = new System.Drawing.Size(432, 33);
-            this.flowPanelResponsive2.TabIndex = 27;
-            this.flowPanelResponsive2.WrapContents = false;
+            this.DatNameFPR.Controls.Add(this.lblDIName);
+            this.DatNameFPR.Controls.Add(this.DatInfoNameLb);
+            this.DatNameFPR.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DatNameFPR.Location = new System.Drawing.Point(0, 27);
+            this.DatNameFPR.Name = "DatNameFPR";
+            this.DatNameFPR.Padding = new System.Windows.Forms.Padding(4);
+            this.DatNameFPR.Size = new System.Drawing.Size(432, 33);
+            this.DatNameFPR.TabIndex = 27;
+            this.DatNameFPR.WrapContents = false;
             // 
             // lblDIName
             // 
+            this.lblDIName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDIName.AutoSize = true;
-            this.lblDIName.Location = new System.Drawing.Point(4, 4);
+            this.lblDIName.Location = new System.Drawing.Point(4, 8);
             this.lblDIName.Margin = new System.Windows.Forms.Padding(0);
             this.lblDIName.Name = "lblDIName";
             this.lblDIName.Size = new System.Drawing.Size(73, 17);
@@ -2602,6 +2602,7 @@ namespace ROMVault
             ((System.ComponentModel.ISupportInitialize)(this.MainSC)).EndInit();
             this.MainSC.ResumeLayout(false);
             this.splitDatInfoGameInfo.Panel1.ResumeLayout(false);
+            this.splitDatInfoGameInfo.Panel1.PerformLayout();
             this.splitDatInfoGameInfo.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitDatInfoGameInfo)).EndInit();
             this.splitDatInfoGameInfo.ResumeLayout(false);
@@ -2617,8 +2618,8 @@ namespace ROMVault
             this.RomsStatusTagsFLP.PerformLayout();
             this.flowPanelResponsive1.ResumeLayout(false);
             this.flowPanelResponsive1.PerformLayout();
-            this.flowPanelResponsive2.ResumeLayout(false);
-            this.flowPanelResponsive2.PerformLayout();
+            this.DatNameFPR.ResumeLayout(false);
+            this.DatNameFPR.PerformLayout();
             this.VaultHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitGameInfoLists.Panel1.ResumeLayout(false);
@@ -2867,7 +2868,7 @@ namespace ROMVault
         private Label DatInfoNameLb;
         private FlowLayoutPanel flowLayoutPanel2;
         private FlowPanelResponsive flowPanelResponsive1;
-        private FlowPanelResponsive flowPanelResponsive2;
+        private FlowPanelResponsive DatNameFPR;
     }
 }
 
