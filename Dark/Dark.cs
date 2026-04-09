@@ -59,6 +59,8 @@ namespace Dark
 
         public static void SetColors(Control c)
         {
+            if (c.Tag != null && c.Tag.ToString() == "override") return;
+
             c.BackColor = bg;
             c.ForeColor = fg;
 

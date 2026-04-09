@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("DAT Settings");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("File Operations");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("UI and UX");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("DAT Settings");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("File Operations");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("UI and UX");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@
             this.chkCacheSaveTimer = new System.Windows.Forms.CheckBox();
             this.upTime = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.FileOperationsTP = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -77,11 +78,18 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbo7zStruct = new System.Windows.Forms.ComboBox();
             this.cboCores = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.UiTP = new System.Windows.Forms.TabPage();
             this.OperationalGB = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.EnableGamesGridRClickChB = new System.Windows.Forms.CheckBox();
             this.AppearanceThemesGB = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.RomsGotLB = new System.Windows.Forms.Label();
+            this.RomsMissingLB = new System.Windows.Forms.Label();
+            this.RomsFixableLB = new System.Windows.Forms.Label();
+            this.RomsUnknownLB = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.StatusIconSizeAutoChB = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.StatusIconSizeNUM = new System.Windows.Forms.NumericUpDown();
@@ -90,14 +98,12 @@
             this.MainTextSizeNUM = new System.Windows.Forms.NumericUpDown();
             this.InfoTextColorPB = new System.Windows.Forms.PictureBox();
             this.chkDarkMode = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.MainTT = new System.Windows.Forms.ToolTip(this.components);
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.LeftPN = new System.Windows.Forms.Panel();
             this.TvPaddingPN.SuspendLayout();
             this.MainTC.SuspendLayout();
@@ -112,6 +118,7 @@
             this.UiTP.SuspendLayout();
             this.OperationalGB.SuspendLayout();
             this.AppearanceThemesGB.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StatusIconSizeNUM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTextSizeNUM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).BeginInit();
@@ -170,22 +177,22 @@
             this.MainTV.ItemHeight = 30;
             this.MainTV.Location = new System.Drawing.Point(6, 6);
             this.MainTV.Name = "MainTV";
-            treeNode4.ImageKey = "database.png";
-            treeNode4.Name = "DatSettingsTVI";
-            treeNode4.SelectedImageIndex = 0;
-            treeNode4.Text = "DAT Settings";
-            treeNode5.ImageKey = "folder-smiley.png";
-            treeNode5.Name = "FileOperationsTVI";
-            treeNode5.SelectedImageIndex = 1;
-            treeNode5.Text = "File Operations";
-            treeNode6.ImageKey = "ui-combo-box-blue.png";
-            treeNode6.Name = "UiTVI";
-            treeNode6.SelectedImageIndex = 2;
-            treeNode6.Text = "UI and UX";
+            treeNode1.ImageKey = "database.png";
+            treeNode1.Name = "DatSettingsTVI";
+            treeNode1.SelectedImageIndex = 0;
+            treeNode1.Text = "DAT Settings";
+            treeNode2.ImageKey = "folder-smiley.png";
+            treeNode2.Name = "FileOperationsTVI";
+            treeNode2.SelectedImageIndex = 1;
+            treeNode2.Text = "File Operations";
+            treeNode3.ImageKey = "ui-combo-box-blue.png";
+            treeNode3.Name = "UiTVI";
+            treeNode3.SelectedImageIndex = 2;
+            treeNode3.Text = "UI and UX";
             this.MainTV.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.MainTV.SelectedImageIndex = 0;
             this.MainTV.ShowPlusMinus = false;
             this.MainTV.ShowRootLines = false;
@@ -534,6 +541,18 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Minutes";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label14.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(8, 3);
+            this.label14.Name = "label14";
+            this.label14.Padding = new System.Windows.Forms.Padding(5);
+            this.label14.Size = new System.Drawing.Size(123, 29);
+            this.label14.TabIndex = 49;
+            this.label14.Text = "DAT Settings";
+            // 
             // FileOperationsTP
             // 
             this.FileOperationsTP.AutoScroll = true;
@@ -681,6 +700,18 @@
             this.cboCores.Size = new System.Drawing.Size(121, 21);
             this.cboCores.TabIndex = 41;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label15.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(8, 3);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(5);
+            this.label15.Size = new System.Drawing.Size(140, 29);
+            this.label15.TabIndex = 51;
+            this.label15.Text = "File Operations";
+            // 
             // UiTP
             // 
             this.UiTP.AutoScroll = true;
@@ -700,7 +731,7 @@
             this.OperationalGB.Controls.Add(this.label9);
             this.OperationalGB.Controls.Add(this.EnableGamesGridRClickChB);
             this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OperationalGB.Location = new System.Drawing.Point(8, 158);
+            this.OperationalGB.Location = new System.Drawing.Point(8, 364);
             this.OperationalGB.Name = "OperationalGB";
             this.OperationalGB.Size = new System.Drawing.Size(417, 101);
             this.OperationalGB.TabIndex = 52;
@@ -733,6 +764,8 @@
             // 
             // AppearanceThemesGB
             // 
+            this.AppearanceThemesGB.Controls.Add(this.flowLayoutPanel2);
+            this.AppearanceThemesGB.Controls.Add(this.label17);
             this.AppearanceThemesGB.Controls.Add(this.StatusIconSizeAutoChB);
             this.AppearanceThemesGB.Controls.Add(this.label12);
             this.AppearanceThemesGB.Controls.Add(this.StatusIconSizeNUM);
@@ -745,10 +778,100 @@
             this.AppearanceThemesGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AppearanceThemesGB.Location = new System.Drawing.Point(8, 32);
             this.AppearanceThemesGB.Name = "AppearanceThemesGB";
-            this.AppearanceThemesGB.Size = new System.Drawing.Size(417, 126);
+            this.AppearanceThemesGB.Size = new System.Drawing.Size(417, 332);
             this.AppearanceThemesGB.TabIndex = 49;
             this.AppearanceThemesGB.TabStop = false;
             this.AppearanceThemesGB.Text = "Appearance and Theme";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel2.Controls.Add(this.RomsGotLB);
+            this.flowLayoutPanel2.Controls.Add(this.RomsMissingLB);
+            this.flowLayoutPanel2.Controls.Add(this.RomsFixableLB);
+            this.flowLayoutPanel2.Controls.Add(this.RomsUnknownLB);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(96, 99);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(312, 28);
+            this.flowLayoutPanel2.TabIndex = 55;
+            // 
+            // RomsGotLB
+            // 
+            this.RomsGotLB.AutoSize = true;
+            this.RomsGotLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RomsGotLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RomsGotLB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RomsGotLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RomsGotLB.ForeColor = System.Drawing.Color.Lime;
+            this.RomsGotLB.Location = new System.Drawing.Point(3, 0);
+            this.RomsGotLB.Name = "RomsGotLB";
+            this.RomsGotLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.RomsGotLB.Size = new System.Drawing.Size(36, 25);
+            this.RomsGotLB.TabIndex = 51;
+            this.RomsGotLB.Tag = "override";
+            this.RomsGotLB.Text = "Got";
+            this.RomsGotLB.Click += new System.EventHandler(this.RomsStatusTagChangeColor);
+            // 
+            // RomsMissingLB
+            // 
+            this.RomsMissingLB.AutoSize = true;
+            this.RomsMissingLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RomsMissingLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RomsMissingLB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RomsMissingLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RomsMissingLB.ForeColor = System.Drawing.Color.Red;
+            this.RomsMissingLB.Location = new System.Drawing.Point(45, 0);
+            this.RomsMissingLB.Name = "RomsMissingLB";
+            this.RomsMissingLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.RomsMissingLB.Size = new System.Drawing.Size(60, 25);
+            this.RomsMissingLB.TabIndex = 52;
+            this.RomsMissingLB.Tag = "override";
+            this.RomsMissingLB.Text = "Missing";
+            this.RomsMissingLB.Click += new System.EventHandler(this.RomsStatusTagChangeColor);
+            // 
+            // RomsFixableLB
+            // 
+            this.RomsFixableLB.AutoSize = true;
+            this.RomsFixableLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RomsFixableLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RomsFixableLB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RomsFixableLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RomsFixableLB.ForeColor = System.Drawing.Color.Yellow;
+            this.RomsFixableLB.Location = new System.Drawing.Point(111, 0);
+            this.RomsFixableLB.Name = "RomsFixableLB";
+            this.RomsFixableLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.RomsFixableLB.Size = new System.Drawing.Size(56, 25);
+            this.RomsFixableLB.TabIndex = 53;
+            this.RomsFixableLB.Tag = "override";
+            this.RomsFixableLB.Text = "Fixable";
+            this.RomsFixableLB.Click += new System.EventHandler(this.RomsStatusTagChangeColor);
+            // 
+            // RomsUnknownLB
+            // 
+            this.RomsUnknownLB.AutoSize = true;
+            this.RomsUnknownLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RomsUnknownLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RomsUnknownLB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RomsUnknownLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RomsUnknownLB.ForeColor = System.Drawing.Color.Cyan;
+            this.RomsUnknownLB.Location = new System.Drawing.Point(173, 0);
+            this.RomsUnknownLB.Name = "RomsUnknownLB";
+            this.RomsUnknownLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.RomsUnknownLB.Size = new System.Drawing.Size(72, 25);
+            this.RomsUnknownLB.TabIndex = 54;
+            this.RomsUnknownLB.Tag = "override";
+            this.RomsUnknownLB.Text = "Unknown";
+            this.RomsUnknownLB.Click += new System.EventHandler(this.RomsStatusTagChangeColor);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(14, 102);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(80, 13);
+            this.label17.TabIndex = 50;
+            this.label17.Text = "Rom Info Color:";
             // 
             // StatusIconSizeAutoChB
             // 
@@ -838,6 +961,7 @@
             // InfoTextColorPB
             // 
             this.InfoTextColorPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InfoTextColorPB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.InfoTextColorPB.Location = new System.Drawing.Point(96, 71);
             this.InfoTextColorPB.Name = "InfoTextColorPB";
             this.InfoTextColorPB.Size = new System.Drawing.Size(22, 22);
@@ -848,12 +972,24 @@
             // chkDarkMode
             // 
             this.chkDarkMode.AutoSize = true;
-            this.chkDarkMode.Location = new System.Drawing.Point(96, 99);
+            this.chkDarkMode.Location = new System.Drawing.Point(96, 294);
             this.chkDarkMode.Name = "chkDarkMode";
             this.chkDarkMode.Size = new System.Drawing.Size(161, 17);
             this.chkDarkMode.TabIndex = 42;
             this.chkDarkMode.Text = "Dark Mode (restart required.)";
             this.chkDarkMode.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(8, 3);
+            this.label16.Name = "label16";
+            this.label16.Padding = new System.Windows.Forms.Padding(5);
+            this.label16.Size = new System.Drawing.Size(97, 29);
+            this.label16.TabIndex = 53;
+            this.label16.Text = "UI and UX";
             // 
             // flowLayoutPanel1
             // 
@@ -886,42 +1022,6 @@
             this.label13.Size = new System.Drawing.Size(85, 29);
             this.label13.TabIndex = 48;
             this.label13.Text = "Settings";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label14.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(8, 3);
-            this.label14.Name = "label14";
-            this.label14.Padding = new System.Windows.Forms.Padding(5);
-            this.label14.Size = new System.Drawing.Size(123, 29);
-            this.label14.TabIndex = 49;
-            this.label14.Text = "DAT Settings";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label15.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(8, 3);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(5);
-            this.label15.Size = new System.Drawing.Size(140, 29);
-            this.label15.TabIndex = 51;
-            this.label15.Text = "File Operations";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label16.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(8, 3);
-            this.label16.Name = "label16";
-            this.label16.Padding = new System.Windows.Forms.Padding(5);
-            this.label16.Size = new System.Drawing.Size(97, 29);
-            this.label16.TabIndex = 53;
-            this.label16.Text = "UI and UX";
             // 
             // LeftPN
             // 
@@ -974,6 +1074,8 @@
             this.OperationalGB.PerformLayout();
             this.AppearanceThemesGB.ResumeLayout(false);
             this.AppearanceThemesGB.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StatusIconSizeNUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTextSizeNUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTextColorPB)).EndInit();
@@ -1054,5 +1156,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel LeftPN;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label RomsUnknownLB;
+        private System.Windows.Forms.Label RomsFixableLB;
+        private System.Windows.Forms.Label RomsMissingLB;
+        private System.Windows.Forms.Label RomsGotLB;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }

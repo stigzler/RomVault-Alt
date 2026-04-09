@@ -193,5 +193,53 @@ namespace ROMVault.Properties {
                 this["StatusIconSizeAuto"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lime")]
+        public global::System.Drawing.Color RomGotColor {
+            get {
+                return ((global::System.Drawing.Color)(this["RomGotColor"]));
+            }
+            set {
+                this["RomGotColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public global::System.Drawing.Color RomMissingColor {
+            get {
+                return ((global::System.Drawing.Color)(this["RomMissingColor"]));
+            }
+            set {
+                this["RomMissingColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
+        public global::System.Drawing.Color RomFixableColor {
+            get {
+                return ((global::System.Drawing.Color)(this["RomFixableColor"]));
+            }
+            set {
+                this["RomFixableColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cyan")]
+        public global::System.Drawing.Color RomUnknownColor {
+            get {
+                return ((global::System.Drawing.Color)(this["RomUnknownColor"]));
+            }
+            set {
+                this["RomUnknownColor"] = value;
+            }
+        }
     }
 }

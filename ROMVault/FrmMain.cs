@@ -422,8 +422,6 @@ namespace ROMVault
 #endif
             InitGameGridMenu();
 
-            MainPG.SelectedObject = DatInfo;
-
             UpdateThemeAndControls();
         }
 
@@ -590,10 +588,10 @@ namespace ROMVault
         {
             // UI Tweaks
             ctrRvTree.BorderStyle = BorderStyle.None;
-            Helpers.Theming.SetControlTextSizeToDefault(ctrRvTree);
-            Helpers.Theming.SetControlTextSizeToDefault(GameGrid);
-            Helpers.Theming.SetControlTextSizeToDefault(RomGrid);
-            Helpers.Theming.SetControlTextSizeToDefault(menuStrip1);
+            Theming.SetControlTextSizeToDefault(ctrRvTree);
+            Theming.SetControlTextSizeToDefault(GameGrid);
+            Theming.SetControlTextSizeToDefault(RomGrid);
+            Theming.SetControlTextSizeToDefault(menuStrip1);
 
             if (Settings.rvSettings.Darkness)
             {
@@ -601,13 +599,17 @@ namespace ROMVault
                 UpdateTextBoxes(SearchTLP, Color.White);
             }
 
-            UpdateTextBoxes(DatInfoTLP, Properties.Settings.Default.InfoTextColor);
-            UpdateTextBoxes(GameInfoTLP, Properties.Settings.Default.InfoTextColor);
+            // Dats Roms Status Tags
+            var setts = Properties.Settings.Default;
+            RomsGotLB.ForeColor = setts.RomGotColor;
+            RomsMissingLB.ForeColor = setts.RomMissingColor;
+            RomsFixableLB.ForeColor = setts.RomFixableColor;
+            RomsUnknownLB.ForeColor = setts.RomUnknownColor;
 
             // tests
-            GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Padding = new Padding(2, 0, 0, 0);
-            if (GameGrid.Columns[(int)GameGridColumns.CType] is DataGridViewImageColumn ic) ic.ImageLayout = DataGridViewImageCellLayout.Normal;
+            //GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            //GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Padding = new Padding(2, 0, 0, 0);
+            //if (GameGrid.Columns[(int)GameGridColumns.CType] is DataGridViewImageColumn ic) ic.ImageLayout = DataGridViewImageCellLayout.Normal;
 
             this.ResumeLayout();
         }
@@ -1586,6 +1588,21 @@ namespace ROMVault
             if (tDir.DirStatus.CountMIA() > 0) { DatInfo.RomsMissing += $"  -  {tDir.DirStatus.CountMIA()} MIA"; }
             DatInfo.RomsFixable = tDir.DirStatus.CountFixesNeeded().ToString(CultureInfo.InvariantCulture);
             DatInfo.RomsUnknown = (tDir.DirStatus.CountUnknown() + tDir.DirStatus.CountInToSort()).ToString(CultureInfo.InvariantCulture);
+
+            UpdateDatInfoControls();
+        }
+
+        private void UpdateDatInfoControls()
+        {
+            MainPG.SelectedObject = DatInfo;
+            DatInfoNameLb.Text = DatInfo.Name;
+            DatInfoPathLb.Text = DatInfo.RomPath;
+            RomsGotLB.Text = $"Got: {DatInfo.RomsGot}";
+            RomsFixableLB.Text = $"Fixable: {DatInfo.RomsFixable}";
+            RomsMissingLB.Text = $"Missing: {DatInfo.RomsMissing}";
+            RomsUnknownLB.Text = $"Unknown: {DatInfo.RomsUnknown}";
+
+            //MainPG.Refresh();
         }
 
         #endregion
@@ -1710,8 +1727,6 @@ namespace ROMVault
             // Set up status strip
             InitialiseStatusStrip();
 
-            DatInfoTLP.Visible = true;
-            GameInfoTLP.Visible = true;
             ctrRvTree.Visible = true;
         }
 
@@ -2050,6 +2065,10 @@ namespace ROMVault
         }
 
         private void PgHeaderPB_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void DatInfoRomsLB_Click(object sender, EventArgs e)
         {
         }
     }

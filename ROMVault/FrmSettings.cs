@@ -7,6 +7,7 @@
 using RomVaultCore;
 using RomVaultCore.Utils;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -75,20 +76,28 @@ namespace ROMVault
             chkDoNotReportFeedback.Checked = Settings.rvSettings.DoNotReportFeedback;
 
             // Supplemental Settings
+
+            var setts = Properties.Settings.Default;
+
             // DATs
-            foreach (var format in Properties.Settings.Default.RecognisedDatFormats)
+            foreach (var format in setts.RecognisedDatFormats)
                 DatFormatsLV.Items.Add(new ListViewItem() { Text = format });
-            MoveDontCopyDatsChB.Checked = Properties.Settings.Default.DatImportMoveDontCopy;
+            MoveDontCopyDatsChB.Checked = setts.DatImportMoveDontCopy;
 
             // File OPs
-            MoveFilesNotCopyChB.Checked = Properties.Settings.Default.RomImportMoveNotCopy;
+            MoveFilesNotCopyChB.Checked = setts.RomImportMoveNotCopy;
 
             // UI and UX
-            MainTextSizeNUM.Value = Properties.Settings.Default.MainTextSize;
-            InfoTextColorPB.BackColor = Properties.Settings.Default.InfoTextColor;
-            EnableGamesGridRClickChB.Checked = Properties.Settings.Default.EnableGamesGridRClick;
-            StatusIconSizeNUM.Value = Properties.Settings.Default.StatusIconSize;
-            StatusIconSizeAutoChB.Checked = Properties.Settings.Default.StatusIconSizeAuto;
+            MainTextSizeNUM.Value = setts.MainTextSize;
+            InfoTextColorPB.BackColor = setts.InfoTextColor;
+            EnableGamesGridRClickChB.Checked = setts.EnableGamesGridRClick;
+            StatusIconSizeNUM.Value = setts.StatusIconSize;
+            StatusIconSizeAutoChB.Checked = setts.StatusIconSizeAuto;
+
+            RomsFixableLB.ForeColor = setts.RomFixableColor;
+            RomsGotLB.ForeColor = setts.RomGotColor;
+            RomsMissingLB.ForeColor = setts.RomMissingColor;
+            RomsUnknownLB.ForeColor = setts.RomUnknownColor;
         }
 
         private void BtnCancelClick(object sender, EventArgs e)
@@ -143,25 +152,33 @@ namespace ROMVault
 
             Settings.WriteConfig(Settings.rvSettings);
 
+            // Other setts
+            var setts = Properties.Settings.Default;
+
             // Dats
-            Properties.Settings.Default.RecognisedDatFormats.Clear();
+            setts.RecognisedDatFormats.Clear();
             foreach (ListViewItem formatLvi in DatFormatsLV.Items)
             {
-                Properties.Settings.Default.RecognisedDatFormats.Add(formatLvi.Text);
+                setts.RecognisedDatFormats.Add(formatLvi.Text);
             }
-            Properties.Settings.Default.DatImportMoveDontCopy = MoveDontCopyDatsChB.Checked;
+            setts.DatImportMoveDontCopy = MoveDontCopyDatsChB.Checked;
 
             // File Ops
-            Properties.Settings.Default.RomImportMoveNotCopy = MoveFilesNotCopyChB.Checked;
+            setts.RomImportMoveNotCopy = MoveFilesNotCopyChB.Checked;
 
             // UI and UX
-            Properties.Settings.Default.MainTextSize = (int)MainTextSizeNUM.Value;
-            Properties.Settings.Default.InfoTextColor = InfoTextColorPB.BackColor;
-            Properties.Settings.Default.EnableGamesGridRClick = EnableGamesGridRClickChB.Checked;
-            Properties.Settings.Default.StatusIconSize = (int)StatusIconSizeNUM.Value;
-            Properties.Settings.Default.StatusIconSizeAuto = StatusIconSizeAutoChB.Checked;
+            setts.MainTextSize = (int)MainTextSizeNUM.Value;
+            setts.InfoTextColor = InfoTextColorPB.BackColor;
+            setts.EnableGamesGridRClick = EnableGamesGridRClickChB.Checked;
+            setts.StatusIconSize = (int)StatusIconSizeNUM.Value;
+            setts.StatusIconSizeAuto = StatusIconSizeAutoChB.Checked;
 
-            Properties.Settings.Default.Save();
+            setts.RomGotColor = RomsFixableLB.ForeColor;
+            setts.RomGotColor = RomsGotLB.ForeColor;
+            setts.RomMissingColor = RomsMissingLB.ForeColor;
+            setts.RomUnknownColor = RomsUnknownLB.ForeColor;
+
+            setts.Save();
         }
 
         private void BtnDatClick(object sender, EventArgs e)
@@ -194,6 +211,13 @@ namespace ROMVault
             Properties.Settings.Default.InfoTextColor = ColorBroswer.Color;
             InfoTextColorPB.BackColor = ColorBroswer.Color;
             mainForm.UpdateThemeAndControls();
+        }
+
+        private Color GetColor()
+        {
+            var result = ColorBroswer.ShowDialog();
+            if (result != DialogResult.OK) return Color.Empty;
+            return ColorBroswer.Color;
         }
 
         private void MainTextSizeNUM_ValueChanged(object sender, EventArgs e)
@@ -282,6 +306,36 @@ namespace ROMVault
         private void StatusIconSizeAutoChB_CheckedChanged(object sender, EventArgs e)
         {
             StatusIconSizeNUM.Enabled = !StatusIconSizeAutoChB.Checked;
+        }
+
+        private void RomsStatusTagChangeColor(object sender, EventArgs e)
+        {
+            switch (sender)
+            {
+                case Label lbl when lbl == RomsFixableLB:
+                    if (GetColor() != Color.Empty)
+                        RomsFixableLB.ForeColor = ColorBroswer.Color;
+                    break;
+
+                case Label lbl when lbl == RomsMissingLB:
+                    if (GetColor() != Color.Empty)
+                        RomsMissingLB.ForeColor = ColorBroswer.Color;
+                    break;
+
+                case Label lbl when lbl == RomsUnknownLB:
+                    if (GetColor() != Color.Empty)
+                        RomsUnknownLB.ForeColor = ColorBroswer.Color;
+                    break;
+
+                case Label lbl when lbl == RomsGotLB:
+                    if (GetColor() != Color.Empty)
+                        RomsGotLB.ForeColor = ColorBroswer.Color;
+                    break;
+            }
+        }
+
+        private void RomsGotLB_Click(object sender, EventArgs e)
+        {
         }
     }
 }
