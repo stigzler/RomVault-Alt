@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ROMVault.UserControls
@@ -11,57 +7,79 @@ namespace ROMVault.UserControls
     [System.ComponentModel.DesignerCategory("Code")]
     internal class FlexiLabel : Label
     {
-        // public FontStyle FontStyle { get; set; } = FontStyle.Regular;
-
         private double _scaleFactor = 1.0;
-
-        private FontStyle _fontStyle;
-
-        public FontStyle FontStyle
-        {
-            get { return _fontStyle; }
-            set
-            {
-                _fontStyle = value;
-                SetFont();
-            }
-        }
+        private Form _trackedForm;
 
         public double ScaleFactor
         {
-            get { return _scaleFactor; }
+            get => _scaleFactor;
             set
             {
-                if (_scaleFactor < 0.1 || _scaleFactor > 10) return;
+                if (value < 0.1 || value > 10) return;
                 _scaleFactor = value;
-                SetFont();
+                UpdateScaledFont();
             }
         }
 
         public FlexiLabel()
         {
-            SetFont();
+            this.AutoSize = false;
         }
 
-        private void SetFont()
+        protected override void OnHandleCreated(EventArgs e)
         {
-            if (this.FindForm() == null) return;
-            float formFontSize = this.FindForm().Font.Size;
-            this.Font = new Font(this.Font.FontFamily, formFontSize * (float)_scaleFactor, this.FontStyle);
+            base.OnHandleCreated(e);
+            SubscribeToForm();
+            UpdateScaledFont();
         }
 
-        protected override void OnParentChanged(EventArgs e)
+        private void SubscribeToForm()
         {
-            base.OnParentChanged(e);
-            var form = this.FindForm();
-            if (form != null)
+            if (_trackedForm != null) _trackedForm.FontChanged -= Form_FontChanged;
+            _trackedForm = this.FindForm();
+            if (_trackedForm != null) _trackedForm.FontChanged += Form_FontChanged;
+        }
+
+        private void Form_FontChanged(object sender, EventArgs e) => UpdateScaledFont();
+
+        private void UpdateScaledFont()
+        {
+            Form parentForm = _trackedForm ?? this.FindForm();
+            if (parentForm == null) return;
+
+            // 1. Get the base size from the Form
+            float formSize = parentForm.Font.Size;
+            float targetSize = formSize * (float)_scaleFactor;
+
+            // 2. Preserve the CURRENT properties of this specific Label
+            // This ensures we keep the Family, Bold, Italic, etc., set in the designer
+            Font newFont = new Font(this.Font.FontFamily, targetSize, this.Font.Style);
+
+            if (!newFont.Equals(this.Font))
             {
-                form.FontChanged -= Form_FontChanged;
-                form.FontChanged += Form_FontChanged;
+                this.Font = newFont;
+
+                // Keep our custom height logic for the PathLabel scenario
+                UpdateHeight();
             }
-            SetFont();
         }
 
-        private void Form_FontChanged(object sender, EventArgs e) => SetFont();
+        private void UpdateHeight()
+        {
+            int requiredHeight = TextRenderer.MeasureText("W", this.Font).Height + this.Padding.Vertical;
+            if (this.Height != requiredHeight)
+            {
+                this.Height = requiredHeight;
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && _trackedForm != null)
+            {
+                _trackedForm.FontChanged -= Form_FontChanged;
+            }
+            base.Dispose(disposing);
+        }
     }
 }

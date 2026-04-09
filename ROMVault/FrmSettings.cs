@@ -20,6 +20,11 @@ namespace ROMVault
 {
     public partial class FrmSettings : Form
     {
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam);
+
+        private const int WM_SETREDRAW = 11;
+
         private FrmMain mainForm;
 
         public FrmSettings(FrmMain mainForm)
@@ -28,6 +33,21 @@ namespace ROMVault
 
             this.mainForm = mainForm;
 
+            if (Settings.rvSettings.Darkness)
+                Dark.dark.SetColors(this);
+        }
+
+        private void FrmConfigLoad(object sender, EventArgs e)
+        {
+            SetupControls();
+
+            LoadSettings();
+
+            UpdateStatusBar(); // has to be done after LaodSettings;
+        }
+
+        private void SetupControls()
+        {
             cboFixLevel.Items.Clear();
             cboFixLevel.Items.Add("Level 1 - Fast copy Match on CRC");
             cboFixLevel.Items.Add("Level 2 - Fast copy if SHA1 scanned");
@@ -42,16 +62,8 @@ namespace ROMVault
             cbo7zStruct.Items.Add("ZSTD Solid");
             cbo7zStruct.Items.Add("ZSTD Non-Solid");
 
-            if (Settings.rvSettings.Darkness)
-                Dark.dark.SetColors(this);
-
-            MainTC.HideTabs = true;
-            TvPaddingPN.BackColor = MainTV.BackColor;
-        }
-
-        private void FrmConfigLoad(object sender, EventArgs e)
-        {
             lblDATRoot.Text = Settings.rvSettings.DatRoot;
+
             cboFixLevel.SelectedIndex = (int)Settings.rvSettings.FixLevel;
 
             Helpers.Theming.SetFormTextSizeToDefault(this);
@@ -61,6 +73,41 @@ namespace ROMVault
             {
                 textBox1.Text += file + Environment.NewLine;
             }
+
+            MainTC.HideTabs = true;
+            TvPaddingPN.BackColor = MainTV.BackColor;
+
+            InfoTextExampleLB.ForeColor = Properties.Settings.Default.InfoTextColor;
+        }
+
+        private void ChangeFormControlsFontSizes()
+        {
+            // 1. Stop the Form from painting at the Windows message level
+            SendMessage(this.Handle, WM_SETREDRAW, false, 0);
+
+            try
+            {
+                float newSize = (float)MainTextSizeNUM.Value;
+                Font previewFont = new Font(this.Font.FontFamily, newSize);
+
+                this.Font = previewFont;
+                MainSS.Font = previewFont;
+
+                // Update TV while preserved family
+                MainTV.Font = new Font(MainTV.Font.FontFamily, newSize);
+
+                // FlexiLabel controls will adjust themselves via the Form.FontChanged event.
+            }
+            finally
+            {
+                // 2. Re-enable painting and force a clean redraw
+                SendMessage(this.Handle, WM_SETREDRAW, true, 0);
+                this.Refresh();
+            }
+        }
+
+        private void LoadSettings()
+        {
             chkSendFoundMIA.Checked = Settings.rvSettings.MIACallback;
             chkSendFoundMIAAnon.Checked = Settings.rvSettings.MIAAnon;
 
@@ -76,7 +123,6 @@ namespace ROMVault
             chkDoNotReportFeedback.Checked = Settings.rvSettings.DoNotReportFeedback;
 
             // Supplemental Settings
-
             var setts = Properties.Settings.Default;
 
             // DATs
@@ -107,6 +153,27 @@ namespace ROMVault
 
         private void BtnOkClick(object sender, EventArgs e)
         {
+            SetSettings();
+            PersistSettings();
+            mainForm.UpdateThemeAndControls();
+            Close();
+        }
+
+        /// <summary>
+        /// Save all settings to disk to persist over sessions.
+        /// </summary>
+        private void PersistSettings()
+        {
+            Settings.WriteConfig(Settings.rvSettings);
+            Properties.Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// This will update all the settings in memory. This will not persist them.
+        /// That is they will not be saved to disk here. PersistSettings does that.
+        /// </summary>
+        private void SetSettings()
+        {
             Settings.rvSettings.DatRoot = lblDATRoot.Text;
             Settings.rvSettings.FixLevel = (EFixLevel)cboFixLevel.SelectedIndex;
             string strtxt = textBox1.Text;
@@ -124,13 +191,6 @@ namespace ROMVault
                 }
             }
 
-            SaveSettings();
-
-            Close();
-        }
-
-        private void SaveSettings()
-        {
             Settings.rvSettings.SetRegExRules();
 
             Settings.rvSettings.DetailedFixReporting = chkDetailedReporting.Checked;
@@ -149,8 +209,6 @@ namespace ROMVault
             Settings.rvSettings.Darkness = chkDarkMode.Checked;
 
             Settings.rvSettings.DoNotReportFeedback = chkDoNotReportFeedback.Checked;
-
-            Settings.WriteConfig(Settings.rvSettings);
 
             // Other setts
             var setts = Properties.Settings.Default;
@@ -177,6 +235,8 @@ namespace ROMVault
             setts.RomGotColor = RomsGotLB.ForeColor;
             setts.RomMissingColor = RomsMissingLB.ForeColor;
             setts.RomUnknownColor = RomsUnknownLB.ForeColor;
+
+            mainForm.UpdateThemeAndControls();
 
             setts.Save();
         }
@@ -210,7 +270,7 @@ namespace ROMVault
             if (result != DialogResult.OK) return;
             Properties.Settings.Default.InfoTextColor = ColorBroswer.Color;
             InfoTextColorPB.BackColor = ColorBroswer.Color;
-            mainForm.UpdateThemeAndControls();
+            InfoTextExampleLB.ForeColor = ColorBroswer.Color;
         }
 
         private Color GetColor()
@@ -222,9 +282,8 @@ namespace ROMVault
 
         private void MainTextSizeNUM_ValueChanged(object sender, EventArgs e)
         {
-            //this.Font = new System.Drawing.Font(this.Font.FontFamily, (float)MainTextSizeNUM.Value);
-            Properties.Settings.Default.MainTextSize = (int)MainTextSizeNUM.Value;
-            //mainForm.UpdateThemeAndControls();
+            ChangeFormControlsFontSizes();
+            UpdateStatusBar();
         }
 
         // Call this after InitializeComponent()
@@ -306,6 +365,7 @@ namespace ROMVault
         private void StatusIconSizeAutoChB_CheckedChanged(object sender, EventArgs e)
         {
             StatusIconSizeNUM.Enabled = !StatusIconSizeAutoChB.Checked;
+            UpdateStatusBar();
         }
 
         private void RomsStatusTagChangeColor(object sender, EventArgs e)
@@ -336,6 +396,51 @@ namespace ROMVault
 
         private void RomsGotLB_Click(object sender, EventArgs e)
         {
+        }
+
+        private void PreviewBT_Click(object sender, EventArgs e)
+        {
+            SetSettings();
+            mainForm.UpdateThemeAndControls();
+        }
+
+        private void StatusIconSizeNUM_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateStatusBar();
+        }
+
+        private void UpdateStatusBar()
+        {
+            // 1. Stop the Form from painting at the Windows message level
+            SendMessage(this.Handle, WM_SETREDRAW, false, 0);
+
+            try
+            {
+                int newSize = (int)StatusIconSizeNUM.Value;
+
+                if (StatusIconSizeAutoChB.Checked)
+                {
+                    newSize = TextRenderer.MeasureText("Dummy", this.Font).Height;
+                }
+
+                MainSS.ImageScalingSize = new Size(newSize, newSize);
+
+                MainSS.Items.Clear();
+                MainSS.Items.Add(new ToolStripLabel()
+                {
+                    Image = Properties.Resources.information_frame,
+                    Text = "Version",
+                    Padding = new Padding(2, 2, 2, 2)
+                });
+
+                MainSS.PerformLayout();
+            }
+            finally
+            {
+                // 2. Re-enable painting and force a clean redraw
+                SendMessage(this.Handle, WM_SETREDRAW, true, 0);
+                this.Refresh();
+            }
         }
     }
 }

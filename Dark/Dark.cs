@@ -73,6 +73,7 @@ namespace Dark
             {
                 case TextBox tb:
                     tb.BorderStyle = BorderStyle.FixedSingle;
+                    tb.ForeColor = fg;
                     tb.BackColor = bg0;
                     if (tb.ReadOnly)
                     {

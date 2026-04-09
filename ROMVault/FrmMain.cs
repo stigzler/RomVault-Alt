@@ -101,9 +101,7 @@ namespace ROMVault
         {
             InitializeComponent();
 
-            this.SuspendLayout();
-
-            Theming.SetFormTextSizeToDefault(this);
+            //Theming.SetFormTextSizeToDefault(this);
 
             AddGameMetaData();
             //Text = $@"RomVault ({Program.strVersion}) {Application.StartupPath}";
@@ -586,17 +584,19 @@ namespace ROMVault
         /// </summary>
         internal void UpdateThemeAndControls()
         {
+            this.Font = new System.Drawing.Font(this.Font.FontFamily, (float)Properties.Settings.Default.MainTextSize);
+
             // UI Tweaks
-            ctrRvTree.BorderStyle = BorderStyle.None;
-            Theming.SetControlTextSizeToDefault(ctrRvTree);
-            Theming.SetControlTextSizeToDefault(GameGrid);
-            Theming.SetControlTextSizeToDefault(RomGrid);
+            //ctrRvTree.BorderStyle = BorderStyle.None;
+            //Theming.SetControlTextSizeToDefault(ctrRvTree);
+            //Theming.SetControlTextSizeToDefault(GameGrid);
+            //Theming.SetControlTextSizeToDefault(RomGrid);
             Theming.SetControlTextSizeToDefault(menuStrip1);
 
             if (Settings.rvSettings.Darkness)
             {
                 Dark.dark.SetColors(this);
-                UpdateTextBoxes(SearchTLP, Color.White);
+                //UpdateTextBoxes(SearchTLP, Color.White);
             }
 
             // Dats Roms Status Tags
@@ -611,7 +611,7 @@ namespace ROMVault
             //GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Padding = new Padding(2, 0, 0, 0);
             //if (GameGrid.Columns[(int)GameGridColumns.CType] is DataGridViewImageColumn ic) ic.ImageLayout = DataGridViewImageCellLayout.Normal;
 
-            this.ResumeLayout();
+            //this.ResumeLayout();
         }
 
         internal void InitialiseStatusStrip()

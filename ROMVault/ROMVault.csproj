@@ -236,6 +236,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoundPlayer.cs" />
     <Compile Include="UserControls\FlexiLabel.cs" />
+    <Compile Include="UserControls\FlowPanelResponsive.cs" />
     <Compile Include="UserControls\FolderBrowserDialog.cs" />
     <Compile Include="UserControls\PathLabel.cs" />
     <Compile Include="UserControls\PromptTextBox.cs" />
@@ -332,6 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="chip.ico" />
+    <None Include="Resources\information-frame1.png" />
     <None Include="Resources\smiley1.png" />
     <None Include="Resources\smiley.png" />
     <None Include="Resources\folder-tree1.png" />

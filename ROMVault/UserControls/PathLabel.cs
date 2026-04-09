@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ROMVault.UserControls
@@ -10,16 +7,62 @@ namespace ROMVault.UserControls
     [System.ComponentModel.DesignerCategory("Code")]
     internal class PathLabel : Label
     {
-        public override bool AutoSize
+        public PathLabel()
         {
-            get { return base.AutoSize; }
-            set { base.AutoSize = false; }
+            // We keep AutoSize false so we can control the Width/Ellipsis behavior
+            this.AutoSize = false;
+        }
+
+        /// <summary>
+        /// Manually calculate and set the height based on the current font.
+        /// </summary>
+        private void UpdateHeight()
+        {
+            using (Graphics g = this.CreateGraphics())
+            {
+                // Measure the height of a standard character in the current font
+                Size size = TextRenderer.MeasureText(g, "W", this.Font);
+                int requiredHeight = size.Height + this.Padding.Vertical;
+
+                // Only update if the height actually needs to change to prevent layout loops
+                if (this.Height != requiredHeight)
+                {
+                    this.Height = requiredHeight;
+                }
+            }
+        }
+
+        // Trigger height update when Font changes (e.g., Form scaling)
+        protected override void OnFontChanged(EventArgs e)
+        {
+            base.OnFontChanged(e);
+            UpdateHeight();
+        }
+
+        // Trigger height update when the control is first created/added to a form
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            UpdateHeight();
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.PathEllipsis;
-            TextRenderer.DrawText(e.Graphics, this.Text, this.Font, this.ClientRectangle, this.ForeColor, flags);
+            // Use PathEllipsis for the directory string
+            TextFormatFlags flags = TextFormatFlags.Left |
+                                    TextFormatFlags.PathEllipsis |
+                                    TextFormatFlags.VerticalCenter;
+
+            TextRenderer.DrawText(e.Graphics, this.Text, this.Font,
+                                  this.ClientRectangle, this.ForeColor, flags);
+        }
+
+        // We override this so that if a parent DOES call it,
+        // it returns the current width but the calculated height.
+        public override Size GetPreferredSize(Size proposedSize)
+        {
+            Size textSize = TextRenderer.MeasureText("W", this.Font);
+            return new Size(this.Width, textSize.Height + this.Padding.Vertical);
         }
     }
 }
