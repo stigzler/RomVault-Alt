@@ -9,7 +9,7 @@ using DATReader.DatStore;
 using DATReader.DatWriter;
 using ROMVault.Extensions;
 using ROMVault.Helpers;
-using ROMVault.UserControls;
+using ROMVault.ViewModels;
 using RomVaultCore;
 using RomVaultCore.Extensions;
 using RomVaultCore.ReadDat;
@@ -23,10 +23,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-
-using System.Linq;
-
-using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -96,6 +92,9 @@ namespace ROMVault
 
         private List<ToolStripStatusLabel> datStatusStripKeys = new List<ToolStripStatusLabel>();
 
+        private DatInfo DatInfo = new DatInfo() { Name = "None DAT Selected" };
+        private GameInfo GameInfo = new GameInfo() { Name = "None Selected" };
+
         #region MainUISetup
 
         public FrmMain()
@@ -104,10 +103,11 @@ namespace ROMVault
 
             this.SuspendLayout();
 
-            Helpers.Theming.SetFormTextSizeToDefault(this);
+            Theming.SetFormTextSizeToDefault(this);
 
             AddGameMetaData();
-            Text = $@"RomVault ({Program.strVersion}) {Application.StartupPath}";
+            //Text = $@"RomVault ({Program.strVersion}) {Application.StartupPath}";
+            Text = $@"RomVault ({Program.strVersion})";
 
             Type dgvType = GameGrid.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -421,6 +421,8 @@ namespace ROMVault
             helpToolStripMenuItem.DropDownItems.Add(garbageCollectToolStripMenuItem);
 #endif
             InitGameGridMenu();
+
+            MainPG.SelectedObject = DatInfo;
 
             UpdateThemeAndControls();
         }

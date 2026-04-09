@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ROMVault.ViewModels
 {
-    internal class GameInfo
+    /// <summary>
+    /// "ViewModel" used loosely. Really for the property grid operation.
+    /// </summary>
+    internal class GameInfo : ViewModelBase
     {
+        // Model:
         public string Category { get; set; } = string.Empty;
+
         public string CloneOf { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Manufacturer { get; set; } = string.Empty;
@@ -27,5 +33,11 @@ namespace ROMVault.ViewModels
         public string TruripSource { get; set; } = string.Empty;
         public string TruripSubGenre { get; set; } = string.Empty;
         public string Year { get; set; } = string.Empty;
+
+        public GameInfo()
+        {
+            Icon = Properties.Resources.disc;
+            Title = "Game/ROM Info";
+        }
     }
 }

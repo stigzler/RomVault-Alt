@@ -241,6 +241,7 @@
     <Compile Include="UserControls\PromptTextBox.cs" />
     <Compile Include="UserControls\TabControl.cs" />
     <Compile Include="UserControls\TableLayoutPanel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\DatInfo.cs" />
     <Compile Include="ViewModels\GameInfo.cs" />
     <EmbeddedResource Include="FrmDirectoryMappings.resx">

@@ -22,6 +22,7 @@ namespace Dark
 
         public static Color midGrey = Color.FromArgb(128, 128, 128, 128);
 
+        public static Color fgBright = Color.FromArgb(248, 248, 248);
         public static Color fg = Color.FromArgb(210, 210, 210);
         public static Color fgDimmed = Color.FromArgb(192, 192, 192);
         public static Brush sb_bg = new SolidBrush(bg);
@@ -112,6 +113,18 @@ namespace Dark
                     ts.Renderer = new DarkToolStripRenderer();
                     ts.BackColor = bgTs;
                     ts.ForeColor = fg;
+                    break;
+
+                case PropertyGrid pg:
+                    pg.ViewBackColor = bg;
+                    pg.ViewForeColor = fg;
+                    pg.LineColor = midGrey;
+                    pg.BackColor = bg;
+                    pg.CategoryForeColor = fgBright;
+                    pg.CategorySplitterColor = midGrey;
+                    pg.HelpBackColor = bg;
+                    pg.HelpForeColor = fgDimmed;
+
                     break;
 
                 case Label _:

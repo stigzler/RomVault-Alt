@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ROMVault.ViewModels
 {
-    internal class DatInfo
+    internal class DatInfo : ViewModelBase
     {
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
@@ -17,5 +18,11 @@ namespace ROMVault.ViewModels
         public int RomsMissing { get; set; } = 0;
         public int RomsFixable { get; set; } = 0;
         public int RomsUnknown { get; set; } = 0;
+
+        public DatInfo()
+        {
+            Icon = Properties.Resources.database;
+            Title = "DAT Info";
+        }
     }
 }

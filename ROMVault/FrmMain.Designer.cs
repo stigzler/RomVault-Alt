@@ -54,6 +54,7 @@ namespace ROMVault
             this.PaddingPN = new System.Windows.Forms.Panel();
             this.btnUpdateDats = new System.Windows.Forms.Button();
             this.lblTreePreSets = new System.Windows.Forms.Label();
+            this.MainSC = new System.Windows.Forms.SplitContainer();
             this.splitDatInfoGameInfo = new System.Windows.Forms.SplitContainer();
             this.DatINfoTlpPN = new System.Windows.Forms.Panel();
             this.DatTreePN = new System.Windows.Forms.Panel();
@@ -178,6 +179,7 @@ namespace ROMVault
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.tabInfo2 = new System.Windows.Forms.TabPage();
             this.txtInfo2 = new System.Windows.Forms.TextBox();
+            this.MainPG = new System.Windows.Forms.PropertyGrid();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmUpdateDATs = new System.Windows.Forms.ToolStripMenuItem();
             this.updateNewDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -234,6 +236,10 @@ namespace ROMVault
             this.Padding3PN.SuspendLayout();
             this.PaddingPN2.SuspendLayout();
             this.PaddingPN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSC)).BeginInit();
+            this.MainSC.Panel1.SuspendLayout();
+            this.MainSC.Panel2.SuspendLayout();
+            this.MainSC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDatInfoGameInfo)).BeginInit();
             this.splitDatInfoGameInfo.Panel1.SuspendLayout();
             this.splitDatInfoGameInfo.Panel2.SuspendLayout();
@@ -280,13 +286,13 @@ namespace ROMVault
             // 
             // splitToolBarMain
             // 
+            this.splitToolBarMain.BackColor = System.Drawing.Color.RoyalBlue;
             this.splitToolBarMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitToolBarMain.Location = new System.Drawing.Point(0, 24);
             this.splitToolBarMain.Name = "splitToolBarMain";
             // 
             // splitToolBarMain.Panel1
             // 
-            this.splitToolBarMain.Panel1.BackColor = System.Drawing.Color.White;
             this.splitToolBarMain.Panel1.Controls.Add(this.HideNavBT);
             this.splitToolBarMain.Panel1.Controls.Add(this.flexiLabel3);
             this.splitToolBarMain.Panel1.Controls.Add(this.flowLayoutPanel1);
@@ -302,7 +308,7 @@ namespace ROMVault
             // 
             // splitToolBarMain.Panel2
             // 
-            this.splitToolBarMain.Panel2.Controls.Add(this.splitDatInfoGameInfo);
+            this.splitToolBarMain.Panel2.Controls.Add(this.MainSC);
             this.splitToolBarMain.Size = new System.Drawing.Size(1300, 766);
             this.splitToolBarMain.SplitterDistance = 130;
             this.splitToolBarMain.TabIndex = 5;
@@ -589,8 +595,27 @@ namespace ROMVault
             this.lblTreePreSets.Text = "Tree Pre-Sets";
             this.lblTreePreSets.Visible = false;
             // 
+            // MainSC
+            // 
+            this.MainSC.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.MainSC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainSC.Location = new System.Drawing.Point(0, 0);
+            this.MainSC.Name = "MainSC";
+            // 
+            // MainSC.Panel1
+            // 
+            this.MainSC.Panel1.Controls.Add(this.splitDatInfoGameInfo);
+            // 
+            // MainSC.Panel2
+            // 
+            this.MainSC.Panel2.Controls.Add(this.MainPG);
+            this.MainSC.Size = new System.Drawing.Size(1166, 766);
+            this.MainSC.SplitterDistance = 814;
+            this.MainSC.TabIndex = 1;
+            // 
             // splitDatInfoGameInfo
             // 
+            this.splitDatInfoGameInfo.BackColor = System.Drawing.Color.IndianRed;
             this.splitDatInfoGameInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitDatInfoGameInfo.Location = new System.Drawing.Point(0, 0);
             this.splitDatInfoGameInfo.Name = "splitDatInfoGameInfo";
@@ -598,6 +623,7 @@ namespace ROMVault
             // splitDatInfoGameInfo.Panel1
             // 
             this.splitDatInfoGameInfo.Panel1.Controls.Add(this.DatINfoTlpPN);
+            this.splitDatInfoGameInfo.Panel1.Padding = new System.Windows.Forms.Padding(4);
             this.splitDatInfoGameInfo.Panel1MinSize = 450;
             // 
             // splitDatInfoGameInfo.Panel2
@@ -605,7 +631,7 @@ namespace ROMVault
             this.splitDatInfoGameInfo.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitDatInfoGameInfo.Panel2.Controls.Add(this.splitGameInfoLists);
             this.splitDatInfoGameInfo.Panel2.Padding = new System.Windows.Forms.Padding(4);
-            this.splitDatInfoGameInfo.Size = new System.Drawing.Size(1166, 766);
+            this.splitDatInfoGameInfo.Size = new System.Drawing.Size(814, 766);
             this.splitDatInfoGameInfo.SplitterDistance = 450;
             this.splitDatInfoGameInfo.TabIndex = 0;
             // 
@@ -615,10 +641,10 @@ namespace ROMVault
             this.DatINfoTlpPN.Controls.Add(this.DatTreePN);
             this.DatINfoTlpPN.Controls.Add(this.DatInfoTLP);
             this.DatINfoTlpPN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DatINfoTlpPN.Location = new System.Drawing.Point(0, 0);
+            this.DatINfoTlpPN.Location = new System.Drawing.Point(4, 4);
             this.DatINfoTlpPN.Name = "DatINfoTlpPN";
             this.DatINfoTlpPN.Padding = new System.Windows.Forms.Padding(4);
-            this.DatINfoTlpPN.Size = new System.Drawing.Size(450, 766);
+            this.DatINfoTlpPN.Size = new System.Drawing.Size(442, 758);
             this.DatINfoTlpPN.TabIndex = 4;
             // 
             // DatTreePN
@@ -713,7 +739,7 @@ namespace ROMVault
             this.DatInfoTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.DatInfoTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.DatInfoTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.DatInfoTLP.Size = new System.Drawing.Size(440, 249);
+            this.DatInfoTLP.Size = new System.Drawing.Size(432, 249);
             this.DatInfoTLP.TabIndex = 4;
             this.DatInfoTLP.Visible = false;
             // 
@@ -734,7 +760,7 @@ namespace ROMVault
             // lblDITDate
             // 
             this.lblDITDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDITDate.Location = new System.Drawing.Point(295, 109);
+            this.lblDITDate.Location = new System.Drawing.Point(291, 109);
             this.lblDITDate.Margin = new System.Windows.Forms.Padding(1);
             this.lblDITDate.Name = "lblDITDate";
             this.lblDITDate.ReadOnly = true;
@@ -746,7 +772,7 @@ namespace ROMVault
             // lblDITVersion
             // 
             this.lblDITVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDITVersion.Location = new System.Drawing.Point(295, 82);
+            this.lblDITVersion.Location = new System.Drawing.Point(291, 82);
             this.lblDITVersion.Margin = new System.Windows.Forms.Padding(1);
             this.lblDITVersion.Name = "lblDITVersion";
             this.lblDITVersion.ReadOnly = true;
@@ -771,7 +797,7 @@ namespace ROMVault
             // 
             this.lblDIDate.AutoSize = true;
             this.lblDIDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDIDate.Location = new System.Drawing.Point(226, 108);
+            this.lblDIDate.Location = new System.Drawing.Point(222, 108);
             this.lblDIDate.Margin = new System.Windows.Forms.Padding(0);
             this.lblDIDate.Name = "lblDIDate";
             this.lblDIDate.Size = new System.Drawing.Size(68, 27);
@@ -795,7 +821,7 @@ namespace ROMVault
             // 
             this.lblDIVersion.AutoSize = true;
             this.lblDIVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDIVersion.Location = new System.Drawing.Point(226, 81);
+            this.lblDIVersion.Location = new System.Drawing.Point(222, 81);
             this.lblDIVersion.Margin = new System.Windows.Forms.Padding(0);
             this.lblDIVersion.Name = "lblDIVersion";
             this.lblDIVersion.Size = new System.Drawing.Size(68, 27);
@@ -882,7 +908,7 @@ namespace ROMVault
             this.lblDITRomsMissing.Margin = new System.Windows.Forms.Padding(1);
             this.lblDITRomsMissing.Name = "lblDITRomsMissing";
             this.lblDITRomsMissing.ReadOnly = true;
-            this.lblDITRomsMissing.Size = new System.Drawing.Size(139, 25);
+            this.lblDITRomsMissing.Size = new System.Drawing.Size(135, 25);
             this.lblDITRomsMissing.TabIndex = 29;
             this.lblDITRomsMissing.TabStop = false;
             this.lblDITRomsMissing.Tag = "";
@@ -894,7 +920,7 @@ namespace ROMVault
             this.lblDITRomsGot.Margin = new System.Windows.Forms.Padding(1);
             this.lblDITRomsGot.Name = "lblDITRomsGot";
             this.lblDITRomsGot.ReadOnly = true;
-            this.lblDITRomsGot.Size = new System.Drawing.Size(139, 25);
+            this.lblDITRomsGot.Size = new System.Drawing.Size(135, 25);
             this.lblDITRomsGot.TabIndex = 30;
             this.lblDITRomsGot.TabStop = false;
             this.lblDITRomsGot.Tag = "";
@@ -927,7 +953,7 @@ namespace ROMVault
             // 
             this.lblDIRomsUnknown.AutoSize = true;
             this.lblDIRomsUnknown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDIRomsUnknown.Location = new System.Drawing.Point(226, 214);
+            this.lblDIRomsUnknown.Location = new System.Drawing.Point(222, 214);
             this.lblDIRomsUnknown.Margin = new System.Windows.Forms.Padding(0);
             this.lblDIRomsUnknown.Name = "lblDIRomsUnknown";
             this.lblDIRomsUnknown.Size = new System.Drawing.Size(68, 27);
@@ -939,7 +965,7 @@ namespace ROMVault
             // 
             this.lblDIRomsFixable.AutoSize = true;
             this.lblDIRomsFixable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDIRomsFixable.Location = new System.Drawing.Point(226, 187);
+            this.lblDIRomsFixable.Location = new System.Drawing.Point(222, 187);
             this.lblDIRomsFixable.Margin = new System.Windows.Forms.Padding(0);
             this.lblDIRomsFixable.Name = "lblDIRomsFixable";
             this.lblDIRomsFixable.Size = new System.Drawing.Size(68, 27);
@@ -962,11 +988,11 @@ namespace ROMVault
             // lblDITRomsUnknown
             // 
             this.lblDITRomsUnknown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDITRomsUnknown.Location = new System.Drawing.Point(295, 215);
+            this.lblDITRomsUnknown.Location = new System.Drawing.Point(291, 215);
             this.lblDITRomsUnknown.Margin = new System.Windows.Forms.Padding(1);
             this.lblDITRomsUnknown.Name = "lblDITRomsUnknown";
             this.lblDITRomsUnknown.ReadOnly = true;
-            this.lblDITRomsUnknown.Size = new System.Drawing.Size(140, 25);
+            this.lblDITRomsUnknown.Size = new System.Drawing.Size(136, 25);
             this.lblDITRomsUnknown.TabIndex = 27;
             this.lblDITRomsUnknown.TabStop = false;
             this.lblDITRomsUnknown.Tag = "";
@@ -974,11 +1000,11 @@ namespace ROMVault
             // lblDITRomsFixable
             // 
             this.lblDITRomsFixable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDITRomsFixable.Location = new System.Drawing.Point(295, 188);
+            this.lblDITRomsFixable.Location = new System.Drawing.Point(291, 188);
             this.lblDITRomsFixable.Margin = new System.Windows.Forms.Padding(1);
             this.lblDITRomsFixable.Name = "lblDITRomsFixable";
             this.lblDITRomsFixable.ReadOnly = true;
-            this.lblDITRomsFixable.Size = new System.Drawing.Size(140, 25);
+            this.lblDITRomsFixable.Size = new System.Drawing.Size(136, 25);
             this.lblDITRomsFixable.TabIndex = 28;
             this.lblDITRomsFixable.TabStop = false;
             this.lblDITRomsFixable.Tag = "";
@@ -990,7 +1016,7 @@ namespace ROMVault
             this.lblDITPath.Location = new System.Drawing.Point(86, 161);
             this.lblDITPath.Margin = new System.Windows.Forms.Padding(1);
             this.lblDITPath.Name = "lblDITPath";
-            this.lblDITPath.Size = new System.Drawing.Size(349, 25);
+            this.lblDITPath.Size = new System.Drawing.Size(341, 25);
             this.lblDITPath.TabIndex = 31;
             this.lblDITPath.Tag = "";
             // 
@@ -1006,7 +1032,7 @@ namespace ROMVault
             this.RomsLB.Name = "RomsLB";
             this.RomsLB.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.RomsLB.ScaleFactor = 1D;
-            this.RomsLB.Size = new System.Drawing.Size(432, 25);
+            this.RomsLB.Size = new System.Drawing.Size(424, 25);
             this.RomsLB.TabIndex = 38;
             this.RomsLB.Text = "Associated ROMs Info:";
             this.RomsLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1027,7 +1053,7 @@ namespace ROMVault
             // splitGameInfoLists.Panel2
             // 
             this.splitGameInfoLists.Panel2.Controls.Add(this.splitListArt);
-            this.splitGameInfoLists.Size = new System.Drawing.Size(704, 758);
+            this.splitGameInfoLists.Size = new System.Drawing.Size(352, 758);
             this.splitGameInfoLists.SplitterDistance = 420;
             this.splitGameInfoLists.TabIndex = 0;
             // 
@@ -1040,7 +1066,7 @@ namespace ROMVault
             this.GameInfoWrapperPanel.Location = new System.Drawing.Point(0, 0);
             this.GameInfoWrapperPanel.Name = "GameInfoWrapperPanel";
             this.GameInfoWrapperPanel.Padding = new System.Windows.Forms.Padding(4);
-            this.GameInfoWrapperPanel.Size = new System.Drawing.Size(508, 420);
+            this.GameInfoWrapperPanel.Size = new System.Drawing.Size(156, 420);
             this.GameInfoWrapperPanel.TabIndex = 0;
             // 
             // GameInfoTLP
@@ -1109,7 +1135,7 @@ namespace ROMVault
             this.GameInfoTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.GameInfoTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.GameInfoTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.GameInfoTLP.Size = new System.Drawing.Size(498, 368);
+            this.GameInfoTLP.Size = new System.Drawing.Size(146, 405);
             this.GameInfoTLP.TabIndex = 1;
             this.GameInfoTLP.Visible = false;
             // 
@@ -1120,7 +1146,7 @@ namespace ROMVault
             this._textGameName.Location = new System.Drawing.Point(96, 30);
             this._textGameName.Name = "_textGameName";
             this._textGameName.ReadOnly = true;
-            this._textGameName.Size = new System.Drawing.Size(399, 25);
+            this._textGameName.Size = new System.Drawing.Size(49, 25);
             this._textGameName.TabIndex = 44;
             // 
             // _labelGameName
@@ -1152,10 +1178,10 @@ namespace ROMVault
             // _textTruripScore
             // 
             this._textTruripScore.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripScore.Location = new System.Drawing.Point(408, 340);
+            this._textTruripScore.Location = new System.Drawing.Point(176, 377);
             this._textTruripScore.Name = "_textTruripScore";
             this._textTruripScore.ReadOnly = true;
-            this._textTruripScore.Size = new System.Drawing.Size(87, 25);
+            this._textTruripScore.Size = new System.Drawing.Size(1, 25);
             this._textTruripScore.TabIndex = 42;
             // 
             // _textGameManufacturer
@@ -1165,7 +1191,7 @@ namespace ROMVault
             this._textGameManufacturer.Location = new System.Drawing.Point(96, 92);
             this._textGameManufacturer.Name = "_textGameManufacturer";
             this._textGameManufacturer.ReadOnly = true;
-            this._textGameManufacturer.Size = new System.Drawing.Size(399, 25);
+            this._textGameManufacturer.Size = new System.Drawing.Size(49, 25);
             this._textGameManufacturer.TabIndex = 9;
             // 
             // _textGameDescription
@@ -1175,50 +1201,50 @@ namespace ROMVault
             this._textGameDescription.Location = new System.Drawing.Point(96, 61);
             this._textGameDescription.Name = "_textGameDescription";
             this._textGameDescription.ReadOnly = true;
-            this._textGameDescription.Size = new System.Drawing.Size(399, 25);
+            this._textGameDescription.Size = new System.Drawing.Size(49, 25);
             this._textGameDescription.TabIndex = 6;
             // 
             // _textTruripSubGenre
             // 
             this._textTruripSubGenre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripSubGenre.Location = new System.Drawing.Point(259, 340);
+            this._textTruripSubGenre.Location = new System.Drawing.Point(143, 377);
             this._textTruripSubGenre.Name = "_textTruripSubGenre";
             this._textTruripSubGenre.ReadOnly = true;
-            this._textTruripSubGenre.Size = new System.Drawing.Size(85, 25);
+            this._textTruripSubGenre.Size = new System.Drawing.Size(1, 25);
             this._textTruripSubGenre.TabIndex = 41;
             // 
             // _textTruripPlayers
             // 
             this._textTruripPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripPlayers.Location = new System.Drawing.Point(96, 340);
+            this._textTruripPlayers.Location = new System.Drawing.Point(96, 377);
             this._textTruripPlayers.Name = "_textTruripPlayers";
             this._textTruripPlayers.ReadOnly = true;
-            this._textTruripPlayers.Size = new System.Drawing.Size(85, 25);
+            this._textTruripPlayers.Size = new System.Drawing.Size(1, 25);
             this._textTruripPlayers.TabIndex = 40;
             // 
             // _textTruripRatings
             // 
             this._textTruripRatings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripRatings.Location = new System.Drawing.Point(408, 309);
+            this._textTruripRatings.Location = new System.Drawing.Point(176, 346);
             this._textTruripRatings.Name = "_textTruripRatings";
             this._textTruripRatings.ReadOnly = true;
-            this._textTruripRatings.Size = new System.Drawing.Size(87, 25);
+            this._textTruripRatings.Size = new System.Drawing.Size(1, 25);
             this._textTruripRatings.TabIndex = 39;
             // 
             // _textTruripGenre
             // 
             this._textTruripGenre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripGenre.Location = new System.Drawing.Point(259, 309);
+            this._textTruripGenre.Location = new System.Drawing.Point(143, 346);
             this._textTruripGenre.Name = "_textTruripGenre";
             this._textTruripGenre.ReadOnly = true;
-            this._textTruripGenre.Size = new System.Drawing.Size(85, 25);
+            this._textTruripGenre.Size = new System.Drawing.Size(1, 25);
             this._textTruripGenre.TabIndex = 38;
             // 
             // _labelTruripYear
             // 
             this._labelTruripYear.AutoSize = true;
             this._labelTruripYear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripYear.Location = new System.Drawing.Point(0, 306);
+            this._labelTruripYear.Location = new System.Drawing.Point(0, 343);
             this._labelTruripYear.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripYear.Name = "_labelTruripYear";
             this._labelTruripYear.Size = new System.Drawing.Size(93, 31);
@@ -1230,10 +1256,10 @@ namespace ROMVault
             // 
             this.GameInfoTLP.SetColumnSpan(this._textTruripRelatedTo, 5);
             this._textTruripRelatedTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripRelatedTo.Location = new System.Drawing.Point(96, 278);
+            this._textTruripRelatedTo.Location = new System.Drawing.Point(96, 315);
             this._textTruripRelatedTo.Name = "_textTruripRelatedTo";
             this._textTruripRelatedTo.ReadOnly = true;
-            this._textTruripRelatedTo.Size = new System.Drawing.Size(399, 25);
+            this._textTruripRelatedTo.Size = new System.Drawing.Size(49, 25);
             this._textTruripRelatedTo.TabIndex = 30;
             this._textTruripRelatedTo.Text = "_textTruripRelatedTo";
             // 
@@ -1241,7 +1267,7 @@ namespace ROMVault
             // 
             this._labelTruripRelatedTo.AutoSize = true;
             this._labelTruripRelatedTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripRelatedTo.Location = new System.Drawing.Point(0, 275);
+            this._labelTruripRelatedTo.Location = new System.Drawing.Point(0, 312);
             this._labelTruripRelatedTo.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripRelatedTo.Name = "_labelTruripRelatedTo";
             this._labelTruripRelatedTo.Size = new System.Drawing.Size(93, 31);
@@ -1253,10 +1279,10 @@ namespace ROMVault
             // 
             this.GameInfoTLP.SetColumnSpan(this._textTruripCloneOf, 5);
             this._textTruripCloneOf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripCloneOf.Location = new System.Drawing.Point(96, 247);
+            this._textTruripCloneOf.Location = new System.Drawing.Point(96, 284);
             this._textTruripCloneOf.Name = "_textTruripCloneOf";
             this._textTruripCloneOf.ReadOnly = true;
-            this._textTruripCloneOf.Size = new System.Drawing.Size(399, 25);
+            this._textTruripCloneOf.Size = new System.Drawing.Size(49, 25);
             this._textTruripCloneOf.TabIndex = 28;
             this._textTruripCloneOf.Text = "_textTruripCloneOf";
             // 
@@ -1264,7 +1290,7 @@ namespace ROMVault
             // 
             this._labelTruripCloneOf.AutoSize = true;
             this._labelTruripCloneOf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripCloneOf.Location = new System.Drawing.Point(0, 244);
+            this._labelTruripCloneOf.Location = new System.Drawing.Point(0, 281);
             this._labelTruripCloneOf.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripCloneOf.Name = "_labelTruripCloneOf";
             this._labelTruripCloneOf.Size = new System.Drawing.Size(93, 31);
@@ -1288,20 +1314,20 @@ namespace ROMVault
             // 
             this.GameInfoTLP.SetColumnSpan(this._textGameRomOf, 2);
             this._textGameRomOf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textGameRomOf.Location = new System.Drawing.Point(96, 216);
+            this._textGameRomOf.Location = new System.Drawing.Point(96, 253);
             this._textGameRomOf.Name = "_textGameRomOf";
             this._textGameRomOf.ReadOnly = true;
-            this._textGameRomOf.Size = new System.Drawing.Size(157, 25);
+            this._textGameRomOf.Size = new System.Drawing.Size(41, 25);
             this._textGameRomOf.TabIndex = 25;
             // 
             // _textTruripDeveloper
             // 
             this.GameInfoTLP.SetColumnSpan(this._textTruripDeveloper, 2);
             this._textTruripDeveloper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripDeveloper.Location = new System.Drawing.Point(96, 185);
+            this._textTruripDeveloper.Location = new System.Drawing.Point(96, 222);
             this._textTruripDeveloper.Name = "_textTruripDeveloper";
             this._textTruripDeveloper.ReadOnly = true;
-            this._textTruripDeveloper.Size = new System.Drawing.Size(157, 25);
+            this._textTruripDeveloper.Size = new System.Drawing.Size(41, 25);
             this._textTruripDeveloper.TabIndex = 21;
             this._textTruripDeveloper.Text = "_textTruripDeveloper";
             // 
@@ -1309,10 +1335,10 @@ namespace ROMVault
             // 
             this.GameInfoTLP.SetColumnSpan(this._textGameCloneOf, 2);
             this._textGameCloneOf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textGameCloneOf.Location = new System.Drawing.Point(96, 154);
+            this._textGameCloneOf.Location = new System.Drawing.Point(96, 191);
             this._textGameCloneOf.Name = "_textGameCloneOf";
             this._textGameCloneOf.ReadOnly = true;
-            this._textGameCloneOf.Size = new System.Drawing.Size(157, 25);
+            this._textGameCloneOf.Size = new System.Drawing.Size(41, 25);
             this._textGameCloneOf.TabIndex = 11;
             // 
             // _textTruripPublisher
@@ -1321,7 +1347,7 @@ namespace ROMVault
             this._textTruripPublisher.Dock = System.Windows.Forms.DockStyle.Fill;
             this._textTruripPublisher.Location = new System.Drawing.Point(96, 120);
             this._textTruripPublisher.Name = "_textTruripPublisher";
-            this._textTruripPublisher.Size = new System.Drawing.Size(157, 31);
+            this._textTruripPublisher.Size = new System.Drawing.Size(41, 68);
             this._textTruripPublisher.TabIndex = 18;
             this._textTruripPublisher.Text = "_textTruripPublisher";
             // 
@@ -1329,20 +1355,20 @@ namespace ROMVault
             // 
             this.GameInfoTLP.SetColumnSpan(this._textGameCategory, 2);
             this._textGameCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textGameCategory.Location = new System.Drawing.Point(350, 216);
+            this._textGameCategory.Location = new System.Drawing.Point(118, 253);
             this._textGameCategory.Name = "_textGameCategory";
             this._textGameCategory.ReadOnly = true;
-            this._textGameCategory.Size = new System.Drawing.Size(145, 25);
+            this._textGameCategory.Size = new System.Drawing.Size(27, 25);
             this._textGameCategory.TabIndex = 26;
             // 
             // _textTruripSource
             // 
             this.GameInfoTLP.SetColumnSpan(this._textTruripSource, 2);
             this._textTruripSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripSource.Location = new System.Drawing.Point(350, 185);
+            this._textTruripSource.Location = new System.Drawing.Point(118, 222);
             this._textTruripSource.Name = "_textTruripSource";
             this._textTruripSource.ReadOnly = true;
-            this._textTruripSource.Size = new System.Drawing.Size(145, 25);
+            this._textTruripSource.Size = new System.Drawing.Size(27, 25);
             this._textTruripSource.TabIndex = 22;
             this._textTruripSource.Text = "_textTruripSource";
             // 
@@ -1350,20 +1376,20 @@ namespace ROMVault
             // 
             this.GameInfoTLP.SetColumnSpan(this._textGameYear, 2);
             this._textGameYear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textGameYear.Location = new System.Drawing.Point(350, 154);
+            this._textGameYear.Location = new System.Drawing.Point(118, 191);
             this._textGameYear.Name = "_textGameYear";
             this._textGameYear.ReadOnly = true;
-            this._textGameYear.Size = new System.Drawing.Size(145, 25);
+            this._textGameYear.Size = new System.Drawing.Size(27, 25);
             this._textGameYear.TabIndex = 13;
             // 
             // _textTruripTitleId
             // 
             this.GameInfoTLP.SetColumnSpan(this._textTruripTitleId, 2);
             this._textTruripTitleId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripTitleId.Location = new System.Drawing.Point(350, 123);
+            this._textTruripTitleId.Location = new System.Drawing.Point(118, 123);
             this._textTruripTitleId.Name = "_textTruripTitleId";
             this._textTruripTitleId.ReadOnly = true;
-            this._textTruripTitleId.Size = new System.Drawing.Size(145, 25);
+            this._textTruripTitleId.Size = new System.Drawing.Size(27, 25);
             this._textTruripTitleId.TabIndex = 17;
             this._textTruripTitleId.Text = "_textTruripTitleId";
             // 
@@ -1371,7 +1397,7 @@ namespace ROMVault
             // 
             this._labelGameRomOf.AutoSize = true;
             this._labelGameRomOf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelGameRomOf.Location = new System.Drawing.Point(0, 213);
+            this._labelGameRomOf.Location = new System.Drawing.Point(0, 250);
             this._labelGameRomOf.Margin = new System.Windows.Forms.Padding(0);
             this._labelGameRomOf.Name = "_labelGameRomOf";
             this._labelGameRomOf.Size = new System.Drawing.Size(93, 31);
@@ -1383,7 +1409,7 @@ namespace ROMVault
             // 
             this._labelTruripDeveloper.AutoSize = true;
             this._labelTruripDeveloper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripDeveloper.Location = new System.Drawing.Point(0, 182);
+            this._labelTruripDeveloper.Location = new System.Drawing.Point(0, 219);
             this._labelTruripDeveloper.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripDeveloper.Name = "_labelTruripDeveloper";
             this._labelTruripDeveloper.Size = new System.Drawing.Size(93, 31);
@@ -1395,7 +1421,7 @@ namespace ROMVault
             // 
             this._labelGameCloneOf.AutoSize = true;
             this._labelGameCloneOf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelGameCloneOf.Location = new System.Drawing.Point(0, 151);
+            this._labelGameCloneOf.Location = new System.Drawing.Point(0, 188);
             this._labelGameCloneOf.Margin = new System.Windows.Forms.Padding(0);
             this._labelGameCloneOf.Name = "_labelGameCloneOf";
             this._labelGameCloneOf.Size = new System.Drawing.Size(93, 31);
@@ -1410,7 +1436,7 @@ namespace ROMVault
             this._labelTruripPublisher.Location = new System.Drawing.Point(0, 120);
             this._labelTruripPublisher.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripPublisher.Name = "_labelTruripPublisher";
-            this._labelTruripPublisher.Size = new System.Drawing.Size(93, 31);
+            this._labelTruripPublisher.Size = new System.Drawing.Size(93, 68);
             this._labelTruripPublisher.TabIndex = 14;
             this._labelTruripPublisher.Text = "Publisher :";
             this._labelTruripPublisher.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1419,10 +1445,10 @@ namespace ROMVault
             // 
             this._labelGameCategory.AutoSize = true;
             this._labelGameCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelGameCategory.Location = new System.Drawing.Point(256, 213);
+            this._labelGameCategory.Location = new System.Drawing.Point(140, 250);
             this._labelGameCategory.Margin = new System.Windows.Forms.Padding(0);
             this._labelGameCategory.Name = "_labelGameCategory";
-            this._labelGameCategory.Size = new System.Drawing.Size(91, 31);
+            this._labelGameCategory.Size = new System.Drawing.Size(1, 31);
             this._labelGameCategory.TabIndex = 24;
             this._labelGameCategory.Text = "Category :";
             this._labelGameCategory.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1431,10 +1457,10 @@ namespace ROMVault
             // 
             this._labelTruripSource.AutoSize = true;
             this._labelTruripSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripSource.Location = new System.Drawing.Point(256, 182);
+            this._labelTruripSource.Location = new System.Drawing.Point(140, 219);
             this._labelTruripSource.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripSource.Name = "_labelTruripSource";
-            this._labelTruripSource.Size = new System.Drawing.Size(91, 31);
+            this._labelTruripSource.Size = new System.Drawing.Size(1, 31);
             this._labelTruripSource.TabIndex = 20;
             this._labelTruripSource.Text = "Source :";
             this._labelTruripSource.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1443,10 +1469,10 @@ namespace ROMVault
             // 
             this._labelGameYear.AutoSize = true;
             this._labelGameYear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelGameYear.Location = new System.Drawing.Point(256, 151);
+            this._labelGameYear.Location = new System.Drawing.Point(140, 188);
             this._labelGameYear.Margin = new System.Windows.Forms.Padding(0);
             this._labelGameYear.Name = "_labelGameYear";
-            this._labelGameYear.Size = new System.Drawing.Size(91, 31);
+            this._labelGameYear.Size = new System.Drawing.Size(1, 31);
             this._labelGameYear.TabIndex = 12;
             this._labelGameYear.Text = "Year :";
             this._labelGameYear.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1455,10 +1481,10 @@ namespace ROMVault
             // 
             this._labelTruripTitleId.AutoSize = true;
             this._labelTruripTitleId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripTitleId.Location = new System.Drawing.Point(256, 120);
+            this._labelTruripTitleId.Location = new System.Drawing.Point(140, 120);
             this._labelTruripTitleId.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripTitleId.Name = "_labelTruripTitleId";
-            this._labelTruripTitleId.Size = new System.Drawing.Size(91, 31);
+            this._labelTruripTitleId.Size = new System.Drawing.Size(1, 68);
             this._labelTruripTitleId.TabIndex = 16;
             this._labelTruripTitleId.Text = "Title ID :";
             this._labelTruripTitleId.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1479,7 +1505,7 @@ namespace ROMVault
             // 
             this._labelTruripGenre.AutoSize = true;
             this._labelTruripGenre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripGenre.Location = new System.Drawing.Point(184, 306);
+            this._labelTruripGenre.Location = new System.Drawing.Point(68, 343);
             this._labelTruripGenre.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripGenre.Name = "_labelTruripGenre";
             this._labelTruripGenre.Size = new System.Drawing.Size(72, 31);
@@ -1491,7 +1517,7 @@ namespace ROMVault
             // 
             this._labelTruripRatings.AutoSize = true;
             this._labelTruripRatings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripRatings.Location = new System.Drawing.Point(347, 306);
+            this._labelTruripRatings.Location = new System.Drawing.Point(115, 343);
             this._labelTruripRatings.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripRatings.Name = "_labelTruripRatings";
             this._labelTruripRatings.Size = new System.Drawing.Size(58, 31);
@@ -1503,7 +1529,7 @@ namespace ROMVault
             // 
             this._labelTruripPlayers.AutoSize = true;
             this._labelTruripPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripPlayers.Location = new System.Drawing.Point(0, 337);
+            this._labelTruripPlayers.Location = new System.Drawing.Point(0, 374);
             this._labelTruripPlayers.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripPlayers.Name = "_labelTruripPlayers";
             this._labelTruripPlayers.Size = new System.Drawing.Size(93, 31);
@@ -1515,7 +1541,7 @@ namespace ROMVault
             // 
             this._labelTruripSubGenre.AutoSize = true;
             this._labelTruripSubGenre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripSubGenre.Location = new System.Drawing.Point(184, 337);
+            this._labelTruripSubGenre.Location = new System.Drawing.Point(68, 374);
             this._labelTruripSubGenre.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripSubGenre.Name = "_labelTruripSubGenre";
             this._labelTruripSubGenre.Size = new System.Drawing.Size(72, 31);
@@ -1527,7 +1553,7 @@ namespace ROMVault
             // 
             this._labelTruripScore.AutoSize = true;
             this._labelTruripScore.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelTruripScore.Location = new System.Drawing.Point(347, 337);
+            this._labelTruripScore.Location = new System.Drawing.Point(115, 374);
             this._labelTruripScore.Margin = new System.Windows.Forms.Padding(0);
             this._labelTruripScore.Name = "_labelTruripScore";
             this._labelTruripScore.Size = new System.Drawing.Size(58, 31);
@@ -1538,10 +1564,10 @@ namespace ROMVault
             // _textTruripYear
             // 
             this._textTruripYear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textTruripYear.Location = new System.Drawing.Point(96, 309);
+            this._textTruripYear.Location = new System.Drawing.Point(96, 346);
             this._textTruripYear.Name = "_textTruripYear";
             this._textTruripYear.ReadOnly = true;
-            this._textTruripYear.Size = new System.Drawing.Size(85, 25);
+            this._textTruripYear.Size = new System.Drawing.Size(1, 25);
             this._textTruripYear.TabIndex = 37;
             this._textTruripYear.Text = "these 6 = trurip";
             // 
@@ -1557,7 +1583,7 @@ namespace ROMVault
             this.GameDetailsRhsFLP.Controls.Add(this.SearchTLP);
             this.GameDetailsRhsFLP.Dock = System.Windows.Forms.DockStyle.Right;
             this.GameDetailsRhsFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.GameDetailsRhsFLP.Location = new System.Drawing.Point(508, 0);
+            this.GameDetailsRhsFLP.Location = new System.Drawing.Point(156, 0);
             this.GameDetailsRhsFLP.Name = "GameDetailsRhsFLP";
             this.GameDetailsRhsFLP.Padding = new System.Windows.Forms.Padding(4);
             this.GameDetailsRhsFLP.Size = new System.Drawing.Size(196, 420);
@@ -1702,8 +1728,8 @@ namespace ROMVault
             // splitListArt.Panel2
             // 
             this.splitListArt.Panel2.Controls.Add(this.TabEmuArc);
-            this.splitListArt.Size = new System.Drawing.Size(704, 334);
-            this.splitListArt.SplitterDistance = 544;
+            this.splitListArt.Size = new System.Drawing.Size(352, 334);
+            this.splitListArt.SplitterDistance = 272;
             this.splitListArt.TabIndex = 1;
             // 
             // GameRomPN
@@ -1714,7 +1740,7 @@ namespace ROMVault
             this.GameRomPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GameRomPN.Location = new System.Drawing.Point(0, 0);
             this.GameRomPN.Name = "GameRomPN";
-            this.GameRomPN.Size = new System.Drawing.Size(544, 334);
+            this.GameRomPN.Size = new System.Drawing.Size(272, 334);
             this.GameRomPN.TabIndex = 1;
             // 
             // splitGameListRomList
@@ -1731,7 +1757,7 @@ namespace ROMVault
             // splitGameListRomList.Panel2
             // 
             this.splitGameListRomList.Panel2.Controls.Add(this.RomGrid);
-            this.splitGameListRomList.Size = new System.Drawing.Size(542, 307);
+            this.splitGameListRomList.Size = new System.Drawing.Size(270, 307);
             this.splitGameListRomList.SplitterDistance = 192;
             this.splitGameListRomList.TabIndex = 0;
             // 
@@ -1859,7 +1885,7 @@ namespace ROMVault
             this.RomGrid.ShowCellErrors = false;
             this.RomGrid.ShowEditingIcon = false;
             this.RomGrid.ShowRowErrors = false;
-            this.RomGrid.Size = new System.Drawing.Size(542, 111);
+            this.RomGrid.Size = new System.Drawing.Size(270, 111);
             this.RomGrid.TabIndex = 21;
             this.RomGrid.VirtualMode = true;
             this.RomGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.RomGridCellFormatting);
@@ -2015,7 +2041,7 @@ namespace ROMVault
             this.toolStripButton1});
             this.GameRomNavigateToRootBT.Location = new System.Drawing.Point(0, 0);
             this.GameRomNavigateToRootBT.Name = "GameRomNavigateToRootBT";
-            this.GameRomNavigateToRootBT.Size = new System.Drawing.Size(542, 25);
+            this.GameRomNavigateToRootBT.Size = new System.Drawing.Size(270, 25);
             this.GameRomNavigateToRootBT.TabIndex = 0;
             this.GameRomNavigateToRootBT.Text = "Navigate to Root";
             // 
@@ -2040,7 +2066,7 @@ namespace ROMVault
             this.TabEmuArc.Location = new System.Drawing.Point(0, 0);
             this.TabEmuArc.Name = "TabEmuArc";
             this.TabEmuArc.SelectedIndex = 0;
-            this.TabEmuArc.Size = new System.Drawing.Size(156, 334);
+            this.TabEmuArc.Size = new System.Drawing.Size(76, 334);
             this.TabEmuArc.TabIndex = 0;
             // 
             // tabArtWork
@@ -2051,7 +2077,7 @@ namespace ROMVault
             this.tabArtWork.Location = new System.Drawing.Point(4, 22);
             this.tabArtWork.Name = "tabArtWork";
             this.tabArtWork.Padding = new System.Windows.Forms.Padding(3);
-            this.tabArtWork.Size = new System.Drawing.Size(148, 308);
+            this.tabArtWork.Size = new System.Drawing.Size(68, 308);
             this.tabArtWork.TabIndex = 0;
             this.tabArtWork.Text = "ArtWork";
             this.tabArtWork.Resize += new System.EventHandler(this.tabArtWork_Resize);
@@ -2086,7 +2112,7 @@ namespace ROMVault
             this.tabMedium.Location = new System.Drawing.Point(4, 22);
             this.tabMedium.Name = "tabMedium";
             this.tabMedium.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMedium.Size = new System.Drawing.Size(148, 308);
+            this.tabMedium.Size = new System.Drawing.Size(68, 308);
             this.tabMedium.TabIndex = 3;
             this.tabMedium.Text = "Medium";
             this.tabMedium.Resize += new System.EventHandler(this.tabMedium_Resize);
@@ -2121,7 +2147,7 @@ namespace ROMVault
             this.tabScreens.Location = new System.Drawing.Point(4, 22);
             this.tabScreens.Name = "tabScreens";
             this.tabScreens.Padding = new System.Windows.Forms.Padding(3);
-            this.tabScreens.Size = new System.Drawing.Size(148, 308);
+            this.tabScreens.Size = new System.Drawing.Size(68, 308);
             this.tabScreens.TabIndex = 1;
             this.tabScreens.Text = "Screens";
             this.tabScreens.Resize += new System.EventHandler(this.tabScreens_Resize);
@@ -2154,7 +2180,7 @@ namespace ROMVault
             this.tabInfo.Controls.Add(this.txtInfo);
             this.tabInfo.Location = new System.Drawing.Point(4, 22);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Size = new System.Drawing.Size(148, 308);
+            this.tabInfo.Size = new System.Drawing.Size(68, 308);
             this.tabInfo.TabIndex = 2;
             this.tabInfo.Text = "Info";
             this.tabInfo.Resize += new System.EventHandler(this.tabInfo_Resize);
@@ -2168,7 +2194,7 @@ namespace ROMVault
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
             this.txtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtInfo.Size = new System.Drawing.Size(148, 308);
+            this.txtInfo.Size = new System.Drawing.Size(68, 308);
             this.txtInfo.TabIndex = 0;
             this.txtInfo.WordWrap = false;
             // 
@@ -2178,7 +2204,7 @@ namespace ROMVault
             this.tabInfo2.Controls.Add(this.txtInfo2);
             this.tabInfo2.Location = new System.Drawing.Point(4, 22);
             this.tabInfo2.Name = "tabInfo2";
-            this.tabInfo2.Size = new System.Drawing.Size(148, 308);
+            this.tabInfo2.Size = new System.Drawing.Size(68, 308);
             this.tabInfo2.TabIndex = 4;
             this.tabInfo2.Text = "Info2";
             // 
@@ -2190,9 +2216,17 @@ namespace ROMVault
             this.txtInfo2.Multiline = true;
             this.txtInfo2.Name = "txtInfo2";
             this.txtInfo2.ReadOnly = true;
-            this.txtInfo2.Size = new System.Drawing.Size(148, 308);
+            this.txtInfo2.Size = new System.Drawing.Size(68, 308);
             this.txtInfo2.TabIndex = 2;
             this.txtInfo2.WordWrap = false;
+            // 
+            // MainPG
+            // 
+            this.MainPG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPG.Location = new System.Drawing.Point(0, 0);
+            this.MainPG.Name = "MainPG";
+            this.MainPG.Size = new System.Drawing.Size(348, 766);
+            this.MainPG.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -2630,6 +2664,10 @@ namespace ROMVault
             this.PaddingPN2.PerformLayout();
             this.PaddingPN.ResumeLayout(false);
             this.PaddingPN.PerformLayout();
+            this.MainSC.Panel1.ResumeLayout(false);
+            this.MainSC.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainSC)).EndInit();
+            this.MainSC.ResumeLayout(false);
             this.splitDatInfoGameInfo.Panel1.ResumeLayout(false);
             this.splitDatInfoGameInfo.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitDatInfoGameInfo)).EndInit();
@@ -2887,6 +2925,8 @@ namespace ROMVault
         private ToolStripButton toolStripButton1;
         private TextBox _textGameName;
         private Label _labelGameName;
+        private SplitContainer MainSC;
+        private PropertyGrid MainPG;
     }
 }
 
