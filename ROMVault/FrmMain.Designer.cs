@@ -68,12 +68,12 @@ namespace ROMVault
             this.RomsFixableLB = new System.Windows.Forms.Label();
             this.RomsMissingLB = new System.Windows.Forms.Label();
             this.RomsGotLB = new System.Windows.Forms.Label();
-            this.flowPanelResponsive2 = new ROMVault.UserControls.FlowPanelResponsive();
-            this.lblDIName = new System.Windows.Forms.Label();
-            this.DatInfoNameLb = new System.Windows.Forms.Label();
             this.flowPanelResponsive1 = new ROMVault.UserControls.FlowPanelResponsive();
             this.lblDIRomPath = new System.Windows.Forms.Label();
             this.DatInfoPathLb = new ROMVault.UserControls.PathLabel();
+            this.flowPanelResponsive2 = new ROMVault.UserControls.FlowPanelResponsive();
+            this.lblDIName = new System.Windows.Forms.Label();
+            this.DatInfoNameLb = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.VaultHeader = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -246,8 +246,8 @@ namespace ROMVault
             this.toolStrip1.SuspendLayout();
             this.DatInfoHeaderPN.SuspendLayout();
             this.RomsStatusTagsFLP.SuspendLayout();
-            this.flowPanelResponsive2.SuspendLayout();
             this.flowPanelResponsive1.SuspendLayout();
+            this.flowPanelResponsive2.SuspendLayout();
             this.VaultHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitGameInfoLists)).BeginInit();
@@ -701,8 +701,8 @@ namespace ROMVault
             // DatInfoHeaderPN
             // 
             this.DatInfoHeaderPN.Controls.Add(this.RomsStatusTagsFLP);
-            this.DatInfoHeaderPN.Controls.Add(this.flowPanelResponsive2);
             this.DatInfoHeaderPN.Controls.Add(this.flowPanelResponsive1);
+            this.DatInfoHeaderPN.Controls.Add(this.flowPanelResponsive2);
             this.DatInfoHeaderPN.Controls.Add(this.flowLayoutPanel2);
             this.DatInfoHeaderPN.Controls.Add(this.VaultHeader);
             this.DatInfoHeaderPN.Dock = System.Windows.Forms.DockStyle.Top;
@@ -791,49 +791,13 @@ namespace ROMVault
             this.RomsGotLB.Tag = "override";
             this.RomsGotLB.Text = "label2";
             // 
-            // flowPanelResponsive2
-            // 
-            this.flowPanelResponsive2.AutoSize = true;
-            this.flowPanelResponsive2.Controls.Add(this.lblDIName);
-            this.flowPanelResponsive2.Controls.Add(this.DatInfoNameLb);
-            this.flowPanelResponsive2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowPanelResponsive2.Location = new System.Drawing.Point(0, 64);
-            this.flowPanelResponsive2.Name = "flowPanelResponsive2";
-            this.flowPanelResponsive2.Padding = new System.Windows.Forms.Padding(4);
-            this.flowPanelResponsive2.Size = new System.Drawing.Size(432, 33);
-            this.flowPanelResponsive2.TabIndex = 27;
-            this.flowPanelResponsive2.WrapContents = false;
-            // 
-            // lblDIName
-            // 
-            this.lblDIName.AutoSize = true;
-            this.lblDIName.Location = new System.Drawing.Point(4, 4);
-            this.lblDIName.Margin = new System.Windows.Forms.Padding(0);
-            this.lblDIName.Name = "lblDIName";
-            this.lblDIName.Size = new System.Drawing.Size(73, 17);
-            this.lblDIName.TabIndex = 3;
-            this.lblDIName.Text = "DAT Name:";
-            this.lblDIName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // DatInfoNameLb
-            // 
-            this.DatInfoNameLb.AutoSize = true;
-            this.DatInfoNameLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DatInfoNameLb.Location = new System.Drawing.Point(80, 7);
-            this.DatInfoNameLb.Margin = new System.Windows.Forms.Padding(3);
-            this.DatInfoNameLb.Name = "DatInfoNameLb";
-            this.DatInfoNameLb.Size = new System.Drawing.Size(349, 19);
-            this.DatInfoNameLb.TabIndex = 22;
-            this.DatInfoNameLb.Text = "label3";
-            this.DatInfoNameLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // flowPanelResponsive1
             // 
             this.flowPanelResponsive1.AutoSize = true;
             this.flowPanelResponsive1.Controls.Add(this.lblDIRomPath);
             this.flowPanelResponsive1.Controls.Add(this.DatInfoPathLb);
             this.flowPanelResponsive1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowPanelResponsive1.Location = new System.Drawing.Point(0, 27);
+            this.flowPanelResponsive1.Location = new System.Drawing.Point(0, 60);
             this.flowPanelResponsive1.Name = "flowPanelResponsive1";
             this.flowPanelResponsive1.Padding = new System.Windows.Forms.Padding(4);
             this.flowPanelResponsive1.Size = new System.Drawing.Size(432, 37);
@@ -862,6 +826,42 @@ namespace ROMVault
             this.DatInfoPathLb.TabIndex = 21;
             this.DatInfoPathLb.Text = "label3";
             this.DatInfoPathLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // flowPanelResponsive2
+            // 
+            this.flowPanelResponsive2.AutoSize = true;
+            this.flowPanelResponsive2.Controls.Add(this.lblDIName);
+            this.flowPanelResponsive2.Controls.Add(this.DatInfoNameLb);
+            this.flowPanelResponsive2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowPanelResponsive2.Location = new System.Drawing.Point(0, 27);
+            this.flowPanelResponsive2.Name = "flowPanelResponsive2";
+            this.flowPanelResponsive2.Padding = new System.Windows.Forms.Padding(4);
+            this.flowPanelResponsive2.Size = new System.Drawing.Size(432, 33);
+            this.flowPanelResponsive2.TabIndex = 27;
+            this.flowPanelResponsive2.WrapContents = false;
+            // 
+            // lblDIName
+            // 
+            this.lblDIName.AutoSize = true;
+            this.lblDIName.Location = new System.Drawing.Point(4, 4);
+            this.lblDIName.Margin = new System.Windows.Forms.Padding(0);
+            this.lblDIName.Name = "lblDIName";
+            this.lblDIName.Size = new System.Drawing.Size(73, 17);
+            this.lblDIName.TabIndex = 3;
+            this.lblDIName.Text = "DAT Name:";
+            this.lblDIName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // DatInfoNameLb
+            // 
+            this.DatInfoNameLb.AutoSize = true;
+            this.DatInfoNameLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DatInfoNameLb.Location = new System.Drawing.Point(80, 7);
+            this.DatInfoNameLb.Margin = new System.Windows.Forms.Padding(3);
+            this.DatInfoNameLb.Name = "DatInfoNameLb";
+            this.DatInfoNameLb.Size = new System.Drawing.Size(349, 19);
+            this.DatInfoNameLb.TabIndex = 22;
+            this.DatInfoNameLb.Text = "label3";
+            this.DatInfoNameLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // flowLayoutPanel2
             // 
@@ -2615,10 +2615,10 @@ namespace ROMVault
             this.DatInfoHeaderPN.PerformLayout();
             this.RomsStatusTagsFLP.ResumeLayout(false);
             this.RomsStatusTagsFLP.PerformLayout();
-            this.flowPanelResponsive2.ResumeLayout(false);
-            this.flowPanelResponsive2.PerformLayout();
             this.flowPanelResponsive1.ResumeLayout(false);
             this.flowPanelResponsive1.PerformLayout();
+            this.flowPanelResponsive2.ResumeLayout(false);
+            this.flowPanelResponsive2.PerformLayout();
             this.VaultHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitGameInfoLists.Panel1.ResumeLayout(false);

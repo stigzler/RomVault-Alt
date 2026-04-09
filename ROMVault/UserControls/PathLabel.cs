@@ -48,13 +48,29 @@ namespace ROMVault.UserControls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            // Use PathEllipsis for the directory string
+            // 1. Calculate the area inside the padding
+            Rectangle paddedBounds = new Rectangle(
+                this.ClientRectangle.X + this.Padding.Left,
+                this.ClientRectangle.Y + this.Padding.Top,
+                this.ClientRectangle.Width - this.Padding.Horizontal,
+                this.ClientRectangle.Height - this.Padding.Vertical
+            );
+
+            // 2. Use PathEllipsis
             TextFormatFlags flags = TextFormatFlags.Left |
                                     TextFormatFlags.PathEllipsis |
                                     TextFormatFlags.VerticalCenter;
 
+            // 3. Draw inside the PADDED bounds, not the ClientRectangle
             TextRenderer.DrawText(e.Graphics, this.Text, this.Font,
-                                  this.ClientRectangle, this.ForeColor, flags);
+                                  paddedBounds, this.ForeColor, flags);
+        }
+
+        protected override void OnPaddingChanged(EventArgs e)
+        {
+            base.OnPaddingChanged(e);
+            UpdateHeight(); // Recalculate height to include the new vertical padding
+            this.Invalidate(); // Redraw to apply the new horizontal padding
         }
 
         // We override this so that if a parent DOES call it,

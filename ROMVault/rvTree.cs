@@ -39,8 +39,8 @@ namespace ROMVault
         //private readonly Font tFont = new Font("Microsoft Sans Serif", 8);
         //private readonly Font tFont1 = new Font("Microsoft Sans Serif", 7);
 
-        private readonly Font tFont = new Font("Segoe UI", Properties.Settings.Default.MainTextSize);
-        private readonly Font tFont1 = new Font("Segoe UI", Properties.Settings.Default.MainTextSize - 1);
+        private Font tFont = new Font("Segoe UI", Properties.Settings.Default.MainTextSize);
+        private Font tFont1 = new Font("Segoe UI", Properties.Settings.Default.MainTextSize - 1);
 
         public RvTree()
         {
@@ -59,6 +59,12 @@ namespace ROMVault
                 Selected = null;
             _lTree = dirTree;
             SetupInt();
+        }
+
+        internal void UpdateFontSize(int size)
+        {
+            tFont = new Font("Segoe UI", size);
+            tFont1 = new Font("Segoe UI", size - 1);
         }
 
         internal void SetupInt()
