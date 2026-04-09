@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace ROMVault.UserControls
 {
+    [System.ComponentModel.DesignerCategory("Code")]
     internal class PathLabel : Label
     {
         public override bool AutoSize

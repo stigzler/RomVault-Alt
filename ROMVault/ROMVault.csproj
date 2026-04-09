@@ -237,9 +237,7 @@
     <Compile Include="SoundPlayer.cs" />
     <Compile Include="UserControls\FlexiLabel.cs" />
     <Compile Include="UserControls\FolderBrowserDialog.cs" />
-    <Compile Include="UserControls\PathLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="UserControls\PathLabel.cs" />
     <Compile Include="UserControls\PromptTextBox.cs" />
     <Compile Include="UserControls\TabControl.cs" />
     <Compile Include="UserControls\TableLayoutPanel.cs" />
