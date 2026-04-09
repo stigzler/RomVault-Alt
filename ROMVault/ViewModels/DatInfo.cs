@@ -13,15 +13,17 @@ namespace ROMVault.ViewModels
         public string Description { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
         public string Author { get; set; } = string.Empty;
+        public string Version { get; set; } = string.Empty;
+        public string Date { get; set; } = string.Empty;
         public string RomPath { get; set; } = string.Empty;
-        public int RomsGot { get; set; } = 0;
-        public int RomsMissing { get; set; } = 0;
-        public int RomsFixable { get; set; } = 0;
-        public int RomsUnknown { get; set; } = 0;
+        public string RomsGot { get; set; } = string.Empty;
+        public string RomsMissing { get; set; } = string.Empty;
+        public string RomsFixable { get; set; } = string.Empty;
+        public string RomsUnknown { get; set; } = string.Empty;
 
         public DatInfo()
         {
-            Icon = Properties.Resources.database;
+            Icon = Properties.Resources.databaseBig;
             Title = "DAT Info";
         }
     }

@@ -73,9 +73,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow_090 {
+        internal static System.Drawing.Bitmap arrowCircle {
             get {
-                object obj = ResourceManager.GetObject("arrow-090", resourceCulture);
+                object obj = ResourceManager.GetObject("arrowCircle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow_270 {
+        internal static System.Drawing.Bitmap arrowDown {
             get {
-                object obj = ResourceManager.GetObject("arrow-270", resourceCulture);
+                object obj = ResourceManager.GetObject("arrowDown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow_circle_315 {
+        internal static System.Drawing.Bitmap arrowUp {
             get {
-                object obj = ResourceManager.GetObject("arrow-circle-315", resourceCulture);
+                object obj = ResourceManager.GetObject("arrowUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,6 +203,16 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap databaseBig {
+            get {
+                object obj = ResourceManager.GetObject("databaseBig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DatsUpdate {
             get {
                 object obj = ResourceManager.GetObject("DatsUpdate", resourceCulture);
@@ -246,6 +256,16 @@ namespace ROMVault.Properties {
         internal static System.Drawing.Bitmap disc1 {
             get {
                 object obj = ResourceManager.GetObject("disc1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap discBig {
+            get {
+                object obj = ResourceManager.GetObject("discBig", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

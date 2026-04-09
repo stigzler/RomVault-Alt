@@ -176,7 +176,7 @@ namespace ROMVault
             ToolStripMenuItem mnuScan2 = new ToolStripMenuItem
             {
                 Text = @"Scan ROMs",
-                Image = Properties.Resources.arrow_circle_315,
+                Image = Properties.Resources.arrowCircle,
                 Tag = EScanLevel.Level2
             };
             ToolStripMenuItem mnuScan3 = new ToolStripMenuItem
@@ -343,14 +343,14 @@ namespace ROMVault
             _mnuToSortUp = new ToolStripMenuItem
             {
                 Text = @"Move Up",
-                Image = Properties.Resources.arrow_090,
+                Image = Properties.Resources.arrowUp,
                 Tag = null
             };
 
             _mnuToSortDown = new ToolStripMenuItem
             {
                 Text = @"Move Down",
-                Image = Properties.Resources.arrow_270,
+                Image = Properties.Resources.arrowDown,
                 Tag = null
             };
 
@@ -1543,7 +1543,7 @@ namespace ROMVault
 
         private void UpdateDatMetaData(RvFile tDir)
         {
-            lblDITName.Text = tDir.Name;
+            DatInfo.Name = tDir.Name;
 
             RvDat tDat = null;
             if (tDir.Dat != null)
@@ -1553,83 +1553,39 @@ namespace ROMVault
 
             if (tDat != null)
             {
-                if (lblDITName.Text != tDat.GetData(RvDat.DatData.DatName))
-                    lblDITName.Text += $":  {tDat.GetData(RvDat.DatData.DatName)}";
+                if (DatInfo.Name != tDat.GetData(RvDat.DatData.DatName))
+                    DatInfo.Name += $":  {tDat.GetData(RvDat.DatData.DatName)}";
 
                 string DatId = tDat.GetData(RvDat.DatData.Id);
                 if (!string.IsNullOrWhiteSpace(DatId))
-                    lblDITName.Text += $" (ID:{DatId})";
+                    DatInfo.Name += $" (ID:{DatId})";
 
-                lblDITDescription.Text = tDat.GetData(RvDat.DatData.Description);
-                lblDITCategory.Text = tDat.GetData(RvDat.DatData.Category);
-                lblDITVersion.Text = tDat.GetData(RvDat.DatData.Version);
-                lblDITAuthor.Text = tDat.GetData(RvDat.DatData.Author);
-                lblDITDate.Text = tDat.GetData(RvDat.DatData.Date);
+                DatInfo.Description = tDat.GetData(RvDat.DatData.Description);
+                DatInfo.Category = tDat.GetData(RvDat.DatData.Category);
+                DatInfo.Version = tDat.GetData(RvDat.DatData.Version);
+                DatInfo.Author = tDat.GetData(RvDat.DatData.Author);
+                DatInfo.Date = tDat.GetData(RvDat.DatData.Date);
                 string header = tDat.GetData(RvDat.DatData.Header);
                 if (!string.IsNullOrWhiteSpace(header))
-                    lblDITName.Text += " (" + header + ")";
+                    DatInfo.Name += " (" + header + ")";
             }
             else
             {
-                lblDITDescription.Text = "";
-                lblDITCategory.Text = "";
-                lblDITVersion.Text = "";
-                lblDITAuthor.Text = "";
-                lblDITDate.Text = "";
+                DatInfo.Description = "";
+                DatInfo.Category = "";
+                DatInfo.Version = "";
+                DatInfo.Author = "";
+                DatInfo.Date = "";
             }
 
-            lblDITPath.Text = tDir.FullName;
+            DatInfo.RomPath = tDir.FullName;
 
-            lblDITRomsGot.Text = tDir.DirStatus.CountCorrect().ToString(CultureInfo.InvariantCulture);
-            if (tDir.DirStatus.CountFoundMIA() > 0) { lblDITRomsGot.Text += $"  -  {tDir.DirStatus.CountFoundMIA()} Found MIA"; }
-            lblDITRomsMissing.Text = tDir.DirStatus.CountMissing().ToString(CultureInfo.InvariantCulture);
-            if (tDir.DirStatus.CountMIA() > 0) { lblDITRomsMissing.Text += $"  -  {tDir.DirStatus.CountMIA()} MIA"; }
-            lblDITRomsFixable.Text = tDir.DirStatus.CountFixesNeeded().ToString(CultureInfo.InvariantCulture);
-            lblDITRomsUnknown.Text = (tDir.DirStatus.CountUnknown() + tDir.DirStatus.CountInToSort()).ToString(CultureInfo.InvariantCulture);
-        }
-
-        private void gbDatInfo_Resize(object sender, EventArgs e)
-        {
-            const int leftPos = 89;
-            int rightPos = (int)(gbDatInfo.Width / _scaleFactorX) - 15;
-
-            int width = rightPos - leftPos;
-            int widthB1 = (int)((double)width * 120 / 340);
-            int leftB2 = rightPos - widthB1;
-
-            int backD = 97;
-
-            width = (int)(width * _scaleFactorX);
-            widthB1 = (int)(widthB1 * _scaleFactorX);
-            leftB2 = (int)(leftB2 * _scaleFactorX);
-            backD = (int)(backD * _scaleFactorX);
-
-            lblDITName.Width = width;
-            lblDITDescription.Width = width;
-
-            lblDITCategory.Width = widthB1;
-            lblDITAuthor.Width = widthB1;
-
-            lblDIVersion.Left = leftB2 - backD;
-            lblDIDate.Left = leftB2 - backD;
-
-            lblDITVersion.Left = leftB2;
-            lblDITVersion.Width = widthB1;
-            lblDITDate.Left = leftB2;
-            lblDITDate.Width = widthB1;
-
-            lblDITPath.Width = width;
-
-            lblDITRomsGot.Width = widthB1;
-            lblDITRomsMissing.Width = widthB1;
-
-            lblDIRomsFixable.Left = leftB2 - backD;
-            lblDIRomsUnknown.Left = leftB2 - backD;
-
-            lblDITRomsFixable.Left = leftB2;
-            lblDITRomsFixable.Width = widthB1;
-            lblDITRomsUnknown.Left = leftB2;
-            lblDITRomsUnknown.Width = widthB1;
+            DatInfo.RomsGot = tDir.DirStatus.CountCorrect().ToString(CultureInfo.InvariantCulture);
+            if (tDir.DirStatus.CountFoundMIA() > 0) { DatInfo.RomsGot += $"  -  {tDir.DirStatus.CountFoundMIA()} Found MIA"; }
+            DatInfo.RomsMissing = tDir.DirStatus.CountMissing().ToString(CultureInfo.InvariantCulture);
+            if (tDir.DirStatus.CountMIA() > 0) { DatInfo.RomsMissing += $"  -  {tDir.DirStatus.CountMIA()} MIA"; }
+            DatInfo.RomsFixable = tDir.DirStatus.CountFixesNeeded().ToString(CultureInfo.InvariantCulture);
+            DatInfo.RomsUnknown = (tDir.DirStatus.CountUnknown() + tDir.DirStatus.CountInToSort()).ToString(CultureInfo.InvariantCulture);
         }
 
         #endregion
@@ -2095,7 +2051,6 @@ namespace ROMVault
 
         private void PgHeaderPB_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

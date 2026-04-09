@@ -36,8 +36,8 @@ namespace ROMVault.ViewModels
 
         public GameInfo()
         {
-            Icon = Properties.Resources.disc;
-            Title = "Game/ROM Info";
+            Icon = Properties.Resources.discBig;
+            Title = "Game and Rom Info";
         }
     }
 }

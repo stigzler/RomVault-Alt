@@ -271,7 +271,7 @@
             this.RestoreDatFormatsBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RestoreDatFormatsBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.RestoreDatFormatsBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RestoreDatFormatsBT.Image = global::ROMVault.Properties.Resources.arrow_circle_315;
+            this.RestoreDatFormatsBT.Image = global::ROMVault.Properties.Resources.arrowCircle;
             this.RestoreDatFormatsBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RestoreDatFormatsBT.Location = new System.Drawing.Point(336, 192);
             this.RestoreDatFormatsBT.Name = "RestoreDatFormatsBT";
