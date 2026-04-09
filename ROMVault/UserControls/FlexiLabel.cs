@@ -40,6 +40,7 @@ namespace ROMVault.UserControls
 
         public FlexiLabel()
         {
+            SetFont();
         }
 
         private void SetFont()
@@ -48,5 +49,19 @@ namespace ROMVault.UserControls
             float formFontSize = this.FindForm().Font.Size;
             this.Font = new Font(this.Font.FontFamily, formFontSize * (float)_scaleFactor, this.FontStyle);
         }
+
+        protected override void OnParentChanged(EventArgs e)
+        {
+            base.OnParentChanged(e);
+            var form = this.FindForm();
+            if (form != null)
+            {
+                form.FontChanged -= Form_FontChanged;
+                form.FontChanged += Form_FontChanged;
+            }
+            SetFont();
+        }
+
+        private void Form_FontChanged(object sender, EventArgs e) => SetFont();
     }
 }

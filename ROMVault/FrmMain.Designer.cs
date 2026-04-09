@@ -180,6 +180,11 @@ namespace ROMVault
             this.tabInfo2 = new System.Windows.Forms.TabPage();
             this.txtInfo2 = new System.Windows.Forms.TextBox();
             this.MainPG = new System.Windows.Forms.PropertyGrid();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.PgHeaderLB = new System.Windows.Forms.Label();
+            this.PgHeaderPB = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmUpdateDATs = new System.Windows.Forms.ToolStripMenuItem();
             this.updateNewDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -280,6 +285,9 @@ namespace ROMVault
             ((System.ComponentModel.ISupportInitialize)(this.picScreenTitle)).BeginInit();
             this.tabInfo.SuspendLayout();
             this.tabInfo2.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PgHeaderPB)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.MainSS.SuspendLayout();
             this.SuspendLayout();
@@ -609,6 +617,9 @@ namespace ROMVault
             // MainSC.Panel2
             // 
             this.MainSC.Panel2.Controls.Add(this.MainPG);
+            this.MainSC.Panel2.Controls.Add(this.toolStrip2);
+            this.MainSC.Panel2.Controls.Add(this.panel1);
+            this.MainSC.Panel2.Padding = new System.Windows.Forms.Padding(2);
             this.MainSC.Size = new System.Drawing.Size(1166, 766);
             this.MainSC.SplitterDistance = 814;
             this.MainSC.TabIndex = 1;
@@ -2223,10 +2234,69 @@ namespace ROMVault
             // MainPG
             // 
             this.MainPG.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPG.Location = new System.Drawing.Point(0, 0);
+            this.MainPG.Location = new System.Drawing.Point(2, 61);
             this.MainPG.Name = "MainPG";
-            this.MainPG.Size = new System.Drawing.Size(348, 766);
+            this.MainPG.Size = new System.Drawing.Size(344, 703);
             this.MainPG.TabIndex = 0;
+            this.MainPG.ToolbarVisible = false;
+            this.MainPG.SelectedObjectsChanged += new System.EventHandler(this.MainPG_SelectedObjectsChanged);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton2});
+            this.toolStrip2.Location = new System.Drawing.Point(2, 36);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(344, 25);
+            this.toolStrip2.TabIndex = 5;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.PgHeaderLB);
+            this.panel1.Controls.Add(this.PgHeaderPB);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(4);
+            this.panel1.Size = new System.Drawing.Size(344, 34);
+            this.panel1.TabIndex = 4;
+            // 
+            // PgHeaderLB
+            // 
+            this.PgHeaderLB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PgHeaderLB.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PgHeaderLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PgHeaderLB.Location = new System.Drawing.Point(31, 4);
+            this.PgHeaderLB.Name = "PgHeaderLB";
+            this.PgHeaderLB.Size = new System.Drawing.Size(309, 26);
+            this.PgHeaderLB.TabIndex = 3;
+            this.PgHeaderLB.Text = "Welcome to RomVault";
+            this.PgHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // PgHeaderPB
+            // 
+            this.PgHeaderPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PgHeaderPB.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PgHeaderPB.Image = global::ROMVault.Properties.Resources.smileyBig;
+            this.PgHeaderPB.Location = new System.Drawing.Point(4, 4);
+            this.PgHeaderPB.Name = "PgHeaderPB";
+            this.PgHeaderPB.Padding = new System.Windows.Forms.Padding(4);
+            this.PgHeaderPB.Size = new System.Drawing.Size(27, 26);
+            this.PgHeaderPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PgHeaderPB.TabIndex = 4;
+            this.PgHeaderPB.TabStop = false;
+            this.PgHeaderPB.Click += new System.EventHandler(this.PgHeaderPB_Click);
             // 
             // menuStrip1
             // 
@@ -2666,6 +2736,7 @@ namespace ROMVault
             this.PaddingPN.PerformLayout();
             this.MainSC.Panel1.ResumeLayout(false);
             this.MainSC.Panel2.ResumeLayout(false);
+            this.MainSC.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSC)).EndInit();
             this.MainSC.ResumeLayout(false);
             this.splitDatInfoGameInfo.Panel1.ResumeLayout(false);
@@ -2721,6 +2792,10 @@ namespace ROMVault
             this.tabInfo.PerformLayout();
             this.tabInfo2.ResumeLayout(false);
             this.tabInfo2.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PgHeaderPB)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.MainSS.ResumeLayout(false);
@@ -2927,6 +3002,11 @@ namespace ROMVault
         private Label _labelGameName;
         private SplitContainer MainSC;
         private PropertyGrid MainPG;
+        private Label PgHeaderLB;
+        private Panel panel1;
+        private PictureBox PgHeaderPB;
+        private ToolStrip toolStrip2;
+        private ToolStripButton toolStripButton2;
     }
 }
 

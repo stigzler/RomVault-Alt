@@ -2082,5 +2082,20 @@ namespace ROMVault
         private void ctrRvTree_Load(object sender, EventArgs e)
         {
         }
+
+        private void MainPG_SelectedObjectsChanged(object sender, EventArgs e)
+        {
+            if (MainPG.SelectedObjects.Count() == 0) return;
+            if (MainPG.SelectedObjects[0] is ViewModelBase)
+            {
+                PgHeaderLB.Text = ((ViewModelBase)MainPG.SelectedObjects[0]).Title;
+                PgHeaderPB.Image = ((ViewModelBase)MainPG.SelectedObjects[0]).Icon;
+            }
+        }
+
+        private void PgHeaderPB_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

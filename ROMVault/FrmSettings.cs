@@ -53,6 +53,8 @@ namespace ROMVault
             lblDATRoot.Text = Settings.rvSettings.DatRoot;
             cboFixLevel.SelectedIndex = (int)Settings.rvSettings.FixLevel;
 
+            Helpers.Theming.SetFormTextSizeToDefault(this);
+
             textBox1.Text = "";
             foreach (string file in Settings.rvSettings.IgnoreFiles)
             {
