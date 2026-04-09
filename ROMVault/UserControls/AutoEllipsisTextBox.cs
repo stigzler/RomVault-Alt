@@ -6,6 +6,7 @@ using System.ComponentModel;
 
 namespace ROMVault.UserControls
 {
+    [System.ComponentModel.DesignerCategory("Code")]
     internal class AutoEllipsisTextBox : TextBox
     {
         private string _fullText = string.Empty;

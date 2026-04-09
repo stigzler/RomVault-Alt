@@ -184,6 +184,7 @@ namespace ROMVault
             if (tGame.Game == null)
             {
                 _labelGameDescription.Visible = false;
+
                 _textGameDescription.Visible = false;
             }
 
@@ -398,6 +399,7 @@ namespace ROMVault
             int text2Left = leftPos + width - textWidth;
             int label2Left = text2Left - 78;
 
+            //reinstate
             _textGameName.Width = width;
             _textGameDescription.Width = width;
             _textGameManufacturer.Width = width;
