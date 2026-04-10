@@ -63,7 +63,7 @@ namespace Dark.Renderers
 
             if (dr != null)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 20, 20, 20)), e.AffectedBounds);
+                e.Graphics.FillRectangle(new SolidBrush(dark.bg), e.AffectedBounds);
             }
         }
 
@@ -132,21 +132,21 @@ namespace Dark.Renderers
             }
             // Ensure the separator area uses the dark background so the line appears on the correct color
             Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
-            using (Brush back = new SolidBrush(e.ToolStrip.BackColor))
+            using (Brush back = new SolidBrush(dark.bg))
                 e.Graphics.FillRectangle(back, bounds);
 
             if (e.Vertical)
             {
                 int verticalPadding = (int)(((double)e.Item.Height * 20) / 100);
                 int x = Convert.ToInt32((double)bounds.Width / 2) - 1;
-                using (Pen pen = new Pen(ControlPaint.Dark(e.ToolStrip.ForeColor)))
+                using (Pen pen = new Pen(ControlPaint.Dark(dark.fg)))
                     e.Graphics.DrawLine(pen, x, bounds.Top + verticalPadding, x, bounds.Bottom - 1 - verticalPadding);
             }
             else
             {
                 int horizontalPadding = (int)(((double)e.Item.Width * 20) / 100);
                 int y = Convert.ToInt32((double)bounds.Height / 2) - 1;
-                using (Pen pen = new Pen(ControlPaint.Dark(e.ToolStrip.ForeColor)))
+                using (Pen pen = new Pen(ControlPaint.Dark(dark.fg)))
                     e.Graphics.DrawLine(pen, bounds.Left + horizontalPadding, y, bounds.Right - 1 - horizontalPadding, y);
             }
         }

@@ -1,10 +1,11 @@
-﻿using System.Diagnostics;
-using System.Runtime.InteropServices;
+﻿using Dark.Renderers;
 using System;
-using System.Windows.Forms;
+using System.Diagnostics;
 using System.Drawing;
-using Dark.Renderers;
+using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Dark
 {
@@ -50,27 +51,36 @@ namespace Dark
             DwmSetWindowAttribute(hWnd, DWWMA_CAPTION_COLOR, colorstr, 4);
         }
 
-        public static void SetColors(Form frm)
+        public static void SetColors(Form frm, bool darkMode = false)
         {
             SetTitleBarColor(bg0, frm.Handle);
-            frm.BackColor = bg;
-            frm.ForeColor = fg;
+
+            frm.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
+            frm.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
 
             foreach (Control c in frm.Controls)
             {
-                SetColors(c);
+                SetColors(c, darkMode);
             }
         }
 
-        public static void SetColors(Control c)
+        public static void SetColors(Control c, bool darkMode = false)
         {
             if (c.Tag != null && c.Tag.ToString() == "override") return;
 
-            c.BackColor = bg;
-            c.ForeColor = fg;
+            if (darkMode)
+            {
+                c.BackColor = bg;
+                c.ForeColor = fg;
+            }
+            else
+            {
+                c.BackColor = Color.Empty;
+                c.ForeColor = Color.Empty;
+            }
 
             foreach (Control c1 in c.Controls)
-                SetColors(c1);
+                SetColors(c1, darkMode);
 
             //Debug.WriteLine(c.GetType().ToString(), c.Name);
 
@@ -78,40 +88,40 @@ namespace Dark
             {
                 case TextBox tb:
                     tb.BorderStyle = BorderStyle.FixedSingle;
-                    tb.ForeColor = fg;
-                    tb.BackColor = bg0;
+                    tb.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
+                    tb.BackColor = (darkMode) ? bg0 : Control.DefaultBackColor;
                     if (tb.ReadOnly)
                     {
-                        tb.BackColor = bg1;
+                        tb.BackColor = (darkMode) ? bg1 : Control.DefaultBackColor;
                     }
                     break;
 
                 case DataGridView dgv:
-                    dgv.BackgroundColor = bg1;
-                    dgv.ForeColor = fg;
+                    dgv.BackgroundColor = (darkMode) ? bg1 : Control.DefaultBackColor;
+                    dgv.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
 
-                    dgv.DefaultCellStyle.BackColor = bg1;
-                    dgv.DefaultCellStyle.ForeColor = fg;
+                    dgv.DefaultCellStyle.BackColor = (darkMode) ? bg1 : Control.DefaultBackColor;
+                    dgv.DefaultCellStyle.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
 
-                    dgv.ColumnHeadersDefaultCellStyle.BackColor = bg;
-                    dgv.ColumnHeadersDefaultCellStyle.ForeColor = fg;
+                    dgv.ColumnHeadersDefaultCellStyle.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
+                    dgv.ColumnHeadersDefaultCellStyle.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
 
-                    dgv.DefaultCellStyle.SelectionBackColor = bgMenuItemRollover;
+                    dgv.DefaultCellStyle.SelectionBackColor = (darkMode) ? bgMenuItemRollover : Control.DefaultBackColor;
                     //dgv.DefaultCellStyle.SelectionForeColor = Color.White;
                     dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
-                    dgv.GridColor = bg;
+                    dgv.GridColor = (darkMode) ? bg : Control.DefaultBackColor;
                     break;
 
                 case MenuStrip ms:
                     ms.RenderMode = ToolStripRenderMode.Professional;
-                    ms.Renderer = new DarkMenuStripRenderer();
-                    ms.BackColor = bg0;
+                    ms.Renderer = (darkMode) ? new DarkMenuStripRenderer() : null;
+                    ms.BackColor = (darkMode) ? bg0 : Control.DefaultBackColor;
                     break;
 
                 case ContextMenuStrip cms:
-                    cms.BackColor = bg;
-                    cms.ForeColor = fg;
+                    cms.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
+                    cms.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
                     cms.RenderMode = ToolStripRenderMode.System;
                     cms.Renderer = new DarkToolStripRenderer();
                     break;
@@ -119,14 +129,14 @@ namespace Dark
                 case ToolStrip ts:
                     ts.RenderMode = ToolStripRenderMode.System;
                     ts.Renderer = new DarkToolStripRenderer();
-                    ts.BackColor = bgTs;
+                    ts.BackColor = bg;
                     ts.ForeColor = fg;
 
-                    foreach (ToolStripSeparator tss in ts.Items.OfType<ToolStripSeparator>().ToList())
-                    {
-                        tss.ForeColor = fgDimmed;
-                        tss.BackColor = bgTs;
-                    }
+                    //foreach (ToolStripSeparator tss in ts.Items.OfType<ToolStripSeparator>().ToList())
+                    //{
+                    //    tss.ForeColor = fgDimmed;
+                    //    tss.BackColor = bgTs;
+                    //}
 
                     break;
 

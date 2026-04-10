@@ -163,7 +163,6 @@ namespace ROMVault
 
             ctrRvTree.Setup(ref DB.DirRoot);
 
-            splitContainer3_Panel1_Resize(new object(), new EventArgs());
             splitContainer4_Panel1_Resize(new object(), new EventArgs());
 
             _mnuContext = new ContextMenuStrip().DarkCompliant();
@@ -398,7 +397,7 @@ namespace ROMVault
             chkBoxShowCompleteTSI.Checked = Settings.rvSettings.chkBoxShowComplete;
             chkBoxShowPartialTSI.Checked = Settings.rvSettings.chkBoxShowPartial;
             chkBoxShowFixesTSI.Checked = Settings.rvSettings.chkBoxShowFixes;
-            chkBoxShowMIA.Checked = Settings.rvSettings.chkBoxShowMIA;
+            chkBoxShowMIATSI.Checked = Settings.rvSettings.chkBoxShowMIA;
             chkBoxShowMergedTSI.Checked = Settings.rvSettings.chkBoxShowMerged;
             //chkBoxShowEmptyTSI.Checked = Settings.rvSettings.chkBoxShowEmpty;   // i think this one may have been missed off? not sure if operaiotnal decision?
 
@@ -589,15 +588,23 @@ namespace ROMVault
         /// <summary>
         /// This happens before form is shown. If post-show teaks are needed use FrmMain_Shown
         /// </summary>
-        internal void UpdateThemeAndControls()
+        internal void UpdateThemeAndControls(bool settingsUpdated = false)
         {
             this.Font = new System.Drawing.Font(this.Font.FontFamily, (float)Properties.Settings.Default.MainTextSize);
 
             Theming.SetControlTextSizeToDefault(menuStrip1);
 
-            if (Settings.rvSettings.Darkness)
+            //if (Settings.rvSettings.Darkness)
+            //{
+            //    dark.SetColors(this);
+            //}
+
+            dark.SetColors(this, Settings.rvSettings.Darkness);
+
+            if (settingsUpdated)
             {
-                Dark.dark.SetColors(this);
+                GameGrid.Invalidate();
+                RomGrid.Invalidate();
             }
 
             // Dat Tree
@@ -751,15 +758,6 @@ namespace ROMVault
         {
             get => base.Text;
             set => base.Text = value;
-        }
-
-        private void splitContainer3_Panel1_Resize(object sender, EventArgs e)
-        {
-            // fixes a rendering issue in mono
-            //if (splitDatInfoTree.Panel1.Width == 0)
-            //    return;
-
-            //gbDatInfo.Width = splitDatInfoTree.Panel1.Width - gbDatInfo.Left * 2;
         }
 
         private void splitContainer4_Panel1_Resize(object sender, EventArgs e)
@@ -1261,23 +1259,11 @@ namespace ROMVault
 
         #region TopRight
 
-        private void BtnClear_Click(object sender, EventArgs e)
-        {
-            txtFilter.Text = "";
-        }
-
-        private void TxtFilter_TextChanged(object sender, EventArgs e)
-        {
-            if (gameGridSource != null)
-                UpdateGameGrid(gameGridSource);
-            txtFilter.Focus();
-        }
-
         private void FilterGamesList()
         {
             if (gameGridSource != null)
                 UpdateGameGrid(gameGridSource);
-            txtFilter.Focus();
+            //txtFilter.Focus();
         }
 
         private void picPayPal_Click(object sender, EventArgs e)
@@ -1662,9 +1648,6 @@ namespace ROMVault
 
             if (Properties.Settings.Default.RomListSplitterDistance != 0)
                 splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
-
-            // Misc
-            txtFilter.ForeColor = Color.FromArgb(128, 128, 128, 128);
 
             // Set up status strip
             InitialiseStatusStrip();
