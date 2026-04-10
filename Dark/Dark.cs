@@ -22,7 +22,7 @@ namespace Dark
 
         public static Color midGrey = Color.FromArgb(128, 128, 128, 128);
 
-        public static Color fgBright = Color.FromArgb(248, 248, 248);
+        public static Color fgBright = Color.White;
         public static Color fg = Color.FromArgb(210, 210, 210);
         public static Color fgDimmed = Color.FromArgb(192, 192, 192);
         public static Brush sb_bg = new SolidBrush(bg);
@@ -33,6 +33,9 @@ namespace Dark
 
         [DllImport("DwmApi")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
+
+        [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)]
+        private static extern int SetWindowTheme(IntPtr hWnd, string pszSubAppName, string pszSubIdList);
 
         private const int DWWMA_CAPTION_COLOR = 35;
 
@@ -119,6 +122,7 @@ namespace Dark
                     break;
 
                 case PropertyGrid pg:
+                    pg.UseCompatibleTextRendering = true;
                     pg.ViewBackColor = bg;
                     pg.ViewForeColor = fg;
                     pg.LineColor = midGrey;
@@ -127,6 +131,24 @@ namespace Dark
                     pg.CategorySplitterColor = midGrey;
                     pg.HelpBackColor = bg;
                     pg.HelpForeColor = fgDimmed;
+
+                    EventHandler applyPropertyGridTheme = null;
+                    applyPropertyGridTheme = (s, e) =>
+                    {
+                        try
+                        {
+                            SetWindowTheme(pg.Handle, string.Empty, string.Empty);
+                            pg.Refresh();
+                        }
+                        catch { }
+
+                        pg.HandleCreated -= applyPropertyGridTheme;
+                    };
+
+                    if (pg.IsHandleCreated)
+                        applyPropertyGridTheme(pg, EventArgs.Empty);
+                    else
+                        pg.HandleCreated += applyPropertyGridTheme;
 
                     break;
 

@@ -1400,12 +1400,14 @@ namespace ROMVault
             // 
             // MainPG
             // 
+            this.MainPG.CategoryForeColor = System.Drawing.Color.Cyan;
             this.MainPG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPG.Location = new System.Drawing.Point(2, 58);
             this.MainPG.Name = "MainPG";
             this.MainPG.Size = new System.Drawing.Size(344, 706);
             this.MainPG.TabIndex = 0;
             this.MainPG.ToolbarVisible = false;
+            this.MainPG.UseCompatibleTextRendering = true;
             this.MainPG.SelectedObjectsChanged += new System.EventHandler(this.MainPG_SelectedObjectsChanged);
             // 
             // toolStrip2

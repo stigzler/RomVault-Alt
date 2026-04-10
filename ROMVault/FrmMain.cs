@@ -4,6 +4,7 @@
  *     Copyright 2025                                 *
  ******************************************************/
 
+using Dark;
 using Dark.Renderers;
 using DATReader.DatStore;
 using DATReader.DatWriter;
@@ -605,6 +606,9 @@ namespace ROMVault
             RomsMissingLB.ForeColor = setts.RomMissingColor;
             RomsFixableLB.ForeColor = setts.RomFixableColor;
             RomsUnknownLB.ForeColor = setts.RomUnknownColor;
+
+            // Property grid
+            // MainPG.SetCategoryForeColor(dark.fgBright);
 
             // tests
             //GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;

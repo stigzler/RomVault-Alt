@@ -132,9 +132,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\SortableCategory.cs" />
     <Compile Include="Automate.cs" />
     <Compile Include="Constants\UI.cs" />
     <Compile Include="Extensions\ContextMenuStrip.cs" />
+    <Compile Include="Extensions\PropertyGridExt.cs" />
     <Compile Include="FolderBrowser.cs" />
     <Compile Include="HelperSideInfo.cs" />
     <Compile Include="FolderBrowserDialogEx.cs">

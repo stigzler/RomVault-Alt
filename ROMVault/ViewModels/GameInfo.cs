@@ -20,6 +20,7 @@ namespace ROMVault.ViewModels
         public string Manufacturer { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string RomOf { get; set; } = string.Empty;
+
         public string TrupipYear { get; set; } = string.Empty;
         public string TruripCloneOf { get; set; } = string.Empty;
         public string TruripDeveloper { get; set; } = string.Empty;
