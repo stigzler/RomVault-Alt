@@ -121,5 +121,21 @@ namespace ROMVault.Helpers
             // Otherwise, let the OS normalize it (handles relative paths, dots, etc.)
             return Path.GetFullPath(path);
         }
+
+        public static bool IsPathInsideFolder(string parentPath, string childPath)
+        {
+            // 1. Normalize both paths to resolve ".." and "." segments
+            string normalizedParent = Path.GetFullPath(parentPath);
+            string normalizedChild = Path.GetFullPath(childPath);
+
+            // 2. Ensure parent path ends with a separator to avoid partial name matches
+            if (!normalizedParent.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            {
+                normalizedParent += Path.DirectorySeparatorChar;
+            }
+
+            // 3. Check if child starts with parent path
+            return normalizedChild.StartsWith(normalizedParent, StringComparison.OrdinalIgnoreCase);
+        }
     }
 }

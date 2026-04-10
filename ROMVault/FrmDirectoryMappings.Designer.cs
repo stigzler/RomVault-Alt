@@ -269,6 +269,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Set Directory Mapping";
             this.Activated += new System.EventHandler(this.FrmSetDirActivated);
+            this.Load += new System.EventHandler(this.FrmDirectoryMappings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGDirectoryMappingRules)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

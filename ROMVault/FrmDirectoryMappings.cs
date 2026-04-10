@@ -40,7 +40,6 @@ namespace ROMVault
 
                 DGDirectoryMappingRules.DefaultCellStyle.ForeColor = Color.Black;
             }
-
         }
 
         public void SetLocation(string dLocation)
@@ -51,6 +50,7 @@ namespace ROMVault
         }
 
         private bool _displayType;
+
         public void SetDisplayType(bool type)
         {
             _displayType = type;
@@ -66,7 +66,6 @@ namespace ROMVault
             MinimumSize = new Size(709, type ? 150 : 300);
             Height = type ? 155 : 428;
             FormBorderStyle = type ? FormBorderStyle.FixedSingle : FormBorderStyle.Sizable;
-
         }
 
         private static DirMapping FindRule(string dLocation)
@@ -80,13 +79,11 @@ namespace ROMVault
             return new DirMapping { DirKey = dLocation };
         }
 
-
         private void SetDisplay()
         {
             txtDATLocation.Text = _rule.DirKey;
             txtROMLocation.Text = _rule.DirPath;
         }
-
 
         private void UpdateGrid()
         {
@@ -94,7 +91,6 @@ namespace ROMVault
             {
                 DGDirectoryMappingRules.CurrentCell = DGDirectoryMappingRules[0, 0];
             }
-
 
             DGDirectoryMappingRules.Rows.Clear();
             foreach (DirMapping t in Settings.rvSettings.DirMappings)
@@ -135,7 +131,6 @@ namespace ROMVault
                 DGDirectoryMappingRules.Rows[j].Selected = false;
             }
         }
-
 
         private void btnClearROMLocation_Click(object sender, EventArgs e)
         {
@@ -211,6 +206,7 @@ namespace ROMVault
             if (_displayType)
                 Close();
         }
+
         private void BtnDeleteClick(object sender, EventArgs e)
         {
             string datLocation = _rule.DirKey;
@@ -297,6 +293,10 @@ namespace ROMVault
             _rule = Settings.rvSettings.DirMappings[0];
             UpdateGrid();
             SetDisplay();
+        }
+
+        private void FrmDirectoryMappings_Load(object sender, EventArgs e)
+        {
         }
     }
 }
