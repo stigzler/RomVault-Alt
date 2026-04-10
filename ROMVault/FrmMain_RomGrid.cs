@@ -79,6 +79,8 @@ namespace ROMVault
 
             RomGrid.RowCount = romGrid.Length;
 
+            GameGridRowCountLB.Text = $"Games: {GameGrid.RowCount} Roms: {RomGrid.RowCount}";
+
             try
             {
                 if (onTimer && scrollPosition >= 0 && scrollPosition <= RomGrid.RowCount)

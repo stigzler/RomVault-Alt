@@ -36,6 +36,7 @@ namespace ROMVault
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitToolBarMain = new System.Windows.Forms.SplitContainer();
             this.HideNavBT = new System.Windows.Forms.Button();
+            this.flexiLabel3 = new ROMVault.UserControls.FlexiLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDefault1 = new System.Windows.Forms.Button();
             this.btnDefault2 = new System.Windows.Forms.Button();
@@ -57,16 +58,29 @@ namespace ROMVault
             this.splitDatInfoGameInfo = new System.Windows.Forms.SplitContainer();
             this.DatInfoPN = new System.Windows.Forms.Panel();
             this.DatTreePN = new System.Windows.Forms.Panel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ctrRvTree = new ROMVault.RvTree();
+            this.DatsTS = new System.Windows.Forms.ToolStrip();
             this.DatsCollapseTreeBT = new System.Windows.Forms.ToolStripButton();
             this.RomsStatusTagsFLP = new System.Windows.Forms.FlowLayoutPanel();
+            this.RomsUnknownLB = new ROMVault.UserControls.FlexiLabel();
+            this.RomsFixableLB = new ROMVault.UserControls.FlexiLabel();
+            this.RomsMissingLB = new ROMVault.UserControls.FlexiLabel();
+            this.RomsGotLB = new ROMVault.UserControls.FlexiLabel();
+            this.RomsPathFPR = new ROMVault.UserControls.FlowPanelResponsive();
+            this.lblDIRomPath = new System.Windows.Forms.Label();
+            this.DatInfoPathLb = new ROMVault.UserControls.PathLabel();
             this.CopyTextCMS = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DatNameFPR = new ROMVault.UserControls.FlowPanelResponsive();
+            this.lblDIName = new System.Windows.Forms.Label();
+            this.DatInfoNameLb = new System.Windows.Forms.Label();
             this.VaultHeaderPN = new System.Windows.Forms.Panel();
+            this.DatPanelHeaderLB = new ROMVault.UserControls.FlexiLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitGameInfoLists = new System.Windows.Forms.SplitContainer();
             this.MainPG = new System.Windows.Forms.PropertyGrid();
             this.PgHeader = new System.Windows.Forms.Panel();
+            this.PgHeaderLB = new ROMVault.UserControls.FlexiLabel();
             this.PgHeaderPB = new System.Windows.Forms.PictureBox();
             this.splitListArt = new System.Windows.Forms.SplitContainer();
             this.GameRomPN = new System.Windows.Forms.Panel();
@@ -148,6 +162,8 @@ namespace ROMVault
             this.directorySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryMappingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.darkModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.romVaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torrentZipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -170,20 +186,6 @@ namespace ROMVault
             this.RomsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.RomsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
             this.RomsShortnameToggleSSBT = new System.Windows.Forms.ToolStripMenuItem();
-            this.flexiLabel3 = new ROMVault.UserControls.FlexiLabel();
-            this.ctrRvTree = new ROMVault.RvTree();
-            this.RomsUnknownLB = new ROMVault.UserControls.FlexiLabel();
-            this.RomsFixableLB = new ROMVault.UserControls.FlexiLabel();
-            this.RomsMissingLB = new ROMVault.UserControls.FlexiLabel();
-            this.RomsGotLB = new ROMVault.UserControls.FlexiLabel();
-            this.RomsPathFPR = new ROMVault.UserControls.FlowPanelResponsive();
-            this.lblDIRomPath = new System.Windows.Forms.Label();
-            this.DatInfoPathLb = new ROMVault.UserControls.PathLabel();
-            this.DatNameFPR = new ROMVault.UserControls.FlowPanelResponsive();
-            this.lblDIName = new System.Windows.Forms.Label();
-            this.DatInfoNameLb = new System.Windows.Forms.Label();
-            this.DatPanelHeaderLB = new ROMVault.UserControls.FlexiLabel();
-            this.PgHeaderLB = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -200,9 +202,11 @@ namespace ROMVault
             this.splitDatInfoGameInfo.SuspendLayout();
             this.DatInfoPN.SuspendLayout();
             this.DatTreePN.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.DatsTS.SuspendLayout();
             this.RomsStatusTagsFLP.SuspendLayout();
+            this.RomsPathFPR.SuspendLayout();
             this.CopyTextCMS.SuspendLayout();
+            this.DatNameFPR.SuspendLayout();
             this.VaultHeaderPN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitGameInfoLists)).BeginInit();
@@ -237,8 +241,6 @@ namespace ROMVault
             this.tabInfo2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.MainSS.SuspendLayout();
-            this.RomsPathFPR.SuspendLayout();
-            this.DatNameFPR.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitToolBarMain
@@ -283,6 +285,18 @@ namespace ROMVault
             this.HideNavBT.TabIndex = 23;
             this.HideNavBT.UseVisualStyleBackColor = true;
             this.HideNavBT.Click += new System.EventHandler(this.HideNavBT_Click);
+            // 
+            // flexiLabel3
+            // 
+            this.flexiLabel3.AutoSize = true;
+            this.flexiLabel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flexiLabel3.Font = new System.Drawing.Font("Segoe UI", 11.7F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel3.Location = new System.Drawing.Point(4, 633);
+            this.flexiLabel3.Name = "flexiLabel3";
+            this.flexiLabel3.ScaleFactor = 1.2D;
+            this.flexiLabel3.Size = new System.Drawing.Size(46, 21);
+            this.flexiLabel3.TabIndex = 22;
+            this.flexiLabel3.Text = "Tree:";
             // 
             // flowLayoutPanel1
             // 
@@ -579,23 +593,38 @@ namespace ROMVault
             this.DatTreePN.AutoSize = true;
             this.DatTreePN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DatTreePN.Controls.Add(this.ctrRvTree);
-            this.DatTreePN.Controls.Add(this.toolStrip1);
+            this.DatTreePN.Controls.Add(this.DatsTS);
             this.DatTreePN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DatTreePN.Location = new System.Drawing.Point(4, 129);
             this.DatTreePN.Name = "DatTreePN";
             this.DatTreePN.Size = new System.Drawing.Size(330, 623);
             this.DatTreePN.TabIndex = 6;
             // 
-            // toolStrip1
+            // ctrRvTree
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ctrRvTree.AutoSize = true;
+            this.ctrRvTree.BackColor = System.Drawing.Color.Coral;
+            this.ctrRvTree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrRvTree.Location = new System.Drawing.Point(0, 25);
+            this.ctrRvTree.Name = "ctrRvTree";
+            this.ctrRvTree.Size = new System.Drawing.Size(328, 596);
+            this.ctrRvTree.TabIndex = 2;
+            this.ctrRvTree.Visible = false;
+            this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
+            this.ctrRvTree.RvChecked += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvChecked);
+            this.ctrRvTree.Load += new System.EventHandler(this.ctrRvTree_Load);
+            // 
+            // DatsTS
+            // 
+            this.DatsTS.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.DatsTS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DatsCollapseTreeBT});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(328, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
+            this.DatsTS.Location = new System.Drawing.Point(0, 0);
+            this.DatsTS.Name = "DatsTS";
+            this.DatsTS.Size = new System.Drawing.Size(328, 25);
+            this.DatsTS.TabIndex = 5;
+            this.DatsTS.Text = "toolStrip1";
             // 
             // DatsCollapseTreeBT
             // 
@@ -624,6 +653,111 @@ namespace ROMVault
             this.RomsStatusTagsFLP.Size = new System.Drawing.Size(330, 31);
             this.RomsStatusTagsFLP.TabIndex = 20;
             // 
+            // RomsUnknownLB
+            // 
+            this.RomsUnknownLB.AutoSize = true;
+            this.RomsUnknownLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RomsUnknownLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RomsUnknownLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RomsUnknownLB.ForeColor = System.Drawing.Color.Cyan;
+            this.RomsUnknownLB.Location = new System.Drawing.Point(279, 2);
+            this.RomsUnknownLB.Margin = new System.Windows.Forms.Padding(2);
+            this.RomsUnknownLB.Name = "RomsUnknownLB";
+            this.RomsUnknownLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.RomsUnknownLB.ScaleFactor = 1D;
+            this.RomsUnknownLB.Size = new System.Drawing.Size(49, 25);
+            this.RomsUnknownLB.TabIndex = 24;
+            this.RomsUnknownLB.Tag = "override";
+            this.RomsUnknownLB.Text = "label2";
+            // 
+            // RomsFixableLB
+            // 
+            this.RomsFixableLB.AutoSize = true;
+            this.RomsFixableLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RomsFixableLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RomsFixableLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RomsFixableLB.ForeColor = System.Drawing.Color.Yellow;
+            this.RomsFixableLB.Location = new System.Drawing.Point(226, 2);
+            this.RomsFixableLB.Margin = new System.Windows.Forms.Padding(2);
+            this.RomsFixableLB.Name = "RomsFixableLB";
+            this.RomsFixableLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.RomsFixableLB.ScaleFactor = 1D;
+            this.RomsFixableLB.Size = new System.Drawing.Size(49, 25);
+            this.RomsFixableLB.TabIndex = 23;
+            this.RomsFixableLB.Tag = "override";
+            this.RomsFixableLB.Text = "label2";
+            // 
+            // RomsMissingLB
+            // 
+            this.RomsMissingLB.AutoSize = true;
+            this.RomsMissingLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RomsMissingLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RomsMissingLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RomsMissingLB.ForeColor = System.Drawing.Color.Red;
+            this.RomsMissingLB.Location = new System.Drawing.Point(173, 2);
+            this.RomsMissingLB.Margin = new System.Windows.Forms.Padding(2);
+            this.RomsMissingLB.Name = "RomsMissingLB";
+            this.RomsMissingLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.RomsMissingLB.ScaleFactor = 1D;
+            this.RomsMissingLB.Size = new System.Drawing.Size(49, 25);
+            this.RomsMissingLB.TabIndex = 22;
+            this.RomsMissingLB.Tag = "override";
+            this.RomsMissingLB.Text = "label2";
+            // 
+            // RomsGotLB
+            // 
+            this.RomsGotLB.AutoSize = true;
+            this.RomsGotLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RomsGotLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RomsGotLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RomsGotLB.ForeColor = System.Drawing.Color.LimeGreen;
+            this.RomsGotLB.Location = new System.Drawing.Point(120, 2);
+            this.RomsGotLB.Margin = new System.Windows.Forms.Padding(2);
+            this.RomsGotLB.Name = "RomsGotLB";
+            this.RomsGotLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.RomsGotLB.ScaleFactor = 1D;
+            this.RomsGotLB.Size = new System.Drawing.Size(49, 25);
+            this.RomsGotLB.TabIndex = 21;
+            this.RomsGotLB.Tag = "override";
+            this.RomsGotLB.Text = "label2";
+            // 
+            // RomsPathFPR
+            // 
+            this.RomsPathFPR.AutoSize = true;
+            this.RomsPathFPR.Controls.Add(this.lblDIRomPath);
+            this.RomsPathFPR.Controls.Add(this.DatInfoPathLb);
+            this.RomsPathFPR.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RomsPathFPR.Location = new System.Drawing.Point(4, 67);
+            this.RomsPathFPR.Name = "RomsPathFPR";
+            this.RomsPathFPR.Size = new System.Drawing.Size(330, 31);
+            this.RomsPathFPR.TabIndex = 26;
+            this.RomsPathFPR.WrapContents = false;
+            // 
+            // lblDIRomPath
+            // 
+            this.lblDIRomPath.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDIRomPath.AutoSize = true;
+            this.lblDIRomPath.Location = new System.Drawing.Point(0, 7);
+            this.lblDIRomPath.Margin = new System.Windows.Forms.Padding(0);
+            this.lblDIRomPath.Name = "lblDIRomPath";
+            this.lblDIRomPath.Size = new System.Drawing.Size(76, 17);
+            this.lblDIRomPath.TabIndex = 15;
+            this.lblDIRomPath.Text = "ROMs Path:";
+            this.lblDIRomPath.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // DatInfoPathLb
+            // 
+            this.DatInfoPathLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DatInfoPathLb.ContextMenuStrip = this.CopyTextCMS;
+            this.DatInfoPathLb.Location = new System.Drawing.Point(79, 3);
+            this.DatInfoPathLb.Margin = new System.Windows.Forms.Padding(3);
+            this.DatInfoPathLb.Name = "DatInfoPathLb";
+            this.DatInfoPathLb.Padding = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.DatInfoPathLb.Size = new System.Drawing.Size(248, 25);
+            this.DatInfoPathLb.TabIndex = 21;
+            this.DatInfoPathLb.Text = "label3";
+            this.DatInfoPathLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // CopyTextCMS
             // 
             this.CopyTextCMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -639,6 +773,44 @@ namespace ROMVault
             this.copyTextToolStripMenuItem.Text = "Copy Text";
             this.copyTextToolStripMenuItem.Click += new System.EventHandler(this.copyTextToolStripMenuItem_Click);
             // 
+            // DatNameFPR
+            // 
+            this.DatNameFPR.AutoSize = true;
+            this.DatNameFPR.Controls.Add(this.lblDIName);
+            this.DatNameFPR.Controls.Add(this.DatInfoNameLb);
+            this.DatNameFPR.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DatNameFPR.Location = new System.Drawing.Point(4, 38);
+            this.DatNameFPR.Name = "DatNameFPR";
+            this.DatNameFPR.Size = new System.Drawing.Size(330, 29);
+            this.DatNameFPR.TabIndex = 27;
+            this.DatNameFPR.WrapContents = false;
+            // 
+            // lblDIName
+            // 
+            this.lblDIName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDIName.AutoSize = true;
+            this.lblDIName.Location = new System.Drawing.Point(0, 6);
+            this.lblDIName.Margin = new System.Windows.Forms.Padding(0);
+            this.lblDIName.Name = "lblDIName";
+            this.lblDIName.Size = new System.Drawing.Size(77, 17);
+            this.lblDIName.TabIndex = 3;
+            this.lblDIName.Text = "DAT Name: ";
+            this.lblDIName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // DatInfoNameLb
+            // 
+            this.DatInfoNameLb.AutoSize = true;
+            this.DatInfoNameLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DatInfoNameLb.ContextMenuStrip = this.CopyTextCMS;
+            this.DatInfoNameLb.Location = new System.Drawing.Point(80, 3);
+            this.DatInfoNameLb.Margin = new System.Windows.Forms.Padding(3);
+            this.DatInfoNameLb.Name = "DatInfoNameLb";
+            this.DatInfoNameLb.Padding = new System.Windows.Forms.Padding(2);
+            this.DatInfoNameLb.Size = new System.Drawing.Size(247, 23);
+            this.DatInfoNameLb.TabIndex = 22;
+            this.DatInfoNameLb.Text = "label3";
+            this.DatInfoNameLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // VaultHeaderPN
             // 
             this.VaultHeaderPN.Controls.Add(this.DatPanelHeaderLB);
@@ -649,6 +821,19 @@ namespace ROMVault
             this.VaultHeaderPN.Padding = new System.Windows.Forms.Padding(2);
             this.VaultHeaderPN.Size = new System.Drawing.Size(330, 34);
             this.VaultHeaderPN.TabIndex = 7;
+            // 
+            // DatPanelHeaderLB
+            // 
+            this.DatPanelHeaderLB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DatPanelHeaderLB.Font = new System.Drawing.Font("Roboto", 11.7F, System.Drawing.FontStyle.Bold);
+            this.DatPanelHeaderLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DatPanelHeaderLB.Location = new System.Drawing.Point(26, 2);
+            this.DatPanelHeaderLB.Name = "DatPanelHeaderLB";
+            this.DatPanelHeaderLB.ScaleFactor = 1.2D;
+            this.DatPanelHeaderLB.Size = new System.Drawing.Size(302, 30);
+            this.DatPanelHeaderLB.TabIndex = 3;
+            this.DatPanelHeaderLB.Text = "DATS";
+            this.DatPanelHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
@@ -706,6 +891,19 @@ namespace ROMVault
             this.PgHeader.Padding = new System.Windows.Forms.Padding(4);
             this.PgHeader.Size = new System.Drawing.Size(806, 31);
             this.PgHeader.TabIndex = 4;
+            // 
+            // PgHeaderLB
+            // 
+            this.PgHeaderLB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PgHeaderLB.Font = new System.Drawing.Font("Roboto", 11.7F, System.Drawing.FontStyle.Bold);
+            this.PgHeaderLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PgHeaderLB.Location = new System.Drawing.Point(31, 4);
+            this.PgHeaderLB.Name = "PgHeaderLB";
+            this.PgHeaderLB.ScaleFactor = 1.2D;
+            this.PgHeaderLB.Size = new System.Drawing.Size(771, 23);
+            this.PgHeaderLB.TabIndex = 3;
+            this.PgHeaderLB.Text = "Welcome to RomVault";
+            this.PgHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // PgHeaderPB
             // 
@@ -1057,6 +1255,7 @@ namespace ROMVault
             this.GameRomTableTS.Size = new System.Drawing.Size(619, 25);
             this.GameRomTableTS.TabIndex = 0;
             this.GameRomTableTS.Text = "Navigate to Root";
+            this.GameRomTableTS.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.GameRomTableTS_ItemClicked);
             // 
             // GameRomToHomeBT
             // 
@@ -1166,13 +1365,10 @@ namespace ROMVault
             // 
             // setAllToolStripMenuItem
             // 
-            this.setAllToolStripMenuItem.Checked = true;
-            this.setAllToolStripMenuItem.CheckOnClick = true;
-            this.setAllToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.setAllToolStripMenuItem.Name = "setAllToolStripMenuItem";
             this.setAllToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.setAllToolStripMenuItem.Text = "Set All";
-            this.setAllToolStripMenuItem.CheckedChanged += new System.EventHandler(this.setAllToolStripMenuItem_CheckedChanged);
+            this.setAllToolStripMenuItem.Text = "Clear All";
+            this.setAllToolStripMenuItem.Click += new System.EventHandler(this.clearAllToolStripMenuItem_Click);
             // 
             // gameSearchTSTB
             // 
@@ -1556,6 +1752,8 @@ namespace ROMVault
             this.directorySettingsToolStripMenuItem,
             this.directoryMappingsToolStripMenuItem,
             this.toolStripSeparator3,
+            this.darkModeToolStripMenuItem,
+            this.toolStripSeparator6,
             this.romVaultSettingsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -1583,13 +1781,26 @@ namespace ROMVault
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(228, 6);
             // 
+            // darkModeToolStripMenuItem
+            // 
+            this.darkModeToolStripMenuItem.CheckOnClick = true;
+            this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
+            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.darkModeToolStripMenuItem.Text = "Dark Mode";
+            this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.darkModeToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(228, 6);
+            // 
             // romVaultSettingsToolStripMenuItem
             // 
             this.romVaultSettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.gear;
             this.romVaultSettingsToolStripMenuItem.Name = "romVaultSettingsToolStripMenuItem";
             this.romVaultSettingsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
             this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.romVaultSettingsToolStripMenuItem.Text = "Settings";
+            this.romVaultSettingsToolStripMenuItem.Text = "Preferences";
             this.romVaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.RomVaultSettingsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -1777,201 +1988,6 @@ namespace ROMVault
             this.RomsShortnameToggleSSBT.Text = "Toggle Shortname";
             this.RomsShortnameToggleSSBT.Click += new System.EventHandler(this.RomsShortnameToggleSSBT_Click);
             // 
-            // flexiLabel3
-            // 
-            this.flexiLabel3.AutoSize = true;
-            this.flexiLabel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flexiLabel3.Font = new System.Drawing.Font("Segoe UI", 11.7F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel3.Location = new System.Drawing.Point(4, 633);
-            this.flexiLabel3.Name = "flexiLabel3";
-            this.flexiLabel3.ScaleFactor = 1.2D;
-            this.flexiLabel3.Size = new System.Drawing.Size(46, 21);
-            this.flexiLabel3.TabIndex = 22;
-            this.flexiLabel3.Text = "Tree:";
-            // 
-            // ctrRvTree
-            // 
-            this.ctrRvTree.AutoSize = true;
-            this.ctrRvTree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrRvTree.Location = new System.Drawing.Point(0, 25);
-            this.ctrRvTree.Name = "ctrRvTree";
-            this.ctrRvTree.Size = new System.Drawing.Size(328, 596);
-            this.ctrRvTree.TabIndex = 2;
-            this.ctrRvTree.Visible = false;
-            this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
-            this.ctrRvTree.RvChecked += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvChecked);
-            this.ctrRvTree.Load += new System.EventHandler(this.ctrRvTree_Load);
-            // 
-            // RomsUnknownLB
-            // 
-            this.RomsUnknownLB.AutoSize = true;
-            this.RomsUnknownLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.RomsUnknownLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RomsUnknownLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RomsUnknownLB.ForeColor = System.Drawing.Color.Cyan;
-            this.RomsUnknownLB.Location = new System.Drawing.Point(279, 2);
-            this.RomsUnknownLB.Margin = new System.Windows.Forms.Padding(2);
-            this.RomsUnknownLB.Name = "RomsUnknownLB";
-            this.RomsUnknownLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.RomsUnknownLB.ScaleFactor = 1D;
-            this.RomsUnknownLB.Size = new System.Drawing.Size(49, 25);
-            this.RomsUnknownLB.TabIndex = 24;
-            this.RomsUnknownLB.Tag = "override";
-            this.RomsUnknownLB.Text = "label2";
-            // 
-            // RomsFixableLB
-            // 
-            this.RomsFixableLB.AutoSize = true;
-            this.RomsFixableLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.RomsFixableLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RomsFixableLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RomsFixableLB.ForeColor = System.Drawing.Color.Yellow;
-            this.RomsFixableLB.Location = new System.Drawing.Point(226, 2);
-            this.RomsFixableLB.Margin = new System.Windows.Forms.Padding(2);
-            this.RomsFixableLB.Name = "RomsFixableLB";
-            this.RomsFixableLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.RomsFixableLB.ScaleFactor = 1D;
-            this.RomsFixableLB.Size = new System.Drawing.Size(49, 25);
-            this.RomsFixableLB.TabIndex = 23;
-            this.RomsFixableLB.Tag = "override";
-            this.RomsFixableLB.Text = "label2";
-            // 
-            // RomsMissingLB
-            // 
-            this.RomsMissingLB.AutoSize = true;
-            this.RomsMissingLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.RomsMissingLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RomsMissingLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RomsMissingLB.ForeColor = System.Drawing.Color.Red;
-            this.RomsMissingLB.Location = new System.Drawing.Point(173, 2);
-            this.RomsMissingLB.Margin = new System.Windows.Forms.Padding(2);
-            this.RomsMissingLB.Name = "RomsMissingLB";
-            this.RomsMissingLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.RomsMissingLB.ScaleFactor = 1D;
-            this.RomsMissingLB.Size = new System.Drawing.Size(49, 25);
-            this.RomsMissingLB.TabIndex = 22;
-            this.RomsMissingLB.Tag = "override";
-            this.RomsMissingLB.Text = "label2";
-            // 
-            // RomsGotLB
-            // 
-            this.RomsGotLB.AutoSize = true;
-            this.RomsGotLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.RomsGotLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RomsGotLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RomsGotLB.ForeColor = System.Drawing.Color.LimeGreen;
-            this.RomsGotLB.Location = new System.Drawing.Point(120, 2);
-            this.RomsGotLB.Margin = new System.Windows.Forms.Padding(2);
-            this.RomsGotLB.Name = "RomsGotLB";
-            this.RomsGotLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.RomsGotLB.ScaleFactor = 1D;
-            this.RomsGotLB.Size = new System.Drawing.Size(49, 25);
-            this.RomsGotLB.TabIndex = 21;
-            this.RomsGotLB.Tag = "override";
-            this.RomsGotLB.Text = "label2";
-            // 
-            // RomsPathFPR
-            // 
-            this.RomsPathFPR.AutoSize = true;
-            this.RomsPathFPR.Controls.Add(this.lblDIRomPath);
-            this.RomsPathFPR.Controls.Add(this.DatInfoPathLb);
-            this.RomsPathFPR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RomsPathFPR.Location = new System.Drawing.Point(4, 67);
-            this.RomsPathFPR.Name = "RomsPathFPR";
-            this.RomsPathFPR.Size = new System.Drawing.Size(330, 31);
-            this.RomsPathFPR.TabIndex = 26;
-            this.RomsPathFPR.WrapContents = false;
-            // 
-            // lblDIRomPath
-            // 
-            this.lblDIRomPath.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDIRomPath.AutoSize = true;
-            this.lblDIRomPath.Location = new System.Drawing.Point(0, 7);
-            this.lblDIRomPath.Margin = new System.Windows.Forms.Padding(0);
-            this.lblDIRomPath.Name = "lblDIRomPath";
-            this.lblDIRomPath.Size = new System.Drawing.Size(76, 17);
-            this.lblDIRomPath.TabIndex = 15;
-            this.lblDIRomPath.Text = "ROMs Path:";
-            this.lblDIRomPath.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // DatInfoPathLb
-            // 
-            this.DatInfoPathLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DatInfoPathLb.ContextMenuStrip = this.CopyTextCMS;
-            this.DatInfoPathLb.Location = new System.Drawing.Point(79, 3);
-            this.DatInfoPathLb.Margin = new System.Windows.Forms.Padding(3);
-            this.DatInfoPathLb.Name = "DatInfoPathLb";
-            this.DatInfoPathLb.Padding = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.DatInfoPathLb.Size = new System.Drawing.Size(248, 25);
-            this.DatInfoPathLb.TabIndex = 21;
-            this.DatInfoPathLb.Text = "label3";
-            this.DatInfoPathLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // DatNameFPR
-            // 
-            this.DatNameFPR.AutoSize = true;
-            this.DatNameFPR.Controls.Add(this.lblDIName);
-            this.DatNameFPR.Controls.Add(this.DatInfoNameLb);
-            this.DatNameFPR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DatNameFPR.Location = new System.Drawing.Point(4, 38);
-            this.DatNameFPR.Name = "DatNameFPR";
-            this.DatNameFPR.Size = new System.Drawing.Size(330, 29);
-            this.DatNameFPR.TabIndex = 27;
-            this.DatNameFPR.WrapContents = false;
-            // 
-            // lblDIName
-            // 
-            this.lblDIName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDIName.AutoSize = true;
-            this.lblDIName.Location = new System.Drawing.Point(0, 6);
-            this.lblDIName.Margin = new System.Windows.Forms.Padding(0);
-            this.lblDIName.Name = "lblDIName";
-            this.lblDIName.Size = new System.Drawing.Size(77, 17);
-            this.lblDIName.TabIndex = 3;
-            this.lblDIName.Text = " DAT Name:";
-            this.lblDIName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // DatInfoNameLb
-            // 
-            this.DatInfoNameLb.AutoSize = true;
-            this.DatInfoNameLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DatInfoNameLb.ContextMenuStrip = this.CopyTextCMS;
-            this.DatInfoNameLb.Location = new System.Drawing.Point(80, 3);
-            this.DatInfoNameLb.Margin = new System.Windows.Forms.Padding(3);
-            this.DatInfoNameLb.Name = "DatInfoNameLb";
-            this.DatInfoNameLb.Padding = new System.Windows.Forms.Padding(2);
-            this.DatInfoNameLb.Size = new System.Drawing.Size(247, 23);
-            this.DatInfoNameLb.TabIndex = 22;
-            this.DatInfoNameLb.Text = "label3";
-            this.DatInfoNameLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // DatPanelHeaderLB
-            // 
-            this.DatPanelHeaderLB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DatPanelHeaderLB.Font = new System.Drawing.Font("Roboto", 11.7F, System.Drawing.FontStyle.Bold);
-            this.DatPanelHeaderLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DatPanelHeaderLB.Location = new System.Drawing.Point(26, 2);
-            this.DatPanelHeaderLB.Name = "DatPanelHeaderLB";
-            this.DatPanelHeaderLB.ScaleFactor = 1.2D;
-            this.DatPanelHeaderLB.Size = new System.Drawing.Size(302, 30);
-            this.DatPanelHeaderLB.TabIndex = 3;
-            this.DatPanelHeaderLB.Text = "Vault: DATs and ToSort";
-            this.DatPanelHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // PgHeaderLB
-            // 
-            this.PgHeaderLB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PgHeaderLB.Font = new System.Drawing.Font("Roboto", 11.7F, System.Drawing.FontStyle.Bold);
-            this.PgHeaderLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PgHeaderLB.Location = new System.Drawing.Point(31, 4);
-            this.PgHeaderLB.Name = "PgHeaderLB";
-            this.PgHeaderLB.ScaleFactor = 1.2D;
-            this.PgHeaderLB.Size = new System.Drawing.Size(771, 23);
-            this.PgHeaderLB.TabIndex = 3;
-            this.PgHeaderLB.Text = "Welcome to RomVault";
-            this.PgHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2015,11 +2031,15 @@ namespace ROMVault
             this.DatInfoPN.PerformLayout();
             this.DatTreePN.ResumeLayout(false);
             this.DatTreePN.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.DatsTS.ResumeLayout(false);
+            this.DatsTS.PerformLayout();
             this.RomsStatusTagsFLP.ResumeLayout(false);
             this.RomsStatusTagsFLP.PerformLayout();
+            this.RomsPathFPR.ResumeLayout(false);
+            this.RomsPathFPR.PerformLayout();
             this.CopyTextCMS.ResumeLayout(false);
+            this.DatNameFPR.ResumeLayout(false);
+            this.DatNameFPR.PerformLayout();
             this.VaultHeaderPN.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitGameInfoLists.Panel1.ResumeLayout(false);
@@ -2060,10 +2080,6 @@ namespace ROMVault
             this.menuStrip1.PerformLayout();
             this.MainSS.ResumeLayout(false);
             this.MainSS.PerformLayout();
-            this.RomsPathFPR.ResumeLayout(false);
-            this.RomsPathFPR.PerformLayout();
-            this.DatNameFPR.ResumeLayout(false);
-            this.DatNameFPR.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2184,7 +2200,7 @@ namespace ROMVault
         private ToolStripDropDownButton RomsControlSSBT;
         private ToolStripMenuItem RomsGroupVisibilitySSBT;
         private ToolStripMenuItem RomsShortnameToggleSSBT;
-        private ToolStrip toolStrip1;
+        private ToolStrip DatsTS;
         private ToolStripButton DatsCollapseTreeBT;
         private Panel DatTreePN;
         private Panel GameRomPN;
@@ -2223,6 +2239,8 @@ namespace ROMVault
         private ToolStripMenuItem toggleToolStripMenuItem;
         private ToolStripMenuItem setAllToolStripMenuItem;
         private ToolStripLabel GameGridRowCountLB;
+        private ToolStripMenuItem darkModeToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator6;
     }
 }
 

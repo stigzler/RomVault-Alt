@@ -85,6 +85,8 @@ namespace ROMVault
         private float _scaleFactorX = 1;
         private float _scaleFactorY = 1;
 
+        private bool _shown = false;
+
         private ToolStripMenuItem garbageCollectToolStripMenuItem;
 
         private Dictionary<Button, string> NavButtonDetails = new Dictionary<Button, string>();
@@ -119,6 +121,8 @@ namespace ROMVault
 
             _displayColor = new Color[(int)RepStatus.EndValue];
             _fontColor = new Color[(int)RepStatus.EndValue];
+
+            darkModeToolStripMenuItem.Checked = Settings.rvSettings.Darkness;
 
             // RepStatus.UnSet
 
@@ -421,8 +425,10 @@ namespace ROMVault
             helpToolStripMenuItem.DropDownItems.Add(garbageCollectToolStripMenuItem);
 #endif
 
+            // Control Lists
             FilterCheckboxes = new List<ToolStripMenuItem>()
             { chkBoxShowCompleteTSI, chkBoxShowPartialTSI,chkBoxShowEmptyTSI, chkBoxShowFixesTSI, chkBoxShowMIATSI, chkBoxShowMergedTSI };
+            formToolstrips = new List<ToolStrip>() { GameRomTableTS, DatsTS };
 
             InitGameGridMenu();
 
@@ -585,6 +591,8 @@ namespace ROMVault
             }
         }
 
+        private List<ToolStrip> formToolstrips;
+
         /// <summary>
         /// This happens before form is shown. If post-show teaks are needed use FrmMain_Shown
         /// </summary>
@@ -593,16 +601,20 @@ namespace ROMVault
             this.Font = new System.Drawing.Font(this.Font.FontFamily, (float)Properties.Settings.Default.MainTextSize);
 
             Theming.SetControlTextSizeToDefault(menuStrip1);
+            int iconSize = (int)(1.5 * Properties.Settings.Default.MainTextSize);
+            menuStrip1.ImageScalingSize = new Size(iconSize, iconSize);
 
-            //if (Settings.rvSettings.Darkness)
-            //{
-            //    dark.SetColors(this);
-            //}
+            foreach (ToolStrip ts in formToolstrips)
+            {
+                Theming.SetControlTextSizeToDefault(ts);
+                ts.ImageScalingSize = new Size(iconSize, iconSize);
+            }
 
             dark.SetColors(this, Settings.rvSettings.Darkness);
 
             if (settingsUpdated)
             {
+                MainPG.Invalidate();
                 GameGrid.Invalidate();
                 RomGrid.Invalidate();
             }
@@ -610,8 +622,8 @@ namespace ROMVault
             // Dat Tree
             ctrRvTree.UpdateFontSize(Properties.Settings.Default.MainTextSize);
 
-            DatInfoNameLb.ForeColor = Properties.Settings.Default.InfoTextColor;
-            DatInfoPathLb.ForeColor = Properties.Settings.Default.InfoTextColor;
+            DatInfoNameLb.ForeColor = dark.GetForegroundDimmed(Settings.rvSettings.Darkness);
+            DatInfoPathLb.ForeColor = dark.GetForegroundDimmed(Settings.rvSettings.Darkness);
 
             // Dats Roms Status Tags
             var setts = Properties.Settings.Default;
@@ -619,16 +631,6 @@ namespace ROMVault
             RomsMissingLB.ForeColor = setts.RomMissingColor;
             RomsFixableLB.ForeColor = setts.RomFixableColor;
             RomsUnknownLB.ForeColor = setts.RomUnknownColor;
-
-            // Property grid
-            // MainPG.SetCategoryForeColor(dark.fgBright);
-
-            // tests
-            //GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            //GameGrid.Columns[(int)GameGridColumns.CType].DefaultCellStyle.Padding = new Padding(2, 0, 0, 0);
-            //if (GameGrid.Columns[(int)GameGridColumns.CType] is DataGridViewImageColumn ic) ic.ImageLayout = DataGridViewImageCellLayout.Normal;
-
-            //this.ResumeLayout();
         }
 
         internal void InitialiseStatusStrip()
@@ -1653,6 +1655,8 @@ namespace ROMVault
             InitialiseStatusStrip();
 
             ctrRvTree.Visible = true;
+
+            _shown = true;
         }
 
         private void ToggleNavText(bool visible)
@@ -2086,13 +2090,6 @@ namespace ROMVault
 
         private void setAllToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
-            _batchSettingFilters = true;
-            foreach (ToolStripMenuItem item in FilterCheckboxes)
-            {
-                item.Checked = setAllToolStripMenuItem.Checked;
-            }
-            _batchSettingFilters = false;
-            DatSetSelected(ctrRvTree.Selected);
         }
 
         private void toggleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2103,7 +2100,32 @@ namespace ROMVault
                 item.Checked = !item.Checked;
             }
             _batchSettingFilters = false;
+            SaveFiltersToSettings();
             DatSetSelected(ctrRvTree.Selected);
+        }
+
+        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!_shown) return;
+            Settings.rvSettings.Darkness = ((ToolStripMenuItem)sender).Checked;
+            Settings.WriteConfig(Settings.rvSettings);
+            UpdateThemeAndControls();
+        }
+
+        private void clearAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _batchSettingFilters = true;
+            foreach (ToolStripMenuItem item in FilterCheckboxes)
+            {
+                item.Checked = false;
+            }
+            _batchSettingFilters = false;
+            SaveFiltersToSettings();
+            DatSetSelected(ctrRvTree.Selected);
+        }
+
+        private void GameRomTableTS_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
         }
     }
 }

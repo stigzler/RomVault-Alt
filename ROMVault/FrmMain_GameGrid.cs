@@ -483,12 +483,11 @@ namespace ROMVault
                             using (Graphics g = Graphics.FromImage(bmp))
                             {
                                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                                //g.Clear((e.RowIndex%2==1)?Dark.dark.bgColor1(Color.White): Dark.dark.bgColor(Color.White));
-                                // EXPERIMENT: Removed g.Clear() to let cell background color show through bitmap
-                                //g.Clear(Dark.dark.bgColor1(Color.White));
-                                g.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
+                                g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 
-                                Font drawFont = new Font("Verdana", Properties.Settings.Default.MainTextSize - 2, FontStyle.Bold);
+                                //Font drawFont = new Font("Verdana", Properties.Settings.Default.MainTextSize - 2, FontStyle.Bold);
+                                Font drawFont = new Font("Arial Narrow", Properties.Settings.Default.MainTextSize + 1, FontStyle.Bold);
+
                                 int gOff;
                                 int columnIndex = 0;
                                 for (int l = 0; l < RepairStatus.DisplayOrder.Length; l++)
@@ -530,8 +529,9 @@ namespace ROMVault
                                     {
                                         gOff = _gameGridColumnXPositions[columnIndex];
                                         g.DrawString(tRvDir.DirStatus.Get(RepairStatus.DisplayOrder[l]).ToString(CultureInfo.InvariantCulture),
-                                            drawFont, Dark.dark.fgBrush(Brushes.Black),
+                                            drawFont, new SolidBrush(Dark.dark.GetSelectorForeColor(Settings.rvSettings.Darkness)),
                                             new PointF(gOff + _gridRowHeight, 3));
+
                                         columnIndex++;
                                     }
                                 }
@@ -560,7 +560,8 @@ namespace ROMVault
 
                 if (e.ColumnIndex == (int)GameGridColumns.CRomStatus)
                 {
-                    e.CellStyle.SelectionBackColor = Dark.dark.bgMenuItemRollover;
+                    e.CellStyle.SelectionBackColor = Dark.dark.GetSelectorBackColor(Settings.rvSettings.Darkness);
+                    e.CellStyle.SelectionForeColor = Dark.dark.GetSelectorForeColor(Settings.rvSettings.Darkness);
                     return;
                 }
 

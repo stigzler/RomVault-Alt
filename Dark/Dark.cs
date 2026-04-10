@@ -11,9 +11,7 @@ namespace Dark
 {
     public static class dark
     {
-        //public static Color bg0 = Color.FromArgb(37, 39, 44);
-        //public static Color bg = Color.FromArgb(47, 49, 54);
-        //public static Color bg1 = Color.FromArgb(54, 57, 63);
+        // DARK Pallette
         public static Color bg0 = Color.FromArgb(28, 28, 28);
 
         public static Color bg1 = Color.FromArgb(35, 35, 35);
@@ -21,15 +19,29 @@ namespace Dark
         public static Color bgTs = Color.FromArgb(50, 50, 50); // toolstip bg
 
         public static Color bgMenuItemRollover = Color.FromArgb(255, 63, 63, 70);
-
         public static Color midGrey = Color.FromArgb(128, 128, 128, 128);
 
         public static Color fgBright = Color.White;
-        public static Color fg = Color.FromArgb(210, 210, 210);
-        public static Color fgDimmed = Color.FromArgb(192, 192, 192);
+        public static Color fg = Color.FromArgb(220, 220, 220);
+        public static Color fgDimmed = Color.FromArgb(180, 180, 180);
         public static Brush sb_bg = new SolidBrush(bg);
         public static Brush sb_bg1 = new SolidBrush(bg1);
         public static Brush sb_fg = new SolidBrush(fg);
+
+        // DARK Pallette
+        public static Color darkSelectorBackColor = Color.FromArgb(0, 120, 212);
+
+        public static Color darkSelectorForeColor = Color.White;
+        public static Color darkForeColor = fg;
+
+        // LIGHT Pallette
+        public static Color lightSelectorBackColor = Color.FromArgb(200, 200, 200);
+
+        public static Color lightSelectorForeColor = Color.Black;
+        public static Color lightForeColor = Color.FromArgb(10, 10, 10);
+        public static Color lightDimmedColor = Color.FromArgb(70, 70, 70);
+        public static Color lightBackColor = Color.FromArgb(240, 240, 240);
+        // I know this is a bit of a mess but lost the will to live - stigzler
 
         public static bool darkEnabled;
 
@@ -40,6 +52,38 @@ namespace Dark
         private static extern int SetWindowTheme(IntPtr hWnd, string pszSubAppName, string pszSubIdList);
 
         private const int DWWMA_CAPTION_COLOR = 35;
+
+        public static Color GetSelectorBackColor(bool darkMode)
+        {
+            if (darkMode) return darkSelectorBackColor;
+            else
+                return lightSelectorBackColor;
+        }
+
+        public static Color GetForegroundDimmed(bool darkMode)
+        {
+            if (darkMode) return fgDimmed;
+            else return lightDimmedColor;
+        }
+
+        public static Color GetForecolor(bool darkMode)
+        {
+            if (darkMode) return darkForeColor;
+            else return lightForeColor;
+        }
+
+        public static Color GetBackcolor(bool darkMode)
+        {
+            if (darkMode) return bg;
+            else return lightBackColor;
+        }
+
+        public static Color GetSelectorForeColor(bool darkMode)
+        {
+            if (darkMode) return darkSelectorForeColor;
+            else
+                return lightSelectorForeColor;
+        }
 
         private static void SetTitleBarColor(Color color, IntPtr handle)
         {
@@ -53,7 +97,10 @@ namespace Dark
 
         public static void SetColors(Form frm, bool darkMode = false)
         {
-            SetTitleBarColor(bg0, frm.Handle);
+            if (darkMode)
+                SetTitleBarColor(bg0, frm.Handle);
+            else
+                SetTitleBarColor(Color.FromArgb(200, 200, 200), frm.Handle);
 
             frm.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
             frm.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
@@ -98,15 +145,16 @@ namespace Dark
 
                 case DataGridView dgv:
                     dgv.BackgroundColor = (darkMode) ? bg1 : Control.DefaultBackColor;
-                    dgv.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
+                    dgv.ForeColor = (darkMode) ? fg : Color.FromArgb(10, 10, 10);
 
                     dgv.DefaultCellStyle.BackColor = (darkMode) ? bg1 : Control.DefaultBackColor;
-                    dgv.DefaultCellStyle.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
+                    dgv.DefaultCellStyle.ForeColor = (darkMode) ? fg : Color.FromArgb(10, 10, 10);
 
-                    dgv.ColumnHeadersDefaultCellStyle.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
-                    dgv.ColumnHeadersDefaultCellStyle.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
+                    dgv.ColumnHeadersDefaultCellStyle.BackColor = (darkMode) ? bg : Color.FromArgb(210, 210, 210);
+                    dgv.ColumnHeadersDefaultCellStyle.ForeColor = (darkMode) ? fg : Color.FromArgb(0, 0, 0);
 
-                    dgv.DefaultCellStyle.SelectionBackColor = (darkMode) ? bgMenuItemRollover : Control.DefaultBackColor;
+                    dgv.DefaultCellStyle.SelectionBackColor = (darkMode) ? darkSelectorBackColor : Color.FromArgb(200, 200, 200);
+                    dgv.DefaultCellStyle.SelectionForeColor = (darkMode) ? fgBright : Color.Black;
                     //dgv.DefaultCellStyle.SelectionForeColor = Color.White;
                     dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
@@ -123,52 +171,26 @@ namespace Dark
                     cms.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
                     cms.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
                     cms.RenderMode = ToolStripRenderMode.System;
-                    cms.Renderer = new DarkToolStripRenderer();
+                    cms.Renderer = (darkMode) ? new DarkToolStripRenderer() : null;
                     break;
 
                 case ToolStrip ts:
                     ts.RenderMode = ToolStripRenderMode.System;
-                    ts.Renderer = new DarkToolStripRenderer();
-                    ts.BackColor = bg;
-                    ts.ForeColor = fg;
-
-                    //foreach (ToolStripSeparator tss in ts.Items.OfType<ToolStripSeparator>().ToList())
-                    //{
-                    //    tss.ForeColor = fgDimmed;
-                    //    tss.BackColor = bgTs;
-                    //}
-
+                    ts.Renderer = (darkMode) ? new DarkToolStripRenderer() : null;
+                    ts.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
+                    ts.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
                     break;
 
                 case PropertyGrid pg:
                     pg.UseCompatibleTextRendering = true;
-                    pg.ViewBackColor = bg;
-                    pg.ViewForeColor = fg;
-                    pg.LineColor = midGrey;
-                    pg.BackColor = bg;
-                    pg.CategoryForeColor = fgBright;
-                    pg.CategorySplitterColor = midGrey;
-                    pg.HelpBackColor = bg;
-                    pg.HelpForeColor = fgDimmed;
-
-                    EventHandler applyPropertyGridTheme = null;
-                    applyPropertyGridTheme = (s, e) =>
-                    {
-                        try
-                        {
-                            SetWindowTheme(pg.Handle, string.Empty, string.Empty);
-                            pg.Refresh();
-                        }
-                        catch { }
-
-                        pg.HandleCreated -= applyPropertyGridTheme;
-                    };
-
-                    if (pg.IsHandleCreated)
-                        applyPropertyGridTheme(pg, EventArgs.Empty);
-                    else
-                        pg.HandleCreated += applyPropertyGridTheme;
-
+                    pg.ViewBackColor = (darkMode) ? bg : Control.DefaultBackColor;
+                    pg.ViewForeColor = (darkMode) ? fg : Control.DefaultForeColor;
+                    pg.LineColor = (darkMode) ? midGrey : Color.FromArgb(200, 200, 200);
+                    pg.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
+                    pg.CategoryForeColor = (darkMode) ? fgBright : Color.Black;
+                    pg.CategorySplitterColor = (darkMode) ? midGrey : Control.DefaultForeColor; ;
+                    pg.HelpBackColor = (darkMode) ? bg : Control.DefaultBackColor;
+                    pg.HelpForeColor = (darkMode) ? fgDimmed : Control.DefaultForeColor;
                     break;
 
                 case Label _:

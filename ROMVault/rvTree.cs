@@ -39,8 +39,8 @@ namespace ROMVault
         //private readonly Font tFont = new Font("Microsoft Sans Serif", 8);
         //private readonly Font tFont1 = new Font("Microsoft Sans Serif", 7);
 
-        private Font tFont = new Font("Segoe UI", Properties.Settings.Default.MainTextSize);
-        private Font tFont1 = new Font("Segoe UI", Properties.Settings.Default.MainTextSize - 1);
+        private Font tFont = new Font("Microsoft Sans Serif", Properties.Settings.Default.MainTextSize);
+        private Font tFont1 = new Font("Microsoft Sans Serif", Properties.Settings.Default.MainTextSize - 1);
 
         public RvTree()
         {
@@ -170,6 +170,14 @@ namespace ROMVault
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            // In design mode, just draw a simple background and exit
+            if (DesignMode)
+            {
+                e.Graphics.FillRectangle(SystemBrushes.Control, e.ClipRectangle);
+                e.Graphics.DrawString("No preview available in design mode", tFont, SystemBrushes.ControlText, e.ClipRectangle.Location);
+                return;
+            }
+
             Graphics g = e.Graphics;
 
             _hScroll = HorizontalScroll.Value;
@@ -177,7 +185,8 @@ namespace ROMVault
 
             Rectangle t = new Rectangle(e.ClipRectangle.Left + _hScroll, e.ClipRectangle.Top + _vScroll, e.ClipRectangle.Width, e.ClipRectangle.Height);
 
-            g.FillRectangle(Dark.dark.bgBrush1(Brushes.White), e.ClipRectangle);
+            // g.FillRectangle(Dark.dark.bgBrush1(Brushes.White), e.ClipRectangle);
+            g.FillRectangle(new SolidBrush(Dark.dark.GetBackcolor(Settings.rvSettings.Darkness)), e.ClipRectangle);
 
             if (_lTree == null)
                 return;
@@ -390,15 +399,22 @@ namespace ROMVault
                 {
                     // g.FillRectangle(new SolidBrush(Color.FromArgb(51, 153, 255)), RSub(recBackGround, _hScroll, _vScroll));
 
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(80, 0, 0, 0)), RSub(recBackGround, _hScroll, _vScroll));
-                    if (Settings.rvSettings.Darkness)
-                        textBrush = Brushes.White;
-                    else
-                        textBrush = Brushes.Black;
+                    //g.FillRectangle(new SolidBrush(Color.FromArgb(80, 0, 0, 0)), RSub(recBackGround, _hScroll, _vScroll));
+
+                    g.FillRectangle(new SolidBrush(Dark.dark.GetSelectorBackColor(Settings.rvSettings.Darkness)),
+                        RSub(recBackGround, _hScroll, _vScroll));
+
+                    //if (Settings.rvSettings.Darkness)
+                    //    textBrush =  Brushes.White;
+                    //else
+                    //    textBrush = Brushes.Black;
+
+                    textBrush = new SolidBrush(Dark.dark.GetSelectorForeColor(Settings.rvSettings.Darkness));
                 }
                 else
                 {
-                    textBrush = Dark.dark.fgBrush(Brushes.Black);
+                    //textBrush = Dark.dark.fgBrush(Brushes.Black);
+                    textBrush = new SolidBrush(Dark.dark.GetForecolor(Settings.rvSettings.Darkness));
                 }
 
                 thistxt += " " + subtxt;

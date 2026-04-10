@@ -27,14 +27,17 @@ namespace ROMVault
 
         private FrmMain mainForm;
 
+        private bool _shown = false;
+
         public FrmSettings(FrmMain mainForm)
         {
             InitializeComponent();
 
+            Helpers.Theming.SetFormTextSizeToDefault(this);
+
             this.mainForm = mainForm;
 
-            if (Settings.rvSettings.Darkness)
-                Dark.dark.SetColors(this);
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
 
         private void FrmConfigLoad(object sender, EventArgs e)
@@ -65,8 +68,6 @@ namespace ROMVault
             lblDATRoot.Text = Settings.rvSettings.DatRoot;
 
             cboFixLevel.SelectedIndex = (int)Settings.rvSettings.FixLevel;
-
-            Helpers.Theming.SetFormTextSizeToDefault(this);
 
             textBox1.Text = "";
             foreach (string file in Settings.rvSettings.IgnoreFiles)
@@ -266,6 +267,7 @@ namespace ROMVault
 
         private void InfoTextColorPB_Click(object sender, EventArgs e)
         {
+            if (!_shown) return; // avoid trying to update status bar before form is shown and controls are fully loaded
             var result = ColorBroswer.ShowDialog();
             if (result != DialogResult.OK) return;
             Properties.Settings.Default.InfoTextColor = ColorBroswer.Color;
@@ -282,6 +284,7 @@ namespace ROMVault
 
         private void MainTextSizeNUM_ValueChanged(object sender, EventArgs e)
         {
+            if (!_shown) return; // avoid trying to update status bar before form is shown and controls are fully loaded
             ChangeFormControlsFontSizes();
             UpdateStatusBar();
             CenterFormOnScreen();
@@ -299,7 +302,7 @@ namespace ROMVault
 
         private void FrmSettings_Shown(object sender, EventArgs e)
         {
-            //TvPaddingPN.BackColor = MainTV.BackColor;
+            _shown = true;//TvPaddingPN.BackColor = MainTV.BackColor;
         }
 
         private void MainTV_AfterSelect(object sender, TreeViewEventArgs e)
@@ -365,6 +368,7 @@ namespace ROMVault
 
         private void StatusIconSizeAutoChB_CheckedChanged(object sender, EventArgs e)
         {
+            if (!_shown) return;
             StatusIconSizeNUM.Enabled = !StatusIconSizeAutoChB.Checked;
             UpdateStatusBar();
         }
@@ -407,6 +411,7 @@ namespace ROMVault
 
         private void StatusIconSizeNUM_ValueChanged(object sender, EventArgs e)
         {
+            if (!_shown) return; // avoid trying to update status bar before form is shown and controls are fully loaded
             UpdateStatusBar();
         }
 
@@ -431,7 +436,7 @@ namespace ROMVault
                 {
                     Image = Properties.Resources.information_frame,
                     Text = "Version",
-                    Padding = new Padding(2, 2, 2, 2)
+                    Padding = new Padding(4, 4, 4, 4)
                 });
 
                 MainSS.PerformLayout();
