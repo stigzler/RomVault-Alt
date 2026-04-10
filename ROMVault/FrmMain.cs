@@ -58,8 +58,8 @@ namespace ROMVault
         private readonly Color[] _displayColor;
         private readonly Color[] _fontColor;
 
-        private readonly ContextMenuStrip _mnuContext;
-        private readonly ContextMenuStrip _mnuContextToSort;
+        private readonly ContextMenuStrip _mnuContext = new ContextMenuStrip().DarkCompliant();
+        private readonly ContextMenuStrip _mnuContextToSort = new ContextMenuStrip().DarkCompliant();
 
         private readonly ToolStripMenuItem _mnuOpen;
 
@@ -174,8 +174,6 @@ namespace ROMVault
 
             splitContainer4_Panel1_Resize(new object(), new EventArgs());
 
-            _mnuContext = new ContextMenuStrip().DarkCompliant();
-
             ToolStripMenuItem mnuScan1 = new ToolStripMenuItem
             {
                 Text = @"Scan Quick (Headers Only)",
@@ -273,7 +271,6 @@ namespace ROMVault
             mnuImportToThisDir.Click += MnuImportToThisDir;
             mnuImportToPickedDir.Click += MnuImportToPickedDir;
 
-            _mnuContextToSort = new ContextMenuStrip().DarkCompliant();
             //_mnuContextToSort.ShowCheckMargin = false;
             //_mnuContextToSort.ShowImageMargin = false;
 
@@ -444,12 +441,11 @@ namespace ROMVault
             FormToolstrips = new List<ToolStrip>() { GameRomTableTS, DatsTS };
 
             ContextMenuStrips = new List<ContextMenuStrip>()
-            { CopyTextCMS, }
+            { CopyTextCMS, _mnuContext, _mnuContextToSort, _mnuGameGrid};
         }
 
         private void MnuImportToPickedDir(object sender, EventArgs e)
         {
-            // throw new NotImplementedException();
         }
 
         /// <summary>
@@ -472,10 +468,6 @@ namespace ROMVault
             }
             else if (datFilePresent)
             {
-                //destinationPath = System.IO.Directory.GetParent(
-                //    Path.Combine(resolvedDatRoot
-                //    , datTreeFullName.Replace(@"\DatRoot", "")
-                //    )).FullName;
                 destinationPath = System.IO.Directory.GetParent(
                     RvSystems.ResolveTokenisedDatPath(datTreeFullName, resolvedDatRoot)).FullName;
             }
@@ -492,7 +484,7 @@ namespace ROMVault
             if (formats == null || formats.Count == 0)
             {
                 // urgh ugly messageBox. But, priorities my dear boy... Shouldn't happen too often.
-                MessageBox.Show("No recognised DAT formats are set. Please set these in the settings menu before importing.", "No Recognised Formats", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No recognized DAT formats are set. Please set these in the settings menu before importing.", "No Recognised Formats", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -619,6 +611,13 @@ namespace ROMVault
                 Theming.SetControlTextSizeToDefault(ts);
                 ts.ImageScalingSize = new Size(iconSize, iconSize);
             }
+
+            foreach (ContextMenuStrip cms in ContextMenuStrips)
+            {
+                Theming.SetControlTextSizeToDefault(cms);
+                cms.ImageScalingSize = new Size(iconSize, iconSize);
+            }
+            dark.SetColors(CopyTextCMS, Settings.rvSettings.Darkness);
 
             dark.SetColors(this, Settings.rvSettings.Darkness);
 

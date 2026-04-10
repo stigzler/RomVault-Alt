@@ -37,7 +37,7 @@ namespace ROMVault
 
         private bool showDescription;
 
-        private ContextMenuStrip _mnuGameGrid;
+        private ContextMenuStrip _mnuGameGrid = new ContextMenuStrip().DarkCompliant();
 
         private ToolStripMenuItem mnuGameScan1;
         private ToolStripMenuItem mnuGameScan2;
@@ -49,7 +49,6 @@ namespace ROMVault
 
         private void InitGameGridMenu()
         {
-            _mnuGameGrid = new ContextMenuStrip().DarkCompliant();
             _mnuGameGrid.ShowImageMargin = false;
             _mnuGameGrid.ShowCheckMargin = false;
 

@@ -138,6 +138,12 @@
     <Compile Include="Extensions\ContextMenuStrip.cs" />
     <Compile Include="Extensions\PropertyGridExt.cs" />
     <Compile Include="FolderBrowser.cs" />
+    <Compile Include="FrmImportDat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmImportDat.Designer.cs">
+      <DependentUpon>FrmImportDat.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperSideInfo.cs" />
     <Compile Include="FolderBrowserDialogEx.cs">
       <SubType>Component</SubType>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHelpAbout.resx">
       <DependentUpon>FrmHelpAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmImportDat.resx">
+      <DependentUpon>FrmImportDat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKey.resx">
       <DependentUpon>FrmKey.cs</DependentUpon>
