@@ -586,18 +586,15 @@ namespace ROMVault
         {
             this.Font = new System.Drawing.Font(this.Font.FontFamily, (float)Properties.Settings.Default.MainTextSize);
 
-            // UI Tweaks
-            //ctrRvTree.BorderStyle = BorderStyle.None;
-            //Theming.SetControlTextSizeToDefault(ctrRvTree);
-            //Theming.SetControlTextSizeToDefault(GameGrid);
-            //Theming.SetControlTextSizeToDefault(RomGrid);
             Theming.SetControlTextSizeToDefault(menuStrip1);
 
             if (Settings.rvSettings.Darkness)
             {
                 Dark.dark.SetColors(this);
-                //UpdateTextBoxes(SearchTLP, Color.White);
             }
+
+            // Dat Tree
+            ctrRvTree.UpdateFontSize(Properties.Settings.Default.MainTextSize);
 
             // Dats Roms Status Tags
             var setts = Properties.Settings.Default;
