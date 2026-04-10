@@ -1003,12 +1003,21 @@ namespace ROMVault
                 UpdateDatMetaData(tParent);
                 return;
             }
+        }
 
-            // Check if the forward button is clicked
-            //else if (e.Button == MouseButtons.XButton2)
-            //{
-            //    MessageBox.Show("Side Forward Button Pressed!");
-            //}
+        private void GameGridNanigateToRoot()
+        {
+            if (gameGridSource == null) return;
+            RvFile rootFile = GetGameGridRootFile(gameGridSource);
+            UpdateGameGrid(rootFile);
+            ctrRvTree.SetSelected(rootFile);
+            UpdateDatMetaData(rootFile);
+        }
+
+        private RvFile GetGameGridRootFile(RvFile file)
+        {
+            if (file.Parent == null) return file;
+            return GetGameGridRootFile(file.Parent);
         }
 
         private void GameGridMouseDoubleClick(object sender, MouseEventArgs e)

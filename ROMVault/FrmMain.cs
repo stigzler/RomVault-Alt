@@ -95,8 +95,11 @@ namespace ROMVault
         private List<ToolStripStatusLabel> romStatusStripKeys = new List<ToolStripStatusLabel>();
 
         private List<ToolStripStatusLabel> datStatusStripKeys = new List<ToolStripStatusLabel>();
+        private List<ToolStrip> FormToolstrips;
+        private List<ToolStripMenuItem> FilterCheckboxes;
+        private List<ContextMenuStrip> ContextMenuStrips;
 
-        private DatInfo DatInfo = new DatInfo() { Name = "None DAT Selected" };
+        private DatInfo DatInfo = new DatInfo() { Name = "No DAT Selected" };
         private GameInfo GameInfo = new GameInfo() { Name = "None Selected" };
 
         #region MainUISetup
@@ -104,6 +107,8 @@ namespace ROMVault
         public FrmMain()
         {
             InitializeComponent();
+
+            SetupControlLists(); // used in UI management
 
             //Theming.SetFormTextSizeToDefault(this);
 
@@ -425,14 +430,21 @@ namespace ROMVault
             helpToolStripMenuItem.DropDownItems.Add(garbageCollectToolStripMenuItem);
 #endif
 
-            // Control Lists
-            FilterCheckboxes = new List<ToolStripMenuItem>()
-            { chkBoxShowCompleteTSI, chkBoxShowPartialTSI,chkBoxShowEmptyTSI, chkBoxShowFixesTSI, chkBoxShowMIATSI, chkBoxShowMergedTSI };
-            formToolstrips = new List<ToolStrip>() { GameRomTableTS, DatsTS };
-
             InitGameGridMenu();
 
             UpdateThemeAndControls();
+        }
+
+        private void SetupControlLists()
+        {
+            // Control Lists
+            FilterCheckboxes = new List<ToolStripMenuItem>()
+            { chkBoxShowCompleteTSI, chkBoxShowPartialTSI,chkBoxShowEmptyTSI, chkBoxShowFixesTSI, chkBoxShowMIATSI, chkBoxShowMergedTSI };
+
+            FormToolstrips = new List<ToolStrip>() { GameRomTableTS, DatsTS };
+
+            ContextMenuStrips = new List<ContextMenuStrip>()
+            { CopyTextCMS, }
         }
 
         private void MnuImportToPickedDir(object sender, EventArgs e)
@@ -591,8 +603,6 @@ namespace ROMVault
             }
         }
 
-        private List<ToolStrip> formToolstrips;
-
         /// <summary>
         /// This happens before form is shown. If post-show teaks are needed use FrmMain_Shown
         /// </summary>
@@ -604,7 +614,7 @@ namespace ROMVault
             int iconSize = (int)(1.5 * Properties.Settings.Default.MainTextSize);
             menuStrip1.ImageScalingSize = new Size(iconSize, iconSize);
 
-            foreach (ToolStrip ts in formToolstrips)
+            foreach (ToolStrip ts in FormToolstrips)
             {
                 Theming.SetControlTextSizeToDefault(ts);
                 ts.ImageScalingSize = new Size(iconSize, iconSize);
@@ -2084,8 +2094,6 @@ namespace ROMVault
             DatSetSelected(ctrRvTree.Selected);
         }
 
-        private List<ToolStripMenuItem> FilterCheckboxes;
-
         private bool _batchSettingFilters;
 
         private void setAllToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
@@ -2124,8 +2132,9 @@ namespace ROMVault
             DatSetSelected(ctrRvTree.Selected);
         }
 
-        private void GameRomTableTS_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void GameRomToHomeBT_Click(object sender, EventArgs e)
         {
+            GameGridNanigateToRoot();
         }
     }
 }

@@ -763,13 +763,13 @@ namespace ROMVault
             this.CopyTextCMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyTextToolStripMenuItem});
             this.CopyTextCMS.Name = "CopyTextCMS";
-            this.CopyTextCMS.Size = new System.Drawing.Size(127, 26);
+            this.CopyTextCMS.Size = new System.Drawing.Size(181, 48);
             // 
             // copyTextToolStripMenuItem
             // 
             this.copyTextToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_document_copy;
             this.copyTextToolStripMenuItem.Name = "copyTextToolStripMenuItem";
-            this.copyTextToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.copyTextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.copyTextToolStripMenuItem.Text = "Copy Text";
             this.copyTextToolStripMenuItem.Click += new System.EventHandler(this.copyTextToolStripMenuItem_Click);
             // 
@@ -1255,7 +1255,6 @@ namespace ROMVault
             this.GameRomTableTS.Size = new System.Drawing.Size(619, 25);
             this.GameRomTableTS.TabIndex = 0;
             this.GameRomTableTS.Text = "Navigate to Root";
-            this.GameRomTableTS.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.GameRomTableTS_ItemClicked);
             // 
             // GameRomToHomeBT
             // 
@@ -1265,6 +1264,7 @@ namespace ROMVault
             this.GameRomToHomeBT.Name = "GameRomToHomeBT";
             this.GameRomToHomeBT.Size = new System.Drawing.Size(23, 22);
             this.GameRomToHomeBT.Text = "toolStripButton1";
+            this.GameRomToHomeBT.Click += new System.EventHandler(this.GameRomToHomeBT_Click);
             // 
             // toolStripSeparator4
             // 
