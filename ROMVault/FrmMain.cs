@@ -596,6 +596,9 @@ namespace ROMVault
             // Dat Tree
             ctrRvTree.UpdateFontSize(Properties.Settings.Default.MainTextSize);
 
+            DatInfoNameLb.ForeColor = Properties.Settings.Default.InfoTextColor;
+            DatInfoPathLb.ForeColor = Properties.Settings.Default.InfoTextColor;
+
             // Dats Roms Status Tags
             var setts = Properties.Settings.Default;
             RomsGotLB.ForeColor = setts.RomGotColor;
@@ -1592,7 +1595,12 @@ namespace ROMVault
         private void UpdateDatInfoControls()
         {
             MainPG.SelectedObject = DatInfo;
-            DatInfoNameLb.Text = DatInfo.Name;
+
+            string compositName = DatInfo.Name;
+            if (!string.IsNullOrEmpty(DatInfo.Category))
+                compositName += $" ({DatInfo.Category})";
+            DatInfoNameLb.Text = compositName;
+
             DatInfoPathLb.Text = DatInfo.RomPath;
             RomsGotLB.Text = $"Got: {DatInfo.RomsGot}";
             RomsFixableLB.Text = $"Fixable: {DatInfo.RomsFixable}";
@@ -2067,6 +2075,16 @@ namespace ROMVault
 
         private void DatInfoRomsLB_Click(object sender, EventArgs e)
         {
+        }
+
+        private void copyTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var sourceControl = copyTextToolStripMenuItem.Owner is ContextMenuStrip cms ? cms.SourceControl : null;
+
+            if (!string.IsNullOrEmpty(sourceControl?.Text))
+            {
+                Clipboard.SetText(sourceControl.Text);
+            }
         }
     }
 }

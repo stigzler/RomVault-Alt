@@ -382,6 +382,7 @@
     <None Include="Resources\blue-folder--plus.png" />
     <None Include="Resources\blue-document-text.png" />
     <None Include="Resources\arrow-circle-315.png" />
+    <None Include="Resources\blue-document-copy.png" />
     <Content Include="Resources\default1.png" />
     <Content Include="Resources\default2.png" />
     <Content Include="Resources\default3.png" />

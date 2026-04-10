@@ -221,6 +221,8 @@ namespace ROMVault
             this.RomsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.RomsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
             this.RomsShortnameToggleSSBT = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyTextCMS = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -284,6 +286,7 @@ namespace ROMVault
             ((System.ComponentModel.ISupportInitialize)(this.PgHeaderPB)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.MainSS.SuspendLayout();
+            this.CopyTextCMS.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitToolBarMain
@@ -658,19 +661,18 @@ namespace ROMVault
             this.DatTreePN.Controls.Add(this.ctrRvTree);
             this.DatTreePN.Controls.Add(this.toolStrip1);
             this.DatTreePN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DatTreePN.Location = new System.Drawing.Point(4, 120);
+            this.DatTreePN.Location = new System.Drawing.Point(4, 135);
             this.DatTreePN.Name = "DatTreePN";
-            this.DatTreePN.Size = new System.Drawing.Size(432, 632);
+            this.DatTreePN.Size = new System.Drawing.Size(432, 617);
             this.DatTreePN.TabIndex = 6;
             // 
             // ctrRvTree
             // 
             this.ctrRvTree.AutoSize = true;
-            this.ctrRvTree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrRvTree.Location = new System.Drawing.Point(0, 25);
             this.ctrRvTree.Name = "ctrRvTree";
-            this.ctrRvTree.Size = new System.Drawing.Size(430, 605);
+            this.ctrRvTree.Size = new System.Drawing.Size(430, 590);
             this.ctrRvTree.TabIndex = 2;
             this.ctrRvTree.Visible = false;
             this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
@@ -709,7 +711,7 @@ namespace ROMVault
             this.RomsStatusTagsFLP.Controls.Add(this.RomsGotLB);
             this.RomsStatusTagsFLP.Dock = System.Windows.Forms.DockStyle.Top;
             this.RomsStatusTagsFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.RomsStatusTagsFLP.Location = new System.Drawing.Point(4, 89);
+            this.RomsStatusTagsFLP.Location = new System.Drawing.Point(4, 104);
             this.RomsStatusTagsFLP.Name = "RomsStatusTagsFLP";
             this.RomsStatusTagsFLP.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.RomsStatusTagsFLP.Size = new System.Drawing.Size(432, 31);
@@ -789,9 +791,9 @@ namespace ROMVault
             this.RomsPathFPR.Controls.Add(this.lblDIRomPath);
             this.RomsPathFPR.Controls.Add(this.DatInfoPathLb);
             this.RomsPathFPR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RomsPathFPR.Location = new System.Drawing.Point(4, 60);
+            this.RomsPathFPR.Location = new System.Drawing.Point(4, 73);
             this.RomsPathFPR.Name = "RomsPathFPR";
-            this.RomsPathFPR.Size = new System.Drawing.Size(432, 29);
+            this.RomsPathFPR.Size = new System.Drawing.Size(432, 31);
             this.RomsPathFPR.TabIndex = 26;
             this.RomsPathFPR.WrapContents = false;
             // 
@@ -799,7 +801,7 @@ namespace ROMVault
             // 
             this.lblDIRomPath.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDIRomPath.AutoSize = true;
-            this.lblDIRomPath.Location = new System.Drawing.Point(0, 6);
+            this.lblDIRomPath.Location = new System.Drawing.Point(0, 7);
             this.lblDIRomPath.Margin = new System.Windows.Forms.Padding(0);
             this.lblDIRomPath.Name = "lblDIRomPath";
             this.lblDIRomPath.Size = new System.Drawing.Size(76, 17);
@@ -810,11 +812,12 @@ namespace ROMVault
             // DatInfoPathLb
             // 
             this.DatInfoPathLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DatInfoPathLb.ContextMenuStrip = this.CopyTextCMS;
             this.DatInfoPathLb.Location = new System.Drawing.Point(79, 3);
             this.DatInfoPathLb.Margin = new System.Windows.Forms.Padding(3);
             this.DatInfoPathLb.Name = "DatInfoPathLb";
-            this.DatInfoPathLb.Padding = new System.Windows.Forms.Padding(3);
-            this.DatInfoPathLb.Size = new System.Drawing.Size(350, 23);
+            this.DatInfoPathLb.Padding = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.DatInfoPathLb.Size = new System.Drawing.Size(350, 25);
             this.DatInfoPathLb.TabIndex = 21;
             this.DatInfoPathLb.Text = "label3";
             this.DatInfoPathLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -825,7 +828,7 @@ namespace ROMVault
             this.DatNameFPR.Controls.Add(this.lblDIName);
             this.DatNameFPR.Controls.Add(this.DatInfoNameLb);
             this.DatNameFPR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DatNameFPR.Location = new System.Drawing.Point(4, 31);
+            this.DatNameFPR.Location = new System.Drawing.Point(4, 44);
             this.DatNameFPR.Name = "DatNameFPR";
             this.DatNameFPR.Size = new System.Drawing.Size(432, 29);
             this.DatNameFPR.TabIndex = 27;
@@ -847,6 +850,7 @@ namespace ROMVault
             // 
             this.DatInfoNameLb.AutoSize = true;
             this.DatInfoNameLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DatInfoNameLb.ContextMenuStrip = this.CopyTextCMS;
             this.DatInfoNameLb.Location = new System.Drawing.Point(76, 3);
             this.DatInfoNameLb.Margin = new System.Windows.Forms.Padding(3);
             this.DatInfoNameLb.Name = "DatInfoNameLb";
@@ -864,7 +868,7 @@ namespace ROMVault
             this.VaultHeaderPN.Location = new System.Drawing.Point(4, 4);
             this.VaultHeaderPN.Name = "VaultHeaderPN";
             this.VaultHeaderPN.Padding = new System.Windows.Forms.Padding(2);
-            this.VaultHeaderPN.Size = new System.Drawing.Size(432, 27);
+            this.VaultHeaderPN.Size = new System.Drawing.Size(432, 40);
             this.VaultHeaderPN.TabIndex = 7;
             // 
             // DatPanelHeaderLB
@@ -875,7 +879,7 @@ namespace ROMVault
             this.DatPanelHeaderLB.Location = new System.Drawing.Point(26, 2);
             this.DatPanelHeaderLB.Name = "DatPanelHeaderLB";
             this.DatPanelHeaderLB.ScaleFactor = 1.2D;
-            this.DatPanelHeaderLB.Size = new System.Drawing.Size(404, 23);
+            this.DatPanelHeaderLB.Size = new System.Drawing.Size(404, 36);
             this.DatPanelHeaderLB.TabIndex = 3;
             this.DatPanelHeaderLB.Text = "Dat Summary";
             this.DatPanelHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -888,7 +892,7 @@ namespace ROMVault
             this.pictureBox1.Location = new System.Drawing.Point(2, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Size = new System.Drawing.Size(24, 23);
+            this.pictureBox1.Size = new System.Drawing.Size(24, 36);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -2545,6 +2549,21 @@ namespace ROMVault
             this.RomsShortnameToggleSSBT.Text = "Toggle Shortname";
             this.RomsShortnameToggleSSBT.Click += new System.EventHandler(this.RomsShortnameToggleSSBT_Click);
             // 
+            // CopyTextCMS
+            // 
+            this.CopyTextCMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyTextToolStripMenuItem});
+            this.CopyTextCMS.Name = "CopyTextCMS";
+            this.CopyTextCMS.Size = new System.Drawing.Size(127, 26);
+            // 
+            // copyTextToolStripMenuItem
+            // 
+            this.copyTextToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_document_copy;
+            this.copyTextToolStripMenuItem.Name = "copyTextToolStripMenuItem";
+            this.copyTextToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.copyTextToolStripMenuItem.Text = "Copy Text";
+            this.copyTextToolStripMenuItem.Click += new System.EventHandler(this.copyTextToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2652,6 +2671,7 @@ namespace ROMVault
             this.menuStrip1.PerformLayout();
             this.MainSS.ResumeLayout(false);
             this.MainSS.PerformLayout();
+            this.CopyTextCMS.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2848,6 +2868,8 @@ namespace ROMVault
         private Label DatInfoNameLb;
         private FlowPanelResponsive RomsPathFPR;
         private FlowPanelResponsive DatNameFPR;
+        private ContextMenuStrip CopyTextCMS;
+        private ToolStripMenuItem copyTextToolStripMenuItem;
     }
 }
 

@@ -121,8 +121,11 @@
   <data name="Fave2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fave2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="magnifier-zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\magnifier-zoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="disc--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disc--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="information-frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\information-frame1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="smileyBig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\smiley1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,11 +148,14 @@
   <data name="arrowCircle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-circle-315.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="disc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disc3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DatsUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DatsUpdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MenuExpand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuExpand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,20 +184,17 @@
   <data name="wand-magic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wand-magic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow-270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="database--plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database--plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MenuExpand" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuExpand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="folder-open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder-open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="database--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="disc--arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disc--arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="smiley" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\smiley.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RomsFix" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RomsFix.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,8 +208,8 @@
   <data name="folder-tree" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder-tree1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="smiley" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\smiley.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="discBig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\disc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,14 +229,14 @@
   <data name="databaseBig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="folder-open" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DatsUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatsUpdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Fave4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fave4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="disc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disc3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="magnifier-zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\magnifier-zoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Fave1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fave1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -247,7 +250,7 @@
   <data name="ReportsDownload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ReportsDownload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="information-frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\information-frame1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="blue-document-copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blue-document-copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
