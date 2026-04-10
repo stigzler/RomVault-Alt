@@ -658,9 +658,9 @@ namespace ROMVault
             this.DatTreePN.Controls.Add(this.ctrRvTree);
             this.DatTreePN.Controls.Add(this.toolStrip1);
             this.DatTreePN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DatTreePN.Location = new System.Drawing.Point(4, 118);
+            this.DatTreePN.Location = new System.Drawing.Point(4, 120);
             this.DatTreePN.Name = "DatTreePN";
-            this.DatTreePN.Size = new System.Drawing.Size(432, 634);
+            this.DatTreePN.Size = new System.Drawing.Size(432, 632);
             this.DatTreePN.TabIndex = 6;
             // 
             // ctrRvTree
@@ -670,7 +670,7 @@ namespace ROMVault
             this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrRvTree.Location = new System.Drawing.Point(0, 25);
             this.ctrRvTree.Name = "ctrRvTree";
-            this.ctrRvTree.Size = new System.Drawing.Size(430, 607);
+            this.ctrRvTree.Size = new System.Drawing.Size(430, 605);
             this.ctrRvTree.TabIndex = 2;
             this.ctrRvTree.Visible = false;
             this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
@@ -711,7 +711,8 @@ namespace ROMVault
             this.RomsStatusTagsFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.RomsStatusTagsFLP.Location = new System.Drawing.Point(4, 89);
             this.RomsStatusTagsFLP.Name = "RomsStatusTagsFLP";
-            this.RomsStatusTagsFLP.Size = new System.Drawing.Size(432, 29);
+            this.RomsStatusTagsFLP.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.RomsStatusTagsFLP.Size = new System.Drawing.Size(432, 31);
             this.RomsStatusTagsFLP.TabIndex = 20;
             // 
             // RomsUnknownLB

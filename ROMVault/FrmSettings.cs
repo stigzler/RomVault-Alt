@@ -284,6 +284,7 @@ namespace ROMVault
         {
             ChangeFormControlsFontSizes();
             UpdateStatusBar();
+            CenterFormOnScreen();
         }
 
         // Call this after InitializeComponent()
@@ -441,6 +442,19 @@ namespace ROMVault
                 SendMessage(this.Handle, WM_SETREDRAW, true, 0);
                 this.Refresh();
             }
+        }
+
+        public void CenterFormOnScreen()
+        {
+            // Get the screen that currently contains the majority of the form
+            Screen currentScreen = Screen.FromControl(this);
+
+            Rectangle workingArea = currentScreen.WorkingArea;
+
+            this.Location = new Point(
+                workingArea.Left + (workingArea.Width - this.Width) / 2,
+                workingArea.Top + (workingArea.Height - this.Height) / 2
+            );
         }
     }
 }
