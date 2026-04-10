@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Dark.Renderers;
+using System.Linq;
 
 namespace Dark
 {
@@ -52,12 +53,13 @@ namespace Dark
         public static void SetColors(Form frm)
         {
             SetTitleBarColor(bg0, frm.Handle);
+            frm.BackColor = bg;
+            frm.ForeColor = fg;
+
             foreach (Control c in frm.Controls)
             {
                 SetColors(c);
             }
-            frm.BackColor = bg;
-            frm.ForeColor = fg;
         }
 
         public static void SetColors(Control c)
@@ -119,6 +121,13 @@ namespace Dark
                     ts.Renderer = new DarkToolStripRenderer();
                     ts.BackColor = bgTs;
                     ts.ForeColor = fg;
+
+                    foreach (ToolStripSeparator tss in ts.Items.OfType<ToolStripSeparator>().ToList())
+                    {
+                        tss.ForeColor = fgDimmed;
+                        tss.BackColor = bgTs;
+                    }
+
                     break;
 
                 case PropertyGrid pg:

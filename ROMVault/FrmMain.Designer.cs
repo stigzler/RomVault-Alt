@@ -55,7 +55,6 @@ namespace ROMVault
             this.PaddingPN = new System.Windows.Forms.Panel();
             this.btnUpdateDats = new System.Windows.Forms.Button();
             this.lblTreePreSets = new System.Windows.Forms.Label();
-            this.MainSC = new System.Windows.Forms.SplitContainer();
             this.splitDatInfoGameInfo = new System.Windows.Forms.SplitContainer();
             this.DatInfoPN = new System.Windows.Forms.Panel();
             this.DatTreePN = new System.Windows.Forms.Panel();
@@ -79,16 +78,6 @@ namespace ROMVault
             this.DatPanelHeaderLB = new ROMVault.UserControls.FlexiLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitGameInfoLists = new System.Windows.Forms.SplitContainer();
-            this.GameDetailsRhsFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.chkBoxShowComplete = new System.Windows.Forms.CheckBox();
-            this.chkBoxShowPartial = new System.Windows.Forms.CheckBox();
-            this.chkBoxShowEmpty = new System.Windows.Forms.CheckBox();
-            this.chkBoxShowFixes = new System.Windows.Forms.CheckBox();
-            this.chkBoxShowMIA = new System.Windows.Forms.CheckBox();
-            this.chkBoxShowMerged = new System.Windows.Forms.CheckBox();
-            this.SearchTLP = new System.Windows.Forms.TableLayoutPanel();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.txtFilter = new ROMVault.UserControls.PromptTextBox();
             this.splitListArt = new System.Windows.Forms.SplitContainer();
             this.GameRomPN = new System.Windows.Forms.Panel();
             this.splitGameListRomList = new System.Windows.Forms.SplitContainer();
@@ -114,8 +103,8 @@ namespace ROMVault
             this.CFileModDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CZipIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CInstanceCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GameRomNavigateToRootBT = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.GameRomTableTS = new System.Windows.Forms.ToolStrip();
+            this.GameRomToHomeBT = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.FilterTSDD = new System.Windows.Forms.ToolStripDropDownButton();
             this.chkBoxShowCompleteTSI = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,6 +119,7 @@ namespace ROMVault
             this.gameSearchTSTB = new System.Windows.Forms.ToolStripTextBox();
             this.gameSearchTSBT = new System.Windows.Forms.ToolStripButton();
             this.gameSearchClearBT = new System.Windows.Forms.ToolStripButton();
+            this.GameGridRowCountLB = new System.Windows.Forms.ToolStripLabel();
             this.TabEmuArc = new System.Windows.Forms.TabControl();
             this.tabArtWork = new System.Windows.Forms.TabPage();
             this.picLogo = new System.Windows.Forms.PictureBox();
@@ -145,8 +135,6 @@ namespace ROMVault
             this.tabInfo2 = new System.Windows.Forms.TabPage();
             this.txtInfo2 = new System.Windows.Forms.TextBox();
             this.MainPG = new System.Windows.Forms.PropertyGrid();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.PgHeader = new System.Windows.Forms.Panel();
             this.PgHeaderLB = new ROMVault.UserControls.FlexiLabel();
             this.PgHeaderPB = new System.Windows.Forms.PictureBox();
@@ -196,7 +184,6 @@ namespace ROMVault
             this.RomsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.RomsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
             this.RomsShortnameToggleSSBT = new System.Windows.Forms.ToolStripMenuItem();
-            this.GameGridRowCountLB = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -207,10 +194,6 @@ namespace ROMVault
             this.Padding3PN.SuspendLayout();
             this.PaddingPN2.SuspendLayout();
             this.PaddingPN.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainSC)).BeginInit();
-            this.MainSC.Panel1.SuspendLayout();
-            this.MainSC.Panel2.SuspendLayout();
-            this.MainSC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDatInfoGameInfo)).BeginInit();
             this.splitDatInfoGameInfo.Panel1.SuspendLayout();
             this.splitDatInfoGameInfo.Panel2.SuspendLayout();
@@ -228,8 +211,6 @@ namespace ROMVault
             this.splitGameInfoLists.Panel1.SuspendLayout();
             this.splitGameInfoLists.Panel2.SuspendLayout();
             this.splitGameInfoLists.SuspendLayout();
-            this.GameDetailsRhsFLP.SuspendLayout();
-            this.SearchTLP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitListArt)).BeginInit();
             this.splitListArt.Panel1.SuspendLayout();
             this.splitListArt.Panel2.SuspendLayout();
@@ -241,7 +222,7 @@ namespace ROMVault
             this.splitGameListRomList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GameGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RomGrid)).BeginInit();
-            this.GameRomNavigateToRootBT.SuspendLayout();
+            this.GameRomTableTS.SuspendLayout();
             this.TabEmuArc.SuspendLayout();
             this.tabArtWork.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -254,7 +235,6 @@ namespace ROMVault
             ((System.ComponentModel.ISupportInitialize)(this.picScreenTitle)).BeginInit();
             this.tabInfo.SuspendLayout();
             this.tabInfo2.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
             this.PgHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PgHeaderPB)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -263,7 +243,6 @@ namespace ROMVault
             // 
             // splitToolBarMain
             // 
-            this.splitToolBarMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitToolBarMain.Location = new System.Drawing.Point(0, 24);
             this.splitToolBarMain.Name = "splitToolBarMain";
             // 
@@ -284,7 +263,7 @@ namespace ROMVault
             // 
             // splitToolBarMain.Panel2
             // 
-            this.splitToolBarMain.Panel2.Controls.Add(this.MainSC);
+            this.splitToolBarMain.Panel2.Controls.Add(this.splitDatInfoGameInfo);
             this.splitToolBarMain.Size = new System.Drawing.Size(1300, 766);
             this.splitToolBarMain.SplitterDistance = 130;
             this.splitToolBarMain.TabIndex = 5;
@@ -569,26 +548,6 @@ namespace ROMVault
             this.lblTreePreSets.Text = "Tree Pre-Sets";
             this.lblTreePreSets.Visible = false;
             // 
-            // MainSC
-            // 
-            this.MainSC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainSC.Location = new System.Drawing.Point(0, 0);
-            this.MainSC.Name = "MainSC";
-            // 
-            // MainSC.Panel1
-            // 
-            this.MainSC.Panel1.Controls.Add(this.splitDatInfoGameInfo);
-            // 
-            // MainSC.Panel2
-            // 
-            this.MainSC.Panel2.Controls.Add(this.MainPG);
-            this.MainSC.Panel2.Controls.Add(this.toolStrip2);
-            this.MainSC.Panel2.Controls.Add(this.PgHeader);
-            this.MainSC.Panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.MainSC.Size = new System.Drawing.Size(1166, 766);
-            this.MainSC.SplitterDistance = 814;
-            this.MainSC.TabIndex = 1;
-            // 
             // splitDatInfoGameInfo
             // 
             this.splitDatInfoGameInfo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -606,8 +565,8 @@ namespace ROMVault
             this.splitDatInfoGameInfo.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitDatInfoGameInfo.Panel2.Controls.Add(this.splitGameInfoLists);
             this.splitDatInfoGameInfo.Panel2.Padding = new System.Windows.Forms.Padding(4);
-            this.splitDatInfoGameInfo.Size = new System.Drawing.Size(814, 766);
-            this.splitDatInfoGameInfo.SplitterDistance = 243;
+            this.splitDatInfoGameInfo.Size = new System.Drawing.Size(1166, 766);
+            this.splitDatInfoGameInfo.SplitterDistance = 348;
             this.splitDatInfoGameInfo.TabIndex = 0;
             // 
             // DatInfoPN
@@ -623,7 +582,7 @@ namespace ROMVault
             this.DatInfoPN.Location = new System.Drawing.Point(4, 4);
             this.DatInfoPN.Name = "DatInfoPN";
             this.DatInfoPN.Padding = new System.Windows.Forms.Padding(4);
-            this.DatInfoPN.Size = new System.Drawing.Size(235, 758);
+            this.DatInfoPN.Size = new System.Drawing.Size(340, 758);
             this.DatInfoPN.TabIndex = 4;
             // 
             // DatTreePN
@@ -633,9 +592,9 @@ namespace ROMVault
             this.DatTreePN.Controls.Add(this.ctrRvTree);
             this.DatTreePN.Controls.Add(this.toolStrip1);
             this.DatTreePN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DatTreePN.Location = new System.Drawing.Point(4, 135);
+            this.DatTreePN.Location = new System.Drawing.Point(4, 129);
             this.DatTreePN.Name = "DatTreePN";
-            this.DatTreePN.Size = new System.Drawing.Size(225, 617);
+            this.DatTreePN.Size = new System.Drawing.Size(330, 623);
             this.DatTreePN.TabIndex = 6;
             // 
             // ctrRvTree
@@ -645,7 +604,7 @@ namespace ROMVault
             this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrRvTree.Location = new System.Drawing.Point(0, 25);
             this.ctrRvTree.Name = "ctrRvTree";
-            this.ctrRvTree.Size = new System.Drawing.Size(223, 590);
+            this.ctrRvTree.Size = new System.Drawing.Size(328, 596);
             this.ctrRvTree.TabIndex = 2;
             this.ctrRvTree.Visible = false;
             this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
@@ -659,7 +618,7 @@ namespace ROMVault
             this.DatsCollapseTreeBT});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(223, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(328, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -684,10 +643,10 @@ namespace ROMVault
             this.RomsStatusTagsFLP.Controls.Add(this.RomsGotLB);
             this.RomsStatusTagsFLP.Dock = System.Windows.Forms.DockStyle.Top;
             this.RomsStatusTagsFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.RomsStatusTagsFLP.Location = new System.Drawing.Point(4, 104);
+            this.RomsStatusTagsFLP.Location = new System.Drawing.Point(4, 98);
             this.RomsStatusTagsFLP.Name = "RomsStatusTagsFLP";
             this.RomsStatusTagsFLP.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.RomsStatusTagsFLP.Size = new System.Drawing.Size(225, 31);
+            this.RomsStatusTagsFLP.Size = new System.Drawing.Size(330, 31);
             this.RomsStatusTagsFLP.TabIndex = 20;
             // 
             // RomsUnknownLB
@@ -697,7 +656,7 @@ namespace ROMVault
             this.RomsUnknownLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RomsUnknownLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RomsUnknownLB.ForeColor = System.Drawing.Color.Cyan;
-            this.RomsUnknownLB.Location = new System.Drawing.Point(174, 2);
+            this.RomsUnknownLB.Location = new System.Drawing.Point(279, 2);
             this.RomsUnknownLB.Margin = new System.Windows.Forms.Padding(2);
             this.RomsUnknownLB.Name = "RomsUnknownLB";
             this.RomsUnknownLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
@@ -714,7 +673,7 @@ namespace ROMVault
             this.RomsFixableLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RomsFixableLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RomsFixableLB.ForeColor = System.Drawing.Color.Yellow;
-            this.RomsFixableLB.Location = new System.Drawing.Point(121, 2);
+            this.RomsFixableLB.Location = new System.Drawing.Point(226, 2);
             this.RomsFixableLB.Margin = new System.Windows.Forms.Padding(2);
             this.RomsFixableLB.Name = "RomsFixableLB";
             this.RomsFixableLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
@@ -731,7 +690,7 @@ namespace ROMVault
             this.RomsMissingLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RomsMissingLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RomsMissingLB.ForeColor = System.Drawing.Color.Red;
-            this.RomsMissingLB.Location = new System.Drawing.Point(68, 2);
+            this.RomsMissingLB.Location = new System.Drawing.Point(173, 2);
             this.RomsMissingLB.Margin = new System.Windows.Forms.Padding(2);
             this.RomsMissingLB.Name = "RomsMissingLB";
             this.RomsMissingLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
@@ -748,7 +707,7 @@ namespace ROMVault
             this.RomsGotLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RomsGotLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RomsGotLB.ForeColor = System.Drawing.Color.LimeGreen;
-            this.RomsGotLB.Location = new System.Drawing.Point(15, 2);
+            this.RomsGotLB.Location = new System.Drawing.Point(120, 2);
             this.RomsGotLB.Margin = new System.Windows.Forms.Padding(2);
             this.RomsGotLB.Name = "RomsGotLB";
             this.RomsGotLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
@@ -764,9 +723,9 @@ namespace ROMVault
             this.RomsPathFPR.Controls.Add(this.lblDIRomPath);
             this.RomsPathFPR.Controls.Add(this.DatInfoPathLb);
             this.RomsPathFPR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RomsPathFPR.Location = new System.Drawing.Point(4, 73);
+            this.RomsPathFPR.Location = new System.Drawing.Point(4, 67);
             this.RomsPathFPR.Name = "RomsPathFPR";
-            this.RomsPathFPR.Size = new System.Drawing.Size(225, 31);
+            this.RomsPathFPR.Size = new System.Drawing.Size(330, 31);
             this.RomsPathFPR.TabIndex = 26;
             this.RomsPathFPR.WrapContents = false;
             // 
@@ -790,7 +749,7 @@ namespace ROMVault
             this.DatInfoPathLb.Margin = new System.Windows.Forms.Padding(3);
             this.DatInfoPathLb.Name = "DatInfoPathLb";
             this.DatInfoPathLb.Padding = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.DatInfoPathLb.Size = new System.Drawing.Size(143, 25);
+            this.DatInfoPathLb.Size = new System.Drawing.Size(248, 25);
             this.DatInfoPathLb.TabIndex = 21;
             this.DatInfoPathLb.Text = "label3";
             this.DatInfoPathLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -816,9 +775,9 @@ namespace ROMVault
             this.DatNameFPR.Controls.Add(this.lblDIName);
             this.DatNameFPR.Controls.Add(this.DatInfoNameLb);
             this.DatNameFPR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DatNameFPR.Location = new System.Drawing.Point(4, 44);
+            this.DatNameFPR.Location = new System.Drawing.Point(4, 38);
             this.DatNameFPR.Name = "DatNameFPR";
-            this.DatNameFPR.Size = new System.Drawing.Size(225, 29);
+            this.DatNameFPR.Size = new System.Drawing.Size(330, 29);
             this.DatNameFPR.TabIndex = 27;
             this.DatNameFPR.WrapContents = false;
             // 
@@ -843,7 +802,7 @@ namespace ROMVault
             this.DatInfoNameLb.Margin = new System.Windows.Forms.Padding(3);
             this.DatInfoNameLb.Name = "DatInfoNameLb";
             this.DatInfoNameLb.Padding = new System.Windows.Forms.Padding(2);
-            this.DatInfoNameLb.Size = new System.Drawing.Size(142, 23);
+            this.DatInfoNameLb.Size = new System.Drawing.Size(247, 23);
             this.DatInfoNameLb.TabIndex = 22;
             this.DatInfoNameLb.Text = "label3";
             this.DatInfoNameLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -856,7 +815,7 @@ namespace ROMVault
             this.VaultHeaderPN.Location = new System.Drawing.Point(4, 4);
             this.VaultHeaderPN.Name = "VaultHeaderPN";
             this.VaultHeaderPN.Padding = new System.Windows.Forms.Padding(2);
-            this.VaultHeaderPN.Size = new System.Drawing.Size(225, 40);
+            this.VaultHeaderPN.Size = new System.Drawing.Size(330, 34);
             this.VaultHeaderPN.TabIndex = 7;
             // 
             // DatPanelHeaderLB
@@ -867,7 +826,7 @@ namespace ROMVault
             this.DatPanelHeaderLB.Location = new System.Drawing.Point(26, 2);
             this.DatPanelHeaderLB.Name = "DatPanelHeaderLB";
             this.DatPanelHeaderLB.ScaleFactor = 1.2D;
-            this.DatPanelHeaderLB.Size = new System.Drawing.Size(197, 36);
+            this.DatPanelHeaderLB.Size = new System.Drawing.Size(302, 30);
             this.DatPanelHeaderLB.TabIndex = 3;
             this.DatPanelHeaderLB.Text = "Vault: DATs and ToSort";
             this.DatPanelHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -880,7 +839,7 @@ namespace ROMVault
             this.pictureBox1.Location = new System.Drawing.Point(2, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Size = new System.Drawing.Size(24, 36);
+            this.pictureBox1.Size = new System.Drawing.Size(24, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -894,159 +853,16 @@ namespace ROMVault
             // 
             // splitGameInfoLists.Panel1
             // 
-            this.splitGameInfoLists.Panel1.Controls.Add(this.GameDetailsRhsFLP);
+            this.splitGameInfoLists.Panel1.Controls.Add(this.MainPG);
+            this.splitGameInfoLists.Panel1.Controls.Add(this.PgHeader);
             this.splitGameInfoLists.Panel1.Resize += new System.EventHandler(this.splitContainer4_Panel1_Resize);
             // 
             // splitGameInfoLists.Panel2
             // 
             this.splitGameInfoLists.Panel2.Controls.Add(this.splitListArt);
-            this.splitGameInfoLists.Size = new System.Drawing.Size(559, 758);
-            this.splitGameInfoLists.SplitterDistance = 420;
+            this.splitGameInfoLists.Size = new System.Drawing.Size(806, 758);
+            this.splitGameInfoLists.SplitterDistance = 245;
             this.splitGameInfoLists.TabIndex = 0;
-            // 
-            // GameDetailsRhsFLP
-            // 
-            this.GameDetailsRhsFLP.AutoSize = true;
-            this.GameDetailsRhsFLP.Controls.Add(this.chkBoxShowComplete);
-            this.GameDetailsRhsFLP.Controls.Add(this.chkBoxShowPartial);
-            this.GameDetailsRhsFLP.Controls.Add(this.chkBoxShowEmpty);
-            this.GameDetailsRhsFLP.Controls.Add(this.chkBoxShowFixes);
-            this.GameDetailsRhsFLP.Controls.Add(this.chkBoxShowMIA);
-            this.GameDetailsRhsFLP.Controls.Add(this.chkBoxShowMerged);
-            this.GameDetailsRhsFLP.Controls.Add(this.SearchTLP);
-            this.GameDetailsRhsFLP.Dock = System.Windows.Forms.DockStyle.Right;
-            this.GameDetailsRhsFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.GameDetailsRhsFLP.Location = new System.Drawing.Point(363, 0);
-            this.GameDetailsRhsFLP.Name = "GameDetailsRhsFLP";
-            this.GameDetailsRhsFLP.Padding = new System.Windows.Forms.Padding(4);
-            this.GameDetailsRhsFLP.Size = new System.Drawing.Size(196, 420);
-            this.GameDetailsRhsFLP.TabIndex = 21;
-            // 
-            // chkBoxShowComplete
-            // 
-            this.chkBoxShowComplete.AutoSize = true;
-            this.chkBoxShowComplete.Checked = true;
-            this.chkBoxShowComplete.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBoxShowComplete.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkBoxShowComplete.Location = new System.Drawing.Point(7, 7);
-            this.chkBoxShowComplete.Name = "chkBoxShowComplete";
-            this.chkBoxShowComplete.Size = new System.Drawing.Size(124, 22);
-            this.chkBoxShowComplete.TabIndex = 5;
-            this.chkBoxShowComplete.Text = "Show Complete";
-            this.chkBoxShowComplete.UseVisualStyleBackColor = true;
-            this.chkBoxShowComplete.CheckedChanged += new System.EventHandler(this.ChkBoxShowCompleteCheckedChanged);
-            // 
-            // chkBoxShowPartial
-            // 
-            this.chkBoxShowPartial.AutoSize = true;
-            this.chkBoxShowPartial.Checked = true;
-            this.chkBoxShowPartial.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBoxShowPartial.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkBoxShowPartial.Location = new System.Drawing.Point(7, 35);
-            this.chkBoxShowPartial.Name = "chkBoxShowPartial";
-            this.chkBoxShowPartial.Size = new System.Drawing.Size(104, 22);
-            this.chkBoxShowPartial.TabIndex = 6;
-            this.chkBoxShowPartial.Text = "Show Partial";
-            this.chkBoxShowPartial.UseVisualStyleBackColor = true;
-            this.chkBoxShowPartial.CheckedChanged += new System.EventHandler(this.ChkBoxShowPartialCheckedChanged);
-            // 
-            // chkBoxShowEmpty
-            // 
-            this.chkBoxShowEmpty.AutoSize = true;
-            this.chkBoxShowEmpty.Checked = true;
-            this.chkBoxShowEmpty.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBoxShowEmpty.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkBoxShowEmpty.Location = new System.Drawing.Point(7, 63);
-            this.chkBoxShowEmpty.Name = "chkBoxShowEmpty";
-            this.chkBoxShowEmpty.Size = new System.Drawing.Size(104, 22);
-            this.chkBoxShowEmpty.TabIndex = 20;
-            this.chkBoxShowEmpty.Text = "Show Empty";
-            this.chkBoxShowEmpty.UseVisualStyleBackColor = true;
-            this.chkBoxShowEmpty.CheckedChanged += new System.EventHandler(this.chkBoxShowEmptyCheckedChanged);
-            // 
-            // chkBoxShowFixes
-            // 
-            this.chkBoxShowFixes.AutoSize = true;
-            this.chkBoxShowFixes.Checked = true;
-            this.chkBoxShowFixes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBoxShowFixes.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkBoxShowFixes.Location = new System.Drawing.Point(7, 91);
-            this.chkBoxShowFixes.Name = "chkBoxShowFixes";
-            this.chkBoxShowFixes.Size = new System.Drawing.Size(96, 22);
-            this.chkBoxShowFixes.TabIndex = 7;
-            this.chkBoxShowFixes.Text = "Show Fixes";
-            this.chkBoxShowFixes.UseVisualStyleBackColor = true;
-            this.chkBoxShowFixes.CheckedChanged += new System.EventHandler(this.ChkBoxShowFixesCheckedChanged);
-            // 
-            // chkBoxShowMIA
-            // 
-            this.chkBoxShowMIA.AutoSize = true;
-            this.chkBoxShowMIA.Checked = true;
-            this.chkBoxShowMIA.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBoxShowMIA.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkBoxShowMIA.Location = new System.Drawing.Point(7, 119);
-            this.chkBoxShowMIA.Name = "chkBoxShowMIA";
-            this.chkBoxShowMIA.Size = new System.Drawing.Size(91, 22);
-            this.chkBoxShowMIA.TabIndex = 19;
-            this.chkBoxShowMIA.Text = "Show MIA";
-            this.chkBoxShowMIA.UseVisualStyleBackColor = true;
-            this.chkBoxShowMIA.CheckedChanged += new System.EventHandler(this.chkBoxShowMIA_CheckedChanged);
-            // 
-            // chkBoxShowMerged
-            // 
-            this.chkBoxShowMerged.AutoSize = true;
-            this.chkBoxShowMerged.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkBoxShowMerged.Location = new System.Drawing.Point(7, 147);
-            this.chkBoxShowMerged.Name = "chkBoxShowMerged";
-            this.chkBoxShowMerged.Size = new System.Drawing.Size(182, 22);
-            this.chkBoxShowMerged.TabIndex = 8;
-            this.chkBoxShowMerged.Text = "Show Merged / Deduped";
-            this.chkBoxShowMerged.UseVisualStyleBackColor = true;
-            this.chkBoxShowMerged.CheckedChanged += new System.EventHandler(this.ChkBoxShowMergedCheckedChanged);
-            // 
-            // SearchTLP
-            // 
-            this.SearchTLP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchTLP.AutoSize = true;
-            this.SearchTLP.ColumnCount = 2;
-            this.SearchTLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.SearchTLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.SearchTLP.Controls.Add(this.btnClear, 1, 0);
-            this.SearchTLP.Controls.Add(this.txtFilter, 0, 0);
-            this.SearchTLP.Location = new System.Drawing.Point(7, 175);
-            this.SearchTLP.Name = "SearchTLP";
-            this.SearchTLP.RowCount = 1;
-            this.SearchTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.SearchTLP.Size = new System.Drawing.Size(182, 31);
-            this.SearchTLP.TabIndex = 23;
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Image = global::ROMVault.Properties.Resources.cross;
-            this.btnClear.Location = new System.Drawing.Point(154, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(25, 25);
-            this.btnClear.TabIndex = 18;
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
-            // 
-            // txtFilter
-            // 
-            this.txtFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.txtFilter.Location = new System.Drawing.Point(3, 3);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.PromptColor = System.Drawing.Color.Gray;
-            this.txtFilter.PromptItalicised = true;
-            this.txtFilter.PromptOnEmpty = "Filter ROMS...";
-            this.txtFilter.Size = new System.Drawing.Size(145, 25);
-            this.txtFilter.TabIndex = 17;
-            this.txtFilter.TextChanged += new System.EventHandler(this.TxtFilter_TextChanged);
             // 
             // splitListArt
             // 
@@ -1061,19 +877,19 @@ namespace ROMVault
             // splitListArt.Panel2
             // 
             this.splitListArt.Panel2.Controls.Add(this.TabEmuArc);
-            this.splitListArt.Size = new System.Drawing.Size(559, 334);
-            this.splitListArt.SplitterDistance = 431;
+            this.splitListArt.Size = new System.Drawing.Size(806, 509);
+            this.splitListArt.SplitterDistance = 621;
             this.splitListArt.TabIndex = 1;
             // 
             // GameRomPN
             // 
             this.GameRomPN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GameRomPN.Controls.Add(this.splitGameListRomList);
-            this.GameRomPN.Controls.Add(this.GameRomNavigateToRootBT);
+            this.GameRomPN.Controls.Add(this.GameRomTableTS);
             this.GameRomPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GameRomPN.Location = new System.Drawing.Point(0, 0);
             this.GameRomPN.Name = "GameRomPN";
-            this.GameRomPN.Size = new System.Drawing.Size(431, 334);
+            this.GameRomPN.Size = new System.Drawing.Size(621, 509);
             this.GameRomPN.TabIndex = 1;
             // 
             // splitGameListRomList
@@ -1090,8 +906,8 @@ namespace ROMVault
             // splitGameListRomList.Panel2
             // 
             this.splitGameListRomList.Panel2.Controls.Add(this.RomGrid);
-            this.splitGameListRomList.Size = new System.Drawing.Size(429, 307);
-            this.splitGameListRomList.SplitterDistance = 192;
+            this.splitGameListRomList.Size = new System.Drawing.Size(619, 482);
+            this.splitGameListRomList.SplitterDistance = 301;
             this.splitGameListRomList.TabIndex = 0;
             // 
             // GameGrid
@@ -1122,7 +938,7 @@ namespace ROMVault
             this.GameGrid.ShowCellToolTips = false;
             this.GameGrid.ShowEditingIcon = false;
             this.GameGrid.ShowRowErrors = false;
-            this.GameGrid.Size = new System.Drawing.Size(429, 192);
+            this.GameGrid.Size = new System.Drawing.Size(619, 301);
             this.GameGrid.TabIndex = 4;
             this.GameGrid.VirtualMode = true;
             this.GameGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GameGrid_CellContentClick);
@@ -1219,7 +1035,7 @@ namespace ROMVault
             this.RomGrid.ShowCellErrors = false;
             this.RomGrid.ShowEditingIcon = false;
             this.RomGrid.ShowRowErrors = false;
-            this.RomGrid.Size = new System.Drawing.Size(429, 111);
+            this.RomGrid.Size = new System.Drawing.Size(619, 177);
             this.RomGrid.TabIndex = 21;
             this.RomGrid.VirtualMode = true;
             this.RomGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.RomGridCellFormatting);
@@ -1368,31 +1184,31 @@ namespace ROMVault
             this.CInstanceCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.CInstanceCount.Width = 125;
             // 
-            // GameRomNavigateToRootBT
+            // GameRomTableTS
             // 
-            this.GameRomNavigateToRootBT.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.GameRomNavigateToRootBT.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.GameRomTableTS.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.GameRomTableTS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.GameRomToHomeBT,
             this.toolStripSeparator4,
             this.FilterTSDD,
             this.gameSearchTSTB,
             this.gameSearchTSBT,
             this.gameSearchClearBT,
             this.GameGridRowCountLB});
-            this.GameRomNavigateToRootBT.Location = new System.Drawing.Point(0, 0);
-            this.GameRomNavigateToRootBT.Name = "GameRomNavigateToRootBT";
-            this.GameRomNavigateToRootBT.Size = new System.Drawing.Size(429, 25);
-            this.GameRomNavigateToRootBT.TabIndex = 0;
-            this.GameRomNavigateToRootBT.Text = "Navigate to Root";
+            this.GameRomTableTS.Location = new System.Drawing.Point(0, 0);
+            this.GameRomTableTS.Name = "GameRomTableTS";
+            this.GameRomTableTS.Size = new System.Drawing.Size(619, 25);
+            this.GameRomTableTS.TabIndex = 0;
+            this.GameRomTableTS.Text = "Navigate to Root";
             // 
-            // toolStripButton1
+            // GameRomToHomeBT
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.GameRomToHomeBT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.GameRomToHomeBT.Image = ((System.Drawing.Image)(resources.GetObject("GameRomToHomeBT.Image")));
+            this.GameRomToHomeBT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.GameRomToHomeBT.Name = "GameRomToHomeBT";
+            this.GameRomToHomeBT.Size = new System.Drawing.Size(23, 22);
+            this.GameRomToHomeBT.Text = "toolStripButton1";
             // 
             // toolStripSeparator4
             // 
@@ -1424,7 +1240,7 @@ namespace ROMVault
             this.chkBoxShowCompleteTSI.CheckOnClick = true;
             this.chkBoxShowCompleteTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowCompleteTSI.Name = "chkBoxShowCompleteTSI";
-            this.chkBoxShowCompleteTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowCompleteTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowCompleteTSI.Text = "Complete";
             this.chkBoxShowCompleteTSI.CheckedChanged += new System.EventHandler(this.completeToolStripMenuItem_Click);
             this.chkBoxShowCompleteTSI.Click += new System.EventHandler(this.completeToolStripMenuItem_Click);
@@ -1435,7 +1251,7 @@ namespace ROMVault
             this.chkBoxShowPartialTSI.CheckOnClick = true;
             this.chkBoxShowPartialTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowPartialTSI.Name = "chkBoxShowPartialTSI";
-            this.chkBoxShowPartialTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowPartialTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowPartialTSI.Text = "Partial";
             this.chkBoxShowPartialTSI.Click += new System.EventHandler(this.paToolStripMenuItem_Click);
             // 
@@ -1445,7 +1261,7 @@ namespace ROMVault
             this.chkBoxShowEmptyTSI.CheckOnClick = true;
             this.chkBoxShowEmptyTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowEmptyTSI.Name = "chkBoxShowEmptyTSI";
-            this.chkBoxShowEmptyTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowEmptyTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowEmptyTSI.Text = "Empty";
             this.chkBoxShowEmptyTSI.Click += new System.EventHandler(this.emptyToolStripMenuItem_Click);
             // 
@@ -1455,7 +1271,7 @@ namespace ROMVault
             this.chkBoxShowFixesTSI.CheckOnClick = true;
             this.chkBoxShowFixesTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowFixesTSI.Name = "chkBoxShowFixesTSI";
-            this.chkBoxShowFixesTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowFixesTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowFixesTSI.Text = "Fixes";
             this.chkBoxShowFixesTSI.Click += new System.EventHandler(this.fixesToolStripMenuItem_Click);
             // 
@@ -1465,7 +1281,7 @@ namespace ROMVault
             this.chkBoxShowMIATSI.CheckOnClick = true;
             this.chkBoxShowMIATSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowMIATSI.Name = "chkBoxShowMIATSI";
-            this.chkBoxShowMIATSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowMIATSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowMIATSI.Text = "MIA";
             this.chkBoxShowMIATSI.Click += new System.EventHandler(this.mIAToolStripMenuItem_Click);
             // 
@@ -1475,19 +1291,19 @@ namespace ROMVault
             this.chkBoxShowMergedTSI.CheckOnClick = true;
             this.chkBoxShowMergedTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowMergedTSI.Name = "chkBoxShowMergedTSI";
-            this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowMergedTSI.Text = "Merged/Duped";
             this.chkBoxShowMergedTSI.Click += new System.EventHandler(this.mergedDupedToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(152, 6);
             // 
             // toggleToolStripMenuItem
             // 
             this.toggleToolStripMenuItem.Name = "toggleToolStripMenuItem";
-            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.toggleToolStripMenuItem.Text = "Toggle";
             this.toggleToolStripMenuItem.Click += new System.EventHandler(this.toggleToolStripMenuItem_Click);
             // 
@@ -1497,7 +1313,7 @@ namespace ROMVault
             this.setAllToolStripMenuItem.CheckOnClick = true;
             this.setAllToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.setAllToolStripMenuItem.Name = "setAllToolStripMenuItem";
-            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.setAllToolStripMenuItem.Text = "Set All";
             this.setAllToolStripMenuItem.CheckedChanged += new System.EventHandler(this.setAllToolStripMenuItem_CheckedChanged);
             // 
@@ -1529,6 +1345,13 @@ namespace ROMVault
             this.gameSearchClearBT.Text = "toolStripButton3";
             this.gameSearchClearBT.Click += new System.EventHandler(this.gameSearchClearBT_Click);
             // 
+            // GameGridRowCountLB
+            // 
+            this.GameGridRowCountLB.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.GameGridRowCountLB.Name = "GameGridRowCountLB";
+            this.GameGridRowCountLB.Size = new System.Drawing.Size(35, 22);
+            this.GameGridRowCountLB.Text = "Rows";
+            // 
             // TabEmuArc
             // 
             this.TabEmuArc.Controls.Add(this.tabArtWork);
@@ -1541,7 +1364,7 @@ namespace ROMVault
             this.TabEmuArc.Location = new System.Drawing.Point(0, 0);
             this.TabEmuArc.Name = "TabEmuArc";
             this.TabEmuArc.SelectedIndex = 0;
-            this.TabEmuArc.Size = new System.Drawing.Size(124, 334);
+            this.TabEmuArc.Size = new System.Drawing.Size(181, 509);
             this.TabEmuArc.TabIndex = 0;
             // 
             // tabArtWork
@@ -1552,7 +1375,7 @@ namespace ROMVault
             this.tabArtWork.Location = new System.Drawing.Point(4, 22);
             this.tabArtWork.Name = "tabArtWork";
             this.tabArtWork.Padding = new System.Windows.Forms.Padding(3);
-            this.tabArtWork.Size = new System.Drawing.Size(116, 308);
+            this.tabArtWork.Size = new System.Drawing.Size(173, 483);
             this.tabArtWork.TabIndex = 0;
             this.tabArtWork.Text = "ArtWork";
             this.tabArtWork.Resize += new System.EventHandler(this.tabArtWork_Resize);
@@ -1699,43 +1522,23 @@ namespace ROMVault
             // 
             this.MainPG.CategoryForeColor = System.Drawing.Color.Cyan;
             this.MainPG.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPG.Location = new System.Drawing.Point(2, 58);
+            this.MainPG.Location = new System.Drawing.Point(0, 31);
             this.MainPG.Name = "MainPG";
-            this.MainPG.Size = new System.Drawing.Size(344, 706);
+            this.MainPG.Size = new System.Drawing.Size(806, 214);
             this.MainPG.TabIndex = 0;
             this.MainPG.ToolbarVisible = false;
             this.MainPG.UseCompatibleTextRendering = true;
             this.MainPG.SelectedObjectsChanged += new System.EventHandler(this.MainPG_SelectedObjectsChanged);
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2});
-            this.toolStrip2.Location = new System.Drawing.Point(2, 33);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(344, 25);
-            this.toolStrip2.TabIndex = 5;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // PgHeader
             // 
             this.PgHeader.Controls.Add(this.PgHeaderLB);
             this.PgHeader.Controls.Add(this.PgHeaderPB);
             this.PgHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PgHeader.Location = new System.Drawing.Point(2, 2);
+            this.PgHeader.Location = new System.Drawing.Point(0, 0);
             this.PgHeader.Name = "PgHeader";
             this.PgHeader.Padding = new System.Windows.Forms.Padding(4);
-            this.PgHeader.Size = new System.Drawing.Size(344, 31);
+            this.PgHeader.Size = new System.Drawing.Size(806, 31);
             this.PgHeader.TabIndex = 4;
             // 
             // PgHeaderLB
@@ -1746,7 +1549,7 @@ namespace ROMVault
             this.PgHeaderLB.Location = new System.Drawing.Point(31, 4);
             this.PgHeaderLB.Name = "PgHeaderLB";
             this.PgHeaderLB.ScaleFactor = 1.2D;
-            this.PgHeaderLB.Size = new System.Drawing.Size(309, 23);
+            this.PgHeaderLB.Size = new System.Drawing.Size(771, 23);
             this.PgHeaderLB.TabIndex = 3;
             this.PgHeaderLB.Text = "Welcome to RomVault";
             this.PgHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2167,13 +1970,6 @@ namespace ROMVault
             this.RomsShortnameToggleSSBT.Text = "Toggle Shortname";
             this.RomsShortnameToggleSSBT.Click += new System.EventHandler(this.RomsShortnameToggleSSBT_Click);
             // 
-            // GameGridRowCountLB
-            // 
-            this.GameGridRowCountLB.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.GameGridRowCountLB.Name = "GameGridRowCountLB";
-            this.GameGridRowCountLB.Size = new System.Drawing.Size(35, 22);
-            this.GameGridRowCountLB.Text = "Rows";
-            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2208,11 +2004,6 @@ namespace ROMVault
             this.PaddingPN2.PerformLayout();
             this.PaddingPN.ResumeLayout(false);
             this.PaddingPN.PerformLayout();
-            this.MainSC.Panel1.ResumeLayout(false);
-            this.MainSC.Panel2.ResumeLayout(false);
-            this.MainSC.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainSC)).EndInit();
-            this.MainSC.ResumeLayout(false);
             this.splitDatInfoGameInfo.Panel1.ResumeLayout(false);
             this.splitDatInfoGameInfo.Panel1.PerformLayout();
             this.splitDatInfoGameInfo.Panel2.ResumeLayout(false);
@@ -2234,14 +2025,9 @@ namespace ROMVault
             this.VaultHeaderPN.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitGameInfoLists.Panel1.ResumeLayout(false);
-            this.splitGameInfoLists.Panel1.PerformLayout();
             this.splitGameInfoLists.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitGameInfoLists)).EndInit();
             this.splitGameInfoLists.ResumeLayout(false);
-            this.GameDetailsRhsFLP.ResumeLayout(false);
-            this.GameDetailsRhsFLP.PerformLayout();
-            this.SearchTLP.ResumeLayout(false);
-            this.SearchTLP.PerformLayout();
             this.splitListArt.Panel1.ResumeLayout(false);
             this.splitListArt.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitListArt)).EndInit();
@@ -2254,8 +2040,8 @@ namespace ROMVault
             this.splitGameListRomList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GameGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RomGrid)).EndInit();
-            this.GameRomNavigateToRootBT.ResumeLayout(false);
-            this.GameRomNavigateToRootBT.PerformLayout();
+            this.GameRomTableTS.ResumeLayout(false);
+            this.GameRomTableTS.PerformLayout();
             this.TabEmuArc.ResumeLayout(false);
             this.tabArtWork.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
@@ -2270,8 +2056,6 @@ namespace ROMVault
             this.tabInfo.PerformLayout();
             this.tabInfo2.ResumeLayout(false);
             this.tabInfo2.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
             this.PgHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PgHeaderPB)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -2298,10 +2082,6 @@ namespace ROMVault
         private System.Windows.Forms.Label lblDIRomPath;
         private System.Windows.Forms.Label lblDIName;
         private System.Windows.Forms.SplitContainer splitGameInfoLists;
-        private System.Windows.Forms.CheckBox chkBoxShowMerged;
-        private System.Windows.Forms.CheckBox chkBoxShowFixes;
-        private System.Windows.Forms.CheckBox chkBoxShowPartial;
-        private System.Windows.Forms.CheckBox chkBoxShowComplete;
         private System.Windows.Forms.GroupBox gbSetInfo;
 
         private System.Windows.Forms.SplitContainer splitGameListRomList;
@@ -2336,8 +2116,6 @@ namespace ROMVault
         private System.Windows.Forms.TabPage tabInfo;
         private System.Windows.Forms.ToolStripMenuItem colorKeyToolStripMenuItem;
         private System.Windows.Forms.TextBox txtInfo;
-        private System.Windows.Forms.Button btnClear;
-        private UserControls.PromptTextBox txtFilter;
         private System.Windows.Forms.ToolStripMenuItem romVaultSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem directorySettingsToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
@@ -2355,7 +2133,6 @@ namespace ROMVault
         private System.Windows.Forms.PictureBox picMedium2;
         private System.Windows.Forms.PictureBox picMedium1;
         private System.Windows.Forms.ToolTip tooltip;
-        private System.Windows.Forms.CheckBox chkBoxShowMIA;
         private System.Windows.Forms.DataGridViewImageColumn CGot;
         private System.Windows.Forms.DataGridViewTextBoxColumn CRom;
         private System.Windows.Forms.DataGridViewTextBoxColumn CMerge;
@@ -2377,7 +2154,6 @@ namespace ROMVault
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDateTime;
         private System.Windows.Forms.DataGridViewImageColumn CROMStatus;
-        private System.Windows.Forms.CheckBox chkBoxShowEmpty;
         private System.Windows.Forms.TabPage tabInfo2;
         private System.Windows.Forms.TextBox txtInfo2;
         private System.Windows.Forms.Panel DatInfoPN;
@@ -2387,8 +2163,6 @@ namespace ROMVault
         private System.Windows.Forms.Panel Padding3PN;
         private System.Windows.Forms.Panel PaddingPN;
         private System.Windows.Forms.StatusStrip MainSS;
-        private System.Windows.Forms.FlowLayoutPanel GameDetailsRhsFLP;
-        private System.Windows.Forms.TableLayoutPanel SearchTLP;
         private FlowLayoutPanel flowLayoutPanel1;
         private UserControls.FlexiLabel flexiLabel3;
         private Button HideNavBT;
@@ -2412,15 +2186,12 @@ namespace ROMVault
         private ToolStripButton DatsCollapseTreeBT;
         private Panel DatTreePN;
         private Panel GameRomPN;
-        private ToolStrip GameRomNavigateToRootBT;
-        private ToolStripButton toolStripButton1;
-        private SplitContainer MainSC;
+        private ToolStrip GameRomTableTS;
+        private ToolStripButton GameRomToHomeBT;
         private PropertyGrid MainPG;
         private FlexiLabel PgHeaderLB;
         private Panel PgHeader;
         private PictureBox PgHeaderPB;
-        private ToolStrip toolStrip2;
-        private ToolStripButton toolStripButton2;
         private Panel VaultHeaderPN;
         private FlexiLabel DatPanelHeaderLB;
         private PictureBox pictureBox1;

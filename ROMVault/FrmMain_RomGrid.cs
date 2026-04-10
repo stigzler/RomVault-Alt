@@ -129,7 +129,7 @@ namespace ROMVault
             try
             {
                 if (tFile.DatStatus != DatStatus.InDatMerged || tFile.RepStatus != RepStatus.NotCollected ||
-                chkBoxShowMerged.Checked)
+                chkBoxShowMergedTSI.Checked)
                 {
                     tFile.UiDisplayName = pathAdd + tFile.Name;
                     fileList.Add(tFile);

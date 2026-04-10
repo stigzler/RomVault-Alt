@@ -395,11 +395,12 @@ namespace ROMVault
             _mnuToSortDown.Click += MnuToSortDown;
             _mnuToSortLock.Click += ToSortLock;
 
-            chkBoxShowComplete.Checked = Settings.rvSettings.chkBoxShowComplete;
-            chkBoxShowPartial.Checked = Settings.rvSettings.chkBoxShowPartial;
-            chkBoxShowFixes.Checked = Settings.rvSettings.chkBoxShowFixes;
+            chkBoxShowCompleteTSI.Checked = Settings.rvSettings.chkBoxShowComplete;
+            chkBoxShowPartialTSI.Checked = Settings.rvSettings.chkBoxShowPartial;
+            chkBoxShowFixesTSI.Checked = Settings.rvSettings.chkBoxShowFixes;
             chkBoxShowMIA.Checked = Settings.rvSettings.chkBoxShowMIA;
-            chkBoxShowMerged.Checked = Settings.rvSettings.chkBoxShowMerged;
+            chkBoxShowMergedTSI.Checked = Settings.rvSettings.chkBoxShowMerged;
+            //chkBoxShowEmptyTSI.Checked = Settings.rvSettings.chkBoxShowEmpty;   // i think this one may have been missed off? not sure if operaiotnal decision?
 
             TabArtworkInitialize();
 
@@ -766,21 +767,6 @@ namespace ROMVault
             // fixes a rendering issue in mono
             if (splitGameInfoLists.Panel1.Width == 0)
                 return;
-
-            int chkLeft = splitGameInfoLists.Panel1.Width - 150;
-            if (chkLeft < 430)
-                chkLeft = 430;
-
-            chkBoxShowComplete.Left = chkLeft;
-            chkBoxShowPartial.Left = chkLeft;
-            chkBoxShowEmpty.Left = chkLeft;
-            chkBoxShowFixes.Left = chkLeft;
-            chkBoxShowMIA.Left = chkLeft;
-            chkBoxShowMerged.Left = chkLeft;
-            txtFilter.Left = chkLeft;
-            btnClear.Left = chkLeft + txtFilter.Width + 2;
-
-            //gbSetInfo.Width = chkLeft - gbSetInfo.Left - 10;
         }
 
         protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
@@ -1275,30 +1261,6 @@ namespace ROMVault
 
         #region TopRight
 
-        private void ChkBoxShowCompleteCheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void ChkBoxShowPartialCheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void chkBoxShowEmptyCheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void ChkBoxShowFixesCheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void chkBoxShowMIA_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void ChkBoxShowMergedCheckedChanged(object sender, EventArgs e)
-        {
-        }
-
         private void BtnClear_Click(object sender, EventArgs e)
         {
             txtFilter.Text = "";
@@ -1511,16 +1473,6 @@ namespace ROMVault
 
             UpdateDatMetaData(cf);
             UpdateGameGrid(cf);
-            //Cursor oldCursor = Cursor.Current;
-            //Cursor.Current = Cursors.WaitCursor;
-            //try
-            //{
-            //    UpdateGameGrid(cf);
-            //}
-            //finally
-            //{
-            //    Cursor.Current = oldCursor;
-            //}
         }
 
         private void UpdateDatMetaData(RvFile tDir)
@@ -2091,75 +2043,58 @@ namespace ROMVault
             FilterGamesList();
         }
 
+        private void SaveFiltersToSettings()
+        {
+            Settings.rvSettings.chkBoxShowComplete = this.chkBoxShowCompleteTSI.Checked;
+            Settings.rvSettings.chkBoxShowPartial = this.chkBoxShowPartialTSI.Checked;
+            Settings.rvSettings.chkBoxShowEmpty = this.chkBoxShowEmptyTSI.Checked;
+            Settings.rvSettings.chkBoxShowFixes = this.chkBoxShowFixesTSI.Checked;
+            Settings.rvSettings.chkBoxShowMIA = this.chkBoxShowMIATSI.Checked;
+            Settings.rvSettings.chkBoxShowMerged = this.chkBoxShowMergedTSI.Checked;
+            // Settings.rvSettings.chkBoxShowEmpty = this.chkBoxShowEmptyTSI.Checked; // added this - missed off? Could be likely design decision
+            Settings.WriteConfig(Settings.rvSettings);
+        }
+
         private void completeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_batchSettingFilters) return;
-            if (Settings.rvSettings.chkBoxShowComplete != this.chkBoxShowCompleteTSI.Checked)
-            {
-                Settings.rvSettings.chkBoxShowComplete = this.chkBoxShowCompleteTSI.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
+            SaveFiltersToSettings();
+            DatSetSelected(ctrRvTree.Selected);
         }
 
         private void paToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_batchSettingFilters) return;
-
-            if (Settings.rvSettings.chkBoxShowPartial != this.chkBoxShowPartial.Checked)
-            {
-                Settings.rvSettings.chkBoxShowPartial = this.chkBoxShowPartial.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
+            SaveFiltersToSettings();
+            DatSetSelected(ctrRvTree.Selected);
         }
 
         private void emptyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_batchSettingFilters) return;
-
-            if (Settings.rvSettings.chkBoxShowEmpty != this.chkBoxShowEmpty.Checked)
-            {
-                Settings.rvSettings.chkBoxShowEmpty = this.chkBoxShowEmpty.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
+            SaveFiltersToSettings();
+            DatSetSelected(ctrRvTree.Selected);
         }
 
         private void fixesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_batchSettingFilters) return;
-
-            if (Settings.rvSettings.chkBoxShowFixes != this.chkBoxShowFixes.Checked)
-            {
-                Settings.rvSettings.chkBoxShowFixes = this.chkBoxShowFixes.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
+            SaveFiltersToSettings();
+            DatSetSelected(ctrRvTree.Selected);
         }
 
         private void mIAToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_batchSettingFilters) return;
-
-            if (Settings.rvSettings.chkBoxShowMIA != this.chkBoxShowMIA.Checked)
-            {
-                Settings.rvSettings.chkBoxShowMIA = this.chkBoxShowMIA.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
+            SaveFiltersToSettings();
+            DatSetSelected(ctrRvTree.Selected);
         }
 
         private void mergedDupedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_batchSettingFilters) return;
-
-            if (Settings.rvSettings.chkBoxShowMerged != this.chkBoxShowMerged.Checked)
-            {
-                Settings.rvSettings.chkBoxShowMerged = this.chkBoxShowMerged.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
+            SaveFiltersToSettings();
+            DatSetSelected(ctrRvTree.Selected);
         }
 
         private List<ToolStripMenuItem> FilterCheckboxes;
