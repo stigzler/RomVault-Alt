@@ -10,65 +10,6 @@ namespace ROMVault
 {
     public partial class FrmMain
     {
-        //private Label _labelGameName;
-        //private TextBox _textGameName;
-
-        //private Label _labelGameDescription;
-        //private TextBox _textGameDescription;
-
-        //private Label _labelGameManufacturer;
-        //private TextBox _textGameManufacturer;
-
-        //private Label _labelGameCloneOf;
-        //private TextBox _textGameCloneOf;
-
-        //private Label _labelGameRomOf;
-        //private TextBox _textGameRomOf;
-
-        //private Label _labelGameYear;
-        //private TextBox _textGameYear;
-
-        //private Label _labelGameCategory;
-        //private TextBox _textGameCategory;
-
-        //Trurip Extra Data
-        //private Label _textTruripPublisher;
-
-        //private TextBox _textTruripPublisher;
-
-        //private Label _labelTruripDeveloper;
-        //private TextBox _textTruripDeveloper;
-
-        //private Label _labelTruripTitleId;
-        //private TextBox _textTruripTitleId;
-
-        //private Label _labelTruripSource;
-        //private TextBox _textTruripSource;
-
-        //private Label _labelTruripCloneOf;
-        //private TextBox _textTruripCloneOf;
-
-        //private Label _labelTruripRelatedTo;
-        //private TextBox _textTruripRelatedTo;
-
-        //private Label _labelTruripYear;
-        //private TextBox _textTruripYear;
-
-        //private Label _labelTruripPlayers;
-        //private TextBox _textTruripPlayers;
-
-        //private Label _labelTruripGenre;
-        //private TextBox _textTruripGenre;
-
-        //private Label _labelTruripSubGenre;
-        //private TextBox _textTruripSubGenre;
-
-        //private Label _labelTruripRatings;
-        //private TextBox _textTruripRatings;
-
-        //private Label _labelTruripScore;
-        //private TextBox _textTruripScore;
-
         private void AddTextBox(int line, string name, int x, int x1, out Label lBox, out TextBox tBox)
         {
             int y = 14 + line * 16;
@@ -107,8 +48,6 @@ namespace ROMVault
 
         private void AddGameMetaData()
         {
-            //AddTextBox(0, "Name", 6, 84, out _labelGameName, out _textGameName);
-            //AddTextBox(1, "Description", 6, 84, out _labelGameDescription, out _textGameDescription);
             //AddTextBox(2, "Manufacturer", 6, 84, out _labelGameManufacturer, out _textGameManufacturer);
 
             //AddTextBox(3, "Clone of", 6, 84, out _labelGameCloneOf, out _textGameCloneOf);
@@ -143,50 +82,15 @@ namespace ROMVault
             //       _textTruripTitleId.Click += _textTruripTitleId_Click;
         }
 
-        /*
-        private void _textGameName_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!_textTruripTitleId.Visible)
-                    return;
-                if (string.IsNullOrWhiteSpace(_textTruripTitleId.Text))
-                    return;
-                try{Process.Start($"http://database.trurip.org/st/st{_textTruripTitleId.Text}"); } catch { }
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void _textTruripTitleId_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(_textTruripTitleId.Text))
-                    return;
-                try{Process.Start($"http://database.trurip.org/st/st{_textTruripTitleId.Text}"); } catch { }
-            }
-            catch (Exception)
-            {
-            }
-        }
-        */
-
         private void UpdateGameMetaData(RvFile tGame)
         {
+            GameInfo.Name = tGame.Name;
+
             _labelGameName.Visible = true;
-            _textGameName.Text = tGame.Name;
             string gameId = tGame.Game?.GetData(RvGame.GameData.Id);
+
             if (!string.IsNullOrWhiteSpace(gameId))
-                _textGameName.Text += $" (ID:{gameId})";
-
-            if (tGame.Game == null)
-            {
-                _labelGameDescription.Visible = false;
-
-                _textGameDescription.Visible = false;
-            }
+                GameInfo.Name += $" (ID:{gameId})";
 
             if (tGame.Game == null || tGame.Game.GetData(RvGame.GameData.EmuArc) != "yes")
             {
@@ -250,10 +154,9 @@ namespace ROMVault
                 if (tGame.Game.GetData(RvGame.GameData.EmuArc) == "yes")
                 {
                     _labelGameDescription.Visible = true;
-                    _textGameDescription.Visible = true;
                     string desc = tGame.Game.GetData(RvGame.GameData.Description);
                     if (desc == "¤") desc = Path.GetFileNameWithoutExtension(tGame.Name);
-                    _textGameDescription.Text = desc;
+                    GameInfo.Description = desc;
 
                     _labelTruripPublisher.Visible = true;
                     _textTruripPublisher.Visible = true;
@@ -342,10 +245,9 @@ namespace ROMVault
                         HidePannel();
 
                     _labelGameDescription.Visible = true;
-                    _textGameDescription.Visible = true;
                     string desc = tGame.Game.GetData(RvGame.GameData.Description);
                     if (desc == "¤") desc = Path.GetFileNameWithoutExtension(tGame.Name);
-                    _textGameDescription.Text = desc;
+                    GameInfo.Description = desc;
 
                     _labelGameManufacturer.Visible = true;
                     _textGameManufacturer.Visible = true;
@@ -389,7 +291,7 @@ namespace ROMVault
 
             int width = rightPos - leftPos;
 
-            if (_textGameName == null)
+            if (GameInfo.Name == null)
             {
                 return;
             }
@@ -400,8 +302,6 @@ namespace ROMVault
             int label2Left = text2Left - 78;
 
             //reinstate
-            _textGameName.Width = width;
-            _textGameDescription.Width = width;
             _textGameManufacturer.Width = width;
 
             _textGameCloneOf.Width = textWidth;

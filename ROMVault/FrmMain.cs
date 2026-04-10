@@ -1742,10 +1742,7 @@ namespace ROMVault
             ctrRvTree.Visible = true;
         }
 
-        private void _textGameName_KeyDown(object sender, KeyEventArgs e)
-        {
-            e.SuppressKeyPress = true;
-        }
+ 
 
         private void ToggleNavText(bool visible)
         {
