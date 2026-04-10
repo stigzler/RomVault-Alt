@@ -335,6 +335,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="chip.ico" />
+    <None Include="Resources\magnifier-left.png" />
+    <None Include="Resources\funnel.png" />
     <None Include="Resources\information-frame1.png" />
     <None Include="Resources\smiley1.png" />
     <None Include="Resources\smiley.png" />

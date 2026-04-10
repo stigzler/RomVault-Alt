@@ -1342,6 +1342,13 @@ namespace ROMVault
             txtFilter.Focus();
         }
 
+        private void FilterGamesList()
+        {
+            if (gameGridSource != null)
+                UpdateGameGrid(gameGridSource);
+            txtFilter.Focus();
+        }
+
         private void picPayPal_Click(object sender, EventArgs e)
         {
             try { Process.Start("http://paypal.me/romvault"); } catch { }
@@ -1549,6 +1556,8 @@ namespace ROMVault
 
         private void UpdateDatMetaData(RvFile tDir)
         {
+            DatInfo = new DatInfo();
+
             DatInfo.Name = tDir.Name;
 
             RvDat tDat = null;
@@ -1741,8 +1750,6 @@ namespace ROMVault
 
             ctrRvTree.Visible = true;
         }
-
- 
 
         private void ToggleNavText(bool visible)
         {

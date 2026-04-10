@@ -363,6 +363,16 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap funnel {
+            get {
+                object obj = ResourceManager.GetObject("funnel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gear {
             get {
                 object obj = ResourceManager.GetObject("gear", resourceCulture);
@@ -376,6 +386,16 @@ namespace ROMVault.Properties {
         internal static System.Drawing.Bitmap information_frame {
             get {
                 object obj = ResourceManager.GetObject("information-frame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap magnifier_left {
+            get {
+                object obj = ResourceManager.GetObject("magnifier-left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

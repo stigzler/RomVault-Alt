@@ -48,37 +48,18 @@ namespace ROMVault
 
         private void AddGameMetaData()
         {
-            //AddTextBox(3, "Clone of", 6, 84, out _labelGameCloneOf, out _textGameCloneOf);
-            //AddTextBox(3, "Year", 206, 284, out _labelGameYear, out _textGameYear);
-
-            //AddTextBox(4, "Rom of", 6, 84, out _labelGameRomOf, out _textGameRomOf);
-            //AddTextBox(4, "Category", 206, 284, out _labelGameCategory, out _textGameCategory);
-
-            //Trurip
-
-            //AddTextBox(3, "Developer", 6, 84, out _labelTruripDeveloper, out _textTruripDeveloper);
-            //AddTextBox(3, "Source", 406, 484, out _labelTruripSource, out _textTruripSource);
-
-            //AddTextBox(4, "Clone of", 6, 84, out _labelTruripCloneOf, out _textTruripCloneOf);
-            //AddTextBox(5, "Related to", 6, 84, out _labelTruripRelatedTo, out _textTruripRelatedTo);
-
-            //AddTextBox(6, "Year", 6, 84, out _labelTruripYear, out _textTruripYear);
-            //AddTextBox(6, "Genre", 206, 284, out _labelTruripGenre, out _textTruripGenre);
-            //AddTextBox(6, "Ratings", 406, 484, out _labelTruripRatings, out _textTruripRatings);
-
-            //AddTextBox(7, "Players", 6, 84, out _labelTruripPlayers, out _textTruripPlayers);
-            //AddTextBox(7, "SubGenre", 206, 284, out _labelTruripSubGenre, out _textTruripSubGenre);
-            //AddTextBox(7, "Score", 406, 484, out _labelTruripScore, out _textTruripScore);
-
-            //gbSetInfo_Resize(null, new EventArgs());
             UpdateGameMetaData(new RvFile(FileType.Dir));
+        }
 
-            //       _textGameName.Click += _textGameName_Click;
-            //       _textTruripTitleId.Click += _textTruripTitleId_Click;
+        private void UpdateGameInfoControls()
+        {
+            MainPG.SelectedObject = GameInfo;
         }
 
         private void UpdateGameMetaData(RvFile tGame)
         {
+            GameInfo = new ViewModels.GameInfo();
+
             GameInfo.Name = tGame.Name;
             string gameId = tGame.Game?.GetData(RvGame.GameData.Id);
 
@@ -176,6 +157,8 @@ namespace ROMVault
             }
 
             this.ActiveControl = GameGrid;
+
+            UpdateGameInfoControls();
         }
     }
 }
