@@ -1602,6 +1602,9 @@ namespace ROMVault
             DatInfoNameLb.Text = compositName;
 
             DatInfoPathLb.Text = DatInfo.RomPath;
+            tooltip.SetToolTip(DatInfoPathLb, DatInfo.RomPath);
+            //  DatInfoPathLb.Tooltip
+
             RomsGotLB.Text = $"Got: {DatInfo.RomsGot}";
             RomsFixableLB.Text = $"Fixable: {DatInfo.RomsFixable}";
             RomsMissingLB.Text = $"Missing: {DatInfo.RomsMissing}";
