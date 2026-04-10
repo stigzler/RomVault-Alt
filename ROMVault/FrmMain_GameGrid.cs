@@ -152,7 +152,7 @@ namespace ROMVault
 
                 bool wideTypeColumn = false;
 
-                string searchLowerCase = txtFilter.Text.ToLower();
+                string searchLowerCase = gameSearchTSTB.Text.ToLower();
                 for (int j = 0; j < gameGridSource.ChildCount; j++)
                 {
                     RvFile tChildDir = gameGridSource.Child(j);
@@ -161,7 +161,7 @@ namespace ROMVault
                         continue;
                     }
 
-                    if (txtFilter.Text.Length > 0 && !tChildDir.Name.ToLower().Contains(searchLowerCase))
+                    if (gameSearchTSTB.Text.Length > 0 && !tChildDir.Name.ToLower().Contains(searchLowerCase))
                     {
                         continue;
                     }

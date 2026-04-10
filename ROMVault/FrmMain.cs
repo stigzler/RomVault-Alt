@@ -1272,62 +1272,26 @@ namespace ROMVault
 
         private void ChkBoxShowCompleteCheckedChanged(object sender, EventArgs e)
         {
-            if (Settings.rvSettings.chkBoxShowComplete != this.chkBoxShowComplete.Checked)
-            {
-                Settings.rvSettings.chkBoxShowComplete = this.chkBoxShowComplete.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
         }
 
         private void ChkBoxShowPartialCheckedChanged(object sender, EventArgs e)
         {
-            if (Settings.rvSettings.chkBoxShowPartial != this.chkBoxShowPartial.Checked)
-            {
-                Settings.rvSettings.chkBoxShowPartial = this.chkBoxShowPartial.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
         }
 
         private void chkBoxShowEmptyCheckedChanged(object sender, EventArgs e)
         {
-            if (Settings.rvSettings.chkBoxShowEmpty != this.chkBoxShowEmpty.Checked)
-            {
-                Settings.rvSettings.chkBoxShowEmpty = this.chkBoxShowEmpty.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
         }
 
         private void ChkBoxShowFixesCheckedChanged(object sender, EventArgs e)
         {
-            if (Settings.rvSettings.chkBoxShowFixes != this.chkBoxShowFixes.Checked)
-            {
-                Settings.rvSettings.chkBoxShowFixes = this.chkBoxShowFixes.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
         }
 
         private void chkBoxShowMIA_CheckedChanged(object sender, EventArgs e)
         {
-            if (Settings.rvSettings.chkBoxShowMIA != this.chkBoxShowMIA.Checked)
-            {
-                Settings.rvSettings.chkBoxShowMIA = this.chkBoxShowMIA.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
         }
 
         private void ChkBoxShowMergedCheckedChanged(object sender, EventArgs e)
         {
-            if (Settings.rvSettings.chkBoxShowMerged != this.chkBoxShowMerged.Checked)
-            {
-                Settings.rvSettings.chkBoxShowMerged = this.chkBoxShowMerged.Checked;
-                Settings.WriteConfig(Settings.rvSettings);
-                DatSetSelected(ctrRvTree.Selected);
-            }
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
@@ -2095,6 +2059,90 @@ namespace ROMVault
             if (!string.IsNullOrEmpty(sourceControl?.Text))
             {
                 Clipboard.SetText(sourceControl.Text);
+            }
+        }
+
+        private void gameSearchTSBT_Click(object sender, EventArgs e)
+        {
+            FilterGamesList();
+        }
+
+        private void gameSearchTSTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return) FilterGamesList();
+        }
+
+        private void gameSearchTSTB_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                gameSearchTSTB.SelectAll();
+            });
+        }
+
+        private void gameSearchClearBT_Click(object sender, EventArgs e)
+        {
+            gameSearchTSTB.Text = string.Empty;
+            FilterGamesList();
+        }
+
+        private void completeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Settings.rvSettings.chkBoxShowComplete != this.chkBoxShowCompleteTSI.Checked)
+            {
+                Settings.rvSettings.chkBoxShowComplete = this.chkBoxShowCompleteTSI.Checked;
+                Settings.WriteConfig(Settings.rvSettings);
+                DatSetSelected(ctrRvTree.Selected);
+            }
+        }
+
+        private void paToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Settings.rvSettings.chkBoxShowPartial != this.chkBoxShowPartial.Checked)
+            {
+                Settings.rvSettings.chkBoxShowPartial = this.chkBoxShowPartial.Checked;
+                Settings.WriteConfig(Settings.rvSettings);
+                DatSetSelected(ctrRvTree.Selected);
+            }
+        }
+
+        private void emptyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Settings.rvSettings.chkBoxShowEmpty != this.chkBoxShowEmpty.Checked)
+            {
+                Settings.rvSettings.chkBoxShowEmpty = this.chkBoxShowEmpty.Checked;
+                Settings.WriteConfig(Settings.rvSettings);
+                DatSetSelected(ctrRvTree.Selected);
+            }
+        }
+
+        private void fixesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Settings.rvSettings.chkBoxShowFixes != this.chkBoxShowFixes.Checked)
+            {
+                Settings.rvSettings.chkBoxShowFixes = this.chkBoxShowFixes.Checked;
+                Settings.WriteConfig(Settings.rvSettings);
+                DatSetSelected(ctrRvTree.Selected);
+            }
+        }
+
+        private void mIAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Settings.rvSettings.chkBoxShowMIA != this.chkBoxShowMIA.Checked)
+            {
+                Settings.rvSettings.chkBoxShowMIA = this.chkBoxShowMIA.Checked;
+                Settings.WriteConfig(Settings.rvSettings);
+                DatSetSelected(ctrRvTree.Selected);
+            }
+        }
+
+        private void mergedDupedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Settings.rvSettings.chkBoxShowMerged != this.chkBoxShowMerged.Checked)
+            {
+                Settings.rvSettings.chkBoxShowMerged = this.chkBoxShowMerged.Checked;
+                Settings.WriteConfig(Settings.rvSettings);
+                DatSetSelected(ctrRvTree.Selected);
             }
         }
     }
