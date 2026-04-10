@@ -183,12 +183,12 @@ namespace ROMVault
                     bool gMIA = tDirStat.HasMIA();
                     bool gAllMerged = tDirStat.HasAllMerged();
 
-                    bool show = chkBoxShowComplete.Checked && gCorrect && !gMissing && !gFixes;
-                    show = show || chkBoxShowPartial.Checked && gMissing && gCorrect;
-                    show = show || chkBoxShowEmpty.Checked && gMissing && !gCorrect;
-                    show = show || chkBoxShowFixes.Checked && gFixes;
-                    show = show || chkBoxShowMIA.Checked && gMIA;
-                    show = show || chkBoxShowMerged.Checked && gAllMerged;
+                    bool show = chkBoxShowCompleteTSI.Checked && gCorrect && !gMissing && !gFixes;
+                    show = show || chkBoxShowPartialTSI.Checked && gMissing && gCorrect;
+                    show = show || chkBoxShowEmptyTSI.Checked && gMissing && !gCorrect;
+                    show = show || chkBoxShowFixesTSI.Checked && gFixes;
+                    show = show || chkBoxShowMIATSI.Checked && gMIA;
+                    show = show || chkBoxShowMergedTSI.Checked && gAllMerged;
                     show = show || gUnknown;
                     show = show || gInToSort;
                     show = show || tChildDir.GotStatus == GotStatus.Corrupt;

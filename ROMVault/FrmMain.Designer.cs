@@ -117,13 +117,16 @@ namespace ROMVault
             this.GameRomNavigateToRootBT = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.FilterTSDD = new System.Windows.Forms.ToolStripDropDownButton();
             this.chkBoxShowCompleteTSI = new System.Windows.Forms.ToolStripMenuItem();
             this.chkBoxShowPartialTSI = new System.Windows.Forms.ToolStripMenuItem();
             this.chkBoxShowEmptyTSI = new System.Windows.Forms.ToolStripMenuItem();
             this.chkBoxShowFixesTSI = new System.Windows.Forms.ToolStripMenuItem();
             this.chkBoxShowMIATSI = new System.Windows.Forms.ToolStripMenuItem();
             this.chkBoxShowMergedTSI = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toggleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameSearchTSTB = new System.Windows.Forms.ToolStripTextBox();
             this.gameSearchTSBT = new System.Windows.Forms.ToolStripButton();
             this.gameSearchClearBT = new System.Windows.Forms.ToolStripButton();
@@ -193,6 +196,7 @@ namespace ROMVault
             this.RomsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.RomsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
             this.RomsShortnameToggleSSBT = new System.Windows.Forms.ToolStripMenuItem();
+            this.GameGridRowCountLB = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -1370,10 +1374,11 @@ namespace ROMVault
             this.GameRomNavigateToRootBT.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripSeparator4,
-            this.toolStripDropDownButton1,
+            this.FilterTSDD,
             this.gameSearchTSTB,
             this.gameSearchTSBT,
-            this.gameSearchClearBT});
+            this.gameSearchClearBT,
+            this.GameGridRowCountLB});
             this.GameRomNavigateToRootBT.Location = new System.Drawing.Point(0, 0);
             this.GameRomNavigateToRootBT.Name = "GameRomNavigateToRootBT";
             this.GameRomNavigateToRootBT.Size = new System.Drawing.Size(429, 25);
@@ -1394,21 +1399,24 @@ namespace ROMVault
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripDropDownButton1
+            // FilterTSDD
             // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FilterTSDD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FilterTSDD.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chkBoxShowCompleteTSI,
             this.chkBoxShowPartialTSI,
             this.chkBoxShowEmptyTSI,
             this.chkBoxShowFixesTSI,
             this.chkBoxShowMIATSI,
-            this.chkBoxShowMergedTSI});
-            this.toolStripDropDownButton1.Image = global::ROMVault.Properties.Resources.funnel;
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            this.chkBoxShowMergedTSI,
+            this.toolStripSeparator5,
+            this.toggleToolStripMenuItem,
+            this.setAllToolStripMenuItem});
+            this.FilterTSDD.Image = global::ROMVault.Properties.Resources.funnel;
+            this.FilterTSDD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FilterTSDD.Name = "FilterTSDD";
+            this.FilterTSDD.Size = new System.Drawing.Size(29, 22);
+            this.FilterTSDD.Text = "toolStripDropDownButton1";
             // 
             // chkBoxShowCompleteTSI
             // 
@@ -1470,6 +1478,28 @@ namespace ROMVault
             this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(180, 22);
             this.chkBoxShowMergedTSI.Text = "Merged/Duped";
             this.chkBoxShowMergedTSI.Click += new System.EventHandler(this.mergedDupedToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toggleToolStripMenuItem
+            // 
+            this.toggleToolStripMenuItem.Name = "toggleToolStripMenuItem";
+            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toggleToolStripMenuItem.Text = "Toggle";
+            this.toggleToolStripMenuItem.Click += new System.EventHandler(this.toggleToolStripMenuItem_Click);
+            // 
+            // setAllToolStripMenuItem
+            // 
+            this.setAllToolStripMenuItem.Checked = true;
+            this.setAllToolStripMenuItem.CheckOnClick = true;
+            this.setAllToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.setAllToolStripMenuItem.Name = "setAllToolStripMenuItem";
+            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setAllToolStripMenuItem.Text = "Set All";
+            this.setAllToolStripMenuItem.CheckedChanged += new System.EventHandler(this.setAllToolStripMenuItem_CheckedChanged);
             // 
             // gameSearchTSTB
             // 
@@ -2137,6 +2167,13 @@ namespace ROMVault
             this.RomsShortnameToggleSSBT.Text = "Toggle Shortname";
             this.RomsShortnameToggleSSBT.Click += new System.EventHandler(this.RomsShortnameToggleSSBT_Click);
             // 
+            // GameGridRowCountLB
+            // 
+            this.GameGridRowCountLB.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.GameGridRowCountLB.Name = "GameGridRowCountLB";
+            this.GameGridRowCountLB.Size = new System.Drawing.Size(35, 22);
+            this.GameGridRowCountLB.Text = "Rows";
+            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2398,7 +2435,7 @@ namespace ROMVault
         private FlowPanelResponsive DatNameFPR;
         private ContextMenuStrip CopyTextCMS;
         private ToolStripMenuItem copyTextToolStripMenuItem;
-        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripDropDownButton FilterTSDD;
         private ToolStripMenuItem chkBoxShowCompleteTSI;
         private ToolStripMenuItem chkBoxShowPartialTSI;
         private ToolStripMenuItem chkBoxShowEmptyTSI;
@@ -2409,6 +2446,10 @@ namespace ROMVault
         private ToolStripButton gameSearchTSBT;
         private ToolStripButton gameSearchClearBT;
         private ToolStripSeparator toolStripSeparator4;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripMenuItem toggleToolStripMenuItem;
+        private ToolStripMenuItem setAllToolStripMenuItem;
+        private ToolStripLabel GameGridRowCountLB;
     }
 }
 

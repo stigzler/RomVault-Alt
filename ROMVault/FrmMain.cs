@@ -25,6 +25,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -419,6 +420,10 @@ namespace ROMVault
             garbageCollectToolStripMenuItem.Click += new EventHandler(this.garbageCollectToolStripMenuItem_Click_1);
             helpToolStripMenuItem.DropDownItems.Add(garbageCollectToolStripMenuItem);
 #endif
+
+            FilterCheckboxes = new List<ToolStripMenuItem>()
+            { chkBoxShowCompleteTSI, chkBoxShowPartialTSI,chkBoxShowEmptyTSI, chkBoxShowFixesTSI, chkBoxShowMIATSI, chkBoxShowMergedTSI };
+
             InitGameGridMenu();
 
             UpdateThemeAndControls();
@@ -2088,6 +2093,7 @@ namespace ROMVault
 
         private void completeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_batchSettingFilters) return;
             if (Settings.rvSettings.chkBoxShowComplete != this.chkBoxShowCompleteTSI.Checked)
             {
                 Settings.rvSettings.chkBoxShowComplete = this.chkBoxShowCompleteTSI.Checked;
@@ -2098,6 +2104,8 @@ namespace ROMVault
 
         private void paToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_batchSettingFilters) return;
+
             if (Settings.rvSettings.chkBoxShowPartial != this.chkBoxShowPartial.Checked)
             {
                 Settings.rvSettings.chkBoxShowPartial = this.chkBoxShowPartial.Checked;
@@ -2108,6 +2116,8 @@ namespace ROMVault
 
         private void emptyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_batchSettingFilters) return;
+
             if (Settings.rvSettings.chkBoxShowEmpty != this.chkBoxShowEmpty.Checked)
             {
                 Settings.rvSettings.chkBoxShowEmpty = this.chkBoxShowEmpty.Checked;
@@ -2118,6 +2128,8 @@ namespace ROMVault
 
         private void fixesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_batchSettingFilters) return;
+
             if (Settings.rvSettings.chkBoxShowFixes != this.chkBoxShowFixes.Checked)
             {
                 Settings.rvSettings.chkBoxShowFixes = this.chkBoxShowFixes.Checked;
@@ -2128,6 +2140,8 @@ namespace ROMVault
 
         private void mIAToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_batchSettingFilters) return;
+
             if (Settings.rvSettings.chkBoxShowMIA != this.chkBoxShowMIA.Checked)
             {
                 Settings.rvSettings.chkBoxShowMIA = this.chkBoxShowMIA.Checked;
@@ -2138,12 +2152,40 @@ namespace ROMVault
 
         private void mergedDupedToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_batchSettingFilters) return;
+
             if (Settings.rvSettings.chkBoxShowMerged != this.chkBoxShowMerged.Checked)
             {
                 Settings.rvSettings.chkBoxShowMerged = this.chkBoxShowMerged.Checked;
                 Settings.WriteConfig(Settings.rvSettings);
                 DatSetSelected(ctrRvTree.Selected);
             }
+        }
+
+        private List<ToolStripMenuItem> FilterCheckboxes;
+
+        private bool _batchSettingFilters;
+
+        private void setAllToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            _batchSettingFilters = true;
+            foreach (ToolStripMenuItem item in FilterCheckboxes)
+            {
+                item.Checked = setAllToolStripMenuItem.Checked;
+            }
+            _batchSettingFilters = false;
+            DatSetSelected(ctrRvTree.Selected);
+        }
+
+        private void toggleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _batchSettingFilters = true;
+            foreach (ToolStripMenuItem item in FilterCheckboxes)
+            {
+                item.Checked = !item.Checked;
+            }
+            _batchSettingFilters = false;
+            DatSetSelected(ctrRvTree.Selected);
         }
     }
 }
