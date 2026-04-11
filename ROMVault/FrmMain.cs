@@ -20,13 +20,16 @@ using RomVaultCore.Utils;
 using RVIO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using System.Web;
 using System.Windows.Forms;
 using TrrntZipUI;
 using Settings = RomVaultCore.Settings;
@@ -62,6 +65,8 @@ namespace ROMVault
         private readonly ContextMenuStrip _mnuContextToSort = new ContextMenuStrip().DarkCompliant();
 
         private readonly ToolStripMenuItem _mnuOpen;
+        private readonly ToolStripMenuItem _mnuRelocateRoms;
+        private readonly ToolStripMenuItem _mnuDeleteDat;
 
         private readonly ToolStripMenuItem _mnuToSortImportRomFiles;
         private readonly ToolStripMenuItem _mnuToSortImportRomFolders;
@@ -193,14 +198,22 @@ namespace ROMVault
 
             ToolStripMenuItem mnuDirDatSettings = new ToolStripMenuItem
             {
-                Text = @"Set Dir Dat Settings",
-                Image = Properties.Resources.folder__pencil,
+                Text = @"DAT Rules",
+                Image = Properties.Resources.database_property,
                 Tag = null
             };
 
             ToolStripMenuItem mnuDirMappings = new ToolStripMenuItem
             {
                 Text = @"Set ROM Folder",
+                Image = Properties.Resources.DatRom,
+                Tag = null
+            };
+
+            _mnuRelocateRoms = new ToolStripMenuItem
+            {
+                Text = @"Relocate ROM Folder",
+                Image = Properties.Resources.disc__arrow,
                 Tag = null
             };
 
@@ -215,6 +228,13 @@ namespace ROMVault
             {
                 Text = @"Open ROMs Folder",
                 Image = Properties.Resources.folder_open,
+                Tag = null
+            };
+
+            ToolStripMenuItem _mnuDatDirOpen = new ToolStripMenuItem
+            {
+                Text = @"Open DAT Folder",
+                Image = Properties.Resources.folder_horizontal_open,
                 Tag = null
             };
 
@@ -240,11 +260,11 @@ namespace ROMVault
 
             ToolStripMenuItem mnuImportToPickedDir = new ToolStripMenuItem
             {
-                Text = @"Import DAT/s to chosen Directory",
+                Text = @"Import DAT/s to a chosen Directory",
                 Tag = null
             };
 
-            ToolStripMenuItem mnuDeleteDat = new ToolStripMenuItem
+            _mnuDeleteDat = new ToolStripMenuItem
             {
                 Text = @"Delete selected DAT",
                 Image = Properties.Resources.database__minus,
@@ -255,30 +275,35 @@ namespace ROMVault
             _mnuContext.Items.Add(mnuScan1);
             _mnuContext.Items.Add(mnuScan3);
             _mnuContext.Items.Add(new ToolStripSeparator());
+            _mnuContext.Items.Add(_mnuDatDirOpen);
             _mnuContext.Items.Add(_mnuOpen);
             _mnuContext.Items.Add(_mnuLock);
-            _mnuContext.Items.Add(mnuDirDatSettings);
-            _mnuContext.Items.Add(mnuDirMappings);
             _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(mnuFixDat);
             _mnuContext.Items.Add(mnuMakeDat);
             _mnuContext.Items.Add(new ToolStripSeparator());
+            _mnuContext.Items.Add(mnuDirDatSettings);
+            _mnuContext.Items.Add(mnuDirMappings);
+            _mnuContext.Items.Add(_mnuRelocateRoms);
+            _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(mnuImportToThisDir);
             _mnuContext.Items.Add(mnuImportToPickedDir);
-            _mnuContext.Items.Add(mnuDeleteDat);
+            _mnuContext.Items.Add(_mnuDeleteDat);
 
             mnuScan1.Click += MnuScan;
             mnuScan2.Click += MnuScan;
             mnuScan3.Click += MnuScan;
             mnuDirDatSettings.Click += MnuDirSettings;
             mnuDirMappings.Click += MnuDirMappings;
+            _mnuRelocateRoms.Click += MnuRelocateRoms;
             _mnuLock.Click += MnuLockClick;
             _mnuOpen.Click += MnuOpenClick;
+            _mnuDatDirOpen.Click += MnuDatDirOpenClick;
             mnuFixDat.Click += MnuMakeFixDatClick;
             mnuMakeDat.Click += MnuMakeDatClick;
             mnuImportToThisDir.Click += MnuImportToThisDir;
             mnuImportToPickedDir.Click += MnuImportToPickedDir;
-            mnuDeleteDat.Click += MnuDeleteDat;
+            _mnuDeleteDat.Click += MnuDeleteDat;
 
             //_mnuContextToSort.ShowCheckMargin = false;
             //_mnuContextToSort.ShowImageMargin = false;
@@ -441,6 +466,85 @@ namespace ROMVault
             UpdateThemeAndControls();
         }
 
+        private void MnuRelocateRoms(object sender, EventArgs e)
+        {
+            string originalDir = _clickedTree.FullName;
+
+            UserControls.FolderBrowserDialog fbd = new UserControls.FolderBrowserDialog()
+            {
+                Description = "Select the new ROM Root for the CONTENTS of the present ROM directory.",
+                Multiselect = false,
+                OkButtonLabel = "Relocate"
+            };
+            var result = fbd.ShowDialog(this);
+            if (result != true) return;
+
+            List<string> allFiles = System.IO.Directory.GetFiles(originalDir, "*.*",
+                System.IO.SearchOption.AllDirectories).ToList();
+
+            Helpers.FileSystem.CopyFiles(allFiles.ToList(), fbd.SelectedPath, Settings.rvSettings.Darkness);
+
+            string tDir = _clickedTree.TreeFullName;
+            DirMapping dirRule = FindRule(_clickedTree.TreeFullName);
+            dirRule.DirPath = fbd.SelectedPath;
+            UpdateRule(dirRule);
+
+            int i = 0;
+            do { i++; }
+            while (Directory.Exists($"{originalDir}_RVRelocate({i})"));
+
+            string originalDirFlagged = $"{originalDir}_RVRelocate({i})";
+
+            Directory.Move(originalDir, originalDirFlagged);
+
+            ScanRoms(EScanLevel.Level2);
+
+            if (Properties.Settings.Default.RomRelocateDeleteOriginal)
+            {
+                Helpers.FileSystem.DeleteDirectorySafely(originalDirFlagged);
+            }
+
+            Settings.WriteConfig(Settings.rvSettings);
+        }
+
+        /// <summary>
+        /// This was taken from FrmDirectoryMappings
+        /// Can't follow the logic myself, but the form seems to work 🤷
+        /// </summary>
+        /// <param name="_rule"></param>
+        private void UpdateRule(DirMapping _rule)
+        {
+            bool updatingRule = false;
+            int i;
+            for (i = 0; i < Settings.rvSettings.DirMappings.Count; i++)
+            {
+                if (Settings.rvSettings.DirMappings[i] == _rule)
+                {
+                    updatingRule = true;
+                    break;
+                }
+
+                if (string.Compare(Settings.rvSettings.DirMappings[i].DirKey, _rule.DirKey, StringComparison.Ordinal) > 0)
+                {
+                    break;
+                }
+            }
+
+            if (!updatingRule)
+                Settings.rvSettings.DirMappings.Insert(i, _rule);
+        }
+
+        private static DirMapping FindRule(string dLocation)
+        {
+            foreach (DirMapping t in Settings.rvSettings.DirMappings)
+            {
+                if (string.Compare(t.DirKey, dLocation, StringComparison.Ordinal) == 0)
+                    return t;
+            }
+
+            return new DirMapping { DirKey = dLocation };
+        }
+
         private void SetupControlLists()
         {
             // Control Lists
@@ -470,8 +574,11 @@ namespace ROMVault
 
         private void MnuDeleteDat(object sender, EventArgs e)
         {
+            if (_clickedTree.Dat == null) return;
+
             string datPath = Path.Combine(ResolvedSelectedDatPath(),
                Path.GetFileName(_clickedTree.Dat.GetData(RvDat.DatData.DatRootFullName)));
+
             if (!File.Exists(datPath)) return;
             try
             {
@@ -887,6 +994,7 @@ namespace ROMVault
             if (cf.IsInToSort)
             {
                 _mnuToSortOpen.Enabled = Directory.Exists(_clickedTree.FullName);
+
                 _mnuToSortDelete.Enabled = !(_clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortPrimary) || _clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortCache));
 
                 _mnuToSortSetCache.Visible = !(_clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortCache) || _clickedTree.ToSortStatusIs(RvFile.ToSortDirType.ToSortFileOnly));
@@ -929,6 +1037,8 @@ namespace ROMVault
             else
             {
                 _mnuOpen.Enabled = Directory.Exists(_clickedTree.FullName);
+                _mnuRelocateRoms.Enabled = Directory.Exists(_clickedTree.FullName);
+                _mnuDeleteDat.Enabled = _clickedTree.Dat != null;
                 //_mnuFile.Enabled = _clickedTree.Dat == null;
                 _mnuContext.Show(this, new Point(controLocation.X + e.X, controLocation.Y + e.Y));
             }
@@ -987,6 +1097,13 @@ namespace ROMVault
             string tDir = _clickedTree.FullName;
             if (Directory.Exists(tDir))
                 try { Process.Start(tDir); } catch { }
+        }
+
+        private void MnuDatDirOpenClick(object sender, EventArgs e)
+        {
+            string destinationPath = ResolvedSelectedDatPath();
+            if (Directory.Exists(destinationPath))
+                try { Process.Start(destinationPath); } catch { }
         }
 
         private void MnuMakeFixDatClick(object sender, EventArgs e)
@@ -1537,6 +1654,7 @@ namespace ROMVault
                 DatInfo.Version = tDat.GetData(RvDat.DatData.Version);
                 DatInfo.Author = tDat.GetData(RvDat.DatData.Author);
                 DatInfo.Date = tDat.GetData(RvDat.DatData.Date);
+                DatInfo.DatPath = tDat.GetData(RvDat.DatData.DatRootFullName);
                 string header = tDat.GetData(RvDat.DatData.Header);
                 if (!string.IsNullOrWhiteSpace(header))
                     DatInfo.Name += " (" + header + ")";

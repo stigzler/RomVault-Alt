@@ -241,5 +241,17 @@ namespace ROMVault.Properties {
                 this["RomUnknownColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RomRelocateDeleteOriginal {
+            get {
+                return ((bool)(this["RomRelocateDeleteOriginal"]));
+            }
+            set {
+                this["RomRelocateDeleteOriginal"] = value;
+            }
+        }
     }
 }

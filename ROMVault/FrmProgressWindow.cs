@@ -310,6 +310,7 @@ namespace ROMVault
         private void FrmProgressWindow_Load(object sender, EventArgs e)
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+            Helpers.Theming.SetFormTextSizeToDefault(this);
         }
     }
 }

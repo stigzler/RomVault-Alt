@@ -117,6 +117,18 @@ namespace ROMVault
                         DGDirectoryMappingRules.Rows[row].Cells["CPath"].Style.BackColor = _cYellow;
                         DGDirectoryMappingRules.Rows[row].Cells["CLocation"].Style.BackColor = _cYellow;
                     }
+                    else
+                    {
+                        // wasn't sure what to put here
+                        DGDirectoryMappingRules.Rows[row].Cells["CPath"].Style.ForeColor = this.ForeColor;
+                        DGDirectoryMappingRules.Rows[row].Cells["CLocation"].Style.ForeColor = this.ForeColor;
+                    }
+                }
+                else
+                {
+                    // wasn't sure what to put here
+                    DGDirectoryMappingRules.Rows[row].Cells["CPath"].Style.ForeColor = this.ForeColor;
+                    DGDirectoryMappingRules.Rows[row].Cells["CLocation"].Style.ForeColor = this.ForeColor;
                 }
 
                 if (!Directory.Exists(t.DirPath))
@@ -150,18 +162,17 @@ namespace ROMVault
 
         private void BtnSetROMLocationClick(object sender, EventArgs e)
         {
-            FolderBrowser browse = new FolderBrowser
+            UserControls.FolderBrowserDialog fbd = new UserControls.FolderBrowserDialog
             {
-                ShowNewFolderButton = true,
-                Description = "Please select a folder for This Rom Set",
-                //RootFolder = Environment.SpecialFolder.MyComputer,
-                SelectedPath = txtROMLocation.Text
+                Description = "Please select a folder for this Dat's Roms.",
             };
-            if (browse.ShowDialog() == DialogResult.OK)
-            {
-                string relPath = RelativePath.MakeRelative(AppDomain.CurrentDomain.BaseDirectory, browse.SelectedPath);
-                txtROMLocation.Text = relPath;
-            }
+
+            if (Directory.Exists(txtROMLocation.Text)) fbd.InputPath = txtROMLocation.Text;
+
+            var result = fbd.ShowDialog(this);
+            if (result != true) return;
+
+            txtROMLocation.Text = fbd.SelectedPath;
         }
 
         private void BtnApplyClick(object sender, EventArgs e)
@@ -267,6 +278,12 @@ namespace ROMVault
 
         private void DataGridGamesDoubleClick(object sender, EventArgs e)
         {
+            // made single click - more intuitive given it's a datagrid
+            SetRule();
+        }
+
+        private void SetRule()
+        {
             if (DGDirectoryMappingRules.SelectedRows.Count <= 0)
             {
                 return;
@@ -297,6 +314,18 @@ namespace ROMVault
         private void FrmDirectoryMappings_Load(object sender, EventArgs e)
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+            if (Settings.rvSettings.Darkness) DGDirectoryMappingRules.DefaultCellStyle.ForeColor = Color.Black;
+            Helpers.Theming.SetFormTextSizeToDefault(this);
+        }
+
+        private void DGDirectoryMappingRules_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+          //  SetRule();
+        }
+
+        private void btnEditSelected_Click(object sender, EventArgs e)
+        {
+            SetRule();
         }
     }
 }

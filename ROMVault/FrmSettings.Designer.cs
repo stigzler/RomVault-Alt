@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("DAT Settings");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("File Operations");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("UI and UX");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("DAT Settings");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("File Operations");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("UI and UX");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -73,6 +73,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.FileOperationsTP = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.DeleteOrigRomsRelocateChB = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.MoveFilesNotCopyChB = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -183,22 +185,22 @@
             this.MainTV.Location = new System.Drawing.Point(6, 6);
             this.MainTV.MinimumSize = new System.Drawing.Size(120, 0);
             this.MainTV.Name = "MainTV";
-            treeNode1.ImageKey = "database.png";
-            treeNode1.Name = "DatSettingsTVI";
-            treeNode1.SelectedImageIndex = 0;
-            treeNode1.Text = "DAT Settings";
-            treeNode2.ImageKey = "folder-smiley.png";
-            treeNode2.Name = "FileOperationsTVI";
-            treeNode2.SelectedImageIndex = 1;
-            treeNode2.Text = "File Operations";
-            treeNode3.ImageKey = "ui-combo-box-blue.png";
-            treeNode3.Name = "UiTVI";
-            treeNode3.SelectedImageIndex = 2;
-            treeNode3.Text = "UI and UX";
+            treeNode4.ImageKey = "database.png";
+            treeNode4.Name = "DatSettingsTVI";
+            treeNode4.SelectedImageIndex = 0;
+            treeNode4.Text = "DAT Settings";
+            treeNode5.ImageKey = "folder-smiley.png";
+            treeNode5.Name = "FileOperationsTVI";
+            treeNode5.SelectedImageIndex = 1;
+            treeNode5.Text = "File Operations";
+            treeNode6.ImageKey = "ui-combo-box-blue.png";
+            treeNode6.Name = "UiTVI";
+            treeNode6.SelectedImageIndex = 2;
+            treeNode6.Text = "UI and UX";
             this.MainTV.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode4,
+            treeNode5,
+            treeNode6});
             this.MainTV.SelectedImageIndex = 0;
             this.MainTV.ShowPlusMinus = false;
             this.MainTV.ShowRootLines = false;
@@ -615,31 +617,53 @@
             this.FileOperationsTP.Location = new System.Drawing.Point(0, 20);
             this.FileOperationsTP.Name = "FileOperationsTP";
             this.FileOperationsTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
-            this.FileOperationsTP.Size = new System.Drawing.Size(464, 515);
+            this.FileOperationsTP.Size = new System.Drawing.Size(449, 655);
             this.FileOperationsTP.TabIndex = 1;
             this.FileOperationsTP.Text = "File Operations";
             this.FileOperationsTP.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
+            this.groupBox5.AutoSize = true;
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.DeleteOrigRomsRelocateChB);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.MoveFilesNotCopyChB);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(8, 217);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(448, 108);
+            this.groupBox5.Size = new System.Drawing.Size(433, 205);
             this.groupBox5.TabIndex = 50;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Rom Imports";
             // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.Location = new System.Drawing.Point(37, 115);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(390, 74);
+            this.label13.TabIndex = 47;
+            this.label13.Text = resources.GetString("label13.Text");
+            // 
+            // DeleteOrigRomsRelocateChB
+            // 
+            this.DeleteOrigRomsRelocateChB.AutoSize = true;
+            this.DeleteOrigRomsRelocateChB.Location = new System.Drawing.Point(14, 95);
+            this.DeleteOrigRomsRelocateChB.Name = "DeleteOrigRomsRelocateChB";
+            this.DeleteOrigRomsRelocateChB.Size = new System.Drawing.Size(196, 17);
+            this.DeleteOrigRomsRelocateChB.TabIndex = 46;
+            this.DeleteOrigRomsRelocateChB.Text = "Delete original ROMs after Relocate";
+            this.DeleteOrigRomsRelocateChB.UseVisualStyleBackColor = true;
+            // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.Location = new System.Drawing.Point(37, 43);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(405, 51);
+            this.label10.Size = new System.Drawing.Size(390, 49);
             this.label10.TabIndex = 45;
             this.label10.Text = "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
     "is if you wish to Move them instead (you will loose the files from your original" +
@@ -664,7 +688,7 @@
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox3.Location = new System.Drawing.Point(8, 122);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(448, 95);
+            this.groupBox3.Size = new System.Drawing.Size(433, 95);
             this.groupBox3.TabIndex = 47;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Logging";
@@ -709,7 +733,7 @@
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox4.Location = new System.Drawing.Point(8, 32);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(448, 90);
+            this.groupBox4.Size = new System.Drawing.Size(433, 90);
             this.groupBox4.TabIndex = 48;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Compression";
@@ -773,7 +797,7 @@
             this.UiTP.Location = new System.Drawing.Point(0, 20);
             this.UiTP.Name = "UiTP";
             this.UiTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
-            this.UiTP.Size = new System.Drawing.Size(464, 515);
+            this.UiTP.Size = new System.Drawing.Size(449, 655);
             this.UiTP.TabIndex = 3;
             this.UiTP.Text = "Ui + UX";
             this.UiTP.UseVisualStyleBackColor = true;
@@ -785,7 +809,7 @@
             this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
             this.OperationalGB.Location = new System.Drawing.Point(8, 162);
             this.OperationalGB.Name = "OperationalGB";
-            this.OperationalGB.Size = new System.Drawing.Size(448, 101);
+            this.OperationalGB.Size = new System.Drawing.Size(433, 101);
             this.OperationalGB.TabIndex = 52;
             this.OperationalGB.TabStop = false;
             this.OperationalGB.Text = "Operational";
@@ -798,7 +822,7 @@
             this.label9.AutoEllipsis = true;
             this.label9.Location = new System.Drawing.Point(39, 39);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(400, 50);
+            this.label9.Size = new System.Drawing.Size(385, 50);
             this.label9.TabIndex = 1;
             this.label9.Text = "By default, you have to press shift and R Click to get the context menu. R Click " +
     "copies the rom name to your clipboard. This is reversed if this setting is enabl" +
@@ -828,7 +852,7 @@
             this.AppearanceThemesGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AppearanceThemesGB.Location = new System.Drawing.Point(8, 33);
             this.AppearanceThemesGB.Name = "AppearanceThemesGB";
-            this.AppearanceThemesGB.Size = new System.Drawing.Size(448, 129);
+            this.AppearanceThemesGB.Size = new System.Drawing.Size(433, 129);
             this.AppearanceThemesGB.TabIndex = 49;
             this.AppearanceThemesGB.TabStop = false;
             this.AppearanceThemesGB.Text = "Appearance and Theme";
@@ -843,7 +867,7 @@
             this.flowLayoutPanel2.Controls.Add(this.RomsUnknownLB);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(96, 71);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(343, 28);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(328, 28);
             this.flowLayoutPanel2.TabIndex = 55;
             // 
             // RomsGotLB
@@ -1035,7 +1059,7 @@
             this.tabPage1.Location = new System.Drawing.Point(0, 20);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(464, 515);
+            this.tabPage1.Size = new System.Drawing.Size(449, 655);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "retired/parked";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1205,5 +1229,7 @@
         private UserControls.FlexiLabel InfoTextExampleLB;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox InfoTextColorPB;
+        private System.Windows.Forms.CheckBox DeleteOrigRomsRelocateChB;
+        private System.Windows.Forms.Label label13;
     }
 }

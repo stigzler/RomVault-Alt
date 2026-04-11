@@ -50,3 +50,30 @@ These make more sense to me as a new user, but again are there edge cases where 
 
 
 **Postscript:** On top of the above - changed all references from "Directory" to "Folder"
+
+## Rom Directories
+In `FrmDirectoryMappings` it stored paths relative to the Application root dir. I changed this to store the full path. Users can see the root path in the dat's rompath path and relative paths looked very messy. so before change they would see:
+
+`..\..\..\..\..\..\..\..\..\..\temp\project tests\RomVaultRevamp\testRomsRoot\Test 2\Atari - Atari 5200`
+
+and after change:
+
+`C:\temp\project tests\RomVaultRevamp\testRomsRoot\Test 2\Atari - Atari 5200`
+
+A lot less messy. Regarding the business logic, the final path seems to get stored as 
+
+`DirMapping.Dir`
+
+Tests for Scan for Fixes and Fix:
+(success = roms moved into rom directory for dat)
+
+|Path Type|Example|Result|Notes
+|-|-|-|-|
+|Local System Drive|C:\temp\project tests\RomVaultRevamp\testRomsRoot|Success||
+|Local Other Drive|D:\RomRoot|Success
+|Network|\\HomeServer\Media\Games\test-roms|Success
+
+Also, couldn't follow the datagridview row color key, so just replaced a couple of conditions with making the text the form color (with no background color) . Marked the two case with:
+
+`// wasn't sure what to put here`
+

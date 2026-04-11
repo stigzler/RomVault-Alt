@@ -223,9 +223,29 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap database_property {
+            get {
+                object obj = ResourceManager.GetObject("database-property", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap databaseBig {
             get {
                 object obj = ResourceManager.GetObject("databaseBig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DatRom {
+            get {
+                object obj = ResourceManager.GetObject("DatRom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

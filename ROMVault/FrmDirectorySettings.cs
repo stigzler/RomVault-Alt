@@ -563,6 +563,8 @@ namespace ROMVault
         private void FrmDirectorySettings_Load(object sender, EventArgs e)
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+            if (Settings.rvSettings.Darkness) DataGridGames.DefaultCellStyle.ForeColor = Color.Black;
+            Helpers.Theming.SetFormTextSizeToDefault(this);
         }
     }
 }

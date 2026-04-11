@@ -20,7 +20,6 @@ namespace RomVaultCore.ReadDat
         private static int _datsProcessed;
         private static ThreadWorker _thWrk;
 
-
         private static void ShowDat(string message, string filename)
         {
             _thWrk.Report(new bgwShowError(filename, message));
@@ -103,9 +102,6 @@ namespace RomVaultCore.ReadDat
             }
         }
 
-
-
-
         private static void RemoveOldDats(RvFile dbDir, DatImportDir datDir)
         {
             RvFile lDir = dbDir;
@@ -116,6 +112,7 @@ namespace RomVaultCore.ReadDat
 
             // now compare the old and new dats removing any old dats
             // in the current directory
+
             #region check and remove DATs
 
             int dbDirDatCount = lDir.DirDatCount;
@@ -162,6 +159,7 @@ namespace RomVaultCore.ReadDat
                         // this is a new dat that we will add next time around
                         datDirIndex++;
                         break;
+
                     case -1:
                         if (dbDat != null)
                             dbDat.Status = DatUpdateStatus.Delete;
@@ -173,7 +171,9 @@ namespace RomVaultCore.ReadDat
             #endregion
 
             // now scan the child directory structure of this directory
+
             #region compare all directories
+
             int dbDirChildCount = lDir.ChildCount;
             int datDirChildount = datDir?.ChildDirsCount ?? 0;
             dbDirIndex = 0;
@@ -219,6 +219,7 @@ namespace RomVaultCore.ReadDat
                         // found a new directory will be added later
                         datDirIndex++;
                         break;
+
                     case -1:
                         if (dbChild?.FileType == FileType.Dir && dbChild.Dat == null)
                         {
@@ -228,10 +229,9 @@ namespace RomVaultCore.ReadDat
                         break;
                 }
             }
+
             #endregion
         }
-
-
 
         private static EFile RemoveOldDatsCleanUpFiles(RvFile dbDir)
         {
@@ -282,9 +282,6 @@ namespace RomVaultCore.ReadDat
             // if this directory is now empty it should be deleted
             return tDir.ChildCount == 0 ? EFile.Delete : EFile.Keep;
         }
-
-
-
 
         private static void UpdateDirs(RvFile dbDir, DatImportDir datDir)
         {
@@ -385,15 +382,14 @@ namespace RomVaultCore.ReadDat
                         dbDirIndex++;
                         datDirIndex++;
                         break;
+
                     case -1:
-                        // all files 
+                        // all files
                         dbDirIndex++;
                         break;
                 }
             }
         }
-
-
 
         /// <summary>
         ///     Add the new DAT's into the DAT list
@@ -439,14 +435,12 @@ namespace RomVaultCore.ReadDat
                 else
                     break;
 
-
                 switch (res)
                 {
                     case 0:
                         _datsProcessed++;
                         _thWrk.Report(_datsProcessed);
                         _thWrk.Report(new bgwText("Dat : " + Path.GetFileNameWithoutExtension(fileDat?.DatFullName)));
-
 
                         Debug.WriteLine("Correct");
                         // Should already be set as correct above
@@ -460,7 +454,6 @@ namespace RomVaultCore.ReadDat
                         _datsProcessed++;
                         _thWrk.Report(_datsProcessed);
                         _thWrk.Report(new bgwText("Scanning New Dat : " + Path.GetFileNameWithoutExtension(fileDat?.DatFullName)));
-
 
                         Debug.WriteLine("Adding new DAT");
                         if (LoadNewDat(dbDir, fileDat))
@@ -489,7 +482,6 @@ namespace RomVaultCore.ReadDat
                 return false;
             }
 
-
             if (fileDat.datHeader.BaseDir.Count == 0)
             {
                 return false;
@@ -505,13 +497,20 @@ namespace RomVaultCore.ReadDat
             string errorMessage;
             if (MergeInDat(dbDir, fileDat.datHeader.BaseDir, thisDat, out RvDat conflictDat, true, out errorMessage))
             {
-                ReportError.Show($"Dat Merge conflict occured Cache contains {conflictDat.GetData(RvDat.DatData.DatRootFullName)} new dat {fileDat.DatFullName} is trying to use the same directory and so will be ignored.\nPlease report this to RomVault Discord:\n{errorMessage}");
+                ReportError.Show($"A Dat Merge conflict occurred:\r\n\r\nA new dat would be resolved to the same" +
+                    $" ROM directory as an existing one. RomVault is set to disallow this. This often occurs if two" +
+                    $" DATs with the same Name element in the header of the dat share the same physical folder on disk." +
+                    $" You can delete one of the files (the new one best), move one into another folder (again, new one is best)" +
+                    $" or change one of the headers (not recommended, but new is best if necessary). Files" +
+                    $" concerned:\r\n\r\nExisting cached DAT:" +
+                    $" \r\n{conflictDat.GetData(RvDat.DatData.DatRootFullName)}\r\n\r\nNew DAT:\r\n" +
+                    $"{fileDat.DatFullName})\r\n\r\nPlease report this to RomVault Discord:\r\n{errorMessage}");
                 return false;
             }
 
             //SetInDat(thisDirectory);
 
-            // Add the new Dat 
+            // Add the new Dat
             dbDir.DirDatAdd(thisDat);
 
             // Merge the files/directories in the Dat
@@ -562,10 +561,8 @@ namespace RomVaultCore.ReadDat
                         break;
                     }
 
-
                     List<RvFile> dbDats = new List<RvFile>();
                     int dbDatsCount = 1;
-
 
                     dbDats.Add(dbChild);
 
@@ -671,7 +668,6 @@ namespace RomVaultCore.ReadDat
                 return;
             }
 
-
             FileType ft = dbChild.FileType;
             if (ft == FileType.Zip || ft == FileType.SevenZip || ft == FileType.Dir)
             {
@@ -701,7 +697,6 @@ namespace RomVaultCore.ReadDat
                 RemoveOldTree(dbDir.Child(i));
             }
         }
-
 
         public static void CheckAllDats(RvFile dbFile, string romVaultPath)
         {

@@ -185,12 +185,12 @@ namespace Dark
                 case ContextMenuStrip cms:
                     cms.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
                     cms.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
-                    cms.RenderMode = ToolStripRenderMode.System;
+                    cms.RenderMode = ToolStripRenderMode.Professional;
                     cms.Renderer = (darkMode) ? new DarkToolStripRenderer() : null;
                     break;
 
                 case ToolStrip ts:
-                    ts.RenderMode = ToolStripRenderMode.System;
+                    ts.RenderMode = ToolStripRenderMode.Professional;
                     ts.Renderer = (darkMode) ? new DarkToolStripRenderer() : null;
                     ts.BackColor = (darkMode) ? bgTs : Control.DefaultBackColor;
                     ts.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;

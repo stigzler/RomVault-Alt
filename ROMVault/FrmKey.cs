@@ -36,6 +36,9 @@ namespace ROMVault
 
         private void FrmKey_Load(object sender, EventArgs e)
         {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+            Helpers.Theming.SetFormTextSizeToDefault(this);
+
             List<RepStatus> displayList = new List<RepStatus>
             {
                 RepStatus.Correct,
@@ -185,8 +188,6 @@ namespace ROMVault
                 label.Text = text;
                 Controls.Add(label);
             }
-
-            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
     }
 }

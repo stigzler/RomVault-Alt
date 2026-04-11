@@ -160,12 +160,12 @@ namespace ROMVault
             this.fullReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.romVaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directorySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryMappingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.darkModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.romVaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torrentZipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitHelpWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -662,15 +662,15 @@ namespace ROMVault
             this.RomsUnknownLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RomsUnknownLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RomsUnknownLB.ForeColor = System.Drawing.Color.Cyan;
-            this.RomsUnknownLB.Location = new System.Drawing.Point(283, 2);
+            this.RomsUnknownLB.Location = new System.Drawing.Point(260, 2);
             this.RomsUnknownLB.Margin = new System.Windows.Forms.Padding(2);
             this.RomsUnknownLB.Name = "RomsUnknownLB";
             this.RomsUnknownLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.RomsUnknownLB.ScaleFactor = 1D;
-            this.RomsUnknownLB.Size = new System.Drawing.Size(49, 25);
+            this.RomsUnknownLB.Size = new System.Drawing.Size(72, 25);
             this.RomsUnknownLB.TabIndex = 24;
             this.RomsUnknownLB.Tag = "override";
-            this.RomsUnknownLB.Text = "label2";
+            this.RomsUnknownLB.Text = "Unknown";
             // 
             // RomsFixableLB
             // 
@@ -679,15 +679,15 @@ namespace ROMVault
             this.RomsFixableLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RomsFixableLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RomsFixableLB.ForeColor = System.Drawing.Color.Yellow;
-            this.RomsFixableLB.Location = new System.Drawing.Point(230, 2);
+            this.RomsFixableLB.Location = new System.Drawing.Point(200, 2);
             this.RomsFixableLB.Margin = new System.Windows.Forms.Padding(2);
             this.RomsFixableLB.Name = "RomsFixableLB";
             this.RomsFixableLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.RomsFixableLB.ScaleFactor = 1D;
-            this.RomsFixableLB.Size = new System.Drawing.Size(49, 25);
+            this.RomsFixableLB.Size = new System.Drawing.Size(56, 25);
             this.RomsFixableLB.TabIndex = 23;
             this.RomsFixableLB.Tag = "override";
-            this.RomsFixableLB.Text = "label2";
+            this.RomsFixableLB.Text = "Fixable";
             // 
             // RomsMissingLB
             // 
@@ -696,15 +696,15 @@ namespace ROMVault
             this.RomsMissingLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RomsMissingLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RomsMissingLB.ForeColor = System.Drawing.Color.Red;
-            this.RomsMissingLB.Location = new System.Drawing.Point(177, 2);
+            this.RomsMissingLB.Location = new System.Drawing.Point(136, 2);
             this.RomsMissingLB.Margin = new System.Windows.Forms.Padding(2);
             this.RomsMissingLB.Name = "RomsMissingLB";
             this.RomsMissingLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.RomsMissingLB.ScaleFactor = 1D;
-            this.RomsMissingLB.Size = new System.Drawing.Size(49, 25);
+            this.RomsMissingLB.Size = new System.Drawing.Size(60, 25);
             this.RomsMissingLB.TabIndex = 22;
             this.RomsMissingLB.Tag = "override";
-            this.RomsMissingLB.Text = "label2";
+            this.RomsMissingLB.Text = "Missing";
             // 
             // RomsGotLB
             // 
@@ -713,15 +713,15 @@ namespace ROMVault
             this.RomsGotLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RomsGotLB.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RomsGotLB.ForeColor = System.Drawing.Color.LimeGreen;
-            this.RomsGotLB.Location = new System.Drawing.Point(124, 2);
+            this.RomsGotLB.Location = new System.Drawing.Point(96, 2);
             this.RomsGotLB.Margin = new System.Windows.Forms.Padding(2);
             this.RomsGotLB.Name = "RomsGotLB";
             this.RomsGotLB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.RomsGotLB.ScaleFactor = 1D;
-            this.RomsGotLB.Size = new System.Drawing.Size(49, 25);
+            this.RomsGotLB.Size = new System.Drawing.Size(36, 25);
             this.RomsGotLB.TabIndex = 21;
             this.RomsGotLB.Tag = "override";
-            this.RomsGotLB.Text = "label2";
+            this.RomsGotLB.Text = "Got";
             // 
             // RomsPathFPR
             // 
@@ -758,7 +758,6 @@ namespace ROMVault
             this.DatInfoPathLb.Padding = new System.Windows.Forms.Padding(3, 3, 3, 5);
             this.DatInfoPathLb.Size = new System.Drawing.Size(252, 25);
             this.DatInfoPathLb.TabIndex = 21;
-            this.DatInfoPathLb.Text = "label3";
             this.DatInfoPathLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CopyTextCMS
@@ -811,7 +810,6 @@ namespace ROMVault
             this.DatInfoNameLb.Padding = new System.Windows.Forms.Padding(2);
             this.DatInfoNameLb.Size = new System.Drawing.Size(251, 23);
             this.DatInfoNameLb.TabIndex = 22;
-            this.DatInfoNameLb.Text = "label3";
             this.DatInfoNameLb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // VaultHeaderPN
@@ -878,6 +876,7 @@ namespace ROMVault
             this.MainPG.HelpVisible = false;
             this.MainPG.Location = new System.Drawing.Point(0, 31);
             this.MainPG.Name = "MainPG";
+            this.MainPG.PropertySort = System.Windows.Forms.PropertySort.Categorized;
             this.MainPG.Size = new System.Drawing.Size(806, 214);
             this.MainPG.TabIndex = 0;
             this.MainPG.ToolbarVisible = false;
@@ -1421,8 +1420,8 @@ namespace ROMVault
             // 
             this.GameGridRowCountLB.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.GameGridRowCountLB.Name = "GameGridRowCountLB";
-            this.GameGridRowCountLB.Size = new System.Drawing.Size(35, 20);
-            this.GameGridRowCountLB.Text = "Rows";
+            this.GameGridRowCountLB.Size = new System.Drawing.Size(92, 20);
+            this.GameGridRowCountLB.Text = "No row selected";
             // 
             // TabEmuArc
             // 
@@ -1771,56 +1770,57 @@ namespace ROMVault
             this.directorySettingsToolStripMenuItem,
             this.directoryMappingsToolStripMenuItem,
             this.toolStripSeparator3,
-            this.darkModeToolStripMenuItem,
+            this.romVaultSettingsToolStripMenuItem,
             this.toolStripSeparator6,
-            this.romVaultSettingsToolStripMenuItem});
+            this.darkModeToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // directorySettingsToolStripMenuItem
-            // 
-            this.directorySettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.folder__pencil;
-            this.directorySettingsToolStripMenuItem.Name = "directorySettingsToolStripMenuItem";
-            this.directorySettingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F10)));
-            this.directorySettingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.directorySettingsToolStripMenuItem.Text = "Directory Dat Rules";
-            this.directorySettingsToolStripMenuItem.Click += new System.EventHandler(this.DirectorySettingsToolStripMenuItem_Click);
-            // 
-            // directoryMappingsToolStripMenuItem
-            // 
-            this.directoryMappingsToolStripMenuItem.Name = "directoryMappingsToolStripMenuItem";
-            this.directoryMappingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F10)));
-            this.directoryMappingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.directoryMappingsToolStripMenuItem.Text = "Directory Mappings";
-            this.directoryMappingsToolStripMenuItem.Click += new System.EventHandler(this.directoryMappingsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(228, 6);
-            // 
-            // darkModeToolStripMenuItem
-            // 
-            this.darkModeToolStripMenuItem.CheckOnClick = true;
-            this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
-            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.darkModeToolStripMenuItem.Text = "Dark Mode";
-            this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.darkModeToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(228, 6);
             // 
             // romVaultSettingsToolStripMenuItem
             // 
             this.romVaultSettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.gear;
             this.romVaultSettingsToolStripMenuItem.Name = "romVaultSettingsToolStripMenuItem";
             this.romVaultSettingsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.romVaultSettingsToolStripMenuItem.Text = "Preferences";
+            this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.romVaultSettingsToolStripMenuItem.Text = "RomVault Settings";
             this.romVaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.RomVaultSettingsToolStripMenuItem_Click);
+            // 
+            // directorySettingsToolStripMenuItem
+            // 
+            this.directorySettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.database_property;
+            this.directorySettingsToolStripMenuItem.Name = "directorySettingsToolStripMenuItem";
+            this.directorySettingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F10)));
+            this.directorySettingsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.directorySettingsToolStripMenuItem.Text = "DAT Rules";
+            this.directorySettingsToolStripMenuItem.Click += new System.EventHandler(this.DirectorySettingsToolStripMenuItem_Click);
+            // 
+            // directoryMappingsToolStripMenuItem
+            // 
+            this.directoryMappingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.DatRom;
+            this.directoryMappingsToolStripMenuItem.Name = "directoryMappingsToolStripMenuItem";
+            this.directoryMappingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F10)));
+            this.directoryMappingsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.directoryMappingsToolStripMenuItem.Text = "ROM Folder Mappings";
+            this.directoryMappingsToolStripMenuItem.Click += new System.EventHandler(this.directoryMappingsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(242, 6);
+            // 
+            // darkModeToolStripMenuItem
+            // 
+            this.darkModeToolStripMenuItem.CheckOnClick = true;
+            this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
+            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.darkModeToolStripMenuItem.Text = "Dark Mode";
+            this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.darkModeToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(242, 6);
             // 
             // helpToolStripMenuItem
             // 
@@ -1959,7 +1959,7 @@ namespace ROMVault
             this.DatsControlSSBT.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DatsGroupVisibilitySSBT,
             this.DatsShortnameToggleSSBT});
-            this.DatsControlSSBT.Image = global::ROMVault.Properties.Resources.database__arrow;
+            this.DatsControlSSBT.Image = global::ROMVault.Properties.Resources.database;
             this.DatsControlSSBT.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DatsControlSSBT.Name = "DatsControlSSBT";
             this.DatsControlSSBT.Size = new System.Drawing.Size(37, 28);
@@ -1986,7 +1986,7 @@ namespace ROMVault
             this.RomsControlSSBT.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RomsGroupVisibilitySSBT,
             this.RomsShortnameToggleSSBT});
-            this.RomsControlSSBT.Image = global::ROMVault.Properties.Resources.disc__arrow;
+            this.RomsControlSSBT.Image = global::ROMVault.Properties.Resources.disc;
             this.RomsControlSSBT.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RomsControlSSBT.Name = "RomsControlSSBT";
             this.RomsControlSSBT.Size = new System.Drawing.Size(37, 28);

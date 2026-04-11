@@ -112,6 +112,7 @@ namespace ROMVault
         private void FrmSplashScreen_Load(object sender, EventArgs e)
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+            Helpers.Theming.SetFormTextSizeToDefault(this);
         }
     }
 }

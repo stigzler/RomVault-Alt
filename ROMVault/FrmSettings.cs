@@ -34,6 +34,7 @@ namespace ROMVault
             InitializeComponent();
 
             Helpers.Theming.SetFormTextSizeToDefault(this);
+            Helpers.Theming.SetControlTextSizeToDefault(MainTV);
 
             this.mainForm = mainForm;
 
@@ -133,6 +134,7 @@ namespace ROMVault
 
             // File OPs
             MoveFilesNotCopyChB.Checked = setts.RomImportMoveNotCopy;
+            DeleteOrigRomsRelocateChB.Checked = setts.RomRelocateDeleteOriginal;
 
             // UI and UX
             MainTextSizeNUM.Value = setts.MainTextSize;
@@ -224,6 +226,7 @@ namespace ROMVault
 
             // File Ops
             setts.RomImportMoveNotCopy = MoveFilesNotCopyChB.Checked;
+            setts.RomRelocateDeleteOriginal = DeleteOrigRomsRelocateChB.Checked;
 
             // UI and UX
             setts.MainTextSize = (int)MainTextSizeNUM.Value;

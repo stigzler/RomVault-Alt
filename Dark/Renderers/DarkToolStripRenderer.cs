@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -130,23 +131,23 @@ namespace Dark.Renderers
                 base.OnRenderSeparator(e);
                 return;
             }
-            // Ensure the separator area uses the dark background so the line appears on the correct color
+
             Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
-            using (Brush back = new SolidBrush(dark.bgTs))
+            using (Brush back = new SolidBrush(e.ToolStrip.BackColor))
                 e.Graphics.FillRectangle(back, bounds);
 
             if (e.Vertical)
             {
                 int verticalPadding = (int)(((double)e.Item.Height * 20) / 100);
                 int x = Convert.ToInt32((double)bounds.Width / 2) - 1;
-                using (Pen pen = new Pen(ControlPaint.Dark(dark.fg)))
+                using (Pen pen = new Pen(ControlPaint.Dark(e.ToolStrip.ForeColor)))
                     e.Graphics.DrawLine(pen, x, bounds.Top + verticalPadding, x, bounds.Bottom - 1 - verticalPadding);
             }
             else
             {
                 int horizontalPadding = (int)(((double)e.Item.Width * 20) / 100);
                 int y = Convert.ToInt32((double)bounds.Height / 2) - 1;
-                using (Pen pen = new Pen(ControlPaint.Dark(dark.fg)))
+                using (Pen pen = new Pen(ControlPaint.Dark(e.ToolStrip.ForeColor)))
                     e.Graphics.DrawLine(pen, bounds.Left + horizontalPadding, y, bounds.Right - 1 - horizontalPadding, y);
             }
         }

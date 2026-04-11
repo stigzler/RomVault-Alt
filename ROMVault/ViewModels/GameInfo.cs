@@ -14,19 +14,19 @@ namespace ROMVault.ViewModels
     internal class GameInfo : ViewModelBase
     {
         [SortableCategory("General", 10)]
+        public string Name { get; set; } = string.Empty;
+
+        [SortableCategory("General", 10)]
+        public string Description { get; set; } = string.Empty;
+
+        [SortableCategory("General", 10)]
         public string Category { get; set; } = string.Empty;
 
         [SortableCategory("General", 10)]
         public string CloneOf { get; set; } = string.Empty;
 
         [SortableCategory("General", 10)]
-        public string Description { get; set; } = string.Empty;
-
-        [SortableCategory("General", 10)]
         public string Manufacturer { get; set; } = string.Empty;
-
-        [SortableCategory("General", 10)]
-        public string Name { get; set; } = string.Empty;
 
         [SortableCategory("General", 10)]
         public string RomOf { get; set; } = string.Empty;
