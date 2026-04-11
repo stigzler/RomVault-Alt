@@ -383,17 +383,5 @@ namespace ROMVault
             txtInfo.ClearText();
             txtInfo2.ClearText();
         }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            //
-            // FrmMain
-            //
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "FrmMain";
-            this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.ResumeLayout(false);
-        }
     }
 }

@@ -271,9 +271,6 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain_Artwork.resx">
-      <DependentUpon>FrmMain_Artwork.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmProgressWindow.resx">
       <DependentUpon>FrmProgressWindow.cs</DependentUpon>
     </EmbeddedResource>
