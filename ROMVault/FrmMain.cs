@@ -32,6 +32,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using TrrntZipUI;
+using Settings = RomVaultCore.Settings;
 
 namespace ROMVault
 {
@@ -412,11 +413,11 @@ namespace ROMVault
             _mnuToSortLock.Click += ToSortLock;
 
             chkBoxShowCompleteTSI.Checked = Settings.rvSettings.chkBoxShowComplete;
-            chkBoxShowPartialTSI.Checked = Settings.rvSettings.chkBoxShowPartial;
+            chkBoxShowPartialTSI.Checked = Settings.rvSettings.chkBoxShowPartial; // I dunno what this settings system is doing - seem to always revert to true on load? Despite settings being explicitly set and saved at preivous runtime
             chkBoxShowFixesTSI.Checked = Settings.rvSettings.chkBoxShowFixes;
             chkBoxShowMIATSI.Checked = Settings.rvSettings.chkBoxShowMIA;
             chkBoxShowMergedTSI.Checked = Settings.rvSettings.chkBoxShowMerged;
-            //chkBoxShowEmptyTSI.Checked = Settings.rvSettings.chkBoxShowEmpty;   // i think this one may have been missed off? not sure if operaiotnal decision?
+            //chkBoxShowEmptyTSI.Checked = Settings.rvSettings.chkBoxShowEmpty;   // I think this one may have been missed off? not sure if operaiotnal decision?
 
             TabArtworkInitialize();
 

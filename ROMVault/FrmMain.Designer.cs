@@ -1300,7 +1300,7 @@ namespace ROMVault
             this.chkBoxShowCompleteTSI.CheckOnClick = true;
             this.chkBoxShowCompleteTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowCompleteTSI.Name = "chkBoxShowCompleteTSI";
-            this.chkBoxShowCompleteTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowCompleteTSI.Size = new System.Drawing.Size(180, 22);
             this.chkBoxShowCompleteTSI.Text = "Complete";
             this.chkBoxShowCompleteTSI.CheckedChanged += new System.EventHandler(this.completeToolStripMenuItem_Click);
             this.chkBoxShowCompleteTSI.Click += new System.EventHandler(this.completeToolStripMenuItem_Click);
@@ -1311,7 +1311,7 @@ namespace ROMVault
             this.chkBoxShowPartialTSI.CheckOnClick = true;
             this.chkBoxShowPartialTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowPartialTSI.Name = "chkBoxShowPartialTSI";
-            this.chkBoxShowPartialTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowPartialTSI.Size = new System.Drawing.Size(180, 22);
             this.chkBoxShowPartialTSI.Text = "Partial";
             this.chkBoxShowPartialTSI.Click += new System.EventHandler(this.paToolStripMenuItem_Click);
             // 
@@ -1321,7 +1321,7 @@ namespace ROMVault
             this.chkBoxShowEmptyTSI.CheckOnClick = true;
             this.chkBoxShowEmptyTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowEmptyTSI.Name = "chkBoxShowEmptyTSI";
-            this.chkBoxShowEmptyTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowEmptyTSI.Size = new System.Drawing.Size(180, 22);
             this.chkBoxShowEmptyTSI.Text = "Empty";
             this.chkBoxShowEmptyTSI.Click += new System.EventHandler(this.emptyToolStripMenuItem_Click);
             // 
@@ -1331,7 +1331,7 @@ namespace ROMVault
             this.chkBoxShowFixesTSI.CheckOnClick = true;
             this.chkBoxShowFixesTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowFixesTSI.Name = "chkBoxShowFixesTSI";
-            this.chkBoxShowFixesTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowFixesTSI.Size = new System.Drawing.Size(180, 22);
             this.chkBoxShowFixesTSI.Text = "Fixes";
             this.chkBoxShowFixesTSI.Click += new System.EventHandler(this.fixesToolStripMenuItem_Click);
             // 
@@ -1341,7 +1341,7 @@ namespace ROMVault
             this.chkBoxShowMIATSI.CheckOnClick = true;
             this.chkBoxShowMIATSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowMIATSI.Name = "chkBoxShowMIATSI";
-            this.chkBoxShowMIATSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowMIATSI.Size = new System.Drawing.Size(180, 22);
             this.chkBoxShowMIATSI.Text = "MIA";
             this.chkBoxShowMIATSI.Click += new System.EventHandler(this.mIAToolStripMenuItem_Click);
             // 
@@ -1351,26 +1351,26 @@ namespace ROMVault
             this.chkBoxShowMergedTSI.CheckOnClick = true;
             this.chkBoxShowMergedTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowMergedTSI.Name = "chkBoxShowMergedTSI";
-            this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(180, 22);
             this.chkBoxShowMergedTSI.Text = "Merged/Duped";
             this.chkBoxShowMergedTSI.Click += new System.EventHandler(this.mergedDupedToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(152, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // toggleToolStripMenuItem
             // 
             this.toggleToolStripMenuItem.Name = "toggleToolStripMenuItem";
-            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.toggleToolStripMenuItem.Text = "Toggle";
             this.toggleToolStripMenuItem.Click += new System.EventHandler(this.toggleToolStripMenuItem_Click);
             // 
             // setAllToolStripMenuItem
             // 
             this.setAllToolStripMenuItem.Name = "setAllToolStripMenuItem";
-            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.setAllToolStripMenuItem.Text = "Clear All";
             this.setAllToolStripMenuItem.Click += new System.EventHandler(this.clearAllToolStripMenuItem_Click);
             // 
