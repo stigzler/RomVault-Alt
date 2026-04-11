@@ -132,7 +132,7 @@ namespace Dark.Renderers
             }
             // Ensure the separator area uses the dark background so the line appears on the correct color
             Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
-            using (Brush back = new SolidBrush(dark.bg))
+            using (Brush back = new SolidBrush(dark.bgTs))
                 e.Graphics.FillRectangle(back, bounds);
 
             if (e.Vertical)

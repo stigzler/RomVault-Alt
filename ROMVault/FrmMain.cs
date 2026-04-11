@@ -10,7 +10,6 @@ using DATReader.DatStore;
 using DATReader.DatWriter;
 using ROMVault.Extensions;
 using ROMVault.Helpers;
-using ROMVault.Properties;
 using ROMVault.ViewModels;
 using RomVaultCore;
 using RomVaultCore.Extensions;
@@ -26,8 +25,6 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -1567,6 +1564,7 @@ namespace ROMVault
 
         private void UpdateDatInfoControls()
         {
+            _datObjectSelected = true;
             MainPG.SelectedObject = DatInfo;
 
             string compositName = DatInfo.Name;
@@ -1707,6 +1705,12 @@ namespace ROMVault
 
             ctrRvTree.Visible = true;
 
+            // PropertyGrid
+            MainPG.MoveSplitterTo(200);
+
+            // DataGridViews
+            UpdateDataGridViewsColSizing();
+
             _shown = true;
         }
 
@@ -1774,10 +1778,6 @@ namespace ROMVault
             {
                 ExpandSidebar();
             }
-        }
-
-        private void GameGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
 
         /// <summary>
@@ -2029,9 +2029,18 @@ namespace ROMVault
         {
         }
 
+        private bool _datObjectSelected = false;
+
         private void MainPG_SelectedObjectsChanged(object sender, EventArgs e)
         {
             if (MainPG.SelectedObjects.Count() == 0) return;
+
+            //if (_datObjectSelected && MainPG.SelectedObjects[0] is GameInfo)
+            //{
+            //    _datObjectSelected = false;
+            //    return;
+            //}
+
             if (MainPG.SelectedObjects[0] is ViewModelBase)
             {
                 PgHeaderLB.Text = ((ViewModelBase)MainPG.SelectedObjects[0]).Title;
@@ -2176,6 +2185,32 @@ namespace ROMVault
         private void GameRomToHomeBT_Click(object sender, EventArgs e)
         {
             GameGridNanigateToRoot();
+        }
+
+        private void AutoSizeGameColChB_Click(object sender, EventArgs e)
+        {
+            UpdateDataGridViewsColSizing();
+        }
+
+        private void UpdateDataGridViewsColSizing()
+        {
+            if (AutoSizeGameColChB.Checked)
+            {
+                //GameGrid.Columns[(int)GameGridColumns.CType].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                GameGrid.Columns[(int)GameGridColumns.CDateTime].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                //GameGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                RomGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            else
+            {
+                // GameGrid.Columns[(int)GameGridColumns.CType].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                GameGrid.Columns[(int)GameGridColumns.CDateTime].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+                //GameGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                RomGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            }
         }
     }
 }

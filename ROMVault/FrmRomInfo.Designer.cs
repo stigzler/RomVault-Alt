@@ -52,6 +52,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRomInfo";
             this.Text = "Rom Occurrence list";
+            this.Load += new System.EventHandler(this.FrmRomInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

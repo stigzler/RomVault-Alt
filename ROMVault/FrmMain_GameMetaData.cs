@@ -53,6 +53,11 @@ namespace ROMVault
 
         private void UpdateGameInfoControls()
         {
+            if (_datObjectSelected)
+            {
+                _datObjectSelected = false;
+                return;
+            }
             MainPG.SelectedObject = GameInfo;
         }
 

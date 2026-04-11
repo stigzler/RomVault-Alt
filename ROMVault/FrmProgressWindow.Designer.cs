@@ -205,6 +205,7 @@
             this.Name = "FrmProgressWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RomVault Progress";
+            this.Load += new System.EventHandler(this.FrmProgressWindow_Load);
             this.Shown += new System.EventHandler(this.FrmProgressWindowNewShown);
             this.Resize += new System.EventHandler(this.FrmProgressWindow_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorGrid)).EndInit();

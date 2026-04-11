@@ -30,7 +30,6 @@ namespace ROMVault
         private DateTime _dateTimeLast;
         private string _lastMessage;
 
-
         public FrmProgressWindow(Form parentForm, string titleRoot, WorkerStart function, Finished funcFinished)
         {
             Cancelled = false;
@@ -48,10 +47,6 @@ namespace ROMVault
 
             _titleRoot = titleRoot;
             _lastMessage = "Initializing";
-
-            if (Settings.rvSettings.Darkness)
-                Dark.dark.SetColors(this);
-
 
             _thWrk = new ThreadWorker(function);
         }
@@ -72,7 +67,6 @@ namespace ROMVault
                 return mdiCp;
             }
         }
-
 
         private void FrmProgressWindowNewShown(object sender, EventArgs e)
         {
@@ -145,7 +139,6 @@ namespace ROMVault
                 return;
             }
 
-
             if (obj is bgwText2 bgwT2)
             {
                 label2.Text = bgwT2.Text;
@@ -178,13 +171,11 @@ namespace ROMVault
                 return;
             }
 
-
             if (obj is bgwText3 bgwT3)
             {
                 label3.Text = bgwT3.Text;
                 return;
             }
-
 
             if (obj is bgwShowError bgwSE)
             {
@@ -212,7 +203,6 @@ namespace ROMVault
                 }
             }
         }
-
 
         private void UpdateStatusText()
         {
@@ -287,12 +277,14 @@ namespace ROMVault
                         _parentForm.Hide();
                     }
                     return;
+
                 case FormWindowState.Maximized:
                     if (!_parentForm.Visible)
                     {
                         _parentForm.Show();
                     }
                     return;
+
                 case FormWindowState.Normal:
                     if (!_parentForm.Visible)
                     {
@@ -306,12 +298,18 @@ namespace ROMVault
         {
             SetDataGridSize();
         }
+
         private void SetDataGridSize()
         {
             ErrorGrid.Top = 0;
             ErrorGrid.Left = 0;
             ErrorGrid.Width = Math.Max(splitContainer1.Panel2.Width, 80);
             ErrorGrid.Height = Math.Max(splitContainer1.Panel2.Height, 80);
+        }
+
+        private void FrmProgressWindow_Load(object sender, EventArgs e)
+        {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
     }
 }

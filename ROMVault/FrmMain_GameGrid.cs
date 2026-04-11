@@ -278,6 +278,16 @@ namespace ROMVault
 
                 GameGridRowCountLB.Text = $"Items: {GameGrid.RowCount}";
 
+                //if (AutoSizeGameColChB.Checked)
+                //{
+                //    GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                //    GameGrid.Columns[(int)GameGridColumns.CDateTime].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                //}
+                //else
+                //{
+                //    GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                //}
+
                 UpdateSelectedGame(onTimer);
             }
             catch { }
@@ -482,10 +492,10 @@ namespace ROMVault
                             using (Graphics g = Graphics.FromImage(bmp))
                             {
                                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                                g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+                                g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
                                 //Font drawFont = new Font("Verdana", Properties.Settings.Default.MainTextSize - 2, FontStyle.Bold);
-                                Font drawFont = new Font("Arial Narrow", Properties.Settings.Default.MainTextSize + 1, FontStyle.Bold);
+                                Font drawFont = new Font("Arial Narrow", Properties.Settings.Default.MainTextSize, FontStyle.Bold);
 
                                 int gOff;
                                 int columnIndex = 0;

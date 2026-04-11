@@ -28,5 +28,10 @@ namespace ROMVault
         {
             Environment.Exit(0);
         }
+
+        private void FrmShowError_Load(object sender, EventArgs e)
+        {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+        }
     }
 }

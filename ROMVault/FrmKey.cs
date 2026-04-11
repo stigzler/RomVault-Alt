@@ -186,8 +186,7 @@ namespace ROMVault
                 Controls.Add(label);
             }
 
-            if (Settings.rvSettings.Darkness)
-                Dark.dark.SetColors(this);
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
     }
 }

@@ -168,7 +168,7 @@
             this.TvPaddingPN.MaximumSize = new System.Drawing.Size(160, 0);
             this.TvPaddingPN.Name = "TvPaddingPN";
             this.TvPaddingPN.Padding = new System.Windows.Forms.Padding(6);
-            this.TvPaddingPN.Size = new System.Drawing.Size(120, 499);
+            this.TvPaddingPN.Size = new System.Drawing.Size(135, 639);
             this.TvPaddingPN.TabIndex = 47;
             // 
             // MainTV
@@ -202,7 +202,7 @@
             this.MainTV.SelectedImageIndex = 0;
             this.MainTV.ShowPlusMinus = false;
             this.MainTV.ShowRootLines = false;
-            this.MainTV.Size = new System.Drawing.Size(120, 487);
+            this.MainTV.Size = new System.Drawing.Size(123, 627);
             this.MainTV.TabIndex = 46;
             this.MainTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTV_AfterSelect);
             // 
@@ -227,14 +227,14 @@
             this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 535);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 675);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(584, 29);
             this.flowLayoutPanel1.TabIndex = 51;
             // 
             // MainSS
             // 
-            this.MainSS.Location = new System.Drawing.Point(0, 564);
+            this.MainSS.Location = new System.Drawing.Point(0, 704);
             this.MainSS.Name = "MainSS";
             this.MainSS.Size = new System.Drawing.Size(584, 22);
             this.MainSS.TabIndex = 52;
@@ -259,9 +259,9 @@
             this.LeftPN.Controls.Add(this.flexiLabel2);
             this.LeftPN.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftPN.Location = new System.Drawing.Point(0, 0);
-            this.LeftPN.MinimumSize = new System.Drawing.Size(120, 0);
+            this.LeftPN.MinimumSize = new System.Drawing.Size(135, 0);
             this.LeftPN.Name = "LeftPN";
-            this.LeftPN.Size = new System.Drawing.Size(120, 535);
+            this.LeftPN.Size = new System.Drawing.Size(135, 675);
             this.LeftPN.TabIndex = 53;
             // 
             // flexiLabel2
@@ -288,11 +288,11 @@
             this.MainTC.HideBorders = true;
             this.MainTC.HideTabs = false;
             this.MainTC.ItemSize = new System.Drawing.Size(58, 18);
-            this.MainTC.Location = new System.Drawing.Point(120, 0);
+            this.MainTC.Location = new System.Drawing.Point(135, 0);
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
             this.MainTC.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(120)))), ((int)(((byte)(187)))));
-            this.MainTC.Size = new System.Drawing.Size(464, 535);
+            this.MainTC.Size = new System.Drawing.Size(449, 675);
             this.MainTC.TabIndex = 0;
             this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDarkDark;
             this.MainTC.UnselectedTabBackColor = System.Drawing.SystemColors.ControlDark;
@@ -306,7 +306,7 @@
             this.DatSettingsTP.Location = new System.Drawing.Point(0, 20);
             this.DatSettingsTP.Name = "DatSettingsTP";
             this.DatSettingsTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
-            this.DatSettingsTP.Size = new System.Drawing.Size(464, 515);
+            this.DatSettingsTP.Size = new System.Drawing.Size(449, 655);
             this.DatSettingsTP.TabIndex = 0;
             this.DatSettingsTP.Text = "Dat Settings";
             this.DatSettingsTP.UseVisualStyleBackColor = true;
@@ -326,7 +326,7 @@
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Location = new System.Drawing.Point(8, 382);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(431, 252);
+            this.groupBox2.Size = new System.Drawing.Size(433, 252);
             this.groupBox2.TabIndex = 46;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAT Vault";
@@ -338,7 +338,7 @@
             this.RestoreDatFormatsBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RestoreDatFormatsBT.Image = global::ROMVault.Properties.Resources.arrowCircle;
             this.RestoreDatFormatsBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.RestoreDatFormatsBT.Location = new System.Drawing.Point(350, 192);
+            this.RestoreDatFormatsBT.Location = new System.Drawing.Point(352, 192);
             this.RestoreDatFormatsBT.Name = "RestoreDatFormatsBT";
             this.RestoreDatFormatsBT.Size = new System.Drawing.Size(75, 30);
             this.RestoreDatFormatsBT.TabIndex = 35;
@@ -354,7 +354,7 @@
             this.DeleteDatFormatBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteDatFormatBT.Image = global::ROMVault.Properties.Resources.minus;
             this.DeleteDatFormatBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DeleteDatFormatBT.Location = new System.Drawing.Point(350, 156);
+            this.DeleteDatFormatBT.Location = new System.Drawing.Point(352, 156);
             this.DeleteDatFormatBT.Name = "DeleteDatFormatBT";
             this.DeleteDatFormatBT.Size = new System.Drawing.Size(75, 30);
             this.DeleteDatFormatBT.TabIndex = 34;
@@ -370,7 +370,7 @@
             this.AddDatFormatBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddDatFormatBT.Image = global::ROMVault.Properties.Resources.plus;
             this.AddDatFormatBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AddDatFormatBT.Location = new System.Drawing.Point(350, 120);
+            this.AddDatFormatBT.Location = new System.Drawing.Point(352, 120);
             this.AddDatFormatBT.Name = "AddDatFormatBT";
             this.AddDatFormatBT.Size = new System.Drawing.Size(75, 30);
             this.AddDatFormatBT.TabIndex = 33;
@@ -399,7 +399,7 @@
             this.DatFormatsLV.LabelEdit = true;
             this.DatFormatsLV.Location = new System.Drawing.Point(9, 120);
             this.DatFormatsLV.Name = "DatFormatsLV";
-            this.DatFormatsLV.Size = new System.Drawing.Size(332, 102);
+            this.DatFormatsLV.Size = new System.Drawing.Size(334, 102);
             this.DatFormatsLV.SmallImageList = this.DatFormatLvLineHeightForcer;
             this.DatFormatsLV.TabIndex = 31;
             this.DatFormatsLV.UseCompatibleStateImageBehavior = false;
@@ -454,7 +454,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(8, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(431, 350);
+            this.groupBox1.Size = new System.Drawing.Size(433, 350);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Core Settings";
@@ -468,7 +468,7 @@
             this.lblDATRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDATRoot.Location = new System.Drawing.Point(85, 30);
             this.lblDATRoot.Name = "lblDATRoot";
-            this.lblDATRoot.Size = new System.Drawing.Size(290, 22);
+            this.lblDATRoot.Size = new System.Drawing.Size(292, 22);
             this.lblDATRoot.TabIndex = 3;
             this.lblDATRoot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -486,7 +486,7 @@
             this.btnDAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDAT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDAT.Location = new System.Drawing.Point(381, 30);
+            this.btnDAT.Location = new System.Drawing.Point(383, 30);
             this.btnDAT.Name = "btnDAT";
             this.btnDAT.Size = new System.Drawing.Size(44, 24);
             this.btnDAT.TabIndex = 6;
@@ -503,7 +503,7 @@
             this.cboFixLevel.FormattingEnabled = true;
             this.cboFixLevel.Location = new System.Drawing.Point(86, 58);
             this.cboFixLevel.Name = "cboFixLevel";
-            this.cboFixLevel.Size = new System.Drawing.Size(339, 21);
+            this.cboFixLevel.Size = new System.Drawing.Size(341, 21);
             this.cboFixLevel.TabIndex = 14;
             // 
             // label3
@@ -533,7 +533,7 @@
             this.textBox1.Location = new System.Drawing.Point(9, 166);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(416, 121);
+            this.textBox1.Size = new System.Drawing.Size(418, 121);
             this.textBox1.TabIndex = 12;
             // 
             // chkDoubleCheckDelete
@@ -1075,7 +1075,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(584, 586);
+            this.ClientSize = new System.Drawing.Size(584, 726);
             this.Controls.Add(this.MainTC);
             this.Controls.Add(this.LeftPN);
             this.Controls.Add(this.flowLayoutPanel1);

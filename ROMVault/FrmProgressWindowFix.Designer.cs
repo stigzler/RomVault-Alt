@@ -259,6 +259,7 @@
             this.Name = "FrmProgressWindowFix";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fixing Files";
+            this.Load += new System.EventHandler(this.FrmProgressWindowFix_Load);
             this.Shown += new System.EventHandler(this.FrmProgressWindowFixShown);
             this.Resize += new System.EventHandler(this.FrmProgressWindowFixResize);
             this.splitContainer1.Panel1.ResumeLayout(false);

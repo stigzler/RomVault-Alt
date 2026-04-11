@@ -4,6 +4,7 @@
  *     Copyright 2025                                 *
  ******************************************************/
 
+using RomVaultCore;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -29,5 +30,9 @@ namespace ROMVault
             try { Process.Start("http://paypal.me/romvault"); } catch { }
         }
 
+        private void FrmHelpAbout_Load(object sender, EventArgs e)
+        {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+        }
     }
 }

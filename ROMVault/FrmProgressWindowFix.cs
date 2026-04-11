@@ -19,7 +19,7 @@ namespace ROMVault
         private readonly Form _parentForm;
         private int _rowCount;
         private readonly List<string[][]> _reportPages;
-        string[][] pageNow;
+        private string[][] pageNow;
 
         private int _rowDisplay;
         private string[][] _pageDisplay;
@@ -28,7 +28,6 @@ namespace ROMVault
         private bool _bDone;
 
         private bool _closeOnExit;
-
 
         private ThreadWorker _thWrk;
         private readonly Finished _funcFinished;
@@ -47,19 +46,13 @@ namespace ROMVault
             InitializeComponent();
             dataGridView1.Columns["FileSize"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-
             Type dgvType = dataGridView1.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(dataGridView1, true, null);
 
-            if (Settings.rvSettings.Darkness)
-                Dark.dark.SetColors(this);
-
             timer1.Interval = 250;
             timer1.Enabled = true;
         }
-
-
 
         protected override CreateParams CreateParams
         {
@@ -71,7 +64,6 @@ namespace ROMVault
                 return mdiCp;
             }
         }
-
 
         private void Timer1Tick(object sender, EventArgs e)
         {
@@ -97,6 +89,7 @@ namespace ROMVault
 
             e.Value = _pageDisplay[rowIndex][e.ColumnIndex];
         }
+
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int pageIndex = e.RowIndex / 1000;
@@ -121,8 +114,6 @@ namespace ROMVault
             _thWrk = new ThreadWorker(Fix.PerformFixes) { wReport = BgwProgressChanged, wFinal = BgwRunWorkerCompleted };
             _thWrk.StartAsync();
         }
-
-
 
         private void BgwProgressChanged(object e)
         {
@@ -257,12 +248,14 @@ namespace ROMVault
                         _parentForm.Hide();
                     }
                     return;
+
                 case FormWindowState.Maximized:
                     if (!_parentForm.Visible)
                     {
                         _parentForm.Show();
                     }
                     return;
+
                 case FormWindowState.Normal:
                     if (!_parentForm.Visible)
                     {
@@ -276,12 +269,18 @@ namespace ROMVault
         {
             SetDataGridSize();
         }
+
         private void SetDataGridSize()
         {
             dataGridView1.Top = 0;
             dataGridView1.Left = 0;
             dataGridView1.Width = Math.Max(splitContainer1.Panel2.Width, 80);
             dataGridView1.Height = Math.Max(splitContainer1.Panel2.Height, 80);
+        }
+
+        private void FrmProgressWindowFix_Load(object sender, EventArgs e)
+        {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
     }
 }

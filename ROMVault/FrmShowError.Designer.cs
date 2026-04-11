@@ -77,6 +77,7 @@
             this.Name = "FrmShowError";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RomVault Error report";
+            this.Load += new System.EventHandler(this.FrmShowError_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

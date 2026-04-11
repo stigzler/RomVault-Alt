@@ -33,7 +33,6 @@ namespace ROMVault
             tooltip.SetToolTip(btnClearROMLocation, "Use this to clear the directory mapping.\nThis rule will still apply the archive options and checked options below to the selected directory.");
             if (Settings.rvSettings.Darkness)
             {
-                Dark.dark.SetColors(this);
                 _cMagenta = Color.FromArgb((int)(255 * 0.8), (int)(214 * 0.8), (int)(255 * 0.8));
                 _cGreen = Color.FromArgb((int)(214 * 0.8), (int)(255 * 0.8), (int)(214 * 0.8));
                 _cYellow = Color.FromArgb((int)(255 * 0.8), (int)(255 * 0.8), (int)(214 * 0.8));
@@ -297,6 +296,7 @@ namespace ROMVault
 
         private void FrmDirectoryMappings_Load(object sender, EventArgs e)
         {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
     }
 }

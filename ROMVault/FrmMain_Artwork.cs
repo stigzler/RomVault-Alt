@@ -17,7 +17,6 @@ namespace ROMVault
             tabInfo_Resize(null, new EventArgs());
         }
 
-
         private void tabArtWork_Resize(object sender, EventArgs e)
         {
             int imageWidth = tabArtWork.Width - 20;
@@ -50,7 +49,6 @@ namespace ROMVault
             picMedium2.Width = imageWidth;
             picMedium2.Top = (int)(tabMedium.Height * 0.55);
             picMedium2.Height = (int)(tabMedium.Height * 0.4);
-
         }
 
         private void tabScreens_Resize(object sender, EventArgs e)
@@ -69,9 +67,9 @@ namespace ROMVault
             picScreenShot.Top = (int)(tabScreens.Height * 0.55);
             picScreenShot.Height = (int)(tabScreens.Height * 0.4);
         }
+
         private void tabInfo_Resize(object sender, EventArgs e)
         {
-
         }
 
         private void LoadMamePannels(RvFile tGame, string extraPath)
@@ -120,7 +118,6 @@ namespace ROMVault
                 logoLoaded = picLogo.TryLoadImage(fExtra.Child(index), Path.GetFileNameWithoutExtension(tGame.Name));
             }
 
-
             if (fExtra.ChildNameSearch(FileType.Zip, "snap.zip", out index) == 0)
             {
                 screenLoaded = picScreenShot.TryLoadImage(fExtra.Child(index), Path.GetFileNameWithoutExtension(tGame.Name));
@@ -139,7 +136,6 @@ namespace ROMVault
                 titleLoaded = picScreenTitle.TryLoadImage(fExtra.Child(index), Path.GetFileNameWithoutExtension(tGame.Name));
             }
 
-
             if (artLoaded || logoLoaded) TabEmuArc.TabPages.Add(tabArtWork);
             if (titleLoaded || screenLoaded) TabEmuArc.TabPages.Add(tabScreens);
             if (storyLoaded) TabEmuArc.TabPages.Add(tabInfo);
@@ -154,7 +150,6 @@ namespace ROMVault
                 splitListArt.Panel2Collapsed = true;
                 splitListArt.Panel2.Hide();
             }
-
         }
 
         private void LoadMameSLPannels(RvFile tGame, string extraPath)
@@ -185,8 +180,6 @@ namespace ROMVault
             bool storyLoaded = false;
 
             int index;
-
-
 
             string fname = tGame.Parent.Name + "/" + Path.GetFileNameWithoutExtension(tGame.Name);
 
@@ -219,7 +212,6 @@ namespace ROMVault
                 splitListArt.Panel2Collapsed = true;
                 splitListArt.Panel2.Hide();
             }
-
         }
 
         // need to only load new image if the RvFile has changed
@@ -264,10 +256,8 @@ namespace ROMVault
             bool artLoaded = picArtwork.TryLoadImage(tGame, "Front");
             bool logoLoaded = picLogo.TryLoadImage(tGame, "Extras/Cassette");
 
-
             bool titleLoaded = picScreenTitle.TryLoadImage(tGame, "Extras/Inlay");
             bool screenLoaded = picScreenShot.TryLoadImage(tGame, "Extras/Inlay_back");
-
 
             if (artLoaded || logoLoaded) TabEmuArc.TabPages.Add(tabArtWork);
             if (titleLoaded || screenLoaded) TabEmuArc.TabPages.Add(tabScreens);
@@ -284,7 +274,6 @@ namespace ROMVault
                 splitListArt.Panel2.Hide();
                 return false;
             }
-
         }
 
         private bool LoadNFOPannel(RvFile tGame)
@@ -320,9 +309,7 @@ namespace ROMVault
                 splitListArt.Panel2.Hide();
                 return false;
             }
-
         }
-
 
         private void LoadTruRipPannel(RvFile tGame)
         {
@@ -365,7 +352,6 @@ namespace ROMVault
                     tabInfo.Text = "NFO";
             }
 
-
             if (artLoaded || logoLoaded) TabEmuArc.TabPages.Add(tabArtWork);
             if (medium1Loaded || medium2Loaded) TabEmuArc.TabPages.Add(tabMedium);
             if (titleLoaded || screenLoaded) TabEmuArc.TabPages.Add(tabScreens);
@@ -381,10 +367,7 @@ namespace ROMVault
                 splitListArt.Panel2Collapsed = true;
                 splitListArt.Panel2.Hide();
             }
-
         }
-
-
 
         private void HidePannel()
         {
@@ -399,6 +382,18 @@ namespace ROMVault
             picScreenShot.ClearImage();
             txtInfo.ClearText();
             txtInfo2.ClearText();
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            //
+            // FrmMain
+            //
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "FrmMain";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.ResumeLayout(false);
         }
     }
 }

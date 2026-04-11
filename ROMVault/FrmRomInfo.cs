@@ -1,4 +1,5 @@
-﻿using RomVaultCore.RvDB;
+﻿using RomVaultCore;
+using RomVaultCore.RvDB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,12 +26,17 @@ namespace ROMVault
 
             StringBuilder sb = new StringBuilder();
 
-            foreach(var v in tFile.FileGroup.Files)
+            foreach (var v in tFile.FileGroup.Files)
             {
-                sb.AppendLine(v.GotStatus+" | "+   v.FullName);
+                sb.AppendLine(v.GotStatus + " | " + v.FullName);
             }
             textBox1.Text = sb.ToString();
             return true;
+        }
+
+        private void FrmRomInfo_Load(object sender, EventArgs e)
+        {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
     }
 }

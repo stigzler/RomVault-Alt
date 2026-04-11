@@ -109,6 +109,7 @@ namespace ROMVault
             this.CInstanceCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GameRomTableTS = new System.Windows.Forms.ToolStrip();
             this.GameRomToHomeBT = new System.Windows.Forms.ToolStripButton();
+            this.AutoSizeGameColChB = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.FilterTSDD = new System.Windows.Forms.ToolStripDropDownButton();
             this.chkBoxShowCompleteTSI = new System.Windows.Forms.ToolStripMenuItem();
@@ -834,7 +835,7 @@ namespace ROMVault
             this.DatPanelHeaderLB.ScaleFactor = 1.2D;
             this.DatPanelHeaderLB.Size = new System.Drawing.Size(306, 24);
             this.DatPanelHeaderLB.TabIndex = 3;
-            this.DatPanelHeaderLB.Text = "DATS";
+            this.DatPanelHeaderLB.Text = "DATs";
             this.DatPanelHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
@@ -998,7 +999,6 @@ namespace ROMVault
             this.GameGrid.Size = new System.Drawing.Size(619, 297);
             this.GameGrid.TabIndex = 4;
             this.GameGrid.VirtualMode = true;
-            this.GameGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GameGrid_CellContentClick);
             this.GameGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.GameGridCellFormatting);
             this.GameGrid.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.GameGridCellValueNeeded);
             this.GameGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GameGridColumnHeaderMouseClick);
@@ -1247,6 +1247,7 @@ namespace ROMVault
             this.GameRomTableTS.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.GameRomTableTS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.GameRomToHomeBT,
+            this.AutoSizeGameColChB,
             this.toolStripSeparator4,
             this.FilterTSDD,
             this.gameSearchTSTB,
@@ -1268,7 +1269,21 @@ namespace ROMVault
             this.GameRomToHomeBT.Name = "GameRomToHomeBT";
             this.GameRomToHomeBT.Size = new System.Drawing.Size(23, 20);
             this.GameRomToHomeBT.Text = "toolStripButton1";
+            this.GameRomToHomeBT.ToolTipText = "Home Directory";
             this.GameRomToHomeBT.Click += new System.EventHandler(this.GameRomToHomeBT_Click);
+            // 
+            // AutoSizeGameColChB
+            // 
+            this.AutoSizeGameColChB.Checked = true;
+            this.AutoSizeGameColChB.CheckOnClick = true;
+            this.AutoSizeGameColChB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AutoSizeGameColChB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AutoSizeGameColChB.Image = global::ROMVault.Properties.Resources.table_join_column;
+            this.AutoSizeGameColChB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AutoSizeGameColChB.Name = "AutoSizeGameColChB";
+            this.AutoSizeGameColChB.Size = new System.Drawing.Size(23, 20);
+            this.AutoSizeGameColChB.Text = "Autosize Game Column";
+            this.AutoSizeGameColChB.Click += new System.EventHandler(this.AutoSizeGameColChB_Click);
             // 
             // toolStripSeparator4
             // 
@@ -1292,7 +1307,7 @@ namespace ROMVault
             this.FilterTSDD.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.FilterTSDD.Name = "FilterTSDD";
             this.FilterTSDD.Size = new System.Drawing.Size(29, 20);
-            this.FilterTSDD.Text = "toolStripDropDownButton1";
+            this.FilterTSDD.Text = "Filter Results";
             // 
             // chkBoxShowCompleteTSI
             // 
@@ -1300,7 +1315,7 @@ namespace ROMVault
             this.chkBoxShowCompleteTSI.CheckOnClick = true;
             this.chkBoxShowCompleteTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowCompleteTSI.Name = "chkBoxShowCompleteTSI";
-            this.chkBoxShowCompleteTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowCompleteTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowCompleteTSI.Text = "Complete";
             this.chkBoxShowCompleteTSI.CheckedChanged += new System.EventHandler(this.completeToolStripMenuItem_Click);
             this.chkBoxShowCompleteTSI.Click += new System.EventHandler(this.completeToolStripMenuItem_Click);
@@ -1311,7 +1326,7 @@ namespace ROMVault
             this.chkBoxShowPartialTSI.CheckOnClick = true;
             this.chkBoxShowPartialTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowPartialTSI.Name = "chkBoxShowPartialTSI";
-            this.chkBoxShowPartialTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowPartialTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowPartialTSI.Text = "Partial";
             this.chkBoxShowPartialTSI.Click += new System.EventHandler(this.paToolStripMenuItem_Click);
             // 
@@ -1321,7 +1336,7 @@ namespace ROMVault
             this.chkBoxShowEmptyTSI.CheckOnClick = true;
             this.chkBoxShowEmptyTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowEmptyTSI.Name = "chkBoxShowEmptyTSI";
-            this.chkBoxShowEmptyTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowEmptyTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowEmptyTSI.Text = "Empty";
             this.chkBoxShowEmptyTSI.Click += new System.EventHandler(this.emptyToolStripMenuItem_Click);
             // 
@@ -1331,7 +1346,7 @@ namespace ROMVault
             this.chkBoxShowFixesTSI.CheckOnClick = true;
             this.chkBoxShowFixesTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowFixesTSI.Name = "chkBoxShowFixesTSI";
-            this.chkBoxShowFixesTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowFixesTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowFixesTSI.Text = "Fixes";
             this.chkBoxShowFixesTSI.Click += new System.EventHandler(this.fixesToolStripMenuItem_Click);
             // 
@@ -1341,7 +1356,7 @@ namespace ROMVault
             this.chkBoxShowMIATSI.CheckOnClick = true;
             this.chkBoxShowMIATSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowMIATSI.Name = "chkBoxShowMIATSI";
-            this.chkBoxShowMIATSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowMIATSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowMIATSI.Text = "MIA";
             this.chkBoxShowMIATSI.Click += new System.EventHandler(this.mIAToolStripMenuItem_Click);
             // 
@@ -1351,26 +1366,26 @@ namespace ROMVault
             this.chkBoxShowMergedTSI.CheckOnClick = true;
             this.chkBoxShowMergedTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowMergedTSI.Name = "chkBoxShowMergedTSI";
-            this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(180, 22);
+            this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(155, 22);
             this.chkBoxShowMergedTSI.Text = "Merged/Duped";
             this.chkBoxShowMergedTSI.Click += new System.EventHandler(this.mergedDupedToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(152, 6);
             // 
             // toggleToolStripMenuItem
             // 
             this.toggleToolStripMenuItem.Name = "toggleToolStripMenuItem";
-            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.toggleToolStripMenuItem.Text = "Toggle";
             this.toggleToolStripMenuItem.Click += new System.EventHandler(this.toggleToolStripMenuItem_Click);
             // 
             // setAllToolStripMenuItem
             // 
             this.setAllToolStripMenuItem.Name = "setAllToolStripMenuItem";
-            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.setAllToolStripMenuItem.Text = "Clear All";
             this.setAllToolStripMenuItem.Click += new System.EventHandler(this.clearAllToolStripMenuItem_Click);
             // 
@@ -1378,7 +1393,7 @@ namespace ROMVault
             // 
             this.gameSearchTSTB.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gameSearchTSTB.Name = "gameSearchTSTB";
-            this.gameSearchTSTB.Size = new System.Drawing.Size(100, 23);
+            this.gameSearchTSTB.Size = new System.Drawing.Size(120, 23);
             this.gameSearchTSTB.Enter += new System.EventHandler(this.gameSearchTSTB_Enter);
             this.gameSearchTSTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gameSearchTSTB_KeyPress);
             // 
@@ -1389,7 +1404,7 @@ namespace ROMVault
             this.gameSearchTSBT.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.gameSearchTSBT.Name = "gameSearchTSBT";
             this.gameSearchTSBT.Size = new System.Drawing.Size(23, 20);
-            this.gameSearchTSBT.Text = "toolStripButton3";
+            this.gameSearchTSBT.Text = "Search Results";
             this.gameSearchTSBT.Click += new System.EventHandler(this.gameSearchTSBT_Click);
             // 
             // gameSearchClearBT
@@ -1399,7 +1414,7 @@ namespace ROMVault
             this.gameSearchClearBT.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.gameSearchClearBT.Name = "gameSearchClearBT";
             this.gameSearchClearBT.Size = new System.Drawing.Size(23, 20);
-            this.gameSearchClearBT.Text = "toolStripButton3";
+            this.gameSearchClearBT.Text = "Clear Search";
             this.gameSearchClearBT.Click += new System.EventHandler(this.gameSearchClearBT_Click);
             // 
             // GameGridRowCountLB
@@ -2245,6 +2260,7 @@ namespace ROMVault
         private ToolStripLabel GameGridRowCountLB;
         private ToolStripMenuItem darkModeToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator6;
+        private ToolStripButton AutoSizeGameColChB;
     }
 }
 

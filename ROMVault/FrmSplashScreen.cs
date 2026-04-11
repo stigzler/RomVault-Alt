@@ -15,7 +15,7 @@ namespace ROMVault
     {
         private double _opacityIncrement = 0.05;
         private readonly ThreadWorker _thWrk;
-        
+
         public FrmSplashScreen()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace ROMVault
             Opacity = 0;
             timer1.Interval = 50;
 
-            _thWrk = new ThreadWorker(StartUpCode) {wReport = BgwProgressChanged, wFinal = BgwRunWorkerCompleted};
+            _thWrk = new ThreadWorker(StartUpCode) { wReport = BgwProgressChanged, wFinal = BgwRunWorkerCompleted };
         }
 
         private void FrmSplashScreenShown(object sender, EventArgs e)
@@ -32,17 +32,14 @@ namespace ROMVault
             timer1.Start();
         }
 
-
         private static void StartUpCode(ThreadWorker thWrk)
         {
             RepairStatus.InitStatusCheck();
             DB.Read(thWrk);
         }
 
-
         private void BgwProgressChanged(object e)
         {
-
             if (InvokeRequired)
             {
                 BeginInvoke(new MethodInvoker(() => BgwProgressChanged(e)));
@@ -110,6 +107,11 @@ namespace ROMVault
                     Close();
                 }
             }
+        }
+
+        private void FrmSplashScreen_Load(object sender, EventArgs e)
+        {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
     }
 }

@@ -39,12 +39,10 @@ namespace ROMVault
             cboMergeType.Items.Add("Merge");
             cboMergeType.Items.Add("NonMerge");
 
-
             cboFilterType.Items.Clear();
             cboFilterType.Items.Add("Roms & CHDs");
             cboFilterType.Items.Add("Roms Only");
             cboFilterType.Items.Add("CHDs Only");
-
 
             cboDirType.Items.Clear();
             cboDirType.Items.Add("Use subdirs for all sets");
@@ -74,14 +72,12 @@ namespace ROMVault
 
             if (Settings.rvSettings.Darkness)
             {
-                Dark.dark.SetColors(this);
                 _cMagenta = Color.FromArgb((int)(255 * 0.8), (int)(214 * 0.8), (int)(255 * 0.8));
                 _cGreen = Color.FromArgb((int)(214 * 0.8), (int)(255 * 0.8), (int)(214 * 0.8));
                 _cYellow = Color.FromArgb((int)(255 * 0.8), (int)(255 * 0.8), (int)(214 * 0.8));
 
                 DataGridGames.DefaultCellStyle.ForeColor = Color.Black;
             }
-
         }
 
         public void SetLocation(string dLocation)
@@ -92,6 +88,7 @@ namespace ROMVault
         }
 
         private bool _displayType;
+
         public void SetDisplayType(bool type)
         {
             _displayType = type;
@@ -107,7 +104,6 @@ namespace ROMVault
             MinimumSize = new Size(709, type ? 335 : 500);
             Height = type ? 335 : 620;
             FormBorderStyle = type ? FormBorderStyle.FixedSingle : FormBorderStyle.Sizable;
-
         }
 
         private static DatRule FindRule(string dLocation)
@@ -131,6 +127,7 @@ namespace ROMVault
                     cboCompression.Enabled = false;
                     chkConvertWhenFixing.Enabled = false;
                     break;
+
                 case 1:
                     chkFileTypeOverride.Enabled = true;
                     cboCompression.Items.Add("Deflate - Trrntzip");
@@ -144,6 +141,7 @@ namespace ROMVault
                     else
                         cboCompression.SelectedIndex = 0;
                     break;
+
                 case 2:
                     chkFileTypeOverride.Enabled = true;
                     cboCompression.Items.Add("LZMA Solid - rv7z");
@@ -163,6 +161,7 @@ namespace ROMVault
                     else
                         cboCompression.SelectedIndex = 0;
                     break;
+
                 case 3:
                     chkFileTypeOverride.Enabled = false;
                     cboCompression.Enabled = false;
@@ -170,7 +169,6 @@ namespace ROMVault
                     break;
             }
         }
-
 
         private void cboFileType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -196,7 +194,6 @@ namespace ROMVault
             chkUseDescription.Checked = _rule.UseDescriptionAsDirName;
             chkUseIdForName.Checked = _rule.UseIdForName;
 
-
             chkSingleArchive.Checked = _rule.SingleArchive;
 
             cboDirType.Enabled = chkSingleArchive.Checked;
@@ -217,14 +214,12 @@ namespace ROMVault
                 SetCategoryList();
         }
 
-
         private void UpdateGrid()
         {
             if (Settings.IsMono && DataGridGames.RowCount > 0)
             {
                 DataGridGames.CurrentCell = DataGridGames[0, 0];
             }
-
 
             DataGridGames.Rows.Clear();
             foreach (DatRule t in Settings.rvSettings.DatRules)
@@ -236,7 +231,6 @@ namespace ROMVault
                 DataGridGames.Rows[row].Cells[1].Value = t.CompressionSub;
                 DataGridGames.Rows[row].Cells[2].Value = t.Merge;
                 DataGridGames.Rows[row].Cells[3].Value = t.SingleArchive ? rvImages1.Tick : rvImages1.unTick;
-
 
                 if (t.DirPath == "ToSort")
                 {
@@ -268,7 +262,6 @@ namespace ROMVault
         {
             if (cboFileType.SelectedIndex == 0)
                 return ZipStructure.None;
-
             else if (cboFileType.SelectedIndex == 1)
             {
                 if (cboCompression.SelectedIndex == 0)
@@ -315,7 +308,6 @@ namespace ROMVault
 
             _rule.AddCategorySubDirs = chkAddCategorySubDirs.Checked;
 
-
             string strtxt = textBox1.Text;
             strtxt = strtxt.Replace("\r", "");
             string[] strsplit = strtxt.Split('\n');
@@ -358,8 +350,8 @@ namespace ROMVault
 
             if (_displayType)
                 Close();
-
         }
+
         private void BtnDeleteClick(object sender, EventArgs e)
         {
             string datLocation = _rule.DirKey;
@@ -566,6 +558,11 @@ namespace ROMVault
             int selectedIndex = idx + 1 - 4;
             selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
             dgCategories.FirstDisplayedScrollingRowIndex = selectedIndex;
+        }
+
+        private void FrmDirectorySettings_Load(object sender, EventArgs e)
+        {
+            Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
         }
     }
 }

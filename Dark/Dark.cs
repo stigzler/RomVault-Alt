@@ -16,6 +16,7 @@ namespace Dark
 
         public static Color bg1 = Color.FromArgb(35, 35, 35);
         public static Color bg = Color.FromArgb(40, 40, 40);
+
         public static Color bgTs = Color.FromArgb(50, 50, 50); // toolstip bg
 
         public static Color bgMenuItemRollover = Color.FromArgb(255, 63, 63, 70);
@@ -191,7 +192,7 @@ namespace Dark
                 case ToolStrip ts:
                     ts.RenderMode = ToolStripRenderMode.System;
                     ts.Renderer = (darkMode) ? new DarkToolStripRenderer() : null;
-                    ts.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
+                    ts.BackColor = (darkMode) ? bgTs : Control.DefaultBackColor;
                     ts.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
                     break;
 
@@ -199,10 +200,10 @@ namespace Dark
                     pg.UseCompatibleTextRendering = true;
                     pg.ViewBackColor = (darkMode) ? bg : Control.DefaultBackColor;
                     pg.ViewForeColor = (darkMode) ? fg : Control.DefaultForeColor;
-                    pg.LineColor = (darkMode) ? midGrey : Color.FromArgb(200, 200, 200);
+                    pg.LineColor = (darkMode) ? bg1 : Color.FromArgb(200, 200, 200);
                     pg.BackColor = (darkMode) ? bg : Control.DefaultBackColor;
                     pg.CategoryForeColor = (darkMode) ? fgBright : Color.Black;
-                    pg.CategorySplitterColor = (darkMode) ? midGrey : Control.DefaultForeColor; ;
+                    pg.CategorySplitterColor = (darkMode) ? bg0 : Control.DefaultForeColor; ;
                     pg.HelpBackColor = (darkMode) ? bg : Control.DefaultBackColor;
                     pg.HelpForeColor = (darkMode) ? fgDimmed : Control.DefaultForeColor;
                     break;

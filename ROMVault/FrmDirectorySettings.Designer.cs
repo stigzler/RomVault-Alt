@@ -675,6 +675,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Set DAT Rules";
             this.Activated += new System.EventHandler(this.FrmSetDirActivated);
+            this.Load += new System.EventHandler(this.FrmDirectorySettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridGames)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabDirMerge.ResumeLayout(false);
