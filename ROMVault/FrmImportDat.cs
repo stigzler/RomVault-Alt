@@ -46,19 +46,15 @@ namespace ROMVault
         {
         }
 
-        private void SetValidDestinationPath()
-        {
-            InfoImagePB.Image = Resources.tick;
-            InfoLB.Text = "The selected destination folder is valid.";
-        }
-
         private void ValidateImportDirectory(string path)
         {
             if (Helpers.FileSystem.IsPathInsideFolder(resolvedDatRoot, path)
                 && Directory.Exists(path))
             {
-                SetValidDestinationPath();
+                InfoImagePB.Image = Resources.tick;
+                InfoLB.Text = "The selected destination folder is valid.";
                 DestinationFolderLB.Text = path;
+                MainTT.SetToolTip(DestinationFolderLB, path);
                 _isValidImportDirectory = true;
             }
             else

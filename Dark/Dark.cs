@@ -149,9 +149,12 @@ namespace Dark
                     break;
 
                 case Button bt:
-                    bt.FlatStyle = FlatStyle.Flat;
-                    bt.FlatAppearance.BorderColor = (darkMode) ? midGrey : Control.DefaultBackColor;
-                    bt.FlatAppearance.BorderSize = 1;
+                    ////bt.ForeColor = (darkMode) ? fg : Control.DefaultForeColor;
+                    ////bt.BackColor = (darkMode) ? bg0 : Control.DefaultBackColor;
+                    //bt.FlatStyle = FlatStyle.Flat;
+                    //bt.FlatAppearance.BorderColor = (darkMode) ? midGrey : Color.Black;
+                    //bt.FlatAppearance.BorderSize = 1;
+                    //break;
                     break;
 
                 case DataGridView dgv:

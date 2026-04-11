@@ -10,6 +10,7 @@ using DATReader.DatStore;
 using DATReader.DatWriter;
 using ROMVault.Extensions;
 using ROMVault.Helpers;
+using ROMVault.Properties;
 using ROMVault.ViewModels;
 using RomVaultCore;
 using RomVaultCore.Extensions;
@@ -26,6 +27,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -244,6 +246,13 @@ namespace ROMVault
                 Tag = null
             };
 
+            ToolStripMenuItem mnuDeleteDat = new ToolStripMenuItem
+            {
+                Text = @"Delete selected DAT",
+                Image = Properties.Resources.database__minus,
+                Tag = null
+            };
+
             _mnuContext.Items.Add(mnuScan2);
             _mnuContext.Items.Add(mnuScan1);
             _mnuContext.Items.Add(mnuScan3);
@@ -258,6 +267,7 @@ namespace ROMVault
             _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(mnuImportToThisDir);
             _mnuContext.Items.Add(mnuImportToPickedDir);
+            _mnuContext.Items.Add(mnuDeleteDat);
 
             mnuScan1.Click += MnuScan;
             mnuScan2.Click += MnuScan;
@@ -270,6 +280,7 @@ namespace ROMVault
             mnuMakeDat.Click += MnuMakeDatClick;
             mnuImportToThisDir.Click += MnuImportToThisDir;
             mnuImportToPickedDir.Click += MnuImportToPickedDir;
+            mnuDeleteDat.Click += MnuDeleteDat;
 
             //_mnuContextToSort.ShowCheckMargin = false;
             //_mnuContextToSort.ShowImageMargin = false;
@@ -450,6 +461,26 @@ namespace ROMVault
 
             var result = fbd.ShowDialog(this);
             if (result != DialogResult.OK) return;
+
+            if (Properties.Settings.Default.DatImportMoveDontCopy)
+                Helpers.FileSystem.MoveFiles(fbd.SourcePaths, fbd.DestinationPath, RomVaultCore.Settings.rvSettings.Darkness);
+            else
+                Helpers.FileSystem.CopyFiles(fbd.SourcePaths, fbd.DestinationPath, Settings.rvSettings.Darkness);
+
+            UpdateDats();
+        }
+
+        private void MnuDeleteDat(object sender, EventArgs e)
+        {
+            string datPath = Path.Combine(ResolvedSelectedDatPath(),
+               Path.GetFileName(_clickedTree.Dat.GetData(RvDat.DatData.DatRootFullName)));
+            if (!File.Exists(datPath)) return;
+            try
+            {
+                File.Delete(datPath);
+            }
+            catch { }
+            UpdateDats();
         }
 
         private string ResolvedSelectedDatPath()

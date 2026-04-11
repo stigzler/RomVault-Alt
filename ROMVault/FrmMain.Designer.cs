@@ -604,6 +604,7 @@ namespace ROMVault
             // 
             this.ctrRvTree.AutoSize = true;
             this.ctrRvTree.BackColor = System.Drawing.Color.Coral;
+            this.ctrRvTree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrRvTree.Location = new System.Drawing.Point(0, 31);
             this.ctrRvTree.Name = "ctrRvTree";
@@ -747,6 +748,7 @@ namespace ROMVault
             // 
             // DatInfoPathLb
             // 
+            this.DatInfoPathLb.AutoSize = true;
             this.DatInfoPathLb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DatInfoPathLb.ContextMenuStrip = this.CopyTextCMS;
             this.DatInfoPathLb.Location = new System.Drawing.Point(79, 3);

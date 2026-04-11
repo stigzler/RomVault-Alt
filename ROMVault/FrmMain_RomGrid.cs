@@ -79,7 +79,7 @@ namespace ROMVault
 
             RomGrid.RowCount = romGrid.Length;
 
-            GameGridRowCountLB.Text = $"Games: {GameGrid.RowCount} Roms: {RomGrid.RowCount}";
+            GameGridRowCountLB.Text = $"Items: {GameGrid.RowCount} Roms: {RomGrid.RowCount}";
 
             try
             {

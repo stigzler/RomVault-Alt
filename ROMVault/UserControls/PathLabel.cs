@@ -32,6 +32,22 @@ namespace ROMVault.UserControls
             }
         }
 
+        // Trigger height update when Font changes (e.g., Form scaling)
+        protected override void OnFontChanged(EventArgs e)
+        {
+            base.OnFontChanged(e);
+            if (this.AutoSize)
+                UpdateHeight();
+        }
+
+        // Trigger height update when the control is first created/added to a form
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            if (this.AutoSize)
+                UpdateHeight();
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             // 1. Calculate the area inside the padding
@@ -50,6 +66,14 @@ namespace ROMVault.UserControls
             // 3. Draw inside the PADDED bounds, not the ClientRectangle
             TextRenderer.DrawText(e.Graphics, this.Text, this.Font,
                                   paddedBounds, this.ForeColor, flags);
+        }
+
+        protected override void OnPaddingChanged(EventArgs e)
+        {
+            base.OnPaddingChanged(e);
+            if (this.AutoSize)
+                UpdateHeight();
+            this.Invalidate(); // Redraw to apply the new horizontal padding
         }
 
         // We override this so that if a parent DOES call it,

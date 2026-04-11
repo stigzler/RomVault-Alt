@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmImportDat));
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -42,6 +43,7 @@
             this.InfoLB = new ROMVault.UserControls.FlexiLabel();
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this.DestinationFolderLB = new ROMVault.UserControls.PathLabel();
+            this.MainTT = new System.Windows.Forms.ToolTip(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.flowPanelResponsive1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InfoImagePB)).BeginInit();
@@ -209,7 +211,7 @@
             this.DestinationFolderLB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DestinationFolderLB.Location = new System.Drawing.Point(24, 78);
             this.DestinationFolderLB.Name = "DestinationFolderLB";
-            this.DestinationFolderLB.Size = new System.Drawing.Size(303, 13);
+            this.DestinationFolderLB.Size = new System.Drawing.Size(303, 25);
             this.DestinationFolderLB.TabIndex = 1;
             // 
             // FrmImportDat
@@ -259,5 +261,6 @@
         private System.Windows.Forms.PictureBox InfoImagePB;
         private UserControls.FlexiLabel InfoLB;
         private System.Windows.Forms.Button FileToImportBT;
+        private System.Windows.Forms.ToolTip MainTT;
     }
 }
