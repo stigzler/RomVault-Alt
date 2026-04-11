@@ -446,14 +446,13 @@ namespace ROMVault
 
         private void MnuImportToPickedDir(object sender, EventArgs e)
         {
+            var fbd = new FrmImportDat(ResolvedSelectedDatPath(), DatFormatsFilterList());
+
+            var result = fbd.ShowDialog(this);
+            if (result != DialogResult.OK) return;
         }
 
-        /// <summary>
-        /// Handles User Imports of dat files to the selected DAT dir        ///
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MnuImportToThisDir(object sender, EventArgs e)
+        private string ResolvedSelectedDatPath()
         {
             // These used to detemrine the correct method to select the right DAT path
             bool datFilePresent = _clickedTree.Dat != null ? true : false;
@@ -475,19 +474,13 @@ namespace ROMVault
             {
                 destinationPath = RvSystems.ResolveTokenisedDatPath(datTreeFullName, resolvedDatRoot);
             }
+            return destinationPath;
+        }
 
-            // now construct the filter list for the file select browser.
-            // constructed from User Settings, the defualts of which are based on the hard coded default dat types
-            // Put in User settings in case others add new dat types, or if users want to remove some of the default ones.
-            // Future devs can update the list by editing the Defualt setting of: RecognisedDatFormats
+        private string DatFormatsFilterList()
+        {
             var formats = Properties.Settings.Default.RecognisedDatFormats?.Cast<string>().ToList();
-            if (formats == null || formats.Count == 0)
-            {
-                // urgh ugly messageBox. But, priorities my dear boy... Shouldn't happen too often.
-                MessageBox.Show("No recognized DAT formats are set. Please set these in the settings menu before importing.", "No Recognised Formats", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
+            if (formats == null || formats.Count == 0) return null;
             string combinedPattern = string.Join(";", formats.Select(f => "*." + f));
             string combinedLabel = string.Join(", ", formats.Select(f => "." + f));
             StringBuilder sb = new StringBuilder($"Supported DATs ({combinedLabel})|{combinedPattern}");
@@ -496,13 +489,30 @@ namespace ROMVault
             {
                 sb.Append($"|{format} files (*.{format})|*.{format}");
             }
+            return sb.ToString();
+        }
+
+        private void MnuImportToThisDir(object sender, EventArgs e)
+        {
+            string destinationPath = ResolvedSelectedDatPath();
+            // now construct the filter list for the file select browser.
+            // constructed from User Settings, the defualts of which are based on the hard coded default dat types
+            // Put in User settings in case others add new dat types, or if users want to remove some of the default ones.
+            // Future devs can update the list by editing the Defualt setting of: RecognisedDatFormats
+            var formatsFilter = DatFormatsFilterList();
+            if (formatsFilter == null)
+            {
+                // urgh ugly messageBox. But, priorities my dear boy... Shouldn't happen too often.
+                MessageBox.Show("No recognized DAT formats are set. Please set these in the settings menu before importing.", "No Recognised Formats", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             // Now present the file browser
             OpenFileDialog ofd = new OpenFileDialog()
             {
                 Title = "Please select DAT files to import.",
                 Multiselect = true,
-                Filter = sb.ToString()
+                Filter = formatsFilter
             };
 
             var result = ofd.ShowDialog(this);

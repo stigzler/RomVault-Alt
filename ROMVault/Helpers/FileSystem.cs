@@ -1,6 +1,7 @@
 ﻿using Dark;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -124,6 +125,8 @@ namespace ROMVault.Helpers
 
         public static bool IsPathInsideFolder(string parentPath, string childPath)
         {
+            if (parentPath == childPath) return true;
+
             // 1. Normalize both paths to resolve ".." and "." segments
             string normalizedParent = Path.GetFullPath(parentPath);
             string normalizedChild = Path.GetFullPath(childPath);
@@ -135,6 +138,7 @@ namespace ROMVault.Helpers
             }
 
             // 3. Check if child starts with parent path
+            Debug.WriteLine(normalizedChild.StartsWith(normalizedParent, StringComparison.OrdinalIgnoreCase));
             return normalizedChild.StartsWith(normalizedParent, StringComparison.OrdinalIgnoreCase);
         }
     }

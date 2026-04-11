@@ -19,7 +19,7 @@ namespace Dark
         public static Color bgTs = Color.FromArgb(50, 50, 50); // toolstip bg
 
         public static Color bgMenuItemRollover = Color.FromArgb(255, 63, 63, 70);
-        public static Color midGrey = Color.FromArgb(128, 128, 128, 128);
+        public static Color midGrey = Color.FromArgb(128, 128, 128);
 
         public static Color fgBright = Color.White;
         public static Color fg = Color.FromArgb(220, 220, 220);
@@ -143,6 +143,17 @@ namespace Dark
                     }
                     break;
 
+                case RichTextBox rtb:
+                    rtb.BorderStyle = BorderStyle.None;
+                    rtb.BackColor = (darkMode) ? bg1 : Control.DefaultBackColor;
+                    break;
+
+                case Button bt:
+                    bt.FlatStyle = FlatStyle.Flat;
+                    bt.FlatAppearance.BorderColor = (darkMode) ? midGrey : Control.DefaultBackColor;
+                    bt.FlatAppearance.BorderSize = 1;
+                    break;
+
                 case DataGridView dgv:
                     dgv.BackgroundColor = (darkMode) ? bg1 : Control.DefaultBackColor;
                     dgv.ForeColor = (darkMode) ? fg : Color.FromArgb(10, 10, 10);
@@ -194,14 +205,12 @@ namespace Dark
                     break;
 
                 case Label _:
-                case Button _:
                 case SplitContainer _:
                 case TrackBar _:
                 case CheckBox _:
                 case ComboBox _:
                 case Panel _:
                 case PictureBox _:
-                case RichTextBox _:
                 case HScrollBar _:
                 case VScrollBar _:
                 case TabControl _:
