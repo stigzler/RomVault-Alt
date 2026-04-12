@@ -57,6 +57,21 @@ namespace ROMVault.UserControls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color UnselectedTabBackColor { get; set; } = SystemColors.ControlDark;
 
+        private int _tabPadding = 0;
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Category("Appearance"), DisplayName("Tab Padding"), Description("Padding around tab text in pixels"), DefaultValue(0)]
+        public int TabPadding
+        {
+            get { return _tabPadding; }
+            set
+            {
+                _tabPadding = value;
+                UpdateItemSize();
+                this.Invalidate();
+            }
+        }
+
         internal struct RECT
         { public int Left, Top, Right, Bottom; }
 
@@ -71,13 +86,18 @@ namespace ROMVault.UserControls
             SetStyle(ControlStyles.DoubleBuffer, true);
             SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            Appearance = TabAppearance.FlatButtons;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             DrawControl(e.Graphics);
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            UpdateItemSize();
         }
 
         internal void DrawControl(Graphics g)
@@ -141,6 +161,13 @@ namespace ROMVault.UserControls
         {
             Rectangle recBounds = GetTabRect(nIndex);
             RectangleF tabTextArea = (RectangleF)this.GetTabRect(nIndex);
+
+            // Apply vertical padding only - shrink top and bottom
+            if (_tabPadding > 0)
+            {
+                tabTextArea.Y += _tabPadding;
+                tabTextArea.Height -= (2 * _tabPadding);
+            }
 
             bool bSelected = (this.SelectedIndex == nIndex);
 
@@ -282,6 +309,16 @@ namespace ROMVault.UserControls
             base.WndProc(ref m);
         }
 
+        private void UpdateItemSize()
+        {
+            if (_hideTabs)
+                return;
+
+            int height = Font.Height + (2 * _tabPadding);
+            int width = 58;
+            this.ItemSize = new Size(width, height);
+        }
+
         private void DoHideTabs()
         {
             if (_hideTabs == true)
@@ -293,8 +330,8 @@ namespace ROMVault.UserControls
             else
             {
                 this.Appearance = TabAppearance.Normal;
-                this.ItemSize = new Size(58, 18);
                 this.SizeMode = TabSizeMode.Normal;
+                UpdateItemSize();
             }
         }
     }

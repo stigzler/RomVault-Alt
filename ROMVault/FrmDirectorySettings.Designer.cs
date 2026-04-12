@@ -361,9 +361,9 @@
             this.MainTC.Controls.Add(this.tabExclude);
             this.MainTC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.MainTC.HideBorders = false;
+            this.MainTC.HideBorders = true;
             this.MainTC.HideTabs = false;
-            this.MainTC.ItemSize = new System.Drawing.Size(58, 18);
+            this.MainTC.ItemSize = new System.Drawing.Size(58, 23);
             this.MainTC.Location = new System.Drawing.Point(4, 4);
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
@@ -371,16 +371,17 @@
             this.MainTC.Size = new System.Drawing.Size(620, 215);
             this.MainTC.TabIndex = 50;
             this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDark;
+            this.MainTC.TabPadding = 5;
             this.MainTC.UnselectedTabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             // 
             // tabDirMerge
             // 
             this.tabDirMerge.Controls.Add(this.groupBox2);
             this.tabDirMerge.Controls.Add(this.groupBox1);
-            this.tabDirMerge.Location = new System.Drawing.Point(4, 22);
+            this.tabDirMerge.Location = new System.Drawing.Point(0, 25);
             this.tabDirMerge.Name = "tabDirMerge";
             this.tabDirMerge.Padding = new System.Windows.Forms.Padding(4);
-            this.tabDirMerge.Size = new System.Drawing.Size(612, 189);
+            this.tabDirMerge.Size = new System.Drawing.Size(620, 190);
             this.tabDirMerge.TabIndex = 0;
             this.tabDirMerge.Text = "Directory/Merge Rules";
             this.tabDirMerge.UseVisualStyleBackColor = true;
@@ -407,7 +408,7 @@
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Location = new System.Drawing.Point(4, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(604, 142);
+            this.groupBox2.Size = new System.Drawing.Size(612, 142);
             this.groupBox2.TabIndex = 50;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAT Rule Settings";
@@ -571,7 +572,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(604, 44);
+            this.groupBox1.Size = new System.Drawing.Size(612, 44);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Multi DAT Directory Setting";
@@ -588,10 +589,10 @@
             // tabAdvanced
             // 
             this.tabAdvanced.Controls.Add(this.groupBox3);
-            this.tabAdvanced.Location = new System.Drawing.Point(4, 22);
+            this.tabAdvanced.Location = new System.Drawing.Point(0, 25);
             this.tabAdvanced.Name = "tabAdvanced";
             this.tabAdvanced.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdvanced.Size = new System.Drawing.Size(612, 189);
+            this.tabAdvanced.Size = new System.Drawing.Size(620, 190);
             this.tabAdvanced.TabIndex = 2;
             this.tabAdvanced.Text = "Advanced Options";
             this.tabAdvanced.UseVisualStyleBackColor = true;
@@ -607,7 +608,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(606, 188);
+            this.groupBox3.Size = new System.Drawing.Size(614, 188);
             this.groupBox3.TabIndex = 50;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Advanced Options";
@@ -619,7 +620,7 @@
             this.btnDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDown.Image = global::ROMVault.Properties.Resources.arrowDown;
-            this.btnDown.Location = new System.Drawing.Point(568, 59);
+            this.btnDown.Location = new System.Drawing.Point(576, 59);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(31, 35);
             this.btnDown.TabIndex = 54;
@@ -633,7 +634,7 @@
             this.btnUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUp.Image = global::ROMVault.Properties.Resources.arrowUp;
-            this.btnUp.Location = new System.Drawing.Point(568, 18);
+            this.btnUp.Location = new System.Drawing.Point(576, 18);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(31, 35);
             this.btnUp.TabIndex = 53;
@@ -666,7 +667,7 @@
             this.dgCategories.ShowCellToolTips = false;
             this.dgCategories.ShowEditingIcon = false;
             this.dgCategories.ShowRowErrors = false;
-            this.dgCategories.Size = new System.Drawing.Size(269, 155);
+            this.dgCategories.Size = new System.Drawing.Size(277, 155);
             this.dgCategories.TabIndex = 52;
             // 
             // Category
@@ -711,10 +712,10 @@
             this.tabExclude.Controls.Add(this.flexiLabel2);
             this.tabExclude.Controls.Add(this.label6);
             this.tabExclude.Controls.Add(this.textBox1);
-            this.tabExclude.Location = new System.Drawing.Point(4, 22);
+            this.tabExclude.Location = new System.Drawing.Point(0, 25);
             this.tabExclude.Name = "tabExclude";
             this.tabExclude.Padding = new System.Windows.Forms.Padding(3);
-            this.tabExclude.Size = new System.Drawing.Size(612, 189);
+            this.tabExclude.Size = new System.Drawing.Size(620, 190);
             this.tabExclude.TabIndex = 1;
             this.tabExclude.Text = "Filename Exclude";
             this.tabExclude.UseVisualStyleBackColor = true;
@@ -734,7 +735,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(410, 37);
+            this.label6.Location = new System.Drawing.Point(418, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(196, 49);
             this.label6.TabIndex = 50;
@@ -750,7 +751,7 @@
             this.textBox1.Location = new System.Drawing.Point(18, 37);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(386, 145);
+            this.textBox1.Size = new System.Drawing.Size(394, 146);
             this.textBox1.TabIndex = 48;
             // 
             // flexiLabel1
