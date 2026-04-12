@@ -26,7 +26,7 @@ namespace ROMVault
         {
             FlexiLabel label = new FlexiLabel
             {
-                //Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point),
+                Font = new Font("Roboto", this.Font.Size, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft,
                 Name = name,
                 Text = text,
