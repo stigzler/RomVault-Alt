@@ -20,19 +20,24 @@ namespace ROMVault
             InitializeComponent();
         }
 
-        private void AddLabel(Point location, Size size, string name, string text)
+        private int height = 0;
+
+        private void AddLabel(string name, string text)
         {
             FlexiLabel label = new FlexiLabel
             {
-                Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point),
-                Location = location,
+                //Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point),
                 TextAlign = ContentAlignment.MiddleLeft,
                 Name = name,
-                Size = size,
-                TabIndex = 0,
-                Text = text
+                Text = text,
+                AutoSize = true,
+                Padding = new Padding(4, 4, 4, 4)
+
+                //Dock = DockStyle.Fill
             };
-            Controls.Add(label);
+            this.Controls.Add(label);
+            label.Dock = DockStyle.Bottom;
+            height += label.Height;
         }
 
         private void FrmKey_Load(object sender, EventArgs e)
@@ -63,47 +68,47 @@ namespace ROMVault
                 RepStatus.Corrupt,
                 RepStatus.UnScanned,
             };
-            Height = displayList.Count * 46 + 110;
-            AddLabel(new Point(6, 6), new Size(538, 20), "LabelBasic", "Basic Statuses");
-            int eOffset = 28;
+
+            this.Width = 590;
+
+            this.SuspendLayout();
+
+            //Height = displayList.Count * 46 + 110;
+            AddLabel("LabelBasic", "Basic Statuses");
 
             for (int i = 0; i < displayList.Count; i++)
             {
                 if (i == 9)
                 {
-                    AddLabel(new Point(6, i * 46 + eOffset), new Size(538, 20), "LabelFix", "Fix Statuses");
-                    eOffset += 20;
+                    AddLabel("LabelFix", "Fix Statuses");
                 }
 
                 if (i == 16)
                 {
-                    AddLabel(new Point(6, i * 46 + eOffset), new Size(538, 20), "LabelProblem", "Problem Statuses");
-                    eOffset += 20;
+                    AddLabel("LabelProblem", "Problem Statuses");
                 }
                 PictureBox pictureBox = new PictureBox
                 {
                     BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(6, i * 46 + eOffset),
                     Name = "pictureBox" + i,
-                    Size = new Size(48, 42),
-                    TabIndex = 0,
-                    TabStop = false,
-                    //BackColor = Color.White
+                    Size = new Size(48, 48),
+                    SizeMode = PictureBoxSizeMode.Zoom
+                    //  BackColor = Color.Red,
                 };
 
-                Controls.Add(pictureBox);
+                //Controls.Add(pictureBox);
 
                 pictureBox.Image = rvImages.GetBitmap("G_" + displayList[i]);
 
                 FlexiLabel label = new FlexiLabel
                 {
-                    BackColor = Color.FromArgb(128, 64, 64, 64),
+                    Font = this.Font,
+                    BackColor = Color.FromArgb(20, 0, 0, 0),
+                    ScaleFactor = 0.8,
+                    Padding = new Padding(2, 2, 2, 2),
                     //BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(56, i * 46 + eOffset),
                     TextAlign = ContentAlignment.MiddleLeft,
                     Name = "label" + i,
-                    Size = new Size(538, 42),
-                    TabIndex = 0
                 };
 
                 string text;
@@ -187,10 +192,35 @@ namespace ROMVault
                 }
 
                 label.Text = text;
-                Controls.Add(label);
+
+                Panel rowPanel = new Panel
+                {
+                    // BackColor = Color.DarkBlue,
+                    // BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(54, 50),
+                    Padding = new Padding(2, 2, 2, 2)
+                };
+
+                rowPanel.Controls.Add(label);
+                label.Dock = DockStyle.Fill;
+
+                rowPanel.Controls.Add(pictureBox);
+                pictureBox.Dock = DockStyle.Left;
+
+                this.Controls.Add(rowPanel);
+                rowPanel.Dock = DockStyle.Bottom;
+
+                height += rowPanel.Height;
             }
 
-            this.Width = 590;
+            //for (int i = this.Controls.Count; i == 0; i--)
+            //{
+            //    this.Controls[i].Dock = DockStyle.Top;
+            //}
+
+            this.Height = height + this.Padding.Vertical + 40;
+
+            this.ResumeLayout();
         }
     }
 }

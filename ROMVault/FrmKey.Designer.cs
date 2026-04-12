@@ -35,12 +35,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(600, 532);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmKey";
+            this.Padding = new System.Windows.Forms.Padding(8);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Color Key to ROM Status";
             this.Load += new System.EventHandler(this.FrmKey_Load);
