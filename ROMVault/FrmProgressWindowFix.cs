@@ -235,34 +235,34 @@ namespace ROMVault
 
         private void DataGridView1SelectionChanged(object sender, EventArgs e)
         {
-            dataGridView1.ClearSelection();
+            //dataGridView1.ClearSelection(); // dunno why this was in - slected rows = more readable
         }
 
         private void FrmProgressWindowFixResize(object sender, EventArgs e)
         {
-            switch (WindowState)
-            {
-                case FormWindowState.Minimized:
-                    if (_parentForm.Visible)
-                    {
-                        _parentForm.Hide();
-                    }
-                    return;
+            //switch (WindowState)
+            //{
+            //    case FormWindowState.Minimized:
+            //        if (_parentForm.Visible)
+            //        {
+            //            _parentForm.Hide();
+            //        }
+            //        return;
 
-                case FormWindowState.Maximized:
-                    if (!_parentForm.Visible)
-                    {
-                        _parentForm.Show();
-                    }
-                    return;
+            //    case FormWindowState.Maximized:
+            //        if (!_parentForm.Visible)
+            //        {
+            //            _parentForm.Show();
+            //        }
+            //        return;
 
-                case FormWindowState.Normal:
-                    if (!_parentForm.Visible)
-                    {
-                        _parentForm.Show();
-                    }
-                    return;
-            }
+            //    case FormWindowState.Normal:
+            //        if (!_parentForm.Visible)
+            //        {
+            //            _parentForm.Show();
+            //        }
+            //        return;
+            //}
         }
 
         private void splitContainer1_Panel2_Resize(object sender, EventArgs e)
@@ -272,16 +272,28 @@ namespace ROMVault
 
         private void SetDataGridSize()
         {
-            dataGridView1.Top = 0;
-            dataGridView1.Left = 0;
-            dataGridView1.Width = Math.Max(splitContainer1.Panel2.Width, 80);
-            dataGridView1.Height = Math.Max(splitContainer1.Panel2.Height, 80);
+            //dataGridView1.Top = 0;
+            //dataGridView1.Left = 0;
+            //dataGridView1.Width = Math.Max(splitContainer1.Panel2.Width, 80);
+            //dataGridView1.Height = Math.Max(splitContainer1.Panel2.Height, 80);
         }
 
         private void FrmProgressWindowFix_Load(object sender, EventArgs e)
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
             Helpers.Theming.SetFormTextSizeToDefault(this);
+        }
+
+        private void AutsozeGridBT_Click(object sender, EventArgs e)
+        {
+            if (AutsozeGridBT.Checked)
+            {
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            else
+            {
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            }
         }
     }
 }

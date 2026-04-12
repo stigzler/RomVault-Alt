@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProgressWindowFix));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.cancelButton = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label = new System.Windows.Forms.Label();
@@ -51,34 +50,19 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.TopPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.MainTT = new System.Windows.Forms.ToolTip(this.components);
+            this.BottomPN = new System.Windows.Forms.Panel();
+            this.MainTS = new System.Windows.Forms.ToolStrip();
+            this.AutsozeGridBT = new System.Windows.Forms.ToolStripButton();
+            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.TopPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.BottomPN.SuspendLayout();
+            this.MainTS.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.cancelButton);
-            this.splitContainer1.Panel1.Controls.Add(this.progressBar);
-            this.splitContainer1.Panel1.Controls.Add(this.label);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Panel2.Resize += new System.EventHandler(this.splitContainer1_Panel2_Resize);
-            this.splitContainer1.Size = new System.Drawing.Size(1027, 500);
-            this.splitContainer1.SplitterDistance = 64;
-            this.splitContainer1.TabIndex = 7;
             // 
             // cancelButton
             // 
@@ -86,7 +70,7 @@
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Location = new System.Drawing.Point(940, 32);
+            this.cancelButton.Location = new System.Drawing.Point(663, 3);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 9;
@@ -97,18 +81,19 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(12, 32);
+            this.progressBar.Location = new System.Drawing.Point(3, 3);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(907, 23);
+            this.progressBar.Size = new System.Drawing.Size(654, 23);
             this.progressBar.TabIndex = 8;
             // 
             // label
             // 
-            this.label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label.Location = new System.Drawing.Point(13, 9);
+            this.label.AutoSize = true;
+            this.label.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label.Location = new System.Drawing.Point(4, 29);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(1002, 20);
+            this.label.Padding = new System.Windows.Forms.Padding(4);
+            this.label.Size = new System.Drawing.Size(107, 21);
             this.label.TabIndex = 4;
             this.label.Text = "Starting operation...";
             this.label.UseMnemonic = false;
@@ -117,7 +102,10 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -129,11 +117,11 @@
             this.DatFrom,
             this.GameFrom,
             this.ROMFrom});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 25);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 17;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -141,7 +129,7 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1027, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(749, 186);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
@@ -153,21 +141,18 @@
             this.DatTo.HeaderText = "Directory (Fixing)";
             this.DatTo.Name = "DatTo";
             this.DatTo.ReadOnly = true;
-            this.DatTo.Width = 250;
             // 
             // GameTo
             // 
             this.GameTo.HeaderText = "Archive (Fixing)";
             this.GameTo.Name = "GameTo";
             this.GameTo.ReadOnly = true;
-            this.GameTo.Width = 200;
             // 
             // RomTo
             // 
             this.RomTo.HeaderText = "File (Fixing)";
             this.RomTo.Name = "RomTo";
             this.RomTo.ReadOnly = true;
-            this.RomTo.Width = 200;
             // 
             // FileSize
             // 
@@ -186,7 +171,6 @@
             this.DatFrom.HeaderText = "Directory (From)";
             this.DatFrom.Name = "DatFrom";
             this.DatFrom.ReadOnly = true;
-            this.DatFrom.Width = 150;
             // 
             // GameFrom
             // 
@@ -248,27 +232,104 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
             // 
+            // TopPanel
+            // 
+            this.TopPanel.AutoSize = true;
+            this.TopPanel.Controls.Add(this.panel1);
+            this.TopPanel.Controls.Add(this.label);
+            this.TopPanel.Controls.Add(this.flexiLabel1);
+            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Padding = new System.Windows.Forms.Padding(4);
+            this.TopPanel.Size = new System.Drawing.Size(749, 83);
+            this.TopPanel.TabIndex = 10;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.progressBar);
+            this.panel1.Controls.Add(this.cancelButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(4, 50);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(741, 29);
+            this.panel1.TabIndex = 11;
+            // 
+            // BottomPN
+            // 
+            this.BottomPN.Controls.Add(this.dataGridView1);
+            this.BottomPN.Controls.Add(this.MainTS);
+            this.BottomPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BottomPN.Location = new System.Drawing.Point(0, 83);
+            this.BottomPN.Name = "BottomPN";
+            this.BottomPN.Size = new System.Drawing.Size(749, 211);
+            this.BottomPN.TabIndex = 12;
+            // 
+            // MainTS
+            // 
+            this.MainTS.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.MainTS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AutsozeGridBT});
+            this.MainTS.Location = new System.Drawing.Point(0, 0);
+            this.MainTS.Name = "MainTS";
+            this.MainTS.Size = new System.Drawing.Size(749, 25);
+            this.MainTS.TabIndex = 8;
+            this.MainTS.Text = "toolStrip1";
+            // 
+            // AutsozeGridBT
+            // 
+            this.AutsozeGridBT.CheckOnClick = true;
+            this.AutsozeGridBT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AutsozeGridBT.Image = global::ROMVault.Properties.Resources.table_join_column;
+            this.AutsozeGridBT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AutsozeGridBT.Name = "AutsozeGridBT";
+            this.AutsozeGridBT.Size = new System.Drawing.Size(23, 22);
+            this.AutsozeGridBT.Text = "AutsozeGridBT";
+            this.AutsozeGridBT.ToolTipText = "Autosize Columns";
+            this.AutsozeGridBT.Click += new System.EventHandler(this.AutsozeGridBT_Click);
+            // 
+            // flexiLabel1
+            // 
+            this.flexiLabel1.AutoSize = true;
+            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel1.Location = new System.Drawing.Point(4, 4);
+            this.flexiLabel1.Name = "flexiLabel1";
+            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
+            this.flexiLabel1.ScaleFactor = 1.2D;
+            this.flexiLabel1.Size = new System.Drawing.Size(74, 25);
+            this.flexiLabel1.TabIndex = 0;
+            this.flexiLabel1.Text = "Fix Files";
+            // 
             // FrmProgressWindowFix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(1027, 500);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(749, 294);
+            this.Controls.Add(this.BottomPN);
+            this.Controls.Add(this.TopPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(765, 333);
             this.Name = "FrmProgressWindowFix";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fixing Files";
             this.Load += new System.EventHandler(this.FrmProgressWindowFix_Load);
             this.Shown += new System.EventHandler(this.FrmProgressWindowFixShown);
             this.Resize += new System.EventHandler(this.FrmProgressWindowFixResize);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.TopPanel.ResumeLayout(false);
+            this.TopPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.BottomPN.ResumeLayout(false);
+            this.BottomPN.PerformLayout();
+            this.MainTS.ResumeLayout(false);
+            this.MainTS.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -281,7 +342,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ProgressBar progressBar;
@@ -295,5 +355,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel TopPanel;
+        private UserControls.FlexiLabel flexiLabel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolTip MainTT;
+        private System.Windows.Forms.Panel BottomPN;
+        private System.Windows.Forms.ToolStrip MainTS;
+        private System.Windows.Forms.ToolStripButton AutsozeGridBT;
     }
 }
