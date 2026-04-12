@@ -127,7 +127,7 @@
             this.DataGridGames.ShowCellToolTips = false;
             this.DataGridGames.ShowEditingIcon = false;
             this.DataGridGames.ShowRowErrors = false;
-            this.DataGridGames.Size = new System.Drawing.Size(685, 79);
+            this.DataGridGames.Size = new System.Drawing.Size(694, 156);
             this.DataGridGames.TabIndex = 10;
             this.DataGridGames.DoubleClick += new System.EventHandler(this.DataGridGamesDoubleClick);
             // 
@@ -216,7 +216,7 @@
             this.txtDATLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDATLocation.Location = new System.Drawing.Point(84, 8);
             this.txtDATLocation.Name = "txtDATLocation";
-            this.txtDATLocation.Size = new System.Drawing.Size(597, 22);
+            this.txtDATLocation.Size = new System.Drawing.Size(606, 22);
             this.txtDATLocation.TabIndex = 11;
             this.txtDATLocation.Text = "label2";
             this.txtDATLocation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -236,7 +236,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(594, 3);
+            this.btnClose.Location = new System.Drawing.Point(603, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(96, 25);
             this.btnClose.TabIndex = 16;
@@ -263,9 +263,9 @@
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 427);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 504);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(693, 34);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(702, 34);
             this.flowLayoutPanel1.TabIndex = 51;
             // 
             // button1
@@ -274,7 +274,7 @@
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(492, 3);
+            this.button1.Location = new System.Drawing.Point(501, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 25);
             this.button1.TabIndex = 17;
@@ -287,13 +287,15 @@
             this.flowLayoutPanel2.Controls.Add(this.btnDeleteSelected);
             this.flowLayoutPanel2.Controls.Add(this.btnResetAll);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 106);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 183);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(685, 31);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(694, 31);
             this.flowLayoutPanel2.TabIndex = 52;
             // 
             // ExistingRulesPN
             // 
+            this.ExistingRulesPN.AutoSize = true;
+            this.ExistingRulesPN.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ExistingRulesPN.Controls.Add(this.DataGridGames);
             this.ExistingRulesPN.Controls.Add(this.lblDelete);
             this.ExistingRulesPN.Controls.Add(this.flowLayoutPanel2);
@@ -301,7 +303,7 @@
             this.ExistingRulesPN.Location = new System.Drawing.Point(0, 286);
             this.ExistingRulesPN.Name = "ExistingRulesPN";
             this.ExistingRulesPN.Padding = new System.Windows.Forms.Padding(4);
-            this.ExistingRulesPN.Size = new System.Drawing.Size(693, 141);
+            this.ExistingRulesPN.Size = new System.Drawing.Size(702, 218);
             this.ExistingRulesPN.TabIndex = 53;
             // 
             // RulesActionsFLP
@@ -312,7 +314,7 @@
             this.RulesActionsFLP.Controls.Add(this.btnSet);
             this.RulesActionsFLP.Dock = System.Windows.Forms.DockStyle.Right;
             this.RulesActionsFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.RulesActionsFLP.Location = new System.Drawing.Point(624, 4);
+            this.RulesActionsFLP.Location = new System.Drawing.Point(633, 4);
             this.RulesActionsFLP.Name = "RulesActionsFLP";
             this.RulesActionsFLP.Size = new System.Drawing.Size(65, 215);
             this.RulesActionsFLP.TabIndex = 54;
@@ -325,7 +327,7 @@
             this.RulesPN.Location = new System.Drawing.Point(0, 63);
             this.RulesPN.Name = "RulesPN";
             this.RulesPN.Padding = new System.Windows.Forms.Padding(4);
-            this.RulesPN.Size = new System.Drawing.Size(693, 223);
+            this.RulesPN.Size = new System.Drawing.Size(702, 223);
             this.RulesPN.TabIndex = 55;
             // 
             // panel1
@@ -337,7 +339,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(4);
-            this.panel1.Size = new System.Drawing.Size(693, 38);
+            this.panel1.Size = new System.Drawing.Size(702, 38);
             this.panel1.TabIndex = 56;
             // 
             // lblDelete
@@ -355,7 +357,6 @@
             // 
             // MainTC
             // 
-            this.MainTC.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.MainTC.Controls.Add(this.tabDirMerge);
             this.MainTC.Controls.Add(this.tabAdvanced);
             this.MainTC.Controls.Add(this.tabExclude);
@@ -363,25 +364,26 @@
             this.MainTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.MainTC.HideBorders = true;
             this.MainTC.HideTabs = false;
-            this.MainTC.ItemSize = new System.Drawing.Size(58, 23);
+            this.MainTC.ItemSize = new System.Drawing.Size(134, 19);
             this.MainTC.Location = new System.Drawing.Point(4, 4);
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
             this.MainTC.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.MainTC.Size = new System.Drawing.Size(620, 215);
+            this.MainTC.Size = new System.Drawing.Size(629, 215);
+            this.MainTC.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.MainTC.TabIndex = 50;
             this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDark;
-            this.MainTC.TabPadding = 5;
+            this.MainTC.TabPadding = 3;
             this.MainTC.UnselectedTabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             // 
             // tabDirMerge
             // 
             this.tabDirMerge.Controls.Add(this.groupBox2);
             this.tabDirMerge.Controls.Add(this.groupBox1);
-            this.tabDirMerge.Location = new System.Drawing.Point(0, 25);
+            this.tabDirMerge.Location = new System.Drawing.Point(0, 21);
             this.tabDirMerge.Name = "tabDirMerge";
             this.tabDirMerge.Padding = new System.Windows.Forms.Padding(4);
-            this.tabDirMerge.Size = new System.Drawing.Size(620, 190);
+            this.tabDirMerge.Size = new System.Drawing.Size(629, 194);
             this.tabDirMerge.TabIndex = 0;
             this.tabDirMerge.Text = "Directory/Merge Rules";
             this.tabDirMerge.UseVisualStyleBackColor = true;
@@ -408,7 +410,7 @@
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Location = new System.Drawing.Point(4, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(612, 142);
+            this.groupBox2.Size = new System.Drawing.Size(621, 142);
             this.groupBox2.TabIndex = 50;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAT Rule Settings";
@@ -572,7 +574,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(612, 44);
+            this.groupBox1.Size = new System.Drawing.Size(621, 44);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Multi DAT Directory Setting";
@@ -589,10 +591,10 @@
             // tabAdvanced
             // 
             this.tabAdvanced.Controls.Add(this.groupBox3);
-            this.tabAdvanced.Location = new System.Drawing.Point(0, 25);
+            this.tabAdvanced.Location = new System.Drawing.Point(0, 21);
             this.tabAdvanced.Name = "tabAdvanced";
             this.tabAdvanced.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdvanced.Size = new System.Drawing.Size(620, 190);
+            this.tabAdvanced.Size = new System.Drawing.Size(629, 194);
             this.tabAdvanced.TabIndex = 2;
             this.tabAdvanced.Text = "Advanced Options";
             this.tabAdvanced.UseVisualStyleBackColor = true;
@@ -608,7 +610,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(614, 188);
+            this.groupBox3.Size = new System.Drawing.Size(623, 188);
             this.groupBox3.TabIndex = 50;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Advanced Options";
@@ -620,7 +622,7 @@
             this.btnDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDown.Image = global::ROMVault.Properties.Resources.arrowDown;
-            this.btnDown.Location = new System.Drawing.Point(576, 59);
+            this.btnDown.Location = new System.Drawing.Point(585, 59);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(31, 35);
             this.btnDown.TabIndex = 54;
@@ -634,7 +636,7 @@
             this.btnUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUp.Image = global::ROMVault.Properties.Resources.arrowUp;
-            this.btnUp.Location = new System.Drawing.Point(576, 18);
+            this.btnUp.Location = new System.Drawing.Point(585, 18);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(31, 35);
             this.btnUp.TabIndex = 53;
@@ -667,7 +669,7 @@
             this.dgCategories.ShowCellToolTips = false;
             this.dgCategories.ShowEditingIcon = false;
             this.dgCategories.ShowRowErrors = false;
-            this.dgCategories.Size = new System.Drawing.Size(277, 155);
+            this.dgCategories.Size = new System.Drawing.Size(286, 155);
             this.dgCategories.TabIndex = 52;
             // 
             // Category
@@ -712,10 +714,10 @@
             this.tabExclude.Controls.Add(this.flexiLabel2);
             this.tabExclude.Controls.Add(this.label6);
             this.tabExclude.Controls.Add(this.textBox1);
-            this.tabExclude.Location = new System.Drawing.Point(0, 25);
+            this.tabExclude.Location = new System.Drawing.Point(0, 21);
             this.tabExclude.Name = "tabExclude";
             this.tabExclude.Padding = new System.Windows.Forms.Padding(3);
-            this.tabExclude.Size = new System.Drawing.Size(620, 190);
+            this.tabExclude.Size = new System.Drawing.Size(629, 194);
             this.tabExclude.TabIndex = 1;
             this.tabExclude.Text = "Filename Exclude";
             this.tabExclude.UseVisualStyleBackColor = true;
@@ -735,7 +737,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(418, 37);
+            this.label6.Location = new System.Drawing.Point(400, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(196, 49);
             this.label6.TabIndex = 50;
@@ -751,7 +753,7 @@
             this.textBox1.Location = new System.Drawing.Point(18, 37);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(394, 146);
+            this.textBox1.Size = new System.Drawing.Size(376, 150);
             this.textBox1.TabIndex = 48;
             // 
             // flexiLabel1
@@ -771,17 +773,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 461);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(702, 538);
             this.Controls.Add(this.ExistingRulesPN);
             this.Controls.Add(this.RulesPN);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flexiLabel1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(709, 500);
+            this.MinimumSize = new System.Drawing.Size(671, 392);
             this.Name = "FrmDirectorySettings";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -86,6 +86,7 @@ namespace ROMVault.UserControls
             SetStyle(ControlStyles.DoubleBuffer, true);
             SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.SizeMode = TabSizeMode.Fixed;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -157,16 +158,53 @@ namespace ROMVault.UserControls
             }
         }
 
+        private void UpdateItemSize()
+        {
+            if (_hideTabs)
+                return;
+
+            this.SizeMode = TabSizeMode.Fixed;
+            
+            // Find the longest text to calculate width
+            int maxWidth = 58; // minimum default width
+            foreach (TabPage tab in this.TabPages)
+            {
+                Size textSize = TextRenderer.MeasureText(tab.Text, Font);
+                int tabWidth = textSize.Width + (2 * _tabPadding) + 14; // 14 for borders/rounded corners/margins
+                if (tabWidth > maxWidth)
+                    maxWidth = tabWidth;
+            }
+            
+            // Measure text height with padding
+            Size textHeight = TextRenderer.MeasureText("Tg", Font);
+            int height = textHeight.Height + (2 * _tabPadding);
+            
+            this.ItemSize = new Size(maxWidth, height);
+        }
+
         internal void DrawTab(Graphics g, TabPage tabPage, int nIndex)
         {
             Rectangle recBounds = GetTabRect(nIndex);
             RectangleF tabTextArea = (RectangleF)this.GetTabRect(nIndex);
 
-            // Apply vertical padding only - shrink top and bottom
+            // Apply padding - shrink from all sides
             if (_tabPadding > 0)
             {
+                tabTextArea.X += _tabPadding;
                 tabTextArea.Y += _tabPadding;
+                tabTextArea.Width -= (2 * _tabPadding);
                 tabTextArea.Height -= (2 * _tabPadding);
+            }
+
+            // Check if text fits, if not reduce font size
+            Size textSize = TextRenderer.MeasureText(tabPage.Text, Font);
+            Font drawFont = Font;
+            if (textSize.Width > tabTextArea.Width - 2)
+            {
+                // Calculate scaling factor
+                float scale = (tabTextArea.Width - 2) / (float)textSize.Width;
+                int newFontSize = Math.Max(6, (int)(Font.Size * scale));
+                drawFont = new Font(Font.FontFamily, newFontSize, Font.Style);
             }
 
             bool bSelected = (this.SelectedIndex == nIndex);
@@ -290,8 +328,12 @@ namespace ROMVault.UserControls
 
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-            g.DrawString(tabPage.Text, Font, br, tabTextArea,
+            g.DrawString(tabPage.Text, drawFont, br, tabTextArea,
                                                  stringFormat);
+            
+            // Clean up temporary font if created
+            if (drawFont != Font)
+                drawFont.Dispose();
         }
 
         // Used to Hide Borders
@@ -309,16 +351,6 @@ namespace ROMVault.UserControls
             base.WndProc(ref m);
         }
 
-        private void UpdateItemSize()
-        {
-            if (_hideTabs)
-                return;
-
-            int height = Font.Height + (2 * _tabPadding);
-            int width = 58;
-            this.ItemSize = new Size(width, height);
-        }
-
         private void DoHideTabs()
         {
             if (_hideTabs == true)
@@ -330,7 +362,6 @@ namespace ROMVault.UserControls
             else
             {
                 this.Appearance = TabAppearance.Normal;
-                this.SizeMode = TabSizeMode.Normal;
                 UpdateItemSize();
             }
         }

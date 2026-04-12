@@ -94,16 +94,19 @@ namespace ROMVault
             _displayType = type;
             btnDelete.Visible = type;
 
-            foreach (object c in Controls)
-            {
-                if ((c is Control ct) && (ct.Top > 360))
-                {
-                    ct.Visible = !type;
-                }
-            }
-            MinimumSize = new Size(709, type ? 335 : 500);
-            Height = type ? 335 : 620;
-            FormBorderStyle = type ? FormBorderStyle.FixedSingle : FormBorderStyle.Sizable;
+            //foreach (object c in Controls)
+            //{
+            //    if ((c is Control ct) && (ct.Top > 360))
+            //    {
+            //        ct.Visible = !type;
+            //    }
+            //}
+
+            ExistingRulesPN.Visible = !type;
+
+            //MinimumSize = new Size(709, type ? 335 : 500);
+            //Height = type ? 335 : 620;
+            //FormBorderStyle = type ? FormBorderStyle.FixedSingle : FormBorderStyle.Sizable;
         }
 
         private static DatRule FindRule(string dLocation)
