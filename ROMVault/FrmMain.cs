@@ -294,10 +294,11 @@ namespace ROMVault
             _mnuContext.Items.Add(mnuDirMappings);
             _mnuContext.Items.Add(_mnuRelocateRoms);
             _mnuContext.Items.Add(new ToolStripSeparator());
-            _mnuContext.Items.Add(mnuImportToThisDir);
-            _mnuContext.Items.Add(mnuImportToPickedDir);
             _mnuContext.Items.Add(_mnuDeleteDat);
             _mnuContext.Items.Add(_mnuEditDat);
+            _mnuContext.Items.Add(new ToolStripSeparator());
+            _mnuContext.Items.Add(mnuImportToThisDir);
+            _mnuContext.Items.Add(mnuImportToPickedDir);
 
             mnuScan1.Click += MnuScan;
             mnuScan2.Click += MnuScan;
@@ -610,17 +611,15 @@ namespace ROMVault
 
         private void MnuDeleteDat(object sender, EventArgs e)
         {
-            if (_clickedTree.Dat == null) return;
+            RvDat rvDat = GetDatFromSelectedRvFile();
 
-            string datPath = Path.Combine(ResolvedSelectedDatPath(),
-               Path.GetFileName(_clickedTree.Dat.GetData(RvDat.DatData.DatRootFullName)));
+            if (rvDat == null) return;
+            string datFilepath = rvDat.GetData(RvDat.DatData.DatRootFullName).ToString();
+            string resolvedDatRoot = RvSystems.GetFullyQualifiedPath(Settings.rvSettings.DatRoot);
+            string fullDatPath = RvSystems.ResolveTokenisedDatPath(datFilepath, resolvedDatRoot);
+            if (File.Exists(fullDatPath))
+                try { File.Delete(fullDatPath); } catch { }
 
-            if (!File.Exists(datPath)) return;
-            try
-            {
-                //File.Delete(datPath);
-            }
-            catch { }
             UpdateDats();
         }
 
@@ -2180,10 +2179,6 @@ namespace ROMVault
             ctrRvTree.SetupInt(); // refresh tree to update icons
         }
 
-        private void ctrRvTree_Load(object sender, EventArgs e)
-        {
-        }
-
         private bool _datObjectSelected = false;
 
         private void MainPG_SelectedObjectsChanged(object sender, EventArgs e)
@@ -2354,6 +2349,7 @@ namespace ROMVault
                 GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 GameGrid.Columns[(int)GameGridColumns.CDateTime].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 RomGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                RefreshGameGridsAutosizing();
             }
             else
             {
@@ -2365,6 +2361,18 @@ namespace ROMVault
 
         private void RefreshGameGridsAutosizing()
         {
+            if (!AutoSizeGameColChB.Checked)
+                return;
+
+            try
+            {
+                GameGrid.AutoResizeColumn((int)GameGridColumns.CGame, DataGridViewAutoSizeColumnMode.AllCells);
+                GameGrid.AutoResizeColumn((int)GameGridColumns.CDateTime, DataGridViewAutoSizeColumnMode.AllCells);
+                RomGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch
+            {
+            }
         }
     }
 }

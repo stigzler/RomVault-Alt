@@ -51,6 +51,11 @@ namespace ROMVault
             LoadSettings();
 
             UpdateStatusBar(); // has to be done after LaodSettings;
+
+            if (Properties.Settings.Default.SettingsSplitterDistance != 0)
+            {
+                MainSC.SplitterDistance = Properties.Settings.Default.SettingsSplitterDistance;
+            }
         }
 
         private void SetupControls()
@@ -296,8 +301,6 @@ namespace ROMVault
             CenterFormOnScreen();
         }
 
-  
-
         private void FrmSettings_Shown(object sender, EventArgs e)
         {
             _shown = true;//TvPaddingPN.BackColor = MainTV.BackColor;
@@ -401,8 +404,6 @@ namespace ROMVault
         {
         }
 
-
-
         private void StatusIconSizeNUM_ValueChanged(object sender, EventArgs e)
         {
             if (!_shown) return; // avoid trying to update status bar before form is shown and controls are fully loaded
@@ -454,6 +455,11 @@ namespace ROMVault
                 workingArea.Left + (workingArea.Width - this.Width) / 2,
                 workingArea.Top + (workingArea.Height - this.Height) / 2
             );
+        }
+
+        private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.SettingsSplitterDistance = MainSC.SplitterDistance;
         }
     }
 }

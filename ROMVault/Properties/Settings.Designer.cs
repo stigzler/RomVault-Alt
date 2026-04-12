@@ -253,5 +253,17 @@ namespace ROMVault.Properties {
                 this["RomRelocateDeleteOriginal"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SettingsSplitterDistance {
+            get {
+                return ((int)(this["SettingsSplitterDistance"]));
+            }
+            set {
+                this["SettingsSplitterDistance"] = value;
+            }
+        }
     }
 }
