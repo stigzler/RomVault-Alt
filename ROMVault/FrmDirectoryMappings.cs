@@ -50,21 +50,23 @@ namespace ROMVault
 
         private bool _displayType;
 
-        public void SetDisplayType(bool type)
+        public void SetDisplayType(bool hideSelector)
         {
-            _displayType = type;
-            btnDelete.Visible = type;
+            _displayType = hideSelector;
+            btnDelete.Visible = hideSelector;
 
-            foreach (object c in Controls)
+            MappingPN.Visible = !hideSelector;
+
+            if (hideSelector)
             {
-                if ((c is Control ct) && (ct.Top > 110))
-                {
-                    ct.Visible = !type;
-                }
+                // Hide the rules panel - shrink form
+                int newHeight = this.Height - MappingPN.Height - 20;
+                this.Height = newHeight;
             }
-            MinimumSize = new Size(709, type ? 150 : 300);
-            Height = type ? 155 : 428;
-            FormBorderStyle = type ? FormBorderStyle.FixedSingle : FormBorderStyle.Sizable;
+
+            //MinimumSize = new Size(709, hideSelector ? 150 : 300);
+            //Height = hideSelector ? 155 : 428;
+            //FormBorderStyle = hideSelector ? FormBorderStyle.FixedSingle : FormBorderStyle.Sizable;
         }
 
         private static DirMapping FindRule(string dLocation)

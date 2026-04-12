@@ -48,8 +48,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.MappingPN = new System.Windows.Forms.Panel();
-            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DGDirectoryMappingRules)).BeginInit();
             this.BottomButtonsPN.SuspendLayout();
@@ -84,7 +84,7 @@
             this.DGDirectoryMappingRules.ShowCellToolTips = false;
             this.DGDirectoryMappingRules.ShowEditingIcon = false;
             this.DGDirectoryMappingRules.ShowRowErrors = false;
-            this.DGDirectoryMappingRules.Size = new System.Drawing.Size(376, 130);
+            this.DGDirectoryMappingRules.Size = new System.Drawing.Size(376, 169);
             this.DGDirectoryMappingRules.TabIndex = 10;
             this.DGDirectoryMappingRules.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGDirectoryMappingRules_CellClick);
             this.DGDirectoryMappingRules.DoubleClick += new System.EventHandler(this.DataGridGamesDoubleClick);
@@ -270,7 +270,7 @@
             this.BottomButtonsPN.Controls.Add(this.button1);
             this.BottomButtonsPN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BottomButtonsPN.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.BottomButtonsPN.Location = new System.Drawing.Point(0, 330);
+            this.BottomButtonsPN.Location = new System.Drawing.Point(0, 369);
             this.BottomButtonsPN.Name = "BottomButtonsPN";
             this.BottomButtonsPN.Size = new System.Drawing.Size(384, 31);
             this.BottomButtonsPN.TabIndex = 41;
@@ -295,7 +295,7 @@
             this.flowLayoutPanel2.Controls.Add(this.btnDeleteSelected);
             this.flowLayoutPanel2.Controls.Add(this.btnResetAll);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 159);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 198);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(376, 31);
             this.flowLayoutPanel2.TabIndex = 42;
@@ -309,21 +309,8 @@
             this.MappingPN.Location = new System.Drawing.Point(0, 136);
             this.MappingPN.Name = "MappingPN";
             this.MappingPN.Padding = new System.Windows.Forms.Padding(4);
-            this.MappingPN.Size = new System.Drawing.Size(384, 194);
+            this.MappingPN.Size = new System.Drawing.Size(384, 233);
             this.MappingPN.TabIndex = 43;
-            // 
-            // flexiLabel1
-            // 
-            this.flexiLabel1.AutoSize = true;
-            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel1.Location = new System.Drawing.Point(4, 4);
-            this.flexiLabel1.Name = "flexiLabel1";
-            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
-            this.flexiLabel1.ScaleFactor = 1.2D;
-            this.flexiLabel1.Size = new System.Drawing.Size(139, 25);
-            this.flexiLabel1.TabIndex = 0;
-            this.flexiLabel1.Text = "Existing Mapping";
             // 
             // panel2
             // 
@@ -340,6 +327,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(384, 107);
             this.panel2.TabIndex = 44;
+            // 
+            // flexiLabel1
+            // 
+            this.flexiLabel1.AutoSize = true;
+            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel1.Location = new System.Drawing.Point(4, 4);
+            this.flexiLabel1.Name = "flexiLabel1";
+            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
+            this.flexiLabel1.ScaleFactor = 1.2D;
+            this.flexiLabel1.Size = new System.Drawing.Size(139, 25);
+            this.flexiLabel1.TabIndex = 0;
+            this.flexiLabel1.Text = "Existing Mapping";
             // 
             // flexiLabel2
             // 
@@ -359,16 +359,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.ClientSize = new System.Drawing.Size(384, 400);
             this.Controls.Add(this.MappingPN);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flexiLabel2);
             this.Controls.Add(this.BottomButtonsPN);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(400, 400);
+            this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "FrmDirectoryMappings";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
