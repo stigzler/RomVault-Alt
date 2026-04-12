@@ -64,13 +64,14 @@ namespace ROMVault.UserControls
 
         public TabControl()
         {
-            DrawMode = TabDrawMode.OwnerDrawFixed;
+            //DrawMode = TabDrawMode.OwnerDrawFixed;
 
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.DoubleBuffer, true);
             SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            Appearance = TabAppearance.FlatButtons;
         }
 
         protected override void OnPaint(PaintEventArgs e)

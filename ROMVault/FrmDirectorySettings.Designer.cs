@@ -41,7 +41,15 @@
             this.lblDATLocation = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnResetAll = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ExistingRulesPN = new System.Windows.Forms.Panel();
+            this.RulesActionsFLP = new System.Windows.Forms.FlowLayoutPanel();
+            this.RulesPN = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDelete = new ROMVault.UserControls.FlexiLabel();
+            this.MainTC = new ROMVault.UserControls.TabControl();
             this.tabDirMerge = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblArchiveCompression = new System.Windows.Forms.Label();
@@ -72,15 +80,18 @@
             this.chkCompleteOnly = new System.Windows.Forms.CheckBox();
             this.chkUseIdForName = new System.Windows.Forms.CheckBox();
             this.tabExclude = new System.Windows.Forms.TabPage();
+            this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblDelete = new ROMVault.UserControls.FlexiLabel();
+            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridGames)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.ExistingRulesPN.SuspendLayout();
+            this.RulesActionsFLP.SuspendLayout();
+            this.RulesPN.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.MainTC.SuspendLayout();
             this.tabDirMerge.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,9 +99,6 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategories)).BeginInit();
             this.tabExclude.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataGridGames
@@ -98,6 +106,7 @@
             this.DataGridGames.AllowUserToAddRows = false;
             this.DataGridGames.AllowUserToDeleteRows = false;
             this.DataGridGames.AllowUserToResizeRows = false;
+            this.DataGridGames.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DataGridGames.BackgroundColor = System.Drawing.Color.White;
             this.DataGridGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridGames.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -107,7 +116,7 @@
             this.CSingleArchive});
             this.DataGridGames.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridGames.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.DataGridGames.Location = new System.Drawing.Point(0, 24);
+            this.DataGridGames.Location = new System.Drawing.Point(4, 27);
             this.DataGridGames.Name = "DataGridGames";
             this.DataGridGames.ReadOnly = true;
             this.DataGridGames.RowHeadersVisible = false;
@@ -118,7 +127,7 @@
             this.DataGridGames.ShowCellToolTips = false;
             this.DataGridGames.ShowEditingIcon = false;
             this.DataGridGames.ShowRowErrors = false;
-            this.DataGridGames.Size = new System.Drawing.Size(453, 270);
+            this.DataGridGames.Size = new System.Drawing.Size(685, 79);
             this.DataGridGames.TabIndex = 10;
             this.DataGridGames.DoubleClick += new System.EventHandler(this.DataGridGamesDoubleClick);
             // 
@@ -178,7 +187,7 @@
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(625, 230);
+            this.btnDelete.Location = new System.Drawing.Point(3, 3);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(59, 24);
             this.btnDelete.TabIndex = 39;
@@ -191,7 +200,7 @@
             this.btnSet.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSet.Location = new System.Drawing.Point(625, 260);
+            this.btnSet.Location = new System.Drawing.Point(3, 33);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(59, 25);
             this.btnSet.TabIndex = 14;
@@ -201,12 +210,13 @@
             // 
             // txtDATLocation
             // 
+            this.txtDATLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDATLocation.BackColor = System.Drawing.Color.White;
             this.txtDATLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDATLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDATLocation.Location = new System.Drawing.Point(76, 18);
+            this.txtDATLocation.Location = new System.Drawing.Point(84, 8);
             this.txtDATLocation.Name = "txtDATLocation";
-            this.txtDATLocation.Size = new System.Drawing.Size(527, 22);
+            this.txtDATLocation.Size = new System.Drawing.Size(597, 22);
             this.txtDATLocation.TabIndex = 11;
             this.txtDATLocation.Text = "label2";
             this.txtDATLocation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -215,8 +225,7 @@
             // lblDATLocation
             // 
             this.lblDATLocation.AutoSize = true;
-            this.lblDATLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDATLocation.Location = new System.Drawing.Point(12, 23);
+            this.lblDATLocation.Location = new System.Drawing.Point(21, 13);
             this.lblDATLocation.Name = "lblDATLocation";
             this.lblDATLocation.Size = new System.Drawing.Size(57, 13);
             this.lblDATLocation.TabIndex = 10;
@@ -227,7 +236,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(947, 3);
+            this.btnClose.Location = new System.Drawing.Point(594, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(96, 25);
             this.btnClose.TabIndex = 16;
@@ -248,26 +257,130 @@
             this.btnResetAll.UseVisualStyleBackColor = true;
             this.btnResetAll.Click += new System.EventHandler(this.BtnResetAllClick);
             // 
-            // tabControl1
+            // flowLayoutPanel1
             // 
-            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.tabControl1.Controls.Add(this.tabDirMerge);
-            this.tabControl1.Controls.Add(this.tabAdvanced);
-            this.tabControl1.Controls.Add(this.tabExclude);
-            this.tabControl1.Location = new System.Drawing.Point(12, 49);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(608, 236);
-            this.tabControl1.TabIndex = 50;
+            this.flowLayoutPanel1.Controls.Add(this.btnClose);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 427);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(693, 34);
+            this.flowLayoutPanel1.TabIndex = 51;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(492, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 25);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.Controls.Add(this.btnDeleteSelected);
+            this.flowLayoutPanel2.Controls.Add(this.btnResetAll);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 106);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(685, 31);
+            this.flowLayoutPanel2.TabIndex = 52;
+            // 
+            // ExistingRulesPN
+            // 
+            this.ExistingRulesPN.Controls.Add(this.DataGridGames);
+            this.ExistingRulesPN.Controls.Add(this.lblDelete);
+            this.ExistingRulesPN.Controls.Add(this.flowLayoutPanel2);
+            this.ExistingRulesPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExistingRulesPN.Location = new System.Drawing.Point(0, 286);
+            this.ExistingRulesPN.Name = "ExistingRulesPN";
+            this.ExistingRulesPN.Padding = new System.Windows.Forms.Padding(4);
+            this.ExistingRulesPN.Size = new System.Drawing.Size(693, 141);
+            this.ExistingRulesPN.TabIndex = 53;
+            // 
+            // RulesActionsFLP
+            // 
+            this.RulesActionsFLP.AutoSize = true;
+            this.RulesActionsFLP.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.RulesActionsFLP.Controls.Add(this.btnDelete);
+            this.RulesActionsFLP.Controls.Add(this.btnSet);
+            this.RulesActionsFLP.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RulesActionsFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.RulesActionsFLP.Location = new System.Drawing.Point(624, 4);
+            this.RulesActionsFLP.Name = "RulesActionsFLP";
+            this.RulesActionsFLP.Size = new System.Drawing.Size(65, 215);
+            this.RulesActionsFLP.TabIndex = 54;
+            // 
+            // RulesPN
+            // 
+            this.RulesPN.Controls.Add(this.MainTC);
+            this.RulesPN.Controls.Add(this.RulesActionsFLP);
+            this.RulesPN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RulesPN.Location = new System.Drawing.Point(0, 63);
+            this.RulesPN.Name = "RulesPN";
+            this.RulesPN.Padding = new System.Windows.Forms.Padding(4);
+            this.RulesPN.Size = new System.Drawing.Size(693, 223);
+            this.RulesPN.TabIndex = 55;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.txtDATLocation);
+            this.panel1.Controls.Add(this.lblDATLocation);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(4);
+            this.panel1.Size = new System.Drawing.Size(693, 38);
+            this.panel1.TabIndex = 56;
+            // 
+            // lblDelete
+            // 
+            this.lblDelete.AutoSize = true;
+            this.lblDelete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDelete.Font = new System.Drawing.Font("Roboto", 9.075F, System.Drawing.FontStyle.Bold);
+            this.lblDelete.Location = new System.Drawing.Point(4, 4);
+            this.lblDelete.Name = "lblDelete";
+            this.lblDelete.Padding = new System.Windows.Forms.Padding(4);
+            this.lblDelete.ScaleFactor = 1.1D;
+            this.lblDelete.Size = new System.Drawing.Size(139, 23);
+            this.lblDelete.TabIndex = 16;
+            this.lblDelete.Text = "Existing DAT Rules";
+            // 
+            // MainTC
+            // 
+            this.MainTC.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.MainTC.Controls.Add(this.tabDirMerge);
+            this.MainTC.Controls.Add(this.tabAdvanced);
+            this.MainTC.Controls.Add(this.tabExclude);
+            this.MainTC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.MainTC.HideBorders = false;
+            this.MainTC.HideTabs = false;
+            this.MainTC.ItemSize = new System.Drawing.Size(58, 18);
+            this.MainTC.Location = new System.Drawing.Point(4, 4);
+            this.MainTC.Name = "MainTC";
+            this.MainTC.SelectedIndex = 0;
+            this.MainTC.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.MainTC.Size = new System.Drawing.Size(620, 215);
+            this.MainTC.TabIndex = 50;
+            this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDark;
+            this.MainTC.UnselectedTabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             // 
             // tabDirMerge
             // 
             this.tabDirMerge.Controls.Add(this.groupBox2);
             this.tabDirMerge.Controls.Add(this.groupBox1);
-            this.tabDirMerge.Location = new System.Drawing.Point(4, 25);
+            this.tabDirMerge.Location = new System.Drawing.Point(4, 22);
             this.tabDirMerge.Name = "tabDirMerge";
-            this.tabDirMerge.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDirMerge.Size = new System.Drawing.Size(600, 207);
+            this.tabDirMerge.Padding = new System.Windows.Forms.Padding(4);
+            this.tabDirMerge.Size = new System.Drawing.Size(612, 189);
             this.tabDirMerge.TabIndex = 0;
             this.tabDirMerge.Text = "Directory/Merge Rules";
             this.tabDirMerge.UseVisualStyleBackColor = true;
@@ -290,11 +403,11 @@
             this.groupBox2.Controls.Add(this.cboFilterType);
             this.groupBox2.Controls.Add(this.chkSingleArchive);
             this.groupBox2.Controls.Add(this.lblROMCHDFilter);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(14, 60);
+            this.groupBox2.Location = new System.Drawing.Point(4, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(573, 142);
+            this.groupBox2.Size = new System.Drawing.Size(604, 142);
             this.groupBox2.TabIndex = 50;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAT Rule Settings";
@@ -302,7 +415,6 @@
             // lblArchiveCompression
             // 
             this.lblArchiveCompression.AutoSize = true;
-            this.lblArchiveCompression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArchiveCompression.Location = new System.Drawing.Point(6, 46);
             this.lblArchiveCompression.Name = "lblArchiveCompression";
             this.lblArchiveCompression.Size = new System.Drawing.Size(97, 13);
@@ -313,7 +425,6 @@
             // 
             this.cboCompression.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCompression.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboCompression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCompression.FormattingEnabled = true;
             this.cboCompression.Location = new System.Drawing.Point(105, 43);
             this.cboCompression.Name = "cboCompression";
@@ -322,7 +433,6 @@
             // 
             // chkConvertWhenFixing
             // 
-            this.chkConvertWhenFixing.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkConvertWhenFixing.Location = new System.Drawing.Point(247, 46);
             this.chkConvertWhenFixing.Name = "chkConvertWhenFixing";
             this.chkConvertWhenFixing.Size = new System.Drawing.Size(120, 17);
@@ -334,7 +444,6 @@
             // 
             this.cboHeaderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboHeaderType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboHeaderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboHeaderType.FormattingEnabled = true;
             this.cboHeaderType.Location = new System.Drawing.Point(465, 44);
             this.cboHeaderType.Name = "cboHeaderType";
@@ -344,7 +453,6 @@
             // lblHeaderType
             // 
             this.lblHeaderType.AutoSize = true;
-            this.lblHeaderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeaderType.Location = new System.Drawing.Point(375, 47);
             this.lblHeaderType.Name = "lblHeaderType";
             this.lblHeaderType.Size = new System.Drawing.Size(72, 13);
@@ -354,7 +462,6 @@
             // lblArchiveType
             // 
             this.lblArchiveType.AutoSize = true;
-            this.lblArchiveType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArchiveType.Location = new System.Drawing.Point(6, 19);
             this.lblArchiveType.Name = "lblArchiveType";
             this.lblArchiveType.Size = new System.Drawing.Size(73, 13);
@@ -365,7 +472,6 @@
             // 
             this.cboFileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFileType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboFileType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFileType.FormattingEnabled = true;
             this.cboFileType.Location = new System.Drawing.Point(105, 16);
             this.cboFileType.Name = "cboFileType";
@@ -375,7 +481,6 @@
             // 
             // chkFileTypeOverride
             // 
-            this.chkFileTypeOverride.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFileTypeOverride.Location = new System.Drawing.Point(247, 19);
             this.chkFileTypeOverride.Name = "chkFileTypeOverride";
             this.chkFileTypeOverride.Size = new System.Drawing.Size(120, 17);
@@ -387,7 +492,6 @@
             // 
             this.cboMergeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMergeType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboMergeType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMergeType.FormattingEnabled = true;
             this.cboMergeType.Location = new System.Drawing.Point(105, 70);
             this.cboMergeType.Name = "cboMergeType";
@@ -398,7 +502,6 @@
             // 
             this.cboDirType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDirType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboDirType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDirType.FormattingEnabled = true;
             this.cboDirType.Location = new System.Drawing.Point(105, 95);
             this.cboDirType.Name = "cboDirType";
@@ -408,7 +511,6 @@
             // lblMergeType
             // 
             this.lblMergeType.AutoSize = true;
-            this.lblMergeType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMergeType.Location = new System.Drawing.Point(6, 73);
             this.lblMergeType.Name = "lblMergeType";
             this.lblMergeType.Size = new System.Drawing.Size(67, 13);
@@ -417,7 +519,6 @@
             // 
             // chkUseDescription
             // 
-            this.chkUseDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkUseDescription.Location = new System.Drawing.Point(9, 119);
             this.chkUseDescription.Name = "chkUseDescription";
             this.chkUseDescription.Size = new System.Drawing.Size(297, 19);
@@ -427,7 +528,6 @@
             // 
             // chkMergeTypeOverride
             // 
-            this.chkMergeTypeOverride.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkMergeTypeOverride.Location = new System.Drawing.Point(247, 73);
             this.chkMergeTypeOverride.Name = "chkMergeTypeOverride";
             this.chkMergeTypeOverride.Size = new System.Drawing.Size(118, 17);
@@ -439,7 +539,6 @@
             // 
             this.cboFilterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboFilterType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFilterType.FormattingEnabled = true;
             this.cboFilterType.Location = new System.Drawing.Point(465, 16);
             this.cboFilterType.Name = "cboFilterType";
@@ -448,7 +547,6 @@
             // 
             // chkSingleArchive
             // 
-            this.chkSingleArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSingleArchive.Location = new System.Drawing.Point(9, 98);
             this.chkSingleArchive.Name = "chkSingleArchive";
             this.chkSingleArchive.Size = new System.Drawing.Size(95, 19);
@@ -460,7 +558,6 @@
             // lblROMCHDFilter
             // 
             this.lblROMCHDFilter.AutoSize = true;
-            this.lblROMCHDFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblROMCHDFilter.Location = new System.Drawing.Point(375, 19);
             this.lblROMCHDFilter.Name = "lblROMCHDFilter";
             this.lblROMCHDFilter.Size = new System.Drawing.Size(88, 13);
@@ -470,18 +567,17 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chkMultiDatDirOverride);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(14, 10);
+            this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(573, 44);
+            this.groupBox1.Size = new System.Drawing.Size(604, 44);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Multi DAT Directory Setting";
             // 
             // chkMultiDatDirOverride
             // 
-            this.chkMultiDatDirOverride.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkMultiDatDirOverride.Location = new System.Drawing.Point(11, 20);
             this.chkMultiDatDirOverride.Name = "chkMultiDatDirOverride";
             this.chkMultiDatDirOverride.Size = new System.Drawing.Size(220, 16);
@@ -492,10 +588,10 @@
             // tabAdvanced
             // 
             this.tabAdvanced.Controls.Add(this.groupBox3);
-            this.tabAdvanced.Location = new System.Drawing.Point(4, 25);
+            this.tabAdvanced.Location = new System.Drawing.Point(4, 22);
             this.tabAdvanced.Name = "tabAdvanced";
             this.tabAdvanced.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdvanced.Size = new System.Drawing.Size(600, 207);
+            this.tabAdvanced.Size = new System.Drawing.Size(612, 189);
             this.tabAdvanced.TabIndex = 2;
             this.tabAdvanced.Text = "Advanced Options";
             this.tabAdvanced.UseVisualStyleBackColor = true;
@@ -508,30 +604,38 @@
             this.groupBox3.Controls.Add(this.chkAddCategorySubDirs);
             this.groupBox3.Controls.Add(this.chkCompleteOnly);
             this.groupBox3.Controls.Add(this.chkUseIdForName);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 13);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(564, 188);
+            this.groupBox3.Size = new System.Drawing.Size(606, 188);
             this.groupBox3.TabIndex = 50;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Advanced Options";
             // 
             // btnDown
             // 
+            this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDown.Image = global::ROMVault.Properties.Resources.arrowDown;
-            this.btnDown.Location = new System.Drawing.Point(356, 94);
+            this.btnDown.Location = new System.Drawing.Point(568, 59);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(32, 35);
+            this.btnDown.Size = new System.Drawing.Size(31, 35);
             this.btnDown.TabIndex = 54;
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnUp
             // 
+            this.btnUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUp.Image = global::ROMVault.Properties.Resources.arrowUp;
-            this.btnUp.Location = new System.Drawing.Point(356, 58);
+            this.btnUp.Location = new System.Drawing.Point(568, 18);
             this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(32, 35);
+            this.btnUp.Size = new System.Drawing.Size(31, 35);
             this.btnUp.TabIndex = 53;
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
@@ -542,11 +646,14 @@
             this.dgCategories.AllowUserToDeleteRows = false;
             this.dgCategories.AllowUserToResizeColumns = false;
             this.dgCategories.AllowUserToResizeRows = false;
+            this.dgCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCategories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Category});
             this.dgCategories.EnableHeadersVisualStyles = false;
-            this.dgCategories.Location = new System.Drawing.Point(394, 10);
+            this.dgCategories.Location = new System.Drawing.Point(286, 18);
             this.dgCategories.MultiSelect = false;
             this.dgCategories.Name = "dgCategories";
             this.dgCategories.ReadOnly = true;
@@ -559,7 +666,7 @@
             this.dgCategories.ShowCellToolTips = false;
             this.dgCategories.ShowEditingIcon = false;
             this.dgCategories.ShowRowErrors = false;
-            this.dgCategories.Size = new System.Drawing.Size(151, 171);
+            this.dgCategories.Size = new System.Drawing.Size(269, 155);
             this.dgCategories.TabIndex = 52;
             // 
             // Category
@@ -573,7 +680,6 @@
             // 
             // chkAddCategorySubDirs
             // 
-            this.chkAddCategorySubDirs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkAddCategorySubDirs.Location = new System.Drawing.Point(6, 28);
             this.chkAddCategorySubDirs.Name = "chkAddCategorySubDirs";
             this.chkAddCategorySubDirs.Size = new System.Drawing.Size(265, 17);
@@ -584,7 +690,6 @@
             // 
             // chkCompleteOnly
             // 
-            this.chkCompleteOnly.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkCompleteOnly.Location = new System.Drawing.Point(6, 88);
             this.chkCompleteOnly.Name = "chkCompleteOnly";
             this.chkCompleteOnly.Size = new System.Drawing.Size(265, 17);
@@ -594,7 +699,6 @@
             // 
             // chkUseIdForName
             // 
-            this.chkUseIdForName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkUseIdForName.Location = new System.Drawing.Point(6, 65);
             this.chkUseIdForName.Name = "chkUseIdForName";
             this.chkUseIdForName.Size = new System.Drawing.Size(265, 17);
@@ -604,103 +708,74 @@
             // 
             // tabExclude
             // 
+            this.tabExclude.Controls.Add(this.flexiLabel2);
             this.tabExclude.Controls.Add(this.label6);
-            this.tabExclude.Controls.Add(this.label5);
             this.tabExclude.Controls.Add(this.textBox1);
-            this.tabExclude.Location = new System.Drawing.Point(4, 25);
+            this.tabExclude.Location = new System.Drawing.Point(4, 22);
             this.tabExclude.Name = "tabExclude";
             this.tabExclude.Padding = new System.Windows.Forms.Padding(3);
-            this.tabExclude.Size = new System.Drawing.Size(600, 207);
+            this.tabExclude.Size = new System.Drawing.Size(612, 189);
             this.tabExclude.TabIndex = 1;
             this.tabExclude.Text = "Filename Exclude";
             this.tabExclude.UseVisualStyleBackColor = true;
             // 
+            // flexiLabel2
+            // 
+            this.flexiLabel2.AutoSize = true;
+            this.flexiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flexiLabel2.Location = new System.Drawing.Point(17, 17);
+            this.flexiLabel2.Name = "flexiLabel2";
+            this.flexiLabel2.ScaleFactor = 1D;
+            this.flexiLabel2.Size = new System.Drawing.Size(145, 13);
+            this.flexiLabel2.TabIndex = 51;
+            this.flexiLabel2.Text = "Filenames not to remove";
+            // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(391, 37);
+            this.label6.Location = new System.Drawing.Point(410, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(196, 49);
             this.label6.TabIndex = 50;
             this.label6.Text = "One rule per line\r\nBasic rules support * and ? wildcards\r\nRegex rules must start " +
     "with \"regex:\"";
             // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 17);
-            this.label5.TabIndex = 49;
-            this.label5.Text = "Filenames not to remove from RomDir\'s";
-            // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Location = new System.Drawing.Point(18, 37);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(361, 148);
+            this.textBox1.Size = new System.Drawing.Size(386, 145);
             this.textBox1.TabIndex = 48;
             // 
-            // flowLayoutPanel1
+            // flexiLabel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnClose);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 972);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1046, 34);
-            this.flowLayoutPanel1.TabIndex = 51;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.Controls.Add(this.btnDeleteSelected);
-            this.flowLayoutPanel2.Controls.Add(this.btnResetAll);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 294);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(453, 31);
-            this.flowLayoutPanel2.TabIndex = 52;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.DataGridGames);
-            this.panel1.Controls.Add(this.lblDelete);
-            this.panel1.Controls.Add(this.flowLayoutPanel2);
-            this.panel1.Location = new System.Drawing.Point(135, 538);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(453, 325);
-            this.panel1.TabIndex = 53;
-            // 
-            // lblDelete
-            // 
-            this.lblDelete.AutoSize = true;
-            this.lblDelete.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.075F, System.Drawing.FontStyle.Bold);
-            this.lblDelete.Location = new System.Drawing.Point(0, 0);
-            this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Padding = new System.Windows.Forms.Padding(4);
-            this.lblDelete.ScaleFactor = 1.1D;
-            this.lblDelete.Size = new System.Drawing.Size(148, 24);
-            this.lblDelete.TabIndex = 16;
-            this.lblDelete.Text = "Existing DAT Rules";
+            this.flexiLabel1.AutoSize = true;
+            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel1.Location = new System.Drawing.Point(0, 0);
+            this.flexiLabel1.Name = "flexiLabel1";
+            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
+            this.flexiLabel1.ScaleFactor = 1.2D;
+            this.flexiLabel1.Size = new System.Drawing.Size(87, 25);
+            this.flexiLabel1.TabIndex = 57;
+            this.flexiLabel1.Text = "DAT Rules";
             // 
             // FrmDirectorySettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 1006);
+            this.ClientSize = new System.Drawing.Size(693, 461);
+            this.Controls.Add(this.ExistingRulesPN);
+            this.Controls.Add(this.RulesPN);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.flexiLabel1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnSet);
-            this.Controls.Add(this.txtDATLocation);
-            this.Controls.Add(this.lblDATLocation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -713,7 +788,16 @@
             this.Activated += new System.EventHandler(this.FrmSetDirActivated);
             this.Load += new System.EventHandler(this.FrmDirectorySettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridGames)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.ExistingRulesPN.ResumeLayout(false);
+            this.ExistingRulesPN.PerformLayout();
+            this.RulesActionsFLP.ResumeLayout(false);
+            this.RulesPN.ResumeLayout(false);
+            this.RulesPN.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.MainTC.ResumeLayout(false);
             this.tabDirMerge.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -723,10 +807,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCategories)).EndInit();
             this.tabExclude.ResumeLayout(false);
             this.tabExclude.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -742,7 +822,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnResetAll;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.TabControl tabControl1;
+        private UserControls.TabControl MainTC;
         private System.Windows.Forms.TabPage tabDirMerge;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cboHeaderType;
@@ -762,7 +842,6 @@
         private System.Windows.Forms.CheckBox chkMultiDatDirOverride;
         private System.Windows.Forms.TabPage tabExclude;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabPage tabAdvanced;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -782,7 +861,13 @@
         private System.Windows.Forms.CheckBox chkConvertWhenFixing;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel ExistingRulesPN;
         private UserControls.FlexiLabel lblDelete;
+        private System.Windows.Forms.FlowLayoutPanel RulesActionsFLP;
+        private System.Windows.Forms.Panel RulesPN;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
+        private UserControls.FlexiLabel flexiLabel1;
+        private UserControls.FlexiLabel flexiLabel2;
     }
 }
