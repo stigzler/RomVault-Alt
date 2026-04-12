@@ -278,15 +278,7 @@ namespace ROMVault
 
                 GameGridRowCountLB.Text = $"Items: {GameGrid.RowCount}";
 
-                //if (AutoSizeGameColChB.Checked)
-                //{
-                //    GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                //    GameGrid.Columns[(int)GameGridColumns.CDateTime].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                //}
-                //else
-                //{
-                //    GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                //}
+                UpdateDataGridViewsColSizing();
 
                 UpdateSelectedGame(onTimer);
             }

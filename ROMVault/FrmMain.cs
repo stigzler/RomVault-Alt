@@ -2351,21 +2351,20 @@ namespace ROMVault
         {
             if (AutoSizeGameColChB.Checked)
             {
-                //GameGrid.Columns[(int)GameGridColumns.CType].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 GameGrid.Columns[(int)GameGridColumns.CDateTime].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                //GameGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 RomGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
             else
             {
-                // GameGrid.Columns[(int)GameGridColumns.CType].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                 GameGrid.Columns[(int)GameGridColumns.CGame].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                 GameGrid.Columns[(int)GameGridColumns.CDateTime].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-
-                //GameGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 RomGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             }
+        }
+
+        private void RefreshGameGridsAutosizing()
+        {
         }
     }
 }

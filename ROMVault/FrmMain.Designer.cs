@@ -160,12 +160,12 @@ namespace ROMVault
             this.fullReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.romVaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directorySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryMappingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.darkModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.romVaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torrentZipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitHelpWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1770,21 +1770,12 @@ namespace ROMVault
             this.directorySettingsToolStripMenuItem,
             this.directoryMappingsToolStripMenuItem,
             this.toolStripSeparator3,
-            this.romVaultSettingsToolStripMenuItem,
+            this.darkModeToolStripMenuItem,
             this.toolStripSeparator6,
-            this.darkModeToolStripMenuItem});
+            this.romVaultSettingsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // romVaultSettingsToolStripMenuItem
-            // 
-            this.romVaultSettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.gear;
-            this.romVaultSettingsToolStripMenuItem.Name = "romVaultSettingsToolStripMenuItem";
-            this.romVaultSettingsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.romVaultSettingsToolStripMenuItem.Text = "RomVault Settings";
-            this.romVaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.RomVaultSettingsToolStripMenuItem_Click);
             // 
             // directorySettingsToolStripMenuItem
             // 
@@ -1821,6 +1812,15 @@ namespace ROMVault
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(242, 6);
+            // 
+            // romVaultSettingsToolStripMenuItem
+            // 
+            this.romVaultSettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.gear;
+            this.romVaultSettingsToolStripMenuItem.Name = "romVaultSettingsToolStripMenuItem";
+            this.romVaultSettingsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.romVaultSettingsToolStripMenuItem.Text = "RomVault Settings";
+            this.romVaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.RomVaultSettingsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 

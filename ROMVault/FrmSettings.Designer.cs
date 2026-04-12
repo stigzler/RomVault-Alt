@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Dat Vault");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("DAT Settings", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("DATs", new System.Windows.Forms.TreeNode[] {
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("File Operations");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("UI and UX");
@@ -46,20 +46,9 @@
             this.MainSS = new System.Windows.Forms.StatusStrip();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.MainTT = new System.Windows.Forms.ToolTip(this.components);
-            this.MoveDontCopyDatsChB = new System.Windows.Forms.CheckBox();
             this.LeftPN = new System.Windows.Forms.Panel();
-            this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.MainTC = new ROMVault.UserControls.TabControl();
             this.DatSettingsTP = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.RestoreDatFormatsBT = new System.Windows.Forms.Button();
-            this.DeleteDatFormatBT = new System.Windows.Forms.Button();
-            this.AddDatFormatBT = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.DatFormatsLV = new System.Windows.Forms.ListView();
-            this.chkSendFoundMIA = new System.Windows.Forms.CheckBox();
-            this.chkSendFoundMIAAnon = new System.Windows.Forms.CheckBox();
-            this.chkDeleteOldCueFiles = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblDATRoot = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,7 +61,19 @@
             this.chkCacheSaveTimer = new System.Windows.Forms.CheckBox();
             this.upTime = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
+            this.DatVaultTP = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.MoveDontCopyDatsChB = new System.Windows.Forms.CheckBox();
+            this.RestoreDatFormatsBT = new System.Windows.Forms.Button();
+            this.DeleteDatFormatBT = new System.Windows.Forms.Button();
+            this.AddDatFormatBT = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.DatFormatsLV = new System.Windows.Forms.ListView();
+            this.chkSendFoundMIA = new System.Windows.Forms.CheckBox();
+            this.chkSendFoundMIAAnon = new System.Windows.Forms.CheckBox();
+            this.chkDeleteOldCueFiles = new System.Windows.Forms.CheckBox();
+            this.flexiLabel4 = new ROMVault.UserControls.FlexiLabel();
             this.FileOperationsTP = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -88,7 +89,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbo7zStruct = new System.Windows.Forms.ComboBox();
             this.cboCores = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.flexiLabel5 = new ROMVault.UserControls.FlexiLabel();
             this.UiTP = new System.Windows.Forms.TabPage();
             this.OperationalGB = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -111,16 +112,17 @@
             this.InfoTextExampleLB = new ROMVault.UserControls.FlexiLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.InfoTextColorPB = new System.Windows.Forms.PictureBox();
-            this.DatVaultTP = new System.Windows.Forms.TabPage();
+            this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.TvPaddingPN.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.LeftPN.SuspendLayout();
             this.MainTC.SuspendLayout();
             this.DatSettingsTP.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upTime)).BeginInit();
+            this.DatVaultTP.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.FileOperationsTP.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -173,7 +175,7 @@
             this.TvPaddingPN.MaximumSize = new System.Drawing.Size(160, 0);
             this.TvPaddingPN.Name = "TvPaddingPN";
             this.TvPaddingPN.Padding = new System.Windows.Forms.Padding(6);
-            this.TvPaddingPN.Size = new System.Drawing.Size(135, 639);
+            this.TvPaddingPN.Size = new System.Drawing.Size(150, 639);
             this.TvPaddingPN.TabIndex = 47;
             // 
             // MainTV
@@ -193,7 +195,7 @@
             treeNode2.ImageKey = "database.png";
             treeNode2.Name = "DatSettingsTVI";
             treeNode2.SelectedImageIndex = 0;
-            treeNode2.Text = "DAT Settings";
+            treeNode2.Text = "DATs";
             treeNode3.ImageKey = "folder-smiley.png";
             treeNode3.Name = "FileOperationsTVI";
             treeNode3.SelectedImageIndex = 1;
@@ -209,7 +211,7 @@
             this.MainTV.SelectedImageIndex = 0;
             this.MainTV.ShowPlusMinus = false;
             this.MainTV.ShowRootLines = false;
-            this.MainTV.Size = new System.Drawing.Size(123, 627);
+            this.MainTV.Size = new System.Drawing.Size(138, 627);
             this.MainTV.TabIndex = 46;
             this.MainTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTV_AfterSelect);
             // 
@@ -247,18 +249,6 @@
             this.MainSS.TabIndex = 52;
             this.MainSS.Text = "statusStrip1";
             // 
-            // MoveDontCopyDatsChB
-            // 
-            this.MoveDontCopyDatsChB.AutoSize = true;
-            this.MoveDontCopyDatsChB.Location = new System.Drawing.Point(9, 228);
-            this.MoveDontCopyDatsChB.Name = "MoveDontCopyDatsChB";
-            this.MoveDontCopyDatsChB.Size = new System.Drawing.Size(182, 17);
-            this.MoveDontCopyDatsChB.TabIndex = 36;
-            this.MoveDontCopyDatsChB.Text = "Move, don\'t copy Imported DATs";
-            this.MainTT.SetToolTip(this.MoveDontCopyDatsChB, "By default, RomVault copies any DAT fies to the Dat vault directory, preserving o" +
-        "riginal copies. Set this if you just want to move them instead.");
-            this.MoveDontCopyDatsChB.UseVisualStyleBackColor = true;
-            // 
             // LeftPN
             // 
             this.LeftPN.AutoSize = true;
@@ -266,23 +256,10 @@
             this.LeftPN.Controls.Add(this.flexiLabel2);
             this.LeftPN.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftPN.Location = new System.Drawing.Point(0, 0);
-            this.LeftPN.MinimumSize = new System.Drawing.Size(135, 0);
+            this.LeftPN.MinimumSize = new System.Drawing.Size(150, 0);
             this.LeftPN.Name = "LeftPN";
-            this.LeftPN.Size = new System.Drawing.Size(135, 675);
+            this.LeftPN.Size = new System.Drawing.Size(150, 675);
             this.LeftPN.TabIndex = 53;
-            // 
-            // flexiLabel2
-            // 
-            this.flexiLabel2.AutoSize = true;
-            this.flexiLabel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flexiLabel2.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel2.Location = new System.Drawing.Point(0, 0);
-            this.flexiLabel2.Name = "flexiLabel2";
-            this.flexiLabel2.Padding = new System.Windows.Forms.Padding(8);
-            this.flexiLabel2.ScaleFactor = 1.5D;
-            this.flexiLabel2.Size = new System.Drawing.Size(128, 36);
-            this.flexiLabel2.TabIndex = 49;
-            this.flexiLabel2.Text = "Preferences";
             // 
             // MainTC
             // 
@@ -296,11 +273,11 @@
             this.MainTC.HideBorders = true;
             this.MainTC.HideTabs = false;
             this.MainTC.ItemSize = new System.Drawing.Size(58, 18);
-            this.MainTC.Location = new System.Drawing.Point(135, 0);
+            this.MainTC.Location = new System.Drawing.Point(150, 0);
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
             this.MainTC.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(120)))), ((int)(((byte)(187)))));
-            this.MainTC.Size = new System.Drawing.Size(449, 675);
+            this.MainTC.Size = new System.Drawing.Size(434, 675);
             this.MainTC.TabIndex = 0;
             this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDarkDark;
             this.MainTC.UnselectedTabBackColor = System.Drawing.SystemColors.ControlDark;
@@ -308,16 +285,196 @@
             // DatSettingsTP
             // 
             this.DatSettingsTP.AutoScroll = true;
-            this.DatSettingsTP.Controls.Add(this.groupBox2);
             this.DatSettingsTP.Controls.Add(this.groupBox1);
-            this.DatSettingsTP.Controls.Add(this.label14);
+            this.DatSettingsTP.Controls.Add(this.flexiLabel1);
             this.DatSettingsTP.Location = new System.Drawing.Point(0, 20);
             this.DatSettingsTP.Name = "DatSettingsTP";
-            this.DatSettingsTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
-            this.DatSettingsTP.Size = new System.Drawing.Size(449, 655);
+            this.DatSettingsTP.Padding = new System.Windows.Forms.Padding(8);
+            this.DatSettingsTP.Size = new System.Drawing.Size(434, 655);
             this.DatSettingsTP.TabIndex = 0;
             this.DatSettingsTP.Text = "Dat Settings";
             this.DatSettingsTP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblDATRoot);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnDAT);
+            this.groupBox1.Controls.Add(this.cboFixLevel);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.chkDoubleCheckDelete);
+            this.groupBox1.Controls.Add(this.chkCacheSaveTimer);
+            this.groupBox1.Controls.Add(this.upTime);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Location = new System.Drawing.Point(8, 38);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(418, 350);
+            this.groupBox1.TabIndex = 44;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Core Settings";
+            // 
+            // lblDATRoot
+            // 
+            this.lblDATRoot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDATRoot.BackColor = System.Drawing.Color.White;
+            this.lblDATRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDATRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDATRoot.Location = new System.Drawing.Point(85, 30);
+            this.lblDATRoot.Name = "lblDATRoot";
+            this.lblDATRoot.Size = new System.Drawing.Size(277, 22);
+            this.lblDATRoot.TabIndex = 3;
+            this.lblDATRoot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "DATRoot:";
+            // 
+            // btnDAT
+            // 
+            this.btnDAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDAT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btnDAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDAT.Location = new System.Drawing.Point(368, 30);
+            this.btnDAT.Name = "btnDAT";
+            this.btnDAT.Size = new System.Drawing.Size(44, 24);
+            this.btnDAT.TabIndex = 6;
+            this.btnDAT.Text = "Set";
+            this.btnDAT.UseVisualStyleBackColor = true;
+            this.btnDAT.Click += new System.EventHandler(this.BtnDatClick);
+            // 
+            // cboFixLevel
+            // 
+            this.cboFixLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboFixLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFixLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboFixLevel.FormattingEnabled = true;
+            this.cboFixLevel.Location = new System.Drawing.Point(86, 58);
+            this.cboFixLevel.Name = "cboFixLevel";
+            this.cboFixLevel.Size = new System.Drawing.Size(326, 21);
+            this.cboFixLevel.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Fixing Level:";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(11, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(348, 67);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Filenames not to remove:\r\n- One rule per line\r\n- Basic rules support * and ? wild" +
+    "cards\r\n- Regex rules must start with regex:\'\r\n- Scanning Ignore rules must start" +
+    " with \'ignore:\'";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(9, 166);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(403, 121);
+            this.textBox1.TabIndex = 12;
+            // 
+            // chkDoubleCheckDelete
+            // 
+            this.chkDoubleCheckDelete.AutoSize = true;
+            this.chkDoubleCheckDelete.Location = new System.Drawing.Point(14, 293);
+            this.chkDoubleCheckDelete.Name = "chkDoubleCheckDelete";
+            this.chkDoubleCheckDelete.Size = new System.Drawing.Size(262, 17);
+            this.chkDoubleCheckDelete.TabIndex = 22;
+            this.chkDoubleCheckDelete.Text = "Double check file exists elsewhere before deleting";
+            this.chkDoubleCheckDelete.UseVisualStyleBackColor = true;
+            // 
+            // chkCacheSaveTimer
+            // 
+            this.chkCacheSaveTimer.AutoSize = true;
+            this.chkCacheSaveTimer.Location = new System.Drawing.Point(14, 316);
+            this.chkCacheSaveTimer.Name = "chkCacheSaveTimer";
+            this.chkCacheSaveTimer.Size = new System.Drawing.Size(154, 17);
+            this.chkCacheSaveTimer.TabIndex = 19;
+            this.chkCacheSaveTimer.Text = "Save Cache on timer every";
+            this.chkCacheSaveTimer.UseVisualStyleBackColor = true;
+            // 
+            // upTime
+            // 
+            this.upTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.upTime.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.upTime.Location = new System.Drawing.Point(174, 316);
+            this.upTime.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.upTime.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.upTime.Name = "upTime";
+            this.upTime.Size = new System.Drawing.Size(47, 20);
+            this.upTime.TabIndex = 20;
+            this.upTime.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(227, 318);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Minutes";
+            // 
+            // flexiLabel1
+            // 
+            this.flexiLabel1.AutoSize = true;
+            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel1.Location = new System.Drawing.Point(8, 8);
+            this.flexiLabel1.Name = "flexiLabel1";
+            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(5);
+            this.flexiLabel1.ScaleFactor = 1.5D;
+            this.flexiLabel1.Size = new System.Drawing.Size(62, 30);
+            this.flexiLabel1.TabIndex = 55;
+            this.flexiLabel1.Text = "DATs";
+            // 
+            // DatVaultTP
+            // 
+            this.DatVaultTP.Controls.Add(this.groupBox2);
+            this.DatVaultTP.Controls.Add(this.flexiLabel4);
+            this.DatVaultTP.Location = new System.Drawing.Point(0, 20);
+            this.DatVaultTP.Name = "DatVaultTP";
+            this.DatVaultTP.Padding = new System.Windows.Forms.Padding(8);
+            this.DatVaultTP.Size = new System.Drawing.Size(449, 655);
+            this.DatVaultTP.TabIndex = 5;
+            this.DatVaultTP.Text = "DatVault";
+            this.DatVaultTP.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -332,12 +489,24 @@
             this.groupBox2.Controls.Add(this.chkDeleteOldCueFiles);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.Location = new System.Drawing.Point(8, 382);
+            this.groupBox2.Location = new System.Drawing.Point(8, 38);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(433, 252);
-            this.groupBox2.TabIndex = 46;
+            this.groupBox2.TabIndex = 47;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAT Vault";
+            // 
+            // MoveDontCopyDatsChB
+            // 
+            this.MoveDontCopyDatsChB.AutoSize = true;
+            this.MoveDontCopyDatsChB.Location = new System.Drawing.Point(9, 228);
+            this.MoveDontCopyDatsChB.Name = "MoveDontCopyDatsChB";
+            this.MoveDontCopyDatsChB.Size = new System.Drawing.Size(182, 17);
+            this.MoveDontCopyDatsChB.TabIndex = 36;
+            this.MoveDontCopyDatsChB.Text = "Move, don\'t copy Imported DATs";
+            this.MainTT.SetToolTip(this.MoveDontCopyDatsChB, "By default, RomVault copies any DAT fies to the Dat vault directory, preserving o" +
+        "riginal copies. Set this if you just want to move them instead.");
+            this.MoveDontCopyDatsChB.UseVisualStyleBackColor = true;
             // 
             // RestoreDatFormatsBT
             // 
@@ -412,7 +581,6 @@
             this.DatFormatsLV.TabIndex = 31;
             this.DatFormatsLV.UseCompatibleStateImageBehavior = false;
             this.DatFormatsLV.View = System.Windows.Forms.View.List;
-            this.DatFormatsLV.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.DatFormatsLV_AfterLabelEdit);
             // 
             // chkSendFoundMIA
             // 
@@ -445,173 +613,18 @@
             this.chkDeleteOldCueFiles.Text = "Delete previous Cue file zips in ToSort ";
             this.chkDeleteOldCueFiles.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // flexiLabel4
             // 
-            this.groupBox1.Controls.Add(this.lblDATRoot);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnDAT);
-            this.groupBox1.Controls.Add(this.cboFixLevel);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.chkDoubleCheckDelete);
-            this.groupBox1.Controls.Add(this.chkCacheSaveTimer);
-            this.groupBox1.Controls.Add(this.upTime);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(8, 32);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(433, 350);
-            this.groupBox1.TabIndex = 44;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Core Settings";
-            // 
-            // lblDATRoot
-            // 
-            this.lblDATRoot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDATRoot.BackColor = System.Drawing.Color.White;
-            this.lblDATRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDATRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblDATRoot.Location = new System.Drawing.Point(85, 30);
-            this.lblDATRoot.Name = "lblDATRoot";
-            this.lblDATRoot.Size = new System.Drawing.Size(292, 22);
-            this.lblDATRoot.TabIndex = 3;
-            this.lblDATRoot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DATRoot:";
-            // 
-            // btnDAT
-            // 
-            this.btnDAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDAT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.btnDAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDAT.Location = new System.Drawing.Point(383, 30);
-            this.btnDAT.Name = "btnDAT";
-            this.btnDAT.Size = new System.Drawing.Size(44, 24);
-            this.btnDAT.TabIndex = 6;
-            this.btnDAT.Text = "Set";
-            this.btnDAT.UseVisualStyleBackColor = true;
-            this.btnDAT.Click += new System.EventHandler(this.BtnDatClick);
-            // 
-            // cboFixLevel
-            // 
-            this.cboFixLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboFixLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFixLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboFixLevel.FormattingEnabled = true;
-            this.cboFixLevel.Location = new System.Drawing.Point(86, 58);
-            this.cboFixLevel.Name = "cboFixLevel";
-            this.cboFixLevel.Size = new System.Drawing.Size(341, 21);
-            this.cboFixLevel.TabIndex = 14;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Fixing Level:";
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(11, 96);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(348, 67);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Filenames not to remove:\r\n- One rule per line\r\n- Basic rules support * and ? wild" +
-    "cards\r\n- Regex rules must start with regex:\'\r\n- Scanning Ignore rules must start" +
-    " with \'ignore:\'";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(9, 166);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(418, 121);
-            this.textBox1.TabIndex = 12;
-            // 
-            // chkDoubleCheckDelete
-            // 
-            this.chkDoubleCheckDelete.AutoSize = true;
-            this.chkDoubleCheckDelete.Location = new System.Drawing.Point(14, 293);
-            this.chkDoubleCheckDelete.Name = "chkDoubleCheckDelete";
-            this.chkDoubleCheckDelete.Size = new System.Drawing.Size(262, 17);
-            this.chkDoubleCheckDelete.TabIndex = 22;
-            this.chkDoubleCheckDelete.Text = "Double check file exists elsewhere before deleting";
-            this.chkDoubleCheckDelete.UseVisualStyleBackColor = true;
-            // 
-            // chkCacheSaveTimer
-            // 
-            this.chkCacheSaveTimer.AutoSize = true;
-            this.chkCacheSaveTimer.Location = new System.Drawing.Point(14, 316);
-            this.chkCacheSaveTimer.Name = "chkCacheSaveTimer";
-            this.chkCacheSaveTimer.Size = new System.Drawing.Size(154, 17);
-            this.chkCacheSaveTimer.TabIndex = 19;
-            this.chkCacheSaveTimer.Text = "Save Cache on timer every";
-            this.chkCacheSaveTimer.UseVisualStyleBackColor = true;
-            // 
-            // upTime
-            // 
-            this.upTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upTime.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.upTime.Location = new System.Drawing.Point(174, 316);
-            this.upTime.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.upTime.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.upTime.Name = "upTime";
-            this.upTime.Size = new System.Drawing.Size(47, 20);
-            this.upTime.TabIndex = 20;
-            this.upTime.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(227, 318);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Minutes";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label14.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(8, 3);
-            this.label14.Name = "label14";
-            this.label14.Padding = new System.Windows.Forms.Padding(5);
-            this.label14.Size = new System.Drawing.Size(123, 29);
-            this.label14.TabIndex = 49;
-            this.label14.Text = "DAT Settings";
+            this.flexiLabel4.AutoSize = true;
+            this.flexiLabel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel4.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel4.Location = new System.Drawing.Point(8, 8);
+            this.flexiLabel4.Name = "flexiLabel4";
+            this.flexiLabel4.Padding = new System.Windows.Forms.Padding(5);
+            this.flexiLabel4.ScaleFactor = 1.5D;
+            this.flexiLabel4.Size = new System.Drawing.Size(102, 30);
+            this.flexiLabel4.TabIndex = 55;
+            this.flexiLabel4.Text = "DAT Vault";
             // 
             // FileOperationsTP
             // 
@@ -619,10 +632,10 @@
             this.FileOperationsTP.Controls.Add(this.groupBox5);
             this.FileOperationsTP.Controls.Add(this.groupBox3);
             this.FileOperationsTP.Controls.Add(this.groupBox4);
-            this.FileOperationsTP.Controls.Add(this.label15);
+            this.FileOperationsTP.Controls.Add(this.flexiLabel5);
             this.FileOperationsTP.Location = new System.Drawing.Point(0, 20);
             this.FileOperationsTP.Name = "FileOperationsTP";
-            this.FileOperationsTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
+            this.FileOperationsTP.Padding = new System.Windows.Forms.Padding(8);
             this.FileOperationsTP.Size = new System.Drawing.Size(449, 655);
             this.FileOperationsTP.TabIndex = 1;
             this.FileOperationsTP.Text = "File Operations";
@@ -636,7 +649,7 @@
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.MoveFilesNotCopyChB);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox5.Location = new System.Drawing.Point(8, 217);
+            this.groupBox5.Location = new System.Drawing.Point(8, 223);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(433, 205);
             this.groupBox5.TabIndex = 50;
@@ -692,7 +705,7 @@
             this.groupBox3.Controls.Add(this.chkDoNotReportFeedback);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox3.Location = new System.Drawing.Point(8, 122);
+            this.groupBox3.Location = new System.Drawing.Point(8, 128);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(433, 95);
             this.groupBox3.TabIndex = 47;
@@ -737,7 +750,7 @@
             this.groupBox4.Controls.Add(this.cboCores);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox4.Location = new System.Drawing.Point(8, 32);
+            this.groupBox4.Location = new System.Drawing.Point(8, 38);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(433, 90);
             this.groupBox4.TabIndex = 48;
@@ -782,17 +795,18 @@
             this.cboCores.Size = new System.Drawing.Size(121, 21);
             this.cboCores.TabIndex = 41;
             // 
-            // label15
+            // flexiLabel5
             // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label15.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(8, 3);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(5);
-            this.label15.Size = new System.Drawing.Size(140, 29);
-            this.label15.TabIndex = 51;
-            this.label15.Text = "File Operations";
+            this.flexiLabel5.AutoSize = true;
+            this.flexiLabel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel5.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel5.Location = new System.Drawing.Point(8, 8);
+            this.flexiLabel5.Name = "flexiLabel5";
+            this.flexiLabel5.Padding = new System.Windows.Forms.Padding(5);
+            this.flexiLabel5.ScaleFactor = 1.5D;
+            this.flexiLabel5.Size = new System.Drawing.Size(148, 30);
+            this.flexiLabel5.TabIndex = 55;
+            this.flexiLabel5.Text = "File Operations";
             // 
             // UiTP
             // 
@@ -802,7 +816,7 @@
             this.UiTP.Controls.Add(this.flexiLabel3);
             this.UiTP.Location = new System.Drawing.Point(0, 20);
             this.UiTP.Name = "UiTP";
-            this.UiTP.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
+            this.UiTP.Padding = new System.Windows.Forms.Padding(8);
             this.UiTP.Size = new System.Drawing.Size(449, 655);
             this.UiTP.TabIndex = 3;
             this.UiTP.Text = "Ui + UX";
@@ -813,7 +827,7 @@
             this.OperationalGB.Controls.Add(this.label9);
             this.OperationalGB.Controls.Add(this.EnableGamesGridRClickChB);
             this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OperationalGB.Location = new System.Drawing.Point(8, 162);
+            this.OperationalGB.Location = new System.Drawing.Point(8, 167);
             this.OperationalGB.Name = "OperationalGB";
             this.OperationalGB.Size = new System.Drawing.Size(433, 101);
             this.OperationalGB.TabIndex = 52;
@@ -856,7 +870,7 @@
             this.AppearanceThemesGB.Controls.Add(this.chkDarkMode);
             this.AppearanceThemesGB.Dock = System.Windows.Forms.DockStyle.Top;
             this.AppearanceThemesGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AppearanceThemesGB.Location = new System.Drawing.Point(8, 33);
+            this.AppearanceThemesGB.Location = new System.Drawing.Point(8, 38);
             this.AppearanceThemesGB.Name = "AppearanceThemesGB";
             this.AppearanceThemesGB.Size = new System.Drawing.Size(433, 129);
             this.AppearanceThemesGB.TabIndex = 49;
@@ -1049,7 +1063,7 @@
             this.flexiLabel3.AutoSize = true;
             this.flexiLabel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.flexiLabel3.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel3.Location = new System.Drawing.Point(8, 3);
+            this.flexiLabel3.Location = new System.Drawing.Point(8, 8);
             this.flexiLabel3.Name = "flexiLabel3";
             this.flexiLabel3.Padding = new System.Windows.Forms.Padding(5);
             this.flexiLabel3.ScaleFactor = 1.5D;
@@ -1100,15 +1114,18 @@
             this.InfoTextColorPB.TabIndex = 57;
             this.InfoTextColorPB.TabStop = false;
             // 
-            // DatVaultTP
+            // flexiLabel2
             // 
-            this.DatVaultTP.Location = new System.Drawing.Point(0, 20);
-            this.DatVaultTP.Name = "DatVaultTP";
-            this.DatVaultTP.Padding = new System.Windows.Forms.Padding(3);
-            this.DatVaultTP.Size = new System.Drawing.Size(449, 655);
-            this.DatVaultTP.TabIndex = 5;
-            this.DatVaultTP.Text = "DatVault";
-            this.DatVaultTP.UseVisualStyleBackColor = true;
+            this.flexiLabel2.AutoSize = true;
+            this.flexiLabel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel2.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel2.Location = new System.Drawing.Point(0, 0);
+            this.flexiLabel2.Name = "flexiLabel2";
+            this.flexiLabel2.Padding = new System.Windows.Forms.Padding(8);
+            this.flexiLabel2.ScaleFactor = 1.5D;
+            this.flexiLabel2.Size = new System.Drawing.Size(96, 36);
+            this.flexiLabel2.TabIndex = 49;
+            this.flexiLabel2.Text = "Settings";
             // 
             // FrmSettings
             // 
@@ -1138,11 +1155,13 @@
             this.MainTC.ResumeLayout(false);
             this.DatSettingsTP.ResumeLayout(false);
             this.DatSettingsTP.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upTime)).EndInit();
+            this.DatVaultTP.ResumeLayout(false);
+            this.DatVaultTP.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.FileOperationsTP.ResumeLayout(false);
             this.FileOperationsTP.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -1187,16 +1206,12 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox chkSendFoundMIA;
-        private System.Windows.Forms.CheckBox chkSendFoundMIAAnon;
-        private System.Windows.Forms.CheckBox chkDeleteOldCueFiles;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbo7zStruct;
         private System.Windows.Forms.ComboBox cboCores;
         private System.Windows.Forms.CheckBox chkDoNotReportFeedback;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ColorDialog ColorBroswer;
@@ -1219,19 +1234,11 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox MoveFilesNotCopyChB;
-        private System.Windows.Forms.Button AddDatFormatBT;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ListView DatFormatsLV;
-        private System.Windows.Forms.Button DeleteDatFormatBT;
         private System.Windows.Forms.ImageList DatFormatLvLineHeightForcer;
-        private System.Windows.Forms.Button RestoreDatFormatsBT;
-        private System.Windows.Forms.CheckBox MoveDontCopyDatsChB;
         private System.Windows.Forms.ToolTip MainTT;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown StatusIconSizeNUM;
         private System.Windows.Forms.CheckBox StatusIconSizeAutoChB;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel LeftPN;
         private System.Windows.Forms.Label label17;
         private UserControls.FlexiLabel RomsUnknownLB;
@@ -1248,5 +1255,18 @@
         private System.Windows.Forms.CheckBox DeleteOrigRomsRelocateChB;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TabPage DatVaultTP;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox MoveDontCopyDatsChB;
+        private System.Windows.Forms.Button RestoreDatFormatsBT;
+        private System.Windows.Forms.Button DeleteDatFormatBT;
+        private System.Windows.Forms.Button AddDatFormatBT;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ListView DatFormatsLV;
+        private System.Windows.Forms.CheckBox chkSendFoundMIA;
+        private System.Windows.Forms.CheckBox chkSendFoundMIAAnon;
+        private System.Windows.Forms.CheckBox chkDeleteOldCueFiles;
+        private UserControls.FlexiLabel flexiLabel1;
+        private UserControls.FlexiLabel flexiLabel4;
+        private UserControls.FlexiLabel flexiLabel5;
     }
 }

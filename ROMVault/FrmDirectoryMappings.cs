@@ -320,7 +320,7 @@ namespace ROMVault
 
         private void DGDirectoryMappingRules_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-          //  SetRule();
+            //  SetRule();
         }
 
         private void btnEditSelected_Click(object sender, EventArgs e)

@@ -296,15 +296,7 @@ namespace ROMVault
             CenterFormOnScreen();
         }
 
-        // Call this after InitializeComponent()
-        private void HideTabControlTabs(TabControl tab)
-        {
-            tab.Multiline = true;                // allow small fixed tabs
-            tab.SizeMode = TabSizeMode.Fixed;
-            tab.ItemSize = new Size(0, 1);       // very small tab header
-            tab.Padding = new Point(0, 0);
-            tab.TabStop = false;
-        }
+  
 
         private void FrmSettings_Shown(object sender, EventArgs e)
         {
@@ -409,11 +401,7 @@ namespace ROMVault
         {
         }
 
-        private void PreviewBT_Click(object sender, EventArgs e)
-        {
-            SetSettings();
-            mainForm.UpdateThemeAndControls();
-        }
+
 
         private void StatusIconSizeNUM_ValueChanged(object sender, EventArgs e)
         {
