@@ -39,7 +39,6 @@
             this.btnSet = new System.Windows.Forms.Button();
             this.txtDATLocation = new System.Windows.Forms.Label();
             this.lblDATLocation = new System.Windows.Forms.Label();
-            this.lblDelete = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnResetAll = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -76,6 +75,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDelete = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridGames)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabDirMerge.SuspendLayout();
@@ -85,6 +88,9 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategories)).BeginInit();
             this.tabExclude.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataGridGames
@@ -92,9 +98,6 @@
             this.DataGridGames.AllowUserToAddRows = false;
             this.DataGridGames.AllowUserToDeleteRows = false;
             this.DataGridGames.AllowUserToResizeRows = false;
-            this.DataGridGames.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridGames.BackgroundColor = System.Drawing.Color.White;
             this.DataGridGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridGames.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -102,8 +105,9 @@
             this.CArchiveType,
             this.CMergeType,
             this.CSingleArchive});
+            this.DataGridGames.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridGames.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.DataGridGames.Location = new System.Drawing.Point(12, 327);
+            this.DataGridGames.Location = new System.Drawing.Point(0, 24);
             this.DataGridGames.Name = "DataGridGames";
             this.DataGridGames.ReadOnly = true;
             this.DataGridGames.RowHeadersVisible = false;
@@ -114,7 +118,7 @@
             this.DataGridGames.ShowCellToolTips = false;
             this.DataGridGames.ShowEditingIcon = false;
             this.DataGridGames.ShowRowErrors = false;
-            this.DataGridGames.Size = new System.Drawing.Size(670, 214);
+            this.DataGridGames.Size = new System.Drawing.Size(453, 270);
             this.DataGridGames.TabIndex = 10;
             this.DataGridGames.DoubleClick += new System.EventHandler(this.DataGridGamesDoubleClick);
             // 
@@ -161,7 +165,7 @@
             this.btnDeleteSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDeleteSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDeleteSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteSelected.Location = new System.Drawing.Point(12, 547);
+            this.btnDeleteSelected.Location = new System.Drawing.Point(3, 3);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(96, 25);
             this.btnDeleteSelected.TabIndex = 11;
@@ -218,22 +222,12 @@
             this.lblDATLocation.TabIndex = 10;
             this.lblDATLocation.Text = "Rule Path:";
             // 
-            // lblDelete
-            // 
-            this.lblDelete.AutoSize = true;
-            this.lblDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDelete.Location = new System.Drawing.Point(12, 306);
-            this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Size = new System.Drawing.Size(111, 13);
-            this.lblDelete.TabIndex = 15;
-            this.lblDelete.Text = "Existing Dat Rules";
-            // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(586, 547);
+            this.btnClose.Location = new System.Drawing.Point(947, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(96, 25);
             this.btnClose.TabIndex = 16;
@@ -246,7 +240,7 @@
             this.btnResetAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnResetAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnResetAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetAll.Location = new System.Drawing.Point(138, 547);
+            this.btnResetAll.Location = new System.Drawing.Point(105, 3);
             this.btnResetAll.Name = "btnResetAll";
             this.btnResetAll.Size = new System.Drawing.Size(96, 25);
             this.btnResetAll.TabIndex = 17;
@@ -651,21 +645,62 @@
             this.textBox1.Size = new System.Drawing.Size(361, 148);
             this.textBox1.TabIndex = 48;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnClose);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 972);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1046, 34);
+            this.flowLayoutPanel1.TabIndex = 51;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.Controls.Add(this.btnDeleteSelected);
+            this.flowLayoutPanel2.Controls.Add(this.btnResetAll);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 294);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(453, 31);
+            this.flowLayoutPanel2.TabIndex = 52;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.DataGridGames);
+            this.panel1.Controls.Add(this.lblDelete);
+            this.panel1.Controls.Add(this.flowLayoutPanel2);
+            this.panel1.Location = new System.Drawing.Point(135, 538);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(453, 325);
+            this.panel1.TabIndex = 53;
+            // 
+            // lblDelete
+            // 
+            this.lblDelete.AutoSize = true;
+            this.lblDelete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.075F, System.Drawing.FontStyle.Bold);
+            this.lblDelete.Location = new System.Drawing.Point(0, 0);
+            this.lblDelete.Name = "lblDelete";
+            this.lblDelete.Padding = new System.Windows.Forms.Padding(4);
+            this.lblDelete.ScaleFactor = 1.1D;
+            this.lblDelete.Size = new System.Drawing.Size(148, 24);
+            this.lblDelete.TabIndex = 16;
+            this.lblDelete.Text = "Existing DAT Rules";
+            // 
             // FrmDirectorySettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 580);
+            this.ClientSize = new System.Drawing.Size(1046, 1006);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.btnResetAll);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.lblDelete);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSet);
             this.Controls.Add(this.txtDATLocation);
             this.Controls.Add(this.lblDATLocation);
-            this.Controls.Add(this.btnDeleteSelected);
-            this.Controls.Add(this.DataGridGames);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -688,6 +723,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCategories)).EndInit();
             this.tabExclude.ResumeLayout(false);
             this.tabExclude.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -700,7 +739,6 @@
         private System.Windows.Forms.Button btnSet;
         private System.Windows.Forms.Label txtDATLocation;
         private System.Windows.Forms.Label lblDATLocation;
-        private System.Windows.Forms.Label lblDelete;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnResetAll;
         private System.Windows.Forms.Button btnDelete;
@@ -742,5 +780,9 @@
         private System.Windows.Forms.Label lblArchiveCompression;
         private System.Windows.Forms.ComboBox cboCompression;
         private System.Windows.Forms.CheckBox chkConvertWhenFixing;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Panel panel1;
+        private UserControls.FlexiLabel lblDelete;
     }
 }
