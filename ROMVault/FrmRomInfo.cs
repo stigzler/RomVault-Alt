@@ -37,6 +37,7 @@ namespace ROMVault
         private void FrmRomInfo_Load(object sender, EventArgs e)
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+            Helpers.Theming.SetFormTextSizeToDefault(this);
         }
     }
 }
