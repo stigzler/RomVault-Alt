@@ -364,7 +364,7 @@
             this.MainTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.MainTC.HideBorders = true;
             this.MainTC.HideTabs = false;
-            this.MainTC.ItemSize = new System.Drawing.Size(134, 19);
+            this.MainTC.ItemSize = new System.Drawing.Size(138, 23);
             this.MainTC.Location = new System.Drawing.Point(4, 4);
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
@@ -373,17 +373,17 @@
             this.MainTC.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.MainTC.TabIndex = 50;
             this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDark;
-            this.MainTC.TabPadding = 3;
+            this.MainTC.TabPadding = 5;
             this.MainTC.UnselectedTabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             // 
             // tabDirMerge
             // 
             this.tabDirMerge.Controls.Add(this.groupBox2);
             this.tabDirMerge.Controls.Add(this.groupBox1);
-            this.tabDirMerge.Location = new System.Drawing.Point(0, 21);
+            this.tabDirMerge.Location = new System.Drawing.Point(0, 25);
             this.tabDirMerge.Name = "tabDirMerge";
             this.tabDirMerge.Padding = new System.Windows.Forms.Padding(4);
-            this.tabDirMerge.Size = new System.Drawing.Size(629, 194);
+            this.tabDirMerge.Size = new System.Drawing.Size(629, 190);
             this.tabDirMerge.TabIndex = 0;
             this.tabDirMerge.Text = "Directory/Merge Rules";
             this.tabDirMerge.UseVisualStyleBackColor = true;
