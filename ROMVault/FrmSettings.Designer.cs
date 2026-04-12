@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("DAT Settings");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("File Operations");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("UI and UX");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Dat Vault");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("DAT Settings", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("File Operations");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("UI and UX");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -109,6 +111,7 @@
             this.InfoTextExampleLB = new ROMVault.UserControls.FlexiLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.InfoTextColorPB = new System.Windows.Forms.PictureBox();
+            this.DatVaultTP = new System.Windows.Forms.TabPage();
             this.TvPaddingPN.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -185,22 +188,24 @@
             this.MainTV.Location = new System.Drawing.Point(6, 6);
             this.MainTV.MinimumSize = new System.Drawing.Size(120, 0);
             this.MainTV.Name = "MainTV";
-            treeNode4.ImageKey = "database.png";
-            treeNode4.Name = "DatSettingsTVI";
-            treeNode4.SelectedImageIndex = 0;
-            treeNode4.Text = "DAT Settings";
-            treeNode5.ImageKey = "folder-smiley.png";
-            treeNode5.Name = "FileOperationsTVI";
-            treeNode5.SelectedImageIndex = 1;
-            treeNode5.Text = "File Operations";
-            treeNode6.ImageKey = "ui-combo-box-blue.png";
-            treeNode6.Name = "UiTVI";
-            treeNode6.SelectedImageIndex = 2;
-            treeNode6.Text = "UI and UX";
+            treeNode1.Name = "DatVaultTVI";
+            treeNode1.Text = "Dat Vault";
+            treeNode2.ImageKey = "database.png";
+            treeNode2.Name = "DatSettingsTVI";
+            treeNode2.SelectedImageIndex = 0;
+            treeNode2.Text = "DAT Settings";
+            treeNode3.ImageKey = "folder-smiley.png";
+            treeNode3.Name = "FileOperationsTVI";
+            treeNode3.SelectedImageIndex = 1;
+            treeNode3.Text = "File Operations";
+            treeNode4.ImageKey = "ui-combo-box-blue.png";
+            treeNode4.Name = "UiTVI";
+            treeNode4.SelectedImageIndex = 2;
+            treeNode4.Text = "UI and UX";
             this.MainTV.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.MainTV.SelectedImageIndex = 0;
             this.MainTV.ShowPlusMinus = false;
             this.MainTV.ShowRootLines = false;
@@ -282,6 +287,7 @@
             // MainTC
             // 
             this.MainTC.Controls.Add(this.DatSettingsTP);
+            this.MainTC.Controls.Add(this.DatVaultTP);
             this.MainTC.Controls.Add(this.FileOperationsTP);
             this.MainTC.Controls.Add(this.UiTP);
             this.MainTC.Controls.Add(this.tabPage1);
@@ -1094,6 +1100,16 @@
             this.InfoTextColorPB.TabIndex = 57;
             this.InfoTextColorPB.TabStop = false;
             // 
+            // DatVaultTP
+            // 
+            this.DatVaultTP.Location = new System.Drawing.Point(0, 20);
+            this.DatVaultTP.Name = "DatVaultTP";
+            this.DatVaultTP.Padding = new System.Windows.Forms.Padding(3);
+            this.DatVaultTP.Size = new System.Drawing.Size(449, 655);
+            this.DatVaultTP.TabIndex = 5;
+            this.DatVaultTP.Text = "DatVault";
+            this.DatVaultTP.UseVisualStyleBackColor = true;
+            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1231,5 +1247,6 @@
         private System.Windows.Forms.PictureBox InfoTextColorPB;
         private System.Windows.Forms.CheckBox DeleteOrigRomsRelocateChB;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TabPage DatVaultTP;
     }
 }

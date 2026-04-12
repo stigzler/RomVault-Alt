@@ -21,13 +21,14 @@ namespace ROMVault.ViewModels
         public string DatPath { get; set; } = string.Empty;
 
         //[SortableCategory("DAT File", 10)]
+        public string Category { get; set; } = string.Empty;
+
+        //[SortableCategory("DAT File", 10)]
         public string Description { get; set; } = string.Empty;
 
         //[SortableCategory("DAT File", 10)]
         public string Version { get; set; } = string.Empty;
 
-        //[SortableCategory("DAT File", 10)]
-        public string Category { get; set; } = string.Empty;
 
         //[SortableCategory("DAT File", 10)]
         public string Author { get; set; } = string.Empty;

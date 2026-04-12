@@ -67,6 +67,7 @@ namespace ROMVault
         private readonly ToolStripMenuItem _mnuOpen;
         private readonly ToolStripMenuItem _mnuRelocateRoms;
         private readonly ToolStripMenuItem _mnuDeleteDat;
+        private readonly ToolStripMenuItem _mnuEditDat;
 
         private readonly ToolStripMenuItem _mnuToSortImportRomFiles;
         private readonly ToolStripMenuItem _mnuToSortImportRomFolders;
@@ -212,7 +213,7 @@ namespace ROMVault
 
             _mnuRelocateRoms = new ToolStripMenuItem
             {
-                Text = @"Relocate ROM Folder",
+                Text = @"Relocate ROMs",
                 Image = Properties.Resources.disc__arrow,
                 Tag = null
             };
@@ -271,6 +272,13 @@ namespace ROMVault
                 Tag = null
             };
 
+            _mnuEditDat = new ToolStripMenuItem
+            {
+                Text = @"Edit selected DAT",
+                Image = Properties.Resources.database__pencil,
+                Tag = null
+            };
+
             _mnuContext.Items.Add(mnuScan2);
             _mnuContext.Items.Add(mnuScan1);
             _mnuContext.Items.Add(mnuScan3);
@@ -289,6 +297,7 @@ namespace ROMVault
             _mnuContext.Items.Add(mnuImportToThisDir);
             _mnuContext.Items.Add(mnuImportToPickedDir);
             _mnuContext.Items.Add(_mnuDeleteDat);
+            _mnuContext.Items.Add(_mnuEditDat);
 
             mnuScan1.Click += MnuScan;
             mnuScan2.Click += MnuScan;
@@ -304,6 +313,7 @@ namespace ROMVault
             mnuImportToThisDir.Click += MnuImportToThisDir;
             mnuImportToPickedDir.Click += MnuImportToPickedDir;
             _mnuDeleteDat.Click += MnuDeleteDat;
+            _mnuEditDat.Click += mnuEditDat;
 
             //_mnuContextToSort.ShowCheckMargin = false;
             //_mnuContextToSort.ShowImageMargin = false;
@@ -466,6 +476,32 @@ namespace ROMVault
             UpdateThemeAndControls();
         }
 
+        private void mnuEditDat(object sender, EventArgs e)
+        {
+            RvDat rvDat = GetDatFromSelectedRvFile();
+            if (rvDat != null)
+            {
+                string datFilepath = rvDat.GetData(RvDat.DatData.DatRootFullName).ToString();
+                string resolvedDatRoot = RvSystems.GetFullyQualifiedPath(Settings.rvSettings.DatRoot);
+                string fullDatPath = RvSystems.ResolveTokenisedDatPath(datFilepath, resolvedDatRoot);
+                if (File.Exists(fullDatPath))
+                    try { Process.Start(fullDatPath); } catch { }
+            }
+        }
+
+        private RvDat GetDatFromSelectedRvFile()
+        {
+            RvFile rvFile = _clickedTree;
+
+            if (rvFile.Dat != null) return rvFile.Dat;
+            if (rvFile.Dat == null && rvFile.DirDatCount == 1 && rvFile.ChildFiles.Count >= 1)
+            {
+                return rvFile.ChildFiles[0].Dat;
+            }
+
+            return null;
+        }
+
         private void MnuRelocateRoms(object sender, EventArgs e)
         {
             string originalDir = _clickedTree.FullName;
@@ -582,7 +618,7 @@ namespace ROMVault
             if (!File.Exists(datPath)) return;
             try
             {
-                File.Delete(datPath);
+                //File.Delete(datPath);
             }
             catch { }
             UpdateDats();
@@ -1038,7 +1074,8 @@ namespace ROMVault
             {
                 _mnuOpen.Enabled = Directory.Exists(_clickedTree.FullName);
                 _mnuRelocateRoms.Enabled = Directory.Exists(_clickedTree.FullName);
-                _mnuDeleteDat.Enabled = _clickedTree.Dat != null;
+                _mnuDeleteDat.Enabled = GetDatFromSelectedRvFile() != null;
+                _mnuEditDat.Enabled = GetDatFromSelectedRvFile() != null;
                 //_mnuFile.Enabled = _clickedTree.Dat == null;
                 _mnuContext.Show(this, new Point(controLocation.X + e.X, controLocation.Y + e.Y));
             }

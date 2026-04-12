@@ -39,6 +39,9 @@ namespace ROMVault
             this.mainForm = mainForm;
 
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
+
+            foreach (TreeNode node in MainTV.Nodes)
+                node.Expand();
         }
 
         private void FrmConfigLoad(object sender, EventArgs e)
