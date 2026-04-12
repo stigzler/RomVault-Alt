@@ -25,7 +25,6 @@ namespace ROMVault
             if (Version.Revision > 0)
                 strVersion += $" WIP{Version.Revision}";
 
-
             Application.SetCompatibleTextRenderingDefault(false);
 
             string appName = Assembly.GetEntryAssembly().Location;
@@ -51,7 +50,6 @@ namespace ROMVault
             ReportError.ErrorForm += ShowErrorForm;
             ReportError.Dialog += ShowDialog;
 
-         
             Dark.dark.darkEnabled = Settings.rvSettings.Darkness;
 
             if (!Settings.rvSettings.Darkness)
@@ -65,7 +63,6 @@ namespace ROMVault
             FrmSplashScreen progress = new FrmSplashScreen();
             progress.ShowDialog();
             progress.Dispose();
-
 
             FindSourceFile.SetFixOrderSettings();
 
