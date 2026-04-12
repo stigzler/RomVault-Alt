@@ -48,8 +48,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.MappingPN = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DGDirectoryMappingRules)).BeginInit();
             this.BottomButtonsPN.SuspendLayout();
@@ -312,6 +312,19 @@
             this.MappingPN.Size = new System.Drawing.Size(384, 233);
             this.MappingPN.TabIndex = 43;
             // 
+            // flexiLabel1
+            // 
+            this.flexiLabel1.AutoSize = true;
+            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel1.Location = new System.Drawing.Point(4, 4);
+            this.flexiLabel1.Name = "flexiLabel1";
+            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
+            this.flexiLabel1.ScaleFactor = 1.2D;
+            this.flexiLabel1.Size = new System.Drawing.Size(139, 25);
+            this.flexiLabel1.TabIndex = 0;
+            this.flexiLabel1.Text = "Existing Mapping";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lblDATLocation);
@@ -327,19 +340,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(384, 107);
             this.panel2.TabIndex = 44;
-            // 
-            // flexiLabel1
-            // 
-            this.flexiLabel1.AutoSize = true;
-            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel1.Location = new System.Drawing.Point(4, 4);
-            this.flexiLabel1.Name = "flexiLabel1";
-            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
-            this.flexiLabel1.ScaleFactor = 1.2D;
-            this.flexiLabel1.Size = new System.Drawing.Size(139, 25);
-            this.flexiLabel1.TabIndex = 0;
-            this.flexiLabel1.Text = "Existing Mapping";
             // 
             // flexiLabel2
             // 
