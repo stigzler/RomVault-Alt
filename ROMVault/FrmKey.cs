@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using ROMVault.UserControls;
 using RomVaultCore;
 
 namespace ROMVault
@@ -21,7 +22,7 @@ namespace ROMVault
 
         private void AddLabel(Point location, Size size, string name, string text)
         {
-            Label label = new Label
+            FlexiLabel label = new FlexiLabel
             {
                 Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point),
                 Location = location,
@@ -87,17 +88,17 @@ namespace ROMVault
                     Size = new Size(48, 42),
                     TabIndex = 0,
                     TabStop = false,
-                    BackColor = Color.White
+                    //BackColor = Color.White
                 };
 
                 Controls.Add(pictureBox);
 
                 pictureBox.Image = rvImages.GetBitmap("G_" + displayList[i]);
 
-                Label label = new Label
+                FlexiLabel label = new FlexiLabel
                 {
-                    BackColor = SystemColors.Control,
-                    BorderStyle = BorderStyle.FixedSingle,
+                    BackColor = Color.FromArgb(128, 64, 64, 64),
+                    //BorderStyle = BorderStyle.FixedSingle,
                     Location = new Point(56, i * 46 + eOffset),
                     TextAlign = ContentAlignment.MiddleLeft,
                     Name = "label" + i,
@@ -188,6 +189,8 @@ namespace ROMVault
                 label.Text = text;
                 Controls.Add(label);
             }
+
+            this.Width = 590;
         }
     }
 }
