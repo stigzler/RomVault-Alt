@@ -27,65 +27,66 @@ namespace RomVaultCore.Scanner
             try
             {
 #endif
-                _fileErrorAbort = false;
-                _cacheSaveTimer = new Stopwatch();
-                _cacheSaveTimer.Reset();
-                if (Settings.rvSettings.CacheSaveTimerEnabled)
-                {
-                    _cacheSaveTimer.Start();
-                }
+            _fileErrorAbort = false;
+            _cacheSaveTimer = new Stopwatch();
+            _cacheSaveTimer.Reset();
+            if (Settings.rvSettings.CacheSaveTimerEnabled)
+            {
+                _cacheSaveTimer.Start();
+            }
 
-                _thWrk = thWrk;
-                if (_thWrk == null)
-                {
-                    _cacheSaveTimer?.Stop();
-                    _cacheSaveTimer = null;
-                    return;
-                }
-
-
-                _thWrk.Report(new bgwText("Clearing DB Status"));
-                RepairStatus.ReportStatusReset(DB.DirRoot);
-
-                _thWrk.Report(new bgwText("Finding Dir's to Scan"));
-                //Next get a list of all the directories to be scanned
-                List<RvFile> lstDir = new List<RvFile>();
-                DBHelper.GetSelectedDirListStart(ref lstDir, StartAt);
-
-
-                _thWrk.Report(new bgwText("Scanning Dir's"));
-                _thWrk.Report(new bgwSetRange(lstDir.Count));
-                //Scan the list of directories.
-                for (int i = 0; i < lstDir.Count; i++)
-                {
-                    _thWrk.Report(i + 1);
-                    _thWrk.Report(new bgwText("Scanning Dir : " + lstDir[i].FullName));
-                    string lDir = lstDir[i].FullName;
-                    if (Directory.Exists(lDir))
-                    {
-                        lstDir[i].GotStatus = GotStatus.Got;
-                        CheckADir(lstDir[i], null);
-                    }
-                    else
-                    {
-                        lstDir[i].MarkAsMissing();
-                    }
-
-                    if (_thWrk.CancellationPending || _fileErrorAbort)
-                    {
-                        break;
-                    }
-                }
-
-                _thWrk.Report(new bgwText("Updating Cache"));
-                DB.Write();
-
-
-                _thWrk.Report(new bgwText("File Scan Complete"));
-                _thWrk.Finished = true;
+            _thWrk = thWrk;
+            if (_thWrk == null)
+            {
                 _cacheSaveTimer?.Stop();
                 _cacheSaveTimer = null;
-                _thWrk = null;
+                return;
+            }
+
+            _thWrk.Report(new bgwText("Clearing DB Status"));
+            RepairStatus.ReportStatusReset(DB.DirRoot);
+
+            _thWrk.Report(new bgwText("Finding Dir's to Scan"));
+            //Next get a list of all the directories to be scanned
+            List<RvFile> lstDir = new List<RvFile>();
+            DBHelper.GetSelectedDirListStart(ref lstDir, StartAt);
+
+            _thWrk.Report(new bgwText("Scanning Dir's"));
+            _thWrk.Report(new bgwSetRange(lstDir.Count));
+            //Scan the list of directories.
+            for (int i = 0; i < lstDir.Count; i++)
+            {
+                _thWrk.Report(i + 1);
+                _thWrk.Report(new bgwText("Scanning Dir : " + lstDir[i].FullName));
+                string lDir = lstDir[i].FullName;
+                if (Directory.Exists(lDir))
+                {
+                    lstDir[i].GotStatus = GotStatus.Got;
+                    CheckADir(lstDir[i], null);
+                }
+                else
+                {
+                    lstDir[i].MarkAsMissing();
+                }
+
+                if (_thWrk.CancellationPending || _fileErrorAbort)
+                {
+                    break;
+                }
+            }
+
+            _thWrk.Report(new bgwText("Updating Cache"));
+            DB.Write();
+
+            _thWrk.Report(new bgwText("File Scan is Complete"));
+            _thWrk.Report(new bgwText2($""));
+            _thWrk.Report(new bgwRange2Visible(false));
+
+            _thWrk.Finished = true;
+            _cacheSaveTimer?.Stop();
+
+            _cacheSaveTimer = null;
+            _thWrk = null;
 #if !DEBUG
             }
             catch (Exception exc)
@@ -102,7 +103,6 @@ namespace RomVaultCore.Scanner
             }
 #endif
         }
-
 
         public static void CheckAnArchive(RvFile dbDir, bool report, int? checkIndex)
         {
@@ -199,7 +199,6 @@ namespace RomVaultCore.Scanner
             int dbIndex = 0;
             int fileIndex = 0;
 
-
             while (true)
             {
                 RvFile dbChild = null;
@@ -226,7 +225,6 @@ namespace RomVaultCore.Scanner
                 }
                 else
                     break;
-
 
                 switch (res)
                 {
@@ -361,6 +359,7 @@ namespace RomVaultCore.Scanner
 
                         fileIndex += filesCount;
                         break;
+
                     case 1:
                         if (NewFileFound(fileChild, dbDir, dbIndex, fileIndex))
                         {
@@ -373,6 +372,7 @@ namespace RomVaultCore.Scanner
                         dbIndex++;
                         fileIndex++;
                         break;
+
                     case -1:
                         DBFileNotFound(dbChild, dbDir, ref dbIndex);
                         break;
@@ -409,6 +409,7 @@ namespace RomVaultCore.Scanner
                         dbChild.FileCheckName(fileChild);
                     }
                     break;
+
                 case FileType.Dir:
                     RvFile tDir = dbChild;
                     if (tDir.Tree == null) // do not recurse into directories that are in the tree, as they are processed by the top level code.
@@ -421,11 +422,13 @@ namespace RomVaultCore.Scanner
 
                     dbChild.FileMergeIn(fileChild, false);
                     break;
+
                 case FileType.File:
                     //case FileType.ZipFile:
                     //case FileType.SevenZipFile:
                     dbChild.FileMergeIn(fileChild, altMatch);
                     break;
+
                 default:
                     throw new Exception("Unsuported file type " + dbChild.FileType);
             }
@@ -500,6 +503,7 @@ namespace RomVaultCore.Scanner
                     case FileType.SevenZip:
                         dbChild.MarkAsMissing();
                         break;
+
                     case FileType.Dir:
                         RvFile tDir = dbChild;
                         if (tDir.Tree == null)

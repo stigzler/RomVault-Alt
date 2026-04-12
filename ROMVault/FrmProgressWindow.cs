@@ -41,7 +41,8 @@ namespace ROMVault
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(ErrorGrid, true, null);
 
-            ClientSize = new Size(511, 131);
+            ErrorGrid.Visible = false;
+            ClientSize = new Size(this.Width, TopPN.Height + 10);
             _dateTime = DateTime.Now;
             _dateTimeLast = _dateTime;
 
@@ -57,16 +58,16 @@ namespace ROMVault
             cancelButton.Enabled = false;
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                const int CP_NOCLOSE_BUTTON = 0x200;
-                CreateParams mdiCp = base.CreateParams;
-                mdiCp.ClassStyle = mdiCp.ClassStyle | CP_NOCLOSE_BUTTON;
-                return mdiCp;
-            }
-        }
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        const int CP_NOCLOSE_BUTTON = 0x200;
+        //        CreateParams mdiCp = base.CreateParams;
+        //        mdiCp.ClassStyle = mdiCp.ClassStyle | CP_NOCLOSE_BUTTON;
+        //        return mdiCp;
+        //    }
+        //}
 
         private void FrmProgressWindowNewShown(object sender, EventArgs e)
         {
@@ -81,8 +82,12 @@ namespace ROMVault
             if (!_errorOpen)
             {
                 _errorOpen = true;
-                ClientSize = new Size(511, 292);
-                MinimumSize = new Size(511, 292);
+                ErrorGrid.Visible = true;
+                Size newSize = new Size (this.Size.Width, this.Size.Height *2);
+                this.AutoSize = false;
+                this.Size = newSize;
+                //ClientSize = new Size(this.Width, TopPN.Height * 2);
+                //MinimumSize = new Size(511, 292);
                 ErrorGrid.Columns[0].HeaderText = "Time";
                 ErrorGrid.Columns[1].HeaderText = "Log";
             }
@@ -182,8 +187,8 @@ namespace ROMVault
                 if (!_errorOpen)
                 {
                     _errorOpen = true;
-                    ClientSize = new Size(511, 292);
-                    MinimumSize = new Size(511, 292);
+                    ErrorGrid.Visible = true;
+                    ClientSize = new Size(this.Width, this.Height * 2);
                 }
 
                 ErrorGrid.Rows.Add();
@@ -226,6 +231,11 @@ namespace ROMVault
             }
             RVPlayer.PlaySound("audio\\complete.wav");
 
+            // temp:
+            cancelButton.Visible = true;
+            cancelButton.Text = "Close";
+            cancelButton.Enabled = true;
+
             if (_errorOpen)
             {
                 cancelButton.Visible = true;
@@ -236,8 +246,8 @@ namespace ROMVault
             else
             {
                 _funcFinished?.Invoke();
-                _parentForm.Show();
-                Close();
+                //_parentForm.Show();
+                //Close();
             }
         }
 
@@ -247,7 +257,7 @@ namespace ROMVault
             {
                 if (!_parentForm.Visible)
                 {
-                    _parentForm.Show();
+                    //_parentForm.Show();
                 }
                 _funcFinished?.Invoke();
                 Close();
@@ -269,48 +279,49 @@ namespace ROMVault
 
         private void FrmProgressWindow_Resize(object sender, EventArgs e)
         {
-            switch (WindowState)
-            {
-                case FormWindowState.Minimized:
-                    if (_parentForm.Visible)
-                    {
-                        _parentForm.Hide();
-                    }
-                    return;
+            //switch (WindowState)
+            //{
+            //    case FormWindowState.Minimized:
+            //        if (_parentForm.Visible)
+            //        {
+            //            _parentForm.Hide();
+            //        }
+            //        return;
 
-                case FormWindowState.Maximized:
-                    if (!_parentForm.Visible)
-                    {
-                        _parentForm.Show();
-                    }
-                    return;
+            //    case FormWindowState.Maximized:
+            //        if (!_parentForm.Visible)
+            //        {
+            //            _parentForm.Show();
+            //        }
+            //        return;
 
-                case FormWindowState.Normal:
-                    if (!_parentForm.Visible)
-                    {
-                        _parentForm.Show();
-                    }
-                    return;
-            }
-        }
-
-        private void splitContainer1_Panel2_Resize(object sender, EventArgs e)
-        {
-            SetDataGridSize();
+            //    case FormWindowState.Normal:
+            //        if (!_parentForm.Visible)
+            //        {
+            //            _parentForm.Show();
+            //        }
+            //        return;
+            //}
         }
 
         private void SetDataGridSize()
         {
-            ErrorGrid.Top = 0;
-            ErrorGrid.Left = 0;
-            ErrorGrid.Width = Math.Max(splitContainer1.Panel2.Width, 80);
-            ErrorGrid.Height = Math.Max(splitContainer1.Panel2.Height, 80);
+            //ErrorGrid.Top = 0;
+            //ErrorGrid.Left = 0;
+            //ErrorGrid.Width = Math.Max(MainSC.Panel2.Width, 80);
+            //ErrorGrid.Height = Math.Max(MainSC.Panel2.Height, 80);
         }
 
         private void FrmProgressWindow_Load(object sender, EventArgs e)
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
             Helpers.Theming.SetFormTextSizeToDefault(this);
+            Application.DoEvents();
+        }
+
+        private void FrmProgressWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //e.Cancel = true;
         }
     }
 }

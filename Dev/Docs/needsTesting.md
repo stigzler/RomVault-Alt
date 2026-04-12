@@ -77,3 +77,11 @@ Also, couldn't follow the datagridview row color key, so just replaced a couple 
 
 `// wasn't sure what to put here`
 
+## Progress Window
+Some baffling stuff in here. Sometimes shown as a dialog, other times just Show. Two progress bars. An error window at the bottom. FrmMain.ScanRoms may have ahandler leak:
+
+```cs
+if (fceh != null)
+    frmScanRoms.FormClosed += fceh;
+```
+But not clear on what that is or how it operates. Uses one button for inter-changable Cancel/Close function. Hard to know what any changes I've made to this will have given it seems to cover so many functions. Did make Close button visible and stopped the auto-close to provide positive feedback to user about outcomes of process. Will require someone with implicit knowledge of the routines that leverage this to know whether Close/Cancel buttons should be avaiable to the user. 

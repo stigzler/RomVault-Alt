@@ -1500,6 +1500,7 @@ namespace ROMVault
             FrmProgressWindow progress = new FrmProgressWindow(this, "Scanning Dats", DatUpdate.UpdateDat, null);
             progress.HideCancelButton();
             progress.ShowDialog(this);
+            Application.DoEvents();
             progress.Dispose();
 
             // rebuild the tree
@@ -1537,12 +1538,12 @@ namespace ROMVault
         {
             FileScanning.StartAt = StartAt;
             FileScanning.EScanLevel = sd;
-            frmScanRoms = new FrmProgressWindow(this, "Scanning Dirs", FileScanning.ScanFiles, Finish);
+            frmScanRoms = new FrmProgressWindow(this, "Scanning Roms", FileScanning.ScanFiles, Finish);
             Start();
             setPos(frmScanRoms);
             if (fceh != null)
-                frmScanRoms.FormClosed += fceh;
-            frmScanRoms.Show();
+                frmScanRoms.FormClosed += fceh; //
+            frmScanRoms.ShowDialog();
         }
 
         public FrmProgressWindow frmFindFixes;
@@ -1555,7 +1556,7 @@ namespace ROMVault
             setPos(frmFindFixes);
             if (fceh != null)
                 frmFindFixes.FormClosed += fceh;
-            frmFindFixes.Show();
+            frmFindFixes.ShowDialog();
         }
 
         private FrmProgressWindowFix frmFixFiles;
@@ -1606,6 +1607,12 @@ namespace ROMVault
 
         private void Finish()
         {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new MethodInvoker(Finish));
+                return;
+            }
+
             _working = false;
             ctrRvTree.Working = false;
             //menuStrip1.Enabled = true;
