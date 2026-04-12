@@ -78,9 +78,12 @@ namespace ROMVault
             this.DatPanelHeaderLB = new ROMVault.UserControls.FlexiLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitGameInfoLists = new System.Windows.Forms.SplitContainer();
+            this.PropertryGridSC = new System.Windows.Forms.SplitContainer();
             this.MainPG = new System.Windows.Forms.PropertyGrid();
+            this.PropertyGridHelpTB = new System.Windows.Forms.TextBox();
             this.PgHeader = new System.Windows.Forms.Panel();
             this.PgHeaderLB = new ROMVault.UserControls.FlexiLabel();
+            this.PropGridHelpBT = new System.Windows.Forms.Button();
             this.PgHeaderPB = new System.Windows.Forms.PictureBox();
             this.splitListArt = new System.Windows.Forms.SplitContainer();
             this.GameRomPN = new System.Windows.Forms.Panel();
@@ -172,7 +175,6 @@ namespace ROMVault
             this.colorKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whatsNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutRomVaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -187,6 +189,7 @@ namespace ROMVault
             this.RomsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.RomsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
             this.RomsShortnameToggleSSBT = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -214,6 +217,10 @@ namespace ROMVault
             this.splitGameInfoLists.Panel1.SuspendLayout();
             this.splitGameInfoLists.Panel2.SuspendLayout();
             this.splitGameInfoLists.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertryGridSC)).BeginInit();
+            this.PropertryGridSC.Panel1.SuspendLayout();
+            this.PropertryGridSC.Panel2.SuspendLayout();
+            this.PropertryGridSC.SuspendLayout();
             this.PgHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PgHeaderPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitListArt)).BeginInit();
@@ -857,7 +864,7 @@ namespace ROMVault
             // 
             // splitGameInfoLists.Panel1
             // 
-            this.splitGameInfoLists.Panel1.Controls.Add(this.MainPG);
+            this.splitGameInfoLists.Panel1.Controls.Add(this.PropertryGridSC);
             this.splitGameInfoLists.Panel1.Controls.Add(this.PgHeader);
             this.splitGameInfoLists.Panel1.Resize += new System.EventHandler(this.splitContainer4_Panel1_Resize);
             // 
@@ -868,23 +875,53 @@ namespace ROMVault
             this.splitGameInfoLists.SplitterDistance = 245;
             this.splitGameInfoLists.TabIndex = 0;
             // 
+            // PropertryGridSC
+            // 
+            this.PropertryGridSC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PropertryGridSC.Location = new System.Drawing.Point(0, 31);
+            this.PropertryGridSC.Name = "PropertryGridSC";
+            // 
+            // PropertryGridSC.Panel1
+            // 
+            this.PropertryGridSC.Panel1.Controls.Add(this.MainPG);
+            // 
+            // PropertryGridSC.Panel2
+            // 
+            this.PropertryGridSC.Panel2.Controls.Add(this.PropertyGridHelpTB);
+            this.PropertryGridSC.Panel2Collapsed = true;
+            this.PropertryGridSC.Size = new System.Drawing.Size(806, 214);
+            this.PropertryGridSC.SplitterDistance = 627;
+            this.PropertryGridSC.TabIndex = 6;
+            // 
             // MainPG
             // 
             this.MainPG.CategoryForeColor = System.Drawing.Color.Cyan;
             this.MainPG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPG.HelpVisible = false;
-            this.MainPG.Location = new System.Drawing.Point(0, 31);
+            this.MainPG.Location = new System.Drawing.Point(0, 0);
             this.MainPG.Name = "MainPG";
             this.MainPG.PropertySort = System.Windows.Forms.PropertySort.Categorized;
             this.MainPG.Size = new System.Drawing.Size(806, 214);
             this.MainPG.TabIndex = 0;
             this.MainPG.ToolbarVisible = false;
             this.MainPG.UseCompatibleTextRendering = true;
+            this.MainPG.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.MainPG_SelectedGridItemChanged);
             this.MainPG.SelectedObjectsChanged += new System.EventHandler(this.MainPG_SelectedObjectsChanged);
+            // 
+            // PropertyGridHelpTB
+            // 
+            this.PropertyGridHelpTB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PropertyGridHelpTB.Location = new System.Drawing.Point(0, 0);
+            this.PropertyGridHelpTB.Multiline = true;
+            this.PropertyGridHelpTB.Name = "PropertyGridHelpTB";
+            this.PropertyGridHelpTB.ReadOnly = true;
+            this.PropertyGridHelpTB.Size = new System.Drawing.Size(96, 100);
+            this.PropertyGridHelpTB.TabIndex = 5;
             // 
             // PgHeader
             // 
             this.PgHeader.Controls.Add(this.PgHeaderLB);
+            this.PgHeader.Controls.Add(this.PropGridHelpBT);
             this.PgHeader.Controls.Add(this.PgHeaderPB);
             this.PgHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.PgHeader.Location = new System.Drawing.Point(0, 0);
@@ -901,10 +938,25 @@ namespace ROMVault
             this.PgHeaderLB.Location = new System.Drawing.Point(31, 4);
             this.PgHeaderLB.Name = "PgHeaderLB";
             this.PgHeaderLB.ScaleFactor = 1.2D;
-            this.PgHeaderLB.Size = new System.Drawing.Size(771, 23);
+            this.PgHeaderLB.Size = new System.Drawing.Size(746, 23);
             this.PgHeaderLB.TabIndex = 3;
             this.PgHeaderLB.Text = "Welcome to RomVault";
             this.PgHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // PropGridHelpBT
+            // 
+            this.PropGridHelpBT.BackgroundImage = global::ROMVault.Properties.Resources.question_frame;
+            this.PropGridHelpBT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PropGridHelpBT.Dock = System.Windows.Forms.DockStyle.Right;
+            this.PropGridHelpBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.PropGridHelpBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PropGridHelpBT.Location = new System.Drawing.Point(777, 4);
+            this.PropGridHelpBT.Name = "PropGridHelpBT";
+            this.PropGridHelpBT.Size = new System.Drawing.Size(25, 23);
+            this.PropGridHelpBT.TabIndex = 5;
+            this.tooltip.SetToolTip(this.PropGridHelpBT, "Show Help");
+            this.PropGridHelpBT.UseVisualStyleBackColor = true;
+            this.PropGridHelpBT.Click += new System.EventHandler(this.PropGridHelpBT_Click);
             // 
             // PgHeaderPB
             // 
@@ -1826,10 +1878,10 @@ namespace ROMVault
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.torrentZipToolStripMenuItem,
             this.visitHelpWikiToolStripMenuItem,
-            this.colorKeyToolStripMenuItem,
             this.whatsNewToolStripMenuItem,
-            this.aboutRomVaultToolStripMenuItem,
-            this.testToolStripMenuItem});
+            this.toolStripSeparator7,
+            this.colorKeyToolStripMenuItem,
+            this.aboutRomVaultToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -1870,13 +1922,6 @@ namespace ROMVault
             this.aboutRomVaultToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.aboutRomVaultToolStripMenuItem.Text = "About RomVault";
             this.aboutRomVaultToolStripMenuItem.Click += new System.EventHandler(this.AboutRomVaultToolStripMenuItemClick);
-            // 
-            // testToolStripMenuItem
-            // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.testToolStripMenuItem.Text = "Test";
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -2006,6 +2051,11 @@ namespace ROMVault
             this.RomsShortnameToggleSSBT.Text = "Toggle Shortname";
             this.RomsShortnameToggleSSBT.Click += new System.EventHandler(this.RomsShortnameToggleSSBT_Click);
             // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(205, 6);
+            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2064,6 +2114,11 @@ namespace ROMVault
             this.splitGameInfoLists.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitGameInfoLists)).EndInit();
             this.splitGameInfoLists.ResumeLayout(false);
+            this.PropertryGridSC.Panel1.ResumeLayout(false);
+            this.PropertryGridSC.Panel2.ResumeLayout(false);
+            this.PropertryGridSC.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertryGridSC)).EndInit();
+            this.PropertryGridSC.ResumeLayout(false);
             this.PgHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PgHeaderPB)).EndInit();
             this.splitListArt.Panel1.ResumeLayout(false);
@@ -2211,7 +2266,6 @@ namespace ROMVault
         private ToolStripMenuItem addNewToSortFolderToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator3;
-        private ToolStripMenuItem testToolStripMenuItem;
         private ToolStripDropDownButton DatsControlSSBT;
         private ToolStripMenuItem DatsGroupVisibilitySSBT;
         private ToolStripMenuItem DatsShortnameToggleSSBT;
@@ -2260,6 +2314,10 @@ namespace ROMVault
         private ToolStripMenuItem darkModeToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator6;
         private ToolStripButton AutoSizeGameColChB;
+        private SplitContainer PropertryGridSC;
+        private TextBox PropertyGridHelpTB;
+        private Button PropGridHelpBT;
+        private ToolStripSeparator toolStripSeparator7;
     }
 }
 

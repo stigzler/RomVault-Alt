@@ -44,7 +44,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmKey";
             this.Padding = new System.Windows.Forms.Padding(8);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Color Key to ROM Status";
             this.Load += new System.EventHandler(this.FrmKey_Load);
             this.ResumeLayout(false);

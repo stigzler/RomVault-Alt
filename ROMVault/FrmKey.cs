@@ -221,6 +221,9 @@ namespace ROMVault
             this.Height = height + this.Padding.Vertical + 40;
 
             this.ResumeLayout();
+
+            this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width - 20,
+                                      (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
         }
     }
 }

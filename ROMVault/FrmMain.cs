@@ -2108,16 +2108,7 @@ namespace ROMVault
             DB.Write();
         }
 
-        private void testToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog
-            {
-                Filter = "Zip Files|*.zip",
-                Title = "Select a Zip File",
-                Multiselect = true
-            };
-            ofd.ShowDialog();
-        }
+
 
         private void DatsShortnameToggleSSBT_Click(object sender, EventArgs e)
         {
@@ -2380,6 +2371,16 @@ namespace ROMVault
             catch
             {
             }
+        }
+
+        private void PropGridHelpBT_Click(object sender, EventArgs e)
+        {
+            PropertryGridSC.Panel2Collapsed = !PropertryGridSC.Panel2Collapsed;
+        }
+
+        private void MainPG_SelectedGridItemChanged(object sender, SelectedGridItemChangedEventArgs e)
+        {
+            PropertyGridHelpTB.Text = MainPG.SelectedGridItem?.PropertyDescriptor?.Description ?? string.Empty;
         }
     }
 }

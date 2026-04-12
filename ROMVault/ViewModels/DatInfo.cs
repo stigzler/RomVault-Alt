@@ -16,7 +16,7 @@ namespace ROMVault.ViewModels
         public string Name { get; set; } = string.Empty;
 
         //[SortableCategory("Associated ROMs", 15)]
-        //[Description("The path where ROMs are put when fixed (your final ROM collection.")]
+        [Description("The path where ROMs are put when fixed (your final ROM collection.")]
         [ReadOnly(true)]
         public string RomPath { get; set; } = string.Empty;
 
@@ -44,17 +44,17 @@ namespace ROMVault.ViewModels
         public string Date { get; set; } = string.Empty;
 
         //[SortableCategory("Associated ROMs", 15)]
-        //[Description("ROMs in your ToSort folder/s that can be moved into your ROM collection by fixing.")]
+        [Description("ROMs in your ToSort folder/s that can be moved into your ROM collection by fixing.")]
         [ReadOnly(true)]
         public string RomsFixable { get; set; } = string.Empty;
 
         //[SortableCategory("Associated ROMs", 15)]
-        //[Description("ROMs in your ROM collection that match the DAT file specifications.")]
+        [Description("ROMs in your ROM collection that match the DAT file specifications.")]
         [ReadOnly(true)]
         public string RomsGot { get; set; } = string.Empty;
 
         //[SortableCategory("Associated ROMs", 15)]
-        //[Description("ROM entries in the DAT file that cannot be located in the ToSort folder/s or in your ROM collection")]
+        [Description("ROM entries in the DAT file that cannot be located in the ToSort folder/s or in your ROM collection")]
         [ReadOnly(true)]
         public string RomsMissing { get; set; } = string.Empty;
 

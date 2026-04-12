@@ -344,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="chip.ico" />
+    <None Include="Resources\question-frame.png" />
     <None Include="Resources\folderTreeGray.png" />
     <None Include="Resources\table-join-column.png" />
     <None Include="Resources\magnifier-left.png" />

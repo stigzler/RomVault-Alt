@@ -533,6 +533,16 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap question_frame {
+            get {
+                object obj = ResourceManager.GetObject("question-frame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ReportsDownload {
             get {
                 object obj = ResourceManager.GetObject("ReportsDownload", resourceCulture);
