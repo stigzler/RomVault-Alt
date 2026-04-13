@@ -51,6 +51,8 @@ namespace RomVaultCore.Scanner
             List<RvFile> lstDir = new List<RvFile>();
             DBHelper.GetSelectedDirListStart(ref lstDir, StartAt);
 
+            _thWrk.Report(new bgwRange2Visible(true));
+
             _thWrk.Report(new bgwText("Scanning Dir's"));
             _thWrk.Report(new bgwSetRange(lstDir.Count));
             //Scan the list of directories.
@@ -79,9 +81,7 @@ namespace RomVaultCore.Scanner
             DB.Write();
 
             _thWrk.Report(new bgwProgress(100));
-            _thWrk.Report(new bgwText2($""));
             _thWrk.Report(new bgwText("File Scan is Complete"));
-            _thWrk.Report(new bgwRange2Visible(false));
 
             _thWrk.Finished = true;
             _cacheSaveTimer?.Stop();

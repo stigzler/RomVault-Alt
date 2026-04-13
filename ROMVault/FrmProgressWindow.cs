@@ -110,12 +110,21 @@ namespace ROMVault
             {
                 lock (_updateLock)
                 {
-                    _latestUpdate = obj;
-
-                    // Bypass throttling for important messages AND completion progress
+                    // Check if current object is important
                     bool isImportant = (obj is bgwText txt &&
                                        (txt.Text.Contains("Complete") || txt.Text.Contains("Finished")))
                                     || (obj is int progress && progress >= 100);
+
+                    // Check if stored update is important
+                    bool storedIsImportant = (_latestUpdate is bgwText txt2 &&
+                                     (txt2.Text.Contains("Complete") || txt2.Text.Contains("Finished")))
+                                  || (_latestUpdate is int progress2 && progress2 >= 100);
+
+                    // Don't overwrite important messages with non-important ones
+                    if (!isImportant && storedIsImportant)
+                        return;
+
+                    _latestUpdate = obj;
 
                     if (!isImportant && _updatePending)
                         return; // Skip if update already queued
@@ -264,6 +273,12 @@ namespace ROMVault
             // Explicitly set progress to 100%
             progressBar.Value = progressBar.Maximum;
             UpdateStatusText(); // This will now show "100% complete"
+
+            // Handle cleanup that comes after completion messages
+            label2.Text = "";
+            label2.Visible = false;
+            progressBar2.Visible = false;
+            lbl2Prog.Visible = false;
 
             RVPlayer.PlaySound("audio\\complete.wav");
 
