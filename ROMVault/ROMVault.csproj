@@ -138,6 +138,12 @@
     <Compile Include="Extensions\ContextMenuStrip.cs" />
     <Compile Include="Extensions\PropertyGridExt.cs" />
     <Compile Include="FolderBrowser.cs" />
+    <Compile Include="FrmDirectoryWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDirectoryWizard.Designer.cs">
+      <DependentUpon>FrmDirectoryWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmImportDat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +263,9 @@
       <DependentUpon>FrmDirectoryMappings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDirectoryWizard.resx">
+      <DependentUpon>FrmDirectoryWizard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmHelpAbout.resx">
       <DependentUpon>FrmHelpAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +323,12 @@
       <DependentUpon>rvTree.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Assets\FolderSchema\romm.platform-name.rvs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FolderSchema\romm.shortcode.test.rvs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -343,7 +358,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\FolderSchema\romm.shortcode.rvs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="chip.ico" />
+    <None Include="Resources\folder-smiley1.png" />
+    <None Include="Resources\stamp.png" />
+    <None Include="Resources\disk.png" />
+    <None Include="Resources\folder-smiley.png" />
     <None Include="Resources\question-frame.png" />
     <None Include="Resources\folderTreeGray.png" />
     <None Include="Resources\table-join-column.png" />

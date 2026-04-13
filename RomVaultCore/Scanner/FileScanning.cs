@@ -78,8 +78,9 @@ namespace RomVaultCore.Scanner
             _thWrk.Report(new bgwText("Updating Cache"));
             DB.Write();
 
-            _thWrk.Report(new bgwText("File Scan is Complete"));
+            _thWrk.Report(new bgwProgress(100));
             _thWrk.Report(new bgwText2($""));
+            _thWrk.Report(new bgwText("File Scan is Complete"));
             _thWrk.Report(new bgwRange2Visible(false));
 
             _thWrk.Finished = true;

@@ -30,13 +30,11 @@ namespace ROMVault
         private DateTime _dateTimeLast;
         private string _lastMessage;
 
+        // UI update throttling
         private volatile bool _updatePending = false;
+
         private object _latestUpdate = null;
         private readonly object _updateLock = new object();
-
-        private DateTime _lastUiUpdate = DateTime.MinValue;
-        private const int UI_UPDATE_INTERVAL_MS = 50; // Only update UI every 50ms
-        private object _pendingUpdate = null;
 
         public FrmProgressWindow(Form parentForm, string titleRoot, WorkerStart function, Finished funcFinished)
         {
@@ -45,6 +43,7 @@ namespace ROMVault
             _titleRoot = titleRoot;
             _funcFinished = funcFinished;
             InitializeComponent();
+
             Type dgvType = ErrorGrid.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(ErrorGrid, true, null);
@@ -66,17 +65,6 @@ namespace ROMVault
             cancelButton.Enabled = false;
         }
 
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        const int CP_NOCLOSE_BUTTON = 0x200;
-        //        CreateParams mdiCp = base.CreateParams;
-        //        mdiCp.ClassStyle = mdiCp.ClassStyle | CP_NOCLOSE_BUTTON;
-        //        return mdiCp;
-        //    }
-        //}
-
         private void FrmProgressWindowNewShown(object sender, EventArgs e)
         {
             SetDataGridSize();
@@ -94,8 +82,6 @@ namespace ROMVault
                 Size newSize = new Size(this.Size.Width, this.Size.Height * 2);
                 this.AutoSize = false;
                 this.Size = newSize;
-                //ClientSize = new Size(this.Width, TopPN.Height * 2);
-                //MinimumSize = new Size(511, 292);
                 ErrorGrid.Columns[0].HeaderText = "Time";
                 ErrorGrid.Columns[1].HeaderText = "Log";
             }
@@ -122,45 +108,35 @@ namespace ROMVault
         {
             if (InvokeRequired)
             {
-                // Store the latest update
                 lock (_updateLock)
                 {
-                    _pendingUpdate = obj;
+                    _latestUpdate = obj;
+
+                    // Bypass throttling for important messages AND completion progress
+                    bool isImportant = (obj is bgwText txt &&
+                                       (txt.Text.Contains("Complete") || txt.Text.Contains("Finished")))
+                                    || (obj is int progress && progress >= 100);
+
+                    if (!isImportant && _updatePending)
+                        return; // Skip if update already queued
+
+                    _updatePending = true;
                 }
 
-                // Throttle: only invoke if enough time has passed
-                if ((DateTime.Now - _lastUiUpdate).TotalMilliseconds < UI_UPDATE_INTERVAL_MS)
+                BeginInvoke(new MethodInvoker(() =>
                 {
-                    return; // Skip this update
-                }
-
-                _lastUiUpdate = DateTime.Now;
-                BeginInvoke(new MethodInvoker(() => BgwProgressChanged(obj)));
+                    object updateToProcess;
+                    lock (_updateLock)
+                    {
+                        updateToProcess = _latestUpdate;
+                        _updatePending = false;
+                    }
+                    BgwProgressChanged(updateToProcess);
+                }));
                 return;
             }
 
-            // Get the most recent update
-            object updateToProcess;
-            lock (_updateLock)
-            {
-                updateToProcess = _pendingUpdate ?? obj;
-                _pendingUpdate = null;
-            }
-
-            // Suspend layout during multiple updates
-            SuspendLayout();
-            try
-            {
-                ProcessUpdate(updateToProcess);
-            }
-            finally
-            {
-                ResumeLayout();
-            }
-        }
-
-        private void ProcessUpdate(object obj)
-        {
+            // Now on UI thread - process the update
             if (obj is int e)
             {
                 if (e >= progressBar.Minimum && e <= progressBar.Maximum)
@@ -178,6 +154,7 @@ namespace ROMVault
                     TimeLogShow(bgwT.Text);
                 return;
             }
+
             if (obj is bgwSetRange bgwSr)
             {
                 progressBar.Minimum = 0;
@@ -211,6 +188,7 @@ namespace ROMVault
                 UpdateStatusText2();
                 return;
             }
+
             if (obj is bgwRange2Visible bgwR2V)
             {
                 label2.Visible = bgwR2V.Visible;
@@ -272,25 +250,34 @@ namespace ROMVault
                 BeginInvoke(new MethodInvoker(BgwRunWorkerCompleted));
                 return;
             }
+
+            // Flush any pending update BEFORE showing completion
+            lock (_updateLock)
+            {
+                if (_latestUpdate != null)
+                {
+                    BgwProgressChanged(_latestUpdate);
+                    _latestUpdate = null;
+                }
+            }
+
+            // Explicitly set progress to 100%
+            progressBar.Value = progressBar.Maximum;
+            UpdateStatusText(); // This will now show "100% complete"
+
             RVPlayer.PlaySound("audio\\complete.wav");
 
-            // temp:
             cancelButton.Visible = true;
             cancelButton.Text = "Close";
             cancelButton.Enabled = true;
 
             if (_errorOpen)
             {
-                cancelButton.Visible = true;
-                cancelButton.Text = "Close";
-                cancelButton.Enabled = true;
                 _bDone = true;
             }
             else
             {
                 _funcFinished?.Invoke();
-                //_parentForm.Show();
-                //Close();
             }
         }
 
@@ -322,49 +309,20 @@ namespace ROMVault
 
         private void FrmProgressWindow_Resize(object sender, EventArgs e)
         {
-            //switch (WindowState)
-            //{
-            //    case FormWindowState.Minimized:
-            //        if (_parentForm.Visible)
-            //        {
-            //            _parentForm.Hide();
-            //        }
-            //        return;
-
-            //    case FormWindowState.Maximized:
-            //        if (!_parentForm.Visible)
-            //        {
-            //            _parentForm.Show();
-            //        }
-            //        return;
-
-            //    case FormWindowState.Normal:
-            //        if (!_parentForm.Visible)
-            //        {
-            //            _parentForm.Show();
-            //        }
-            //        return;
-            //}
         }
 
         private void SetDataGridSize()
         {
-            //ErrorGrid.Top = 0;
-            //ErrorGrid.Left = 0;
-            //ErrorGrid.Width = Math.Max(MainSC.Panel2.Width, 80);
-            //ErrorGrid.Height = Math.Max(MainSC.Panel2.Height, 80);
         }
 
         private void FrmProgressWindow_Load(object sender, EventArgs e)
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
             Helpers.Theming.SetFormTextSizeToDefault(this);
-            Application.DoEvents();
         }
 
         private void FrmProgressWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //e.Cancel = true;
         }
     }
 }

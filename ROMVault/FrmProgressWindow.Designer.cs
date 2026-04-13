@@ -41,15 +41,15 @@
             this.CErrorFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.TopPN = new System.Windows.Forms.Panel();
-            this.TopRowPN = new System.Windows.Forms.Panel();
             this.BottomPbPN = new System.Windows.Forms.Panel();
             this.ProgressBarAndButtonPN = new System.Windows.Forms.Panel();
+            this.TopRowPN = new System.Windows.Forms.Panel();
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorGrid)).BeginInit();
             this.TopPN.SuspendLayout();
-            this.TopRowPN.SuspendLayout();
             this.BottomPbPN.SuspendLayout();
             this.ProgressBarAndButtonPN.SuspendLayout();
+            this.TopRowPN.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar2
@@ -58,7 +58,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar2.Location = new System.Drawing.Point(6, 8);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(458, 19);
+            this.progressBar2.Size = new System.Drawing.Size(472, 19);
             this.progressBar2.TabIndex = 3;
             this.progressBar2.Visible = false;
             // 
@@ -68,7 +68,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.Location = new System.Drawing.Point(8, 9);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(365, 18);
+            this.progressBar.Size = new System.Drawing.Size(379, 18);
             this.progressBar.TabIndex = 1;
             // 
             // label
@@ -78,7 +78,7 @@
             this.label.Location = new System.Drawing.Point(2, 2);
             this.label.Name = "label";
             this.label.Padding = new System.Windows.Forms.Padding(2);
-            this.label.Size = new System.Drawing.Size(388, 22);
+            this.label.Size = new System.Drawing.Size(402, 22);
             this.label.TabIndex = 0;
             this.label.Text = "Starting operation...";
             this.label.UseMnemonic = false;
@@ -89,7 +89,7 @@
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Location = new System.Drawing.Point(379, 6);
+            this.cancelButton.Location = new System.Drawing.Point(393, 6);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(85, 25);
             this.cancelButton.TabIndex = 2;
@@ -100,10 +100,10 @@
             // 
             this.label2.AutoEllipsis = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(4, 53);
+            this.label2.Location = new System.Drawing.Point(4, 55);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(2);
-            this.label2.Size = new System.Drawing.Size(472, 22);
+            this.label2.Size = new System.Drawing.Size(486, 22);
             this.label2.TabIndex = 4;
             this.label2.UseMnemonic = false;
             this.label2.Visible = false;
@@ -111,7 +111,7 @@
             // lbl2Prog
             // 
             this.lbl2Prog.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbl2Prog.Location = new System.Drawing.Point(390, 2);
+            this.lbl2Prog.Location = new System.Drawing.Point(404, 2);
             this.lbl2Prog.Name = "lbl2Prog";
             this.lbl2Prog.Padding = new System.Windows.Forms.Padding(2);
             this.lbl2Prog.Size = new System.Drawing.Size(80, 22);
@@ -132,7 +132,7 @@
             this.CErrorFile});
             this.ErrorGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ErrorGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ErrorGrid.Location = new System.Drawing.Point(2, 175);
+            this.ErrorGrid.Location = new System.Drawing.Point(2, 177);
             this.ErrorGrid.MultiSelect = false;
             this.ErrorGrid.Name = "ErrorGrid";
             this.ErrorGrid.ReadOnly = true;
@@ -143,7 +143,7 @@
             this.ErrorGrid.ShowCellToolTips = false;
             this.ErrorGrid.ShowEditingIcon = false;
             this.ErrorGrid.ShowRowErrors = false;
-            this.ErrorGrid.Size = new System.Drawing.Size(480, 0);
+            this.ErrorGrid.Size = new System.Drawing.Size(494, 19);
             this.ErrorGrid.TabIndex = 6;
             this.ErrorGrid.SelectionChanged += new System.EventHandler(this.ErrorGridSelectionChanged);
             // 
@@ -167,10 +167,10 @@
             // 
             this.label3.AutoEllipsis = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Location = new System.Drawing.Point(4, 75);
+            this.label3.Location = new System.Drawing.Point(4, 77);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(2);
-            this.label3.Size = new System.Drawing.Size(472, 22);
+            this.label3.Size = new System.Drawing.Size(486, 22);
             this.label3.TabIndex = 6;
             this.label3.UseMnemonic = false;
             // 
@@ -188,20 +188,8 @@
             this.TopPN.Location = new System.Drawing.Point(2, 2);
             this.TopPN.Name = "TopPN";
             this.TopPN.Padding = new System.Windows.Forms.Padding(4);
-            this.TopPN.Size = new System.Drawing.Size(480, 173);
+            this.TopPN.Size = new System.Drawing.Size(494, 175);
             this.TopPN.TabIndex = 7;
-            // 
-            // TopRowPN
-            // 
-            this.TopRowPN.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TopRowPN.Controls.Add(this.label);
-            this.TopRowPN.Controls.Add(this.lbl2Prog);
-            this.TopRowPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopRowPN.Location = new System.Drawing.Point(4, 27);
-            this.TopRowPN.Name = "TopRowPN";
-            this.TopRowPN.Padding = new System.Windows.Forms.Padding(2);
-            this.TopRowPN.Size = new System.Drawing.Size(472, 26);
-            this.TopRowPN.TabIndex = 2;
             // 
             // BottomPbPN
             // 
@@ -209,31 +197,43 @@
             this.BottomPbPN.Controls.Add(this.progressBar);
             this.BottomPbPN.Controls.Add(this.cancelButton);
             this.BottomPbPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BottomPbPN.Location = new System.Drawing.Point(4, 130);
+            this.BottomPbPN.Location = new System.Drawing.Point(4, 132);
             this.BottomPbPN.Name = "BottomPbPN";
             this.BottomPbPN.Padding = new System.Windows.Forms.Padding(2);
-            this.BottomPbPN.Size = new System.Drawing.Size(472, 39);
+            this.BottomPbPN.Size = new System.Drawing.Size(486, 39);
             this.BottomPbPN.TabIndex = 8;
             // 
             // ProgressBarAndButtonPN
             // 
             this.ProgressBarAndButtonPN.Controls.Add(this.progressBar2);
             this.ProgressBarAndButtonPN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ProgressBarAndButtonPN.Location = new System.Drawing.Point(4, 97);
+            this.ProgressBarAndButtonPN.Location = new System.Drawing.Point(4, 99);
             this.ProgressBarAndButtonPN.Name = "ProgressBarAndButtonPN";
-            this.ProgressBarAndButtonPN.Size = new System.Drawing.Size(472, 33);
+            this.ProgressBarAndButtonPN.Size = new System.Drawing.Size(486, 33);
             this.ProgressBarAndButtonPN.TabIndex = 9;
+            // 
+            // TopRowPN
+            // 
+            this.TopRowPN.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TopRowPN.Controls.Add(this.label);
+            this.TopRowPN.Controls.Add(this.lbl2Prog);
+            this.TopRowPN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopRowPN.Location = new System.Drawing.Point(4, 29);
+            this.TopRowPN.Name = "TopRowPN";
+            this.TopRowPN.Padding = new System.Windows.Forms.Padding(2);
+            this.TopRowPN.Size = new System.Drawing.Size(486, 26);
+            this.TopRowPN.TabIndex = 2;
             // 
             // flexiLabel1
             // 
             this.flexiLabel1.AutoSize = true;
             this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
             this.flexiLabel1.Location = new System.Drawing.Point(4, 4);
             this.flexiLabel1.Name = "flexiLabel1";
             this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
             this.flexiLabel1.ScaleFactor = 1.2D;
-            this.flexiLabel1.Size = new System.Drawing.Size(74, 23);
+            this.flexiLabel1.Size = new System.Drawing.Size(80, 25);
             this.flexiLabel1.TabIndex = 1;
             this.flexiLabel1.Text = "Progress";
             // 
@@ -244,7 +244,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(484, 175);
+            this.ClientSize = new System.Drawing.Size(498, 198);
             this.ControlBox = false;
             this.Controls.Add(this.ErrorGrid);
             this.Controls.Add(this.TopPN);
@@ -265,9 +265,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrorGrid)).EndInit();
             this.TopPN.ResumeLayout(false);
             this.TopPN.PerformLayout();
-            this.TopRowPN.ResumeLayout(false);
             this.BottomPbPN.ResumeLayout(false);
             this.ProgressBarAndButtonPN.ResumeLayout(false);
+            this.TopRowPN.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
