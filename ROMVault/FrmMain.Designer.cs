@@ -159,6 +159,8 @@ namespace ROMVault
             this.fixROMsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.scanFindAndFixROMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.folderCReatorWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.fixDatReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,8 +174,9 @@ namespace ROMVault
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torrentZipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitHelpWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whatsNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.colorKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutRomVaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -189,7 +192,6 @@ namespace ROMVault
             this.RomsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.RomsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
             this.RomsShortnameToggleSSBT = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -1783,19 +1785,34 @@ namespace ROMVault
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.folderCReatorWizardToolStripMenuItem,
+            this.toolStripSeparator8,
             this.fixDatReportToolStripMenuItem,
             this.fullReportToolStripMenuItem,
             this.fixReportToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.reportsToolStripMenuItem.Text = "Reports";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.reportsToolStripMenuItem.Text = "Tools";
+            // 
+            // folderCReatorWizardToolStripMenuItem
+            // 
+            this.folderCReatorWizardToolStripMenuItem.Image = global::ROMVault.Properties.Resources.folder_smiley1;
+            this.folderCReatorWizardToolStripMenuItem.Name = "folderCReatorWizardToolStripMenuItem";
+            this.folderCReatorWizardToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.folderCReatorWizardToolStripMenuItem.Text = "Folder Creator Wizard";
+            this.folderCReatorWizardToolStripMenuItem.Click += new System.EventHandler(this.folderCReatorWizardToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(185, 6);
             // 
             // fixDatReportToolStripMenuItem
             // 
             this.fixDatReportToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_document_text;
             this.fixDatReportToolStripMenuItem.Name = "fixDatReportToolStripMenuItem";
             this.fixDatReportToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.fixDatReportToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.fixDatReportToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.fixDatReportToolStripMenuItem.Text = "Fix Dat Report";
             this.fixDatReportToolStripMenuItem.Click += new System.EventHandler(this.fixDatReportToolStripMenuItem_Click);
             // 
@@ -1803,7 +1820,7 @@ namespace ROMVault
             // 
             this.fullReportToolStripMenuItem.Name = "fullReportToolStripMenuItem";
             this.fullReportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F9)));
-            this.fullReportToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.fullReportToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.fullReportToolStripMenuItem.Text = "Full Report";
             this.fullReportToolStripMenuItem.Click += new System.EventHandler(this.fullReportToolStripMenuItem_Click);
             // 
@@ -1811,7 +1828,7 @@ namespace ROMVault
             // 
             this.fixReportToolStripMenuItem.Name = "fixReportToolStripMenuItem";
             this.fixReportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F9)));
-            this.fixReportToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.fixReportToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.fixReportToolStripMenuItem.Text = "Fix Report";
             this.fixReportToolStripMenuItem.Click += new System.EventHandler(this.fixReportToolStripMenuItem_Click);
             // 
@@ -1900,6 +1917,18 @@ namespace ROMVault
             this.visitHelpWikiToolStripMenuItem.Text = "Visit Help Wiki";
             this.visitHelpWikiToolStripMenuItem.Click += new System.EventHandler(this.visitHelpWikiToolStripMenuItem_Click);
             // 
+            // whatsNewToolStripMenuItem
+            // 
+            this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
+            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.whatsNewToolStripMenuItem.Text = "Whats New";
+            this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.whatsNewToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(205, 6);
+            // 
             // colorKeyToolStripMenuItem
             // 
             this.colorKeyToolStripMenuItem.Name = "colorKeyToolStripMenuItem";
@@ -1907,13 +1936,6 @@ namespace ROMVault
             this.colorKeyToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.colorKeyToolStripMenuItem.Text = "Color Key";
             this.colorKeyToolStripMenuItem.Click += new System.EventHandler(this.colorKeyToolStripMenuItem_Click);
-            // 
-            // whatsNewToolStripMenuItem
-            // 
-            this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
-            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.whatsNewToolStripMenuItem.Text = "Whats New";
-            this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.whatsNewToolStripMenuItem_Click);
             // 
             // aboutRomVaultToolStripMenuItem
             // 
@@ -2050,11 +2072,6 @@ namespace ROMVault
             this.RomsShortnameToggleSSBT.Size = new System.Drawing.Size(208, 22);
             this.RomsShortnameToggleSSBT.Text = "Toggle Shortname";
             this.RomsShortnameToggleSSBT.Click += new System.EventHandler(this.RomsShortnameToggleSSBT_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(205, 6);
             // 
             // FrmMain
             // 
@@ -2318,6 +2335,8 @@ namespace ROMVault
         private TextBox PropertyGridHelpTB;
         private Button PropGridHelpBT;
         private ToolStripSeparator toolStripSeparator7;
+        private ToolStripMenuItem folderCReatorWizardToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator8;
     }
 }
 

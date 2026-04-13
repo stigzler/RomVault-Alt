@@ -297,12 +297,13 @@
             this.MainTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.MainTC.HideBorders = true;
             this.MainTC.HideTabs = false;
-            this.MainTC.ItemSize = new System.Drawing.Size(58, 18);
+            this.MainTC.ItemSize = new System.Drawing.Size(91, 13);
             this.MainTC.Location = new System.Drawing.Point(0, 0);
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
             this.MainTC.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(120)))), ((int)(((byte)(187)))));
             this.MainTC.Size = new System.Drawing.Size(444, 510);
+            this.MainTC.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.MainTC.TabIndex = 0;
             this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDarkDark;
             this.MainTC.UnselectedTabBackColor = System.Drawing.SystemColors.ControlDark;
@@ -312,10 +313,10 @@
             this.DatSettingsTP.AutoScroll = true;
             this.DatSettingsTP.Controls.Add(this.groupBox1);
             this.DatSettingsTP.Controls.Add(this.flexiLabel1);
-            this.DatSettingsTP.Location = new System.Drawing.Point(0, 20);
+            this.DatSettingsTP.Location = new System.Drawing.Point(0, 15);
             this.DatSettingsTP.Name = "DatSettingsTP";
             this.DatSettingsTP.Padding = new System.Windows.Forms.Padding(8);
-            this.DatSettingsTP.Size = new System.Drawing.Size(444, 490);
+            this.DatSettingsTP.Size = new System.Drawing.Size(444, 495);
             this.DatSettingsTP.TabIndex = 0;
             this.DatSettingsTP.Text = "Dat Settings";
             this.DatSettingsTP.UseVisualStyleBackColor = true;
@@ -358,7 +359,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 35);
+            this.label1.Location = new System.Drawing.Point(17, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
@@ -493,10 +494,10 @@
             // 
             this.DatVaultTP.Controls.Add(this.groupBox2);
             this.DatVaultTP.Controls.Add(this.flexiLabel4);
-            this.DatVaultTP.Location = new System.Drawing.Point(0, 20);
+            this.DatVaultTP.Location = new System.Drawing.Point(0, 15);
             this.DatVaultTP.Name = "DatVaultTP";
             this.DatVaultTP.Padding = new System.Windows.Forms.Padding(8);
-            this.DatVaultTP.Size = new System.Drawing.Size(444, 490);
+            this.DatVaultTP.Size = new System.Drawing.Size(444, 495);
             this.DatVaultTP.TabIndex = 5;
             this.DatVaultTP.Text = "DatVault";
             this.DatVaultTP.UseVisualStyleBackColor = true;
@@ -646,10 +647,10 @@
             this.FileOperationsTP.Controls.Add(this.groupBox3);
             this.FileOperationsTP.Controls.Add(this.groupBox4);
             this.FileOperationsTP.Controls.Add(this.flexiLabel5);
-            this.FileOperationsTP.Location = new System.Drawing.Point(0, 20);
+            this.FileOperationsTP.Location = new System.Drawing.Point(0, 15);
             this.FileOperationsTP.Name = "FileOperationsTP";
             this.FileOperationsTP.Padding = new System.Windows.Forms.Padding(8);
-            this.FileOperationsTP.Size = new System.Drawing.Size(444, 490);
+            this.FileOperationsTP.Size = new System.Drawing.Size(444, 495);
             this.FileOperationsTP.TabIndex = 1;
             this.FileOperationsTP.Text = "File Operations";
             this.FileOperationsTP.UseVisualStyleBackColor = true;
@@ -827,10 +828,10 @@
             this.UiTP.Controls.Add(this.OperationalGB);
             this.UiTP.Controls.Add(this.AppearanceThemesGB);
             this.UiTP.Controls.Add(this.flexiLabel3);
-            this.UiTP.Location = new System.Drawing.Point(0, 20);
+            this.UiTP.Location = new System.Drawing.Point(0, 15);
             this.UiTP.Name = "UiTP";
             this.UiTP.Padding = new System.Windows.Forms.Padding(8);
-            this.UiTP.Size = new System.Drawing.Size(444, 490);
+            this.UiTP.Size = new System.Drawing.Size(444, 495);
             this.UiTP.TabIndex = 3;
             this.UiTP.Text = "Ui + UX";
             this.UiTP.UseVisualStyleBackColor = true;
@@ -1089,10 +1090,10 @@
             this.tabPage1.Controls.Add(this.InfoTextExampleLB);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.InfoTextColorPB);
-            this.tabPage1.Location = new System.Drawing.Point(0, 20);
+            this.tabPage1.Location = new System.Drawing.Point(0, 15);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(444, 490);
+            this.tabPage1.Size = new System.Drawing.Size(444, 495);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "retired/parked";
             this.tabPage1.UseVisualStyleBackColor = true;

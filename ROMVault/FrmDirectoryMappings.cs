@@ -1,11 +1,12 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using RomVaultCore;
+﻿using RomVaultCore;
 using RomVaultCore.ReadDat;
 using RomVaultCore.RvDB;
 using RomVaultCore.Utils;
 using RVIO;
+using System;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace ROMVault
 {
@@ -133,7 +134,7 @@ namespace ROMVault
                     DGDirectoryMappingRules.Rows[row].Cells["CLocation"].Style.ForeColor = this.ForeColor;
                 }
 
-                if (!Directory.Exists(t.DirPath))
+                if (!System.IO.Directory.Exists(t.DirPath))
                 {
                     DGDirectoryMappingRules.Rows[row].Cells["CLocation"].Style.BackColor = _cRed;
                 }
@@ -164,12 +165,18 @@ namespace ROMVault
 
         private void BtnSetROMLocationClick(object sender, EventArgs e)
         {
+            string folderPath = txtROMLocation.Text;
+
+            if (!Helpers.FileSystem.PathIsRooted(folderPath))
+            {
+                folderPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, txtROMLocation.Text);
+            } // ensure the full path, not relative.
+
             UserControls.FolderBrowserDialog fbd = new UserControls.FolderBrowserDialog
             {
                 Description = "Please select a folder for this Dat's Roms.",
             };
-
-            if (Directory.Exists(txtROMLocation.Text)) fbd.InputPath = txtROMLocation.Text;
+            if (System.IO.Directory.Exists(folderPath)) fbd.InputPath = folderPath;
 
             var result = fbd.ShowDialog(this);
             if (result != true) return;
@@ -185,7 +192,7 @@ namespace ROMVault
                 MessageBox.Show("You must select a directory.", "No Directory Selected", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (!Directory.Exists(newDir))
+            if (!System.IO.Directory.Exists(newDir))
             {
                 MessageBox.Show("The directory you have selected does not exist.", "Directory does not exist", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;

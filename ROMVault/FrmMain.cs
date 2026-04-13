@@ -1597,12 +1597,6 @@ namespace ROMVault
             btnDefault2.Enabled = false;
             btnDefault3.Enabled = false;
             btnDefault4.Enabled = false;
-
-            //btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Disabled");
-            //btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Disabled");
-            //btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Disabled");
-            //btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Disabled");
-            //btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Disabled");
         }
 
         private void Finish()
@@ -2108,8 +2102,6 @@ namespace ROMVault
             DB.Write();
         }
 
-
-
         private void DatsShortnameToggleSSBT_Click(object sender, EventArgs e)
         {
             ToggleDatStatusIconText();
@@ -2381,6 +2373,12 @@ namespace ROMVault
         private void MainPG_SelectedGridItemChanged(object sender, SelectedGridItemChangedEventArgs e)
         {
             PropertyGridHelpTB.Text = MainPG.SelectedGridItem?.PropertyDescriptor?.Description ?? string.Empty;
+        }
+
+        private void folderCReatorWizardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDirectoryWizard frmDirectoryWizard = new FrmDirectoryWizard();
+            frmDirectoryWizard.ShowDialog();
         }
     }
 }

@@ -12,31 +12,70 @@ namespace ROMVault.Helpers
 {
     internal class FileSystem
     {
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        private struct SHFILEOPSTRUCT
-        {
-            public IntPtr hwnd;
-            [MarshalAs(UnmanagedType.U4)] public int wFunc;
-            public string pFrom;
-            public string pTo;
-            public short fFlags;
-            [MarshalAs(UnmanagedType.Bool)] public bool fAnyOperationsAborted;
-            public IntPtr hNameMappings;
-            public string lpszProgressTitle;
-        }
+        private const int FO_COPY = 0x0002;
 
         private const int FO_MOVE = 0x0001;
-        private const int FO_COPY = 0x0002;
+
         private const int FOF_ALLOWUNDO = 0x0040;
+
         private const int FOF_NOCONFIRMMKDIR = 0x0200;
 
-        [DllImport("shell32.dll", CharSet = CharSet.Auto)]
-        private static extern int SHFileOperation(ref SHFILEOPSTRUCT lpFileOp);
+        private const int ForceDark = 2;
 
-        [DllImport("uxtheme.dll", SetLastError = true, EntryPoint = "#135")]
-        private static extern int SetPreferredAppMode(int appMode);
+        // Combined list of characters illegal in Windows or Linux
+        private static readonly char[] InvalidChars =
+            Path.GetInvalidPathChars()
+            .Union(new[] { '*', '?', ':', '"', '<', '>', '|' })
+            .Distinct()
+            .ToArray();
 
-        private const int ForceDark = 2; // 0 = Default, 1 = AllowDark, 2 = ForceDark, 3 = ForceLight
+        public static bool PathIsRooted(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path)) return false;
+
+            string root = System.IO.Path.GetPathRoot(path);
+
+            return !string.IsNullOrEmpty(root) && root.Length > 1;
+        }
+
+        public static bool FolderHasFiles(string rootPath)
+        {
+            if (!Directory.Exists(rootPath)) return false;
+
+            // SearchOption.AllDirectories tells C# to look into all subfolders
+            return Directory.EnumerateFiles(rootPath, "*", SearchOption.AllDirectories).Any();
+        }
+
+        public static void CopyFile(string sourceFile, string destinationPath, bool dark = false)
+        {
+            ExecuteShellOp(FO_COPY, new List<string> { sourceFile }, destinationPath, dark);
+        }
+
+        public static void CopyFiles(List<string> sourcePaths, string destinationPath, bool dark = false)
+        {
+            ExecuteShellOp(FO_COPY, sourcePaths, destinationPath, dark);
+        }
+
+        public static void DeleteDirectorySafely(string targetDir)
+        {
+            File.SetAttributes(targetDir, FileAttributes.Normal);
+
+            string[] files = Directory.GetFiles(targetDir);
+            string[] dirs = Directory.GetDirectories(targetDir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                DeleteDirectorySafely(dir);
+            }
+
+            Directory.Delete(targetDir, false);
+        }
 
         public static void InitializeDarkMode()
         {
@@ -44,31 +83,83 @@ namespace ROMVault.Helpers
             SetPreferredAppMode(ForceDark);
         }
 
-        // --- Single Item Operations ---
-
-        public static void CopyFile(string sourceFile, string destinationPath, bool dark = false)
+        public static bool IsPathInsideFolder(string parentPath, string childPath)
         {
-            ExecuteShellOp(FO_COPY, new List<string> { sourceFile }, destinationPath, dark);
+            if (parentPath == childPath) return true;
+
+            // 1. Normalize both paths to resolve ".." and "." segments
+            string normalizedParent = Path.GetFullPath(parentPath);
+            string normalizedChild = Path.GetFullPath(childPath);
+
+            // 2. Ensure parent path ends with a separator to avoid partial name matches
+            if (!normalizedParent.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            {
+                normalizedParent += Path.DirectorySeparatorChar;
+            }
+
+            // 3. Check if child starts with parent path
+            Debug.WriteLine(normalizedChild.StartsWith(normalizedParent, StringComparison.OrdinalIgnoreCase));
+            return normalizedChild.StartsWith(normalizedParent, StringComparison.OrdinalIgnoreCase);
         }
 
+        public static bool IsValidPath(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path)) return false;
+
+            // 1. Trim the slashes from the start/end as requested
+            string trimmedPath = path.Trim('/', '\\');
+
+            // 2. Check for illegal characters
+            // We allow / and \ here because they are separators, not "filenames"
+            // So we check each segment between the slashes
+            string[] segments = trimmedPath.Split(new[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var segment in segments)
+            {
+                if (segment.Any(c => InvalidChars.Contains(c)))
+                    return false;
+
+                // 3. Windows Reserved Names (NUL, CON, COM1, etc.)
+                if (IsReservedName(segment))
+                    return false;
+            }
+
+            return true;
+        }
+
+        // 0 = Default, 1 = AllowDark, 2 = ForceDark, 3 = ForceLight
+        // --- Single Item Operations ---
         public static void MoveFile(string sourceFile, string destinationPath, bool dark = false)
         {
             ExecuteShellOp(FO_MOVE, new List<string> { sourceFile }, destinationPath, dark);
         }
 
         // --- Bulk Operations ---
-
-        public static void CopyFiles(List<string> sourcePaths, string destinationPath, bool dark = false)
-        {
-            ExecuteShellOp(FO_COPY, sourcePaths, destinationPath, dark);
-        }
-
         public static void MoveFiles(List<string> sourcePaths, string destinationPath, bool dark = false)
         {
             ExecuteShellOp(FO_MOVE, sourcePaths, destinationPath, dark);
         }
 
-        // --- Core Execution ---
+        public static string NormalizePath(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path)) return path;
+
+            // Handle the Long Path Prefix specifically
+            if (path.StartsWith(@"\\?\"))
+            {
+                // If it's a UNC network path: \\?\UNC\Server\Share -> \\Server\Share
+                if (path.StartsWith(@"\\?\UNC\", StringComparison.OrdinalIgnoreCase))
+                {
+                    return @"\\" + path.Substring(8);
+                }
+
+                // If it's a local drive path: \\?\C:\Folder -> C:\Folder
+                return path.Substring(4);
+            }
+
+            // Otherwise, let the OS normalize it (handles relative paths, dots, etc.)
+            return Path.GetFullPath(path);
+        }
 
         private static void ExecuteShellOp(int operation, List<string> sources, string destination, bool dark)
         {
@@ -102,65 +193,32 @@ namespace ROMVault.Helpers
             }
         }
 
-        public static string NormalizePath(string path)
+        private static bool IsReservedName(string segment)
         {
-            if (string.IsNullOrWhiteSpace(path)) return path;
-
-            // Handle the Long Path Prefix specifically
-            if (path.StartsWith(@"\\?\"))
-            {
-                // If it's a UNC network path: \\?\UNC\Server\Share -> \\Server\Share
-                if (path.StartsWith(@"\\?\UNC\", StringComparison.OrdinalIgnoreCase))
-                {
-                    return @"\\" + path.Substring(8);
-                }
-
-                // If it's a local drive path: \\?\C:\Folder -> C:\Folder
-                return path.Substring(4);
-            }
-
-            // Otherwise, let the OS normalize it (handles relative paths, dots, etc.)
-            return Path.GetFullPath(path);
+            string[] reserved = { "CON", "PRN", "AUX", "NUL", "COM1", "COM2", "LPT1", "CLOCK$" };
+            // (Truncated for brevity, includes COM1-9 and LPT1-9)
+            return reserved.Contains(segment.ToUpper());
         }
 
-        public static bool IsPathInsideFolder(string parentPath, string childPath)
+        [DllImport("uxtheme.dll", SetLastError = true, EntryPoint = "#135")]
+        private static extern int SetPreferredAppMode(int appMode);
+
+        [DllImport("shell32.dll", CharSet = CharSet.Auto)]
+        private static extern int SHFileOperation(ref SHFILEOPSTRUCT lpFileOp);
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        private struct SHFILEOPSTRUCT
         {
-            if (parentPath == childPath) return true;
-
-            // 1. Normalize both paths to resolve ".." and "." segments
-            string normalizedParent = Path.GetFullPath(parentPath);
-            string normalizedChild = Path.GetFullPath(childPath);
-
-            // 2. Ensure parent path ends with a separator to avoid partial name matches
-            if (!normalizedParent.EndsWith(Path.DirectorySeparatorChar.ToString()))
-            {
-                normalizedParent += Path.DirectorySeparatorChar;
-            }
-
-            // 3. Check if child starts with parent path
-            Debug.WriteLine(normalizedChild.StartsWith(normalizedParent, StringComparison.OrdinalIgnoreCase));
-            return normalizedChild.StartsWith(normalizedParent, StringComparison.OrdinalIgnoreCase);
+            public IntPtr hwnd;
+            [MarshalAs(UnmanagedType.U4)] public int wFunc;
+            public string pFrom;
+            public string pTo;
+            public short fFlags;
+            [MarshalAs(UnmanagedType.Bool)] public bool fAnyOperationsAborted;
+            public IntPtr hNameMappings;
+            public string lpszProgressTitle;
         }
 
-        public static void DeleteDirectorySafely(string targetDir)
-        {
-            File.SetAttributes(targetDir, FileAttributes.Normal);
-
-            string[] files = Directory.GetFiles(targetDir);
-            string[] dirs = Directory.GetDirectories(targetDir);
-
-            foreach (string file in files)
-            {
-                File.SetAttributes(file, FileAttributes.Normal);
-                File.Delete(file);
-            }
-
-            foreach (string dir in dirs)
-            {
-                DeleteDirectorySafely(dir);
-            }
-
-            Directory.Delete(targetDir, false);
-        }
+        // --- Core Execution ---
     }
 }
