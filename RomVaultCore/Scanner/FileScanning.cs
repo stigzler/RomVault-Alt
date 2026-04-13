@@ -47,6 +47,7 @@ namespace RomVaultCore.Scanner
             RepairStatus.ReportStatusReset(DB.DirRoot);
 
             _thWrk.Report(new bgwText("Finding Dir's to Scan"));
+
             //Next get a list of all the directories to be scanned
             List<RvFile> lstDir = new List<RvFile>();
             DBHelper.GetSelectedDirListStart(ref lstDir, StartAt);

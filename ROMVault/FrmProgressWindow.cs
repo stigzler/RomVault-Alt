@@ -113,12 +113,17 @@ namespace ROMVault
                     // Check if current object is important
                     bool isImportant = (obj is bgwText txt &&
                                        (txt.Text.Contains("Complete") || txt.Text.Contains("Finished")))
-                                    || (obj is int progress && progress >= 100);
+                                    || (obj is int progress && progress >= 100)
+                                    || obj is bgwValue2      // Always update second progress bar
+                                    || obj is bgwSetRange2;  // Always update second progress range
 
                     // Check if stored update is important
                     bool storedIsImportant = (_latestUpdate is bgwText txt2 &&
                                      (txt2.Text.Contains("Complete") || txt2.Text.Contains("Finished")))
-                                  || (_latestUpdate is int progress2 && progress2 >= 100);
+                                  || (_latestUpdate is int progress2 && progress2 >= 100)
+                                  || _latestUpdate is bgwValue2
+                                  || _latestUpdate is bgwSetRange2
+                                  || _latestUpdate is bgwRange2Visible;
 
                     // Don't overwrite important messages with non-important ones
                     if (!isImportant && storedIsImportant)
