@@ -2,9 +2,10 @@
 
 namespace RomVaultCore
 {
-
     public delegate void WorkerStart(ThreadWorker thWrk);
-    public delegate void WorkerReport(object obj);
+
+    public delegate void WorkerReport(object obj, bool imperative);
+
     public delegate void Worker();
 
     public class ThreadWorker
@@ -51,11 +52,9 @@ namespace RomVaultCore
             wFinal?.Invoke();
         }
 
-        public void Report(object obj)
+        public void Report(object obj, bool imperative = false)
         {
-            wReport?.Invoke(obj);
+            wReport?.Invoke(obj, imperative);
         }
-
     }
-
 }

@@ -53,7 +53,8 @@ namespace RomVaultCore.ReadDat
                 // build a datRoot tree of the DAT's in DatRoot, and count how many dats are found
                 if (!DatImportDir.RecursiveDatTree(out DatImportDir datRoot, out _datCount))
                 {
-                    _thWrk.Report(100);
+                    _thWrk.Report(new bgwSetRange(100), true);
+                    _thWrk.Report(100, true);
                     _thWrk.Report(new bgwText("Dat Update Complete"));
                     _thWrk.Finished = true;
                     _thWrk = null;
@@ -86,8 +87,9 @@ namespace RomVaultCore.ReadDat
                 _thWrk.Report(new bgwText("Garbage Collecting"));
                 GC.Collect();
 
-                _thWrk.Report(100);
                 _thWrk.Report(new bgwText("Dat Update Complete"));
+                _thWrk.Report(new bgwSetRange(100), true);
+                _thWrk.Report(100, true);
                 _thWrk.Finished = true;
                 _thWrk = null;
             }
@@ -97,8 +99,8 @@ namespace RomVaultCore.ReadDat
 
                 _thWrk?.Report(new bgwText("Updating Cache"));
                 DB.Write();
-                _thWrk?.Report(new bgwProgress(100));
-                _thWrk?.Report(new bgwText("Complete"));
+                _thWrk?.Report(new bgwProgress(100), true);
+                _thWrk?.Report(new bgwText("Complete with Errors"), true);
 
                 if (_thWrk != null) _thWrk.Finished = true;
                 _thWrk = null;

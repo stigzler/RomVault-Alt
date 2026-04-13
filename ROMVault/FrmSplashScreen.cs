@@ -38,11 +38,11 @@ namespace ROMVault
             DB.Read(thWrk);
         }
 
-        private void BgwProgressChanged(object e)
+        private void BgwProgressChanged(object e, bool imperative)
         {
             if (InvokeRequired)
             {
-                BeginInvoke(new MethodInvoker(() => BgwProgressChanged(e)));
+                BeginInvoke(new MethodInvoker(() => BgwProgressChanged(e, imperative)));
                 return;
             }
 

@@ -30,11 +30,21 @@ namespace ROMVault
         private DateTime _dateTimeLast;
         private string _lastMessage;
 
-        // UI update throttling
-        private volatile bool _updatePending = false;
+        // Timer-based update system
+        private Timer _updateTimer;
 
-        private object _latestUpdate = null;
-        private readonly object _updateLock = new object();
+        private readonly object _stateLock = new object();
+
+        // Current state (updated by background thread, read by UI timer)
+        private string _currentText = "";
+
+        private string _currentText2 = "";
+        private string _currentText3 = "";
+        private int _currentProgress = 0;
+        private int _currentProgress2 = 0;
+        private int _progressMax = 100;
+        private int _progress2Max = 0;
+        private bool _range2Visible = false;
 
         public FrmProgressWindow(Form parentForm, string titleRoot, WorkerStart function, Finished funcFinished)
         {
@@ -57,6 +67,11 @@ namespace ROMVault
             _lastMessage = "Initializing";
 
             _thWrk = new ThreadWorker(function);
+
+            // Create update timer
+            _updateTimer = new Timer();
+            _updateTimer.Interval = 100; // Update UI every 100ms
+            _updateTimer.Tick += UpdateTimer_Tick;
         }
 
         public void HideCancelButton()
@@ -70,6 +85,7 @@ namespace ROMVault
             SetDataGridSize();
             _thWrk.wReport = BgwProgressChanged;
             _thWrk.wFinal = BgwRunWorkerCompleted;
+            _updateTimer.Start();
             _thWrk.StartAsync();
         }
 
@@ -104,144 +120,133 @@ namespace ROMVault
             }
         }
 
-        private void BgwProgressChanged(object obj)
+        private void BgwProgressChanged(object obj, bool imperative)
         {
-            if (InvokeRequired)
+            // Update state (always runs, regardless of imperative flag)
+            lock (_stateLock)
             {
-                lock (_updateLock)
+                if (obj is int e)
                 {
-                    // Check if current object is important
-                    bool isImportant = (obj is bgwText txt &&
-                                       (txt.Text.Contains("Complete") || txt.Text.Contains("Finished")))
-                                    || (obj is int progress && progress >= 100)
-                                    || obj is bgwValue2      // Always update second progress bar
-                                    || obj is bgwSetRange2;  // Always update second progress range
-
-                    // Check if stored update is important
-                    bool storedIsImportant = (_latestUpdate is bgwText txt2 &&
-                                     (txt2.Text.Contains("Complete") || txt2.Text.Contains("Finished")))
-                                  || (_latestUpdate is int progress2 && progress2 >= 100)
-                                  || _latestUpdate is bgwValue2
-                                  || _latestUpdate is bgwSetRange2
-                                  || _latestUpdate is bgwRange2Visible;
-
-                    // Don't overwrite important messages with non-important ones
-                    if (!isImportant && storedIsImportant)
-                        return;
-
-                    _latestUpdate = obj;
-
-                    if (!isImportant && _updatePending)
-                        return; // Skip if update already queued
-
-                    _updatePending = true;
+                    _currentProgress = e;
                 }
-
-                BeginInvoke(new MethodInvoker(() =>
+                else if (obj is bgwText bgwT)
                 {
-                    object updateToProcess;
-                    lock (_updateLock)
+                    _currentText = bgwT.Text;
+                    if (ShowTimeLog)
                     {
-                        updateToProcess = _latestUpdate;
-                        _updatePending = false;
+                        if (InvokeRequired)
+                            BeginInvoke(new MethodInvoker(() => TimeLogShow(bgwT.Text)));
+                        else
+                            TimeLogShow(bgwT.Text);
                     }
-                    BgwProgressChanged(updateToProcess);
-                }));
-                return;
-            }
-
-            // Now on UI thread - process the update
-            if (obj is int e)
-            {
-                if (e >= progressBar.Minimum && e <= progressBar.Maximum)
-                {
-                    progressBar.Value = e;
                 }
-                UpdateStatusText();
-                return;
-            }
-
-            if (obj is bgwText bgwT)
-            {
-                label.Text = bgwT.Text;
-                if (ShowTimeLog)
-                    TimeLogShow(bgwT.Text);
-                return;
-            }
-
-            if (obj is bgwSetRange bgwSr)
-            {
-                progressBar.Minimum = 0;
-                progressBar.Maximum = bgwSr.MaxVal >= 0 ? bgwSr.MaxVal : 0;
-                progressBar.Value = 0;
-                UpdateStatusText();
-                return;
-            }
-
-            if (obj is bgwText2 bgwT2)
-            {
-                label2.Text = bgwT2.Text;
-                return;
-            }
-
-            if (obj is bgwValue2 bgwV2)
-            {
-                if (bgwV2.Value >= progressBar2.Minimum && bgwV2.Value <= progressBar2.Maximum)
+                else if (obj is bgwSetRange bgwSr)
                 {
-                    progressBar2.Value = bgwV2.Value;
+                    _progressMax = bgwSr.MaxVal >= 0 ? bgwSr.MaxVal : 0;
+                    _currentProgress = 0;
                 }
-                UpdateStatusText2();
-                return;
+                else if (obj is bgwText2 bgwT2)
+                {
+                    _currentText2 = bgwT2.Text;
+                }
+                else if (obj is bgwValue2 bgwV2)
+                {
+                    _currentProgress2 = bgwV2.Value;
+                }
+                else if (obj is bgwSetRange2 bgwSr2)
+                {
+                    _progress2Max = bgwSr2.MaxVal >= 0 ? bgwSr2.MaxVal : 0;
+                    _currentProgress2 = 0;
+                }
+                else if (obj is bgwRange2Visible bgwR2V)
+                {
+                    _range2Visible = bgwR2V.Visible;
+                }
+                else if (obj is bgwText3 bgwT3)
+                {
+                    _currentText3 = bgwT3.Text;
+                }
             }
 
-            if (obj is bgwSetRange2 bgwSr2)
+            // Imperative updates: apply immediately
+            if (imperative)
             {
-                progressBar2.Minimum = 0;
-                progressBar2.Maximum = bgwSr2.MaxVal >= 0 ? bgwSr2.MaxVal : 0;
-                progressBar2.Value = 0;
-                UpdateStatusText2();
-                return;
+                if (InvokeRequired)
+                {
+                    Invoke(new Action(() => ApplyCurrentState()));
+                }
+                else
+                {
+                    ApplyCurrentState();
+                }
             }
 
-            if (obj is bgwRange2Visible bgwR2V)
-            {
-                label2.Visible = bgwR2V.Visible;
-                progressBar2.Visible = bgwR2V.Visible;
-                lbl2Prog.Visible = bgwR2V.Visible;
-                return;
-            }
-
-            if (obj is bgwText3 bgwT3)
-            {
-                label3.Text = bgwT3.Text;
-                return;
-            }
-
+            // Handle errors immediately regardless of imperative flag
             if (obj is bgwShowError bgwSE)
             {
-                if (!_errorOpen)
+                if (InvokeRequired)
                 {
-                    _errorOpen = true;
-                    ErrorGrid.Visible = true;
-                    ClientSize = new Size(this.Width, this.Height * 2);
+                    BeginInvoke(new MethodInvoker(() => HandleError(bgwSE)));
                 }
-
-                ErrorGrid.Rows.Add();
-                int row = ErrorGrid.Rows.Count - 1;
-
-                ErrorGrid.Rows[row].Cells["CError"].Value = bgwSE.error;
-                ErrorGrid.Rows[row].Cells["CError"].Style.ForeColor = Color.FromArgb(255, 0, 0);
-
-                ErrorGrid.Rows[row].Cells["CErrorFile"].Value = bgwSE.filename;
-                ErrorGrid.Rows[row].Cells["CErrorFile"].Style.ForeColor = Color.FromArgb(255, 0, 0);
-
-                RVPlayer.PlaySound("audio\\error.wav");
-
-                if (row >= 0)
+                else
                 {
-                    ErrorGrid.FirstDisplayedScrollingRowIndex = row;
+                    HandleError(bgwSE);
                 }
             }
+        }
+
+        private void UpdateTimer_Tick(object sender, EventArgs e)
+        {
+            ApplyCurrentState();
+        }
+
+        private void ApplyCurrentState()
+        {
+            lock (_stateLock)
+            {
+                label.Text = _currentText;
+                label2.Text = _currentText2;
+                label3.Text = _currentText3;
+
+                progressBar.Maximum = _progressMax;
+                if (_currentProgress >= progressBar.Minimum && _currentProgress <= progressBar.Maximum)
+                    progressBar.Value = _currentProgress;
+
+                progressBar2.Maximum = _progress2Max;
+                if (_currentProgress2 >= progressBar2.Minimum && _currentProgress2 <= progressBar2.Maximum)
+                    progressBar2.Value = _currentProgress2;
+
+                label2.Visible = _range2Visible;
+                progressBar2.Visible = _range2Visible;
+                lbl2Prog.Visible = _range2Visible;
+
+                UpdateStatusText();
+                UpdateStatusText2();
+            }
+        }
+
+        private void HandleError(bgwShowError bgwSE)
+        {
+            if (!_errorOpen)
+            {
+                _errorOpen = true;
+                ErrorGrid.Visible = true;
+                ClientSize = new Size(this.Width, this.Height * 2);
+            }
+
+            ErrorGrid.Rows.Add();
+            int row = ErrorGrid.Rows.Count - 1;
+
+            ErrorGrid.Rows[row].Cells["CError"].Value = bgwSE.error;
+            ErrorGrid.Rows[row].Cells["CError"].Style.ForeColor = Color.FromArgb(255, 0, 0);
+
+            ErrorGrid.Rows[row].Cells["CErrorFile"].Value = bgwSE.filename;
+            ErrorGrid.Rows[row].Cells["CErrorFile"].Style.ForeColor = Color.FromArgb(255, 0, 0);
+
+            RVPlayer.PlaySound("audio\\error.wav");
+
+            if (row >= 0)
+                ErrorGrid.FirstDisplayedScrollingRowIndex = row;
         }
 
         private void UpdateStatusText()
@@ -265,25 +270,16 @@ namespace ROMVault
                 return;
             }
 
-            // Flush any pending update BEFORE showing completion
-            lock (_updateLock)
-            {
-                if (_latestUpdate != null)
-                {
-                    BgwProgressChanged(_latestUpdate);
-                    _latestUpdate = null;
-                }
-            }
+            _updateTimer.Stop();
+            ApplyCurrentState(); // Final state update
 
-            // Explicitly set progress to 100%
-            progressBar.Value = progressBar.Maximum;
-            UpdateStatusText(); // This will now show "100% complete"
-
-            // Handle cleanup that comes after completion messages
+            // Cleanup
             label2.Text = "";
             label2.Visible = false;
             progressBar2.Visible = false;
             lbl2Prog.Visible = false;
+            progressBar.Value = progressBar.Maximum;
+            UpdateStatusText();
 
             RVPlayer.PlaySound("audio\\complete.wav");
 

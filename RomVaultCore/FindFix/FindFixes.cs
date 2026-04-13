@@ -37,32 +37,29 @@ namespace RomVaultCore.FindFix
                 if (_thWrk == null) return;
                 _progressCounter = 0;
 
-                _thWrk.Report(new bgwSetRange(5));
+                _thWrk.Report(new bgwSetRange(5), true);
 
-                _thWrk.Report(new bgwText("Clearing DB Status"));
+                _thWrk.Report(new bgwText("Clearing DB Status"), true);
                 _thWrk.Report(_progressCounter++);
                 RepairStatus.ReportStatusReset(DB.DirRoot);
 
                 if (checkCancel()) return;
 
-                _thWrk.Report(new bgwText("Getting Selected Files"));
+                _thWrk.Report(new bgwText("Getting Selected Files"), true);
                 _thWrk.Report(_progressCounter++);
-
 
                 List<RvFile> filesGot = new List<RvFile>();
                 List<RvFile> filesMissing = new List<RvFile>();
                 GetSelectedFiles(DB.DirRoot, true, filesGot, filesMissing);
                 if (checkCancel()) return;
 
-
-                _thWrk.Report(new bgwText("Group all files by CRC (Sorted)"));
+                _thWrk.Report(new bgwText("Group all files by CRC (Sorted)"), true);
                 _thWrk.Report(_progressCounter++);
                 MergeGotFiles(filesGot, out FileGroup[] fileGroupsCRCSorted);
                 if (checkCancel()) return;
 
-                _thWrk.Report(new bgwText("Creating Secondary Indexes"));
+                _thWrk.Report(new bgwText("Creating Secondary Indexes"), true);
                 _thWrk.Report(_progressCounter++);
-
 
                 FileGroup[] fileGroupsSHA1Sorted = null;
                 FileGroup[] fileGroupsMD5Sorted = null;
@@ -115,11 +112,11 @@ namespace RomVaultCore.FindFix
                 _thWrk.Report(new bgwText("Index creation on got AltMD5"));
                 _thWrk.Report(_progressCounter++);
                 FastArraySort.SortWithFilter(fileGroupsCRCSorted, FindAltMD5, FamilySortAltMD5, out FileGroup[] fileGroupsAltMD5Sorted);
-                
+
                 */
                 if (checkCancel()) return;
 
-                _thWrk.Report(new bgwText("Merging in missing file list"));
+                _thWrk.Report(new bgwText("Merging in missing file list"), true);
                 _thWrk.Report(_progressCounter++);
                 // try and merge the missing File list into the FileGroup classes
                 // using the altCRC sorted list and then the CRCSorted list
@@ -128,7 +125,7 @@ namespace RomVaultCore.FindFix
 
                 int totalAfterMerge = fileGroupsCRCSorted.Length;
 
-                _thWrk.Report(new bgwText("Finding Fixes"));
+                _thWrk.Report(new bgwText("Finding Fixes"), true);
                 _thWrk.Report(_progressCounter++);
                 FindFixesListCheck.GroupListCheck(fileGroupsCRCSorted);
 
@@ -136,7 +133,7 @@ namespace RomVaultCore.FindFix
                 ClearPartial.CheckRemovePartial(DB.DirRoot.Child(0));
                 ClearPartial.checkAllGroups();
 
-                _thWrk.Report(new bgwText("Complete (Unique Files " + totalAfterMerge + ")"));
+                _thWrk.Report(new bgwText("Complete (Unique Files " + totalAfterMerge + ")"), true);
                 _thWrk.Finished = true;
                 _thWrk = null;
             }
@@ -146,7 +143,7 @@ namespace RomVaultCore.FindFix
 
                 _thWrk?.Report(new bgwText("Updating Cache"));
                 DB.Write();
-                _thWrk?.Report(new bgwText("Complete"));
+                _thWrk?.Report(new bgwText("Complete"), true);
                 if (_thWrk != null) _thWrk.Finished = true;
                 _thWrk = null;
             }
@@ -165,6 +162,7 @@ namespace RomVaultCore.FindFix
                         case GotStatus.Corrupt:
                             gotFiles.Add(rvFile);
                             break;
+
                         case GotStatus.NotGot:
                             missingFiles.Add(rvFile);
                             break;
@@ -190,12 +188,11 @@ namespace RomVaultCore.FindFix
         //  If they are just level 1 then there may or may not be SHA1 / MD5 info, which is unvalidated.
         //  So: We will always have CRC & Size info at a minimum and may also have SHA1 / MD5
         //
-        //  Next: Due to the possilibity of CRC hash collisions 
+        //  Next: Due to the possilibity of CRC hash collisions
         //  we could find matching CRC that have different SHA1 & MD5
         //  so we should seach for one or more matching CRC/Size sets.
         //  then check to see if we have anything else that matches and then either:
         //  add the rom to an existing set or make a new set.
-
 
         internal static void MergeGotFiles(IEnumerable<RvFile> gotFilesSortedByCRC, out FileGroup[] fileGroups)
         {
@@ -228,26 +225,26 @@ namespace RomVaultCore.FindFix
             }
             fileGroups = listFileGroupsOut.ToArray();
         }
+
         private static byte getByteFunc(RvFile v1)
         {
             return v1.CRC[0];
         }
+
         private static FileGroup newFunc(RvFile file)
         {
             return new FileGroup(file);
         }
+
         private static void mergeFunc(RvFile file, FileGroup group)
         {
             group.MergeFileIntoGroup(file);
         }
+
         private static bool exactFunc(RvFile file, FileGroup group)
         {
             return group.FindExactMatch(file);
         }
-
-
-
-
 
         public static void MergeInMissingFiles(FileGroup[] mergedCRCFamily, FileGroup[] mergedSHA1Family, FileGroup[] mergedMD5Family,
                                                 FileGroup[] mergedAltCRCFamily, FileGroup[] mergedAltSHA1Family, FileGroup[] mergedAltMD5Family, List<RvFile> missingFiles)
@@ -265,10 +262,8 @@ namespace RomVaultCore.FindFix
                     throw new InvalidOperationException("Missing files cannot have alt values");
                 }
 
-
                 if (f.HeaderFileType != HeaderFileType.Nothing)
                 {
-
                     if (f.CRC != null)
                     {
                         bool found = FindMissingOnAlt(f, CompareAltCRC, mergedAltCRCFamily);
@@ -311,7 +306,6 @@ namespace RomVaultCore.FindFix
 
                 if (f.CRC == null && f.SHA1 == null && f.MD5 == null)
                 {
-
                     if (f.Size == 0)
                     {
                         mergedCRCFamily[0].MergeFileIntoGroup(f);
@@ -323,8 +317,6 @@ namespace RomVaultCore.FindFix
                 }
             }
         }
-
-
 
         private static bool FindMissing(RvFile f, Compare comp, FileGroup[] mergedFamily)
         {
@@ -342,7 +334,6 @@ namespace RomVaultCore.FindFix
 
             mergedFamily[index[0]].MergeFileIntoGroup(f);
             return true;
-
         }
 
         private static bool FindMissingOnAlt(RvFile f, Compare comp, FileGroup[] mergedFamily)
@@ -353,11 +344,10 @@ namespace RomVaultCore.FindFix
 
             mergedFamily[index[0]].MergeAltFileIntoGroup(f);
             return true;
-
         }
 
-
         internal delegate bool ExactMatch(FileGroup fTest, RvFile file);
+
         internal static bool FindMatch(FileGroup[] fileGroups, RvFile file, Compare comp, ExactMatch match, out List<int> listIndex)
         {
             int intBottom = 0;
@@ -510,78 +500,86 @@ namespace RomVaultCore.FindFix
             return intRes == 0;
         }
 
-
         internal delegate int Compare(RvFile file, FileGroup fileGroup);
 
         private static int CompareCRC(RvFile file, FileGroup fileGroup)
         {
             return ArrByte.ICompare(file.CRC, fileGroup.CRC);
         }
+
         private static int CompareSHA1(RvFile file, FileGroup fileGroup)
         {
             return ArrByte.ICompare(file.SHA1, fileGroup.SHA1);
         }
+
         private static int CompareMD5(RvFile file, FileGroup fileGroup)
         {
             return ArrByte.ICompare(file.MD5, fileGroup.MD5);
         }
+
         private static int CompareAltCRC(RvFile file, FileGroup fileGroup)
         {
             return ArrByte.ICompare(file.CRC, fileGroup.AltCRC);
         }
+
         private static int CompareAltSHA1(RvFile file, FileGroup fileGroup)
         {
             return ArrByte.ICompare(file.SHA1, fileGroup.AltSHA1);
         }
+
         private static int CompareAltMD5(RvFile file, FileGroup fileGroup)
         {
             return ArrByte.ICompare(file.MD5, fileGroup.AltMD5);
         }
 
-
         public static bool FindSHA1(FileGroup fileGroup)
         {
             return fileGroup.SHA1 != null;
         }
+
         public static bool FindMD5(FileGroup fileGroup)
         {
             return fileGroup.MD5 != null;
         }
+
         public static bool FindAltCRC(FileGroup fileGroup)
         {
             return fileGroup.AltCRC != null;
         }
+
         public static bool FindAltSHA1(FileGroup fileGroup)
         {
             return fileGroup.AltSHA1 != null;
         }
+
         public static bool FindAltMD5(FileGroup fileGroup)
         {
             return fileGroup.AltMD5 != null;
         }
 
-
         public static int FamilySortSHA1(FileGroup fileGroup1, FileGroup fileGroup2)
         {
             return ArrByte.ICompare(fileGroup1.SHA1, fileGroup2.SHA1);
         }
+
         public static int FamilySortMD5(FileGroup fileGroup1, FileGroup fileGroup2)
         {
             return ArrByte.ICompare(fileGroup1.MD5, fileGroup2.MD5);
         }
+
         public static int FamilySortAltCRC(FileGroup fileGroup1, FileGroup fileGroup2)
         {
             return ArrByte.ICompare(fileGroup1.AltCRC, fileGroup2.AltCRC);
         }
+
         public static int FamilySortAltSHA1(FileGroup fileGroup1, FileGroup fileGroup2)
         {
             return ArrByte.ICompare(fileGroup1.AltSHA1, fileGroup2.AltSHA1);
         }
+
         public static int FamilySortAltMD5(FileGroup fileGroup1, FileGroup fileGroup2)
         {
             return ArrByte.ICompare(fileGroup1.AltMD5, fileGroup2.AltMD5);
         }
-
-
     }
 }

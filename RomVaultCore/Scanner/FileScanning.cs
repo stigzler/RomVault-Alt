@@ -43,10 +43,10 @@ namespace RomVaultCore.Scanner
                 return;
             }
 
-            _thWrk.Report(new bgwText("Clearing DB Status"));
+            _thWrk.Report(new bgwText("Clearing DB Status"), true);
             RepairStatus.ReportStatusReset(DB.DirRoot);
 
-            _thWrk.Report(new bgwText("Finding Dir's to Scan"));
+            _thWrk.Report(new bgwText("Finding Dir's to Scan"), true);
 
             //Next get a list of all the directories to be scanned
             List<RvFile> lstDir = new List<RvFile>();
@@ -55,7 +55,7 @@ namespace RomVaultCore.Scanner
             _thWrk.Report(new bgwRange2Visible(true));
 
             _thWrk.Report(new bgwText("Scanning Dir's"));
-            _thWrk.Report(new bgwSetRange(lstDir.Count));
+            _thWrk.Report(new bgwSetRange(lstDir.Count), true);
             //Scan the list of directories.
             for (int i = 0; i < lstDir.Count; i++)
             {
@@ -78,11 +78,11 @@ namespace RomVaultCore.Scanner
                 }
             }
 
-            _thWrk.Report(new bgwText("Updating Cache"));
+            _thWrk.Report(new bgwText("Updating Cache"), true);
             DB.Write();
 
-            _thWrk.Report(new bgwProgress(100));
-            _thWrk.Report(new bgwText("File Scan is Complete"));
+            _thWrk.Report(new bgwProgress(100), true);
+            _thWrk.Report(new bgwText("File Scan is Complete"), true);
 
             _thWrk.Finished = true;
             _cacheSaveTimer?.Stop();

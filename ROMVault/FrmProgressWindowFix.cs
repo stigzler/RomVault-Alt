@@ -115,7 +115,7 @@ namespace ROMVault
             _thWrk.StartAsync();
         }
 
-        private void BgwProgressChanged(object e)
+        private void BgwProgressChanged(object e, bool imperative)
         {
             if (e is bgwShowFix bgwSf)
             {
@@ -139,7 +139,7 @@ namespace ROMVault
 
             if (InvokeRequired)
             {
-                BeginInvoke(new MethodInvoker(() => BgwProgressChanged(e)));
+                BeginInvoke(new MethodInvoker(() => BgwProgressChanged(e, imperative)));
                 return;
             }
 
