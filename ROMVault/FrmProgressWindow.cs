@@ -30,6 +30,14 @@ namespace ROMVault
         private DateTime _dateTimeLast;
         private string _lastMessage;
 
+        private volatile bool _updatePending = false;
+        private object _latestUpdate = null;
+        private readonly object _updateLock = new object();
+
+        private DateTime _lastUiUpdate = DateTime.MinValue;
+        private const int UI_UPDATE_INTERVAL_MS = 50; // Only update UI every 50ms
+        private object _pendingUpdate = null;
+
         public FrmProgressWindow(Form parentForm, string titleRoot, WorkerStart function, Finished funcFinished)
         {
             Cancelled = false;
@@ -83,7 +91,7 @@ namespace ROMVault
             {
                 _errorOpen = true;
                 ErrorGrid.Visible = true;
-                Size newSize = new Size (this.Size.Width, this.Size.Height *2);
+                Size newSize = new Size(this.Size.Width, this.Size.Height * 2);
                 this.AutoSize = false;
                 this.Size = newSize;
                 //ClientSize = new Size(this.Width, TopPN.Height * 2);
@@ -114,10 +122,45 @@ namespace ROMVault
         {
             if (InvokeRequired)
             {
+                // Store the latest update
+                lock (_updateLock)
+                {
+                    _pendingUpdate = obj;
+                }
+
+                // Throttle: only invoke if enough time has passed
+                if ((DateTime.Now - _lastUiUpdate).TotalMilliseconds < UI_UPDATE_INTERVAL_MS)
+                {
+                    return; // Skip this update
+                }
+
+                _lastUiUpdate = DateTime.Now;
                 BeginInvoke(new MethodInvoker(() => BgwProgressChanged(obj)));
                 return;
             }
 
+            // Get the most recent update
+            object updateToProcess;
+            lock (_updateLock)
+            {
+                updateToProcess = _pendingUpdate ?? obj;
+                _pendingUpdate = null;
+            }
+
+            // Suspend layout during multiple updates
+            SuspendLayout();
+            try
+            {
+                ProcessUpdate(updateToProcess);
+            }
+            finally
+            {
+                ResumeLayout();
+            }
+        }
+
+        private void ProcessUpdate(object obj)
+        {
             if (obj is int e)
             {
                 if (e >= progressBar.Minimum && e <= progressBar.Maximum)
