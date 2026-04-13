@@ -4,13 +4,14 @@
  *     Copyright 2025                                 *
  ******************************************************/
 
+using RomVaultCore;
+using RomVaultCore.FixFile;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Media;
 using System.Reflection;
 using System.Windows.Forms;
-using RomVaultCore;
-using RomVaultCore.FixFile;
 
 namespace ROMVault
 {
@@ -26,8 +27,8 @@ namespace ROMVault
         private int _pageDisplayIndex;
 
         private bool _bDone;
-
         private bool _closeOnExit;
+        private int _expandedHeight;
 
         private ThreadWorker _thWrk;
         private readonly Finished _funcFinished;
@@ -52,6 +53,10 @@ namespace ROMVault
 
             timer1.Interval = 250;
             timer1.Enabled = true;
+            BottomPN.Visible = false;
+            MinimumSize = new Size(MinimumSize.Width, 0);
+            AutoSize = false;
+            dataGridView1.SuspendLayout();
         }
 
         protected override CreateParams CreateParams
@@ -110,6 +115,8 @@ namespace ROMVault
 
         private void FrmProgressWindowFixShown(object sender, EventArgs e)
         {
+            _expandedHeight = Height;
+            Height = TopPanel.Bottom + Padding.Bottom + (Height - ClientSize.Height);
             SetDataGridSize();
             _thWrk = new ThreadWorker(Fix.PerformFixes) { wReport = BgwProgressChanged, wFinal = BgwRunWorkerCompleted };
             _thWrk.StartAsync();
@@ -190,7 +197,15 @@ namespace ROMVault
                 return;
             }
 
-            RVPlayer.PlaySound("audio\\complete.wav");
+            MinimumSize = new Size(765, 333);
+            Height = _expandedHeight;
+            BottomPN.Visible = true;
+            dataGridView1.Visible = true;
+            dataGridView1.ResumeLayout();
+
+            SystemSounds.Asterisk.Play();
+
+            //RVPlayer.PlaySound("audio\\complete.wav");
 
             if (!_closeOnExit)
             {

@@ -52,11 +52,11 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TopPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this.MainTT = new System.Windows.Forms.ToolTip(this.components);
             this.BottomPN = new System.Windows.Forms.Panel();
             this.MainTS = new System.Windows.Forms.ToolStrip();
             this.AutsozeGridBT = new System.Windows.Forms.ToolStripButton();
-            this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.TopPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -70,7 +70,7 @@
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Location = new System.Drawing.Point(663, 3);
+            this.cancelButton.Location = new System.Drawing.Point(290, 3);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 9;
@@ -83,7 +83,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.Location = new System.Drawing.Point(3, 3);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(654, 23);
+            this.progressBar.Size = new System.Drawing.Size(281, 23);
             this.progressBar.TabIndex = 8;
             // 
             // label
@@ -129,7 +129,7 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(749, 186);
+            this.dataGridView1.Size = new System.Drawing.Size(376, 178);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
@@ -239,10 +239,10 @@
             this.TopPanel.Controls.Add(this.label);
             this.TopPanel.Controls.Add(this.flexiLabel1);
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopPanel.Location = new System.Drawing.Point(4, 4);
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Padding = new System.Windows.Forms.Padding(4);
-            this.TopPanel.Size = new System.Drawing.Size(749, 83);
+            this.TopPanel.Size = new System.Drawing.Size(376, 83);
             this.TopPanel.TabIndex = 10;
             // 
             // panel1
@@ -254,17 +254,32 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(4, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(741, 29);
+            this.panel1.Size = new System.Drawing.Size(368, 29);
             this.panel1.TabIndex = 11;
+            // 
+            // flexiLabel1
+            // 
+            this.flexiLabel1.AutoSize = true;
+            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel1.Location = new System.Drawing.Point(4, 4);
+            this.flexiLabel1.Name = "flexiLabel1";
+            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
+            this.flexiLabel1.ScaleFactor = 1.2D;
+            this.flexiLabel1.Size = new System.Drawing.Size(74, 25);
+            this.flexiLabel1.TabIndex = 0;
+            this.flexiLabel1.Text = "Fix Files";
             // 
             // BottomPN
             // 
+            this.BottomPN.AutoSize = true;
+            this.BottomPN.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BottomPN.Controls.Add(this.dataGridView1);
             this.BottomPN.Controls.Add(this.MainTS);
             this.BottomPN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomPN.Location = new System.Drawing.Point(0, 83);
+            this.BottomPN.Location = new System.Drawing.Point(4, 87);
             this.BottomPN.Name = "BottomPN";
-            this.BottomPN.Size = new System.Drawing.Size(749, 211);
+            this.BottomPN.Size = new System.Drawing.Size(376, 203);
             this.BottomPN.TabIndex = 12;
             // 
             // MainTS
@@ -274,7 +289,7 @@
             this.AutsozeGridBT});
             this.MainTS.Location = new System.Drawing.Point(0, 0);
             this.MainTS.Name = "MainTS";
-            this.MainTS.Size = new System.Drawing.Size(749, 25);
+            this.MainTS.Size = new System.Drawing.Size(376, 25);
             this.MainTS.TabIndex = 8;
             this.MainTS.Text = "toolStrip1";
             // 
@@ -290,31 +305,21 @@
             this.AutsozeGridBT.ToolTipText = "Autosize Columns";
             this.AutsozeGridBT.Click += new System.EventHandler(this.AutsozeGridBT_Click);
             // 
-            // flexiLabel1
-            // 
-            this.flexiLabel1.AutoSize = true;
-            this.flexiLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flexiLabel1.Font = new System.Drawing.Font("Roboto", 9.900001F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel1.Location = new System.Drawing.Point(4, 4);
-            this.flexiLabel1.Name = "flexiLabel1";
-            this.flexiLabel1.Padding = new System.Windows.Forms.Padding(4);
-            this.flexiLabel1.ScaleFactor = 1.2D;
-            this.flexiLabel1.Size = new System.Drawing.Size(74, 25);
-            this.flexiLabel1.TabIndex = 0;
-            this.flexiLabel1.Text = "Fix Files";
-            // 
             // FrmProgressWindowFix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(749, 294);
+            this.ClientSize = new System.Drawing.Size(384, 294);
             this.Controls.Add(this.BottomPN);
             this.Controls.Add(this.TopPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(765, 333);
+            this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FrmProgressWindowFix";
+            this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fixing Files";
             this.Load += new System.EventHandler(this.FrmProgressWindowFix_Load);

@@ -87,6 +87,11 @@ namespace ROMVault
             _thWrk.wFinal = BgwRunWorkerCompleted;
             _updateTimer.Start();
             _thWrk.StartAsync();
+
+            // Force focus retention
+            this.Activate();
+            this.BringToFront();
+            this.Focus();
         }
 
         private void TimeLogShow(string message)
@@ -323,10 +328,6 @@ namespace ROMVault
             ErrorGrid.ClearSelection();
         }
 
-        private void FrmProgressWindow_Resize(object sender, EventArgs e)
-        {
-        }
-
         private void SetDataGridSize()
         {
         }
@@ -335,10 +336,6 @@ namespace ROMVault
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
             Helpers.Theming.SetFormTextSizeToDefault(this);
-        }
-
-        private void FrmProgressWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
         }
     }
 }

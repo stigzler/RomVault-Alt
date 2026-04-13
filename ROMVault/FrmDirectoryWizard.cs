@@ -10,6 +10,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -142,6 +143,7 @@ namespace ROMVault
 
         private void ValidateBT_Click(object sender, EventArgs e)
         {
+            OutcomeLB.Visible = false;
             bool isValid = ValidateSchema();
             if (!isValid) return;
             SetSaveAndGoButtons(enabled: true);
@@ -278,7 +280,12 @@ namespace ROMVault
 
             if (folderRoots.Count == 0)
             {
-                MessageBox.Show("No valid root folders selected for operation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Cursor.Current = Cursors.Default;
+                OutcomeLB.Visible = true;
+                OutcomeLB.Image = Resources.exclamation_circle;
+                OutcomeLB.Text = $"{_infoLabelPrefix}No folder roots selected";
+                SystemSounds.Hand.Play();
+
                 return;
             } // shouldn't ever fire b/c dat and rom root must always exist, but just in case
 
@@ -386,6 +393,10 @@ namespace ROMVault
             }
 
             Cursor.Current = Cursors.Default;
+            OutcomeLB.Visible = true;
+            OutcomeLB.Image = Resources.smiley;
+            OutcomeLB.Text = $"{_infoLabelPrefix}Operation completed at {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt")}";
+            SystemSounds.Asterisk.Play();
         }
 
         private void LoadSchemaBT_Click(object sender, EventArgs e)

@@ -326,9 +326,9 @@
     <None Include="Assets\FolderSchema\romm.platform-name.rvs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\FolderSchema\romm.shortcode.test.rvs">
+    <Content Include="Assets\FolderSchema\test.example.rvs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -59,6 +59,12 @@ namespace RomVaultCore.Scanner
             //Scan the list of directories.
             for (int i = 0; i < lstDir.Count; i++)
             {
+                // Bug: this bugs out the progress window. Because updating the primary progress bar also updates
+                // the window title with the 'percentage complete' this process finishes first before the main load
+                // of the process which is file scans which go to progress bar 2. Thus, the progress window shows
+                // "100% complete" for the majority of its lifetime. The fix, which I'm not doing atm is to swap around the
+                // progress bars usage - ie.  change this to _thWrk.Report(new bgwValue2(i+1)); and any existing references to
+                // bgwValue2(i+1) to  _thWrk.Report({percentage}). Can live with it for now.
                 _thWrk.Report(i + 1);
                 _thWrk.Report(new bgwText("Scanning Dir : " + lstDir[i].FullName));
                 string lDir = lstDir[i].FullName;

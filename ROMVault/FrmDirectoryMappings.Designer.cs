@@ -35,7 +35,7 @@
             this.btnDeleteSelected = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSet = new System.Windows.Forms.Button();
-            this.txtROMLocation = new System.Windows.Forms.Label();
+            this.txtROMLocation = new ROMVault.UserControls.PathLabel();
             this.lblROMLocation = new System.Windows.Forms.Label();
             this.txtDATLocation = new System.Windows.Forms.Label();
             this.lblDATLocation = new System.Windows.Forms.Label();
@@ -392,7 +392,7 @@
         private System.Windows.Forms.DataGridView DGDirectoryMappingRules;
         private System.Windows.Forms.Button btnDeleteSelected;
         private System.Windows.Forms.Button btnSet;
-        private System.Windows.Forms.Label txtROMLocation;
+        private UserControls.PathLabel txtROMLocation;
         private System.Windows.Forms.Label lblROMLocation;
         private System.Windows.Forms.Label txtDATLocation;
         private System.Windows.Forms.Label lblDATLocation;

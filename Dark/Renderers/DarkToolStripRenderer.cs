@@ -133,21 +133,24 @@ namespace Dark.Renderers
             }
 
             Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
-            using (Brush back = new SolidBrush(e.ToolStrip.BackColor))
+            Color backColor = (e.ToolStrip is ToolStripDropDown) ? dark.bg : e.ToolStrip.BackColor;
+            using (Brush back = new SolidBrush(backColor))
                 e.Graphics.FillRectangle(back, bounds);
+
+            Color foreColor = (e.ToolStrip is ToolStripDropDown) ? dark.midGrey : ControlPaint.Dark(e.ToolStrip.ForeColor);
 
             if (e.Vertical)
             {
                 int verticalPadding = (int)(((double)e.Item.Height * 20) / 100);
                 int x = Convert.ToInt32((double)bounds.Width / 2) - 1;
-                using (Pen pen = new Pen(ControlPaint.Dark(e.ToolStrip.ForeColor)))
+                using (Pen pen = new Pen(foreColor))
                     e.Graphics.DrawLine(pen, x, bounds.Top + verticalPadding, x, bounds.Bottom - 1 - verticalPadding);
             }
             else
             {
                 int horizontalPadding = (int)(((double)e.Item.Width * 20) / 100);
                 int y = Convert.ToInt32((double)bounds.Height / 2) - 1;
-                using (Pen pen = new Pen(ControlPaint.Dark(e.ToolStrip.ForeColor)))
+                using (Pen pen = new Pen(foreColor))
                     e.Graphics.DrawLine(pen, bounds.Left + horizontalPadding, y, bounds.Right - 1 - horizontalPadding, y);
             }
         }

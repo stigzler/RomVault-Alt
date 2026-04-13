@@ -35,19 +35,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SchemaInfoLB = new System.Windows.Forms.Label();
-            this.LoadSchemaPathLB = new ROMVault.UserControls.PathLabel();
             this.LoadSchemaBT = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.BottomFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.GoBT = new System.Windows.Forms.Button();
             this.SaveAsBT = new System.Windows.Forms.Button();
             this.ValidateBT = new System.Windows.Forms.Button();
             this.CancelBT = new System.Windows.Forms.Button();
-            this.TestBT = new System.Windows.Forms.Button();
             this.OptionsGB = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.CreateFoldersChB = new System.Windows.Forms.CheckBox();
             this.DeleteFoldersChB = new System.Windows.Forms.CheckBox();
-            this.CustomLocationLB = new ROMVault.UserControls.PathLabel();
             this.DeleteFilesChB = new System.Windows.Forms.CheckBox();
             this.CustomLocationBT = new System.Windows.Forms.Button();
             this.UnderCustomLocationChB = new System.Windows.Forms.CheckBox();
@@ -55,27 +52,30 @@
             this.UnderRomsChB = new System.Windows.Forms.CheckBox();
             this.OptionsPaddingPN = new System.Windows.Forms.Panel();
             this.MainTT = new System.Windows.Forms.ToolTip(this.components);
+            this.OutcomeLB = new System.Windows.Forms.Label();
             this.tabControl1 = new ROMVault.UserControls.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.SubFolerPN = new System.Windows.Forms.Panel();
-            this.SubFoldersRTB = new System.Windows.Forms.RichTextBox();
-            this.SubFolderInfoLB = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.FolderPN = new System.Windows.Forms.Panel();
             this.FoldersRTB = new System.Windows.Forms.RichTextBox();
             this.FoldersInfoLB = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.SubFolerPN = new System.Windows.Forms.Panel();
+            this.SubFoldersRTB = new System.Windows.Forms.RichTextBox();
+            this.SubFolderInfoLB = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.LogRTB = new System.Windows.Forms.RichTextBox();
+            this.CustomLocationLB = new ROMVault.UserControls.PathLabel();
+            this.LoadSchemaPathLB = new ROMVault.UserControls.PathLabel();
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.BottomFLP.SuspendLayout();
             this.OptionsGB.SuspendLayout();
             this.OptionsPaddingPN.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.SubFolerPN.SuspendLayout();
             this.FolderPN.SuspendLayout();
+            this.SubFolerPN.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,16 +86,16 @@
             this.DefaultSchemaDD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DefaultSchemaDD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DefaultSchemaDD.FormattingEnabled = true;
-            this.DefaultSchemaDD.Location = new System.Drawing.Point(103, 3);
+            this.DefaultSchemaDD.Location = new System.Drawing.Point(105, 5);
             this.DefaultSchemaDD.Name = "DefaultSchemaDD";
-            this.DefaultSchemaDD.Size = new System.Drawing.Size(321, 21);
+            this.DefaultSchemaDD.Size = new System.Drawing.Size(322, 21);
             this.DefaultSchemaDD.TabIndex = 1;
             this.DefaultSchemaDD.SelectedIndexChanged += new System.EventHandler(this.DefaultSchemaDD_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Location = new System.Drawing.Point(8, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 2;
@@ -104,7 +104,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 35);
+            this.label2.Location = new System.Drawing.Point(23, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 5;
@@ -122,7 +122,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(434, 75);
+            this.panel1.Padding = new System.Windows.Forms.Padding(2);
+            this.panel1.Size = new System.Drawing.Size(434, 79);
             this.panel1.TabIndex = 7;
             // 
             // SchemaInfoLB
@@ -131,24 +132,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SchemaInfoLB.Image = global::ROMVault.Properties.Resources.information;
             this.SchemaInfoLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SchemaInfoLB.Location = new System.Drawing.Point(100, 54);
+            this.SchemaInfoLB.Location = new System.Drawing.Point(102, 56);
             this.SchemaInfoLB.Name = "SchemaInfoLB";
-            this.SchemaInfoLB.Size = new System.Drawing.Size(324, 21);
+            this.SchemaInfoLB.Size = new System.Drawing.Size(325, 21);
             this.SchemaInfoLB.TabIndex = 6;
             this.SchemaInfoLB.Text = "      Information";
             this.SchemaInfoLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SchemaInfoLB.Visible = false;
-            // 
-            // LoadSchemaPathLB
-            // 
-            this.LoadSchemaPathLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadSchemaPathLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LoadSchemaPathLB.Location = new System.Drawing.Point(103, 30);
-            this.LoadSchemaPathLB.Margin = new System.Windows.Forms.Padding(3);
-            this.LoadSchemaPathLB.Name = "LoadSchemaPathLB";
-            this.LoadSchemaPathLB.Size = new System.Drawing.Size(237, 21);
-            this.LoadSchemaPathLB.TabIndex = 3;
             // 
             // LoadSchemaBT
             // 
@@ -156,7 +146,7 @@
             this.LoadSchemaBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.LoadSchemaBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadSchemaBT.Image = global::ROMVault.Properties.Resources.folder_horizontal_open;
-            this.LoadSchemaBT.Location = new System.Drawing.Point(346, 30);
+            this.LoadSchemaBT.Location = new System.Drawing.Point(349, 31);
             this.LoadSchemaBT.Name = "LoadSchemaBT";
             this.LoadSchemaBT.Size = new System.Drawing.Size(78, 23);
             this.LoadSchemaBT.TabIndex = 4;
@@ -166,21 +156,20 @@
             this.LoadSchemaBT.UseVisualStyleBackColor = true;
             this.LoadSchemaBT.Click += new System.EventHandler(this.LoadSchemaBT_Click);
             // 
-            // flowLayoutPanel1
+            // BottomFLP
             // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.GoBT);
-            this.flowLayoutPanel1.Controls.Add(this.SaveAsBT);
-            this.flowLayoutPanel1.Controls.Add(this.ValidateBT);
-            this.flowLayoutPanel1.Controls.Add(this.CancelBT);
-            this.flowLayoutPanel1.Controls.Add(this.TestBT);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 538);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(3);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(434, 42);
-            this.flowLayoutPanel1.TabIndex = 10;
+            this.BottomFLP.AutoSize = true;
+            this.BottomFLP.Controls.Add(this.GoBT);
+            this.BottomFLP.Controls.Add(this.SaveAsBT);
+            this.BottomFLP.Controls.Add(this.ValidateBT);
+            this.BottomFLP.Controls.Add(this.CancelBT);
+            this.BottomFLP.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.BottomFLP.Location = new System.Drawing.Point(0, 538);
+            this.BottomFLP.Name = "BottomFLP";
+            this.BottomFLP.Padding = new System.Windows.Forms.Padding(3);
+            this.BottomFLP.Size = new System.Drawing.Size(434, 42);
+            this.BottomFLP.TabIndex = 10;
             // 
             // GoBT
             // 
@@ -248,21 +237,6 @@
             this.CancelBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CancelBT.UseVisualStyleBackColor = true;
             // 
-            // TestBT
-            // 
-            this.TestBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TestBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.TestBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TestBT.Image = global::ROMVault.Properties.Resources.question_frame;
-            this.TestBT.Location = new System.Drawing.Point(7, 6);
-            this.TestBT.Name = "TestBT";
-            this.TestBT.Size = new System.Drawing.Size(34, 30);
-            this.TestBT.TabIndex = 9;
-            this.TestBT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.TestBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.TestBT.UseVisualStyleBackColor = true;
-            this.TestBT.Click += new System.EventHandler(this.TestBT_Click);
-            // 
             // OptionsGB
             // 
             this.OptionsGB.AutoSize = true;
@@ -280,7 +254,7 @@
             this.OptionsGB.Margin = new System.Windows.Forms.Padding(10);
             this.OptionsGB.Name = "OptionsGB";
             this.OptionsGB.Padding = new System.Windows.Forms.Padding(5);
-            this.OptionsGB.Size = new System.Drawing.Size(424, 133);
+            this.OptionsGB.Size = new System.Drawing.Size(424, 132);
             this.OptionsGB.TabIndex = 11;
             this.OptionsGB.TabStop = false;
             this.OptionsGB.Text = "Options";
@@ -318,17 +292,6 @@
             this.DeleteFoldersChB.UseVisualStyleBackColor = true;
             this.DeleteFoldersChB.CheckedChanged += new System.EventHandler(this.DeleteFoldersChB_CheckedChanged);
             // 
-            // CustomLocationLB
-            // 
-            this.CustomLocationLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomLocationLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CustomLocationLB.Location = new System.Drawing.Point(19, 89);
-            this.CustomLocationLB.Margin = new System.Windows.Forms.Padding(3);
-            this.CustomLocationLB.Name = "CustomLocationLB";
-            this.CustomLocationLB.Size = new System.Drawing.Size(312, 21);
-            this.CustomLocationLB.TabIndex = 8;
-            // 
             // DeleteFilesChB
             // 
             this.DeleteFilesChB.AutoSize = true;
@@ -348,7 +311,7 @@
             this.CustomLocationBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.CustomLocationBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CustomLocationBT.Image = global::ROMVault.Properties.Resources.folder_horizontal_open;
-            this.CustomLocationBT.Location = new System.Drawing.Point(337, 89);
+            this.CustomLocationBT.Location = new System.Drawing.Point(339, 88);
             this.CustomLocationBT.Name = "CustomLocationBT";
             this.CustomLocationBT.Size = new System.Drawing.Size(78, 23);
             this.CustomLocationBT.TabIndex = 5;
@@ -393,11 +356,25 @@
             this.OptionsPaddingPN.AutoSize = true;
             this.OptionsPaddingPN.Controls.Add(this.OptionsGB);
             this.OptionsPaddingPN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.OptionsPaddingPN.Location = new System.Drawing.Point(0, 395);
+            this.OptionsPaddingPN.Location = new System.Drawing.Point(0, 375);
             this.OptionsPaddingPN.Name = "OptionsPaddingPN";
             this.OptionsPaddingPN.Padding = new System.Windows.Forms.Padding(5);
-            this.OptionsPaddingPN.Size = new System.Drawing.Size(434, 143);
+            this.OptionsPaddingPN.Size = new System.Drawing.Size(434, 142);
             this.OptionsPaddingPN.TabIndex = 12;
+            // 
+            // OutcomeLB
+            // 
+            this.OutcomeLB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.OutcomeLB.Image = global::ROMVault.Properties.Resources.information;
+            this.OutcomeLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OutcomeLB.Location = new System.Drawing.Point(0, 517);
+            this.OutcomeLB.Name = "OutcomeLB";
+            this.OutcomeLB.Padding = new System.Windows.Forms.Padding(10, 2, 2, 2);
+            this.OutcomeLB.Size = new System.Drawing.Size(434, 21);
+            this.OutcomeLB.TabIndex = 14;
+            this.OutcomeLB.Text = "     Information";
+            this.OutcomeLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OutcomeLB.Visible = false;
             // 
             // tabControl1
             // 
@@ -406,17 +383,17 @@
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.HideBorders = true;
             this.tabControl1.HideTabs = false;
-            this.tabControl1.ItemSize = new System.Drawing.Size(58, 23);
-            this.tabControl1.Location = new System.Drawing.Point(0, 108);
+            this.tabControl1.ItemSize = new System.Drawing.Size(101, 23);
+            this.tabControl1.Location = new System.Drawing.Point(0, 112);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.SelectedTabColor = System.Drawing.Color.Transparent;
-            this.tabControl1.Size = new System.Drawing.Size(434, 287);
+            this.tabControl1.Size = new System.Drawing.Size(434, 263);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 13;
             this.tabControl1.TabOutlineColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tabControl1.TabPadding = 5;
-            this.tabControl1.UnselectedTabBackColor = System.Drawing.SystemColors.ControlDark;
+            this.tabControl1.UnselectedTabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             // 
             // tabPage1
             // 
@@ -425,10 +402,58 @@
             this.tabPage1.Location = new System.Drawing.Point(0, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(434, 262);
+            this.tabPage1.Size = new System.Drawing.Size(434, 238);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Schema Setup";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // FolderPN
+            // 
+            this.FolderPN.Controls.Add(this.FoldersRTB);
+            this.FolderPN.Controls.Add(this.FoldersInfoLB);
+            this.FolderPN.Controls.Add(this.label3);
+            this.FolderPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FolderPN.Location = new System.Drawing.Point(3, 3);
+            this.FolderPN.MinimumSize = new System.Drawing.Size(0, 100);
+            this.FolderPN.Name = "FolderPN";
+            this.FolderPN.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.FolderPN.Size = new System.Drawing.Size(428, 125);
+            this.FolderPN.TabIndex = 8;
+            // 
+            // FoldersRTB
+            // 
+            this.FoldersRTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FoldersRTB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FoldersRTB.Location = new System.Drawing.Point(5, 22);
+            this.FoldersRTB.Name = "FoldersRTB";
+            this.FoldersRTB.Size = new System.Drawing.Size(418, 79);
+            this.FoldersRTB.TabIndex = 6;
+            this.FoldersRTB.Text = "";
+            this.FoldersRTB.TextChanged += new System.EventHandler(this.FoldersRTB_TextChanged);
+            // 
+            // FoldersInfoLB
+            // 
+            this.FoldersInfoLB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.FoldersInfoLB.Image = global::ROMVault.Properties.Resources.information;
+            this.FoldersInfoLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FoldersInfoLB.Location = new System.Drawing.Point(5, 101);
+            this.FoldersInfoLB.Name = "FoldersInfoLB";
+            this.FoldersInfoLB.Size = new System.Drawing.Size(418, 21);
+            this.FoldersInfoLB.TabIndex = 8;
+            this.FoldersInfoLB.Text = "      Information";
+            this.FoldersInfoLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FoldersInfoLB.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Location = new System.Drawing.Point(5, 3);
+            this.label3.Name = "label3";
+            this.label3.Padding = new System.Windows.Forms.Padding(3);
+            this.label3.Size = new System.Drawing.Size(50, 19);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Folders:";
             // 
             // SubFolerPN
             // 
@@ -436,7 +461,7 @@
             this.SubFolerPN.Controls.Add(this.SubFolderInfoLB);
             this.SubFolerPN.Controls.Add(this.label4);
             this.SubFolerPN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SubFolerPN.Location = new System.Drawing.Point(3, 152);
+            this.SubFolerPN.Location = new System.Drawing.Point(3, 128);
             this.SubFolerPN.MinimumSize = new System.Drawing.Size(0, 50);
             this.SubFolerPN.Name = "SubFolerPN";
             this.SubFolerPN.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
@@ -478,61 +503,13 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Sub Folders:";
             // 
-            // FolderPN
-            // 
-            this.FolderPN.Controls.Add(this.FoldersRTB);
-            this.FolderPN.Controls.Add(this.FoldersInfoLB);
-            this.FolderPN.Controls.Add(this.label3);
-            this.FolderPN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FolderPN.Location = new System.Drawing.Point(3, 3);
-            this.FolderPN.MinimumSize = new System.Drawing.Size(0, 100);
-            this.FolderPN.Name = "FolderPN";
-            this.FolderPN.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.FolderPN.Size = new System.Drawing.Size(428, 149);
-            this.FolderPN.TabIndex = 8;
-            // 
-            // FoldersRTB
-            // 
-            this.FoldersRTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FoldersRTB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FoldersRTB.Location = new System.Drawing.Point(5, 22);
-            this.FoldersRTB.Name = "FoldersRTB";
-            this.FoldersRTB.Size = new System.Drawing.Size(418, 103);
-            this.FoldersRTB.TabIndex = 6;
-            this.FoldersRTB.Text = "";
-            this.FoldersRTB.TextChanged += new System.EventHandler(this.FoldersRTB_TextChanged);
-            // 
-            // FoldersInfoLB
-            // 
-            this.FoldersInfoLB.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.FoldersInfoLB.Image = global::ROMVault.Properties.Resources.information;
-            this.FoldersInfoLB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FoldersInfoLB.Location = new System.Drawing.Point(5, 125);
-            this.FoldersInfoLB.Name = "FoldersInfoLB";
-            this.FoldersInfoLB.Size = new System.Drawing.Size(418, 21);
-            this.FoldersInfoLB.TabIndex = 8;
-            this.FoldersInfoLB.Text = "      Information";
-            this.FoldersInfoLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FoldersInfoLB.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Location = new System.Drawing.Point(5, 3);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(3);
-            this.label3.Size = new System.Drawing.Size(50, 19);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Folders:";
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.LogRTB);
             this.tabPage2.Location = new System.Drawing.Point(0, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(434, 262);
+            this.tabPage2.Size = new System.Drawing.Size(434, 238);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Log";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -543,10 +520,32 @@
             this.LogRTB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LogRTB.Location = new System.Drawing.Point(3, 3);
             this.LogRTB.Name = "LogRTB";
-            this.LogRTB.Size = new System.Drawing.Size(428, 256);
+            this.LogRTB.Size = new System.Drawing.Size(428, 232);
             this.LogRTB.TabIndex = 0;
             this.LogRTB.Text = "";
             this.LogRTB.WordWrap = false;
+            // 
+            // CustomLocationLB
+            // 
+            this.CustomLocationLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomLocationLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CustomLocationLB.Location = new System.Drawing.Point(19, 89);
+            this.CustomLocationLB.Margin = new System.Windows.Forms.Padding(3);
+            this.CustomLocationLB.Name = "CustomLocationLB";
+            this.CustomLocationLB.Size = new System.Drawing.Size(314, 21);
+            this.CustomLocationLB.TabIndex = 8;
+            // 
+            // LoadSchemaPathLB
+            // 
+            this.LoadSchemaPathLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoadSchemaPathLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LoadSchemaPathLB.Location = new System.Drawing.Point(105, 32);
+            this.LoadSchemaPathLB.Margin = new System.Windows.Forms.Padding(3);
+            this.LoadSchemaPathLB.Name = "LoadSchemaPathLB";
+            this.LoadSchemaPathLB.Size = new System.Drawing.Size(238, 21);
+            this.LoadSchemaPathLB.TabIndex = 3;
             // 
             // flexiLabel1
             // 
@@ -568,7 +567,8 @@
             this.ClientSize = new System.Drawing.Size(434, 580);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.OptionsPaddingPN);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.OutcomeLB);
+            this.Controls.Add(this.BottomFLP);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flexiLabel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -579,17 +579,17 @@
             this.Load += new System.EventHandler(this.FrmDirectoryWizard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.BottomFLP.ResumeLayout(false);
             this.OptionsGB.ResumeLayout(false);
             this.OptionsGB.PerformLayout();
             this.OptionsPaddingPN.ResumeLayout(false);
             this.OptionsPaddingPN.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.SubFolerPN.ResumeLayout(false);
-            this.SubFolerPN.PerformLayout();
             this.FolderPN.ResumeLayout(false);
             this.FolderPN.PerformLayout();
+            this.SubFolerPN.ResumeLayout(false);
+            this.SubFolerPN.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -611,7 +611,7 @@
         private System.Windows.Forms.Panel SubFolerPN;
         private System.Windows.Forms.RichTextBox SubFoldersRTB;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private  System.Windows.Forms.FlowLayoutPanel BottomFLP;
         private System.Windows.Forms.Button GoBT;
         private System.Windows.Forms.Button CancelBT;
         private System.Windows.Forms.Button ValidateBT;
@@ -627,7 +627,6 @@
         private System.Windows.Forms.Label SubFolderInfoLB;
         private System.Windows.Forms.Button SaveAsBT;
         private UserControls.PathLabel CustomLocationLB;
-        private System.Windows.Forms.Button TestBT;
         private System.Windows.Forms.CheckBox DeleteFoldersChB;
         private System.Windows.Forms.CheckBox CreateFoldersChB;
         private System.Windows.Forms.ToolTip MainTT;
@@ -636,5 +635,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.RichTextBox LogRTB;
+        private System.Windows.Forms.Label OutcomeLB;
     }
 }

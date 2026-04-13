@@ -10,9 +10,8 @@ using RomVaultCore.Scanner;
 
 namespace RomVaultCmd
 {
-    class Program
+    internal class Program
     {
-
         private static ThreadWorker _thWrk;
 
         private static bool doUpdateDATs = false;
@@ -41,19 +40,23 @@ namespace RomVaultCmd
                         case "?":
                             ShowHelp();
                             return;
+
                         case "update":
                         case "u":
                             doUpdateDATs = true;
                             break;
+
                         case "scan":
                         case "s":
                             doScanROMs = true;
                             break;
+
                         case "fix":
                         case "f":
                             doFindFixes = true;
                             doFixROMs = true;
                             break;
+
                         case "all":
                         case "a":
                             doUpdateDATs = true;
@@ -61,17 +64,18 @@ namespace RomVaultCmd
                             doFindFixes = true;
                             doFixROMs = true;
                             break;
+
                         case "scanfix":
                         case "sf":
                             doScanROMs = true;
                             doFindFixes = true;
                             doFixROMs = true;
                             break;
+
                         default:
                             Console.WriteLine("Unknown arg: " + arg);
                             return;
                     }
-
                 }
                 else
                 {
@@ -152,7 +156,6 @@ namespace RomVaultCmd
             }
         }
 
-
         private static void StartUpCode(ThreadWorker thWrk)
         {
             RepairStatus.InitStatusCheck();
@@ -160,9 +163,7 @@ namespace RomVaultCmd
             DB.Read(thWrk);
         }
 
-
-
-        private static void BgwProgressChanged(object e)
+        private static void BgwProgressChanged(object e, bool imperative)
         {
             if (e is int percent)
             {
@@ -235,6 +236,5 @@ namespace RomVaultCmd
                 }
             }
         }
-
     }
 }
