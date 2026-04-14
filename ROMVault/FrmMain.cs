@@ -1888,26 +1888,18 @@ namespace ROMVault
             InitialiseStatusStrip();
 
             ctrRvTree.Visible = true;
-
-            UpdateDataGridViewsColSizing();
-
             MainPG.MoveSplitterTo(200);
 
             ResumeLayout(true);
             PerformLayout();
 
-            BeginInvoke((MethodInvoker)delegate
-            {
-                ApplySplitterMoves();
-                splitToolBarMain.PerformLayout();
-                splitDatInfoGameInfo.PerformLayout();
-                splitGameInfoLists.PerformLayout();
-                splitGameListRomList.PerformLayout();
-                PerformLayout();
+            ApplySplitterMoves();
+            PerformLayout();
 
-                _isApplyingStartupLayout = false;
-                _startupLayoutApplied = true;
-            });
+            UpdateDataGridViewsColSizing();
+
+            _isApplyingStartupLayout = false;
+            _startupLayoutApplied = true;
         }
 
         private void splitToolBarMain_SplitterMoved(object sender, SplitterEventArgs e)
@@ -1957,6 +1949,14 @@ namespace ROMVault
 
         private void CollapseSidebar()
         {
+            if (_isApplyingStartupLayout)
+            {
+                ToggleNavText(visible: false);
+                splitToolBarMain.SplitterDistance = 68;
+                HideNavBT.Image = Properties.Resources.MenuExpand;
+                return;
+            }
+
             splitToolBarMain.Visible = false;
             splitToolBarMain.SuspendLayout();
 
