@@ -38,15 +38,20 @@ namespace ROMVault.UserControls
             _toolTipTexts[control] = caption ?? string.Empty;
         }
 
-        private void ToolTip_Popup(object sender, PopupEventArgs e)
+        internal Size GetSuggestedToolTipSize(Control associatedControl, string text)
         {
-            string text = GetTextForControl(e.AssociatedControl);
-            using (Font font = GetScaledFont(e.AssociatedControl))
+            using (Font font = GetScaledFont(associatedControl))
             {
                 string formattedText = FormatTextToBox(text, font, MaxTextWidth);
                 Size textSize = MeasureFormattedText(formattedText, font);
-                e.ToolTipSize = new Size(textSize.Width + (HorizontalPadding * 2), textSize.Height + (VerticalPadding * 2));
+                return new Size(textSize.Width + (HorizontalPadding * 2), textSize.Height + (VerticalPadding * 2));
             }
+        }
+
+        private void ToolTip_Popup(object sender, PopupEventArgs e)
+        {
+            string text = GetTextForControl(e.AssociatedControl);
+            e.ToolTipSize = GetSuggestedToolTipSize(e.AssociatedControl, text);
         }
 
         private void ToolTip_Draw(object sender, DrawToolTipEventArgs e)

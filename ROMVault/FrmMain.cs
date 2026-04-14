@@ -910,29 +910,28 @@ namespace ROMVault
                 string text = statusLabel.ToolTipText;
                 if (string.IsNullOrEmpty(text)) return;
 
-                // 1. Ensure the tooltip is in standard mode
                 tooltip.IsBalloon = false;
 
-                // 2. Measure the exact height and width of the multiline text
-                Size textSize = TextRenderer.MeasureText(text, SystemFonts.MessageBoxFont);
-
-                // 3. Set the X position to the left of the label
-                int x = statusLabel.Bounds.Left;
-
-                // 4. Check for right-edge collision against the StatusStrip's width
-                // Add 10px for the tooltip's internal border padding
-                if (x + textSize.Width + 10 > MainSS.Width)
+                Size tooltipSize;
+                if (tooltip is ROMVault.UserControls.ToolTip customToolTip)
                 {
-                    x = MainSS.Width - textSize.Width - 10;
+                    tooltipSize = customToolTip.GetSuggestedToolTipSize(MainSS, text);
+                }
+                else
+                {
+                    tooltipSize = TextRenderer.MeasureText(text, SystemFonts.MessageBoxFont);
                 }
 
-                // Safety check for the left edge
-                if (x < 0) x = 5;
+                int x = statusLabel.Bounds.Left;
 
-                // 5. Calculate Y so the bottom of the tooltip rests 5px above the bar
-                // Since we are referencing 'MainSS', Y coordinates are relative to the top of the bar.
-                // A negative Y value pushes it ABOVE the bar.
-                int y = -textSize.Height - 5;
+                if (x + tooltipSize.Width > MainSS.Width)
+                {
+                    x = MainSS.Width - tooltipSize.Width;
+                }
+
+                if (x < 0) x = 0;
+
+                int y = -tooltipSize.Height - 2;
 
                 tooltip.Show(text, MainSS, x, y);
             }

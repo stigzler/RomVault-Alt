@@ -183,7 +183,7 @@ namespace ROMVault
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.garbageCollectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.tooltip = new ROMVault.UserControls.ToolTip();
             this.MainSS = new System.Windows.Forms.StatusStrip();
             this.CollapseAllSSBT = new System.Windows.Forms.ToolStripStatusLabel();
             this.DatsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
@@ -1990,6 +1990,7 @@ namespace ROMVault
             // 
             this.tooltip.AutoPopDelay = 32767;
             this.tooltip.InitialDelay = 1000;
+            this.tooltip.OwnerDraw = true;
             this.tooltip.ReshowDelay = 500;
             // 
             // MainSS
@@ -2240,7 +2241,7 @@ namespace ROMVault
         private System.Windows.Forms.TabPage tabMedium;
         private System.Windows.Forms.PictureBox picMedium2;
         private System.Windows.Forms.PictureBox picMedium1;
-        private System.Windows.Forms.ToolTip tooltip;
+        private UserControls.ToolTip tooltip;
         private System.Windows.Forms.DataGridViewImageColumn CGot;
         private System.Windows.Forms.DataGridViewTextBoxColumn CRom;
         private System.Windows.Forms.DataGridViewTextBoxColumn CMerge;
