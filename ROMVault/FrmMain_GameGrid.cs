@@ -132,7 +132,9 @@ namespace ROMVault
             _updatingGameGrid = true;
 
             ClearGameGrid();
+            Cursor.Current = Cursors.WaitCursor;
             UpdateGameGrid();
+            Cursor.Current = Cursors.Default;
         }
 
         private void UpdateGameGrid(bool onTimer = false)

@@ -6,6 +6,7 @@
 
 using System;
 using System.Drawing;
+using System.Media;
 using System.Reflection;
 using System.Windows.Forms;
 using RomVaultCore;
@@ -286,7 +287,8 @@ namespace ROMVault
             progressBar.Value = progressBar.Maximum;
             UpdateStatusText();
 
-            RVPlayer.PlaySound("audio\\complete.wav");
+            //RVPlayer.PlaySound("audio\\complete.wav");
+            SystemSounds.Asterisk.Play();
 
             cancelButton.Visible = true;
             cancelButton.Text = "Close";
@@ -294,11 +296,19 @@ namespace ROMVault
 
             if (_errorOpen)
             {
+                cancelButton.Visible = true;
+                cancelButton.Text = "Close";
+                cancelButton.Enabled = true;
                 _bDone = true;
             }
             else
             {
                 _funcFinished?.Invoke();
+                if (Properties.Settings.Default.AutoCloseProgressWindow)
+                {
+                    _parentForm.Show();
+                    Close();
+                }
             }
         }
 

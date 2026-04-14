@@ -265,5 +265,17 @@ namespace ROMVault.Properties {
                 this["SettingsSplitterDistance"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoCloseProgressWindow {
+            get {
+                return ((bool)(this["AutoCloseProgressWindow"]));
+            }
+            set {
+                this["AutoCloseProgressWindow"] = value;
+            }
+        }
     }
 }

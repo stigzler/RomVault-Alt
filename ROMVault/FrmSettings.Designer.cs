@@ -45,8 +45,9 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.MainSS = new System.Windows.Forms.StatusStrip();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.MainTT = new System.Windows.Forms.ToolTip(this.components);
+            this.MainTT = new ROMVault.UserControls.ToolTip();
             this.MoveDontCopyDatsChB = new System.Windows.Forms.CheckBox();
+            this.AutoCloseProgressChB = new System.Windows.Forms.CheckBox();
             this.LeftPN = new System.Windows.Forms.Panel();
             this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.MainTC = new ROMVault.UserControls.TabControl();
@@ -77,9 +78,7 @@
             this.flexiLabel4 = new ROMVault.UserControls.FlexiLabel();
             this.FileOperationsTP = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.DeleteOrigRomsRelocateChB = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.MoveFilesNotCopyChB = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chkDetailedReporting = new System.Windows.Forms.CheckBox();
@@ -93,7 +92,6 @@
             this.flexiLabel5 = new ROMVault.UserControls.FlexiLabel();
             this.UiTP = new System.Windows.Forms.TabPage();
             this.OperationalGB = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.EnableGamesGridRClickChB = new System.Windows.Forms.CheckBox();
             this.AppearanceThemesGB = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -251,6 +249,10 @@
             this.MainSS.TabIndex = 52;
             this.MainSS.Text = "statusStrip1";
             // 
+            // MainTT
+            // 
+            this.MainTT.OwnerDraw = true;
+            // 
             // MoveDontCopyDatsChB
             // 
             this.MoveDontCopyDatsChB.AutoSize = true;
@@ -262,6 +264,17 @@
             this.MainTT.SetToolTip(this.MoveDontCopyDatsChB, "By default, RomVault copies any DAT fies to the Dat vault directory, preserving o" +
         "riginal copies. Set this if you just want to move them instead.");
             this.MoveDontCopyDatsChB.UseVisualStyleBackColor = true;
+            // 
+            // AutoCloseProgressChB
+            // 
+            this.AutoCloseProgressChB.AutoSize = true;
+            this.AutoCloseProgressChB.Location = new System.Drawing.Point(11, 42);
+            this.AutoCloseProgressChB.Name = "AutoCloseProgressChB";
+            this.AutoCloseProgressChB.Size = new System.Drawing.Size(159, 17);
+            this.AutoCloseProgressChB.TabIndex = 2;
+            this.AutoCloseProgressChB.Text = "Auto Close progress window";
+            this.MainTT.SetToolTip(this.AutoCloseProgressChB, "Closes the progress window on operation completion automoatically");
+            this.AutoCloseProgressChB.UseVisualStyleBackColor = true;
             // 
             // LeftPN
             // 
@@ -658,49 +671,26 @@
             // groupBox5
             // 
             this.groupBox5.AutoSize = true;
-            this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.DeleteOrigRomsRelocateChB);
-            this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.MoveFilesNotCopyChB);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(8, 223);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(428, 205);
+            this.groupBox5.Size = new System.Drawing.Size(428, 78);
             this.groupBox5.TabIndex = 50;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Rom Imports";
             // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.Location = new System.Drawing.Point(37, 115);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(385, 74);
-            this.label13.TabIndex = 47;
-            this.label13.Text = resources.GetString("label13.Text");
-            // 
             // DeleteOrigRomsRelocateChB
             // 
             this.DeleteOrigRomsRelocateChB.AutoSize = true;
-            this.DeleteOrigRomsRelocateChB.Location = new System.Drawing.Point(14, 95);
+            this.DeleteOrigRomsRelocateChB.Location = new System.Drawing.Point(14, 42);
             this.DeleteOrigRomsRelocateChB.Name = "DeleteOrigRomsRelocateChB";
             this.DeleteOrigRomsRelocateChB.Size = new System.Drawing.Size(196, 17);
             this.DeleteOrigRomsRelocateChB.TabIndex = 46;
             this.DeleteOrigRomsRelocateChB.Text = "Delete original ROMs after Relocate";
+            this.MainTT.SetToolTip(this.DeleteOrigRomsRelocateChB, resources.GetString("DeleteOrigRomsRelocateChB.ToolTip"));
             this.DeleteOrigRomsRelocateChB.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.Location = new System.Drawing.Point(37, 43);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(385, 49);
-            this.label10.TabIndex = 45;
-            this.label10.Text = "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
-    "is if you wish to Move them instead (you will loose the files from your original" +
-    " location)";
             // 
             // MoveFilesNotCopyChB
             // 
@@ -710,6 +700,9 @@
             this.MoveFilesNotCopyChB.Size = new System.Drawing.Size(155, 17);
             this.MoveFilesNotCopyChB.TabIndex = 44;
             this.MoveFilesNotCopyChB.Text = "Move files rather than Copy";
+            this.MainTT.SetToolTip(this.MoveFilesNotCopyChB, "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
+        "is if you wish to Move them instead (you will loose the files from your original" +
+        " location)");
             this.MoveFilesNotCopyChB.UseVisualStyleBackColor = true;
             // 
             // groupBox3
@@ -838,29 +831,15 @@
             // 
             // OperationalGB
             // 
-            this.OperationalGB.Controls.Add(this.label9);
+            this.OperationalGB.Controls.Add(this.AutoCloseProgressChB);
             this.OperationalGB.Controls.Add(this.EnableGamesGridRClickChB);
             this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
             this.OperationalGB.Location = new System.Drawing.Point(8, 167);
             this.OperationalGB.Name = "OperationalGB";
-            this.OperationalGB.Size = new System.Drawing.Size(428, 101);
+            this.OperationalGB.Size = new System.Drawing.Size(428, 68);
             this.OperationalGB.TabIndex = 52;
             this.OperationalGB.TabStop = false;
             this.OperationalGB.Text = "Operational";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoEllipsis = true;
-            this.label9.Location = new System.Drawing.Point(39, 39);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(380, 50);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "By default, you have to press shift and R Click to get the context menu. R Click " +
-    "copies the rom name to your clipboard. This is reversed if this setting is enabl" +
-    "ed.";
             // 
             // EnableGamesGridRClickChB
             // 
@@ -1251,13 +1230,11 @@
         private System.Windows.Forms.NumericUpDown MainTextSizeNUM;
         private System.Windows.Forms.CheckBox chkDarkMode;
         private System.Windows.Forms.GroupBox OperationalGB;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox EnableGamesGridRClickChB;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox MoveFilesNotCopyChB;
         private System.Windows.Forms.ImageList DatFormatLvLineHeightForcer;
-        private System.Windows.Forms.ToolTip MainTT;
+        private UserControls.ToolTip MainTT;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown StatusIconSizeNUM;
         private System.Windows.Forms.CheckBox StatusIconSizeAutoChB;
@@ -1275,7 +1252,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox InfoTextColorPB;
         private System.Windows.Forms.CheckBox DeleteOrigRomsRelocateChB;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TabPage DatVaultTP;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox MoveDontCopyDatsChB;
@@ -1291,5 +1267,6 @@
         private UserControls.FlexiLabel flexiLabel4;
         private UserControls.FlexiLabel flexiLabel5;
         private System.Windows.Forms.SplitContainer MainSC;
+        private System.Windows.Forms.CheckBox AutoCloseProgressChB;
     }
 }

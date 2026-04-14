@@ -155,6 +155,7 @@ namespace ROMVault
             RomsGotLB.ForeColor = setts.RomGotColor;
             RomsMissingLB.ForeColor = setts.RomMissingColor;
             RomsUnknownLB.ForeColor = setts.RomUnknownColor;
+            AutoCloseProgressChB.Checked = setts.AutoCloseProgressWindow;
         }
 
         private void BtnCancelClick(object sender, EventArgs e)
@@ -247,6 +248,7 @@ namespace ROMVault
             setts.RomGotColor = RomsGotLB.ForeColor;
             setts.RomMissingColor = RomsMissingLB.ForeColor;
             setts.RomUnknownColor = RomsUnknownLB.ForeColor;
+            setts.AutoCloseProgressWindow = AutoCloseProgressChB.Checked;
 
             mainForm.UpdateThemeAndControls();
 
