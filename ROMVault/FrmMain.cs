@@ -110,35 +110,9 @@ namespace ROMVault
 
         #region MainUISetup
 
-        public FrmMain()
+        private void SetupStatusColors()
         {
-            InitializeComponent();
-
-            SetupControlLists(); // used in UI management
-
-            //Theming.SetFormTextSizeToDefault(this);
-
-            AddGameMetaData();
-            //Text = $@"RomVault ({Program.strVersion}) {Application.StartupPath}";
-            Text = $@"RomVault ({Program.strVersion})";
-
-            Type dgvType = GameGrid.GetType();
-            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(GameGrid, true, null);
-
-            dgvType = RomGrid.GetType();
-            pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(RomGrid, true, null);
-
-            _displayColor = new Color[(int)RepStatus.EndValue];
-            _fontColor = new Color[(int)RepStatus.EndValue];
-
-            darkModeToolStripMenuItem.Checked = Settings.rvSettings.Darkness;
-
-            // RepStatus.UnSet
-
             _displayColor[(int)RepStatus.UnScanned] = CBlue;
-
             _displayColor[(int)RepStatus.DirCorrect] = CGreen;
             _displayColor[(int)RepStatus.DirMissing] = CRed;
             _displayColor[(int)RepStatus.DirCorrupt] = CBrightRed; //BrightRed
@@ -174,11 +148,41 @@ namespace ROMVault
             {
                 _fontColor[i] = Contrasty(_displayColor[i]);
             }
+        }
+
+        public FrmMain()
+        {
+            InitializeComponent();
+
+            SetupControlLists(); // used in UI management
+
+            AddGameMetaData();
+
+            // Form specific UI setup:
+            Text = $@"RomVault ({Program.strVersion})";
+
+            Type dgvType = GameGrid.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(GameGrid, true, null);
+
+            dgvType = RomGrid.GetType();
+            pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(RomGrid, true, null);
+
+            _displayColor = new Color[(int)RepStatus.EndValue];
+            _fontColor = new Color[(int)RepStatus.EndValue];
+
+            darkModeToolStripMenuItem.Checked = Settings.rvSettings.Darkness;
+
+            SetupStatusColors();
+
             _gameGridColumnXPositions = new int[(int)RepStatus.EndValue];
 
             ctrRvTree.Setup(ref DB.DirRoot);
 
             splitContainer4_Panel1_Resize(new object(), new EventArgs());
+
+            #region ToolstripMenus
 
             ToolStripMenuItem mnuScan1 = new ToolStripMenuItem
             {
@@ -445,6 +449,8 @@ namespace ROMVault
             _mnuToSortDown.Click += MnuToSortDown;
             _mnuToSortLock.Click += ToSortLock;
 
+            #endregion
+
             chkBoxShowCompleteTSI.Checked = Settings.rvSettings.chkBoxShowComplete;
             chkBoxShowPartialTSI.Checked = Settings.rvSettings.chkBoxShowPartial; // I dunno what this settings system is doing - seem to always revert to true on load? Despite settings being explicitly set and saved at preivous runtime
             chkBoxShowFixesTSI.Checked = Settings.rvSettings.chkBoxShowFixes;
@@ -460,7 +466,6 @@ namespace ROMVault
             tooltip.SetToolTip(btnDefault2, "Right Click: Save Tree Settings\nLeft Click: Load Tree Settings");
             tooltip.SetToolTip(btnDefault3, "Right Click: Save Tree Settings\nLeft Click: Load Tree Settings");
             tooltip.SetToolTip(btnDefault4, "Right Click: Save Tree Settings\nLeft Click: Load Tree Settings");
-
             tooltip.SetToolTip(btnUpdateDats, "Left Click: Dat Update\nShift Left Click: Full Dat Rescan\n\nRight Click: Open DatVault");
             tooltip.SetToolTip(btnFixFiles, "Left Click: Fix Files\nRight Click: Scan / Find Fix / Fix");
 
@@ -475,6 +480,11 @@ namespace ROMVault
             InitGameGridMenu();
 
             UpdateThemeAndControls();
+        }
+
+        private void SetupToolstripMenus()
+        {
+            throw new NotImplementedException();
         }
 
         private void mnuEditDat(object sender, EventArgs e)
@@ -821,6 +831,38 @@ namespace ROMVault
             RomsMissingLB.ForeColor = setts.RomMissingColor;
             RomsFixableLB.ForeColor = setts.RomFixableColor;
             RomsUnknownLB.ForeColor = setts.RomUnknownColor;
+
+            // Moved out of Shown:
+            // Restore visuals
+            if (Properties.Settings.Default.WindowPosition != new Point(0, 0))
+                this.Location = Properties.Settings.Default.WindowPosition;
+
+            if (Properties.Settings.Default.WindowSize != new Size(0, 0))
+                this.Size = Properties.Settings.Default.WindowSize;
+
+            // Restore splitters
+            if (Properties.Settings.Default.SidebarSplitterDistance != 0)
+                splitToolBarMain.SplitterDistance = Properties.Settings.Default.SidebarSplitterDistance;
+
+            if (Properties.Settings.Default.DatGameSplitterDistance != 0)
+                splitDatInfoGameInfo.SplitterDistance = Properties.Settings.Default.DatGameSplitterDistance;
+
+            if (Properties.Settings.Default.GameInfoSplitterDistance != 0)
+                splitGameInfoLists.SplitterDistance = Properties.Settings.Default.GameInfoSplitterDistance;
+
+            if (Properties.Settings.Default.RomListSplitterDistance != 0)
+                splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
+
+            // Set up status strip
+            InitialiseStatusStrip();
+
+            ctrRvTree.Visible = true;
+
+            // PropertyGrid
+            MainPG.MoveSplitterTo(200);
+
+            // DataGridViews
+            UpdateDataGridViewsColSizing();
         }
 
         internal void InitialiseStatusStrip()
@@ -1834,37 +1876,6 @@ namespace ROMVault
         /// <param name="e"></param>
         private void FrmMain_Shown(object sender, EventArgs e)
         {
-            // Restore visuals
-            if (Properties.Settings.Default.WindowPosition != new Point(0, 0))
-                this.Location = Properties.Settings.Default.WindowPosition;
-
-            if (Properties.Settings.Default.WindowSize != new Size(0, 0))
-                this.Size = Properties.Settings.Default.WindowSize;
-
-            // Restore splitters
-            if (Properties.Settings.Default.SidebarSplitterDistance != 0)
-                splitToolBarMain.SplitterDistance = Properties.Settings.Default.SidebarSplitterDistance;
-
-            if (Properties.Settings.Default.DatGameSplitterDistance != 0)
-                splitDatInfoGameInfo.SplitterDistance = Properties.Settings.Default.DatGameSplitterDistance;
-
-            if (Properties.Settings.Default.GameInfoSplitterDistance != 0)
-                splitGameInfoLists.SplitterDistance = Properties.Settings.Default.GameInfoSplitterDistance;
-
-            if (Properties.Settings.Default.RomListSplitterDistance != 0)
-                splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
-
-            // Set up status strip
-            InitialiseStatusStrip();
-
-            ctrRvTree.Visible = true;
-
-            // PropertyGrid
-            MainPG.MoveSplitterTo(200);
-
-            // DataGridViews
-            UpdateDataGridViewsColSizing();
-
             _shown = true;
         }
 
