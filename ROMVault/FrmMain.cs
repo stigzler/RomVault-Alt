@@ -225,7 +225,8 @@ namespace ROMVault
             {
                 Text = @"Relocate ROMs",
                 Image = Properties.Resources.disc__arrow,
-                Tag = null
+                Tag = null,
+                Visible = false // not sure workign properly - hide for now
             };
 
             ToolStripMenuItem _mnuLock = new ToolStripMenuItem
@@ -797,24 +798,25 @@ namespace ROMVault
         /// </summary>
         internal void UpdateThemeAndControls(bool settingsUpdated = false)
         {
+            dark.SetColors(this, Settings.rvSettings.Darkness);
+
             int iconSize = (int)(1.5 * Properties.Settings.Default.MainTextSize);
+
             menuStrip1.ImageScalingSize = new Size(iconSize, iconSize);
 
             foreach (ToolStrip ts in FormToolstrips)
             {
+                dark.SetColors(ts, Settings.rvSettings.Darkness);
                 Theming.SetControlTextSizeToDefault(ts);
                 ts.ImageScalingSize = new Size(iconSize, iconSize);
             }
 
             foreach (ContextMenuStrip cms in ContextMenuStrips)
             {
+                dark.SetColors(cms, Settings.rvSettings.Darkness);
                 Theming.SetControlTextSizeToDefault(cms);
                 cms.ImageScalingSize = new Size(iconSize, iconSize);
             }
-
-            dark.SetColors(CopyTextCMS, Settings.rvSettings.Darkness);
-
-            dark.SetColors(this, Settings.rvSettings.Darkness);
 
             if (settingsUpdated)
             {
@@ -836,7 +838,8 @@ namespace ROMVault
             RomsFixableLB.ForeColor = setts.RomFixableColor;
             RomsUnknownLB.ForeColor = setts.RomUnknownColor;
 
-            //InitialiseStatusStrip();
+            // Datagridviews
+            GameGrid.Invalidate();
         }
 
         internal void InitialiseStatusStrip()
@@ -1628,18 +1631,12 @@ namespace ROMVault
 
             _working = false;
             ctrRvTree.Working = false;
-            //menuStrip1.Enabled = true;
+
             foreach (var item in menuStrip1.Items)
             {
                 if (item is ToolStripMenuItem menuItem)
                     menuItem.Enabled = true;
             }
-
-            //btnUpdateDats.BackgroundImage = rvImages.GetBitmap("btnUpdateDats_Enabled");
-            //btnScanRoms.BackgroundImage = rvImages.GetBitmap("btnScanRoms_Enabled");
-            //btnFindFixes.BackgroundImage = rvImages.GetBitmap("btnFindFixes_Enabled");
-            //btnFixFiles.BackgroundImage = rvImages.GetBitmap("btnFixFiles_Enabled");
-            //btnReport.BackgroundImage = rvImages.GetBitmap("btnReport_Enabled");
 
             btnDefault1.Enabled = true;
             btnDefault2.Enabled = true;
@@ -1830,6 +1827,68 @@ namespace ROMVault
             tStart.Start();
         }
 
+        internal void UpdateDatProvidersMenu()
+        {
+            foreach (var item in DatProvidersTSI.DropDownItems)
+            {
+                if (item is ToolStripMenuItem tsi)
+                    tsi.Click -= DatUrlTsiClicked;
+            }
+
+            DatProvidersTSI.DropDownItems.Clear();
+            foreach (var provider in Properties.Settings.Default.DatUrls)
+            {
+                var parts = provider.Split('|');
+
+                if (parts.Length < 2 || String.IsNullOrEmpty(parts[0]) || String.IsNullOrEmpty(parts[1])) continue;
+
+                ToolStripMenuItem tsi = new ToolStripMenuItem()
+                {
+                    Text = parts[0],
+                    Tag = parts[1]
+                };
+                tsi.Click += DatUrlTsiClicked;
+                DatProvidersTSI.DropDownItems.Add(tsi);
+            }
+        }
+
+        internal void UpdateRomProvidersMenu()
+        {
+            foreach (var item in RomProvidersTSI.DropDownItems)
+            {
+                if (item is ToolStripMenuItem tsi)
+                    tsi.Click -= RomUrlTsiClicked;
+            }
+
+            RomProvidersTSI.DropDownItems.Clear();
+            foreach (var provider in Properties.Settings.Default.RomUrls)
+            {
+                var parts = provider.Split('|');
+
+                if (parts.Length < 2 || String.IsNullOrEmpty(parts[0]) || String.IsNullOrEmpty(parts[1])) continue;
+
+                ToolStripMenuItem tsi = new ToolStripMenuItem()
+                {
+                    Text = parts[0],
+                    Tag = parts[1]
+                };
+                tsi.Click += RomUrlTsiClicked;
+                RomProvidersTSI.DropDownItems.Add(tsi);
+            }
+        }
+
+        private void RomUrlTsiClicked(object sender, EventArgs e)
+        {
+            try { Process.Start(((ToolStripMenuItem)sender).Tag.ToString()); }
+            catch { }
+        }
+
+        private void DatUrlTsiClicked(object sender, EventArgs e)
+        {
+            try { Process.Start(((ToolStripMenuItem)sender).Tag.ToString()); }
+            catch { }
+        }
+
         private void garbageCollectToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             GC.Collect();
@@ -1886,6 +1945,9 @@ namespace ROMVault
                 Size = Properties.Settings.Default.WindowSize;
 
             InitialiseStatusStrip();
+
+            UpdateDatProvidersMenu();
+            UpdateRomProvidersMenu();
 
             ctrRvTree.Visible = true;
             MainPG.MoveSplitterTo(200);
@@ -2137,7 +2199,15 @@ namespace ROMVault
             DialogResult result = cfbd.ShowDialog(this);
             if (result != DialogResult.OK) return;
 
-            string relPath = RelativePath.MakeRelative(AppDomain.CurrentDomain.BaseDirectory, cfbd.SelectedPath);
+            string relPath;
+            if (Settings.rvSettings.UseRootedPaths)
+            {
+                relPath = cfbd.SelectedPath;
+            }
+            else
+            {
+                relPath = RelativePath.MakeRelative(AppDomain.CurrentDomain.BaseDirectory, cfbd.SelectedPath);
+            }
 
             RvFile ts = new RvFile(FileType.Dir)
             {

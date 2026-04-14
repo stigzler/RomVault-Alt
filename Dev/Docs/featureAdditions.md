@@ -7,7 +7,7 @@
 - Clicking mouse back button now navigates back in the Game datagrid (think explorer navigation)
 - Status bar at bottom of form listing all the Rom statuses, stub descriptions with tooltip for each for more information. 
 - Toggle stub labels on above for limited width browsers.
-- Greater flexabilty and persistence of any split containers as well as form size and position. 
+- Greater flexibilty and persistence of any split containers as well as form size and position. 
 
 06.04.26:
 - Added prompt to Games/Rom filter textbox
@@ -20,4 +20,7 @@
 
 08.04.26:
 - Improved Status Bar key system (shortcut keys for hide/show groups/text). Operation as per tooltip on first icon
-- 
+
+09-14.04.26:
+- Added FolderMaker tool to create directory structures in rom/dat/chose directory (eg. platform names)..
+- Added 

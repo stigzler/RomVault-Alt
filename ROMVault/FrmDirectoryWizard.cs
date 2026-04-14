@@ -312,7 +312,7 @@ namespace ROMVault
                     if (String.IsNullOrEmpty(line)) continue;
                     if (create)
                     {
-                        string newFolderPath = Path.Combine(root.Trim('/', '\\'), line.Trim('/', '\\'));
+                        string newFolderPath = Path.Combine(root, line);
                         if (!Directory.Exists(newFolderPath))
                         {
                             try

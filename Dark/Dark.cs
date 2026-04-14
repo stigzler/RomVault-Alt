@@ -159,6 +159,7 @@ namespace Dark
                     break;
 
                 case DataGridView dgv:
+                    dgv.EnableHeadersVisualStyles = false;
                     dgv.BackgroundColor = (darkMode) ? bg1 : Control.DefaultBackColor;
                     dgv.ForeColor = (darkMode) ? fg : Color.FromArgb(10, 10, 10);
 
@@ -170,7 +171,6 @@ namespace Dark
 
                     dgv.DefaultCellStyle.SelectionBackColor = (darkMode) ? darkSelectorBackColor : Color.FromArgb(200, 200, 200);
                     dgv.DefaultCellStyle.SelectionForeColor = (darkMode) ? fgBright : Color.Black;
-                    //dgv.DefaultCellStyle.SelectionForeColor = Color.White;
                     dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
                     dgv.GridColor = (darkMode) ? bg : Control.DefaultBackColor;

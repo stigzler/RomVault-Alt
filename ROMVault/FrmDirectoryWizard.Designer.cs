@@ -170,10 +170,10 @@
             // BottomFLP
             // 
             this.BottomFLP.AutoSize = true;
-            this.BottomFLP.Controls.Add(this.GoBT);
-            this.BottomFLP.Controls.Add(this.SaveAsBT);
-            this.BottomFLP.Controls.Add(this.ValidateBT);
             this.BottomFLP.Controls.Add(this.CancelBT);
+            this.BottomFLP.Controls.Add(this.GoBT);
+            this.BottomFLP.Controls.Add(this.ValidateBT);
+            this.BottomFLP.Controls.Add(this.SaveAsBT);
             this.BottomFLP.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BottomFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.BottomFLP.Location = new System.Drawing.Point(0, 538);
@@ -187,8 +187,8 @@
             this.GoBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.GoBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.GoBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GoBT.Image = global::ROMVault.Properties.Resources.folder_smiley;
-            this.GoBT.Location = new System.Drawing.Point(335, 6);
+            this.GoBT.Image = global::ROMVault.Properties.Resources.rocket_fly;
+            this.GoBT.Location = new System.Drawing.Point(239, 6);
             this.GoBT.Name = "GoBT";
             this.GoBT.Size = new System.Drawing.Size(90, 30);
             this.GoBT.TabIndex = 5;
@@ -205,7 +205,7 @@
             this.SaveAsBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.SaveAsBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveAsBT.Image = global::ROMVault.Properties.Resources.disk;
-            this.SaveAsBT.Location = new System.Drawing.Point(239, 6);
+            this.SaveAsBT.Location = new System.Drawing.Point(47, 6);
             this.SaveAsBT.Name = "SaveAsBT";
             this.SaveAsBT.Size = new System.Drawing.Size(90, 30);
             this.SaveAsBT.TabIndex = 8;
@@ -240,11 +240,11 @@
             this.CancelBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.CancelBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelBT.Image = global::ROMVault.Properties.Resources.cross;
-            this.CancelBT.Location = new System.Drawing.Point(47, 6);
+            this.CancelBT.Location = new System.Drawing.Point(335, 6);
             this.CancelBT.Name = "CancelBT";
             this.CancelBT.Size = new System.Drawing.Size(90, 30);
             this.CancelBT.TabIndex = 6;
-            this.CancelBT.Text = " Cancel";
+            this.CancelBT.Text = " Close";
             this.CancelBT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CancelBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CancelBT.UseVisualStyleBackColor = true;

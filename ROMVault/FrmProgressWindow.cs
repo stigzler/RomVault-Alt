@@ -8,6 +8,7 @@ using System;
 using System.Drawing;
 using System.Media;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using RomVaultCore;
 
@@ -32,7 +33,7 @@ namespace ROMVault
         private string _lastMessage;
 
         // Timer-based update system
-        private Timer _updateTimer;
+        private System.Windows.Forms.Timer _updateTimer;
 
         private readonly object _stateLock = new object();
 
@@ -70,7 +71,7 @@ namespace ROMVault
             _thWrk = new ThreadWorker(function);
 
             // Create update timer
-            _updateTimer = new Timer();
+            _updateTimer = new System.Windows.Forms.Timer();
             _updateTimer.Interval = 100; // Update UI every 100ms
             _updateTimer.Tick += UpdateTimer_Tick;
         }
@@ -306,6 +307,8 @@ namespace ROMVault
                 _funcFinished?.Invoke();
                 if (Properties.Settings.Default.AutoCloseProgressWindow)
                 {
+                    Application.DoEvents();
+                    Thread.Sleep(1000);
                     _parentForm.Show();
                     Close();
                 }

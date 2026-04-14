@@ -583,6 +583,16 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rocket_fly {
+            get {
+                object obj = ResourceManager.GetObject("rocket-fly", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RomsFindFixes {
             get {
                 object obj = ResourceManager.GetObject("RomsFindFixes", resourceCulture);

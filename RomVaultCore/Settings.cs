@@ -18,7 +18,6 @@ namespace RomVaultCore
         Level3
     }
 
-
     public enum EFixLevel
     {
         Level1,
@@ -66,6 +65,7 @@ namespace RomVaultCore
 
         [XmlIgnore]
         public List<Regex> IgnoreFilesRegex;
+
         [XmlIgnore]
         public List<Regex> IgnoreFilesScanRegex;
 
@@ -94,13 +94,17 @@ namespace RomVaultCore
         [XmlElement(ElementName = "Darkness", DataType = "boolean", IsNullable = false), DefaultValue(false)]
         public bool Darkness = false;
 
+        [XmlElement(ElementName = "PreserveEmptyRomFolders", DataType = "boolean", IsNullable = false), DefaultValue(false)]
+        public bool PreserveEmptyRomFolders = false;
+
+        [XmlElement(ElementName = "UseRootedPaths", DataType = "boolean", IsNullable = false), DefaultValue(false)]
+        public bool UseRootedPaths = false;
 
         [XmlElement(ElementName = "CheckCHDVersion", DataType = "boolean", IsNullable = false), DefaultValue(false)]
         public bool CheckCHDVersion = false;
 
         public int zstdCompCount = 0;
         public int sevenZDefaultStruct = 3;
-
 
         public static bool isLinux
         {
@@ -151,17 +155,17 @@ namespace RomVaultCore
             ret.DatRules.Sort();
 
             string repeatDatRules = "";
-                for (int i = 0; i < ret.DatRules.Count - 1; i++)
+            for (int i = 0; i < ret.DatRules.Count - 1; i++)
+            {
+                if (i + 1 >= ret.DatRules.Count)
+                    break;
+                if (ret.DatRules[i].DirKey == ret.DatRules[i + 1].DirKey)
                 {
-                    if (i + 1 >= ret.DatRules.Count)
-                        break;
-                    if (ret.DatRules[i].DirKey == ret.DatRules[i + 1].DirKey)
-                    {
-                        repeatDatRules += ret.DatRules[i].DirKey + "\n";
-                        ret.DatRules.RemoveAt(i + 1);
-                        i--;
-                    }
+                    repeatDatRules += ret.DatRules[i].DirKey + "\n";
+                    ret.DatRules.RemoveAt(i + 1);
+                    i--;
                 }
+            }
 
             ret.SetRegExRules();
 
@@ -199,7 +203,7 @@ namespace RomVaultCore
             if (!string.IsNullOrWhiteSpace(repeatDatRules))
             {
                 errorMessage += "DAT Rules:\n";
-                errorMessage += repeatDatRules+"\n\n";
+                errorMessage += repeatDatRules + "\n\n";
             }
             if (!string.IsNullOrWhiteSpace(repeatDirMappings))
             {
@@ -269,6 +273,7 @@ namespace RomVaultCore
                 }
             };
         }
+
         public void ResetDirMappings()
         {
             DirMappings = new List<DirMapping>
@@ -372,21 +377,23 @@ namespace RomVaultCore
     public class DatRule : IComparable<DatRule>
     {
         public string DirKey;
+
         [XmlElement, DefaultValue(null)]
         public string DirPath;
 
         // compression
         // TZip,7Zip,File
         public FileType Compression = FileType.Zip;
+
         public bool CompressionOverrideDAT;
 
         public ZipStructure CompressionSub = ZipStructure.ZipTrrnt;
         public bool ConvertWhileFixing = true;
 
-
         // Merge Type
         // split,merge,nonmerged
         public MergeType Merge;
+
         public FilterType Filter;
         public HeaderType HeaderType;
 
@@ -404,6 +411,7 @@ namespace RomVaultCore
 
         [XmlIgnore]
         public List<Regex> IgnoreFilesRegex;
+
         [XmlIgnore]
         public List<Regex> IgnoreFilesScanRegex;
 
@@ -414,7 +422,6 @@ namespace RomVaultCore
         {
             return Math.Sign(string.Compare(DirKey, obj.DirKey, StringComparison.Ordinal));
         }
-
     }
 
     public class EmulatorInfo
@@ -425,5 +432,4 @@ namespace RomVaultCore
         public string WorkingDirectory;
         public string ExtraPath;
     }
-
 }

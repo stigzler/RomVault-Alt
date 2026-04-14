@@ -277,5 +277,37 @@ namespace ROMVault.Properties {
                 this["AutoCloseProgressWindow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <string>No-Intro|https://datomatic.no-intro.org</string>
+  <string>Redump|http://redump.org/downloads</string>
+  <string>TOSEC|https://www.tosecdev.org/downloads</string>
+  <string />
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection DatUrls {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["DatUrls"]));
+            }
+            set {
+                this["DatUrls"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
+            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
+            "tring>Internet Archive|https://archive.org/</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection RomUrls {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["RomUrls"]));
+            }
+            set {
+                this["RomUrls"] = value;
+            }
+        }
     }
 }

@@ -257,9 +257,12 @@
     <Compile Include="UserControls\TabControl.cs" />
     <Compile Include="UserControls\TableLayoutPanel.cs" />
     <Compile Include="UserControls\ToolTip.cs" />
+    <Compile Include="ViewModels\RomSourceUrl.cs" />
+    <Compile Include="ViewModels\DatSourceUrl.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\DatInfo.cs" />
     <Compile Include="ViewModels\GameInfo.cs" />
+    <None Include="Resources\rocket-fly.png" />
     <EmbeddedResource Include="FrmDirectoryMappings.resx">
       <DependentUpon>FrmDirectoryMappings.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -661,4 +664,3 @@
     <Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
   </Target>
 </Project>
-

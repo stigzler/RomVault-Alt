@@ -32,8 +32,9 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Dat Vault");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("DATs", new System.Windows.Forms.TreeNode[] {
             treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("File Operations");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("UI and UX");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("ROMs");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("File Operations");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("UI and UX");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -48,6 +49,8 @@
             this.MainTT = new ROMVault.UserControls.ToolTip();
             this.MoveDontCopyDatsChB = new System.Windows.Forms.CheckBox();
             this.AutoCloseProgressChB = new System.Windows.Forms.CheckBox();
+            this.PreserveEmptyRomFoldersChB = new System.Windows.Forms.CheckBox();
+            this.UseRootedPathsChB = new System.Windows.Forms.CheckBox();
             this.LeftPN = new System.Windows.Forms.Panel();
             this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.MainTC = new ROMVault.UserControls.TabControl();
@@ -66,6 +69,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this.DatVaultTP = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.DeleteDATSourceBT = new System.Windows.Forms.Button();
+            this.AddDatSourceBT = new System.Windows.Forms.Button();
+            this.DatSourceLinksDGV = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.RestoreDatFormatsBT = new System.Windows.Forms.Button();
             this.DeleteDatFormatBT = new System.Windows.Forms.Button();
@@ -77,18 +84,11 @@
             this.chkDeleteOldCueFiles = new System.Windows.Forms.CheckBox();
             this.flexiLabel4 = new ROMVault.UserControls.FlexiLabel();
             this.FileOperationsTP = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.DeleteOrigRomsRelocateChB = new System.Windows.Forms.CheckBox();
-            this.MoveFilesNotCopyChB = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.LoggingGB = new System.Windows.Forms.GroupBox();
             this.chkDetailedReporting = new System.Windows.Forms.CheckBox();
             this.chkDebugLogs = new System.Windows.Forms.CheckBox();
             this.chkDoNotReportFeedback = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbo7zStruct = new System.Windows.Forms.ComboBox();
-            this.cboCores = new System.Windows.Forms.ComboBox();
+            this.FileOperationalGB = new System.Windows.Forms.GroupBox();
             this.flexiLabel5 = new ROMVault.UserControls.FlexiLabel();
             this.UiTP = new System.Windows.Forms.TabPage();
             this.OperationalGB = new System.Windows.Forms.GroupBox();
@@ -112,6 +112,20 @@
             this.label6 = new System.Windows.Forms.Label();
             this.InfoTextColorPB = new System.Windows.Forms.PictureBox();
             this.MainSC = new System.Windows.Forms.SplitContainer();
+            this.RomsTP = new System.Windows.Forms.TabPage();
+            this.flexiLabel6 = new ROMVault.UserControls.FlexiLabel();
+            this.RomImportsGB = new System.Windows.Forms.GroupBox();
+            this.DeleteOrigRomsRelocateChB = new System.Windows.Forms.CheckBox();
+            this.MoveFilesNotCopyChB = new System.Windows.Forms.CheckBox();
+            this.CompressionGB = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbo7zStruct = new System.Windows.Forms.ComboBox();
+            this.cboCores = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DeleteRomSourceBT = new System.Windows.Forms.Button();
+            this.AddRomSourceBT = new System.Windows.Forms.Button();
+            this.RomSourceLinksDGV = new System.Windows.Forms.DataGridView();
             this.TvPaddingPN.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -121,11 +135,12 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upTime)).BeginInit();
             this.DatVaultTP.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DatSourceLinksDGV)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.FileOperationsTP.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.LoggingGB.SuspendLayout();
+            this.FileOperationalGB.SuspendLayout();
             this.UiTP.SuspendLayout();
             this.OperationalGB.SuspendLayout();
             this.AppearanceThemesGB.SuspendLayout();
@@ -138,11 +153,17 @@
             this.MainSC.Panel1.SuspendLayout();
             this.MainSC.Panel2.SuspendLayout();
             this.MainSC.SuspendLayout();
+            this.RomsTP.SuspendLayout();
+            this.RomImportsGB.SuspendLayout();
+            this.CompressionGB.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RomSourceLinksDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Location = new System.Drawing.Point(492, 3);
             this.btnOK.Name = "btnOK";
@@ -155,6 +176,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Location = new System.Drawing.Point(397, 3);
             this.btnCancel.Name = "btnCancel";
@@ -176,7 +198,7 @@
             this.TvPaddingPN.Location = new System.Drawing.Point(0, 36);
             this.TvPaddingPN.Name = "TvPaddingPN";
             this.TvPaddingPN.Padding = new System.Windows.Forms.Padding(6);
-            this.TvPaddingPN.Size = new System.Drawing.Size(136, 474);
+            this.TvPaddingPN.Size = new System.Drawing.Size(150, 474);
             this.TvPaddingPN.TabIndex = 47;
             // 
             // MainTV
@@ -196,22 +218,27 @@
             treeNode2.Name = "DatSettingsTVI";
             treeNode2.SelectedImageIndex = 0;
             treeNode2.Text = "DATs";
-            treeNode3.ImageKey = "folder-smiley.png";
-            treeNode3.Name = "FileOperationsTVI";
-            treeNode3.SelectedImageIndex = 1;
-            treeNode3.Text = "File Operations";
-            treeNode4.ImageKey = "ui-combo-box-blue.png";
-            treeNode4.Name = "UiTVI";
-            treeNode4.SelectedImageIndex = 2;
-            treeNode4.Text = "UI and UX";
+            treeNode3.ImageKey = "disc.png";
+            treeNode3.Name = "RomsTVI";
+            treeNode3.SelectedImageIndex = 3;
+            treeNode3.Text = "ROMs";
+            treeNode4.ImageKey = "folder-smiley.png";
+            treeNode4.Name = "FileOperationsTVI";
+            treeNode4.SelectedImageIndex = 1;
+            treeNode4.Text = "File Operations";
+            treeNode5.ImageKey = "ui-combo-box-blue.png";
+            treeNode5.Name = "UiTVI";
+            treeNode5.SelectedImageIndex = 2;
+            treeNode5.Text = "UI and UX";
             this.MainTV.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode2,
             treeNode3,
-            treeNode4});
+            treeNode4,
+            treeNode5});
             this.MainTV.SelectedImageIndex = 0;
             this.MainTV.ShowPlusMinus = false;
             this.MainTV.ShowRootLines = false;
-            this.MainTV.Size = new System.Drawing.Size(124, 462);
+            this.MainTV.Size = new System.Drawing.Size(138, 462);
             this.MainTV.TabIndex = 46;
             this.MainTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTV_AfterSelect);
             // 
@@ -222,6 +249,7 @@
             this.MainIL.Images.SetKeyName(0, "database.png");
             this.MainIL.Images.SetKeyName(1, "folder-smiley.png");
             this.MainIL.Images.SetKeyName(2, "ui-combo-box-blue.png");
+            this.MainIL.Images.SetKeyName(3, "disc.png");
             // 
             // DatFormatLvLineHeightForcer
             // 
@@ -276,6 +304,29 @@
             this.MainTT.SetToolTip(this.AutoCloseProgressChB, "Closes the progress window on operation completion automoatically");
             this.AutoCloseProgressChB.UseVisualStyleBackColor = true;
             // 
+            // PreserveEmptyRomFoldersChB
+            // 
+            this.PreserveEmptyRomFoldersChB.AutoSize = true;
+            this.PreserveEmptyRomFoldersChB.Location = new System.Drawing.Point(14, 19);
+            this.PreserveEmptyRomFoldersChB.Name = "PreserveEmptyRomFoldersChB";
+            this.PreserveEmptyRomFoldersChB.Size = new System.Drawing.Size(200, 17);
+            this.PreserveEmptyRomFoldersChB.TabIndex = 0;
+            this.PreserveEmptyRomFoldersChB.Text = "Preserve Empty Folders in ROM Files";
+            this.MainTT.SetToolTip(this.PreserveEmptyRomFoldersChB, "Prevent empty folders being deleted from the Roms folder on Fix.");
+            this.PreserveEmptyRomFoldersChB.UseVisualStyleBackColor = true;
+            // 
+            // UseRootedPathsChB
+            // 
+            this.UseRootedPathsChB.AutoSize = true;
+            this.UseRootedPathsChB.Location = new System.Drawing.Point(14, 42);
+            this.UseRootedPathsChB.Name = "UseRootedPathsChB";
+            this.UseRootedPathsChB.Size = new System.Drawing.Size(225, 17);
+            this.UseRootedPathsChB.TabIndex = 1;
+            this.UseRootedPathsChB.Text = "Use rooted Paths rather than relative ones";
+            this.MainTT.SetToolTip(this.UseRootedPathsChB, resources.GetString("UseRootedPathsChB.ToolTip"));
+            this.UseRootedPathsChB.UseVisualStyleBackColor = true;
+            this.UseRootedPathsChB.CheckedChanged += new System.EventHandler(this.UseRootedPathsChB_CheckedChanged);
+            // 
             // LeftPN
             // 
             this.LeftPN.Controls.Add(this.TvPaddingPN);
@@ -283,7 +334,7 @@
             this.LeftPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LeftPN.Location = new System.Drawing.Point(0, 0);
             this.LeftPN.Name = "LeftPN";
-            this.LeftPN.Size = new System.Drawing.Size(136, 510);
+            this.LeftPN.Size = new System.Drawing.Size(150, 510);
             this.LeftPN.TabIndex = 53;
             // 
             // flexiLabel2
@@ -303,6 +354,7 @@
             // 
             this.MainTC.Controls.Add(this.DatSettingsTP);
             this.MainTC.Controls.Add(this.DatVaultTP);
+            this.MainTC.Controls.Add(this.RomsTP);
             this.MainTC.Controls.Add(this.FileOperationsTP);
             this.MainTC.Controls.Add(this.UiTP);
             this.MainTC.Controls.Add(this.tabPage1);
@@ -315,7 +367,7 @@
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
             this.MainTC.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(120)))), ((int)(((byte)(187)))));
-            this.MainTC.Size = new System.Drawing.Size(444, 510);
+            this.MainTC.Size = new System.Drawing.Size(430, 510);
             this.MainTC.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.MainTC.TabIndex = 0;
             this.MainTC.TabOutlineColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -329,7 +381,7 @@
             this.DatSettingsTP.Location = new System.Drawing.Point(0, 15);
             this.DatSettingsTP.Name = "DatSettingsTP";
             this.DatSettingsTP.Padding = new System.Windows.Forms.Padding(8);
-            this.DatSettingsTP.Size = new System.Drawing.Size(444, 495);
+            this.DatSettingsTP.Size = new System.Drawing.Size(430, 495);
             this.DatSettingsTP.TabIndex = 0;
             this.DatSettingsTP.Text = "Dat Settings";
             this.DatSettingsTP.UseVisualStyleBackColor = true;
@@ -351,7 +403,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(8, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(428, 350);
+            this.groupBox1.Size = new System.Drawing.Size(414, 350);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Core Settings";
@@ -365,7 +417,7 @@
             this.lblDATRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDATRoot.Location = new System.Drawing.Point(78, 26);
             this.lblDATRoot.Name = "lblDATRoot";
-            this.lblDATRoot.Size = new System.Drawing.Size(294, 22);
+            this.lblDATRoot.Size = new System.Drawing.Size(280, 22);
             this.lblDATRoot.TabIndex = 3;
             this.lblDATRoot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -383,7 +435,7 @@
             this.btnDAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDAT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.btnDAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDAT.Location = new System.Drawing.Point(378, 26);
+            this.btnDAT.Location = new System.Drawing.Point(364, 26);
             this.btnDAT.Name = "btnDAT";
             this.btnDAT.Size = new System.Drawing.Size(44, 24);
             this.btnDAT.TabIndex = 6;
@@ -400,7 +452,7 @@
             this.cboFixLevel.FormattingEnabled = true;
             this.cboFixLevel.Location = new System.Drawing.Point(78, 59);
             this.cboFixLevel.Name = "cboFixLevel";
-            this.cboFixLevel.Size = new System.Drawing.Size(344, 21);
+            this.cboFixLevel.Size = new System.Drawing.Size(330, 21);
             this.cboFixLevel.TabIndex = 14;
             // 
             // label3
@@ -430,7 +482,7 @@
             this.textBox1.Location = new System.Drawing.Point(9, 166);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(413, 121);
+            this.textBox1.Size = new System.Drawing.Size(399, 121);
             this.textBox1.TabIndex = 12;
             // 
             // chkDoubleCheckDelete
@@ -505,15 +557,78 @@
             // 
             // DatVaultTP
             // 
+            this.DatVaultTP.Controls.Add(this.groupBox7);
             this.DatVaultTP.Controls.Add(this.groupBox2);
             this.DatVaultTP.Controls.Add(this.flexiLabel4);
             this.DatVaultTP.Location = new System.Drawing.Point(0, 15);
             this.DatVaultTP.Name = "DatVaultTP";
             this.DatVaultTP.Padding = new System.Windows.Forms.Padding(8);
-            this.DatVaultTP.Size = new System.Drawing.Size(444, 495);
+            this.DatVaultTP.Size = new System.Drawing.Size(430, 495);
             this.DatVaultTP.TabIndex = 5;
             this.DatVaultTP.Text = "DatVault";
             this.DatVaultTP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.DeleteDATSourceBT);
+            this.groupBox7.Controls.Add(this.AddDatSourceBT);
+            this.groupBox7.Controls.Add(this.DatSourceLinksDGV);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.Location = new System.Drawing.Point(8, 290);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(414, 197);
+            this.groupBox7.TabIndex = 56;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "DAT Source Links";
+            // 
+            // DeleteDATSourceBT
+            // 
+            this.DeleteDATSourceBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteDATSourceBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.DeleteDATSourceBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteDATSourceBT.Image = global::ROMVault.Properties.Resources.minus;
+            this.DeleteDATSourceBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteDATSourceBT.Location = new System.Drawing.Point(330, 55);
+            this.DeleteDATSourceBT.Name = "DeleteDATSourceBT";
+            this.DeleteDATSourceBT.Size = new System.Drawing.Size(75, 30);
+            this.DeleteDATSourceBT.TabIndex = 36;
+            this.DeleteDATSourceBT.Text = "Delete";
+            this.DeleteDATSourceBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DeleteDATSourceBT.UseVisualStyleBackColor = true;
+            this.DeleteDATSourceBT.Click += new System.EventHandler(this.DeleteDATSourceBT_Click);
+            // 
+            // AddDatSourceBT
+            // 
+            this.AddDatSourceBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddDatSourceBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.AddDatSourceBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddDatSourceBT.Image = global::ROMVault.Properties.Resources.plus;
+            this.AddDatSourceBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddDatSourceBT.Location = new System.Drawing.Point(330, 19);
+            this.AddDatSourceBT.Name = "AddDatSourceBT";
+            this.AddDatSourceBT.Size = new System.Drawing.Size(75, 30);
+            this.AddDatSourceBT.TabIndex = 35;
+            this.AddDatSourceBT.Text = "Add";
+            this.AddDatSourceBT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddDatSourceBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AddDatSourceBT.UseVisualStyleBackColor = true;
+            this.AddDatSourceBT.Click += new System.EventHandler(this.AddDatSourceBT_Click);
+            // 
+            // DatSourceLinksDGV
+            // 
+            this.DatSourceLinksDGV.AllowUserToAddRows = false;
+            this.DatSourceLinksDGV.AllowUserToResizeRows = false;
+            this.DatSourceLinksDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DatSourceLinksDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DatSourceLinksDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DatSourceLinksDGV.Location = new System.Drawing.Point(14, 19);
+            this.DatSourceLinksDGV.Name = "DatSourceLinksDGV";
+            this.DatSourceLinksDGV.RowHeadersVisible = false;
+            this.DatSourceLinksDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.DatSourceLinksDGV.Size = new System.Drawing.Size(310, 172);
+            this.DatSourceLinksDGV.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -530,7 +645,7 @@
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Location = new System.Drawing.Point(8, 38);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(428, 252);
+            this.groupBox2.Size = new System.Drawing.Size(414, 252);
             this.groupBox2.TabIndex = 47;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DAT Vault";
@@ -542,7 +657,7 @@
             this.RestoreDatFormatsBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RestoreDatFormatsBT.Image = global::ROMVault.Properties.Resources.arrowCircle;
             this.RestoreDatFormatsBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.RestoreDatFormatsBT.Location = new System.Drawing.Point(347, 192);
+            this.RestoreDatFormatsBT.Location = new System.Drawing.Point(333, 192);
             this.RestoreDatFormatsBT.Name = "RestoreDatFormatsBT";
             this.RestoreDatFormatsBT.Size = new System.Drawing.Size(75, 30);
             this.RestoreDatFormatsBT.TabIndex = 35;
@@ -558,7 +673,7 @@
             this.DeleteDatFormatBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteDatFormatBT.Image = global::ROMVault.Properties.Resources.minus;
             this.DeleteDatFormatBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DeleteDatFormatBT.Location = new System.Drawing.Point(347, 156);
+            this.DeleteDatFormatBT.Location = new System.Drawing.Point(333, 156);
             this.DeleteDatFormatBT.Name = "DeleteDatFormatBT";
             this.DeleteDatFormatBT.Size = new System.Drawing.Size(75, 30);
             this.DeleteDatFormatBT.TabIndex = 34;
@@ -574,7 +689,7 @@
             this.AddDatFormatBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddDatFormatBT.Image = global::ROMVault.Properties.Resources.plus;
             this.AddDatFormatBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AddDatFormatBT.Location = new System.Drawing.Point(347, 120);
+            this.AddDatFormatBT.Location = new System.Drawing.Point(333, 120);
             this.AddDatFormatBT.Name = "AddDatFormatBT";
             this.AddDatFormatBT.Size = new System.Drawing.Size(75, 30);
             this.AddDatFormatBT.TabIndex = 33;
@@ -603,7 +718,7 @@
             this.DatFormatsLV.LabelEdit = true;
             this.DatFormatsLV.Location = new System.Drawing.Point(9, 120);
             this.DatFormatsLV.Name = "DatFormatsLV";
-            this.DatFormatsLV.Size = new System.Drawing.Size(329, 102);
+            this.DatFormatsLV.Size = new System.Drawing.Size(315, 102);
             this.DatFormatsLV.SmallImageList = this.DatFormatLvLineHeightForcer;
             this.DatFormatsLV.TabIndex = 31;
             this.DatFormatsLV.UseCompatibleStateImageBehavior = false;
@@ -656,68 +771,30 @@
             // FileOperationsTP
             // 
             this.FileOperationsTP.AutoScroll = true;
-            this.FileOperationsTP.Controls.Add(this.groupBox5);
-            this.FileOperationsTP.Controls.Add(this.groupBox3);
-            this.FileOperationsTP.Controls.Add(this.groupBox4);
+            this.FileOperationsTP.Controls.Add(this.LoggingGB);
+            this.FileOperationsTP.Controls.Add(this.FileOperationalGB);
             this.FileOperationsTP.Controls.Add(this.flexiLabel5);
             this.FileOperationsTP.Location = new System.Drawing.Point(0, 15);
             this.FileOperationsTP.Name = "FileOperationsTP";
             this.FileOperationsTP.Padding = new System.Windows.Forms.Padding(8);
-            this.FileOperationsTP.Size = new System.Drawing.Size(444, 495);
+            this.FileOperationsTP.Size = new System.Drawing.Size(430, 495);
             this.FileOperationsTP.TabIndex = 1;
             this.FileOperationsTP.Text = "File Operations";
             this.FileOperationsTP.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // LoggingGB
             // 
-            this.groupBox5.AutoSize = true;
-            this.groupBox5.Controls.Add(this.DeleteOrigRomsRelocateChB);
-            this.groupBox5.Controls.Add(this.MoveFilesNotCopyChB);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox5.Location = new System.Drawing.Point(8, 223);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(428, 78);
-            this.groupBox5.TabIndex = 50;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Rom Imports";
-            // 
-            // DeleteOrigRomsRelocateChB
-            // 
-            this.DeleteOrigRomsRelocateChB.AutoSize = true;
-            this.DeleteOrigRomsRelocateChB.Location = new System.Drawing.Point(14, 42);
-            this.DeleteOrigRomsRelocateChB.Name = "DeleteOrigRomsRelocateChB";
-            this.DeleteOrigRomsRelocateChB.Size = new System.Drawing.Size(196, 17);
-            this.DeleteOrigRomsRelocateChB.TabIndex = 46;
-            this.DeleteOrigRomsRelocateChB.Text = "Delete original ROMs after Relocate";
-            this.MainTT.SetToolTip(this.DeleteOrigRomsRelocateChB, resources.GetString("DeleteOrigRomsRelocateChB.ToolTip"));
-            this.DeleteOrigRomsRelocateChB.UseVisualStyleBackColor = true;
-            // 
-            // MoveFilesNotCopyChB
-            // 
-            this.MoveFilesNotCopyChB.AutoSize = true;
-            this.MoveFilesNotCopyChB.Location = new System.Drawing.Point(14, 19);
-            this.MoveFilesNotCopyChB.Name = "MoveFilesNotCopyChB";
-            this.MoveFilesNotCopyChB.Size = new System.Drawing.Size(155, 17);
-            this.MoveFilesNotCopyChB.TabIndex = 44;
-            this.MoveFilesNotCopyChB.Text = "Move files rather than Copy";
-            this.MainTT.SetToolTip(this.MoveFilesNotCopyChB, "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
-        "is if you wish to Move them instead (you will loose the files from your original" +
-        " location)");
-            this.MoveFilesNotCopyChB.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.chkDetailedReporting);
-            this.groupBox3.Controls.Add(this.chkDebugLogs);
-            this.groupBox3.Controls.Add(this.chkDoNotReportFeedback);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox3.Location = new System.Drawing.Point(8, 128);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(428, 95);
-            this.groupBox3.TabIndex = 47;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Logging";
+            this.LoggingGB.Controls.Add(this.chkDetailedReporting);
+            this.LoggingGB.Controls.Add(this.chkDebugLogs);
+            this.LoggingGB.Controls.Add(this.chkDoNotReportFeedback);
+            this.LoggingGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LoggingGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoggingGB.Location = new System.Drawing.Point(8, 116);
+            this.LoggingGB.Name = "LoggingGB";
+            this.LoggingGB.Size = new System.Drawing.Size(414, 95);
+            this.LoggingGB.TabIndex = 47;
+            this.LoggingGB.TabStop = false;
+            this.LoggingGB.Text = "Logging";
             // 
             // chkDetailedReporting
             // 
@@ -749,58 +826,17 @@
             this.chkDoNotReportFeedback.Text = "Do not report feedback";
             this.chkDoNotReportFeedback.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // FileOperationalGB
             // 
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.cbo7zStruct);
-            this.groupBox4.Controls.Add(this.cboCores);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox4.Location = new System.Drawing.Point(8, 38);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(428, 90);
-            this.groupBox4.TabIndex = 48;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Compression";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "Max ZSTD workers:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 13);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Default 7Z type:";
-            // 
-            // cbo7zStruct
-            // 
-            this.cbo7zStruct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo7zStruct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbo7zStruct.FormattingEnabled = true;
-            this.cbo7zStruct.Location = new System.Drawing.Point(127, 48);
-            this.cbo7zStruct.Name = "cbo7zStruct";
-            this.cbo7zStruct.Size = new System.Drawing.Size(121, 21);
-            this.cbo7zStruct.TabIndex = 40;
-            // 
-            // cboCores
-            // 
-            this.cboCores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboCores.FormattingEnabled = true;
-            this.cboCores.Location = new System.Drawing.Point(127, 24);
-            this.cboCores.Name = "cboCores";
-            this.cboCores.Size = new System.Drawing.Size(121, 21);
-            this.cboCores.TabIndex = 41;
+            this.FileOperationalGB.Controls.Add(this.UseRootedPathsChB);
+            this.FileOperationalGB.Controls.Add(this.PreserveEmptyRomFoldersChB);
+            this.FileOperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FileOperationalGB.Location = new System.Drawing.Point(8, 38);
+            this.FileOperationalGB.Name = "FileOperationalGB";
+            this.FileOperationalGB.Size = new System.Drawing.Size(414, 78);
+            this.FileOperationalGB.TabIndex = 56;
+            this.FileOperationalGB.TabStop = false;
+            this.FileOperationalGB.Text = "Operational";
             // 
             // flexiLabel5
             // 
@@ -824,7 +860,7 @@
             this.UiTP.Location = new System.Drawing.Point(0, 15);
             this.UiTP.Name = "UiTP";
             this.UiTP.Padding = new System.Windows.Forms.Padding(8);
-            this.UiTP.Size = new System.Drawing.Size(444, 495);
+            this.UiTP.Size = new System.Drawing.Size(430, 495);
             this.UiTP.TabIndex = 3;
             this.UiTP.Text = "Ui + UX";
             this.UiTP.UseVisualStyleBackColor = true;
@@ -836,7 +872,7 @@
             this.OperationalGB.Dock = System.Windows.Forms.DockStyle.Top;
             this.OperationalGB.Location = new System.Drawing.Point(8, 167);
             this.OperationalGB.Name = "OperationalGB";
-            this.OperationalGB.Size = new System.Drawing.Size(428, 68);
+            this.OperationalGB.Size = new System.Drawing.Size(414, 68);
             this.OperationalGB.TabIndex = 52;
             this.OperationalGB.TabStop = false;
             this.OperationalGB.Text = "Operational";
@@ -865,7 +901,7 @@
             this.AppearanceThemesGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AppearanceThemesGB.Location = new System.Drawing.Point(8, 38);
             this.AppearanceThemesGB.Name = "AppearanceThemesGB";
-            this.AppearanceThemesGB.Size = new System.Drawing.Size(428, 129);
+            this.AppearanceThemesGB.Size = new System.Drawing.Size(414, 129);
             this.AppearanceThemesGB.TabIndex = 49;
             this.AppearanceThemesGB.TabStop = false;
             this.AppearanceThemesGB.Text = "Appearance and Theme";
@@ -880,7 +916,7 @@
             this.flowLayoutPanel2.Controls.Add(this.RomsUnknownLB);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(96, 71);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(323, 28);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(309, 28);
             this.flowLayoutPanel2.TabIndex = 55;
             // 
             // RomsGotLB
@@ -1072,7 +1108,7 @@
             this.tabPage1.Location = new System.Drawing.Point(0, 15);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(444, 495);
+            this.tabPage1.Size = new System.Drawing.Size(430, 495);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "retired/parked";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1121,8 +1157,189 @@
             // 
             this.MainSC.Panel2.Controls.Add(this.MainTC);
             this.MainSC.Size = new System.Drawing.Size(584, 510);
-            this.MainSC.SplitterDistance = 136;
+            this.MainSC.SplitterDistance = 150;
             this.MainSC.TabIndex = 54;
+            // 
+            // RomsTP
+            // 
+            this.RomsTP.Controls.Add(this.groupBox3);
+            this.RomsTP.Controls.Add(this.RomImportsGB);
+            this.RomsTP.Controls.Add(this.CompressionGB);
+            this.RomsTP.Controls.Add(this.flexiLabel6);
+            this.RomsTP.Location = new System.Drawing.Point(0, 15);
+            this.RomsTP.Name = "RomsTP";
+            this.RomsTP.Padding = new System.Windows.Forms.Padding(8);
+            this.RomsTP.Size = new System.Drawing.Size(430, 495);
+            this.RomsTP.TabIndex = 6;
+            this.RomsTP.Text = "Roms";
+            this.RomsTP.UseVisualStyleBackColor = true;
+            // 
+            // flexiLabel6
+            // 
+            this.flexiLabel6.AutoSize = true;
+            this.flexiLabel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel6.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel6.Location = new System.Drawing.Point(8, 8);
+            this.flexiLabel6.Name = "flexiLabel6";
+            this.flexiLabel6.Padding = new System.Windows.Forms.Padding(5);
+            this.flexiLabel6.ScaleFactor = 1.5D;
+            this.flexiLabel6.Size = new System.Drawing.Size(69, 30);
+            this.flexiLabel6.TabIndex = 55;
+            this.flexiLabel6.Text = "ROMs";
+            // 
+            // RomImportsGB
+            // 
+            this.RomImportsGB.AutoSize = true;
+            this.RomImportsGB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.RomImportsGB.Controls.Add(this.DeleteOrigRomsRelocateChB);
+            this.RomImportsGB.Controls.Add(this.MoveFilesNotCopyChB);
+            this.RomImportsGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RomImportsGB.Location = new System.Drawing.Point(8, 122);
+            this.RomImportsGB.Name = "RomImportsGB";
+            this.RomImportsGB.Size = new System.Drawing.Size(414, 78);
+            this.RomImportsGB.TabIndex = 57;
+            this.RomImportsGB.TabStop = false;
+            this.RomImportsGB.Text = "Rom Imports";
+            // 
+            // DeleteOrigRomsRelocateChB
+            // 
+            this.DeleteOrigRomsRelocateChB.AutoSize = true;
+            this.DeleteOrigRomsRelocateChB.Location = new System.Drawing.Point(14, 42);
+            this.DeleteOrigRomsRelocateChB.Name = "DeleteOrigRomsRelocateChB";
+            this.DeleteOrigRomsRelocateChB.Size = new System.Drawing.Size(196, 17);
+            this.DeleteOrigRomsRelocateChB.TabIndex = 46;
+            this.DeleteOrigRomsRelocateChB.Text = "Delete original ROMs after Relocate";
+            this.MainTT.SetToolTip(this.DeleteOrigRomsRelocateChB, resources.GetString("DeleteOrigRomsRelocateChB.ToolTip"));
+            this.DeleteOrigRomsRelocateChB.UseVisualStyleBackColor = true;
+            this.DeleteOrigRomsRelocateChB.Visible = false;
+            // 
+            // MoveFilesNotCopyChB
+            // 
+            this.MoveFilesNotCopyChB.AutoSize = true;
+            this.MoveFilesNotCopyChB.Location = new System.Drawing.Point(14, 19);
+            this.MoveFilesNotCopyChB.Name = "MoveFilesNotCopyChB";
+            this.MoveFilesNotCopyChB.Size = new System.Drawing.Size(155, 17);
+            this.MoveFilesNotCopyChB.TabIndex = 44;
+            this.MoveFilesNotCopyChB.Text = "Move files rather than Copy";
+            this.MainTT.SetToolTip(this.MoveFilesNotCopyChB, "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
+        "is if you wish to Move them instead (you will loose the files from your original" +
+        " location)");
+            this.MoveFilesNotCopyChB.UseVisualStyleBackColor = true;
+            // 
+            // CompressionGB
+            // 
+            this.CompressionGB.Controls.Add(this.label2);
+            this.CompressionGB.Controls.Add(this.label7);
+            this.CompressionGB.Controls.Add(this.cbo7zStruct);
+            this.CompressionGB.Controls.Add(this.cboCores);
+            this.CompressionGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CompressionGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CompressionGB.Location = new System.Drawing.Point(8, 38);
+            this.CompressionGB.Name = "CompressionGB";
+            this.CompressionGB.Size = new System.Drawing.Size(414, 84);
+            this.CompressionGB.TabIndex = 56;
+            this.CompressionGB.TabStop = false;
+            this.CompressionGB.Text = "Compression";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Max ZSTD workers:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 13);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Default 7Z type:";
+            // 
+            // cbo7zStruct
+            // 
+            this.cbo7zStruct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo7zStruct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbo7zStruct.FormattingEnabled = true;
+            this.cbo7zStruct.Location = new System.Drawing.Point(127, 48);
+            this.cbo7zStruct.Name = "cbo7zStruct";
+            this.cbo7zStruct.Size = new System.Drawing.Size(121, 21);
+            this.cbo7zStruct.TabIndex = 40;
+            // 
+            // cboCores
+            // 
+            this.cboCores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboCores.FormattingEnabled = true;
+            this.cboCores.Location = new System.Drawing.Point(127, 24);
+            this.cboCores.Name = "cboCores";
+            this.cboCores.Size = new System.Drawing.Size(121, 21);
+            this.cboCores.TabIndex = 41;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.DeleteRomSourceBT);
+            this.groupBox3.Controls.Add(this.AddRomSourceBT);
+            this.groupBox3.Controls.Add(this.RomSourceLinksDGV);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(8, 200);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(414, 287);
+            this.groupBox3.TabIndex = 58;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "ROM Source Links";
+            // 
+            // DeleteRomSourceBT
+            // 
+            this.DeleteRomSourceBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteRomSourceBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.DeleteRomSourceBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteRomSourceBT.Image = global::ROMVault.Properties.Resources.minus;
+            this.DeleteRomSourceBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteRomSourceBT.Location = new System.Drawing.Point(330, 55);
+            this.DeleteRomSourceBT.Name = "DeleteRomSourceBT";
+            this.DeleteRomSourceBT.Size = new System.Drawing.Size(75, 30);
+            this.DeleteRomSourceBT.TabIndex = 36;
+            this.DeleteRomSourceBT.Text = "Delete";
+            this.DeleteRomSourceBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DeleteRomSourceBT.UseVisualStyleBackColor = true;
+            this.DeleteRomSourceBT.Click += new System.EventHandler(this.DeleteRomSourceBT_Click);
+            // 
+            // AddRomSourceBT
+            // 
+            this.AddRomSourceBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddRomSourceBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.AddRomSourceBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddRomSourceBT.Image = global::ROMVault.Properties.Resources.plus;
+            this.AddRomSourceBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddRomSourceBT.Location = new System.Drawing.Point(330, 19);
+            this.AddRomSourceBT.Name = "AddRomSourceBT";
+            this.AddRomSourceBT.Size = new System.Drawing.Size(75, 30);
+            this.AddRomSourceBT.TabIndex = 35;
+            this.AddRomSourceBT.Text = "Add";
+            this.AddRomSourceBT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddRomSourceBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AddRomSourceBT.UseVisualStyleBackColor = true;
+            this.AddRomSourceBT.Click += new System.EventHandler(this.AddRomSourceBT_Click);
+            // 
+            // RomSourceLinksDGV
+            // 
+            this.RomSourceLinksDGV.AllowUserToAddRows = false;
+            this.RomSourceLinksDGV.AllowUserToResizeRows = false;
+            this.RomSourceLinksDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RomSourceLinksDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.RomSourceLinksDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.RomSourceLinksDGV.Location = new System.Drawing.Point(14, 19);
+            this.RomSourceLinksDGV.Name = "RomSourceLinksDGV";
+            this.RomSourceLinksDGV.RowHeadersVisible = false;
+            this.RomSourceLinksDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.RomSourceLinksDGV.Size = new System.Drawing.Size(310, 262);
+            this.RomSourceLinksDGV.TabIndex = 0;
             // 
             // FrmSettings
             // 
@@ -1157,16 +1374,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.upTime)).EndInit();
             this.DatVaultTP.ResumeLayout(false);
             this.DatVaultTP.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DatSourceLinksDGV)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.FileOperationsTP.ResumeLayout(false);
             this.FileOperationsTP.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.LoggingGB.ResumeLayout(false);
+            this.LoggingGB.PerformLayout();
+            this.FileOperationalGB.ResumeLayout(false);
+            this.FileOperationalGB.PerformLayout();
             this.UiTP.ResumeLayout(false);
             this.UiTP.PerformLayout();
             this.OperationalGB.ResumeLayout(false);
@@ -1184,6 +1401,14 @@
             this.MainSC.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSC)).EndInit();
             this.MainSC.ResumeLayout(false);
+            this.RomsTP.ResumeLayout(false);
+            this.RomsTP.PerformLayout();
+            this.RomImportsGB.ResumeLayout(false);
+            this.RomImportsGB.PerformLayout();
+            this.CompressionGB.ResumeLayout(false);
+            this.CompressionGB.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RomSourceLinksDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1207,14 +1432,9 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cbo7zStruct;
-        private System.Windows.Forms.ComboBox cboCores;
         private System.Windows.Forms.CheckBox chkDoNotReportFeedback;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox LoggingGB;
         private System.Windows.Forms.ColorDialog ColorBroswer;
         private UserControls.TabControl MainTC;
         private System.Windows.Forms.TabPage DatSettingsTP;
@@ -1231,8 +1451,6 @@
         private System.Windows.Forms.CheckBox chkDarkMode;
         private System.Windows.Forms.GroupBox OperationalGB;
         private System.Windows.Forms.CheckBox EnableGamesGridRClickChB;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox MoveFilesNotCopyChB;
         private System.Windows.Forms.ImageList DatFormatLvLineHeightForcer;
         private UserControls.ToolTip MainTT;
         private System.Windows.Forms.Label label12;
@@ -1251,7 +1469,6 @@
         private UserControls.FlexiLabel InfoTextExampleLB;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox InfoTextColorPB;
-        private System.Windows.Forms.CheckBox DeleteOrigRomsRelocateChB;
         private System.Windows.Forms.TabPage DatVaultTP;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox MoveDontCopyDatsChB;
@@ -1268,5 +1485,26 @@
         private UserControls.FlexiLabel flexiLabel5;
         private System.Windows.Forms.SplitContainer MainSC;
         private System.Windows.Forms.CheckBox AutoCloseProgressChB;
+        private System.Windows.Forms.GroupBox FileOperationalGB;
+        private System.Windows.Forms.CheckBox PreserveEmptyRomFoldersChB;
+        private System.Windows.Forms.CheckBox UseRootedPathsChB;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.DataGridView DatSourceLinksDGV;
+        private System.Windows.Forms.Button DeleteDATSourceBT;
+        private System.Windows.Forms.Button AddDatSourceBT;
+        private System.Windows.Forms.TabPage RomsTP;
+        private UserControls.FlexiLabel flexiLabel6;
+        private System.Windows.Forms.GroupBox RomImportsGB;
+        private System.Windows.Forms.CheckBox DeleteOrigRomsRelocateChB;
+        private System.Windows.Forms.CheckBox MoveFilesNotCopyChB;
+        private System.Windows.Forms.GroupBox CompressionGB;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbo7zStruct;
+        private System.Windows.Forms.ComboBox cboCores;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button DeleteRomSourceBT;
+        private System.Windows.Forms.Button AddRomSourceBT;
+        private System.Windows.Forms.DataGridView RomSourceLinksDGV;
     }
 }

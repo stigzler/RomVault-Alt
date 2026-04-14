@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using RomVaultCore.RvDB;
 using RVIO;
+using System.Linq;
 
 namespace RomVaultCore.FixFile.Utils
 {
@@ -29,6 +30,11 @@ namespace RomVaultCore.FixFile.Utils
                     return;
 
                 string fullPath = dirDeleteCheck.FullName;
+
+                // check if user setting = preserve emprty directories
+                if (Settings.rvSettings.PreserveEmptyRomFolders && !System.IO.Directory.EnumerateFiles(fullPath).Any())
+                    return;
+
                 try
                 {
                     Debug.WriteLine("Deleting directory: " + fullPath);
@@ -60,6 +66,5 @@ namespace RomVaultCore.FixFile.Utils
                 CheckDeleteFile(parent);
             }
         }
-
     }
 }

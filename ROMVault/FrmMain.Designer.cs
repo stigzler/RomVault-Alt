@@ -146,12 +146,16 @@ namespace ROMVault
             this.tsmUpdateDATs = new System.Windows.Forms.ToolStripMenuItem();
             this.updateNewDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateAllDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.DatProvidersTSI = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanROMs = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewToSortFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmScanLevel1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanLevel2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanLevel3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.RomProvidersTSI = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmFindFixes = new System.Windows.Forms.ToolStripMenuItem();
             this.findFixesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findFixeswithLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -183,7 +187,6 @@ namespace ROMVault
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.garbageCollectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tooltip = new ROMVault.UserControls.ToolTip();
             this.MainSS = new System.Windows.Forms.StatusStrip();
             this.CollapseAllSSBT = new System.Windows.Forms.ToolStripStatusLabel();
             this.DatsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
@@ -192,6 +195,7 @@ namespace ROMVault
             this.RomsControlSSBT = new System.Windows.Forms.ToolStripDropDownButton();
             this.RomsGroupVisibilitySSBT = new System.Windows.Forms.ToolStripMenuItem();
             this.RomsShortnameToggleSSBT = new System.Windows.Forms.ToolStripMenuItem();
+            this.tooltip = new ROMVault.UserControls.ToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.splitToolBarMain)).BeginInit();
             this.splitToolBarMain.Panel1.SuspendLayout();
             this.splitToolBarMain.Panel2.SuspendLayout();
@@ -1661,7 +1665,9 @@ namespace ROMVault
             // 
             this.tsmUpdateDATs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.updateNewDATsToolStripMenuItem,
-            this.updateAllDATsToolStripMenuItem});
+            this.updateAllDATsToolStripMenuItem,
+            this.toolStripSeparator9,
+            this.DatProvidersTSI});
             this.tsmUpdateDATs.Name = "tsmUpdateDATs";
             this.tsmUpdateDATs.Size = new System.Drawing.Size(45, 20);
             this.tsmUpdateDATs.Text = "DATs";
@@ -1683,6 +1689,17 @@ namespace ROMVault
             this.updateAllDATsToolStripMenuItem.Text = "Refresh All DATs";
             this.updateAllDATsToolStripMenuItem.Click += new System.EventHandler(this.updateAllDATsToolStripMenuItem_Click);
             // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(207, 6);
+            // 
+            // DatProvidersTSI
+            // 
+            this.DatProvidersTSI.Name = "DatProvidersTSI";
+            this.DatProvidersTSI.Size = new System.Drawing.Size(210, 22);
+            this.DatProvidersTSI.Text = "DAT Providers:";
+            // 
             // tsmScanROMs
             // 
             this.tsmScanROMs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1690,7 +1707,9 @@ namespace ROMVault
             this.toolStripSeparator2,
             this.tsmScanLevel1,
             this.tsmScanLevel2,
-            this.tsmScanLevel3});
+            this.tsmScanLevel3,
+            this.toolStripSeparator10,
+            this.RomProvidersTSI});
             this.tsmScanROMs.Name = "tsmScanROMs";
             this.tsmScanROMs.Size = new System.Drawing.Size(51, 20);
             this.tsmScanROMs.Text = "ROMs";
@@ -1732,6 +1751,17 @@ namespace ROMVault
             this.tsmScanLevel3.Size = new System.Drawing.Size(353, 22);
             this.tsmScanLevel3.Text = "ReScan All ticked ROMs with full hash check";
             this.tsmScanLevel3.Click += new System.EventHandler(this.TsmScanLevel3Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(350, 6);
+            // 
+            // RomProvidersTSI
+            // 
+            this.RomProvidersTSI.Name = "RomProvidersTSI";
+            this.RomProvidersTSI.Size = new System.Drawing.Size(353, 22);
+            this.RomProvidersTSI.Text = "ROM Providers:";
             // 
             // tsmFindFixes
             // 
@@ -1986,13 +2016,6 @@ namespace ROMVault
             this.garbageCollectToolStripMenuItem.Name = "garbageCollectToolStripMenuItem";
             this.garbageCollectToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
-            // tooltip
-            // 
-            this.tooltip.AutoPopDelay = 32767;
-            this.tooltip.InitialDelay = 1000;
-            this.tooltip.OwnerDraw = true;
-            this.tooltip.ReshowDelay = 500;
-            // 
             // MainSS
             // 
             this.MainSS.AllowItemReorder = true;
@@ -2073,6 +2096,13 @@ namespace ROMVault
             this.RomsShortnameToggleSSBT.Size = new System.Drawing.Size(208, 22);
             this.RomsShortnameToggleSSBT.Text = "Toggle Shortname";
             this.RomsShortnameToggleSSBT.Click += new System.EventHandler(this.RomsShortnameToggleSSBT_Click);
+            // 
+            // tooltip
+            // 
+            this.tooltip.AutoPopDelay = 32767;
+            this.tooltip.InitialDelay = 1000;
+            this.tooltip.OwnerDraw = true;
+            this.tooltip.ReshowDelay = 500;
             // 
             // FrmMain
             // 
@@ -2338,6 +2368,10 @@ namespace ROMVault
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripMenuItem folderCReatorWizardToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator8;
+        private ToolStripSeparator toolStripSeparator9;
+        private ToolStripMenuItem DatProvidersTSI;
+        private ToolStripSeparator toolStripSeparator10;
+        private ToolStripMenuItem RomProvidersTSI;
     }
 }
 
