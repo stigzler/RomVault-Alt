@@ -55,6 +55,7 @@ namespace ROMVault
 
         private void LoadSchemaDropdown()
         {
+            DefaultSchemaDD.Items.Clear();
             foreach (var file in Directory.GetFiles(_schemaDir, "*.rvs"))
             {
                 DefaultSchemaDD.Items.Add(Path.GetFileNameWithoutExtension(file));
@@ -239,6 +240,24 @@ namespace ROMVault
                 }
             }
 
+            if (UnderCustomLocationChB.Checked && !Directory.Exists(CustomLocationLB.Text))
+            {
+                OutcomeLB.Visible = true;
+                OutcomeLB.Image = Resources.exclamation_circle;
+                OutcomeLB.Text = $"{_infoLabelPrefix}Custom Location does not exist. Aborting operation.";
+                SystemSounds.Beep.Play();
+                return;
+            }
+
+            if (!UnderRomsChB.Checked && !UnderDatsChB.Checked && !UnderCustomLocationChB.Checked)
+            {
+                OutcomeLB.Visible = true;
+                OutcomeLB.Image = Resources.exclamation_circle;
+                OutcomeLB.Text = $"{_infoLabelPrefix}No folder roots selected";
+                SystemSounds.Beep.Play();
+                return;
+            }
+
             DoFolderOperations();
         }
 
@@ -278,16 +297,7 @@ namespace ROMVault
                 folderRoots.Add(CustomLocationLB.Text);
             }
 
-            if (folderRoots.Count == 0)
-            {
-                Cursor.Current = Cursors.Default;
-                OutcomeLB.Visible = true;
-                OutcomeLB.Image = Resources.exclamation_circle;
-                OutcomeLB.Text = $"{_infoLabelPrefix}No folder roots selected";
-                SystemSounds.Hand.Play();
-
-                return;
-            } // shouldn't ever fire b/c dat and rom root must always exist, but just in case
+            // shouldn't ever fire b/c dat and rom root must always exist, but just in case
 
             bool create = CreateFoldersChB.Checked;
 
@@ -401,16 +411,16 @@ namespace ROMVault
 
         private void LoadSchemaBT_Click(object sender, EventArgs e)
         {
-            UserControls.FolderBrowserDialog fbd = new UserControls.FolderBrowserDialog()
-            { Description = "Choose a Folder Schema file to import..", Multiselect = false };
+            OpenFileDialog ofd = new OpenFileDialog()
+            { Title = "Choose a Folder Schema file to import..", Multiselect = false };
 
-            var result = fbd.ShowDialog(this);
-            if (result != true) return;
+            var result = ofd.ShowDialog(this);
+            if (result != DialogResult.OK) return;
 
-            if (Directory.Exists(fbd.SelectedPath))
+            if (File.Exists(ofd.FileName))
             {
-                LoadSchemaPathLB.Text = fbd.SelectedPath;
-                LoadSchemaFromFile(fbd.SelectedPath);
+                LoadSchemaPathLB.Text = ofd.FileName;
+                LoadSchemaFromFile(ofd.FileName);
             }
         }
 
@@ -425,6 +435,51 @@ namespace ROMVault
             if (Directory.Exists(fbd.SelectedPath))
             {
                 CustomLocationLB.Text = fbd.SelectedPath;
+            }
+        }
+
+        private void SaveAsBT_Click(object sender, EventArgs e)
+        {
+            var sfd = new SaveFileDialog()
+            {
+                Filter = "RomVault Folder Schema (*.rvs)|*.rvs",
+                Title = "Save Folder Schema As..",
+                InitialDirectory = _schemaDir
+            };
+
+            var result = sfd.ShowDialog(this);
+            if (result != DialogResult.OK) return;
+
+            StringBuilder sb = new StringBuilder();
+            foreach (string line in FoldersRTB.Lines)
+            {
+                if (!String.IsNullOrWhiteSpace(line))
+                    sb.AppendLine(line);
+            }
+
+            foreach (string line in SubFoldersRTB.Lines)
+            {
+                if (!String.IsNullOrWhiteSpace(line))
+                    sb.AppendLine($"*{line}");
+            }
+
+            try
+            {
+                File.WriteAllText(sfd.FileName, sb.ToString());
+                if (Path.GetDirectoryName(sfd.FileName) == _schemaDir)
+                {
+                    LoadSchemaDropdown();
+                }
+
+                OutcomeLB.Visible = true;
+                OutcomeLB.Image = Resources.disk;
+                OutcomeLB.Text = $"{_infoLabelPrefix}File saved as {Path.GetFileName(sfd.FileName)}";
+            }
+            catch (Exception ex)
+            {
+                OutcomeLB.Visible = true;
+                OutcomeLB.Image = Resources.exclamation_red;
+                OutcomeLB.Text = $"Failed to save schema. Error: {ex.Message}";
             }
         }
     }

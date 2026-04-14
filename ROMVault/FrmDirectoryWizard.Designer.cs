@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SchemaInfoLB = new System.Windows.Forms.Label();
+            this.LoadSchemaPathLB = new ROMVault.UserControls.PathLabel();
             this.LoadSchemaBT = new System.Windows.Forms.Button();
             this.BottomFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.GoBT = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.CreateFoldersChB = new System.Windows.Forms.CheckBox();
             this.DeleteFoldersChB = new System.Windows.Forms.CheckBox();
+            this.CustomLocationLB = new ROMVault.UserControls.PathLabel();
             this.DeleteFilesChB = new System.Windows.Forms.CheckBox();
             this.CustomLocationBT = new System.Windows.Forms.Button();
             this.UnderCustomLocationChB = new System.Windows.Forms.CheckBox();
@@ -65,8 +67,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.LogRTB = new System.Windows.Forms.RichTextBox();
-            this.CustomLocationLB = new ROMVault.UserControls.PathLabel();
-            this.LoadSchemaPathLB = new ROMVault.UserControls.PathLabel();
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this.panel1.SuspendLayout();
             this.BottomFLP.SuspendLayout();
@@ -140,6 +140,17 @@
             this.SchemaInfoLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SchemaInfoLB.Visible = false;
             // 
+            // LoadSchemaPathLB
+            // 
+            this.LoadSchemaPathLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoadSchemaPathLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LoadSchemaPathLB.Location = new System.Drawing.Point(105, 32);
+            this.LoadSchemaPathLB.Margin = new System.Windows.Forms.Padding(3);
+            this.LoadSchemaPathLB.Name = "LoadSchemaPathLB";
+            this.LoadSchemaPathLB.Size = new System.Drawing.Size(238, 21);
+            this.LoadSchemaPathLB.TabIndex = 3;
+            // 
             // LoadSchemaBT
             // 
             this.LoadSchemaBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -203,6 +214,7 @@
             this.SaveAsBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.MainTT.SetToolTip(this.SaveAsBT, "Saves the current schema as RomVault Schema file (rvs)");
             this.SaveAsBT.UseVisualStyleBackColor = true;
+            this.SaveAsBT.Click += new System.EventHandler(this.SaveAsBT_Click);
             // 
             // ValidateBT
             // 
@@ -291,6 +303,17 @@
             this.DeleteFoldersChB.Text = "Delete Folders";
             this.DeleteFoldersChB.UseVisualStyleBackColor = true;
             this.DeleteFoldersChB.CheckedChanged += new System.EventHandler(this.DeleteFoldersChB_CheckedChanged);
+            // 
+            // CustomLocationLB
+            // 
+            this.CustomLocationLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomLocationLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CustomLocationLB.Location = new System.Drawing.Point(19, 89);
+            this.CustomLocationLB.Margin = new System.Windows.Forms.Padding(3);
+            this.CustomLocationLB.Name = "CustomLocationLB";
+            this.CustomLocationLB.Size = new System.Drawing.Size(314, 21);
+            this.CustomLocationLB.TabIndex = 8;
             // 
             // DeleteFilesChB
             // 
@@ -524,28 +547,6 @@
             this.LogRTB.TabIndex = 0;
             this.LogRTB.Text = "";
             this.LogRTB.WordWrap = false;
-            // 
-            // CustomLocationLB
-            // 
-            this.CustomLocationLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomLocationLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CustomLocationLB.Location = new System.Drawing.Point(19, 89);
-            this.CustomLocationLB.Margin = new System.Windows.Forms.Padding(3);
-            this.CustomLocationLB.Name = "CustomLocationLB";
-            this.CustomLocationLB.Size = new System.Drawing.Size(314, 21);
-            this.CustomLocationLB.TabIndex = 8;
-            // 
-            // LoadSchemaPathLB
-            // 
-            this.LoadSchemaPathLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadSchemaPathLB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LoadSchemaPathLB.Location = new System.Drawing.Point(105, 32);
-            this.LoadSchemaPathLB.Margin = new System.Windows.Forms.Padding(3);
-            this.LoadSchemaPathLB.Name = "LoadSchemaPathLB";
-            this.LoadSchemaPathLB.Size = new System.Drawing.Size(238, 21);
-            this.LoadSchemaPathLB.TabIndex = 3;
             // 
             // flexiLabel1
             // 

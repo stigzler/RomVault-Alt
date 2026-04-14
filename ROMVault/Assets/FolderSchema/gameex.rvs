@@ -1,0 +1,360 @@
+[Arcade] American Laser Games
+[Arcade] Arcade (FB Alpha)
+[Arcade] Arcade (HBMAME)
+[Arcade] Arcade (MAME)
+[Arcade] Arcade (Model2)
+[Arcade] Arcade (Nebula)
+[Arcade] Arcade (Raine)
+[Arcade] Arcade (WinKawaks)
+[Arcade] Arcade (Zinc)
+[Arcade] CAVE
+[Arcade] CAVE (CAVEUI)
+[Arcade] Capcom Play System II
+[Arcade] Capcom Play System II (Nebula)
+[Arcade] Capcom Play System III
+[Arcade] Capcom Play System III (CPS3)
+[Arcade] Discrete
+[Arcade] Discrete (DICE)
+[Arcade] Laserdisc
+[Arcade] Laserdisc (Daphne)
+[Arcade] Namco System
+[Arcade] Namco System (Mjolnir)
+[Arcade] Namco System 22
+[Arcade] Namco System 22 (viva nonno)
+[Arcade] Nintendo Arcade System
+[Arcade] Nintendo Vs System
+[Arcade] Radikal Bikers
+[Arcade] Radikal Bikers (Radikal Bikers)
+[Arcade] Sammy Atomiswave
+[Arcade] Sammy Atomiswave (DEmul)
+[Arcade] Sega Chihiro
+[Arcade] Sega Model 2
+[Arcade] Sega Model 3
+[Arcade] Sega Naomi
+[Arcade] Sega Naomi (DEmul)
+[Arcade] Sega ST-V
+[Arcade] Sega System 1
+[Arcade] Taito Type X
+[Arcade] Triforce
+[Arcade] Vector
+[Arcade] Vector (AAE)
+[Console] Amstrad GX4000
+[Console] Amstrad GX4000 (MESS)
+[Console] Amstrad GX4000 (WinApe32)
+[Console] Apple Pippin
+[Console] Apple Pippin (MESS)
+[Console] Atari 2600
+[Console] Atari 2600 (MESS)
+[Console] Atari 2600 (Stella)
+[Console] Atari 2600 (Z26)
+[Console] Atari 2600 Demos
+[Console] Atari 5200
+[Console] Atari 5200 (Atari++)
+[Console] Atari 5200 (Jum's A5200)
+[Console] Atari 5200 (MESS)
+[Console] Atari 7800
+[Console] Atari 7800 (MESS)
+[Console] Atari 7800 (ProSystem)
+[Console] Atari Jaguar
+[Console] Atari Jaguar (Virtual Jaguar)
+[Console] Atari Jaguar CD
+[Console] Atari XE Game System
+[Console] Bally Astrocade
+[Console] Bally Astrocade (MESS)
+[Console] Bandai Playdia
+[Console] Casio Loopy
+[Console] Casio PV-1000
+[Console] Coleco ColecoVision
+[Console] Coleco ColecoVision (ColEm)
+[Console] Coleco ColecoVision (MESS)
+[Console] Coleco ColecoVision (Meka)
+[Console] Coleco ColecoVision (Virtual Colecovision)
+[Console] Commodore Amiga CD32
+[Console] Commodore Amiga CD32 (WinUAE)
+[Console] Commodore CDTV
+[Console] Commodore CDTV (WinUAE)
+[Console] Emerson Arcadia 2001
+[Console] Emerson Arcadia 2001 (WinArcadia)
+[Console] Epoch Super Cassette Vision
+[Console] Fairchild Channel F
+[Console] Fairchild Channel F (MESS)
+[Console] Funtech Super A'can
+[Console] GCE Vectrex
+[Console] GCE Vectrex (MESS)
+[Console] GCE Vectrex (ParaJVE)
+[Console] Interton Electronic VC 4000
+[Console] Interton Electronic VC 4000 (Winarcadia)
+[Console] Magnavox Odyssey
+[Console] Magnavox Odyssey (ODYEmu)
+[Console] Magnavox Odyssey 2
+[Console] Magnavox Odyssey 2 (02EM)
+[Console] Mattel HyperScan
+[Console] Mattel Intellivision
+[Console] Mattel Intellivision (Bliss)
+[Console] Mattel Intellivision (Nostalgia)
+[Console] Microsoft Xbox
+[Console] Microsoft Xbox (Cxbx)
+[Console] Microsoft Xbox 360
+[Console] NEC PC-FX
+[Console] NEC PC-FX (MagicFX)
+[Console] NEC PC-FX (Mednafen)
+[Console] NEC SuperGrafx
+[Console] NEC SuperGrafx (Mednafen)
+[Console] NEC TurboGrafx CD
+[Console] NEC TurboGrafx CD (MagicEngine)
+[Console] NEC TurboGrafx CD (Mednafen)
+[Console] NEC TurboGrafx CD (Ootake)
+[Console] NEC TurboGrafx-16
+[Console] NEC TurboGrafx-16 (MagicEngine)
+[Console] NEC TurboGrafx-16 (Mednafen)
+[Console] NEC TurboGrafx-16 (Ootake)
+[Console] Nintendo Famicom Disk System
+[Console] Nintendo GameCube
+[Console] Nintendo GameCube (Dolphin)
+[Console] Nintendo GameCube (SuperGCube)
+[Console] Nintendo N64
+[Console] Nintendo N64 (1964)
+[Console] Nintendo N64 (Project64)
+[Console] Nintendo N64 (Project64k)
+[Console] Nintendo NES
+[Console] Nintendo NES (FCE Ultra)
+[Console] Nintendo NES (Jnes)
+[Console] Nintendo NES (MESS)
+[Console] Nintendo NES (Mednafen)
+[Console] Nintendo NES (Nessie)
+[Console] Nintendo NES (Nestopia)
+[Console] Nintendo NES (RockNES)
+[Console] Nintendo NES (VirtuaNES)
+[Console] Nintendo SNES
+[Console] Nintendo SNES (BSNES)
+[Console] Nintendo SNES (MESS)
+[Console] Nintendo SNES (SNESGT)
+[Console] Nintendo SNES (SNEeSe)
+[Console] Nintendo SNES (Snes9x)
+[Console] Nintendo SNES (ZSNES)
+[Console] Nintendo Wii
+[Console] Nintendo Wii (Dolphin)
+[Console] Nuon
+[Console] Panasonic 3DO
+[Console] Panasonic 3DO (4DO)
+[Console] Philips CD-i
+[Console] Philips Odyssey
+[Console] Philips Odyssey 2
+[Console] RCA Chip-8
+[Console] RCA Studio II
+[Console] SNK Neo Geo
+[Console] SNK Neo Geo (Nebula)
+[Console] SNK Neo Geo (WinKawaks)
+[Console] SNK Neo Geo CD
+[Console] SNK Neo Geo CD (Nebula)
+[Console] SNK Neo Geo CD (NeoGeo CDZ)
+[Console] SNK Neo Geo CD (NeoRaine)
+[Console] SNK Neo Geo CD (neocd)
+[Console] Sega 32X
+[Console] Sega 32X (Fusion)
+[Console] Sega 32X (GENS+)
+[Console] Sega CD
+[Console] Sega CD (Fusion)
+[Console] Sega CD (GENS+)
+[Console] Sega Dreamcast
+[Console] Sega Dreamcast (Demul)
+[Console] Sega Dreamcast (nullDC)
+[Console] Sega Genesis
+[Console] Sega Genesis (Fusion)
+[Console] Sega Genesis (GENS+)
+[Console] Sega Genesis (Gens32 Surreal)
+[Console] Sega Master System
+[Console] Sega Master System (Dega)
+[Console] Sega Master System (Fusion)
+[Console] Sega Master System (GENS+)
+[Console] Sega Master System (Meka)
+[Console] Sega SG-1000
+[Console] Sega Saturn
+[Console] Sega Saturn (SSF)
+[Console] Sega Saturn (Yabause)
+[Console] Sega Super Control Station (SF-7000)
+[Console] Sony PlayStation
+[Console] Sony PlayStation (PCSXR)
+[Console] Sony PlayStation (Xebra)
+[Console] Sony PlayStation (ePSXe)
+[Console] Sony PlayStation (pSX)
+[Console] Sony PlayStation 2
+[Console] Sony PlayStation 2 (PCSX2)
+[Console] Sony PlayStation 3
+[Console] VTech CreatiVision
+[Console] VTech V.Flash
+[Console] WoW Action Max
+[Console] WoW Action Max (Singe)
+[Fruit] Fruit Machine (BFM)
+[Fruit] Fruit Machine (MFME)
+[Handheld] Atari Lynx
+[Handheld] Atari Lynx (Handy)
+[Handheld] Atari Lynx (Mednafen)
+[Handheld] Bandai WonderSwan
+[Handheld] Bandai WonderSwan (Mednafen)
+[Handheld] Bandai WonderSwan Color
+[Handheld] Bandai WonderSwan Color (Mednafen)
+[Handheld] Bandai WonderSwan Color (Oswan)
+[Handheld] Creatronic Mega Duck
+[Handheld] Entex Adventure Vision
+[Handheld] Entex Adventure Vision (MESS)
+[Handheld] GamePark GP32
+[Handheld] Hartung Game Master
+[Handheld] Nintendo DS
+[Handheld] Nintendo DS (DeSmuME)
+[Handheld] Nintendo Game & Watch
+[Handheld] Nintendo Game Boy
+[Handheld] Nintendo Game Boy (BGB)
+[Handheld] Nintendo Game Boy (Mednafen)
+[Handheld] Nintendo Game Boy (VBA-M)
+[Handheld] Nintendo Game Boy (VisualBoyAdvance)
+[Handheld] Nintendo Game Boy Advance
+[Handheld] Nintendo Game Boy Advance (Mednafen)
+[Handheld] Nintendo Game Boy Advance (VBA-M)
+[Handheld] Nintendo Game Boy Advance (VisualBoyAdvance)
+[Handheld] Nintendo Game Boy Color
+[Handheld] Nintendo Game Boy Color (BGB)
+[Handheld] Nintendo Game Boy Color (Mednafen)
+[Handheld] Nintendo Game Boy Color (VBA-M)
+[Handheld] Nintendo Game Boy Color (VisualBoyAdvance)
+[Handheld] Nintendo Pokemon Mini
+[Handheld] Nintendo Pokemon Mini (Pokemini)
+[Handheld] Nintendo Virtual Boy
+[Handheld] Nintendo Virtual Boy (Reality Boy)
+[Handheld] Nintendo Virtual Boy (Red Dragon)
+[Handheld] Nokia N-Gage
+[Handheld] SNK Neo Geo Pocket
+[Handheld] SNK Neo Geo Pocket (Mednafen)
+[Handheld] SNK Neo Geo Pocket (NeoPop)
+[Handheld] SNK Neo Geo Pocket Color
+[Handheld] SNK Neo Geo Pocket Color (Mednafen)
+[Handheld] Sega Game Gear
+[Handheld] Sega Game Gear (Dega)
+[Handheld] Sega Game Gear (Fusion)
+[Handheld] Sega Game Gear (GENS+)
+[Handheld] Sega Game Gear (MESS)
+[Handheld] Sega Game Gear (Meka)
+[Handheld] Sega PICO
+[Handheld] Sony PSP
+[Handheld] Sony PSP (JPCSP)
+[Handheld] Sony PSP (PCSP)
+[Handheld] Sony PocketStation
+[Handheld] Tapwave Zodiac
+[Handheld] Tiger Game.com
+[Handheld] Tiger Gizmondo
+[Handheld] VTech V.Smile
+[Handheld] Watara Supervision
+[Handheld] Watara Supervision (MESS)
+[Mobile] Google Android
+[Mobile] Google Android (Bluestacks)
+[Mobile] NTT DoCoMo DoJa
+[Mobile] Qualcomm BREW
+[Mobile] Symbian
+[Mobile] Synergenix Mophun
+[Other] MUGEN
+[Other] OpenBOR
+[Other] Touhou Project
+[Other] WoW ActionMax
+[PC] APF Imagination Machine
+[PC] Acorn Archimedes
+[PC] Acorn Atom
+[PC] Acorn BBC Micro
+[PC] Acorn BBC Micro (BeebEm)
+[PC] Acorn Electron
+[PC] Adobe Flash
+[PC] Amstrad CPC
+[PC] Amstrad CPC (WinAPE)
+[PC] Apple II
+[PC] Apple II (MESS)
+[PC] Apple IIGS
+[PC] Apple Macintosh
+[PC] Atari 8-bit
+[PC] Atari 8-bit Demos
+[PC] Atari 800
+[PC] Atari ST
+[PC] Atari XE
+[PC] Big Fish Games
+[PC] Camputers Lynx
+[PC] Casio PV-2000
+[PC] Commodore 128
+[PC] Commodore 128 (WinVice)
+[PC] Commodore 64
+[PC] Commodore 64 (CCS64)
+[PC] Commodore 64 (WinVice)
+[PC] Commodore 64 Demos
+[PC] Commodore 64 Standard
+[PC] Commodore Amiga
+[PC] Commodore Amiga (DemoBase)
+[PC] Commodore Amiga (GameBase)
+[PC] Commodore Amiga (SPS)
+[PC] Commodore Amiga (WHDLoad)
+[PC] Commodore Amiga (WinUAE)
+[PC] Commodore Amiga Demos
+[PC] Commodore C16
+[PC] Commodore C16 (WinVice)
+[PC] Commodore CBM-II
+[PC] Commodore CBM-II (WinVice)
+[PC] Commodore MAX
+[PC] Commodore PET
+[PC] Commodore PET (WinVice)
+[PC] Commodore Plus_4
+[PC] Commodore Plus_4 (WinVice)
+[PC] Commodore Plus_4 Demos
+[PC] Commodore VIC-20
+[PC] Commodore VIC-20 (WinVice)
+[PC] Commodore VIC-20 Demos
+[PC] Dragon 32-64
+[PC] Enterprise
+[PC] Frets on Fire
+[PC] Fujitsu FM Towns
+[PC] Fujitsu FM Towns (UNZ)
+[PC] GOG
+[PC] Games for Windows
+[PC] IBM PC
+[PC] Jupiter Ace
+[PC] KaraFun
+[PC] MGT Sam Coupe
+[PC] MGT Sam Coupe (SimCoupe)
+[PC] MGT Sam Coupe Demos
+[PC] MITS Altair 8800
+[PC] MITS Altair 8800 (Altair32)
+[PC] MUGEN
+[PC] Mattel Aquarius
+[PC] Memotech MTX
+[PC] Microsoft DOS
+[PC] Microsoft DOS (DOSBox)
+[PC] Microsoft MSX
+[PC] Microsoft MSX (MESS)
+[PC] Microsoft MSX (blueMSX)
+[PC] Microsoft MSX 2
+[PC] Microsoft Windows
+[PC] NEC PC-88
+[PC] NEC PC-98
+[PC] OpenBOR
+[PC] PC Booter
+[PC] Philips VG 5000
+[PC] PopCap Games
+[PC] ScummVM
+[PC] Sega Computer 3000
+[PC] Sharp MZ-700
+[PC] Sharp MZ-800
+[PC] Sharp X1
+[PC] Sharp X68000
+[PC] Sinclair ZX Spectrum
+[PC] Sinclair ZX Spectrum (Spectaculator)
+[PC] Sinclair ZX80
+[PC] Sinclair ZX81
+[PC] Sord M5
+[PC] Steam
+[PC] Stepmania
+[PC] Tandy TRS-80
+[PC] Tangerine Oric
+[PC] Tatung Einstein
+[PC] Texas Instruments TI-99_4A
+[PC] Thomson MO5
+[PC] UltraStar Deluxe
+[PC] Z-Code Interactive Fiction
+[PC] Z-Code Interactive Fiction (Windows Frotz)
+[Pinball] Future Pinball
+[Pinball] Visual PinMAME
+[Pinball] Visual Pinball

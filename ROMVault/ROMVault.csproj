@@ -256,6 +256,7 @@
     <Compile Include="UserControls\PromptTextBox.cs" />
     <Compile Include="UserControls\TabControl.cs" />
     <Compile Include="UserControls\TableLayoutPanel.cs" />
+    <Compile Include="UserControls\ToolTip.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\DatInfo.cs" />
     <Compile Include="ViewModels\GameInfo.cs" />
@@ -323,9 +324,24 @@
       <DependentUpon>rvTree.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Assets\FolderSchema\romm.platform-name.rvs">
+    <Content Include="Assets\FolderSchema\launchbox.rvs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="Assets\FolderSchema\emulation-station.platfrom-name.rvs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\FolderSchema\emulation-station.shortcode.rvs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\FolderSchema\gameex.rvs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\FolderSchema\libretro.rvs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\FolderSchema\romm.platform-name.rvs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\FolderSchema\test.example.rvs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -358,9 +374,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\FolderSchema\romm.shortcode.rvs">
+    <Content Include="Assets\FolderSchema\romm.shortcode.rvs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="chip.ico" />
     <None Include="Resources\folder-smiley1.png" />
     <None Include="Resources\stamp.png" />
@@ -645,3 +661,4 @@
     <Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
   </Target>
 </Project>
+

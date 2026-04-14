@@ -174,6 +174,7 @@ namespace Dark
                     dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
                     dgv.GridColor = (darkMode) ? bg : Control.DefaultBackColor;
+
                     break;
 
                 case MenuStrip ms:
