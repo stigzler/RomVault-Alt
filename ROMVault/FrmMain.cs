@@ -836,7 +836,7 @@ namespace ROMVault
             RomsFixableLB.ForeColor = setts.RomFixableColor;
             RomsUnknownLB.ForeColor = setts.RomUnknownColor;
 
-            InitialiseStatusStrip();
+            //InitialiseStatusStrip();
         }
 
         internal void InitialiseStatusStrip()
@@ -982,9 +982,9 @@ namespace ROMVault
             splitToolBarMain.SplitterDistance = (int)(splitToolBarMain.SplitterDistance * factor.Width);
             splitDatInfoGameInfo.SplitterDistance = (int)(splitDatInfoGameInfo.SplitterDistance * factor.Width);
             splitDatInfoGameInfo.Panel1MinSize = (int)(splitDatInfoGameInfo.Panel1MinSize * factor.Width);
+            splitGameInfoLists.SplitterDistance = (int)(splitGameInfoLists.SplitterDistance * factor.Height);
 
             //splitDatInfoTree.SplitterDistance = (int)(splitDatInfoTree.SplitterDistance * factor.Height);
-            splitGameInfoLists.SplitterDistance = (int)(splitGameInfoLists.SplitterDistance * factor.Height);
 
             _scaleFactorX *= factor.Width;
             _scaleFactorY *= factor.Height;
