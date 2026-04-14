@@ -993,6 +993,8 @@ namespace ROMVault
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             Properties.Settings.Default.SidebarSplitterDistance = splitToolBarMain.SplitterDistance;
+            Debug.WriteLine("set" + Properties.Settings.Default.SidebarSplitterDistance);
+
             Properties.Settings.Default.DatGameSplitterDistance = splitDatInfoGameInfo.SplitterDistance;
             Properties.Settings.Default.GameInfoSplitterDistance = splitGameInfoLists.SplitterDistance;
             Properties.Settings.Default.RomListSplitterDistance = splitGameListRomList.SplitterDistance;
@@ -1847,6 +1849,23 @@ namespace ROMVault
             ApplyStartupLayout();
         }
 
+        private void ApplySplitterMoves()
+        {
+            if (Properties.Settings.Default.SidebarSplitterDistance != 0)
+                splitToolBarMain.SplitterDistance = Properties.Settings.Default.SidebarSplitterDistance;
+
+            Debug.WriteLine("get" + Properties.Settings.Default.SidebarSplitterDistance);
+
+            if (Properties.Settings.Default.DatGameSplitterDistance != 0)
+                splitDatInfoGameInfo.SplitterDistance = Properties.Settings.Default.DatGameSplitterDistance;
+
+            if (Properties.Settings.Default.GameInfoSplitterDistance != 0)
+                splitGameInfoLists.SplitterDistance = Properties.Settings.Default.GameInfoSplitterDistance;
+
+            if (Properties.Settings.Default.RomListSplitterDistance != 0)
+                splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
+        }
+
         private void ApplyStartupLayout()
         {
             if (_startupLayoutApplied)
@@ -1854,42 +1873,27 @@ namespace ROMVault
 
             _isApplyingStartupLayout = true;
             SuspendLayout();
-            splitToolBarMain.SuspendLayout();
+            //splitToolBarMain.SuspendLayout();
 
-            try
-            {
-                if (Properties.Settings.Default.WindowPosition != new Point(0, 0))
-                    Location = Properties.Settings.Default.WindowPosition;
+            if (Properties.Settings.Default.WindowPosition != new Point(0, 0))
+                Location = Properties.Settings.Default.WindowPosition;
 
-                if (Properties.Settings.Default.WindowSize != new Size(0, 0))
-                    Size = Properties.Settings.Default.WindowSize;
+            if (Properties.Settings.Default.WindowSize != new Size(0, 0))
+                Size = Properties.Settings.Default.WindowSize;
 
-                if (Properties.Settings.Default.SidebarSplitterDistance != 0)
-                    splitToolBarMain.SplitterDistance = Properties.Settings.Default.SidebarSplitterDistance;
+            InitialiseStatusStrip();
 
-                if (Properties.Settings.Default.DatGameSplitterDistance != 0)
-                    splitDatInfoGameInfo.SplitterDistance = Properties.Settings.Default.DatGameSplitterDistance;
+            ctrRvTree.Visible = true;
 
-                if (Properties.Settings.Default.GameInfoSplitterDistance != 0)
-                    splitGameInfoLists.SplitterDistance = Properties.Settings.Default.GameInfoSplitterDistance;
+            UpdateDataGridViewsColSizing();
 
-                if (Properties.Settings.Default.RomListSplitterDistance != 0)
-                    splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
+            ApplySplitterMoves();
 
-                InitialiseStatusStrip();
+            MainPG.MoveSplitterTo(200);
 
-                ctrRvTree.Visible = true;
-                MainPG.MoveSplitterTo(200);
-                UpdateDataGridViewsColSizing();
-            }
-            finally
-            {
-                splitToolBarMain.ResumeLayout(true);
-                ResumeLayout(true);
-                PerformLayout();
-                _isApplyingStartupLayout = false;
-            }
-
+            ResumeLayout(true);
+            PerformLayout();
+            _isApplyingStartupLayout = false;
             _startupLayoutApplied = true;
         }
 
