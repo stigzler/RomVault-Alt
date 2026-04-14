@@ -92,6 +92,9 @@ namespace ROMVault
         private float _scaleFactorY = 1;
 
         private bool _shown = false;
+        private bool _startupLayoutApplied;
+        private bool _isApplyingStartupLayout;
+        private bool _statusStripInitialised;
 
         private ToolStripMenuItem garbageCollectToolStripMenuItem;
 
@@ -160,6 +163,9 @@ namespace ROMVault
 
             // Form specific UI setup:
             Text = $@"RomVault ({Program.strVersion})";
+            Font = new Font(this.Font.FontFamily, (float)Properties.Settings.Default.MainTextSize);
+
+            Theming.SetControlTextSizeToDefault(menuStrip1);
 
             Type dgvType = GameGrid.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -791,9 +797,6 @@ namespace ROMVault
         /// </summary>
         internal void UpdateThemeAndControls(bool settingsUpdated = false)
         {
-            this.Font = new System.Drawing.Font(this.Font.FontFamily, (float)Properties.Settings.Default.MainTextSize);
-
-            Theming.SetControlTextSizeToDefault(menuStrip1);
             int iconSize = (int)(1.5 * Properties.Settings.Default.MainTextSize);
             menuStrip1.ImageScalingSize = new Size(iconSize, iconSize);
 
@@ -808,6 +811,7 @@ namespace ROMVault
                 Theming.SetControlTextSizeToDefault(cms);
                 cms.ImageScalingSize = new Size(iconSize, iconSize);
             }
+
             dark.SetColors(CopyTextCMS, Settings.rvSettings.Darkness);
 
             dark.SetColors(this, Settings.rvSettings.Darkness);
@@ -832,37 +836,7 @@ namespace ROMVault
             RomsFixableLB.ForeColor = setts.RomFixableColor;
             RomsUnknownLB.ForeColor = setts.RomUnknownColor;
 
-            // Moved out of Shown:
-            // Restore visuals
-            if (Properties.Settings.Default.WindowPosition != new Point(0, 0))
-                this.Location = Properties.Settings.Default.WindowPosition;
-
-            if (Properties.Settings.Default.WindowSize != new Size(0, 0))
-                this.Size = Properties.Settings.Default.WindowSize;
-
-            // Restore splitters
-            if (Properties.Settings.Default.SidebarSplitterDistance != 0)
-                splitToolBarMain.SplitterDistance = Properties.Settings.Default.SidebarSplitterDistance;
-
-            if (Properties.Settings.Default.DatGameSplitterDistance != 0)
-                splitDatInfoGameInfo.SplitterDistance = Properties.Settings.Default.DatGameSplitterDistance;
-
-            if (Properties.Settings.Default.GameInfoSplitterDistance != 0)
-                splitGameInfoLists.SplitterDistance = Properties.Settings.Default.GameInfoSplitterDistance;
-
-            if (Properties.Settings.Default.RomListSplitterDistance != 0)
-                splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
-
-            // Set up status strip
             InitialiseStatusStrip();
-
-            ctrRvTree.Visible = true;
-
-            // PropertyGrid
-            MainPG.MoveSplitterTo(200);
-
-            // DataGridViews
-            UpdateDataGridViewsColSizing();
         }
 
         internal void InitialiseStatusStrip()
@@ -877,54 +851,57 @@ namespace ROMVault
             else
                 MainSS.ImageScalingSize = new Size(Properties.Settings.Default.StatusIconSize, Properties.Settings.Default.StatusIconSize);
 
-            int i = 2;
-
-            // Add Game Status Icons to StatusStrip at position 2 (skips the i icon and the db icon at the bottom).
-            foreach (KeyValuePair<DatTreeStatus, string> kvp in Constants.UI.DatTreeStatusText)
+            if (!_statusStripInitialised)
             {
-                DatTreeStatus datTreeStatus = kvp.Key;
+                int i = 2;
 
-                ToolStripStatusLabel lbl = new ToolStripStatusLabel
+                // Add Game Status Icons to StatusStrip at position 2 (skips the i icon and the db icon at the bottom).
+                foreach (KeyValuePair<DatTreeStatus, string> kvp in Constants.UI.DatTreeStatusText)
                 {
-                    Text = kvp.Key.ToString(),
-                    Image = rvImages.GetBitmap(datTreeStatus.GetMetadata().ImageName),
-                    ToolTipText = kvp.Value,
-                    Padding = new Padding(0, 0, 2, 0),
-                    DisplayStyle = ToolStripItemDisplayStyle.Image
-                };
-                lbl.MouseHover += Lbl_MouseHover;
-                lbl.MouseLeave += Lbl_MouseLeave;
-                //MainSS.Items.Add(lbl);
-                MainSS.Items.Insert(i, lbl);
-                datStatusStripKeys.Add(lbl);
-                i++;
-            }
+                    DatTreeStatus datTreeStatus = kvp.Key;
 
-            i += 1; //  skips the pre existing game category icon and prefixing separator in the statusbar
+                    ToolStripStatusLabel lbl = new ToolStripStatusLabel
+                    {
+                        Text = kvp.Key.ToString(),
+                        Image = rvImages.GetBitmap(datTreeStatus.GetMetadata().ImageName),
+                        ToolTipText = kvp.Value,
+                        Padding = new Padding(0, 0, 2, 0),
+                        DisplayStyle = ToolStripItemDisplayStyle.Image
+                    };
+                    lbl.MouseHover += Lbl_MouseHover;
+                    lbl.MouseLeave += Lbl_MouseLeave;
+                    MainSS.Items.Insert(i, lbl);
+                    datStatusStripKeys.Add(lbl);
+                    i++;
+                }
 
-            // Add Game Status Icons to StatusStrip
-            foreach (KeyValuePair<RepStatus, string> kvp in Constants.UI.RepStatusText)
-            {
-                ToolStripStatusLabel lbl = new ToolStripStatusLabel
+                i += 1; //  skips the pre existing game category icon and prefixing separator in the statusbar
+
+                // Add Game Status Icons to StatusStrip
+                foreach (KeyValuePair<RepStatus, string> kvp in Constants.UI.RepStatusText)
                 {
-                    Text = kvp.Key.ToString(),
-                    Image = rvImages.GetBitmap("G_" + kvp.Key),
-                    ToolTipText = kvp.Value,
-                    Padding = new Padding(0, 0, 1, 0),
-                    DisplayStyle = ToolStripItemDisplayStyle.Image
-                };
-                lbl.MouseHover += Lbl_MouseHover;
-                lbl.MouseLeave += Lbl_MouseLeave;
-                //MainSS.Items.Add(lbl);
-                MainSS.Items.Insert(i, lbl);
-                romStatusStripKeys.Add(lbl);
-                i++;
+                    ToolStripStatusLabel lbl = new ToolStripStatusLabel
+                    {
+                        Text = kvp.Key.ToString(),
+                        Image = rvImages.GetBitmap("G_" + kvp.Key),
+                        ToolTipText = kvp.Value,
+                        Padding = new Padding(0, 0, 1, 0),
+                        DisplayStyle = ToolStripItemDisplayStyle.Image
+                    };
+                    lbl.MouseHover += Lbl_MouseHover;
+                    lbl.MouseLeave += Lbl_MouseLeave;
+                    MainSS.Items.Insert(i, lbl);
+                    romStatusStripKeys.Add(lbl);
+                    i++;
+                }
+
+                _statusStripInitialised = true;
             }
 
             // this used later in tooltip display for left icon/control
             statusBarLeftTooltipHeight = TextRenderer.MeasureText(CollapseAllSSBT.ToolTipText, SystemFonts.StatusFont).Height;
 
-            // Dark mode on status strip. ⚠️⚠️ IMPORTANT: This must be done AFTER   InitialiseStatusStrip(); ⚠️⚠️
+            // Dark mode on status strip. ⚠️⚠️ IMPORTANT: This must be done AFTER InitialiseStatusStrip(); ⚠️⚠️
             if (Settings.rvSettings.Darkness)
             {
                 var darkRenderer = new DarkToolStripRenderer();
@@ -933,7 +910,6 @@ namespace ROMVault
                 {
                     if (item is ToolStripDropDownButton dropDownButton)
                     {
-                        // Successfully identified
                         dropDownButton.DropDown.Renderer = darkRenderer;
                     }
                 }
@@ -1867,6 +1843,69 @@ namespace ROMVault
                 { btnFixFiles, "Fix ROMs" },
                 { btnReport, "Reports" }
             };
+
+            ApplyStartupLayout();
+        }
+
+        private void ApplyStartupLayout()
+        {
+            if (_startupLayoutApplied)
+                return;
+
+            _isApplyingStartupLayout = true;
+            SuspendLayout();
+            splitToolBarMain.SuspendLayout();
+
+            try
+            {
+                if (Properties.Settings.Default.WindowPosition != new Point(0, 0))
+                    Location = Properties.Settings.Default.WindowPosition;
+
+                if (Properties.Settings.Default.WindowSize != new Size(0, 0))
+                    Size = Properties.Settings.Default.WindowSize;
+
+                if (Properties.Settings.Default.SidebarSplitterDistance != 0)
+                    splitToolBarMain.SplitterDistance = Properties.Settings.Default.SidebarSplitterDistance;
+
+                if (Properties.Settings.Default.DatGameSplitterDistance != 0)
+                    splitDatInfoGameInfo.SplitterDistance = Properties.Settings.Default.DatGameSplitterDistance;
+
+                if (Properties.Settings.Default.GameInfoSplitterDistance != 0)
+                    splitGameInfoLists.SplitterDistance = Properties.Settings.Default.GameInfoSplitterDistance;
+
+                if (Properties.Settings.Default.RomListSplitterDistance != 0)
+                    splitGameListRomList.SplitterDistance = Properties.Settings.Default.RomListSplitterDistance;
+
+                InitialiseStatusStrip();
+
+                ctrRvTree.Visible = true;
+                MainPG.MoveSplitterTo(200);
+                UpdateDataGridViewsColSizing();
+            }
+            finally
+            {
+                splitToolBarMain.ResumeLayout(true);
+                ResumeLayout(true);
+                PerformLayout();
+                _isApplyingStartupLayout = false;
+            }
+
+            _startupLayoutApplied = true;
+        }
+
+        private void splitToolBarMain_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            if (_isApplyingStartupLayout)
+                return;
+
+            if (splitToolBarMain.Panel1.Width < navBarWidth)
+            {
+                CollapseSidebar();
+            }
+            else if (splitToolBarMain.Panel1.Width >= navBarWidth && string.IsNullOrEmpty(btnUpdateDats.Text))
+            {
+                if (string.IsNullOrEmpty(btnUpdateDats.Text)) ToggleNavText(visible: true);
+            }
         }
 
         /// <summary>
@@ -1898,18 +1937,6 @@ namespace ROMVault
         }
 
         private int navBarWidth = 156;
-
-        private void splitToolBarMain_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-            if (splitToolBarMain.Panel1.Width < navBarWidth)
-            {
-                CollapseSidebar();
-            }
-            else if (splitToolBarMain.Panel1.Width >= navBarWidth && string.IsNullOrEmpty(btnUpdateDats.Text))
-            {
-                if (string.IsNullOrEmpty(btnUpdateDats.Text)) ToggleNavText(visible: true);
-            }
-        }
 
         private void CollapseSidebar()
         {
