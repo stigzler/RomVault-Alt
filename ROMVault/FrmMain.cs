@@ -1854,6 +1854,11 @@ namespace ROMVault
             if (Properties.Settings.Default.SidebarSplitterDistance != 0)
                 splitToolBarMain.SplitterDistance = Properties.Settings.Default.SidebarSplitterDistance;
 
+            if (splitToolBarMain.Panel1.Width < navBarWidth)
+            {
+                CollapseSidebar();
+            }
+
             Debug.WriteLine("get" + Properties.Settings.Default.SidebarSplitterDistance);
 
             if (Properties.Settings.Default.DatGameSplitterDistance != 0)
@@ -1873,7 +1878,6 @@ namespace ROMVault
 
             _isApplyingStartupLayout = true;
             SuspendLayout();
-            //splitToolBarMain.SuspendLayout();
 
             if (Properties.Settings.Default.WindowPosition != new Point(0, 0))
                 Location = Properties.Settings.Default.WindowPosition;
@@ -1887,14 +1891,23 @@ namespace ROMVault
 
             UpdateDataGridViewsColSizing();
 
-            ApplySplitterMoves();
-
             MainPG.MoveSplitterTo(200);
 
             ResumeLayout(true);
             PerformLayout();
-            _isApplyingStartupLayout = false;
-            _startupLayoutApplied = true;
+
+            BeginInvoke((MethodInvoker)delegate
+            {
+                ApplySplitterMoves();
+                splitToolBarMain.PerformLayout();
+                splitDatInfoGameInfo.PerformLayout();
+                splitGameInfoLists.PerformLayout();
+                splitGameListRomList.PerformLayout();
+                PerformLayout();
+
+                _isApplyingStartupLayout = false;
+                _startupLayoutApplied = true;
+            });
         }
 
         private void splitToolBarMain_SplitterMoved(object sender, SplitterEventArgs e)
