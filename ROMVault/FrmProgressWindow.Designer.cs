@@ -58,7 +58,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar2.Location = new System.Drawing.Point(6, 8);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(496, 19);
+            this.progressBar2.Size = new System.Drawing.Size(503, 19);
             this.progressBar2.TabIndex = 3;
             this.progressBar2.Visible = false;
             // 
@@ -68,7 +68,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.Location = new System.Drawing.Point(8, 9);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(403, 18);
+            this.progressBar.Size = new System.Drawing.Size(410, 18);
             this.progressBar.TabIndex = 1;
             // 
             // label
@@ -78,7 +78,7 @@
             this.label.Location = new System.Drawing.Point(2, 2);
             this.label.Name = "label";
             this.label.Padding = new System.Windows.Forms.Padding(2);
-            this.label.Size = new System.Drawing.Size(426, 22);
+            this.label.Size = new System.Drawing.Size(433, 22);
             this.label.TabIndex = 0;
             this.label.Text = "Starting operation...";
             this.label.UseMnemonic = false;
@@ -89,7 +89,7 @@
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Location = new System.Drawing.Point(417, 6);
+            this.cancelButton.Location = new System.Drawing.Point(424, 6);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(85, 25);
             this.cancelButton.TabIndex = 2;
@@ -103,7 +103,7 @@
             this.label2.Location = new System.Drawing.Point(4, 55);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(2);
-            this.label2.Size = new System.Drawing.Size(510, 22);
+            this.label2.Size = new System.Drawing.Size(517, 22);
             this.label2.TabIndex = 4;
             this.label2.UseMnemonic = false;
             this.label2.Visible = false;
@@ -111,7 +111,7 @@
             // lbl2Prog
             // 
             this.lbl2Prog.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbl2Prog.Location = new System.Drawing.Point(428, 2);
+            this.lbl2Prog.Location = new System.Drawing.Point(435, 2);
             this.lbl2Prog.Name = "lbl2Prog";
             this.lbl2Prog.Padding = new System.Windows.Forms.Padding(2);
             this.lbl2Prog.Size = new System.Drawing.Size(80, 22);
@@ -143,7 +143,7 @@
             this.ErrorGrid.ShowCellToolTips = false;
             this.ErrorGrid.ShowEditingIcon = false;
             this.ErrorGrid.ShowRowErrors = false;
-            this.ErrorGrid.Size = new System.Drawing.Size(518, 0);
+            this.ErrorGrid.Size = new System.Drawing.Size(525, 66);
             this.ErrorGrid.TabIndex = 6;
             this.ErrorGrid.SelectionChanged += new System.EventHandler(this.ErrorGridSelectionChanged);
             // 
@@ -170,7 +170,7 @@
             this.label3.Location = new System.Drawing.Point(4, 77);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(2);
-            this.label3.Size = new System.Drawing.Size(510, 22);
+            this.label3.Size = new System.Drawing.Size(517, 22);
             this.label3.TabIndex = 6;
             this.label3.UseMnemonic = false;
             // 
@@ -188,7 +188,7 @@
             this.TopPN.Location = new System.Drawing.Point(2, 2);
             this.TopPN.Name = "TopPN";
             this.TopPN.Padding = new System.Windows.Forms.Padding(4);
-            this.TopPN.Size = new System.Drawing.Size(518, 175);
+            this.TopPN.Size = new System.Drawing.Size(525, 175);
             this.TopPN.TabIndex = 7;
             // 
             // BottomPbPN
@@ -200,7 +200,7 @@
             this.BottomPbPN.Location = new System.Drawing.Point(4, 132);
             this.BottomPbPN.Name = "BottomPbPN";
             this.BottomPbPN.Padding = new System.Windows.Forms.Padding(2);
-            this.BottomPbPN.Size = new System.Drawing.Size(510, 39);
+            this.BottomPbPN.Size = new System.Drawing.Size(517, 39);
             this.BottomPbPN.TabIndex = 8;
             // 
             // ProgressBarAndButtonPN
@@ -209,7 +209,7 @@
             this.ProgressBarAndButtonPN.Dock = System.Windows.Forms.DockStyle.Top;
             this.ProgressBarAndButtonPN.Location = new System.Drawing.Point(4, 99);
             this.ProgressBarAndButtonPN.Name = "ProgressBarAndButtonPN";
-            this.ProgressBarAndButtonPN.Size = new System.Drawing.Size(510, 33);
+            this.ProgressBarAndButtonPN.Size = new System.Drawing.Size(517, 33);
             this.ProgressBarAndButtonPN.TabIndex = 9;
             // 
             // TopRowPN
@@ -221,7 +221,7 @@
             this.TopRowPN.Location = new System.Drawing.Point(4, 29);
             this.TopRowPN.Name = "TopRowPN";
             this.TopRowPN.Padding = new System.Windows.Forms.Padding(2);
-            this.TopRowPN.Size = new System.Drawing.Size(510, 26);
+            this.TopRowPN.Size = new System.Drawing.Size(517, 26);
             this.TopRowPN.TabIndex = 2;
             // 
             // flexiLabel1
@@ -242,7 +242,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(522, 178);
+            this.ClientSize = new System.Drawing.Size(529, 245);
             this.ControlBox = false;
             this.Controls.Add(this.ErrorGrid);
             this.Controls.Add(this.TopPN);

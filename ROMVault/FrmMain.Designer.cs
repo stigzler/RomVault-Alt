@@ -911,6 +911,7 @@ namespace ROMVault
             this.MainPG.TabIndex = 0;
             this.MainPG.ToolbarVisible = false;
             this.MainPG.UseCompatibleTextRendering = true;
+            this.MainPG.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.MainPG_PropertyValueChanged);
             this.MainPG.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.MainPG_SelectedGridItemChanged);
             this.MainPG.SelectedObjectsChanged += new System.EventHandler(this.MainPG_SelectedObjectsChanged);
             // 

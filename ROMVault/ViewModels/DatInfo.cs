@@ -1,4 +1,6 @@
-﻿using ROMVault.Attributes;
+﻿using DATReader.DatStore;
+using ROMVault.Attributes;
+using RomVaultCore.RvDB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +14,7 @@ namespace ROMVault.ViewModels
     internal class DatInfo : ViewModelBase
     {
         //[SortableCategory("DAT File", 10)]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         public string Name { get; set; } = string.Empty;
 
         //[SortableCategory("Associated ROMs", 15)]
@@ -24,19 +26,19 @@ namespace ROMVault.ViewModels
         public string DatPath { get; set; } = string.Empty;
 
         //[SortableCategory("DAT File", 10)]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         public string Category { get; set; } = string.Empty;
 
         //[SortableCategory("DAT File", 10)]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         public string Description { get; set; } = string.Empty;
 
         //[SortableCategory("DAT File", 10)]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         public string Version { get; set; } = string.Empty;
 
         //[SortableCategory("DAT File", 10)]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         public string Author { get; set; } = string.Empty;
 
         //[SortableCategory("DAT File", 10)]
@@ -62,6 +64,9 @@ namespace ROMVault.ViewModels
         //[Description("Rom entries in the DAT file in an Unknown state (see docs online).")]
         [ReadOnly(true)]
         public string RomsUnknown { get; set; } = string.Empty;
+
+        public RvDat Dat;
+        public DatHeader DatHeader;
 
         public DatInfo()
         {

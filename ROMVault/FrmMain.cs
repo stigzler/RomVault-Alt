@@ -16,6 +16,7 @@ using RomVaultCore.Extensions;
 using RomVaultCore.ReadDat;
 using RomVaultCore.RvDB;
 using RomVaultCore.Scanner;
+using RomVaultCore.Storage.Dat;
 using RomVaultCore.Utils;
 using RVIO;
 using System;
@@ -68,6 +69,7 @@ namespace ROMVault
         private readonly ToolStripMenuItem _mnuRelocateRoms;
         private readonly ToolStripMenuItem _mnuDeleteDat;
         private readonly ToolStripMenuItem _mnuEditDat;
+        private readonly ToolStripMenuItem _mnuAddNewDat;
 
         private readonly ToolStripMenuItem _mnuToSortImportRomFiles;
         private readonly ToolStripMenuItem _mnuToSortImportRomFolders;
@@ -290,6 +292,11 @@ namespace ROMVault
                 Tag = null
             };
 
+            _mnuAddNewDat = new ToolStripMenuItem
+            {
+                Text = @"Add New DAT here"
+            };
+
             _mnuContext.Items.Add(mnuScan2);
             _mnuContext.Items.Add(mnuScan1);
             _mnuContext.Items.Add(mnuScan3);
@@ -307,6 +314,7 @@ namespace ROMVault
             _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(_mnuDeleteDat);
             _mnuContext.Items.Add(_mnuEditDat);
+            _mnuContext.Items.Add(_mnuAddNewDat);
             _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(mnuImportToThisDir);
             _mnuContext.Items.Add(mnuImportToPickedDir);
@@ -326,6 +334,7 @@ namespace ROMVault
             mnuImportToPickedDir.Click += MnuImportToPickedDir;
             _mnuDeleteDat.Click += MnuDeleteDat;
             _mnuEditDat.Click += mnuEditDat;
+            _mnuAddNewDat.Click += MnuAddNewDat;
 
             //_mnuContextToSort.ShowCheckMargin = false;
             //_mnuContextToSort.ShowImageMargin = false;
@@ -489,6 +498,79 @@ namespace ROMVault
             UpdateThemeAndControls();
         }
 
+        private void MnuAddNewDat(object sender, EventArgs e)
+        {
+            // I was going to try and add dats/the files in them directly via _clickedTree.ChldAdd etc
+            // but the structures/menthods are baffling. For now, simply add new dat file to physical disk
+            // and rescan dats
+
+            RvFile rvFile = _clickedTree;
+            RvDat selectedDat = GetDatFromSelectedRvFile();
+
+            List<RvFile> dave = new List<RvFile>();
+            DBHelper.GetSelectedDirList(ref dave, rvFile);
+
+            string rootDatDir = ResolvedSelectedDatPath();
+
+            rvFile.FileName = Path.GetFileName(rootDatDir);
+
+            int i = 0;
+            do i++;
+            while (File.Exists(Path.Combine(rootDatDir, $"{Path.GetDirectoryName(rootDatDir)}-{i}.dat")));
+
+            string filename = $"{Path.GetFileName(rootDatDir)}-{i}";
+
+            FrmNewDat frmNewDat = new FrmNewDat()
+            {
+                Name = filename,
+                Description = filename,
+                Filename = filename,
+                RootPath = rootDatDir
+            };
+
+            var result = frmNewDat.ShowDialog();
+            if (result != DialogResult.OK || !frmNewDat.ValidFilename) return;
+
+            // we know at this point that the full filepath will be valid.
+
+            string uniqueName = $"{{New DAT - Edit Me!}} {Guid.NewGuid().ToString()}";
+
+            DatHeader datHeader = new DatHeader();
+            datHeader.Date = DateTime.Now.ToString("yyyy-MM-dd");
+            datHeader.Author = Properties.Settings.Default.NewDatAuthor;
+            datHeader.Name = uniqueName;
+            datHeader.Version = DateTime.Now.ToString("yyyMMdd-HHmmss");
+            datHeader.Category = frmNewDat.Category;
+            datHeader.Description = uniqueName;
+
+            DatGame datGame = new DatGame();
+            datGame.Description = "Dave's datGame";
+
+            DatFile datFile = new DatFile("Dave's datFile", FileType.FileZip);
+            datFile.Name = "Daves datFile";
+            datFile.Region = "es";
+
+            //datFile.Status = "Good";
+
+            //DatGame datGame = new DatGame();
+            //datGame.Description = "DatGame desc";
+            //datGame.CRC = "999";
+
+            DatDir datDir = new DatDir("Dave's datDir", FileType.Dir);
+            datDir.DGame = datGame;
+            datDir.ChildAdd(datFile);
+
+            datHeader.BaseDir = datDir;
+
+            // datDir.ChildAdd()
+
+            string filePath = Path.Combine(rootDatDir, frmNewDat.Filename + ".dat");
+            //DATReader.DatWriter.DatXMLWriter.WriteDat(filePath, datHeader);
+
+            Helpers.Xml.WriteNewDatXml(filePath, datHeader);
+            UpdateDats();
+        }
+
         private void SetupToolstripMenus()
         {
             throw new NotImplementedException();
@@ -629,8 +711,12 @@ namespace ROMVault
         private void MnuDeleteDat(object sender, EventArgs e)
         {
             RvDat rvDat = GetDatFromSelectedRvFile();
-
             if (rvDat == null) return;
+
+            if (MessageBox.Show("Are you sure you wish to delete this DAT file?", "Confirm Delete",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                return;
+
             string datFilepath = rvDat.GetData(RvDat.DatData.DatRootFullName).ToString();
             string resolvedDatRoot = RvSystems.GetFullyQualifiedPath(Settings.rvSettings.DatRoot);
             string fullDatPath = RvSystems.ResolveTokenisedDatPath(datFilepath, resolvedDatRoot);
@@ -1701,7 +1787,25 @@ namespace ROMVault
                 string DatId = tDat.GetData(RvDat.DatData.Id);
                 if (!string.IsNullOrWhiteSpace(DatId))
                     DatInfo.Name += $" (ID:{DatId})";
+                DatInfo.Dat = tDat;
 
+                // Reconstruct DatHeader from RvDat
+                DatInfo.DatHeader = new DatHeader();
+                DatInfo.DatHeader.Name = tDat.GetData(RvDat.DatData.DatName);
+                DatInfo.DatHeader.RootDir = tDat.GetData(RvDat.DatData.RootDir);
+                DatInfo.DatHeader.Description = tDat.GetData(RvDat.DatData.Description);
+                DatInfo.DatHeader.Category = tDat.GetData(RvDat.DatData.Category);
+                DatInfo.DatHeader.Version = tDat.GetData(RvDat.DatData.Version);
+                DatInfo.DatHeader.Date = tDat.GetData(RvDat.DatData.Date);
+                DatInfo.DatHeader.Author = tDat.GetData(RvDat.DatData.Author);
+                DatInfo.DatHeader.Email = tDat.GetData(RvDat.DatData.Email);
+                DatInfo.DatHeader.Homepage = tDat.GetData(RvDat.DatData.HomePage);
+                DatInfo.DatHeader.URL = tDat.GetData(RvDat.DatData.URL);
+                DatInfo.DatHeader.Dir = tDat.GetData(RvDat.DatData.DirSetup);
+                DatInfo.DatHeader.Header = tDat.GetData(RvDat.DatData.Header);
+                DatInfo.DatHeader.Compression = tDat.GetData(RvDat.DatData.Compression);
+
+                // yeah I know I could do this in the vm, but meh - lts
                 DatInfo.Description = tDat.GetData(RvDat.DatData.Description);
                 DatInfo.Category = tDat.GetData(RvDat.DatData.Category);
                 DatInfo.Version = tDat.GetData(RvDat.DatData.Version);
@@ -2503,6 +2607,22 @@ namespace ROMVault
         {
             FrmDirectoryWizard frmDirectoryWizard = new FrmDirectoryWizard();
             frmDirectoryWizard.ShowDialog();
+        }
+
+        private void MainPG_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            switch (MainPG.SelectedObject)
+            {
+                case DatInfo datInfo:
+                    datInfo.DatHeader.Name = "Bulbous";
+                    var bastard = datInfo.DatPath;
+
+                    string resolvedDatRoot = RvSystems.GetFullyQualifiedPath(Settings.rvSettings.DatRoot);
+                    string fullDatPath = RvSystems.ResolveTokenisedDatPath(datInfo.DatPath, resolvedDatRoot);
+
+                    DatXMLWriter.WriteDat(fullDatPath, datInfo.DatHeader);
+                    break;
+            }
         }
     }
 }
