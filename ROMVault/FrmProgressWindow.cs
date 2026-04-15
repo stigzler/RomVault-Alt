@@ -232,13 +232,19 @@ namespace ROMVault
             }
         }
 
+        private void MakeErrorGridVisible()
+        {
+            ErrorGrid.Visible = true;
+            ErrorGrid.Visible = true;
+            ClientSize = new Size(this.Width, this.Height * 2);
+        }
+
         private void HandleError(bgwShowError bgwSE)
         {
             if (!_errorOpen)
             {
+                MakeErrorGridVisible();
                 _errorOpen = true;
-                ErrorGrid.Visible = true;
-                ClientSize = new Size(this.Width, this.Height * 2);
             }
 
             ErrorGrid.Rows.Add();
