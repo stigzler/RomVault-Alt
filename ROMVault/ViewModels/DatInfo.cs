@@ -66,7 +66,6 @@ namespace ROMVault.ViewModels
         public string RomsUnknown { get; set; } = string.Empty;
 
         public RvDat Dat;
-        public DatHeader DatHeader;
 
         public DatInfo()
         {

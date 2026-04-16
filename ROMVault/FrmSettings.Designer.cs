@@ -51,6 +51,8 @@
             this.AutoCloseProgressChB = new System.Windows.Forms.CheckBox();
             this.PreserveEmptyRomFoldersChB = new System.Windows.Forms.CheckBox();
             this.UseRootedPathsChB = new System.Windows.Forms.CheckBox();
+            this.DeleteOrigRomsRelocateChB = new System.Windows.Forms.CheckBox();
+            this.MoveFilesNotCopyChB = new System.Windows.Forms.CheckBox();
             this.LeftPN = new System.Windows.Forms.Panel();
             this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.MainTC = new ROMVault.UserControls.TabControl();
@@ -83,6 +85,18 @@
             this.chkSendFoundMIAAnon = new System.Windows.Forms.CheckBox();
             this.chkDeleteOldCueFiles = new System.Windows.Forms.CheckBox();
             this.flexiLabel4 = new ROMVault.UserControls.FlexiLabel();
+            this.RomsTP = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DeleteRomSourceBT = new System.Windows.Forms.Button();
+            this.AddRomSourceBT = new System.Windows.Forms.Button();
+            this.RomSourceLinksDGV = new System.Windows.Forms.DataGridView();
+            this.RomImportsGB = new System.Windows.Forms.GroupBox();
+            this.CompressionGB = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbo7zStruct = new System.Windows.Forms.ComboBox();
+            this.cboCores = new System.Windows.Forms.ComboBox();
+            this.flexiLabel6 = new ROMVault.UserControls.FlexiLabel();
             this.FileOperationsTP = new System.Windows.Forms.TabPage();
             this.LoggingGB = new System.Windows.Forms.GroupBox();
             this.chkDetailedReporting = new System.Windows.Forms.CheckBox();
@@ -112,20 +126,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.InfoTextColorPB = new System.Windows.Forms.PictureBox();
             this.MainSC = new System.Windows.Forms.SplitContainer();
-            this.RomsTP = new System.Windows.Forms.TabPage();
-            this.flexiLabel6 = new ROMVault.UserControls.FlexiLabel();
-            this.RomImportsGB = new System.Windows.Forms.GroupBox();
-            this.DeleteOrigRomsRelocateChB = new System.Windows.Forms.CheckBox();
-            this.MoveFilesNotCopyChB = new System.Windows.Forms.CheckBox();
-            this.CompressionGB = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbo7zStruct = new System.Windows.Forms.ComboBox();
-            this.cboCores = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.DeleteRomSourceBT = new System.Windows.Forms.Button();
-            this.AddRomSourceBT = new System.Windows.Forms.Button();
-            this.RomSourceLinksDGV = new System.Windows.Forms.DataGridView();
             this.TvPaddingPN.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -138,6 +138,11 @@
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DatSourceLinksDGV)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.RomsTP.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RomSourceLinksDGV)).BeginInit();
+            this.RomImportsGB.SuspendLayout();
+            this.CompressionGB.SuspendLayout();
             this.FileOperationsTP.SuspendLayout();
             this.LoggingGB.SuspendLayout();
             this.FileOperationalGB.SuspendLayout();
@@ -153,11 +158,6 @@
             this.MainSC.Panel1.SuspendLayout();
             this.MainSC.Panel2.SuspendLayout();
             this.MainSC.SuspendLayout();
-            this.RomsTP.SuspendLayout();
-            this.RomImportsGB.SuspendLayout();
-            this.CompressionGB.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RomSourceLinksDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -326,6 +326,31 @@
             this.MainTT.SetToolTip(this.UseRootedPathsChB, resources.GetString("UseRootedPathsChB.ToolTip"));
             this.UseRootedPathsChB.UseVisualStyleBackColor = true;
             this.UseRootedPathsChB.CheckedChanged += new System.EventHandler(this.UseRootedPathsChB_CheckedChanged);
+            // 
+            // DeleteOrigRomsRelocateChB
+            // 
+            this.DeleteOrigRomsRelocateChB.AutoSize = true;
+            this.DeleteOrigRomsRelocateChB.Location = new System.Drawing.Point(14, 42);
+            this.DeleteOrigRomsRelocateChB.Name = "DeleteOrigRomsRelocateChB";
+            this.DeleteOrigRomsRelocateChB.Size = new System.Drawing.Size(196, 17);
+            this.DeleteOrigRomsRelocateChB.TabIndex = 46;
+            this.DeleteOrigRomsRelocateChB.Text = "Delete original ROMs after Relocate";
+            this.MainTT.SetToolTip(this.DeleteOrigRomsRelocateChB, resources.GetString("DeleteOrigRomsRelocateChB.ToolTip"));
+            this.DeleteOrigRomsRelocateChB.UseVisualStyleBackColor = true;
+            this.DeleteOrigRomsRelocateChB.Visible = false;
+            // 
+            // MoveFilesNotCopyChB
+            // 
+            this.MoveFilesNotCopyChB.AutoSize = true;
+            this.MoveFilesNotCopyChB.Location = new System.Drawing.Point(14, 19);
+            this.MoveFilesNotCopyChB.Name = "MoveFilesNotCopyChB";
+            this.MoveFilesNotCopyChB.Size = new System.Drawing.Size(155, 17);
+            this.MoveFilesNotCopyChB.TabIndex = 44;
+            this.MoveFilesNotCopyChB.Text = "Move files rather than Copy";
+            this.MainTT.SetToolTip(this.MoveFilesNotCopyChB, "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
+        "is if you wish to Move them instead (you will loose the files from your original" +
+        " location)");
+            this.MoveFilesNotCopyChB.UseVisualStyleBackColor = true;
             // 
             // LeftPN
             // 
@@ -768,6 +793,162 @@
             this.flexiLabel4.TabIndex = 55;
             this.flexiLabel4.Text = "DAT Vault";
             // 
+            // RomsTP
+            // 
+            this.RomsTP.Controls.Add(this.groupBox3);
+            this.RomsTP.Controls.Add(this.RomImportsGB);
+            this.RomsTP.Controls.Add(this.CompressionGB);
+            this.RomsTP.Controls.Add(this.flexiLabel6);
+            this.RomsTP.Location = new System.Drawing.Point(0, 15);
+            this.RomsTP.Name = "RomsTP";
+            this.RomsTP.Padding = new System.Windows.Forms.Padding(8);
+            this.RomsTP.Size = new System.Drawing.Size(430, 495);
+            this.RomsTP.TabIndex = 6;
+            this.RomsTP.Text = "Roms";
+            this.RomsTP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.DeleteRomSourceBT);
+            this.groupBox3.Controls.Add(this.AddRomSourceBT);
+            this.groupBox3.Controls.Add(this.RomSourceLinksDGV);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(8, 200);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(414, 287);
+            this.groupBox3.TabIndex = 58;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "ROM Source Links";
+            // 
+            // DeleteRomSourceBT
+            // 
+            this.DeleteRomSourceBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteRomSourceBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.DeleteRomSourceBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteRomSourceBT.Image = global::ROMVault.Properties.Resources.minus;
+            this.DeleteRomSourceBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteRomSourceBT.Location = new System.Drawing.Point(330, 55);
+            this.DeleteRomSourceBT.Name = "DeleteRomSourceBT";
+            this.DeleteRomSourceBT.Size = new System.Drawing.Size(75, 30);
+            this.DeleteRomSourceBT.TabIndex = 36;
+            this.DeleteRomSourceBT.Text = "Delete";
+            this.DeleteRomSourceBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DeleteRomSourceBT.UseVisualStyleBackColor = true;
+            this.DeleteRomSourceBT.Click += new System.EventHandler(this.DeleteRomSourceBT_Click);
+            // 
+            // AddRomSourceBT
+            // 
+            this.AddRomSourceBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddRomSourceBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.AddRomSourceBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddRomSourceBT.Image = global::ROMVault.Properties.Resources.plus;
+            this.AddRomSourceBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddRomSourceBT.Location = new System.Drawing.Point(330, 19);
+            this.AddRomSourceBT.Name = "AddRomSourceBT";
+            this.AddRomSourceBT.Size = new System.Drawing.Size(75, 30);
+            this.AddRomSourceBT.TabIndex = 35;
+            this.AddRomSourceBT.Text = "Add";
+            this.AddRomSourceBT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddRomSourceBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AddRomSourceBT.UseVisualStyleBackColor = true;
+            this.AddRomSourceBT.Click += new System.EventHandler(this.AddRomSourceBT_Click);
+            // 
+            // RomSourceLinksDGV
+            // 
+            this.RomSourceLinksDGV.AllowUserToAddRows = false;
+            this.RomSourceLinksDGV.AllowUserToResizeRows = false;
+            this.RomSourceLinksDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RomSourceLinksDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.RomSourceLinksDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.RomSourceLinksDGV.Location = new System.Drawing.Point(14, 19);
+            this.RomSourceLinksDGV.Name = "RomSourceLinksDGV";
+            this.RomSourceLinksDGV.RowHeadersVisible = false;
+            this.RomSourceLinksDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.RomSourceLinksDGV.Size = new System.Drawing.Size(310, 262);
+            this.RomSourceLinksDGV.TabIndex = 0;
+            // 
+            // RomImportsGB
+            // 
+            this.RomImportsGB.AutoSize = true;
+            this.RomImportsGB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.RomImportsGB.Controls.Add(this.DeleteOrigRomsRelocateChB);
+            this.RomImportsGB.Controls.Add(this.MoveFilesNotCopyChB);
+            this.RomImportsGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RomImportsGB.Location = new System.Drawing.Point(8, 122);
+            this.RomImportsGB.Name = "RomImportsGB";
+            this.RomImportsGB.Size = new System.Drawing.Size(414, 78);
+            this.RomImportsGB.TabIndex = 57;
+            this.RomImportsGB.TabStop = false;
+            this.RomImportsGB.Text = "Rom Imports";
+            // 
+            // CompressionGB
+            // 
+            this.CompressionGB.Controls.Add(this.label2);
+            this.CompressionGB.Controls.Add(this.label7);
+            this.CompressionGB.Controls.Add(this.cbo7zStruct);
+            this.CompressionGB.Controls.Add(this.cboCores);
+            this.CompressionGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CompressionGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CompressionGB.Location = new System.Drawing.Point(8, 38);
+            this.CompressionGB.Name = "CompressionGB";
+            this.CompressionGB.Size = new System.Drawing.Size(414, 84);
+            this.CompressionGB.TabIndex = 56;
+            this.CompressionGB.TabStop = false;
+            this.CompressionGB.Text = "Compression";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Max ZSTD workers:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 13);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Default 7Z type:";
+            // 
+            // cbo7zStruct
+            // 
+            this.cbo7zStruct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo7zStruct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbo7zStruct.FormattingEnabled = true;
+            this.cbo7zStruct.Location = new System.Drawing.Point(127, 48);
+            this.cbo7zStruct.Name = "cbo7zStruct";
+            this.cbo7zStruct.Size = new System.Drawing.Size(121, 21);
+            this.cbo7zStruct.TabIndex = 40;
+            // 
+            // cboCores
+            // 
+            this.cboCores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboCores.FormattingEnabled = true;
+            this.cboCores.Location = new System.Drawing.Point(127, 24);
+            this.cboCores.Name = "cboCores";
+            this.cboCores.Size = new System.Drawing.Size(121, 21);
+            this.cboCores.TabIndex = 41;
+            // 
+            // flexiLabel6
+            // 
+            this.flexiLabel6.AutoSize = true;
+            this.flexiLabel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flexiLabel6.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
+            this.flexiLabel6.Location = new System.Drawing.Point(8, 8);
+            this.flexiLabel6.Name = "flexiLabel6";
+            this.flexiLabel6.Padding = new System.Windows.Forms.Padding(5);
+            this.flexiLabel6.ScaleFactor = 1.5D;
+            this.flexiLabel6.Size = new System.Drawing.Size(69, 30);
+            this.flexiLabel6.TabIndex = 55;
+            this.flexiLabel6.Text = "ROMs";
+            // 
             // FileOperationsTP
             // 
             this.FileOperationsTP.AutoScroll = true;
@@ -1160,187 +1341,6 @@
             this.MainSC.SplitterDistance = 150;
             this.MainSC.TabIndex = 54;
             // 
-            // RomsTP
-            // 
-            this.RomsTP.Controls.Add(this.groupBox3);
-            this.RomsTP.Controls.Add(this.RomImportsGB);
-            this.RomsTP.Controls.Add(this.CompressionGB);
-            this.RomsTP.Controls.Add(this.flexiLabel6);
-            this.RomsTP.Location = new System.Drawing.Point(0, 15);
-            this.RomsTP.Name = "RomsTP";
-            this.RomsTP.Padding = new System.Windows.Forms.Padding(8);
-            this.RomsTP.Size = new System.Drawing.Size(430, 495);
-            this.RomsTP.TabIndex = 6;
-            this.RomsTP.Text = "Roms";
-            this.RomsTP.UseVisualStyleBackColor = true;
-            // 
-            // flexiLabel6
-            // 
-            this.flexiLabel6.AutoSize = true;
-            this.flexiLabel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flexiLabel6.Font = new System.Drawing.Font("Roboto", 12.375F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel6.Location = new System.Drawing.Point(8, 8);
-            this.flexiLabel6.Name = "flexiLabel6";
-            this.flexiLabel6.Padding = new System.Windows.Forms.Padding(5);
-            this.flexiLabel6.ScaleFactor = 1.5D;
-            this.flexiLabel6.Size = new System.Drawing.Size(69, 30);
-            this.flexiLabel6.TabIndex = 55;
-            this.flexiLabel6.Text = "ROMs";
-            // 
-            // RomImportsGB
-            // 
-            this.RomImportsGB.AutoSize = true;
-            this.RomImportsGB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.RomImportsGB.Controls.Add(this.DeleteOrigRomsRelocateChB);
-            this.RomImportsGB.Controls.Add(this.MoveFilesNotCopyChB);
-            this.RomImportsGB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RomImportsGB.Location = new System.Drawing.Point(8, 122);
-            this.RomImportsGB.Name = "RomImportsGB";
-            this.RomImportsGB.Size = new System.Drawing.Size(414, 78);
-            this.RomImportsGB.TabIndex = 57;
-            this.RomImportsGB.TabStop = false;
-            this.RomImportsGB.Text = "Rom Imports";
-            // 
-            // DeleteOrigRomsRelocateChB
-            // 
-            this.DeleteOrigRomsRelocateChB.AutoSize = true;
-            this.DeleteOrigRomsRelocateChB.Location = new System.Drawing.Point(14, 42);
-            this.DeleteOrigRomsRelocateChB.Name = "DeleteOrigRomsRelocateChB";
-            this.DeleteOrigRomsRelocateChB.Size = new System.Drawing.Size(196, 17);
-            this.DeleteOrigRomsRelocateChB.TabIndex = 46;
-            this.DeleteOrigRomsRelocateChB.Text = "Delete original ROMs after Relocate";
-            this.MainTT.SetToolTip(this.DeleteOrigRomsRelocateChB, resources.GetString("DeleteOrigRomsRelocateChB.ToolTip"));
-            this.DeleteOrigRomsRelocateChB.UseVisualStyleBackColor = true;
-            this.DeleteOrigRomsRelocateChB.Visible = false;
-            // 
-            // MoveFilesNotCopyChB
-            // 
-            this.MoveFilesNotCopyChB.AutoSize = true;
-            this.MoveFilesNotCopyChB.Location = new System.Drawing.Point(14, 19);
-            this.MoveFilesNotCopyChB.Name = "MoveFilesNotCopyChB";
-            this.MoveFilesNotCopyChB.Size = new System.Drawing.Size(155, 17);
-            this.MoveFilesNotCopyChB.TabIndex = 44;
-            this.MoveFilesNotCopyChB.Text = "Move files rather than Copy";
-            this.MainTT.SetToolTip(this.MoveFilesNotCopyChB, "By default, Rom files are copied rather than Moved when importing Roms. Select th" +
-        "is if you wish to Move them instead (you will loose the files from your original" +
-        " location)");
-            this.MoveFilesNotCopyChB.UseVisualStyleBackColor = true;
-            // 
-            // CompressionGB
-            // 
-            this.CompressionGB.Controls.Add(this.label2);
-            this.CompressionGB.Controls.Add(this.label7);
-            this.CompressionGB.Controls.Add(this.cbo7zStruct);
-            this.CompressionGB.Controls.Add(this.cboCores);
-            this.CompressionGB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CompressionGB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CompressionGB.Location = new System.Drawing.Point(8, 38);
-            this.CompressionGB.Name = "CompressionGB";
-            this.CompressionGB.Size = new System.Drawing.Size(414, 84);
-            this.CompressionGB.TabIndex = 56;
-            this.CompressionGB.TabStop = false;
-            this.CompressionGB.Text = "Compression";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "Max ZSTD workers:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 13);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Default 7Z type:";
-            // 
-            // cbo7zStruct
-            // 
-            this.cbo7zStruct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo7zStruct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbo7zStruct.FormattingEnabled = true;
-            this.cbo7zStruct.Location = new System.Drawing.Point(127, 48);
-            this.cbo7zStruct.Name = "cbo7zStruct";
-            this.cbo7zStruct.Size = new System.Drawing.Size(121, 21);
-            this.cbo7zStruct.TabIndex = 40;
-            // 
-            // cboCores
-            // 
-            this.cboCores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboCores.FormattingEnabled = true;
-            this.cboCores.Location = new System.Drawing.Point(127, 24);
-            this.cboCores.Name = "cboCores";
-            this.cboCores.Size = new System.Drawing.Size(121, 21);
-            this.cboCores.TabIndex = 41;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.DeleteRomSourceBT);
-            this.groupBox3.Controls.Add(this.AddRomSourceBT);
-            this.groupBox3.Controls.Add(this.RomSourceLinksDGV);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(8, 200);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(414, 287);
-            this.groupBox3.TabIndex = 58;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "ROM Source Links";
-            // 
-            // DeleteRomSourceBT
-            // 
-            this.DeleteRomSourceBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteRomSourceBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.DeleteRomSourceBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteRomSourceBT.Image = global::ROMVault.Properties.Resources.minus;
-            this.DeleteRomSourceBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DeleteRomSourceBT.Location = new System.Drawing.Point(330, 55);
-            this.DeleteRomSourceBT.Name = "DeleteRomSourceBT";
-            this.DeleteRomSourceBT.Size = new System.Drawing.Size(75, 30);
-            this.DeleteRomSourceBT.TabIndex = 36;
-            this.DeleteRomSourceBT.Text = "Delete";
-            this.DeleteRomSourceBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.DeleteRomSourceBT.UseVisualStyleBackColor = true;
-            this.DeleteRomSourceBT.Click += new System.EventHandler(this.DeleteRomSourceBT_Click);
-            // 
-            // AddRomSourceBT
-            // 
-            this.AddRomSourceBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddRomSourceBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.AddRomSourceBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddRomSourceBT.Image = global::ROMVault.Properties.Resources.plus;
-            this.AddRomSourceBT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AddRomSourceBT.Location = new System.Drawing.Point(330, 19);
-            this.AddRomSourceBT.Name = "AddRomSourceBT";
-            this.AddRomSourceBT.Size = new System.Drawing.Size(75, 30);
-            this.AddRomSourceBT.TabIndex = 35;
-            this.AddRomSourceBT.Text = "Add";
-            this.AddRomSourceBT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AddRomSourceBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.AddRomSourceBT.UseVisualStyleBackColor = true;
-            this.AddRomSourceBT.Click += new System.EventHandler(this.AddRomSourceBT_Click);
-            // 
-            // RomSourceLinksDGV
-            // 
-            this.RomSourceLinksDGV.AllowUserToAddRows = false;
-            this.RomSourceLinksDGV.AllowUserToResizeRows = false;
-            this.RomSourceLinksDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RomSourceLinksDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.RomSourceLinksDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RomSourceLinksDGV.Location = new System.Drawing.Point(14, 19);
-            this.RomSourceLinksDGV.Name = "RomSourceLinksDGV";
-            this.RomSourceLinksDGV.RowHeadersVisible = false;
-            this.RomSourceLinksDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.RomSourceLinksDGV.Size = new System.Drawing.Size(310, 262);
-            this.RomSourceLinksDGV.TabIndex = 0;
-            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1378,6 +1378,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.DatSourceLinksDGV)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.RomsTP.ResumeLayout(false);
+            this.RomsTP.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RomSourceLinksDGV)).EndInit();
+            this.RomImportsGB.ResumeLayout(false);
+            this.RomImportsGB.PerformLayout();
+            this.CompressionGB.ResumeLayout(false);
+            this.CompressionGB.PerformLayout();
             this.FileOperationsTP.ResumeLayout(false);
             this.FileOperationsTP.PerformLayout();
             this.LoggingGB.ResumeLayout(false);
@@ -1401,14 +1409,6 @@
             this.MainSC.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSC)).EndInit();
             this.MainSC.ResumeLayout(false);
-            this.RomsTP.ResumeLayout(false);
-            this.RomsTP.PerformLayout();
-            this.RomImportsGB.ResumeLayout(false);
-            this.RomImportsGB.PerformLayout();
-            this.CompressionGB.ResumeLayout(false);
-            this.CompressionGB.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.RomSourceLinksDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

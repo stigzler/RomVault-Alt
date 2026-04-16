@@ -292,11 +292,6 @@ namespace ROMVault
                 Tag = null
             };
 
-            _mnuAddNewDat = new ToolStripMenuItem
-            {
-                Text = @"Add New DAT here"
-            };
-
             _mnuContext.Items.Add(mnuScan2);
             _mnuContext.Items.Add(mnuScan1);
             _mnuContext.Items.Add(mnuScan3);
@@ -314,7 +309,6 @@ namespace ROMVault
             _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(_mnuDeleteDat);
             _mnuContext.Items.Add(_mnuEditDat);
-            _mnuContext.Items.Add(_mnuAddNewDat);
             _mnuContext.Items.Add(new ToolStripSeparator());
             _mnuContext.Items.Add(mnuImportToThisDir);
             _mnuContext.Items.Add(mnuImportToPickedDir);
@@ -334,16 +328,13 @@ namespace ROMVault
             mnuImportToPickedDir.Click += MnuImportToPickedDir;
             _mnuDeleteDat.Click += MnuDeleteDat;
             _mnuEditDat.Click += mnuEditDat;
-            _mnuAddNewDat.Click += MnuAddNewDat;
-
-            //_mnuContextToSort.ShowCheckMargin = false;
-            //_mnuContextToSort.ShowImageMargin = false;
 
             ToolStripMenuItem mnuToSortScan1 = new ToolStripMenuItem
             {
                 Text = @"Scan Quick (Headers Only)",
                 Tag = EScanLevel.Level1
             };
+
             ToolStripMenuItem mnuToSortScan2 = new ToolStripMenuItem
             {
                 Text = @"Scan ROM Files",
@@ -498,79 +489,6 @@ namespace ROMVault
             UpdateThemeAndControls();
         }
 
-        private void MnuAddNewDat(object sender, EventArgs e)
-        {
-            // I was going to try and add dats/the files in them directly via _clickedTree.ChldAdd etc
-            // but the structures/menthods are baffling. For now, simply add new dat file to physical disk
-            // and rescan dats
-
-            RvFile rvFile = _clickedTree;
-            RvDat selectedDat = GetDatFromSelectedRvFile();
-
-            List<RvFile> dave = new List<RvFile>();
-            DBHelper.GetSelectedDirList(ref dave, rvFile);
-
-            string rootDatDir = ResolvedSelectedDatPath();
-
-            rvFile.FileName = Path.GetFileName(rootDatDir);
-
-            int i = 0;
-            do i++;
-            while (File.Exists(Path.Combine(rootDatDir, $"{Path.GetDirectoryName(rootDatDir)}-{i}.dat")));
-
-            string filename = $"{Path.GetFileName(rootDatDir)}-{i}";
-
-            FrmNewDat frmNewDat = new FrmNewDat()
-            {
-                Name = filename,
-                Description = filename,
-                Filename = filename,
-                RootPath = rootDatDir
-            };
-
-            var result = frmNewDat.ShowDialog();
-            if (result != DialogResult.OK || !frmNewDat.ValidFilename) return;
-
-            // we know at this point that the full filepath will be valid.
-
-            string uniqueName = $"{{New DAT - Edit Me!}} {Guid.NewGuid().ToString()}";
-
-            DatHeader datHeader = new DatHeader();
-            datHeader.Date = DateTime.Now.ToString("yyyy-MM-dd");
-            datHeader.Author = Properties.Settings.Default.NewDatAuthor;
-            datHeader.Name = uniqueName;
-            datHeader.Version = DateTime.Now.ToString("yyyMMdd-HHmmss");
-            datHeader.Category = frmNewDat.Category;
-            datHeader.Description = uniqueName;
-
-            DatGame datGame = new DatGame();
-            datGame.Description = "Dave's datGame";
-
-            DatFile datFile = new DatFile("Dave's datFile", FileType.FileZip);
-            datFile.Name = "Daves datFile";
-            datFile.Region = "es";
-
-            //datFile.Status = "Good";
-
-            //DatGame datGame = new DatGame();
-            //datGame.Description = "DatGame desc";
-            //datGame.CRC = "999";
-
-            DatDir datDir = new DatDir("Dave's datDir", FileType.Dir);
-            datDir.DGame = datGame;
-            datDir.ChildAdd(datFile);
-
-            datHeader.BaseDir = datDir;
-
-            // datDir.ChildAdd()
-
-            string filePath = Path.Combine(rootDatDir, frmNewDat.Filename + ".dat");
-            //DATReader.DatWriter.DatXMLWriter.WriteDat(filePath, datHeader);
-
-            Helpers.Xml.WriteNewDatXml(filePath, datHeader);
-            UpdateDats();
-        }
-
         private void SetupToolstripMenus()
         {
             throw new NotImplementedException();
@@ -695,10 +613,16 @@ namespace ROMVault
 
         private void MnuImportToPickedDir(object sender, EventArgs e)
         {
-            var fbd = new FrmImportDat(ResolvedSelectedDatPath(), DatFormatsFilterList());
+            string lastImportPath = Properties.Settings.Default.LastDatImportDir;
+            if (lastImportPath == null || !Directory.Exists(lastImportPath))
+                lastImportPath = ResolvedSelectedDatPath();
+
+            var fbd = new FrmImportDat(lastImportPath, DatFormatsFilterList());
 
             var result = fbd.ShowDialog(this);
             if (result != DialogResult.OK) return;
+
+            Properties.Settings.Default.LastDatImportDir = fbd.DestinationPath;
 
             if (Properties.Settings.Default.DatImportMoveDontCopy)
                 Helpers.FileSystem.MoveFiles(fbd.SourcePaths, fbd.DestinationPath, RomVaultCore.Settings.rvSettings.Darkness);
@@ -1789,22 +1713,6 @@ namespace ROMVault
                     DatInfo.Name += $" (ID:{DatId})";
                 DatInfo.Dat = tDat;
 
-                // Reconstruct DatHeader from RvDat
-                DatInfo.DatHeader = new DatHeader();
-                DatInfo.DatHeader.Name = tDat.GetData(RvDat.DatData.DatName);
-                DatInfo.DatHeader.RootDir = tDat.GetData(RvDat.DatData.RootDir);
-                DatInfo.DatHeader.Description = tDat.GetData(RvDat.DatData.Description);
-                DatInfo.DatHeader.Category = tDat.GetData(RvDat.DatData.Category);
-                DatInfo.DatHeader.Version = tDat.GetData(RvDat.DatData.Version);
-                DatInfo.DatHeader.Date = tDat.GetData(RvDat.DatData.Date);
-                DatInfo.DatHeader.Author = tDat.GetData(RvDat.DatData.Author);
-                DatInfo.DatHeader.Email = tDat.GetData(RvDat.DatData.Email);
-                DatInfo.DatHeader.Homepage = tDat.GetData(RvDat.DatData.HomePage);
-                DatInfo.DatHeader.URL = tDat.GetData(RvDat.DatData.URL);
-                DatInfo.DatHeader.Dir = tDat.GetData(RvDat.DatData.DirSetup);
-                DatInfo.DatHeader.Header = tDat.GetData(RvDat.DatData.Header);
-                DatInfo.DatHeader.Compression = tDat.GetData(RvDat.DatData.Compression);
-
                 // yeah I know I could do this in the vm, but meh - lts
                 DatInfo.Description = tDat.GetData(RvDat.DatData.Description);
                 DatInfo.Category = tDat.GetData(RvDat.DatData.Category);
@@ -2609,20 +2517,31 @@ namespace ROMVault
             frmDirectoryWizard.ShowDialog();
         }
 
-        private void MainPG_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        private void addBlankDATToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch (MainPG.SelectedObject)
+            UserControls.FolderBrowserDialog fbd = new UserControls.FolderBrowserDialog()
             {
-                case DatInfo datInfo:
-                    datInfo.DatHeader.Name = "Bulbous";
-                    var bastard = datInfo.DatPath;
+                Description = "Select the folder to create the blank DAT in",
+                Multiselect = false,
+                OkButtonLabel = "Create Blank DAT",
+                InputPath = RvSystems.GetFullyQualifiedPath(Settings.rvSettings.DatRoot),
+            };
 
-                    string resolvedDatRoot = RvSystems.GetFullyQualifiedPath(Settings.rvSettings.DatRoot);
-                    string fullDatPath = RvSystems.ResolveTokenisedDatPath(datInfo.DatPath, resolvedDatRoot);
+            var result = fbd.ShowDialog(this);
+            if (result != true) return;
 
-                    DatXMLWriter.WriteDat(fullDatPath, datInfo.DatHeader);
-                    break;
+            string filename = "Blank";
+            if (File.Exists(Path.Combine(fbd.SelectedPath, "Blank.dat")))
+            {
+                int i = 1;
+                while (File.Exists(Path.Combine(fbd.SelectedPath, $"Blank ({i}).dat")))
+                { i++; }
+
+                filename = $"Blank ({i})";
             }
+            string fullPath = Path.Combine(fbd.SelectedPath, filename + ".dat");
+
+            File.WriteAllText(fullPath, @"<?xml version=""1.0""?><datafile/>");
         }
     }
 }

@@ -146,6 +146,7 @@ namespace ROMVault
             this.tsmUpdateDATs = new System.Windows.Forms.ToolStripMenuItem();
             this.updateNewDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateAllDATsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBlankDATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.DatProvidersTSI = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScanROMs = new System.Windows.Forms.ToolStripMenuItem();
@@ -911,7 +912,6 @@ namespace ROMVault
             this.MainPG.TabIndex = 0;
             this.MainPG.ToolbarVisible = false;
             this.MainPG.UseCompatibleTextRendering = true;
-            this.MainPG.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.MainPG_PropertyValueChanged);
             this.MainPG.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.MainPG_SelectedGridItemChanged);
             this.MainPG.SelectedObjectsChanged += new System.EventHandler(this.MainPG_SelectedObjectsChanged);
             // 
@@ -1667,6 +1667,7 @@ namespace ROMVault
             this.tsmUpdateDATs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.updateNewDATsToolStripMenuItem,
             this.updateAllDATsToolStripMenuItem,
+            this.addBlankDATToolStripMenuItem,
             this.toolStripSeparator9,
             this.DatProvidersTSI});
             this.tsmUpdateDATs.Name = "tsmUpdateDATs";
@@ -1689,6 +1690,13 @@ namespace ROMVault
             this.updateAllDATsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.updateAllDATsToolStripMenuItem.Text = "Refresh All DATs";
             this.updateAllDATsToolStripMenuItem.Click += new System.EventHandler(this.updateAllDATsToolStripMenuItem_Click);
+            // 
+            // addBlankDATToolStripMenuItem
+            // 
+            this.addBlankDATToolStripMenuItem.Name = "addBlankDATToolStripMenuItem";
+            this.addBlankDATToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.addBlankDATToolStripMenuItem.Text = "Add Blank DAT";
+            this.addBlankDATToolStripMenuItem.Click += new System.EventHandler(this.addBlankDATToolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
@@ -2373,6 +2381,7 @@ namespace ROMVault
         private ToolStripMenuItem DatProvidersTSI;
         private ToolStripSeparator toolStripSeparator10;
         private ToolStripMenuItem RomProvidersTSI;
+        private ToolStripMenuItem addBlankDATToolStripMenuItem;
     }
 }
 

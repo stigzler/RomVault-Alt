@@ -143,8 +143,16 @@ namespace ROMVault
                 Filter = formatsFilterString
             };
 
+            string persistedPath = Settings.Default.LastDatImportFileDir;
+            if (!string.IsNullOrEmpty(persistedPath) && Directory.Exists(persistedPath))
+            {
+                ofd.InitialDirectory = Settings.Default.LastDatImportFileDir;
+            }
+
             var result = ofd.ShowDialog(this);
             if (result != DialogResult.OK) return;
+
+            Settings.Default.LastDatImportFileDir = Path.GetFileName(ofd.FileName);
 
             foreach (string file in ofd.FileNames)
             {

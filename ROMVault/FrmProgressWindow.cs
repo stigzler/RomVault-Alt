@@ -178,7 +178,7 @@ namespace ROMVault
             // Imperative updates: apply immediately
             if (imperative)
             {
-                if (InvokeRequired)
+                if (InvokeRequired && IsDisposed == false)
                 {
                     Invoke(new Action(() => ApplyCurrentState()));
                 }
@@ -241,6 +241,7 @@ namespace ROMVault
 
         private void HandleError(bgwShowError bgwSE)
         {
+            AutoSize = false;
             if (!_errorOpen)
             {
                 MakeErrorGridVisible();
@@ -315,7 +316,7 @@ namespace ROMVault
                 {
                     Application.DoEvents();
                     Thread.Sleep(1000);
-                    _parentForm.Show();
+                    //_parentForm.Show();
                     Close();
                 }
             }

@@ -321,5 +321,29 @@ namespace ROMVault.Properties {
                 this["NewDatAuthor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastDatImportDir {
+            get {
+                return ((string)(this["LastDatImportDir"]));
+            }
+            set {
+                this["LastDatImportDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastDatImportFileDir {
+            get {
+                return ((string)(this["LastDatImportFileDir"]));
+            }
+            set {
+                this["LastDatImportFileDir"] = value;
+            }
+        }
     }
 }

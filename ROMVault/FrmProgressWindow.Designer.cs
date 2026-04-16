@@ -143,7 +143,7 @@
             this.ErrorGrid.ShowCellToolTips = false;
             this.ErrorGrid.ShowEditingIcon = false;
             this.ErrorGrid.ShowRowErrors = false;
-            this.ErrorGrid.Size = new System.Drawing.Size(525, 66);
+            this.ErrorGrid.Size = new System.Drawing.Size(525, 100);
             this.ErrorGrid.TabIndex = 6;
             this.ErrorGrid.SelectionChanged += new System.EventHandler(this.ErrorGridSelectionChanged);
             // 
@@ -241,8 +241,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(529, 245);
+            this.ClientSize = new System.Drawing.Size(529, 279);
             this.ControlBox = false;
             this.Controls.Add(this.ErrorGrid);
             this.Controls.Add(this.TopPN);
