@@ -261,7 +261,7 @@ namespace ROMVault
             // splitToolBarMain
             // 
             this.splitToolBarMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitToolBarMain.Location = new System.Drawing.Point(0, 24);
+            this.splitToolBarMain.Location = new System.Drawing.Point(0, 25);
             this.splitToolBarMain.Name = "splitToolBarMain";
             // 
             // splitToolBarMain.Panel1
@@ -282,7 +282,7 @@ namespace ROMVault
             // splitToolBarMain.Panel2
             // 
             this.splitToolBarMain.Panel2.Controls.Add(this.splitDatInfoGameInfo);
-            this.splitToolBarMain.Size = new System.Drawing.Size(1300, 766);
+            this.splitToolBarMain.Size = new System.Drawing.Size(1300, 765);
             this.splitToolBarMain.SplitterDistance = 130;
             this.splitToolBarMain.TabIndex = 5;
             this.splitToolBarMain.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitToolBarMain_SplitterMoved);
@@ -306,7 +306,7 @@ namespace ROMVault
             this.flexiLabel3.AutoSize = true;
             this.flexiLabel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flexiLabel3.Font = new System.Drawing.Font("Segoe UI", 11.7F, System.Drawing.FontStyle.Bold);
-            this.flexiLabel3.Location = new System.Drawing.Point(4, 633);
+            this.flexiLabel3.Location = new System.Drawing.Point(4, 632);
             this.flexiLabel3.Name = "flexiLabel3";
             this.flexiLabel3.ScaleFactor = 1.2D;
             this.flexiLabel3.Size = new System.Drawing.Size(46, 21);
@@ -321,7 +321,7 @@ namespace ROMVault
             this.flowLayoutPanel1.Controls.Add(this.btnDefault3);
             this.flowLayoutPanel1.Controls.Add(this.btnDefault4);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 654);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 653);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(122, 108);
@@ -583,7 +583,7 @@ namespace ROMVault
             this.splitDatInfoGameInfo.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitDatInfoGameInfo.Panel2.Controls.Add(this.splitGameInfoLists);
             this.splitDatInfoGameInfo.Panel2.Padding = new System.Windows.Forms.Padding(4);
-            this.splitDatInfoGameInfo.Size = new System.Drawing.Size(1166, 766);
+            this.splitDatInfoGameInfo.Size = new System.Drawing.Size(1166, 765);
             this.splitDatInfoGameInfo.SplitterDistance = 348;
             this.splitDatInfoGameInfo.TabIndex = 0;
             // 
@@ -600,7 +600,7 @@ namespace ROMVault
             this.DatInfoPN.Location = new System.Drawing.Point(4, 4);
             this.DatInfoPN.Name = "DatInfoPN";
             this.DatInfoPN.Padding = new System.Windows.Forms.Padding(2);
-            this.DatInfoPN.Size = new System.Drawing.Size(340, 758);
+            this.DatInfoPN.Size = new System.Drawing.Size(340, 757);
             this.DatInfoPN.TabIndex = 4;
             // 
             // DatTreePN
@@ -612,7 +612,7 @@ namespace ROMVault
             this.DatTreePN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DatTreePN.Location = new System.Drawing.Point(2, 121);
             this.DatTreePN.Name = "DatTreePN";
-            this.DatTreePN.Size = new System.Drawing.Size(334, 633);
+            this.DatTreePN.Size = new System.Drawing.Size(334, 632);
             this.DatTreePN.TabIndex = 6;
             // 
             // ctrRvTree
@@ -623,7 +623,7 @@ namespace ROMVault
             this.ctrRvTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrRvTree.Location = new System.Drawing.Point(0, 31);
             this.ctrRvTree.Name = "ctrRvTree";
-            this.ctrRvTree.Size = new System.Drawing.Size(332, 600);
+            this.ctrRvTree.Size = new System.Drawing.Size(332, 599);
             this.ctrRvTree.TabIndex = 2;
             this.ctrRvTree.Visible = false;
             this.ctrRvTree.RvSelected += new System.Windows.Forms.MouseEventHandler(this.DirTreeRvSelected);
@@ -778,13 +778,13 @@ namespace ROMVault
             this.CopyTextCMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyTextToolStripMenuItem});
             this.CopyTextCMS.Name = "CopyTextCMS";
-            this.CopyTextCMS.Size = new System.Drawing.Size(127, 26);
+            this.CopyTextCMS.Size = new System.Drawing.Size(134, 26);
             // 
             // copyTextToolStripMenuItem
             // 
             this.copyTextToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_document_copy;
             this.copyTextToolStripMenuItem.Name = "copyTextToolStripMenuItem";
-            this.copyTextToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.copyTextToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.copyTextToolStripMenuItem.Text = "Copy Text";
             this.copyTextToolStripMenuItem.Click += new System.EventHandler(this.copyTextToolStripMenuItem_Click);
             // 
@@ -878,8 +878,8 @@ namespace ROMVault
             // splitGameInfoLists.Panel2
             // 
             this.splitGameInfoLists.Panel2.Controls.Add(this.splitListArt);
-            this.splitGameInfoLists.Size = new System.Drawing.Size(806, 758);
-            this.splitGameInfoLists.SplitterDistance = 245;
+            this.splitGameInfoLists.Size = new System.Drawing.Size(806, 757);
+            this.splitGameInfoLists.SplitterDistance = 244;
             this.splitGameInfoLists.TabIndex = 0;
             // 
             // PropertryGridSC
@@ -896,7 +896,7 @@ namespace ROMVault
             // 
             this.PropertryGridSC.Panel2.Controls.Add(this.PropertyGridHelpTB);
             this.PropertryGridSC.Panel2Collapsed = true;
-            this.PropertryGridSC.Size = new System.Drawing.Size(806, 214);
+            this.PropertryGridSC.Size = new System.Drawing.Size(806, 213);
             this.PropertryGridSC.SplitterDistance = 627;
             this.PropertryGridSC.TabIndex = 6;
             // 
@@ -908,7 +908,7 @@ namespace ROMVault
             this.MainPG.Location = new System.Drawing.Point(0, 0);
             this.MainPG.Name = "MainPG";
             this.MainPG.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.MainPG.Size = new System.Drawing.Size(806, 214);
+            this.MainPG.Size = new System.Drawing.Size(806, 213);
             this.MainPG.TabIndex = 0;
             this.MainPG.ToolbarVisible = false;
             this.MainPG.UseCompatibleTextRendering = true;
@@ -1372,7 +1372,7 @@ namespace ROMVault
             this.chkBoxShowCompleteTSI.CheckOnClick = true;
             this.chkBoxShowCompleteTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowCompleteTSI.Name = "chkBoxShowCompleteTSI";
-            this.chkBoxShowCompleteTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowCompleteTSI.Size = new System.Drawing.Size(167, 22);
             this.chkBoxShowCompleteTSI.Text = "Complete";
             this.chkBoxShowCompleteTSI.CheckedChanged += new System.EventHandler(this.completeToolStripMenuItem_Click);
             this.chkBoxShowCompleteTSI.Click += new System.EventHandler(this.completeToolStripMenuItem_Click);
@@ -1383,7 +1383,7 @@ namespace ROMVault
             this.chkBoxShowPartialTSI.CheckOnClick = true;
             this.chkBoxShowPartialTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowPartialTSI.Name = "chkBoxShowPartialTSI";
-            this.chkBoxShowPartialTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowPartialTSI.Size = new System.Drawing.Size(167, 22);
             this.chkBoxShowPartialTSI.Text = "Partial";
             this.chkBoxShowPartialTSI.Click += new System.EventHandler(this.paToolStripMenuItem_Click);
             // 
@@ -1393,7 +1393,7 @@ namespace ROMVault
             this.chkBoxShowEmptyTSI.CheckOnClick = true;
             this.chkBoxShowEmptyTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowEmptyTSI.Name = "chkBoxShowEmptyTSI";
-            this.chkBoxShowEmptyTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowEmptyTSI.Size = new System.Drawing.Size(167, 22);
             this.chkBoxShowEmptyTSI.Text = "Empty";
             this.chkBoxShowEmptyTSI.Click += new System.EventHandler(this.emptyToolStripMenuItem_Click);
             // 
@@ -1403,7 +1403,7 @@ namespace ROMVault
             this.chkBoxShowFixesTSI.CheckOnClick = true;
             this.chkBoxShowFixesTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowFixesTSI.Name = "chkBoxShowFixesTSI";
-            this.chkBoxShowFixesTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowFixesTSI.Size = new System.Drawing.Size(167, 22);
             this.chkBoxShowFixesTSI.Text = "Fixes";
             this.chkBoxShowFixesTSI.Click += new System.EventHandler(this.fixesToolStripMenuItem_Click);
             // 
@@ -1413,7 +1413,7 @@ namespace ROMVault
             this.chkBoxShowMIATSI.CheckOnClick = true;
             this.chkBoxShowMIATSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowMIATSI.Name = "chkBoxShowMIATSI";
-            this.chkBoxShowMIATSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowMIATSI.Size = new System.Drawing.Size(167, 22);
             this.chkBoxShowMIATSI.Text = "MIA";
             this.chkBoxShowMIATSI.Click += new System.EventHandler(this.mIAToolStripMenuItem_Click);
             // 
@@ -1423,26 +1423,26 @@ namespace ROMVault
             this.chkBoxShowMergedTSI.CheckOnClick = true;
             this.chkBoxShowMergedTSI.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxShowMergedTSI.Name = "chkBoxShowMergedTSI";
-            this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(155, 22);
+            this.chkBoxShowMergedTSI.Size = new System.Drawing.Size(167, 22);
             this.chkBoxShowMergedTSI.Text = "Merged/Duped";
             this.chkBoxShowMergedTSI.Click += new System.EventHandler(this.mergedDupedToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(152, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(164, 6);
             // 
             // toggleToolStripMenuItem
             // 
             this.toggleToolStripMenuItem.Name = "toggleToolStripMenuItem";
-            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.toggleToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.toggleToolStripMenuItem.Text = "Toggle";
             this.toggleToolStripMenuItem.Click += new System.EventHandler(this.toggleToolStripMenuItem_Click);
             // 
             // setAllToolStripMenuItem
             // 
             this.setAllToolStripMenuItem.Name = "setAllToolStripMenuItem";
-            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.setAllToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.setAllToolStripMenuItem.Text = "Clear All";
             this.setAllToolStripMenuItem.Click += new System.EventHandler(this.clearAllToolStripMenuItem_Click);
             // 
@@ -1478,7 +1478,7 @@ namespace ROMVault
             // 
             this.GameGridRowCountLB.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.GameGridRowCountLB.Name = "GameGridRowCountLB";
-            this.GameGridRowCountLB.Size = new System.Drawing.Size(92, 20);
+            this.GameGridRowCountLB.Size = new System.Drawing.Size(104, 20);
             this.GameGridRowCountLB.Text = "No row selected";
             // 
             // TabEmuArc
@@ -1658,7 +1658,7 @@ namespace ROMVault
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1300, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1300, 25);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1671,7 +1671,7 @@ namespace ROMVault
             this.toolStripSeparator9,
             this.DatProvidersTSI});
             this.tsmUpdateDATs.Name = "tsmUpdateDATs";
-            this.tsmUpdateDATs.Size = new System.Drawing.Size(45, 20);
+            this.tsmUpdateDATs.Size = new System.Drawing.Size(48, 21);
             this.tsmUpdateDATs.Text = "DATs";
             // 
             // updateNewDATsToolStripMenuItem
@@ -1679,7 +1679,7 @@ namespace ROMVault
             this.updateNewDATsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.arrowCircle;
             this.updateNewDATsToolStripMenuItem.Name = "updateNewDATsToolStripMenuItem";
             this.updateNewDATsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.updateNewDATsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.updateNewDATsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.updateNewDATsToolStripMenuItem.Text = "Update New DATs";
             this.updateNewDATsToolStripMenuItem.Click += new System.EventHandler(this.updateNewDATsToolStripMenuItem_Click);
             // 
@@ -1687,26 +1687,26 @@ namespace ROMVault
             // 
             this.updateAllDATsToolStripMenuItem.Name = "updateAllDATsToolStripMenuItem";
             this.updateAllDATsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F5)));
-            this.updateAllDATsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.updateAllDATsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.updateAllDATsToolStripMenuItem.Text = "Refresh All DATs";
             this.updateAllDATsToolStripMenuItem.Click += new System.EventHandler(this.updateAllDATsToolStripMenuItem_Click);
             // 
             // addBlankDATToolStripMenuItem
             // 
             this.addBlankDATToolStripMenuItem.Name = "addBlankDATToolStripMenuItem";
-            this.addBlankDATToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.addBlankDATToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.addBlankDATToolStripMenuItem.Text = "Add Blank DAT";
             this.addBlankDATToolStripMenuItem.Click += new System.EventHandler(this.addBlankDATToolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(222, 6);
             // 
             // DatProvidersTSI
             // 
             this.DatProvidersTSI.Name = "DatProvidersTSI";
-            this.DatProvidersTSI.Size = new System.Drawing.Size(210, 22);
+            this.DatProvidersTSI.Size = new System.Drawing.Size(225, 22);
             this.DatProvidersTSI.Text = "DAT Providers:";
             // 
             // tsmScanROMs
@@ -1720,28 +1720,28 @@ namespace ROMVault
             this.toolStripSeparator10,
             this.RomProvidersTSI});
             this.tsmScanROMs.Name = "tsmScanROMs";
-            this.tsmScanROMs.Size = new System.Drawing.Size(51, 20);
+            this.tsmScanROMs.Size = new System.Drawing.Size(56, 21);
             this.tsmScanROMs.Text = "ROMs";
             // 
             // addNewToSortFolderToolStripMenuItem
             // 
             this.addNewToSortFolderToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_folder__plus;
             this.addNewToSortFolderToolStripMenuItem.Name = "addNewToSortFolderToolStripMenuItem";
-            this.addNewToSortFolderToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
+            this.addNewToSortFolderToolStripMenuItem.Size = new System.Drawing.Size(379, 22);
             this.addNewToSortFolderToolStripMenuItem.Text = "Add New ToSort Folder";
             this.addNewToSortFolderToolStripMenuItem.Click += new System.EventHandler(this.addNewToSortFolderToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(350, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(376, 6);
             // 
             // tsmScanLevel1
             // 
             this.tsmScanLevel1.Image = global::ROMVault.Properties.Resources.arrowCircle;
             this.tsmScanLevel1.Name = "tsmScanLevel1";
             this.tsmScanLevel1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F6)));
-            this.tsmScanLevel1.Size = new System.Drawing.Size(353, 22);
+            this.tsmScanLevel1.Size = new System.Drawing.Size(379, 22);
             this.tsmScanLevel1.Text = "Scan ticked new ROMs headers only";
             this.tsmScanLevel1.Click += new System.EventHandler(this.TsmScanLevel1Click);
             // 
@@ -1749,7 +1749,7 @@ namespace ROMVault
             // 
             this.tsmScanLevel2.Name = "tsmScanLevel2";
             this.tsmScanLevel2.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.tsmScanLevel2.Size = new System.Drawing.Size(353, 22);
+            this.tsmScanLevel2.Size = new System.Drawing.Size(379, 22);
             this.tsmScanLevel2.Text = "Scan ticked new ROMs with full hash check";
             this.tsmScanLevel2.Click += new System.EventHandler(this.TsmScanLevel2Click);
             // 
@@ -1757,19 +1757,19 @@ namespace ROMVault
             // 
             this.tsmScanLevel3.Name = "tsmScanLevel3";
             this.tsmScanLevel3.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F6)));
-            this.tsmScanLevel3.Size = new System.Drawing.Size(353, 22);
+            this.tsmScanLevel3.Size = new System.Drawing.Size(379, 22);
             this.tsmScanLevel3.Text = "ReScan All ticked ROMs with full hash check";
             this.tsmScanLevel3.Click += new System.EventHandler(this.TsmScanLevel3Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(350, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(376, 6);
             // 
             // RomProvidersTSI
             // 
             this.RomProvidersTSI.Name = "RomProvidersTSI";
-            this.RomProvidersTSI.Size = new System.Drawing.Size(353, 22);
+            this.RomProvidersTSI.Size = new System.Drawing.Size(379, 22);
             this.RomProvidersTSI.Text = "ROM Providers:";
             // 
             // tsmFindFixes
@@ -1782,41 +1782,41 @@ namespace ROMVault
             this.scanFindAndFixROMsToolStripMenuItem});
             this.tsmFindFixes.Name = "tsmFindFixes";
             this.tsmFindFixes.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.tsmFindFixes.Size = new System.Drawing.Size(44, 20);
+            this.tsmFindFixes.Size = new System.Drawing.Size(48, 21);
             this.tsmFindFixes.Text = "Fixes";
             // 
             // findFixesToolStripMenuItem
             // 
             this.findFixesToolStripMenuItem.Image = global::ROMVault.Properties.Resources.magnifier_zoom;
             this.findFixesToolStripMenuItem.Name = "findFixesToolStripMenuItem";
-            this.findFixesToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.findFixesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.findFixesToolStripMenuItem.Text = "Find Fixes";
             this.findFixesToolStripMenuItem.Click += new System.EventHandler(this.findFixesToolStripMenuItem_Click);
             // 
             // findFixeswithLogToolStripMenuItem
             // 
             this.findFixeswithLogToolStripMenuItem.Name = "findFixeswithLogToolStripMenuItem";
-            this.findFixeswithLogToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.findFixeswithLogToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.findFixeswithLogToolStripMenuItem.Text = "Find Fixes (with log)";
             this.findFixeswithLogToolStripMenuItem.Click += new System.EventHandler(this.findFixeswithLogToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(176, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
             // 
             // fixROMsToolStripMenuItem1
             // 
             this.fixROMsToolStripMenuItem1.Image = global::ROMVault.Properties.Resources.wand_magic;
             this.fixROMsToolStripMenuItem1.Name = "fixROMsToolStripMenuItem1";
-            this.fixROMsToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.fixROMsToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
             this.fixROMsToolStripMenuItem1.Text = "Fix ROMs";
             this.fixROMsToolStripMenuItem1.Click += new System.EventHandler(this.fixROMsToolStripMenuItem1_Click);
             // 
             // scanFindAndFixROMsToolStripMenuItem
             // 
             this.scanFindAndFixROMsToolStripMenuItem.Name = "scanFindAndFixROMsToolStripMenuItem";
-            this.scanFindAndFixROMsToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.scanFindAndFixROMsToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.scanFindAndFixROMsToolStripMenuItem.Text = "Scan and Fix ROMs";
             this.scanFindAndFixROMsToolStripMenuItem.ToolTipText = "This combines operations: scans ROMs, finds fixes and applies them";
             this.scanFindAndFixROMsToolStripMenuItem.Click += new System.EventHandler(this.scanFindAndFixROMsToolStripMenuItem_Click);
@@ -1830,28 +1830,28 @@ namespace ROMVault
             this.fullReportToolStripMenuItem,
             this.fixReportToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(51, 21);
             this.reportsToolStripMenuItem.Text = "Tools";
             // 
             // folderCReatorWizardToolStripMenuItem
             // 
             this.folderCReatorWizardToolStripMenuItem.Image = global::ROMVault.Properties.Resources.folder_smiley1;
             this.folderCReatorWizardToolStripMenuItem.Name = "folderCReatorWizardToolStripMenuItem";
-            this.folderCReatorWizardToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.folderCReatorWizardToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.folderCReatorWizardToolStripMenuItem.Text = "Folder Creator Wizard";
             this.folderCReatorWizardToolStripMenuItem.Click += new System.EventHandler(this.folderCReatorWizardToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(203, 6);
             // 
             // fixDatReportToolStripMenuItem
             // 
             this.fixDatReportToolStripMenuItem.Image = global::ROMVault.Properties.Resources.blue_document_text;
             this.fixDatReportToolStripMenuItem.Name = "fixDatReportToolStripMenuItem";
             this.fixDatReportToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.fixDatReportToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.fixDatReportToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.fixDatReportToolStripMenuItem.Text = "Fix Dat Report";
             this.fixDatReportToolStripMenuItem.Click += new System.EventHandler(this.fixDatReportToolStripMenuItem_Click);
             // 
@@ -1859,7 +1859,7 @@ namespace ROMVault
             // 
             this.fullReportToolStripMenuItem.Name = "fullReportToolStripMenuItem";
             this.fullReportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F9)));
-            this.fullReportToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.fullReportToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.fullReportToolStripMenuItem.Text = "Full Report";
             this.fullReportToolStripMenuItem.Click += new System.EventHandler(this.fullReportToolStripMenuItem_Click);
             // 
@@ -1867,7 +1867,7 @@ namespace ROMVault
             // 
             this.fixReportToolStripMenuItem.Name = "fixReportToolStripMenuItem";
             this.fixReportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F9)));
-            this.fixReportToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.fixReportToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.fixReportToolStripMenuItem.Text = "Fix Report";
             this.fixReportToolStripMenuItem.Click += new System.EventHandler(this.fixReportToolStripMenuItem_Click);
             // 
@@ -1881,7 +1881,7 @@ namespace ROMVault
             this.toolStripSeparator6,
             this.romVaultSettingsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(66, 21);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // directorySettingsToolStripMenuItem
@@ -1889,7 +1889,7 @@ namespace ROMVault
             this.directorySettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.database_property;
             this.directorySettingsToolStripMenuItem.Name = "directorySettingsToolStripMenuItem";
             this.directorySettingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F10)));
-            this.directorySettingsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.directorySettingsToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.directorySettingsToolStripMenuItem.Text = "DAT Rules";
             this.directorySettingsToolStripMenuItem.Click += new System.EventHandler(this.DirectorySettingsToolStripMenuItem_Click);
             // 
@@ -1898,34 +1898,34 @@ namespace ROMVault
             this.directoryMappingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.DatRom;
             this.directoryMappingsToolStripMenuItem.Name = "directoryMappingsToolStripMenuItem";
             this.directoryMappingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F10)));
-            this.directoryMappingsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.directoryMappingsToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.directoryMappingsToolStripMenuItem.Text = "ROM Folder Mappings";
             this.directoryMappingsToolStripMenuItem.Click += new System.EventHandler(this.directoryMappingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(242, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(264, 6);
             // 
             // darkModeToolStripMenuItem
             // 
             this.darkModeToolStripMenuItem.CheckOnClick = true;
             this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
-            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.darkModeToolStripMenuItem.Text = "Dark Mode";
             this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.darkModeToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(242, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(264, 6);
             // 
             // romVaultSettingsToolStripMenuItem
             // 
             this.romVaultSettingsToolStripMenuItem.Image = global::ROMVault.Properties.Resources.gear;
             this.romVaultSettingsToolStripMenuItem.Name = "romVaultSettingsToolStripMenuItem";
             this.romVaultSettingsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.romVaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.romVaultSettingsToolStripMenuItem.Text = "RomVault Settings";
             this.romVaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.RomVaultSettingsToolStripMenuItem_Click);
             // 
@@ -1939,40 +1939,40 @@ namespace ROMVault
             this.colorKeyToolStripMenuItem,
             this.aboutRomVaultToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // torrentZipToolStripMenuItem
             // 
             this.torrentZipToolStripMenuItem.Name = "torrentZipToolStripMenuItem";
-            this.torrentZipToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.torrentZipToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.torrentZipToolStripMenuItem.Text = "Structured Archive Maker";
             this.torrentZipToolStripMenuItem.Click += new System.EventHandler(this.torrentZipToolStripMenuItem_Click);
             // 
             // visitHelpWikiToolStripMenuItem
             // 
             this.visitHelpWikiToolStripMenuItem.Name = "visitHelpWikiToolStripMenuItem";
-            this.visitHelpWikiToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.visitHelpWikiToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.visitHelpWikiToolStripMenuItem.Text = "Visit Help Wiki";
             this.visitHelpWikiToolStripMenuItem.Click += new System.EventHandler(this.visitHelpWikiToolStripMenuItem_Click);
             // 
             // whatsNewToolStripMenuItem
             // 
             this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
-            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.whatsNewToolStripMenuItem.Text = "Whats New";
             this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.whatsNewToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(205, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(220, 6);
             // 
             // colorKeyToolStripMenuItem
             // 
             this.colorKeyToolStripMenuItem.Name = "colorKeyToolStripMenuItem";
             this.colorKeyToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.colorKeyToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.colorKeyToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.colorKeyToolStripMenuItem.Text = "Color Key";
             this.colorKeyToolStripMenuItem.Click += new System.EventHandler(this.colorKeyToolStripMenuItem_Click);
             // 
@@ -1980,7 +1980,7 @@ namespace ROMVault
             // 
             this.aboutRomVaultToolStripMenuItem.Name = "aboutRomVaultToolStripMenuItem";
             this.aboutRomVaultToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.aboutRomVaultToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.aboutRomVaultToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.aboutRomVaultToolStripMenuItem.Text = "About RomVault";
             this.aboutRomVaultToolStripMenuItem.Click += new System.EventHandler(this.AboutRomVaultToolStripMenuItemClick);
             // 

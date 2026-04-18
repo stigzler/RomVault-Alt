@@ -25,6 +25,14 @@ namespace ROMVault
             if (Version.Revision > 0)
                 strVersion += $" WIP{Version.Revision}";
 
+            // Handles Settings transfer on upgrade of version
+            if (Properties.Settings.Default.UpgradeRequired)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeRequired = false;
+                Properties.Settings.Default.Save();
+            }
+
             Application.SetCompatibleTextRenderingDefault(false);
 
             string appName = Assembly.GetEntryAssembly().Location;

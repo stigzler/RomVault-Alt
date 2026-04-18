@@ -187,7 +187,6 @@
     <Compile Include="Helpers\FileSystem.cs" />
     <Compile Include="Helpers\RvSystems.cs" />
     <Compile Include="Helpers\Theming.cs" />
-    <Compile Include="Helpers\Xml.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="FrmProgressWindowFix.cs">
       <SubType>Form</SubType>
