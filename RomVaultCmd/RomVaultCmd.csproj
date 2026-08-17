@@ -8,10 +8,18 @@
     <AssemblyVersion>3.7.2.0</AssemblyVersion>
     <Version>3.7.4</Version>
     <BaseOutputPath></BaseOutputPath>
-    <Configurations>Debug;Release</Configurations>
+    <Configurations>Debug;Release;Patch;Major</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\stage\Private\Release\RVCmd\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Major|AnyCPU'">
+    <OutputPath>..\..\stage\Private\Release\RVCmd\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Patch|AnyCPU'">
     <OutputPath>..\..\stage\Private\Release\RVCmd\</OutputPath>
   </PropertyGroup>
 

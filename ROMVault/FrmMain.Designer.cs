@@ -947,7 +947,7 @@ namespace ROMVault
             this.PgHeaderLB.ScaleFactor = 1.2D;
             this.PgHeaderLB.Size = new System.Drawing.Size(746, 23);
             this.PgHeaderLB.TabIndex = 3;
-            this.PgHeaderLB.Text = "Welcome to RomVault";
+            this.PgHeaderLB.Text = "Welcome to RomVault-Alt";
             this.PgHeaderLB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // PropGridHelpBT
@@ -2125,7 +2125,7 @@ namespace ROMVault
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
-            this.Text = "RomVault (V3.0)";
+            this.Text = "RomVault-Alt";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.Shown += new System.EventHandler(this.FrmMain_Shown);
