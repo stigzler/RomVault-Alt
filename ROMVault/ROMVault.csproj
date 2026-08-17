@@ -32,6 +32,29 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
+  
+  <Target Name="ZipReleaseFolder" AfterTargets="AfterBuild" Condition="'$(Configuration)' != 'Debug'">
+    
+    <!-- 1. Native MSBuild task to read the compiled assembly metadata -->
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="CompiledAssembly" />
+    </GetAssemblyIdentity>
+
+    <PropertyGroup>
+      <!-- 2. Extract the Version property from the item we just created -->
+      <CompiledVersion>%(CompiledAssembly.Version)</CompiledVersion>
+      
+      <!-- 3. Define the output zip path -->
+      <ZipFilePath>$(TargetDir)..\$(TargetName)-v$(CompiledVersion)-$(Configuration).zip</ZipFilePath>
+    </PropertyGroup>
+    
+    <Message Importance="high" Text="Creating release zip: $(ZipFilePath)" />
+    
+    <!-- 4. Native MSBuild task to zip the directory -->
+    <ZipDirectory SourceDirectory="$(TargetDir)" DestinationFile="$(ZipFilePath)" Overwrite="true" />
+    
+  </Target>
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\build\Debug\RomVault-Alt\</OutputPath>
@@ -84,7 +107,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>chip.ico</ApplicationIcon>
+    <ApplicationIcon>disc-blue.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Patch|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -188,10 +211,18 @@
     <Compile Include="FrmDirectoryMappings.Designer.cs">
       <DependentUpon>FrmDirectoryMappings.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain_Artwork.cs" />
-    <Compile Include="FrmMain_GameGrid.cs" />
-    <Compile Include="FrmMain_GameMetaData.cs" />
-    <Compile Include="FrmMain_RomGrid.cs" />
+    <Compile Include="FrmMain_Artwork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain_GameGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain_GameMetaData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain_RomGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmRomInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +313,12 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\DatInfo.cs" />
     <Compile Include="ViewModels\GameInfo.cs" />
+    <Content Include="disc-blue.ico" />
+    <Content Include="graphics.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="IncrementVersion.ps1" />
+    <None Include="Resources\romvault-Alt-Logo.png" />
     <None Include="Assets\Templates\template.dat" />
     <None Include="Resources\rocket-fly.png" />
     <EmbeddedResource Include="FrmDirectoryMappings.resx">
@@ -687,4 +724,7 @@
     <Exec Command="&quot;C:\Program Files (x86)\ILRepack\ILRepack.exe&quot; /out:@(MainAssembly) /targetplatform:v4,&quot;$(ReferenceAssemblies)&quot; &quot;@(IntermediateAssembly)&quot; @(AssembliesToMerge->'&quot;%(FullPath)&quot;', ' ')" />
     <Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)IncrementVersion.ps1" -Configuration "$(ConfigurationName)" -AssemblyInfoPath "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
