@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNewDat));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.AddBT = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.FilenameTB = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -40,7 +42,6 @@
             this.ErrorLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.DescriptionRTB = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -107,6 +108,16 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(2);
             this.panel1.Size = new System.Drawing.Size(265, 29);
             this.panel1.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(235, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = ".dat";
             // 
             // label1
             // 
@@ -194,16 +205,6 @@
             this.DescriptionRTB.TabIndex = 6;
             this.DescriptionRTB.Text = "";
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(235, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = ".dat";
-            // 
             // flexiLabel1
             // 
             this.flexiLabel1.AutoSize = true;
@@ -262,6 +263,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.flexiLabel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(281, 319);
             this.Name = "FrmNewDat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

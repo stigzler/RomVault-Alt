@@ -38,10 +38,10 @@
             this.LoadSchemaPathLB = new ROMVault.UserControls.PathLabel();
             this.LoadSchemaBT = new System.Windows.Forms.Button();
             this.BottomFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.GoBT = new System.Windows.Forms.Button();
-            this.SaveAsBT = new System.Windows.Forms.Button();
-            this.ValidateBT = new System.Windows.Forms.Button();
             this.CancelBT = new System.Windows.Forms.Button();
+            this.GoBT = new System.Windows.Forms.Button();
+            this.ValidateBT = new System.Windows.Forms.Button();
+            this.SaveAsBT = new System.Windows.Forms.Button();
             this.OptionsGB = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.CreateFoldersChB = new System.Windows.Forms.CheckBox();
@@ -182,6 +182,22 @@
             this.BottomFLP.Size = new System.Drawing.Size(434, 42);
             this.BottomFLP.TabIndex = 10;
             // 
+            // CancelBT
+            // 
+            this.CancelBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelBT.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.CancelBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelBT.Image = global::ROMVault.Properties.Resources.cross;
+            this.CancelBT.Location = new System.Drawing.Point(335, 6);
+            this.CancelBT.Name = "CancelBT";
+            this.CancelBT.Size = new System.Drawing.Size(90, 30);
+            this.CancelBT.TabIndex = 6;
+            this.CancelBT.Text = " Close";
+            this.CancelBT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CancelBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.CancelBT.UseVisualStyleBackColor = true;
+            // 
             // GoBT
             // 
             this.GoBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -198,23 +214,6 @@
             this.MainTT.SetToolTip(this.GoBT, "Start Operation");
             this.GoBT.UseVisualStyleBackColor = true;
             this.GoBT.Click += new System.EventHandler(this.GoBT_Click);
-            // 
-            // SaveAsBT
-            // 
-            this.SaveAsBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveAsBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.SaveAsBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveAsBT.Image = global::ROMVault.Properties.Resources.disk;
-            this.SaveAsBT.Location = new System.Drawing.Point(47, 6);
-            this.SaveAsBT.Name = "SaveAsBT";
-            this.SaveAsBT.Size = new System.Drawing.Size(90, 30);
-            this.SaveAsBT.TabIndex = 8;
-            this.SaveAsBT.Text = " SaveAs";
-            this.SaveAsBT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.SaveAsBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.MainTT.SetToolTip(this.SaveAsBT, "Saves the current schema as RomVault Schema file (rvs)");
-            this.SaveAsBT.UseVisualStyleBackColor = true;
-            this.SaveAsBT.Click += new System.EventHandler(this.SaveAsBT_Click);
             // 
             // ValidateBT
             // 
@@ -233,21 +232,22 @@
             this.ValidateBT.UseVisualStyleBackColor = true;
             this.ValidateBT.Click += new System.EventHandler(this.ValidateBT_Click);
             // 
-            // CancelBT
+            // SaveAsBT
             // 
-            this.CancelBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelBT.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.CancelBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelBT.Image = global::ROMVault.Properties.Resources.cross;
-            this.CancelBT.Location = new System.Drawing.Point(335, 6);
-            this.CancelBT.Name = "CancelBT";
-            this.CancelBT.Size = new System.Drawing.Size(90, 30);
-            this.CancelBT.TabIndex = 6;
-            this.CancelBT.Text = " Close";
-            this.CancelBT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CancelBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.CancelBT.UseVisualStyleBackColor = true;
+            this.SaveAsBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveAsBT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.SaveAsBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveAsBT.Image = global::ROMVault.Properties.Resources.disk;
+            this.SaveAsBT.Location = new System.Drawing.Point(47, 6);
+            this.SaveAsBT.Name = "SaveAsBT";
+            this.SaveAsBT.Size = new System.Drawing.Size(90, 30);
+            this.SaveAsBT.TabIndex = 8;
+            this.SaveAsBT.Text = " SaveAs";
+            this.SaveAsBT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SaveAsBT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.MainTT.SetToolTip(this.SaveAsBT, "Saves the current schema as RomVault Schema file (rvs)");
+            this.SaveAsBT.UseVisualStyleBackColor = true;
+            this.SaveAsBT.Click += new System.EventHandler(this.SaveAsBT_Click);
             // 
             // OptionsGB
             // 

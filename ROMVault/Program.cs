@@ -21,9 +21,7 @@ namespace ROMVault
         [STAThread]
         private static void Main()
         {
-            strVersion = $"{Version.Major}.{Version.Minor}.{Version.Build}";
-            if (Version.Revision > 0)
-                strVersion += $" WIP{Version.Revision}";
+            strVersion = $"{Version.Major}.{Version.Minor}.{Version.Build}.{Version.Revision}";
 
             // Handles Settings transfer on upgrade of version
             if (Properties.Settings.Default.UpgradeRequired)

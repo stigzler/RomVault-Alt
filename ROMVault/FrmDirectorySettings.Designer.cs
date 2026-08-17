@@ -45,10 +45,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.ExistingRulesPN = new System.Windows.Forms.Panel();
+            this.lblDelete = new ROMVault.UserControls.FlexiLabel();
             this.RulesActionsFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.RulesPN = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblDelete = new ROMVault.UserControls.FlexiLabel();
             this.MainTC = new ROMVault.UserControls.TabControl();
             this.tabDirMerge = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -83,6 +82,7 @@
             this.flexiLabel2 = new ROMVault.UserControls.FlexiLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.flexiLabel1 = new ROMVault.UserControls.FlexiLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridGames)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -90,7 +90,6 @@
             this.ExistingRulesPN.SuspendLayout();
             this.RulesActionsFLP.SuspendLayout();
             this.RulesPN.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.MainTC.SuspendLayout();
             this.tabDirMerge.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -99,6 +98,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategories)).BeginInit();
             this.tabExclude.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataGridGames
@@ -306,6 +306,19 @@
             this.ExistingRulesPN.Size = new System.Drawing.Size(702, 218);
             this.ExistingRulesPN.TabIndex = 53;
             // 
+            // lblDelete
+            // 
+            this.lblDelete.AutoSize = true;
+            this.lblDelete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDelete.Font = new System.Drawing.Font("Roboto", 9.075F, System.Drawing.FontStyle.Bold);
+            this.lblDelete.Location = new System.Drawing.Point(4, 4);
+            this.lblDelete.Name = "lblDelete";
+            this.lblDelete.Padding = new System.Windows.Forms.Padding(4);
+            this.lblDelete.ScaleFactor = 1.1D;
+            this.lblDelete.Size = new System.Drawing.Size(139, 23);
+            this.lblDelete.TabIndex = 16;
+            this.lblDelete.Text = "Existing DAT Rules";
+            // 
             // RulesActionsFLP
             // 
             this.RulesActionsFLP.AutoSize = true;
@@ -330,31 +343,6 @@
             this.RulesPN.Size = new System.Drawing.Size(702, 223);
             this.RulesPN.TabIndex = 55;
             // 
-            // panel1
-            // 
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.txtDATLocation);
-            this.panel1.Controls.Add(this.lblDATLocation);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(4);
-            this.panel1.Size = new System.Drawing.Size(702, 38);
-            this.panel1.TabIndex = 56;
-            // 
-            // lblDelete
-            // 
-            this.lblDelete.AutoSize = true;
-            this.lblDelete.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDelete.Font = new System.Drawing.Font("Roboto", 9.075F, System.Drawing.FontStyle.Bold);
-            this.lblDelete.Location = new System.Drawing.Point(4, 4);
-            this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Padding = new System.Windows.Forms.Padding(4);
-            this.lblDelete.ScaleFactor = 1.1D;
-            this.lblDelete.Size = new System.Drawing.Size(139, 23);
-            this.lblDelete.TabIndex = 16;
-            this.lblDelete.Text = "Existing DAT Rules";
-            // 
             // MainTC
             // 
             this.MainTC.Controls.Add(this.tabDirMerge);
@@ -364,7 +352,7 @@
             this.MainTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.MainTC.HideBorders = true;
             this.MainTC.HideTabs = false;
-            this.MainTC.ItemSize = new System.Drawing.Size(138, 23);
+            this.MainTC.ItemSize = new System.Drawing.Size(58, 23);
             this.MainTC.Location = new System.Drawing.Point(4, 4);
             this.MainTC.Name = "MainTC";
             this.MainTC.SelectedIndex = 0;
@@ -591,10 +579,10 @@
             // tabAdvanced
             // 
             this.tabAdvanced.Controls.Add(this.groupBox3);
-            this.tabAdvanced.Location = new System.Drawing.Point(0, 21);
+            this.tabAdvanced.Location = new System.Drawing.Point(0, 25);
             this.tabAdvanced.Name = "tabAdvanced";
             this.tabAdvanced.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdvanced.Size = new System.Drawing.Size(629, 194);
+            this.tabAdvanced.Size = new System.Drawing.Size(629, 190);
             this.tabAdvanced.TabIndex = 2;
             this.tabAdvanced.Text = "Advanced Options";
             this.tabAdvanced.UseVisualStyleBackColor = true;
@@ -714,10 +702,10 @@
             this.tabExclude.Controls.Add(this.flexiLabel2);
             this.tabExclude.Controls.Add(this.label6);
             this.tabExclude.Controls.Add(this.textBox1);
-            this.tabExclude.Location = new System.Drawing.Point(0, 21);
+            this.tabExclude.Location = new System.Drawing.Point(0, 25);
             this.tabExclude.Name = "tabExclude";
             this.tabExclude.Padding = new System.Windows.Forms.Padding(3);
-            this.tabExclude.Size = new System.Drawing.Size(629, 194);
+            this.tabExclude.Size = new System.Drawing.Size(629, 190);
             this.tabExclude.TabIndex = 1;
             this.tabExclude.Text = "Filename Exclude";
             this.tabExclude.UseVisualStyleBackColor = true;
@@ -755,6 +743,18 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(376, 150);
             this.textBox1.TabIndex = 48;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.txtDATLocation);
+            this.panel1.Controls.Add(this.lblDATLocation);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(4);
+            this.panel1.Size = new System.Drawing.Size(702, 38);
+            this.panel1.TabIndex = 56;
             // 
             // flexiLabel1
             // 
@@ -798,8 +798,6 @@
             this.RulesActionsFLP.ResumeLayout(false);
             this.RulesPN.ResumeLayout(false);
             this.RulesPN.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.MainTC.ResumeLayout(false);
             this.tabDirMerge.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -810,6 +808,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCategories)).EndInit();
             this.tabExclude.ResumeLayout(false);
             this.tabExclude.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

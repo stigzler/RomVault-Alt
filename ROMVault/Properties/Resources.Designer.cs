@@ -623,6 +623,16 @@ namespace ROMVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap romvault_Alt_Logo {
+            get {
+                object obj = ResourceManager.GetObject("romvault-Alt-Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap smiley {
             get {
                 object obj = ResourceManager.GetObject("smiley", resourceCulture);

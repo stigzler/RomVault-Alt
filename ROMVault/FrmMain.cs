@@ -164,7 +164,7 @@ namespace ROMVault
             AddGameMetaData();
 
             // Form specific UI setup:
-            Text = $@"RomVault ({Program.strVersion})";
+            Text = $@"RomVault-Alt ({Program.strVersion})";
             Font = new Font(this.Font.FontFamily, (float)Properties.Settings.Default.MainTextSize);
 
             Theming.SetControlTextSizeToDefault(menuStrip1);

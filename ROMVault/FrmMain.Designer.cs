@@ -179,7 +179,6 @@ namespace ROMVault
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torrentZipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitHelpWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.whatsNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.colorKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutRomVaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -418,7 +417,6 @@ namespace ROMVault
             this.btnReport.Text = "Reports";
             this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnReport, "Generate Reports");
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnReportMouseUp);
             // 
@@ -449,7 +447,6 @@ namespace ROMVault
             this.btnFixFiles.Text = "Fix Roms";
             this.btnFixFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFixFiles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnFixFiles, "Fix ROMs");
             this.btnFixFiles.UseVisualStyleBackColor = true;
             this.btnFixFiles.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnFixFilesMouseUp);
             // 
@@ -490,7 +487,6 @@ namespace ROMVault
             this.btnFindFixes.Text = "Find Fixes";
             this.btnFindFixes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFindFixes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnFindFixes, "Find Fixes");
             this.btnFindFixes.UseVisualStyleBackColor = true;
             this.btnFindFixes.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnFindFixes_MouseUp);
             // 
@@ -521,7 +517,6 @@ namespace ROMVault
             this.btnScanRoms.Text = "Scan Roms";
             this.btnScanRoms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnScanRoms.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnScanRoms, "Scan ROMs");
             this.btnScanRoms.UseVisualStyleBackColor = true;
             this.btnScanRoms.Click += new System.EventHandler(this.BtnScanRomsClick);
             // 
@@ -552,7 +547,6 @@ namespace ROMVault
             this.btnUpdateDats.Text = "Update DATs";
             this.btnUpdateDats.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpdateDats.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.tooltip.SetToolTip(this.btnUpdateDats, "Update DATs");
             this.btnUpdateDats.UseVisualStyleBackColor = false;
             this.btnUpdateDats.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnUpdateDatsMouseUp);
             // 
@@ -961,7 +955,6 @@ namespace ROMVault
             this.PropGridHelpBT.Name = "PropGridHelpBT";
             this.PropGridHelpBT.Size = new System.Drawing.Size(25, 23);
             this.PropGridHelpBT.TabIndex = 5;
-            this.tooltip.SetToolTip(this.PropGridHelpBT, "Show Help");
             this.PropGridHelpBT.UseVisualStyleBackColor = true;
             this.PropGridHelpBT.Click += new System.EventHandler(this.PropGridHelpBT_Click);
             // 
@@ -1934,7 +1927,6 @@ namespace ROMVault
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.torrentZipToolStripMenuItem,
             this.visitHelpWikiToolStripMenuItem,
-            this.whatsNewToolStripMenuItem,
             this.toolStripSeparator7,
             this.colorKeyToolStripMenuItem,
             this.aboutRomVaultToolStripMenuItem});
@@ -1955,13 +1947,6 @@ namespace ROMVault
             this.visitHelpWikiToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.visitHelpWikiToolStripMenuItem.Text = "Visit Help Wiki";
             this.visitHelpWikiToolStripMenuItem.Click += new System.EventHandler(this.visitHelpWikiToolStripMenuItem_Click);
-            // 
-            // whatsNewToolStripMenuItem
-            // 
-            this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
-            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.whatsNewToolStripMenuItem.Text = "Whats New";
-            this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.whatsNewToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -2275,7 +2260,6 @@ namespace ROMVault
         private System.Windows.Forms.Button btnDefault3;
         private System.Windows.Forms.Label lblTreePreSets;
         private System.Windows.Forms.ToolStripMenuItem visitHelpWikiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem whatsNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem torrentZipToolStripMenuItem;
         private System.Windows.Forms.TabPage tabMedium;
         private System.Windows.Forms.PictureBox picMedium2;

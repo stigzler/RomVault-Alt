@@ -49,3 +49,6 @@
 /.vs
 *.user
 /.idea/
+# My excludes
+/build/Debug
+/build/Release

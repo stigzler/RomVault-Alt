@@ -16,7 +16,6 @@ namespace ROMVault
         public FrmHelpAbout()
         {
             InitializeComponent();
-            Text = "Version " + Program.strVersion + " : " + Application.StartupPath;
             lblVersion.Text = "Version " + Program.strVersion;
         }
 
@@ -34,6 +33,12 @@ namespace ROMVault
         {
             Dark.dark.SetColors(this, Settings.rvSettings.Darkness);
             Helpers.Theming.SetFormTextSizeToDefault(this);
+        }
+
+        private void flexiLabel4_Click(object sender, EventArgs e)
+        {
+            try { Process.Start("https://github.com/stigzler/RomVault-Alt"); } catch { }
+
         }
     }
 }
