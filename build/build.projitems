@@ -9,5 +9,7 @@
     <Import_RootNamespace>build</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Debug\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Release\" />
   </ItemGroup>
 </Project>

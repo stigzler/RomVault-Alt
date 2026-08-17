@@ -7,8 +7,20 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>D:\stage\Private\Debug\RVUnZip\</OutputPath>
+    <OutputPath>..\build\Debug\RVUnZip</OutputPath>
   </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\build\Release\RVUnZip</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Major|AnyCPU'">
+		<OutputPath>..\build\Release\RVUnZip</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Patch|AnyCPU'">
+		<OutputPath>..\build\Release\RVUnZip</OutputPath>
+	</PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Compress\Compress.csproj" />

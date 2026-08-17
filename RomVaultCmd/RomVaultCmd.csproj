@@ -12,19 +12,19 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\stage\Private\Release\RVCmd\</OutputPath>
+    <OutputPath>..\build\Release\RVCmd\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Major|AnyCPU'">
-    <OutputPath>..\..\stage\Private\Release\RVCmd\</OutputPath>
+    <OutputPath>..\build\Release\RVCmd\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Patch|AnyCPU'">
-    <OutputPath>..\..\stage\Private\Release\RVCmd\</OutputPath>
+    <OutputPath>..\build\Release\RVCmd\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\stage\Private\Debug\RVCmd\</OutputPath>
+    <OutputPath>..\build\Debug\RVCmd\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
